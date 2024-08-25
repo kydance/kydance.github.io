@@ -3,10 +3,10 @@
     xmlns:xhtml="http://www.w3.org/1999/xhtml"
     ><url>
             <loc>https://kydance.github.io/posts/vscode-vim/</loc><lastmod>2024-08-25T17:16:38&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>https://kydance.github.io/categories/</loc><lastmod>2024-08-25T17:16:38&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>https://kydance.github.io/</loc><lastmod>2024-08-25T17:16:38&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>https://kydance.github.io/posts/</loc><lastmod>2024-08-25T17:16:38&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>https://kydance.github.io/tags/</loc><lastmod>2024-08-25T17:16:38&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://kydance.github.io/categories/</loc><lastmod>2024-08-25T18:13:19&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://kydance.github.io/</loc><lastmod>2024-08-25T18:13:19&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://kydance.github.io/posts/</loc><lastmod>2024-08-25T18:13:19&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://kydance.github.io/tags/</loc><lastmod>2024-08-25T18:13:19&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>https://kydance.github.io/tags/vim/</loc><lastmod>2024-08-25T17:16:38&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>https://kydance.github.io/categories/vim/</loc><lastmod>2024-08-25T17:16:38&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>https://kydance.github.io/tags/vscode/</loc><lastmod>2024-08-25T17:16:38&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
@@ -17,8 +17,8 @@
             <loc>https://kydance.github.io/categories/%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/</loc><lastmod>2024-08-25T17:16:38&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>https://kydance.github.io/tags/context/</loc><lastmod>2024-08-24T19:55:34&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>https://kydance.github.io/categories/context/</loc><lastmod>2024-08-24T19:55:34&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>https://kydance.github.io/tags/golang/</loc><lastmod>2024-08-25T10:17:11&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>https://kydance.github.io/categories/golang/</loc><lastmod>2024-08-25T10:17:11&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://kydance.github.io/tags/golang/</loc><lastmod>2024-08-25T18:13:19&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://kydance.github.io/categories/golang/</loc><lastmod>2024-08-25T18:13:19&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>https://kydance.github.io/posts/golang-context/</loc><lastmod>2024-08-24T19:55:34&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>https://kydance.github.io/tags/escape-analysis/</loc><lastmod>2024-08-25T10:17:11&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>https://kydance.github.io/categories/escape-analysis/</loc><lastmod>2024-08-25T10:17:11&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
@@ -38,6 +38,15 @@
             <loc>https://kydance.github.io/tags/process/</loc><lastmod>2024-08-24T20:12:48&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>https://kydance.github.io/categories/process/</loc><lastmod>2024-08-24T20:12:48&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>https://kydance.github.io/posts/golang-gmp/</loc><lastmod>2024-08-24T20:12:48&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://kydance.github.io/tags/epoll/</loc><lastmod>2024-08-25T18:13:19&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://kydance.github.io/categories/epoll/</loc><lastmod>2024-08-25T18:13:19&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://kydance.github.io/posts/golang-netpoll/</loc><lastmod>2024-08-25T18:13:19&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://kydance.github.io/tags/linux/</loc><lastmod>2024-08-25T18:13:19&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://kydance.github.io/categories/linux/</loc><lastmod>2024-08-25T18:13:19&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://kydance.github.io/tags/netpoll/</loc><lastmod>2024-08-25T18:13:19&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://kydance.github.io/categories/netpoll/</loc><lastmod>2024-08-25T18:13:19&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://kydance.github.io/tags/network-program/</loc><lastmod>2024-08-25T18:13:19&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://kydance.github.io/categories/network-program/</loc><lastmod>2024-08-25T18:13:19&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>https://kydance.github.io/posts/golang-profile/</loc><lastmod>2024-08-24T20:26:18&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>https://kydance.github.io/tags/optimize/</loc><lastmod>2024-08-24T20:26:18&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>https://kydance.github.io/categories/optimize/</loc><lastmod>2024-08-24T20:26:18&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
@@ -62,8 +71,6 @@
             <loc>https://kydance.github.io/about/</loc><lastmod>2024-08-22T22:53:50&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>https://kydance.github.io/tags/arch/</loc><lastmod>2024-08-24T18:59:10&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>https://kydance.github.io/posts/arch-linux/</loc><lastmod>2024-08-24T18:59:10&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>https://kydance.github.io/tags/linux/</loc><lastmod>2024-08-24T19:55:34&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>https://kydance.github.io/categories/linux/</loc><lastmod>2024-08-24T19:55:34&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>https://kydance.github.io/tags/github-pages/</loc><lastmod>2024-08-24T19:55:34&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>https://kydance.github.io/categories/github-pages/</loc><lastmod>2024-08-24T19:55:34&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>https://kydance.github.io/tags/hugo/</loc><lastmod>2024-08-24T19:55:34&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>

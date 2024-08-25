@@ -117,6 +117,38 @@
     <description><![CDATA[]]></description>
 </item>
 <item>
+    <title>Epoll</title>
+    <link>https://kydance.github.io/categories/epoll/</link>
+    <pubDate>Wed, 08 May 2024 11:43:38 &#43;0800</pubDate>
+    <author>kyden</author>
+    <guid>https://kydance.github.io/categories/epoll/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
+    <title>Linux</title>
+    <link>https://kydance.github.io/categories/linux/</link>
+    <pubDate>Wed, 08 May 2024 11:43:38 &#43;0800</pubDate>
+    <author>kyden</author>
+    <guid>https://kydance.github.io/categories/linux/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
+    <title>Netpoll</title>
+    <link>https://kydance.github.io/categories/netpoll/</link>
+    <pubDate>Wed, 08 May 2024 11:43:38 &#43;0800</pubDate>
+    <author>kyden</author>
+    <guid>https://kydance.github.io/categories/netpoll/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
+    <title>Network Program</title>
+    <link>https://kydance.github.io/categories/network-program/</link>
+    <pubDate>Wed, 08 May 2024 11:43:38 &#43;0800</pubDate>
+    <author>kyden</author>
+    <guid>https://kydance.github.io/categories/network-program/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
     <title>Optimize</title>
     <link>https://kydance.github.io/categories/optimize/</link>
     <pubDate>Sat, 20 Apr 2024 20:39:50 &#43;0800</pubDate>
@@ -130,38 +162,6 @@
     <pubDate>Sat, 20 Apr 2024 20:39:50 &#43;0800</pubDate>
     <author>kyden</author>
     <guid>https://kydance.github.io/categories/profile/</guid>
-    <description><![CDATA[]]></description>
-</item>
-<item>
-    <title>CI/CD</title>
-    <link>https://kydance.github.io/categories/ci/cd/</link>
-    <pubDate>Fri, 19 Apr 2024 11:24:23 &#43;0800</pubDate>
-    <author>kyden</author>
-    <guid>https://kydance.github.io/categories/ci/cd/</guid>
-    <description><![CDATA[]]></description>
-</item>
-<item>
-    <title>Linter</title>
-    <link>https://kydance.github.io/categories/linter/</link>
-    <pubDate>Fri, 19 Apr 2024 11:24:23 &#43;0800</pubDate>
-    <author>kyden</author>
-    <guid>https://kydance.github.io/categories/linter/</guid>
-    <description><![CDATA[]]></description>
-</item>
-<item>
-    <title>Static Check</title>
-    <link>https://kydance.github.io/categories/static-check/</link>
-    <pubDate>Fri, 19 Apr 2024 11:24:23 &#43;0800</pubDate>
-    <author>kyden</author>
-    <guid>https://kydance.github.io/categories/static-check/</guid>
-    <description><![CDATA[]]></description>
-</item>
-<item>
-    <title>Markdown</title>
-    <link>https://kydance.github.io/categories/markdown/</link>
-    <pubDate>Thu, 18 Apr 2024 21:50:17 &#43;0800</pubDate>
-    <author>kyden</author>
-    <guid>https://kydance.github.io/categories/markdown/</guid>
     <description><![CDATA[]]></description>
 </item>
 </channel>
