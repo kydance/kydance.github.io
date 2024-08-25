@@ -37,19 +37,35 @@
     <description><![CDATA[]]></description>
 </item>
 <item>
+    <title>Golang</title>
+    <link>https://kydance.github.io/tags/golang/</link>
+    <pubDate>Sat, 13 Jul 2024 21:04:57 &#43;0800</pubDate>
+    <author>kyden</author>
+    <guid>https://kydance.github.io/tags/golang/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
+    <title>Project Layout</title>
+    <link>https://kydance.github.io/tags/project-layout/</link>
+    <pubDate>Sat, 13 Jul 2024 21:04:57 &#43;0800</pubDate>
+    <author>kyden</author>
+    <guid>https://kydance.github.io/tags/project-layout/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
+    <title>Stardard</title>
+    <link>https://kydance.github.io/tags/stardard/</link>
+    <pubDate>Sat, 13 Jul 2024 21:04:57 &#43;0800</pubDate>
+    <author>kyden</author>
+    <guid>https://kydance.github.io/tags/stardard/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
     <title>Context</title>
     <link>https://kydance.github.io/tags/context/</link>
     <pubDate>Sat, 01 Jun 2024 21:37:55 &#43;0800</pubDate>
     <author>kyden</author>
     <guid>https://kydance.github.io/tags/context/</guid>
-    <description><![CDATA[]]></description>
-</item>
-<item>
-    <title>Golang</title>
-    <link>https://kydance.github.io/tags/golang/</link>
-    <pubDate>Sat, 01 Jun 2024 21:37:55 &#43;0800</pubDate>
-    <author>kyden</author>
-    <guid>https://kydance.github.io/tags/golang/</guid>
     <description><![CDATA[]]></description>
 </item>
 <item>
@@ -146,22 +162,6 @@
     <pubDate>Wed, 08 May 2024 11:43:38 &#43;0800</pubDate>
     <author>kyden</author>
     <guid>https://kydance.github.io/tags/network-program/</guid>
-    <description><![CDATA[]]></description>
-</item>
-<item>
-    <title>Optimize</title>
-    <link>https://kydance.github.io/tags/optimize/</link>
-    <pubDate>Sat, 20 Apr 2024 20:39:50 &#43;0800</pubDate>
-    <author>kyden</author>
-    <guid>https://kydance.github.io/tags/optimize/</guid>
-    <description><![CDATA[]]></description>
-</item>
-<item>
-    <title>Profile</title>
-    <link>https://kydance.github.io/tags/profile/</link>
-    <pubDate>Sat, 20 Apr 2024 20:39:50 &#43;0800</pubDate>
-    <author>kyden</author>
-    <guid>https://kydance.github.io/tags/profile/</guid>
     <description><![CDATA[]]></description>
 </item>
 </channel>

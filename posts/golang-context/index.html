@@ -7,12 +7,12 @@
         <title>浅析 Golang Context - KyteDance-鸢舞</title><meta name="Description" content="kyden&#39;s blog site"><meta property="og:url" content="https://kydance.github.io/posts/golang-context/">
   <meta property="og:site_name" content="KyteDance-鸢舞">
   <meta property="og:title" content="浅析 Golang Context">
-  <meta property="og:description" content="当需要在多个 Goroutine 中传递上下文信息时，可以使用 Context 实现">
+  <meta property="og:description" content=" 导语 当需要在多个 Goroutine 中传递上下文信息时，可以使用 Context 实现 ">
   <meta property="og:locale" content="en">
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
     <meta property="article:published_time" content="2024-06-01T21:37:55+08:00">
-    <meta property="article:modified_time" content="2024-08-24T19:55:34+08:00">
+    <meta property="article:modified_time" content="2024-08-25T18:29:39+08:00">
     <meta property="article:tag" content="Golang">
     <meta property="article:tag" content="Context">
     <meta property="og:image" content="https://kydance.github.io/Kyden.png">
@@ -20,9 +20,9 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:image" content="https://kydance.github.io/Kyden.png">
   <meta name="twitter:title" content="浅析 Golang Context">
-  <meta name="twitter:description" content="当需要在多个 Goroutine 中传递上下文信息时，可以使用 Context 实现">
+  <meta name="twitter:description" content=" 导语 当需要在多个 Goroutine 中传递上下文信息时，可以使用 Context 实现 ">
 <meta name="application-name" content="kydance">
-<meta name="apple-mobile-web-app-title" content="kydance"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="canonical" href="https://kydance.github.io/posts/golang-context/" /><link rel="prev" href="https://kydance.github.io/posts/golang-escape-analysis/" /><link rel="next" href="https://kydance.github.io/posts/vscode-vim/" /><link rel="stylesheet" href="/css/style.min.cf6878db51c51b2d04ae155284a4403dbee8db33e16c066f954c95279c271fcd.css" integrity="sha256-z2h421HFGy0ErhVShKRAPb7o2zPhbAZvlUyVJ5wnH80="><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<meta name="apple-mobile-web-app-title" content="kydance"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="canonical" href="https://kydance.github.io/posts/golang-context/" /><link rel="prev" href="https://kydance.github.io/posts/golang-escape-analysis/" /><link rel="next" href="https://kydance.github.io/posts/golang-project-layout/" /><link rel="stylesheet" href="/css/style.min.cf6878db51c51b2d04ae155284a4403dbee8db33e16c066f954c95279c271fcd.css" integrity="sha256-z2h421HFGy0ErhVShKRAPb7o2zPhbAZvlUyVJ5wnH80="><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
     {
@@ -33,8 +33,8 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/kydance.github.io\/posts\/golang-context\/"
-        },"image": ["https:\/\/kydance.github.io\/avatar.jpeg"],"genre": "posts","keywords": "Golang, Context","wordcount":  931 ,
-        "url": "https:\/\/kydance.github.io\/posts\/golang-context\/","datePublished": "2024-06-01T21:37:55+08:00","dateModified": "2024-08-24T19:55:34+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+        },"image": ["https:\/\/kydance.github.io\/avatar.jpeg"],"genre": "posts","keywords": "Golang, Context","wordcount":  932 ,
+        "url": "https:\/\/kydance.github.io\/posts\/golang-context\/","datePublished": "2024-06-01T21:37:55+08:00","dateModified": "2024-08-25T18:29:39+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "kydance","logo": "https:\/\/kydance.github.io\/avatar.jpeg"},"author": {
                 "@type": "Person",
@@ -141,7 +141,7 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">浅析 Golang Context</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https:github.com/kydance" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>kyden</a></span>&nbsp;<span class="post-category">included in <a href="/categories/golang/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Golang</a>&nbsp;<a href="/categories/context/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Context</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-06-01">2024-06-01</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;931 words&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-06-01">2024-06-01</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;932 words&nbsp;
                 <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;5 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
@@ -155,7 +155,14 @@
     <li><a href="#reference">Reference</a></li>
   </ul>
 </nav></div>
-            </div><div class="content" id="content"><p>当需要在多个 Goroutine 中传递上下文信息时，可以使用 Context 实现</p>
+            </div><div class="content" id="content"><div class="details admonition info open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-info-circle fa-fw" aria-hidden="true"></i>导语<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">当需要在多个 Goroutine 中传递上下文信息时，可以使用 Context 实现</div>
+        </div>
+    </div>
 <h2 id="context">Context</h2>
 <p>Context 除了用来传递上下文信息，还可以用来传递终结执行子任务的相关信号，终止多个执行子任务的 Goroutine。</p>
 <p><code>context.Context</code> 接口数据结构：</p>
@@ -481,9 +488,9 @@
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>Updated on 2024-08-24
-                                &nbsp;<a class="git-hash" href="https://github.com/kydance/blog/commit/58269903fa4719da7343c0a13430960838de825a" target="_blank" title="commit by 58269903fa4719da7343c0a13430960838de825a: Feat: golang-context">
-                                    <i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>5826990</a></span>
+                <span>Updated on 2024-08-25
+                                &nbsp;<a class="git-hash" href="https://github.com/kydance/blog/commit/c7b3b8c13a55ac17594fc459d34f55c4d05c8c92" target="_blank" title="commit by c7b3b8c13a55ac17594fc459d34f55c4d05c8c92: Update: 导语">
+                                    <i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>c7b3b8c</a></span>
             </div><div class="post-info-license">
                 <span><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span>
             </div></div>
@@ -503,7 +510,7 @@
     </div>
 
     <div class="post-nav"><a href="/posts/golang-escape-analysis/" class="prev" rel="prev" title="深入探讨 Golang Escape Analysis"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>深入探讨 Golang Escape Analysis</a>
-            <a href="/posts/vscode-vim/" class="next" rel="next" title="【最佳实践】VSCode &#43; Vim = 效率之神">【最佳实践】VSCode + Vim = 效率之神<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+            <a href="/posts/golang-project-layout/" class="next" rel="next" title="Golang Project Stardard Layout">Golang Project Stardard Layout<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
 </div>
 <div id="comments"><div id="gitalk" class="comment"></div><noscript>
                 Please enable JavaScript to view the comments powered by <a href="https://github.com/gitalk/gitalk"></a>Gitalk</a>.

@@ -7,12 +7,12 @@
         <title>Golang Profile and Optimize - KyteDance-鸢舞</title><meta name="Description" content="kyden&#39;s blog site"><meta property="og:url" content="https://kydance.github.io/posts/golang-profile/">
   <meta property="og:site_name" content="KyteDance-鸢舞">
   <meta property="og:title" content="Golang Profile and Optimize">
-  <meta property="og:description" content="Golang 常见的性能剖析 (Profile) 与优化 (Optimize)">
+  <meta property="og:description" content=" 导语 Golang 常见的性能剖析 (Profile) 与优化 (Optimize) ">
   <meta property="og:locale" content="en">
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
     <meta property="article:published_time" content="2024-04-20T20:39:50+08:00">
-    <meta property="article:modified_time" content="2024-08-24T20:26:18+08:00">
+    <meta property="article:modified_time" content="2024-08-25T18:29:39+08:00">
     <meta property="article:tag" content="Golang">
     <meta property="article:tag" content="Profile">
     <meta property="article:tag" content="Optimize">
@@ -21,9 +21,9 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:image" content="https://kydance.github.io/Kyden.png">
   <meta name="twitter:title" content="Golang Profile and Optimize">
-  <meta name="twitter:description" content="Golang 常见的性能剖析 (Profile) 与优化 (Optimize)">
+  <meta name="twitter:description" content=" 导语 Golang 常见的性能剖析 (Profile) 与优化 (Optimize) ">
 <meta name="application-name" content="kydance">
-<meta name="apple-mobile-web-app-title" content="kydance"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="canonical" href="https://kydance.github.io/posts/golang-profile/" /><link rel="prev" href="https://kydance.github.io/posts/linter-go/" /><link rel="next" href="https://kydance.github.io/posts/golang-netpoll/" /><link rel="stylesheet" href="/css/style.min.cf6878db51c51b2d04ae155284a4403dbee8db33e16c066f954c95279c271fcd.css" integrity="sha256-z2h421HFGy0ErhVShKRAPb7o2zPhbAZvlUyVJ5wnH80="><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<meta name="apple-mobile-web-app-title" content="kydance"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="canonical" href="https://kydance.github.io/posts/golang-profile/" /><link rel="prev" href="https://kydance.github.io/posts/golang-linter/" /><link rel="next" href="https://kydance.github.io/posts/golang-netpoll/" /><link rel="stylesheet" href="/css/style.min.cf6878db51c51b2d04ae155284a4403dbee8db33e16c066f954c95279c271fcd.css" integrity="sha256-z2h421HFGy0ErhVShKRAPb7o2zPhbAZvlUyVJ5wnH80="><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
     {
@@ -34,8 +34,8 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/kydance.github.io\/posts\/golang-profile\/"
-        },"image": ["https:\/\/kydance.github.io\/avatar.jpeg"],"genre": "posts","keywords": "Golang, Profile, Optimize","wordcount":  1681 ,
-        "url": "https:\/\/kydance.github.io\/posts\/golang-profile\/","datePublished": "2024-04-20T20:39:50+08:00","dateModified": "2024-08-24T20:26:18+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+        },"image": ["https:\/\/kydance.github.io\/avatar.jpeg"],"genre": "posts","keywords": "Golang, Profile, Optimize","wordcount":  1682 ,
+        "url": "https:\/\/kydance.github.io\/posts\/golang-profile\/","datePublished": "2024-04-20T20:39:50+08:00","dateModified": "2024-08-25T18:29:39+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "kydance","logo": "https:\/\/kydance.github.io\/avatar.jpeg"},"author": {
                 "@type": "Person",
@@ -142,7 +142,7 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Golang Profile and Optimize</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https:github.com/kydance" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>kyden</a></span>&nbsp;<span class="post-category">included in <a href="/categories/golang/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Golang</a>&nbsp;<a href="/categories/profile/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Profile</a>&nbsp;<a href="/categories/optimize/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Optimize</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-04-20">2024-04-20</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;1681 words&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-04-20">2024-04-20</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;1682 words&nbsp;
                 <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;8 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
@@ -183,7 +183,14 @@
     <li><a href="#v-reference">V. Reference</a></li>
   </ul>
 </nav></div>
-            </div><div class="content" id="content"><p>Golang 常见的性能剖析 (Profile) 与优化 (Optimize)</p>
+            </div><div class="content" id="content"><div class="details admonition info open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-info-circle fa-fw" aria-hidden="true"></i>导语<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">Golang 常见的性能剖析 (Profile) 与优化 (Optimize)</div>
+        </div>
+    </div>
 <h2 id="i-profile">I. Profile</h2>
 <p>在进行 <strong>API 压测</strong>、<strong>全链路压测</strong>、<strong>线上生产环境被高峰流量打爆</strong>的过程中随时可能发生故障等问题，例如：</p>
 <ul>
@@ -1146,9 +1153,9 @@
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>Updated on 2024-08-24
-                                &nbsp;<a class="git-hash" href="https://github.com/kydance/blog/commit/e3db826dd3bac05e6b5bdae4222ca2de6a3180e8" target="_blank" title="commit by e3db826dd3bac05e6b5bdae4222ca2de6a3180e8: Feat: golang-profile">
-                                    <i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>e3db826</a></span>
+                <span>Updated on 2024-08-25
+                                &nbsp;<a class="git-hash" href="https://github.com/kydance/blog/commit/c7b3b8c13a55ac17594fc459d34f55c4d05c8c92" target="_blank" title="commit by c7b3b8c13a55ac17594fc459d34f55c4d05c8c92: Update: 导语">
+                                    <i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>c7b3b8c</a></span>
             </div><div class="post-info-license">
                 <span><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span>
             </div></div>
@@ -1167,7 +1174,7 @@
         </section>
     </div>
 
-    <div class="post-nav"><a href="/posts/linter-go/" class="prev" rel="prev" title="深入解读 Golang 常用 Linter 工具及最佳实践"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>深入解读 Golang 常用 Linter 工具及最佳实践</a>
+    <div class="post-nav"><a href="/posts/golang-linter/" class="prev" rel="prev" title="深入解读 Golang 常用 Linter 工具及最佳实践"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>深入解读 Golang 常用 Linter 工具及最佳实践</a>
             <a href="/posts/golang-netpoll/" class="next" rel="next" title="Golang Netpoll">Golang Netpoll<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
 </div>
 <div id="comments"><div id="gitalk" class="comment"></div><noscript>

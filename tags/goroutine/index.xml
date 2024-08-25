@@ -10,7 +10,14 @@
     <pubDate>Wed, 15 May 2024 13:41:49 &#43;0800</pubDate>
     <author>kyden</author>
     <guid>https://kydance.github.io/posts/golang-gmp/</guid>
-    <description><![CDATA[<p><strong>Go 的调度流程本质上是一个生产-消费流程.</strong></p>
+    <description><![CDATA[<div class="details admonition info open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-info-circle fa-fw" aria-hidden="true"></i>导语<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><strong>Go 的调度流程本质上是一个生产-消费流程.</strong></div>
+        </div>
+    </div>
 <h2 id="i-processthreadco-routine">I. Process、Thread、Co-routine</h2>
 <h3 id="进程-process">进程 Process</h3>
 <p>在操作系统中，进程使用<strong>进程控制块 (PCB, Process Control Block)</strong> 数据结构 <code>task_struct</code> 来描述，PCB 是进程存在的唯一标识。</p>
