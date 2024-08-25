@@ -1,0 +1,1241 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Arch - Tag - KyteDance-鸢舞</title>
+        <link>https://kydance.github.io/tags/arch/</link>
+        <description>Arch - Tag - KyteDance-鸢舞</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>kytedance@gmail.com (kyden)</managingEditor>
+            <webMaster>kytedance@gmail.com (kyden)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Wed, 17 Apr 2024 22:11:33 &#43;0800</lastBuildDate><atom:link href="https://kydance.github.io/tags/arch/" rel="self" type="application/rss+xml" /><item>
+    <title>Arch Linux 指南</title>
+    <link>https://kydance.github.io/posts/arch-linux/</link>
+    <pubDate>Wed, 17 Apr 2024 22:11:33 &#43;0800</pubDate>
+    <author>kyden</author>
+    <guid>https://kydance.github.io/posts/arch-linux/</guid>
+    <description><![CDATA[<p>详细介绍日常使用 Arch Linux 的各种问题与解决方案，包括 Arch 安装、常用软件推荐、系统优化等.</p>
+<h2 id="i-install-arch">I. Install Arch</h2>
+<h3 id="1-download-arch-linux-iso">1. Download Arch Linux ISO</h3>
+<p><a href="https://archlinux.org/download/" target="_blank" rel="noopener noreffer ">archlinux-x86_64.iso</a></p>
+<h3 id="2-u-盘-ventoy-准备">2. U 盘 ventoy 准备</h3>
+<p>ventory 过程：略</p>
+<p>选择 <code>Arch Linux install medium (x86_64, UEFI)</code> 启动安装环境</p>
+<p>进入 <code>root@archiso</code> 后，需要设置互联网，推荐使用网线连接</p>
+<p>检查网络接口是否已经启用</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ip link
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># ...</span>
+</span></span><span class="line"><span class="cl">2: enp0s3: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu <span class="m">1500</span> ...
+</span></span><span class="line"><span class="cl"><span class="c1"># ...</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>尖括号内的“UP”，表示接口已经启用，否则使用以下命令：<code>ip link set enp0s3 up</code></li>
+<li>请使用 ping 命令测试网络: <code>ping www.baidu.com</code></li>
+</ul>
+<h3 id="3-更新系统时钟">3. 更新系统时钟</h3>
+<p>在互联网连接之后，systemd-timesyncd 服务将自动校准系统时间，便于安装软件包时验证签名</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ timedatectl
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="4-分区设置">4. 分区设置</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ mkfs.ext4 /dev/nvme1n1p7 <span class="c1">#用作根分区，挂载到 /</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># mkfs.fat -F32 /dev/nvme1n1p3 #用作EFI分区 ，挂载到 /boot/efi</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 如果安装Windows时已经有个EFI分区，就把上面的 /dev/nvme1n1p3 换成已有的EFI分区</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">$ mkfs.ext4 /dev/nvme1n1p8 <span class="c1"># 挂载到 /home 目录</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># mount</span>
+</span></span><span class="line"><span class="cl">$ mount /dev/nvme1n1p7 /mnt
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">$ mkdir -p /mnt/boot/efi
+</span></span><span class="line"><span class="cl">$ mount /dev/nvme1n1p1 /mnt/boot/efi
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">$ mount --mkdir /dev/nvme1n1p8 /mnt/home
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="5-选择软件镜像仓库">5. 选择软件镜像仓库</h3>
+<p>手动修改 <code>/etc/pacman.d/mirrorlist</code>，添加相关镜像</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ vim /etc/pacman.d/mirrorlist
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nv">Server</span> <span class="o">=</span> https://mirrors.ustc.edu.cn/archlinux/<span class="nv">$repo</span>/os/<span class="nv">$arch</span>
+</span></span><span class="line"><span class="cl"><span class="nv">Server</span> <span class="o">=</span> https://mirrors.tuna.tsinghua.edu.cn/archlinux/<span class="nv">$repo</span>/os/<span class="nv">$arch</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ pacman -Sy archlinuxcn-keyring
+</span></span><span class="line"><span class="cl">$ pacman -Syyu
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="6-安装基础包">6. 安装基础包</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ pacstrap /mnt bash base base-devel linux linux-headers linux-firmware neovim xsel
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># fstab</span>
+</span></span><span class="line"><span class="cl">$ genfstab -U -p /mnt &gt;&gt; /mnt/etc/fstab
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="7-chroot---设置系统属性">7. chroot -&gt; 设置系统属性</h3>
+<h4 id="切换系统">切换系统</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ arch-chroot /mnt
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="设置时区">设置时区</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+</span></span><span class="line"><span class="cl">$ hwclock --systohc
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="修改-hostname">修改 <code>hostname</code></h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ vim /etc/hostname
+</span></span><span class="line"><span class="cl">arch
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="设置-locale">设置 locale</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ vim /etc/locale.conf
+</span></span><span class="line"><span class="cl"><span class="sb">`</span>LANG_en_US.UTF-8<span class="sb">`</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">$ vim /etc/locale.gen
+</span></span><span class="line"><span class="cl">en_US.UTF-8 UTF-8   <span class="c1"># 取消注释</span>
+</span></span><span class="line"><span class="cl">zh_CN.UTF-8 UTF-8   <span class="c1"># 取消注释</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">$ locale-gen
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="网络管理器蓝牙">网络管理器，蓝牙</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ pacman -S networkmanager bluez bluez-utils pulseaudio-bluetooth alsa-utils pulseaudio pulseaudio-alsa sof-firmware
+</span></span><span class="line"><span class="cl">$ systemctl <span class="nb">enable</span> NetworkManager.service
+</span></span><span class="line"><span class="cl">$ systemctl <span class="nb">enable</span> bluetooth.service
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="设置-password">设置 password</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ passwd
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="引导相关">引导相关</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># ucode</span>
+</span></span><span class="line"><span class="cl">$ cat /proc/cpuinfo <span class="p">|</span> grep <span class="s2">&#34;model name&#34;</span>
+</span></span><span class="line"><span class="cl">$ pacman -S intel-ucode <span class="c1"># amd-ucode</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 安装引导加载程序</span>
+</span></span><span class="line"><span class="cl">$ pacman -S grub efibootmgr os-prober
+</span></span><span class="line"><span class="cl">$ grub-install --target<span class="o">=</span>x86_64-efi --efi-directory<span class="o">=</span>/boot/efi --bootloader-id<span class="o">=</span>GRUB
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 配置 os-prober</span>
+</span></span><span class="line"><span class="cl">$ vim /etc/default/grub
+</span></span><span class="line"><span class="cl"><span class="nv">GRUB_DISABLE_OS_PROBER</span><span class="o">=</span><span class="nb">false</span> <span class="c1"># 取消注释</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">$ grub-mkconfig -o /boot/grub/grub.cfg
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="create-user-and-usergroup">Create user and usergroup</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ useradd -m -G wheel kyden
+</span></span><span class="line"><span class="cl"><span class="c1"># 为新用户 kyden 设置 passwd</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 修改权限</span>
+</span></span><span class="line"><span class="cl">$ pacman -S sudo man-pages man-db
+</span></span><span class="line"><span class="cl">$ vim /etc/sudoers
+</span></span><span class="line"><span class="cl">%wheel <span class="nv">ALL</span><span class="o">=(</span>ALL:ALL<span class="o">)</span> ALL <span class="c1"># 取消注释</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 切换至 kyden 用户</span>
+</span></span><span class="line"><span class="cl">$ su - kyden
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="桌面程序---kde">桌面程序 - KDE</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># KDE</span>
+</span></span><span class="line"><span class="cl">$ sudo pacman -S plasma xorg nvidia dolphin konsole fish noto-fonts-cjk noto-fonts-emoji
+</span></span><span class="line"><span class="cl">$ sudo systemctl <span class="nb">enable</span> sddm
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># reboot</span>
+</span></span><span class="line"><span class="cl">$ <span class="nb">exit</span>
+</span></span><span class="line"><span class="cl">$ swapoff /mnt/swapfile
+</span></span><span class="line"><span class="cl">$ umount -R /mnt
+</span></span><span class="line"><span class="cl">$ reboot
+</span></span></code></pre></td></tr></table>
+</div>
+</div><hr>
+<h2 id="ii-software">II. Software</h2>
+<h3 id="networkmanager">NetworkManager</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ ping baidu.com
+</span></span><span class="line"><span class="cl">$ systemctl <span class="nb">enable</span> NetworkManager
+</span></span></code></pre></td></tr></table>
+</div>
+</div><hr>
+<h3 id="pacman-镜像修改">pacman 镜像修改</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ sudo vim /etc/pacman.conf
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Misc options</span>
+</span></span><span class="line"><span class="cl">Color
+</span></span><span class="line"><span class="cl"><span class="nv">ParallelDownloads</span> <span class="o">=</span> <span class="m">5</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">[</span>multilib<span class="o">]</span>
+</span></span><span class="line"><span class="cl"><span class="nv">Include</span> <span class="o">=</span> /etc/pacman.d/mirrorlist
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 键入：</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>archlinuxcn<span class="o">]</span>
+</span></span><span class="line"><span class="cl"><span class="nv">Server</span> <span class="o">=</span> https://mirrors.utsc.edu.cn/archlinuxcn/<span class="nv">$arch</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">$ sudo pacman -Syyu
+</span></span><span class="line"><span class="cl">$ sudo pacman -S archlinuxcn-keyring
+</span></span></code></pre></td></tr></table>
+</div>
+</div><hr>
+<h3 id="常见通用软件">常见通用软件</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ yay -S fish
+</span></span><span class="line"><span class="cl"><span class="c1"># curl -L https://get.oh-my.fish | fish</span>
+</span></span><span class="line"><span class="cl">$ fish_config
+</span></span><span class="line"><span class="cl"><span class="c1"># 取消问候语</span>
+</span></span><span class="line"><span class="cl">$ <span class="nb">set</span> -U fish_greeting <span class="s2">&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">$ sudo vim /etc/systemd/system/clash.service
+</span></span><span class="line"><span class="cl">$ sudo systemctl daemon-reload
+</span></span><span class="line"><span class="cl">$ sudo systemctl <span class="nb">enable</span> clash
+</span></span><span class="line"><span class="cl">$ sudo systemctl start clash
+</span></span><span class="line"><span class="cl">$ sudo systemctl status clash
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">$ sudo pacman -S obs-studio
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="输入法httpswikiarchlinuxcnorgwikifcitx5"><a href="https://wiki.archlinuxcn.org/wiki/Fcitx5" target="_blank" rel="noopener noreffer ">输入法</a></h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ sudo pacman -S fcitx5 fcitx5-configtool fcitx5-qt fcitx5-gtk fcitx5-chinese-addons fcitx5-material-color fcitx5-pinyin-moegirl fcitx5-pinyin-zhwiki
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">$ sudo vim /etc/environment
+</span></span><span class="line"><span class="cl"><span class="nv">GTK_IM_MODULE</span><span class="o">=</span>fcitx
+</span></span><span class="line"><span class="cl"><span class="nv">QT_IM_MODULE</span><span class="o">=</span>fcitx
+</span></span><span class="line"><span class="cl"><span class="nv">XMODIFIERS</span><span class="o">=</span><span class="se">\@</span><span class="nv">im</span><span class="o">=</span>fcitx
+</span></span><span class="line"><span class="cl"><span class="c1"># 为了让一些使用特定版本 SDL2 库的游戏能正常使用输入法</span>
+</span></span><span class="line"><span class="cl"><span class="nv">SDL_IM_MODULE</span><span class="o">=</span>fcitx
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ yay -S clash-verge-rev-bin
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">$ yay -Sy neofetch google-chrome obs-studio baidunetdisk <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>    nutstore-experimental xunlei-bin telegram-desktop <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>    gitkraken visual-studio-code-bin typora-free redis <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>    net-tools pot-translation translate-shell okular <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>    snipaste gwenview kcalc wemeet-bin vlc wget ark <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>    shotcut inkscape ninja gnu-netcat tcpdump cmake <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>    clang tree python-pip caj2pdf-qt ttf-hack-nerd <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>    transmission-gtk gpick speedcrunch drawio-desktop <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>    crow-translate zeal electronic-wechat-uos-bin <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>    linuxqq lx-music-desktop
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li><strong>gpick</strong>: 可以从桌面任何地方取色，并且它还提供一些其它的高级特性</li>
+<li><strong>SpeedCrunch</strong>: 一个漂亮，开源，高精度的科学计算器</li>
+<li><strong>Snipaste</strong>: 截图工具，如不可用可选用<code>spectacle</code></li>
+<li><strong>drawio-desktop</strong>: <a href="https://github.com/jgraph/drawio-desktop" target="_blank" rel="noopener noreffer ">Security-first diagramming for teams</a></li>
+<li><strong>crow-translate</strong>：<a href="https://github.com/crow-translate/crow-translate" target="_blank" rel="noopener noreffer ">翻译工具</a></li>
+<li><strong>zeal</strong>：离线文档浏览器</li>
+</ul>
+<hr>
+<h4 id="office">office</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ yay -S wps-office wps-office-mui-zh-cn ttf-wps-fonts
+</span></span></code></pre></td></tr></table>
+</div>
+</div><hr>
+<h3 id="远程工具---remminahttpsremminaorg">远程工具 - <a href="https://remmina.org/" target="_blank" rel="noopener noreffer ">Remmina</a></h3>
+<ul>
+<li>
+<p><code>$ yay -S remmina freerdp</code></p>
+</li>
+<li>
+<p><a href="https://www.bilibili.com/video/BV1x64y1X7FT" target="_blank" rel="noopener noreffer ">使用教程</a></p>
+<p>安装 <code>freerdp</code> 插件后，可以走 RDP 协议远程 Win10（<strong>Win10 不需要其他任何设置</strong>）</p>
+</li>
+</ul>
+<hr>
+<h3 id="git">Git</h3>
+<h4 id="配置-git">配置 git</h4>
+<ol>
+<li>
+<p>设置<code>user.name</code>和<code>user.emal</code></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ git config --global user.name <span class="s2">&#34;kyden&#34;</span>
+</span></span><span class="line"><span class="cl">$ git config --global user.email xxxxxx@gmail.com
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Verify</span>
+</span></span><span class="line"><span class="cl">$ git config --list
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>生成密钥</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># 要求多次输入密码，可不要输入密码</span>
+</span></span><span class="line"><span class="cl">$ ssh-keygen -t rsa -C <span class="s1">&#39;xxxxxx@gmail.com&#39;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>GitHub 配置 SSH Keys</p>
+<ul>
+<li>打开生成的 <code>Key</code> 文件 <code>~/.ssh/id_rsa.pub</code>: <code>cat ~/.ssh/id_rsa.pub</code></li>
+<li>复制全部内容，在 Key 中粘贴</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h4 id="git-常用命令">Git 常用命令</h4>
+<ul>
+<li><code>git status</code></li>
+<li><code>git clone</code></li>
+<li><code>git pull</code></li>
+<li><code>git push</code></li>
+<li><code>git commit -m 'commits'</code> or <code>git commit -m 'commits' kyden.go</code></li>
+<li><code>git add .</code> or <code>git kyden.go</code></li>
+<li><code>git reflog</code></li>
+</ul>
+<hr>
+<h4 id="git实现从本地添加项目到远程仓库">Git实现从本地添加项目到远程仓库</h4>
+<p>Steps:</p>
+<ol>
+<li>
+<p><strong>GitHub</strong> 上创建一个新的远程仓库 - <code>Create a new repo</code> -&gt; <code>Create repository</code></p>
+</li>
+<li>
+<p>本地仓库：创建并初始化 -&gt; 添加待上传到远程仓库的项目文件</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ git init
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>远程仓库和本地仓库关联</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ git remote add origin git@github.com:kydance/&lt;repository name&gt;
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>项目文件添加、提交、推送</p>
+<ul>
+<li>由于远程库是空的，我们第一次 <code>push</code> master 分支时，加上了 <code>-u</code> 参数，Git 不但会把本地的 master 分支内容推送的远程新的 master 分支，还会把本地的 master 分支和远程的 master 分支关联起来</li>
+<li><strong>在以后的 <code>push</code> 或者 <code>pull</code> 时就可以简化命令</strong></li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ git add file
+</span></span><span class="line"><span class="cl">$ git commit -m <span class="s1">&#39;&lt;commit statements&gt;&#39;</span> file
+</span></span><span class="line"><span class="cl">$ git push -u origin master
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+</ol>
+<hr>
+<h3 id="golang">Golang</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Download and install go</span>
+</span></span><span class="line"><span class="cl">$ sudo pacman -S go
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">$ vim .config/fish/config.sh
+</span></span><span class="line"><span class="cl"><span class="c1"># Set environment variable in `.config/fish/config.sh` or `/etc/profile` or `~/.profile`</span>
+</span></span><span class="line"><span class="cl">GOROOT /usr/lib/go
+</span></span><span class="line"><span class="cl">GOPATH /home/kyden/goProj
+</span></span><span class="line"><span class="cl">GOBIN /home/kyden/goProj/bin
+</span></span><span class="line"><span class="cl">PATH <span class="nv">$GOPATH</span>/bin <span class="nv">$GOROOT</span>/bin <span class="nv">$GOBIN</span> <span class="nv">$PATH</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li><strong><code>GOROOT</code>，设置 Golang 的安装位置</strong></li>
+<li><strong><code>GOBIN</code>，执行 <code>go install</code> 后生成可执行文件的目录</strong></li>
+<li><strong><code>GOPATH</code>，工作目录，一般设置到用户目录下</strong></li>
+</ul>
+<hr>
+<h3 id="mysql">MySQL</h3>
+<p>很多 Linux 发行版都放弃了对 MySQL 的支持（原因自行 Google）转而支持 mariadb（MySQL的另一个分支），Arch Linux就是其中之一，mariadb 具有和 MySQL 一模一样的操作命令，所以完全不用考虑迁移兼容的问题</p>
+<ul>
+<li>
+<p>安装mariadb:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ sudo pacman -Sy mariadb
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>配置 mariadb 命令，创建数据库都在 <code>/var/lib/mysql/</code> 目录下面:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ sudo mysql_install_db --user<span class="o">=</span>mysql --basedir<span class="o">=</span>/usr --datadir<span class="o">=</span>/var/lib/mysql
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>开启mariadb 服务:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ systemctl start mariadb
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>初始化密码，期间有让你设置密码的选项，设置你自己的密码就行了，然后根据自己需要 y/n 就可，因为很多后面可以再修改:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ sudo /usr/bin/mysql_secure_installation
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>登录mariadb 和mysql命令是一样的:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ mysql -u root -p
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>设置开机自启动服务:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ systemctl <span class="nb">enable</span> mariadb
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+<hr>
+<h3 id="挂载其他硬盘分区">挂载其他硬盘分区</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Get UUID and TYPE</span>
+</span></span><span class="line"><span class="cl">$ sudo blkid
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># eg:</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># /dev/nvme1n1p3: LABEL=&#34;Document&#34; BLOCK_SIZE=&#34;512&#34; UUID=&#34;111915F1111915F1&#34; TYPE=&#34;ntfs&#34; PARTLABEL=&#34;Basic data partition&#34; PARTUUID=&#34;666266ba-233b-11ed-95be-00e04c3656eb&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Write UUID TYPE ...</span>
+</span></span><span class="line"><span class="cl">$ sudo vim /etc/fstab
+</span></span><span class="line"><span class="cl"><span class="c1"># &lt;device&gt; &lt;dir&gt; &lt;type&gt; &lt;options&gt; &lt;dump&gt; &lt;fsck&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">UUID</span><span class="o">=</span>111915F1111915F1 /home/kyden/doc ntfs3 defaults <span class="m">0</span> <span class="m">0</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li><code>&lt;device&gt;</code> 描述要挂载的特定块设备或远程文件系统</li>
+<li><code>&lt;dir&gt;</code> 描述挂载目录</li>
+<li><code>&lt;type&gt;</code> 文件系统类型</li>
+<li><code>&lt;options&gt;</code> 相关的挂载选项</li>
+<li><code>&lt;dump&gt;</code> 会被 dump(8) 工具检查。该字段通常设置为 0, 以禁用检查</li>
+<li><code>&lt;fsck&gt;</code> 设置引导时文件系统检查的顺序; 对于 root 设备该字段应该设置为 1。对于其它分区该字段应该设置为 2,或设置为 0 以禁用检查</li>
+</ul>
+<blockquote>
+<p><strong>NOTE: TYPE 为 <code>ntfs</code> 时导致启动失败，修改为 <code>ntfs3</code> 后成功挂载</strong></p>
+</blockquote>
+<h3 id="present-windows">Present Windows</h3>
+<p></p>
+<hr>
+<h3 id="scp-文件上传下载"><code>scp</code>: 文件上传、下载</h3>
+<ul>
+<li>上传
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ scp ./cifar-10-python.tar.gz kyden@&lt;ip&gt;:/home/kyden/
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>下载
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ scp kyden@&lt;ip&gt;:/var/tmp/a.txt /var
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+<hr>
+<h3 id="picgo-picgo-core">picgo <code>picgo-core</code></h3>
+<ol>
+<li>
+<p>Download and Install <strong>PigGo-Core</strong></p>
+<p></p>
+</li>
+<li>
+<p>Get <strong>token</strong> with GitHub</p>
+<p></p>
+</li>
+<li>
+<p>Configure</p>
+<p><strong>NOTE：使用时，将注释删掉，以免产生不必要的麻烦</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="c1">// ~/.picgo/config.json
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;picBed&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;current&#34;</span><span class="p">:</span> <span class="s2">&#34;github&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;github&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;repo&#34;</span><span class="p">:</span> <span class="s2">&#34;&lt;userName&gt;/PicBed&#34;</span><span class="p">,</span> <span class="c1">// 设定仓库名：上文在 GitHub 创建的仓库 `&lt;userName&gt;/PicBed`
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>      <span class="nt">&#34;branch&#34;</span><span class="p">:</span> <span class="s2">&#34;master&#34;</span><span class="p">,</span> <span class="c1">// 设定分支名：`master`
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>      <span class="nt">&#34;token&#34;</span><span class="p">:</span> <span class="s2">&#34;xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx&#34;</span><span class="p">,</span> <span class="c1">// 设定 Token：上文生成的 toke
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>      <span class="nt">&#34;path&#34;</span><span class="p">:</span> <span class="s2">&#34;&#34;</span><span class="p">,</span> <span class="c1">// 指定存储路径：为空的话会上传到根目录，也可以指定路径
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>      <span class="nt">&#34;customUrl&#34;</span><span class="p">:</span> <span class="s2">&#34;&#34;</span> <span class="c1">// 设定自定义域名：可以为空
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;uploader&#34;</span><span class="p">:</span> <span class="s2">&#34;github&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;transformer&#34;</span><span class="p">:</span> <span class="s2">&#34;path&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">},</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;picgoPlugins&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;picgo-plugin-github-plus&#34;</span><span class="p">:</span> <span class="kc">true</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+</ol>
+<hr>
+<h3 id="cuda--cudnn">CUDA &amp; cuDNN</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ yay -S cuda-11.7 cudnn8-cuda11.0
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Arch Linux 会将 CUDA 相关档案安装至 <code>/opt/cuda</code>，有需要的话可以将 CUDA 的 <code>PATH</code> 加到 <code>~/bashrc</code>，此路径永远指向最新版CUDA</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># ~/.fish_config</span>
+</span></span><span class="line"><span class="cl"><span class="nb">set</span> PATH /opt/cuda-11.7/bin <span class="nv">$PATH</span>
+</span></span><span class="line"><span class="cl"><span class="nb">set</span> LD_LIBRARY_PATH /opt/cuda-11.7/lib64/ <span class="nv">$PATH</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">pip install <span class="nv">torch</span><span class="o">==</span>1.13.1+cu117 <span class="nv">torchvision</span><span class="o">==</span>0.14.1+cu117 <span class="nv">torchaudio</span><span class="o">==</span>0.13.1 --extra-index-url https://download.pytorch.org/whl/cu117
+</span></span></code></pre></td></tr></table>
+</div>
+</div><hr>
+<h3 id="clash-verge">Clash Verge</h3>
+<h4 id="dns-泄露问题">DNS 泄露问题</h4>
+<p>DNS 泄露其实并没有一个明确的定义，也不存在一个官方解释。</p>
+<p>大概就是说你访问YouTube等黑名单网站的时候，使用中国大陆的DNS服务器进行了解析，这可能导致隐私问题的。</p>
+<p>如果在 <a href="https://browserleaks.com/dns" target="_blank" rel="noopener noreffer ">DNS Leak Test</a> 、<a href="https://ipleak.net/" target="_blank" rel="noopener noreffer ">ipleak</a>这种网站的列表中看到了中国国旗，就要意识到可能发生了DNS泄露。
+虽然没有人知道具体的探测机制是什么，但很可能是从网络层面获取的。在一般的家庭网络拓扑中，wireshark可以看到什么内容，运营商就能看见什么内容，所以你使用114.114.114.114、223.5.5.5这样的DNS解析去访问了什么网站是很清晰的。</p>
+<p><strong>Clash开启TUN模式，关闭系统代理去使用</strong>：与普通的系统代理模式区别在于，TUN模式下Clash会创建一张虚拟网卡，从网络层面接管所有的网络流量。</p>
+<ul>
+<li>
+<p>开启TUN模式</p>
+</li>
+<li>
+<p>使用稳定的DNS</p>
+<p>DNS这部分有人会教使用运营商的DNS，<strong>运营商的DNS只适合小白用户，因为他可能连反诈</strong>，所以建议使用国内大厂的。</p>
+<ol>
+<li>
+<p>[Optional] 关闭浏览器的QUIC, 中国大陆的isp是限速udp的, 所以导致QUIC这个优秀的协议, 到了中国大陆的网络下成了个负面增益效果。</p>
+<p><code>about://flags/#enable-quic</code> 设置为<code>Disabled</code> (点下方弹出的重启浏览器生效)</p>
+ 
+</li>
+<li>
+<p>关闭浏览器中的“安全DNS”</p>
+<p><code>chrome://settings/security</code></p>
+ 
+</li>
+<li>
+<p>在Clash Verge的【Profiles】中，点右上角的&quot;NEW&quot; -&gt; Type选择&quot;Script&quot; -&gt; Name随意填写(例如，&ldquo;修改DNS&rdquo;)</p>
+</li>
+<li>
+<p>右击新建的文件，然后&quot;Edit File&quot;，输入以下内容后启用：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span><span class="lnt">65
+</span><span class="lnt">66
+</span><span class="lnt">67
+</span><span class="lnt">68
+</span><span class="lnt">69
+</span><span class="lnt">70
+</span><span class="lnt">71
+</span><span class="lnt">72
+</span><span class="lnt">73
+</span><span class="lnt">74
+</span><span class="lnt">75
+</span><span class="lnt">76
+</span><span class="lnt">77
+</span><span class="lnt">78
+</span><span class="lnt">79
+</span><span class="lnt">80
+</span><span class="lnt">81
+</span><span class="lnt">82
+</span><span class="lnt">83
+</span><span class="lnt">84
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-JavaScript" data-lang="JavaScript"><span class="line"><span class="cl"><span class="kd">function</span> <span class="nx">main</span><span class="p">(</span><span class="nx">content</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">isObject</span> <span class="o">=</span> <span class="p">(</span><span class="nx">value</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="nx">value</span> <span class="o">!==</span> <span class="kc">null</span> <span class="o">&amp;&amp;</span> <span class="k">typeof</span> <span class="nx">value</span> <span class="o">===</span> <span class="s1">&#39;object&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">mergeConfig</span> <span class="o">=</span> <span class="p">(</span><span class="nx">existingConfig</span><span class="p">,</span> <span class="nx">newConfig</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">isObject</span><span class="p">(</span><span class="nx">existingConfig</span><span class="p">))</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">existingConfig</span> <span class="o">=</span> <span class="p">{}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">isObject</span><span class="p">(</span><span class="nx">newConfig</span><span class="p">))</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="nx">existingConfig</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="p">{</span> <span class="p">...</span><span class="nx">existingConfig</span><span class="p">,</span> <span class="p">...</span><span class="nx">newConfig</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">cnDnsList</span> <span class="o">=</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;tls://223.5.5.5&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;tls://1.12.12.12&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">trustDnsList</span> <span class="o">=</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;https://doh.apad.pro/dns-query&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;https://dns.cooluc.com/dns-query&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;https://1.0.0.1/dns-query&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">notionDns</span> <span class="o">=</span> <span class="s1">&#39;tls://dns.jerryw.cn&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">notionUrls</span> <span class="o">=</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;http-inputs-notion.splunkcloud.com&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;+.notion-static.com&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;+.notion.com&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;+.notion.new&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;+.notion.site&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;+.notion.so&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">combinedUrls</span> <span class="o">=</span> <span class="nx">notionUrls</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">dnsOptions</span> <span class="o">=</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;enable&#39;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;default-nameserver&#39;</span><span class="o">:</span> <span class="nx">cnDnsList</span><span class="p">,</span> <span class="c1">// 用于解析DNS服务器 的域名, 必须为IP, 可为加密DNS
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="s1">&#39;nameserver-policy&#39;</span><span class="o">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="p">[</span><span class="nx">combinedUrls</span><span class="p">]</span><span class="o">:</span> <span class="nx">notionDns</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;geosite:geolocation-!cn&#39;</span><span class="o">:</span> <span class="nx">trustDnsList</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;nameserver&#39;</span><span class="o">:</span> <span class="nx">trustDnsList</span><span class="p">,</span> <span class="c1">// 默认的域名解析服务器, 如不配置fallback/proxy-server-nameserver, 则所有域名都由nameserver解析
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// GitHub加速前缀
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kr">const</span> <span class="nx">githubPrefix</span> <span class="o">=</span> <span class="s1">&#39;https://ghproxy.lainbo.com/&#39;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// GEO数据GitHub资源原始下载地址
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kr">const</span> <span class="nx">rawGeoxURLs</span> <span class="o">=</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">geoip</span><span class="o">:</span> <span class="s1">&#39;https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/geoip-lite.dat&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">geosite</span><span class="o">:</span> <span class="s1">&#39;https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/geosite.dat&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">mmdb</span><span class="o">:</span> <span class="s1">&#39;https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/country-lite.mmdb&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// 生成带有加速前缀的GEO数据资源对象
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kr">const</span> <span class="nx">accelURLs</span> <span class="o">=</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">fromEntries</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">Object</span><span class="p">.</span><span class="nx">entries</span><span class="p">(</span><span class="nx">rawGeoxURLs</span><span class="p">).</span><span class="nx">map</span><span class="p">(([</span><span class="nx">key</span><span class="p">,</span> <span class="nx">githubUrl</span><span class="p">])</span> <span class="p">=&gt;</span> <span class="p">[</span><span class="nx">key</span><span class="p">,</span> <span class="sb">`</span><span class="si">${</span><span class="nx">githubPrefix</span><span class="si">}${</span><span class="nx">githubUrl</span><span class="si">}</span><span class="sb">`</span><span class="p">]),</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">otherOptions</span> <span class="o">=</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;unified-delay&#39;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;tcp-concurrent&#39;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;profile&#39;</span><span class="o">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;store-selected&#39;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;store-fake-ip&#39;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;sniffer&#39;</span><span class="o">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">enable</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">sniff</span><span class="o">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">TLS</span><span class="o">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">ports</span><span class="o">:</span> <span class="p">[</span><span class="mi">443</span><span class="p">,</span> <span class="mi">8443</span><span class="p">],</span>
+</span></span><span class="line"><span class="cl">        <span class="p">},</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">HTTP</span><span class="o">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="s1">&#39;ports&#39;</span><span class="o">:</span> <span class="p">[</span><span class="mi">80</span><span class="p">,</span> <span class="s1">&#39;8080-8880&#39;</span><span class="p">],</span>
+</span></span><span class="line"><span class="cl">        <span class="s1">&#39;override-destination&#39;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;geodata-mode&#39;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;geox-url&#39;</span><span class="o">:</span> <span class="nx">accelURLs</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="nx">content</span><span class="p">.</span><span class="nx">dns</span> <span class="o">=</span> <span class="nx">mergeConfig</span><span class="p">(</span><span class="nx">content</span><span class="p">.</span><span class="nx">dns</span><span class="p">,</span> <span class="nx">dnsOptions</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="k">return</span> <span class="p">{</span> <span class="p">...</span><span class="nx">content</span><span class="p">,</span> <span class="p">...</span><span class="nx">otherOptions</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>设置完成后，验证DNS解析结果是否都是来自国外的Cloudflare和Google的DNS, 这时节点服务器不管拿到了你传过去的真ip还是假ip地址, 他都会再去请求一次Cloudflare/Google的DNS服务, 确保解析的正确性。
+重要的是<strong>没有中国大陆的DNS服务器</strong>了，如果还是有，那你应该往当前设备的更上层寻找问题所在，比如路由器的设置等。</p>
+</li>
+</ol>
+</li>
+</ul>
+<h4 id="geoipcn问题">GEOIP，CN问题</h4>
+<p>目前市面上绝大多数的代理工具都依赖于 GeoIP2 数据库判断地址所属地。它们的规则结尾部分一般都会有一条类似 <code>GEOIP, CN</code>，用来查询目的 IP 地址是否属于中国大陆，从而判断是否直连。</p>
+<p>这些代理工具通常使用的 GeoIP2 数据库是来自于 MaxMind 的 <a href="https://dev.maxmind.com/geoip/geoip2/geolite2/" target="_blank" rel="noopener noreffer ">GeoLite2</a> 免费数据库。这个数据库目前存在一下几个问题：</p>
+<ul>
+<li>
+<p>获取不便：从 2019 年 12 月 30 日起，必须注册后才能下载</p>
+</li>
+<li>
+<p>数据量大：数据库庞大，包含全球的 IP 地址段，约 10 MB</p>
+</li>
+<li>
+<p>准确度低：对中国大陆的 IP 地址判定不准，如：香港阿里云的 IP 被判定为新加坡、中国大陆等。</p>
+</li>
+</ul>
+<p>庞大的数据量对于大多数中国大陆的用户来说是没有意义的，因为只仅需要去判断 IP 的地理位置是否属于中国大陆境内，其他国家的 IP 一律代理/直连。过多的数据量会增加载入时间，降低查询效率。</p>
+<p>我们在之前创建的Script中已经包含了下载更精简合适中国大陆的IP数据库链接, 现在只需要手动操作下载和替换即可:</p>
+<ol>
+<li><strong>Update GeoData</strong>: Clash Verge Rev的<code>设置</code>菜单中点击<code>Update GeoData</code></li>
+<li><strong>验证下载</strong>: 打开Clash Verge托盘中的<code>APP Dir</code>，找到<code>geoip.dat</code>文件，验证其大小是否为<strong>几百KB</strong></li>
+<li><strong>重启Clash Verge</strong>：确保数据库被正确应用</li>
+</ol>
+<hr>
+<h2 id="iii-内核更换">III. 内核更换</h2>
+<ol>
+<li>
+<p>Install The Desired Kernel</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ sudo pacman -S linux-lts linux-lts-headers
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>Editing GRUB Config File</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ sudo vim /etc/default/grub
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nv">GRUB_DISABLE_SUBMENU</span><span class="o">=</span>y    <span class="c1"># disables the GRUB submenu, i.e., it enables all the available kernels to be listed on the main GRUB Menu itself instead of the “Advanced option for Arch Linux” option.</span>
+</span></span><span class="line"><span class="cl"><span class="nv">GRUB_DEFAULT</span><span class="o">=</span>saved <span class="c1"># saves the last kernel used</span>
+</span></span><span class="line"><span class="cl"><span class="nv">GRUB_SAVEDEFAULT</span><span class="o">=</span><span class="nb">true</span> <span class="c1"># makes sure that grub uses the last selected kernel is used as default</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>Re-Generate GRUB Configuration file</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ sudo grub-mkconfig -o /boot/grub/grub.cfg
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>Choose Kernel From GRUB During Boot. 🥂</p>
+</li>
+</ol>
+<hr>
+<h2 id="iv-system-optimization">IV. System optimization</h2>
+<h3 id="ssd-优化">SSD 优化</h3>
+<p><strong>TRIM</strong>, 会帮助清理SSD中的块，从而延长SSD的使用寿命</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ sudo systemctl <span class="nb">enable</span> fstrim.timer
+</span></span><span class="line"><span class="cl">$ sudo systemctl start fstrim.timer
+</span></span></code></pre></td></tr></table>
+</div>
+</div><hr>
+<h3 id="swap-设置">SWAP 设置</h3>
+<p><a href="https://wiki.archlinux.org/title/Swap#Swappiness" target="_blank" rel="noopener noreffer ">https://wiki.archlinux.org/title/Swap#Swappiness</a></p>
+<ul>
+<li>查看 swap 使用率，一般是 60 ，意思是 60% 的概率将内存整理到 swap: <code>cat /proc/sys/vm/swappiness</code></li>
+<li>修改 swap 使用策略为 10%，即 10% 的概率将内存整理到 swap: <code>sudo sysctl -w vm.swappiness=10</code></li>
+<li>修改配置文件：<code>sudo vim /etc/sysctl.d/99-swappiness.conf</code> 在文件末尾加上下面这行内容：<code>vm.swappiness=10</code></li>
+<li>重启后可查看 swappiness 的值
+</li>
+</ul>
+<hr>
+<h3 id="systemd-journal-size-limit">Systemd journal size limit</h3>
+<p>控制日志最大可使用多少磁盘空间，修改<code>/etc/systemd/journald.conf</code> 中的<code>SystemMaxUse</code>参数 <code>SystemMaxUse=50M</code></p>
+<hr>
+<h2 id="v-problem-and-solution">V. Problem And Solution</h2>
+<h3 id="1-clear-command---terminals-database-is-inaccessible">1. <code>clear</code> command - <code>terminals database is inaccessible</code></h3>
+<p>解决方案：</p>
+<p><a href="https://github.com/ContinuumIO/anaconda-issues/issues/331" target="_blank" rel="noopener noreffer ">Path for Anaconda3 is set in <code>.bashrc</code>. It is interfering with the <code>clear</code> command. Removing Anaconda path from path solved the issue.</a></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ <span class="nb">echo</span> <span class="nv">$CONDA_PREFIX</span>
+</span></span><span class="line"><span class="cl">/opt/miniconda
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nv">$sudo</span> mv <span class="nv">$CONDA_PREFIX</span>/bin/clear <span class="nv">$CONDA_PREFIX</span>/bin/clear_old
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="2-tput-unknown-terminal-xterm-256color">2. <code>tput: unknown terminal &quot;xterm-256color&quot;</code></h3>
+<p>解决方案：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ setenv TERMINFO /usr/lib/terminfo
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="3-更新内核后双屏显示时某一个屏幕黑屏但鼠标能够移动过去并显示另一屏幕正常">3. 更新内核后，双屏显示时，某一个屏幕黑屏，但鼠标能够移动过去并显示，另一屏幕正常</h3>
+<p>解决方案：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">xrandr --output HDMI-1-0 --right-of eDP1 --auto
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>命令解释：配置 <code>HDMI-1-0</code> 输出，使其位于 <code>eDP1</code> 输出的右侧，并自动选择最佳的分辨率和刷新率设置</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ xrandr --listmonitors
+</span></span><span class="line"><span class="cl">Monitors: <span class="m">2</span>
+</span></span><span class="line"><span class="cl">0: +*eDP1 2560/360x1440/200+0+0  eDP1
+</span></span><span class="line"><span class="cl">1: +HDMI-1-0 1920/479x1080/260+2560+0  HDMI-1-0
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">$ xrandr --output HDMI-1-0 --right-of eDP1 --auto
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="4-zip-压缩包解压乱码">4. zip 压缩包解压乱码</h3>
+<p>产生这种情况的原因是，zip 格式本身的缺陷导致的：
+<strong>zip 格式没有指定文件名的编码格式</strong>，因此在压缩和解压时都会采用操作系统本地编码，
+Windows 下简体中文采用的是 <code>GBK</code>/<code>GB312</code> 编码，而 Linux 采用的是 <code>UTF-8</code> 编码，两者不一致导致了乱码的产生。</p>
+<p>解决方案:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ unzip -O GBK xxx.zip
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="5-wps-office大部分字体粗体出现过粗无法正常显示问题">5. wps-office大部分字体粗体出现过粗无法正常显示问题</h3>
+<p>问题: freetype2 更新至 2.13.0 以上版本后出现的问题，导致 wps-office 文档编辑文字大部分字体设置粗体出现过粗无法正常显示。</p>
+<p>解决方案：</p>
+<p><a href="https://bbs.archlinux.org/viewtopic.php?id=288562" target="_blank" rel="noopener noreffer ">freetype2 降级至 2.13.0</a></p>
+<ol>
+<li>
+<p>Download <a href="https://pan.baidu.com/s/15AIkxKqvTwy9Q-DS16QQIQ?pwd=ft13" target="_blank" rel="noopener noreffer ">freetype2.13.0</a></p>
+</li>
+<li>
+<p>降级 <code>sudo pacman -U freetype2-2.13.0-1-x86_64.pkg.tar.zst</code></p>
+</li>
+<li>
+<p>修改 <code>/etc/pacman.conf</code> -&gt; <code>IgnorePkg = freetype2</code>，排除掉这个包（不让它更新） <code>freetype2: ignoring package upgrade (2.13.0-1 =&gt; 2.13.2-1)</code></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ env <span class="nv">LD_LIBRARY_PATH</span><span class="o">=</span>/usr/local/freetype2-2.13.0-1-x86_64/usr/lib
+</span></span><span class="line"><span class="cl">$ update-desktop-database ~/.local/share/applications
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+</ol>
+<h3 id="6-wpspdf-无法打开-pdf-文件">6. wpspdf 无法打开 PDF 文件</h3>
+<p>wpspdf 依赖于 libtiff5.so.5 以支撑其 PDF 功能。
+而系统更新后，Arch Linux 提供的是 libtiff.so.6 或更新版本，导致其无法正常工作。</p>
+<p>解决方案：</p>
+<p>安装 <a href="https://aur.archlinux.org/packages/libtiff5/" target="_blank" rel="noopener noreffer ">libtiff5</a></p>
+<h3 id="7-wps-无法输入中文">7. WPS 无法输入中文</h3>
+<p><a href="https://wiki.archlinuxcn.org/wiki/WPS_Office#Fcitx5_%E6%97%A0%E6%B3%95%E8%BE%93%E5%85%A5%E4%B8%AD%E6%96%87" target="_blank" rel="noopener noreffer ">解决方案</a> - <code>wpp</code> <code>wpspdf</code> <code>wpp</code> <code>et</code></p>
+<h3 id="8-lx-music-数据同步失败">8. lx-music 数据同步失败</h3>
+<p>解决方案</p>
+<ol>
+<li><strong>确保PC端的同步服务已启用成功</strong>: 若连接码、同步服务地址没有内容，则证明服务启动失败，此时看启用同步功能复选框后面的错误信息自行解决</li>
+<li>在手机浏览器地址栏输入<a href="http://x.x.x.x:5963/hello%e5%90%8e%e5%9b%9e%e8%bd%a6%ef%bc%8c%e8%8b%a5%e6%ad%a4%e5%9c%b0%e5%9d%80%e5%8f%af%e4%bb%a5%e6%89%93%e5%bc%80%e5%b9%b6%e6%98%be%e7%a4%ba" target="_blank" rel="noopener noreffer ">http://x.x.x.x:5963/hello后回车，若此地址可以打开并显示</a> Hello~::^-^::<del>v4</del>，则证明移动端与PC端网络已互通，</li>
+<li>若移动端无法打开第2步的地址，则在PC端的浏览器地址栏输入并打开该地址，若可以打开，则可能性如下：
+<ul>
+<li>LX Music PC端被<strong>电脑防火墙</strong>拦截</li>
+<li><strong>PC端与移动端不在同一个网络下</strong>，</li>
+<li>路由器开启了AP隔离（一般在公共网络下会出现这种情况）</li>
+</ul>
+</li>
+<li>要验证双方是否在同一个网络或是否开启AP隔离，可以在电脑打开cmd使用ping命令ping移动端显示的ip地址，若可以通则说明网络正常</li>
+</ol>]]></description>
+</item>
+</channel>
+</rss>

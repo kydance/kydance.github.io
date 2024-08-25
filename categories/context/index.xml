@@ -1,0 +1,338 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Context - Category - KyteDance-鸢舞</title>
+        <link>https://kydance.github.io/categories/context/</link>
+        <description>Context - Category - KyteDance-鸢舞</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>kytedance@gmail.com (kyden)</managingEditor>
+            <webMaster>kytedance@gmail.com (kyden)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sat, 01 Jun 2024 21:37:55 &#43;0800</lastBuildDate><atom:link href="https://kydance.github.io/categories/context/" rel="self" type="application/rss+xml" /><item>
+    <title>浅析 Golang Context</title>
+    <link>https://kydance.github.io/posts/golang-context/</link>
+    <pubDate>Sat, 01 Jun 2024 21:37:55 &#43;0800</pubDate>
+    <author>kyden</author>
+    <guid>https://kydance.github.io/posts/golang-context/</guid>
+    <description><![CDATA[<p>当需要在多个 Goroutine 中传递上下文信息时，可以使用 Context 实现</p>
+<h2 id="context">Context</h2>
+<p>Context 除了用来传递上下文信息，还可以用来传递终结执行子任务的相关信号，终止多个执行子任务的 Goroutine。</p>
+<p><code>context.Context</code> 接口数据结构：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span><span class="lnt">65
+</span><span class="lnt">66
+</span><span class="lnt">67
+</span><span class="lnt">68
+</span><span class="lnt">69
+</span><span class="lnt">70
+</span><span class="lnt">71
+</span><span class="lnt">72
+</span><span class="lnt">73
+</span><span class="lnt">74
+</span><span class="lnt">75
+</span><span class="lnt">76
+</span><span class="lnt">77
+</span><span class="lnt">78
+</span><span class="lnt">79
+</span><span class="lnt">80
+</span><span class="lnt">81
+</span><span class="lnt">82
+</span><span class="lnt">83
+</span><span class="lnt">84
+</span><span class="lnt">85
+</span><span class="lnt">86
+</span><span class="lnt">87
+</span><span class="lnt">88
+</span><span class="lnt">89
+</span><span class="lnt">90
+</span><span class="lnt">91
+</span><span class="lnt">92
+</span><span class="lnt">93
+</span><span class="lnt">94
+</span><span class="lnt">95
+</span><span class="lnt">96
+</span><span class="lnt">97
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-Go" data-lang="Go"><span class="line"><span class="cl"><span class="c1">// A Context carries a deadline, a cancellation signal, and other values across
+</span></span></span><span class="line"><span class="cl"><span class="c1">// API boundaries.
+</span></span></span><span class="line"><span class="cl"><span class="c1">//
+</span></span></span><span class="line"><span class="cl"><span class="c1">// Context&#39;s methods may be called by multiple goroutines simultaneously.
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">type</span> <span class="nx">Context</span> <span class="kd">interface</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// Deadline returns the time when work done on behalf of this context
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// should be canceled. Deadline returns ok==false when no deadline is
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// set. Successive calls to Deadline return the same results.
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nf">Deadline</span><span class="p">()</span> <span class="p">(</span><span class="nx">deadline</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Time</span><span class="p">,</span> <span class="nx">ok</span> <span class="kt">bool</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="c1">// Done returns a channel that&#39;s closed when work done on behalf of this
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// context should be canceled. Done may return nil if this context can
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// never be canceled. Successive calls to Done return the same value.
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// The close of the Done channel may happen asynchronously,
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// after the cancel function returns.
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">//
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// WithCancel arranges for Done to be closed when cancel is called;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// WithDeadline arranges for Done to be closed when the deadline
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// expires; WithTimeout arranges for Done to be closed when the timeout
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// elapses.
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">//
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// Done is provided for use in select statements:
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">//
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">//  // Stream generates values with DoSomething and sends them to out
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">//  // until DoSomething returns an error or ctx.Done is closed.
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">//  func Stream(ctx context.Context, out chan&lt;- Value) error {
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">//  	for {
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">//  		v, err := DoSomething(ctx)
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">//  		if err != nil {
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">//  			return err
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">//  		}
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">//  		select {
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">//  		case &lt;-ctx.Done():
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">//  			return ctx.Err()
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">//  		case out &lt;- v:
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">//  		}
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">//  	}
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">//  }
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">//
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// See https://blog.golang.org/pipelines for more examples of how to use
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// a Done channel for cancellation.
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nf">Done</span><span class="p">()</span> <span class="o">&lt;-</span><span class="kd">chan</span> <span class="kd">struct</span><span class="p">{}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="c1">// If Done is not yet closed, Err returns nil.
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// If Done is closed, Err returns a non-nil error explaining why:
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// Canceled if the context was canceled
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// or DeadlineExceeded if the context&#39;s deadline passed.
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// After Err returns a non-nil error, successive calls to Err return the same error.
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nf">Err</span><span class="p">()</span> <span class="kt">error</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="c1">// Value returns the value associated with this context for key, or nil
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// if no value is associated with key. Successive calls to Value with
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// the same key returns the same result.
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">//
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// Use context values only for request-scoped data that transits
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// processes and API boundaries, not for passing optional parameters to
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// functions.
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">//
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// A key identifies a specific value in a Context. Functions that wish
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// to store values in Context typically allocate a key in a global
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// variable then use that key as the argument to context.WithValue and
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// Context.Value. A key can be any type that supports equality;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// packages should define keys as an unexported type to avoid
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// collisions.
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">//
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// Packages that define a Context key should provide type-safe accessors
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// for the values stored using that key:
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">//
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// 	// Package user defines a User type that&#39;s stored in Contexts.
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// 	package user
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">//
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// 	import &#34;context&#34;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">//
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// 	// User is the type of value stored in the Contexts.
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// 	type User struct {...}
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">//
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// 	// key is an unexported type for keys defined in this package.
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// 	// This prevents collisions with keys defined in other packages.
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// 	type key int
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">//
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// 	// userKey is the key for user.User values in Contexts. It is
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// 	// unexported; clients use user.NewContext and user.FromContext
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// 	// instead of using this key directly.
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// 	var userKey key
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">//
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// 	// NewContext returns a new Context that carries value u.
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// 	func NewContext(ctx context.Context, u *User) context.Context {
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// 		return context.WithValue(ctx, userKey, u)
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// 	}
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">//
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// 	// FromContext returns the User value stored in ctx, if any.
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// 	func FromContext(ctx context.Context) (*User, bool) {
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// 		u, ok := ctx.Value(userKey).(*User)
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// 		return u, ok
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// 	}
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nf">Value</span><span class="p">(</span><span class="nx">key</span> <span class="nx">any</span><span class="p">)</span> <span class="nx">any</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li><code>Deadline</code>：返回 Context 被取消的时间，也就是完成工作的截至日期；</li>
+<li><code>Done</code>：返回一个 channel，这个 channel 会在当前工作完成或者上下文被取消之后关闭，多次调用 <code>Done</code> 方法会返回同一个 channel；</li>
+<li><code>Err</code>：放回 Context 结束的原因，只会在 <code>Done</code> 返回的 channel 被关闭时才会返回非空的值，如果 Context 被取消，会返回 Canceled 错误；如果 Context 超时，会返回 DeadlineExceeded 错误；</li>
+<li><code>Value</code>：可用于从 Context 中获取传递的键值信息；</li>
+</ul>
+<hr>
+<h2 id="example">Example</h2>
+<p>在 Web 请求的处理过程中，一个请求可能启动多个 goroutine 协同工作，这些 goroutine 之间可能需要共享请求的信息，且当请求被取消或者执行超时时，该请求对应的所有 goroutine 都需要快速结束，释放资源，Context 就是为了解决上述场景而开发的。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-Go" data-lang="Go"><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="p">(</span>
+</span></span><span class="line"><span class="cl">	<span class="s">&#34;context&#34;</span>
+</span></span><span class="line"><span class="cl">	<span class="s">&#34;fmt&#34;</span>
+</span></span><span class="line"><span class="cl">	<span class="s">&#34;time&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">const</span> <span class="nx">DB_ADDRESS</span> <span class="p">=</span> <span class="s">&#34;db_address&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="kd">const</span> <span class="nx">CALCULATE_VALUE</span> <span class="p">=</span> <span class="s">&#34;calculate_value&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">readDB</span><span class="p">(</span><span class="nx">ctx</span> <span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">,</span> <span class="nx">cost</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Duration</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;DB address is &#34;</span><span class="p">,</span> <span class="nx">ctx</span><span class="p">.</span><span class="nf">Value</span><span class="p">(</span><span class="nx">DB_ADDRESS</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="k">select</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="k">case</span> <span class="o">&lt;-</span><span class="nx">time</span><span class="p">.</span><span class="nf">After</span><span class="p">(</span><span class="nx">cost</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;read data from db&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="k">case</span> <span class="o">&lt;-</span><span class="nx">ctx</span><span class="p">.</span><span class="nf">Done</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">ctx</span><span class="p">.</span><span class="nf">Err</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">calculate</span><span class="p">(</span><span class="nx">ctx</span> <span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">,</span> <span class="nx">cost</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Duration</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;calculate value is&#34;</span><span class="p">,</span> <span class="nx">ctx</span><span class="p">.</span><span class="nf">Value</span><span class="p">(</span><span class="nx">CALCULATE_VALUE</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">	<span class="k">select</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="k">case</span> <span class="o">&lt;-</span><span class="nx">time</span><span class="p">.</span><span class="nf">After</span><span class="p">(</span><span class="nx">cost</span><span class="p">):</span> <span class="c1">//  模拟数据计算
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>		<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;calculate finish&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="k">case</span> <span class="o">&lt;-</span><span class="nx">ctx</span><span class="p">.</span><span class="nf">Done</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">ctx</span><span class="p">.</span><span class="nf">Err</span><span class="p">())</span> <span class="c1">// 任务取消的原因
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>		<span class="c1">// 一些清理工作
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">ctx</span> <span class="o">:=</span> <span class="nx">context</span><span class="p">.</span><span class="nf">Background</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="c1">// Add Context info
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">ctx</span> <span class="p">=</span> <span class="nx">context</span><span class="p">.</span><span class="nf">WithValue</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span> <span class="nx">DB_ADDRESS</span><span class="p">,</span> <span class="s">&#34;localhost:3306&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">ctx</span> <span class="p">=</span> <span class="nx">context</span><span class="p">.</span><span class="nf">WithValue</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span> <span class="nx">CALCULATE_VALUE</span><span class="p">,</span> <span class="s">&#34;123&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="nx">ctx</span><span class="p">,</span> <span class="nx">cancel</span> <span class="o">:=</span> <span class="nx">context</span><span class="p">.</span><span class="nf">WithTimeout</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Second</span><span class="o">*</span><span class="mi">2</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="k">defer</span> <span class="nf">cancel</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="k">go</span> <span class="nf">readDB</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Second</span><span class="o">*</span><span class="mi">4</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="k">go</span> <span class="nf">calculate</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Second</span><span class="o">*</span><span class="mi">4</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="nx">time</span><span class="p">.</span><span class="nf">Sleep</span><span class="p">(</span><span class="nx">time</span><span class="p">.</span><span class="nx">Second</span> <span class="o">*</span> <span class="mi">5</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><blockquote>
+<p>使用 Context，能够有效地在一组 goroutine 中传递共享值、取消信号、deadline 等信息，及时关闭不需要的 goroutine。</p>
+</blockquote>
+<hr>
+<h2 id="reference">Reference</h2>
+<ul>
+<li><a href="https://github.com/golang/go/blob/release-branch.go1.22/src/context/context.go" target="_blank" rel="noopener noreffer ">Go Context</a></li>
+</ul>]]></description>
+</item>
+</channel>
+</rss>
