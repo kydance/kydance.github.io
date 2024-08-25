@@ -37,9 +37,17 @@
     <description><![CDATA[]]></description>
 </item>
 <item>
+    <title>Effective Go</title>
+    <link>https://kydance.github.io/tags/effective-go/</link>
+    <pubDate>Thu, 15 Aug 2024 22:41:50 &#43;0800</pubDate>
+    <author>kyden</author>
+    <guid>https://kydance.github.io/tags/effective-go/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
     <title>Golang</title>
     <link>https://kydance.github.io/tags/golang/</link>
-    <pubDate>Sat, 13 Jul 2024 21:04:57 &#43;0800</pubDate>
+    <pubDate>Thu, 15 Aug 2024 22:41:50 &#43;0800</pubDate>
     <author>kyden</author>
     <guid>https://kydance.github.io/tags/golang/</guid>
     <description><![CDATA[]]></description>
@@ -154,14 +162,6 @@
     <pubDate>Wed, 08 May 2024 11:43:38 &#43;0800</pubDate>
     <author>kyden</author>
     <guid>https://kydance.github.io/tags/netpoll/</guid>
-    <description><![CDATA[]]></description>
-</item>
-<item>
-    <title>Network Program</title>
-    <link>https://kydance.github.io/tags/network-program/</link>
-    <pubDate>Wed, 08 May 2024 11:43:38 &#43;0800</pubDate>
-    <author>kyden</author>
-    <guid>https://kydance.github.io/tags/network-program/</guid>
     <description><![CDATA[]]></description>
 </item>
 </channel>
