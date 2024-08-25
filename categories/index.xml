@@ -53,6 +53,22 @@
     <description><![CDATA[]]></description>
 </item>
 <item>
+    <title>C&#43;&#43;</title>
+    <link>https://kydance.github.io/categories/c&#43;&#43;/</link>
+    <pubDate>Sun, 28 Jul 2024 10:13:24 &#43;0800</pubDate>
+    <author>kyden</author>
+    <guid>https://kydance.github.io/categories/c&#43;&#43;/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
+    <title>Design Patten</title>
+    <link>https://kydance.github.io/categories/design-patten/</link>
+    <pubDate>Sun, 28 Jul 2024 10:13:24 &#43;0800</pubDate>
+    <author>kyden</author>
+    <guid>https://kydance.github.io/categories/design-patten/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
     <title>Project Layout</title>
     <link>https://kydance.github.io/categories/project-layout/</link>
     <pubDate>Sat, 13 Jul 2024 21:04:57 &#43;0800</pubDate>
@@ -146,22 +162,6 @@
     <pubDate>Wed, 08 May 2024 11:43:38 &#43;0800</pubDate>
     <author>kyden</author>
     <guid>https://kydance.github.io/categories/epoll/</guid>
-    <description><![CDATA[]]></description>
-</item>
-<item>
-    <title>Linux</title>
-    <link>https://kydance.github.io/categories/linux/</link>
-    <pubDate>Wed, 08 May 2024 11:43:38 &#43;0800</pubDate>
-    <author>kyden</author>
-    <guid>https://kydance.github.io/categories/linux/</guid>
-    <description><![CDATA[]]></description>
-</item>
-<item>
-    <title>Netpoll</title>
-    <link>https://kydance.github.io/categories/netpoll/</link>
-    <pubDate>Wed, 08 May 2024 11:43:38 &#43;0800</pubDate>
-    <author>kyden</author>
-    <guid>https://kydance.github.io/categories/netpoll/</guid>
     <description><![CDATA[]]></description>
 </item>
 </channel>

@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>Design Pattern - KyteDance-鸢舞</title><meta name="Description" content="kyden&#39;s blog site"><meta property="og:url" content="https://kydance.github.io/posts/design-pattern/">
+  <meta property="og:site_name" content="KyteDance-鸢舞">
+  <meta property="og:title" content="Design Pattern">
+  <meta property="og:description" content=" 导语 设计模式: 在特定环境下人们解决某类重复出现的一套成功或有效的解决方案. ">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2024-07-28T10:13:24+08:00">
+    <meta property="article:modified_time" content="2024-08-25T19:03:45+08:00">
+    <meta property="article:tag" content="Design Patten">
+    <meta property="article:tag" content="Golang">
+    <meta property="article:tag" content="C&#43;&#43;">
+    <meta property="article:tag" content="最佳实践">
+    <meta property="og:image" content="https://kydance.github.io/Kyden.png">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://kydance.github.io/Kyden.png">
+  <meta name="twitter:title" content="Design Pattern">
+  <meta name="twitter:description" content=" 导语 设计模式: 在特定环境下人们解决某类重复出现的一套成功或有效的解决方案. ">
+<meta name="application-name" content="kydance">
+<meta name="apple-mobile-web-app-title" content="kydance"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="canonical" href="https://kydance.github.io/posts/design-pattern/" /><link rel="prev" href="https://kydance.github.io/posts/golang-project-layout/" /><link rel="next" href="https://kydance.github.io/posts/effective-go/" /><link rel="stylesheet" href="/css/style.min.cf6878db51c51b2d04ae155284a4403dbee8db33e16c066f954c95279c271fcd.css" integrity="sha256-z2h421HFGy0ErhVShKRAPb7o2zPhbAZvlUyVJ5wnH80="><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Design Pattern",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/kydance.github.io\/posts\/design-pattern\/"
+        },"image": ["https:\/\/kydance.github.io\/avatar.jpeg"],"genre": "posts","keywords": "Design Patten, Golang, C\u002b\u002b, 最佳实践","wordcount":  88 ,
+        "url": "https:\/\/kydance.github.io\/posts\/design-pattern\/","datePublished": "2024-07-28T10:13:24+08:00","dateModified": "2024-08-25T19:03:45+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@type": "Organization",
+            "name": "kydance","logo": "https:\/\/kydance.github.io\/avatar.jpeg"},"author": {
+                "@type": "Person",
+                "name": "kyden"
+            },"description": ""
+    }
+    </script>
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-KXETF8WGNH"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'G-KXETF8WGNH');
+        </script>
+
+        
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-M1S0PTJ6RH"></script>
+        <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-M1S0PTJ6RH');
+        </script>
+    </head>
+
+    <body data-header-desktop="auto" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="KyteDance-鸢舞"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/Kyden.ico"
+        data-srcset="/Kyden.ico, /Kyden.ico 1.5x, /Kyden.ico 2x"
+        data-sizes="auto"
+        alt="/Kyden.ico"
+        title="/Kyden.ico" />kyden 鸢舞</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> Categories </a><a class="menu-item" href="/about/"> About </a><a class="menu-item" href="https://github.com/kydance" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw' aria-hidden='true'></i>  </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Type Something..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="KyteDance-鸢舞"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/Kyden.ico"
+        data-srcset="/Kyden.ico, /Kyden.ico 1.5x, /Kyden.ico 2x"
+        data-sizes="auto"
+        alt="/Kyden.ico"
+        title="/Kyden.ico" />kyden 鸢舞</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Type Something..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">Categories</a><a class="menu-item" href="/about/" title="">About</a><a class="menu-item" href="https://github.com/kydance" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw' aria-hidden='true'></i></a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Design Pattern</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https:github.com/kydance" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>kyden</a></span>&nbsp;<span class="post-category">included in <a href="/categories/design-patten/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Design Patten</a>&nbsp;<a href="/categories/golang/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Golang</a>&nbsp;<a href="/categories/c++/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>C++</a>&nbsp;<a href="/categories/%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>最佳实践</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-07-28">2024-07-28</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;88 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;One minute&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#i-前言">I. 前言</a>
+      <ul>
+        <li><a href="#面向对象设计原则">面向对象设计原则</a></li>
+      </ul>
+    </li>
+    <li><a href="#ii-分类">II. 分类</a></li>
+    <li><a href="#iii-创建型设计模式">III. 创建型设计模式</a>
+      <ul>
+        <li><a href="#1-简单工厂模式">1. 简单工厂模式</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><div class="details admonition info open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-info-circle fa-fw" aria-hidden="true"></i>导语<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">设计模式: 在特定环境下人们解决某类重复出现的一套成功或有效的解决方案.</div>
+        </div>
+    </div>
+<h2 id="i-前言">I. 前言</h2>
+<p>软件设计模式（Design Pattern），是一套被反复使用、多数人知晓的、经过分类编目的、代码设计经验的总结，使用设计模式是为了可重用代码、让代码更容易被他人理解并且保证代码可靠性。
+简单来说，设计模式就是<strong>在一定环境下，用固定套路解决问题</strong>。</p>
+<blockquote>
+<p>设计模式的基础：<strong>多态</strong></p>
+</blockquote>
+<h3 id="面向对象设计原则">面向对象设计原则</h3>
+<pre><code>&gt; 目的：高内聚、低耦合
+</code></pre>
+<p>如何同时提⾼⼀个软件系统的<strong>可维护性</strong>和<strong>可复⽤性</strong>是⾯向对象设计需要解决的核⼼问题之⼀。
+⾯向对象设计原则为⽀持可维护性复⽤⽽诞⽣，这些原则蕴含在很多设计模式中，它们是从许多设计⽅案中总结出的指导性原则。</p>
+<ul>
+<li>单一职责原则: 类的职责单⼀，对外只提供⼀种功能，⽽引起类变化的原因都应该只有⼀个</li>
+<li>开闭原则: <strong>类的改动是通过增加代码进⾏的，⽽不是修改源代码</strong></li>
+<li>里式代换原则: 任何抽象类出现的地⽅都可以⽤他的实现类进⾏替换，实际就是虚拟机制，语⾔级别实现⾯向对象功能</li>
+<li>依赖倒转原则: <strong>依赖于抽象(接⼝)，不要依赖具体的实现(类)，也就是针对接⼝编程</strong></li>
+<li>接口隔离原则: 不应该强迫⽤户的程序依赖他们不需要的接⼝⽅法。⼀个接⼝应该只提供⼀种对外功能，不应该把所有操作都封装到⼀个接⼝中去</li>
+<li>合成复用原则: 如果使⽤继承，会导致⽗类的任何变换都可能影响到⼦类的⾏为。如果使⽤对象组合，就降低了这种依赖关系。<strong>对于继承和组合，优先使⽤组合</strong></li>
+<li>迪米特法则: <strong>⼀个对象应当对其他对象尽可能少的了解，从⽽降低各个对象之间的耦合，提⾼系统的可维护性</strong></li>
+</ul>
+<h2 id="ii-分类">II. 分类</h2>
+<ul>
+<li>创建型（Creational）模式：如何创建对象</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">模式名称</th>
+<th style="text-align:left">用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>单例模式</strong> <br> 🌟🌟🌟🌟</td>
+<td style="text-align:left">保证一个类仅有一个实例，并提供一个访问它的全局访问点</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>简单工厂方法</strong> <br> 🌟🌟🌟</td>
+<td style="text-align:left">通过专门定义一个类来负责创建其他类的实例，被创建的实例通常都具有共同的基类</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>抽象工厂方法</strong> <br> 🌟🌟🌟🌟🌟</td>
+<td style="text-align:left">提供一个创建一系列相关或相互依赖的接口，而无需指定它们具体的类</td>
+</tr>
+<tr>
+<td style="text-align:left">原型模式</td>
+<td style="text-align:left">⽤原型实例指定创建对象的种类，并且通过拷⻉这些原型创建新的对象</td>
+</tr>
+<tr>
+<td style="text-align:left">建造者模式</td>
+<td style="text-align:left">将⼀个复杂的构建与其表示相分离，使得同样的构建过程可以创建不同的表示</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>结构型（Structural）模式：如何实现类或对象的组合</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">模式名称</th>
+<th style="text-align:left">用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>适配器模式</strong> <br> 🌟🌟🌟🌟</td>
+<td style="text-align:left">将一个类的接口转换成客户希望的另外一个接口，使得原本由于接口不兼容而不能一起工作的那些类可以一起工作</td>
+</tr>
+<tr>
+<td style="text-align:left">桥接模式</td>
+<td style="text-align:left">将抽象部分与实际部分分离，使它们可以独立的变化</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>组合模式</strong> <br> 🌟🌟🌟🌟</td>
+<td style="text-align:left">将对象组合成树形结构以表示 “部分 - 整体” 的层次结构，使得用户对单个对象和组合对象的使用具有一致性</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>装饰模式</strong> <br> 🌟🌟🌟</td>
+<td style="text-align:left">动态地给一个对象添加一些额外的职责：就增加功能来说，此模式比生成子类更加灵活</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>外观模式</strong> <br> 🌟🌟🌟🌟🌟</td>
+<td style="text-align:left">为子系统的一组接口提供一个一致的界面，此模式定义了一个高层次接口，使得这一子系统更容易使用</td>
+</tr>
+<tr>
+<td style="text-align:left">享元模式</td>
+<td style="text-align:left">以共享的方式高效的支持大量的细粒度的对象</td>
+</tr>
+<tr>
+<td style="text-align:left">代理模式</td>
+<td style="text-align:left">为其他对象提供一种代理以控制这个对象的访问</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>行为型（Behavioral）模式：类或对象如何交互以及如何分配指责</li>
+</ul>
+<h2 id="iii-创建型设计模式">III. 创建型设计模式</h2>
+<h3 id="1-简单工厂模式">1. 简单工厂模式</h3>
+<p>亦称：虚拟构造函数、Virtual Constructor、Factory Method</p>
+<p>意图：它是一种创建型设计模式，<strong>其在父类中提供一个创建对象的方法，允许子类决定实例化对象的类型</strong></p>
+<p>NOTE: 由于 Golang 中缺少类和继承等 OOP 特性，因此，无法使用 Go 来实现经典的工厂方法模式，但我们仍能实现基础版本，即简单工厂。</p></div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2024-08-25
+                                &nbsp;<a class="git-hash" href="https://github.com/kydance/blog/commit/6e95bb9827acbef694453134691747907ca29e68" target="_blank" title="commit by 6e95bb9827acbef694453134691747907ca29e68: Feat: design pattern">
+                                    <i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>6e95bb9</a></span>
+            </div><div class="post-info-license">
+                <span><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://kydance.github.io/posts/design-pattern/" data-title="Design Pattern" data-hashtags="Design Patten,Golang,C&#43;&#43;,最佳实践"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://kydance.github.io/posts/design-pattern/" data-hashtag="Design Patten"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Reddit" data-sharer="reddit" data-url="https://kydance.github.io/posts/design-pattern/"><i class="fab fa-reddit fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="https://kydance.github.io/posts/design-pattern/" data-title="Design Pattern"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@7.3.0/icons/line.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://kydance.github.io/posts/design-pattern/" data-title="Design Pattern"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 百度" data-sharer="baidu" data-url="https://kydance.github.io/posts/design-pattern/" data-title="Design Pattern"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@7.3.0/icons/baidu.svg" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/design-patten/">Design Patten</a>,&nbsp;<a href="/tags/golang/">Golang</a>,&nbsp;<a href="/tags/c&#43;&#43;/">C&#43;&#43;</a>,&nbsp;<a href="/tags/%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/">最佳实践</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/posts/golang-project-layout/" class="prev" rel="prev" title="Golang Project Stardard Layout"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>Golang Project Stardard Layout</a>
+            <a href="/posts/effective-go/" class="next" rel="next" title="Effective Go">Effective Go<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+<div id="comments"><div id="gitalk" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://github.com/gitalk/gitalk"></a>Gitalk</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2024</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/kydance" target="_blank">kyden</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></br><script>
+                    function siteTime() {
+                        var seconds = 1000;
+                        var minutes = seconds * 60;
+                        var hours = minutes * 60;
+                        var days = hours * 24;
+                        var years = days * 365;
+                        var today = new Date();
+                        var startYear = 2024;
+                        var startMonth = 4;
+                        var startDate = 18;
+                        var startHour = 12;
+                        var startMinute = 57;
+                        var startSecond = 2;
+                        var todayYear = today.getFullYear();
+                        var todayMonth = today.getMonth() + 1;
+                        var todayDate = today.getDate();
+                        var todayHour = today.getHours();
+                        var todayMinute = today.getMinutes();
+                        var todaySecond = today.getSeconds();
+                        var t1 = Date.UTC(startYear, startMonth, startDate, startHour, startMinute, startSecond);
+                        var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+                        var diff = t2 - t1;
+                        var diffYears = Math.floor(diff / years);
+                        var diffDays = Math.floor((diff / days) - diffYears * 365);
+                        var diffHours = Math.floor((diff - (diffYears * 365 + diffDays) * days) / hours);
+                        var diffMinutes = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours) /
+                            minutes);
+                        var diffSeconds = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours -
+                            diffMinutes * minutes) / seconds);
+                        if (startYear == todayYear) {
+                            
+                            document.getElementById("sitetime").innerHTML = "已安全运行 " + diffDays + " 天 " + diffHours +
+                                " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                        } else {
+                            
+                            document.getElementById("sitetime").innerHTML = "已安全运行 " + diffYears + " 年 " + diffDays +
+                                " 天 " + diffHours + " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                        }
+                    }
+                    setInterval(siteTime, 1000);
+                </script>
+                <span id="sitetime">载入运行时间...</span>
+            </div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@2.5.0/css/lightgallery-bundle.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><script type="text/javascript" src="https://polyfill.io/v3/polyfill.min.js?features=Array.prototype.fill%2CArray.prototype.find%2CArray.from%2CIntersectionObserver%2CMath.sign%2CObject.assign%2CPromise%2CObject.entries%2Chtml5shiv%2CObject.values%2Cfetch%2CElement.prototype.after"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/object-fit-images@3.2.4/dist/ofi.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.38.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/algoliasearch@4.13.1/dist/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery@2.5.0/lightgallery.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery@2.5.0/plugins/thumbnail/lg-thumbnail.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery@2.5.0/plugins/zoom/lg-zoom.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/copy-tex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/mhchem.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":36},"comment":{"gitalk":{"admin":["kydance"],"clientID":"Ov23li57QoCQY8gKyhxe","clientSecret":"bcd3cf3f8167ffcfeab2c033d961d1500f42447e","id":"2024-07-28T10:13:24+08:00","owner":"kydance","repo":"gitalk","title":"Design Pattern"}},"cookieconsent":{"content":{"dismiss":"Got it!","link":"Learn more","message":"This website uses Cookies to improve your experience."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"lightgallery":true,"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"algoliaAppID":"PASDMWALPK","algoliaIndex":"index.en","algoliaSearchKey":"b42948e51daaa93df92381c8e2ac0f93","highlightTag":"em","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"algolia"}};</script><script type="text/javascript" src="/js/theme.min.d7121d72cd85153ec9d35a888cee3eb28c2700ca763f649a538f6c772d750021.js" integrity="sha256-1xIdcs2FFT7J01qIjO4+sownAMp2P2SaU49sdy11ACE="></script><script type="text/javascript">
+            window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());
+            gtag('config', 'G-M1S0PTJ6RH', { 'anonymize_ip': true });
+        </script><script type="text/javascript" src="https://www.googletagmanager.com/gtag/js?id=G-M1S0PTJ6RH" async></script></body>
+</html>
