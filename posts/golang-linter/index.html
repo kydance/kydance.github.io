@@ -4,8 +4,8 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
-        <title>深入解读 Golang 常用 Linter 工具及最佳实践 - KyteDance-鸢舞</title><meta name="Description" content="kyden&#39;s blog site"><meta property="og:url" content="https://kydance.github.io/posts/golang-linter/">
-  <meta property="og:site_name" content="KyteDance-鸢舞">
+        <title>深入解读 Golang 常用 Linter 工具及最佳实践 - Kyden Grocery</title><meta name="Description" content="Kyden&#39;s Blog Site"><meta property="og:url" content="https://kydance.github.io/posts/golang-linter/">
+  <meta property="og:site_name" content="Kyden Grocery">
   <meta property="og:title" content="深入解读 Golang 常用 Linter 工具及最佳实践">
   <meta property="og:description" content=" 导语 在 Golang 生态系统中，Linter 工具是开发者提升代码质量的关键。 本文将深入介绍几款常用的 Linter 工具及其最佳实践，帮助您在开发中避免常见错误并提高代码的可维护性。 ">
   <meta property="og:locale" content="en">
@@ -23,8 +23,8 @@
   <meta name="twitter:image" content="https://kydance.github.io/favicon.png">
   <meta name="twitter:title" content="深入解读 Golang 常用 Linter 工具及最佳实践">
   <meta name="twitter:description" content=" 导语 在 Golang 生态系统中，Linter 工具是开发者提升代码质量的关键。 本文将深入介绍几款常用的 Linter 工具及其最佳实践，帮助您在开发中避免常见错误并提高代码的可维护性。 ">
-<meta name="application-name" content="kydance">
-<meta name="apple-mobile-web-app-title" content="kydance"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="canonical" href="https://kydance.github.io/posts/golang-linter/" /><link rel="prev" href="https://kydance.github.io/posts/typora-theme/" /><link rel="next" href="https://kydance.github.io/posts/golang-profile/" /><link rel="stylesheet" href="/css/style.min.cf6878db51c51b2d04ae155284a4403dbee8db33e16c066f954c95279c271fcd.css" integrity="sha256-z2h421HFGy0ErhVShKRAPb7o2zPhbAZvlUyVJ5wnH80="><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<meta name="application-name" content="kyden">
+<meta name="apple-mobile-web-app-title" content="kyden"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="canonical" href="https://kydance.github.io/posts/golang-linter/" /><link rel="prev" href="https://kydance.github.io/posts/typora-theme/" /><link rel="next" href="https://kydance.github.io/posts/golang-profile/" /><link rel="stylesheet" href="/css/style.min.cf6878db51c51b2d04ae155284a4403dbee8db33e16c066f954c95279c271fcd.css" integrity="sha256-z2h421HFGy0ErhVShKRAPb7o2zPhbAZvlUyVJ5wnH80="><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
     {
@@ -35,28 +35,15 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/kydance.github.io\/posts\/golang-linter\/"
-        },"image": ["https:\/\/kydance.github.io\/avatar.jpeg"],"genre": "posts","keywords": "Golang, Linter, Static Check, CI\/CD","wordcount":  2130 ,
+        },"image": ["https:\/\/kydance.github.io\/favicon.ico"],"genre": "posts","keywords": "Golang, Linter, Static Check, CI\/CD","wordcount":  2130 ,
         "url": "https:\/\/kydance.github.io\/posts\/golang-linter\/","datePublished": "2024-04-19T11:24:23+08:00","dateModified": "2024-08-25T18:29:39+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
-            "name": "kydance","logo": "https:\/\/kydance.github.io\/avatar.jpeg"},"author": {
+            "name": "kyden","logo": "https:\/\/kydance.github.io\/favicon.png"},"author": {
                 "@type": "Person",
                 "name": "Kyden"
             },"description": ""
     }
     </script>
-        
-
-        
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-KXETF8WGNH"></script>
-        <script>
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-
-            gtag('config', 'G-KXETF8WGNH');
-        </script>
-
-        
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-M1S0PTJ6RH"></script>
         <script>
         window.dataLayer = window.dataLayer || [];
@@ -72,14 +59,14 @@
         <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
     <div class="header-wrapper">
         <div class="header-title">
-            <a href="/" title="KyteDance-鸢舞"><img
+            <a href="/" title="Kyden Grocery"><img
         class="lazyload logo"
         src="/svg/loading.min.svg"
         data-src="/favicon.ico"
         data-srcset="/favicon.ico, /favicon.ico 1.5x, /favicon.ico 2x"
         data-sizes="auto"
         alt="/favicon.ico"
-        title="/favicon.ico" />kyden 鸢舞</a>
+        title="/favicon.ico" /></a>
         </div>
         <div class="menu">
             <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> Categories </a><a class="menu-item" href="/about/"> About </a><a class="menu-item" href="https://github.com/kydance" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw' aria-hidden='true'></i>  </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
@@ -102,14 +89,14 @@
     <div class="header-container">
         <div class="header-wrapper">
             <div class="header-title">
-                <a href="/" title="KyteDance-鸢舞"><img
+                <a href="/" title="Kyden Grocery"><img
         class="lazyload logo"
         src="/svg/loading.min.svg"
         data-src="/favicon.ico"
         data-srcset="/favicon.ico, /favicon.ico 1.5x, /favicon.ico 2x"
         data-sizes="auto"
         alt="/favicon.ico"
-        title="/favicon.ico" />kyden 鸢舞</a>
+        title="/favicon.ico" /></a>
             </div>
             <div class="menu-toggle" id="menu-toggle-mobile">
                 <span></span><span></span><span></span>
@@ -1616,7 +1603,7 @@
         <div class="post-info-line">
             <div class="post-info-md"></div>
             <div class="post-info-share">
-                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://kydance.github.io/posts/golang-linter/" data-title="深入解读 Golang 常用 Linter 工具及最佳实践" data-hashtags="Golang,Linter,Static Check,CI/CD"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://kydance.github.io/posts/golang-linter/" data-hashtag="Golang"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Reddit" data-sharer="reddit" data-url="https://kydance.github.io/posts/golang-linter/"><i class="fab fa-reddit fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="https://kydance.github.io/posts/golang-linter/" data-title="深入解读 Golang 常用 Linter 工具及最佳实践"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@7.3.0/icons/line.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://kydance.github.io/posts/golang-linter/" data-title="深入解读 Golang 常用 Linter 工具及最佳实践"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 百度" data-sharer="baidu" data-url="https://kydance.github.io/posts/golang-linter/" data-title="深入解读 Golang 常用 Linter 工具及最佳实践"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@7.3.0/icons/baidu.svg" aria-hidden="true"></i></a></span>
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://kydance.github.io/posts/golang-linter/" data-title="深入解读 Golang 常用 Linter 工具及最佳实践" data-hashtags="Golang,Linter,Static Check,CI/CD"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://kydance.github.io/posts/golang-linter/" data-hashtag="Golang"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Linkedin" data-sharer="linkedin" data-url="https://kydance.github.io/posts/golang-linter/"><i class="fab fa-linkedin fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on WhatsApp" data-sharer="whatsapp" data-url="https://kydance.github.io/posts/golang-linter/" data-title="深入解读 Golang 常用 Linter 工具及最佳实践" data-web><i class="fab fa-whatsapp fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="https://kydance.github.io/posts/golang-linter/" data-title="深入解读 Golang 常用 Linter 工具及最佳实践"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Reddit" data-sharer="reddit" data-url="https://kydance.github.io/posts/golang-linter/"><i class="fab fa-reddit fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="https://kydance.github.io/posts/golang-linter/" data-title="深入解读 Golang 常用 Linter 工具及最佳实践"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@7.3.0/icons/line.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://kydance.github.io/posts/golang-linter/" data-title="深入解读 Golang 常用 Linter 工具及最佳实践"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 百度" data-sharer="baidu" data-url="https://kydance.github.io/posts/golang-linter/" data-title="深入解读 Golang 常用 Linter 工具及最佳实践"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@7.3.0/icons/baidu.svg" aria-hidden="true"></i></a></span>
             </div>
         </div>
     </div>
@@ -1687,7 +1674,7 @@
             </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
                 <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
             </a>
-        </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@2.5.0/css/lightgallery-bundle.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><script type="text/javascript" src="https://polyfill.io/v3/polyfill.min.js?features=Array.prototype.fill%2CArray.prototype.find%2CArray.from%2CIntersectionObserver%2CMath.sign%2CObject.assign%2CPromise%2CObject.entries%2Chtml5shiv%2CObject.values%2Cfetch%2CElement.prototype.after"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/object-fit-images@3.2.4/dist/ofi.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.38.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/algoliasearch@4.13.1/dist/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery@2.5.0/lightgallery.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery@2.5.0/plugins/thumbnail/lg-thumbnail.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery@2.5.0/plugins/zoom/lg-zoom.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/copy-tex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/mhchem.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":36},"comment":{"gitalk":{"admin":["kydance"],"clientID":"Ov23li57QoCQY8gKyhxe","clientSecret":"bcd3cf3f8167ffcfeab2c033d961d1500f42447e","id":"2024-04-19T11:24:23+08:00","owner":"kydance","repo":"gitalk","title":"深入解读 Golang 常用 Linter 工具及最佳实践"}},"cookieconsent":{"content":{"dismiss":"Got it!","link":"Learn more","message":"This website uses Cookies to improve your experience."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"lightgallery":true,"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"algoliaAppID":"PASDMWALPK","algoliaIndex":"index.en","algoliaSearchKey":"b42948e51daaa93df92381c8e2ac0f93","highlightTag":"em","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"algolia"}};</script><script type="text/javascript" src="/js/theme.min.d7121d72cd85153ec9d35a888cee3eb28c2700ca763f649a538f6c772d750021.js" integrity="sha256-1xIdcs2FFT7J01qIjO4+sownAMp2P2SaU49sdy11ACE="></script><script type="text/javascript">
+        </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@2.5.0/css/lightgallery-bundle.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><script type="text/javascript" src="https://polyfill.io/v3/polyfill.min.js?features=Array.prototype.fill%2CArray.prototype.find%2CArray.from%2CIntersectionObserver%2CMath.sign%2CObject.assign%2CPromise%2CObject.entries%2Chtml5shiv%2CObject.values%2Cfetch%2CElement.prototype.after"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/object-fit-images@3.2.4/dist/ofi.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.38.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/algoliasearch@4.13.1/dist/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery@2.5.0/lightgallery.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery@2.5.0/plugins/thumbnail/lg-thumbnail.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery@2.5.0/plugins/zoom/lg-zoom.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/copy-tex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/mhchem.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{"gitalk":{"admin":["kydance"],"clientID":"Ov23li57QoCQY8gKyhxe","clientSecret":"bcd3cf3f8167ffcfeab2c033d961d1500f42447e","id":"2024-04-19T11:24:23+08:00","owner":"kydance","repo":"gitalk","title":"深入解读 Golang 常用 Linter 工具及最佳实践"}},"cookieconsent":{"content":{"dismiss":"Got it!","link":"Learn more","message":"This website uses Cookies to improve your experience."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"lightgallery":true,"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"algoliaAppID":"PASDMWALPK","algoliaIndex":"index.en","algoliaSearchKey":"b42948e51daaa93df92381c8e2ac0f93","highlightTag":"em","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"algolia"}};</script><script type="text/javascript" src="/js/theme.min.d7121d72cd85153ec9d35a888cee3eb28c2700ca763f649a538f6c772d750021.js" integrity="sha256-1xIdcs2FFT7J01qIjO4+sownAMp2P2SaU49sdy11ACE="></script><script type="text/javascript">
             window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());
             gtag('config', 'G-M1S0PTJ6RH', { 'anonymize_ip': true });
         </script><script type="text/javascript" src="https://www.googletagmanager.com/gtag/js?id=G-M1S0PTJ6RH" async></script></body>

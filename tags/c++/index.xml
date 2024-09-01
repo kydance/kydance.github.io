@@ -1,8 +1,8 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
-        <title>C&#43;&#43; - Tag - KyteDance-鸢舞</title>
+        <title>C&#43;&#43; - Tag - Kyden Grocery</title>
         <link>https://kydance.github.io/tags/c&#43;&#43;/</link>
-        <description>C&#43;&#43; - Tag - KyteDance-鸢舞</description>
+        <description>C&#43;&#43; - Tag - Kyden Grocery</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>kytedance@gmail.com (kyden)</managingEditor>
             <webMaster>kytedance@gmail.com (kyden)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sun, 28 Jul 2024 10:13:24 &#43;0800</lastBuildDate><atom:link href="https://kydance.github.io/tags/c&#43;&#43;/" rel="self" type="application/rss+xml" /><item>
     <title>Design Pattern</title>
@@ -17,110 +17,7 @@
         <div class="details-content">
             <div class="admonition-content">设计模式: 在特定环境下人们解决某类重复出现的一套成功或有效的解决方案.</div>
         </div>
-    </div>
-<h2 id="i-前言">I. 前言</h2>
-<p>软件设计模式（Design Pattern），是一套被反复使用、多数人知晓的、经过分类编目的、代码设计经验的总结，使用设计模式是为了可重用代码、让代码更容易被他人理解并且保证代码可靠性。
-简单来说，设计模式就是<strong>在一定环境下，用固定套路解决问题</strong>。</p>
-<blockquote>
-<p>设计模式的基础：<strong>多态</strong></p>
-</blockquote>
-<h3 id="面向对象设计原则">面向对象设计原则</h3>
-<pre><code>&gt; 目的：高内聚、低耦合
-</code></pre>
-<p>如何同时提⾼⼀个软件系统的<strong>可维护性</strong>和<strong>可复⽤性</strong>是⾯向对象设计需要解决的核⼼问题之⼀。
-⾯向对象设计原则为⽀持可维护性复⽤⽽诞⽣，这些原则蕴含在很多设计模式中，它们是从许多设计⽅案中总结出的指导性原则。</p>
-<ul>
-<li>单一职责原则: 类的职责单⼀，对外只提供⼀种功能，⽽引起类变化的原因都应该只有⼀个</li>
-<li>开闭原则: <strong>类的改动是通过增加代码进⾏的，⽽不是修改源代码</strong></li>
-<li>里式代换原则: 任何抽象类出现的地⽅都可以⽤他的实现类进⾏替换，实际就是虚拟机制，语⾔级别实现⾯向对象功能</li>
-<li>依赖倒转原则: <strong>依赖于抽象(接⼝)，不要依赖具体的实现(类)，也就是针对接⼝编程</strong></li>
-<li>接口隔离原则: 不应该强迫⽤户的程序依赖他们不需要的接⼝⽅法。⼀个接⼝应该只提供⼀种对外功能，不应该把所有操作都封装到⼀个接⼝中去</li>
-<li>合成复用原则: 如果使⽤继承，会导致⽗类的任何变换都可能影响到⼦类的⾏为。如果使⽤对象组合，就降低了这种依赖关系。<strong>对于继承和组合，优先使⽤组合</strong></li>
-<li>迪米特法则: <strong>⼀个对象应当对其他对象尽可能少的了解，从⽽降低各个对象之间的耦合，提⾼系统的可维护性</strong></li>
-</ul>
-<h2 id="ii-分类">II. 分类</h2>
-<ul>
-<li>创建型（Creational）模式：如何创建对象</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">模式名称</th>
-<th style="text-align:left">用途</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left"><strong>单例模式</strong> <br> 🌟🌟🌟🌟</td>
-<td style="text-align:left">保证一个类仅有一个实例，并提供一个访问它的全局访问点</td>
-</tr>
-<tr>
-<td style="text-align:left"><strong>简单工厂方法</strong> <br> 🌟🌟🌟</td>
-<td style="text-align:left">通过专门定义一个类来负责创建其他类的实例，被创建的实例通常都具有共同的基类</td>
-</tr>
-<tr>
-<td style="text-align:left"><strong>抽象工厂方法</strong> <br> 🌟🌟🌟🌟🌟</td>
-<td style="text-align:left">提供一个创建一系列相关或相互依赖的接口，而无需指定它们具体的类</td>
-</tr>
-<tr>
-<td style="text-align:left">原型模式</td>
-<td style="text-align:left">⽤原型实例指定创建对象的种类，并且通过拷⻉这些原型创建新的对象</td>
-</tr>
-<tr>
-<td style="text-align:left">建造者模式</td>
-<td style="text-align:left">将⼀个复杂的构建与其表示相分离，使得同样的构建过程可以创建不同的表示</td>
-</tr>
-</tbody>
-</table>
-<ul>
-<li>结构型（Structural）模式：如何实现类或对象的组合</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">模式名称</th>
-<th style="text-align:left">用途</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left"><strong>适配器模式</strong> <br> 🌟🌟🌟🌟</td>
-<td style="text-align:left">将一个类的接口转换成客户希望的另外一个接口，使得原本由于接口不兼容而不能一起工作的那些类可以一起工作</td>
-</tr>
-<tr>
-<td style="text-align:left">桥接模式</td>
-<td style="text-align:left">将抽象部分与实际部分分离，使它们可以独立的变化</td>
-</tr>
-<tr>
-<td style="text-align:left"><strong>组合模式</strong> <br> 🌟🌟🌟🌟</td>
-<td style="text-align:left">将对象组合成树形结构以表示 “部分 - 整体” 的层次结构，使得用户对单个对象和组合对象的使用具有一致性</td>
-</tr>
-<tr>
-<td style="text-align:left"><strong>装饰模式</strong> <br> 🌟🌟🌟</td>
-<td style="text-align:left">动态地给一个对象添加一些额外的职责：就增加功能来说，此模式比生成子类更加灵活</td>
-</tr>
-<tr>
-<td style="text-align:left"><strong>外观模式</strong> <br> 🌟🌟🌟🌟🌟</td>
-<td style="text-align:left">为子系统的一组接口提供一个一致的界面，此模式定义了一个高层次接口，使得这一子系统更容易使用</td>
-</tr>
-<tr>
-<td style="text-align:left">享元模式</td>
-<td style="text-align:left">以共享的方式高效的支持大量的细粒度的对象</td>
-</tr>
-<tr>
-<td style="text-align:left">代理模式</td>
-<td style="text-align:left">为其他对象提供一种代理以控制这个对象的访问</td>
-</tr>
-</tbody>
-</table>
-<ul>
-<li>行为型（Behavioral）模式：类或对象如何交互以及如何分配指责</li>
-</ul>
-<h2 id="iii-创建型设计模式">III. 创建型设计模式</h2>
-<h3 id="1-简单工厂模式">1. 简单工厂模式</h3>
-<p>亦称：虚拟构造函数、Virtual Constructor、Factory Method</p>
-<p>意图：它是一种创建型设计模式，<strong>其在父类中提供一个创建对象的方法，允许子类决定实例化对象的类型</strong></p>
-<p>NOTE: 由于 Golang 中缺少类和继承等 OOP 特性，因此，无法使用 Go 来实现经典的工厂方法模式，但我们仍能实现基础版本，即简单工厂。</p>]]></description>
+    </div>]]></description>
 </item>
 </channel>
 </rss>
