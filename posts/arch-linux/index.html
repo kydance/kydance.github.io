@@ -12,7 +12,7 @@
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
     <meta property="article:published_time" content="2024-04-17T22:11:33+08:00">
-    <meta property="article:modified_time" content="2024-08-25T18:29:39+08:00">
+    <meta property="article:modified_time" content="2024-09-01T10:02:11+08:00">
     <meta property="article:tag" content="Arch">
     <meta property="article:tag" content="Linux">
     <meta property="article:tag" content="Software">
@@ -34,8 +34,8 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/kydance.github.io\/posts\/arch-linux\/"
-        },"image": ["https:\/\/kydance.github.io\/avatar.jpeg"],"genre": "posts","keywords": "Arch, Linux, Software","wordcount":  1868 ,
-        "url": "https:\/\/kydance.github.io\/posts\/arch-linux\/","datePublished": "2024-04-17T22:11:33+08:00","dateModified": "2024-08-25T18:29:39+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+        },"image": ["https:\/\/kydance.github.io\/avatar.jpeg"],"genre": "posts","keywords": "Arch, Linux, Software","wordcount":  1981 ,
+        "url": "https:\/\/kydance.github.io\/posts\/arch-linux\/","datePublished": "2024-04-17T22:11:33+08:00","dateModified": "2024-09-01T10:02:11+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "kydance","logo": "https:\/\/kydance.github.io\/avatar.jpeg"},"author": {
                 "@type": "Person",
@@ -142,8 +142,8 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Arch Linux 指南</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https:github.com/kydance" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>kyden</a></span>&nbsp;<span class="post-category">included in <a href="/categories/linux/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Linux</a>&nbsp;<a href="/categories/software/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Software</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-04-17">2024-04-17</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;1868 words&nbsp;
-                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;9 minutes&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-04-17">2024-04-17</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;1981 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;10 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
@@ -180,7 +180,8 @@
         <li><a href="#pacman-镜像修改">pacman 镜像修改</a></li>
         <li><a href="#常见通用软件">常见通用软件</a>
           <ul>
-            <li><a href="#输入法httpswikiarchlinuxcnorgwikifcitx5"><a href="https://wiki.archlinuxcn.org/wiki/Fcitx5">输入法</a></a></li>
+            <li><a href="#输入法">输入法</a></li>
+            <li><a href="#trans-shell">trans-shell</a></li>
             <li><a href="#office">office</a></li>
           </ul>
         </li>
@@ -598,7 +599,8 @@
 </span></span><span class="line"><span class="cl">$ sudo pacman -S obs-studio
 </span></span></code></pre></td></tr></table>
 </div>
-</div><h4 id="输入法httpswikiarchlinuxcnorgwikifcitx5"><a href="https://wiki.archlinuxcn.org/wiki/Fcitx5" target="_blank" rel="noopener noreffer ">输入法</a></h4>
+</div><h4 id="输入法">输入法</h4>
+<p><a href="https://wiki.archlinuxcn.org/wiki/Fcitx5" target="_blank" rel="noopener noreffer ">fcitx5</a></p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -647,7 +649,7 @@
 </span></span></span><span class="line"><span class="cl"><span class="se"></span>    shotcut inkscape ninja gnu-netcat tcpdump cmake <span class="se">\
 </span></span></span><span class="line"><span class="cl"><span class="se"></span>    clang tree python-pip caj2pdf-qt ttf-hack-nerd <span class="se">\
 </span></span></span><span class="line"><span class="cl"><span class="se"></span>    transmission-gtk gpick speedcrunch drawio-desktop <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    crow-translate zeal electronic-wechat-uos-bin <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>    zeal electronic-wechat-uos-bin <span class="se">\
 </span></span></span><span class="line"><span class="cl"><span class="se"></span>    linuxqq lx-music-desktop
 </span></span></code></pre></td></tr></table>
 </div>
@@ -656,10 +658,81 @@
 <li><strong>SpeedCrunch</strong>: 一个漂亮，开源，高精度的科学计算器</li>
 <li><strong>Snipaste</strong>: 截图工具，如不可用可选用<code>spectacle</code></li>
 <li><strong>drawio-desktop</strong>: <a href="https://github.com/jgraph/drawio-desktop" target="_blank" rel="noopener noreffer ">Security-first diagramming for teams</a></li>
-<li><strong>crow-translate</strong>：<a href="https://github.com/crow-translate/crow-translate" target="_blank" rel="noopener noreffer ">翻译工具</a></li>
 <li><strong>zeal</strong>：离线文档浏览器</li>
 </ul>
 <hr>
+<h4 id="trans-shell">trans-shell</h4>
+<p>基础用法</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># 翻译到locale语言</span>
+</span></span><span class="line"><span class="cl">$ trans <span class="o">[</span>Words<span class="o">]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 翻译到指定语言</span>
+</span></span><span class="line"><span class="cl">$ trans :zh <span class="o">[</span>word<span class="o">]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 翻译到多种目标语言</span>
+</span></span><span class="line"><span class="cl">$ trans :zh+ja word
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 翻译句子和短语</span>
+</span></span><span class="line"><span class="cl">$ trans en:zh <span class="s2">&#34;word processor&#34;</span>
+</span></span><span class="line"><span class="cl">$ trans :zh <span class="s2">&#34;To-morrow, and to-morrow, and to-morrow,&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 简洁模式：默认情况下，Translate Shell 尽可能多的显示翻译信息。如果你希望只显示简要信息，只需要加上 -b选项。</span>
+</span></span><span class="line"><span class="cl">$ trans -b :zh <span class="s2">&#34;Saluton, Mondo&#34;</span>
+</span></span><span class="line"><span class="cl">$ trans -b :@ja <span class="s2">&#34;Saluton, Mondo&#34;</span> <span class="c1">#显示发音符号，如果有的话，如日语罗马音，汉语拼音</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 翻译文件或网页</span>
+</span></span><span class="line"><span class="cl">$ trans :zh file://&lt;input.txt&gt;
+</span></span><span class="line"><span class="cl">$ trans :zh //https://github.com/kydance/
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 进入交互模式</span>
+</span></span><span class="line"><span class="cl">$ trans -shell
+</span></span><span class="line"><span class="cl">$ trans -shell en:fr
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Alais</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">tsbz <span class="s1">&#39;trans -b :zh&#39;</span>
+</span></span><span class="line"><span class="cl">tsz <span class="s1">&#39;trans :zh&#39;</span>
+</span></span><span class="line"><span class="cl">tsbe <span class="s1">&#39;trans -b :en&#39;</span>
+</span></span><span class="line"><span class="cl">tse <span class="s1">&#39;trans :en&#39;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><hr>
 <h4 id="office">office</h4>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -1493,9 +1566,9 @@ Windows 下简体中文采用的是 <code>GBK</code>/<code>GB312</code> 编码�
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>Updated on 2024-08-25
-                                &nbsp;<a class="git-hash" href="https://github.com/kydance/blog/commit/c7b3b8c13a55ac17594fc459d34f55c4d05c8c92" target="_blank" title="commit by c7b3b8c13a55ac17594fc459d34f55c4d05c8c92: Update: 导语">
-                                    <i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>c7b3b8c</a></span>
+                <span>Updated on 2024-09-01
+                                &nbsp;<a class="git-hash" href="https://github.com/kydance/blog/commit/1b57c6645e87128a2907394af35f9becc334f234" target="_blank" title="commit by 1b57c6645e87128a2907394af35f9becc334f234: feat(arch-linux): trans-shell">
+                                    <i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>1b57c66</a></span>
             </div><div class="post-info-license">
                 <span><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span>
             </div></div>

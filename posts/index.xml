@@ -8595,7 +8595,8 @@ channel 作为一种引用类型，声明时需要指定传输数据类型，声
 </span></span><span class="line"><span class="cl">$ sudo pacman -S obs-studio
 </span></span></code></pre></td></tr></table>
 </div>
-</div><h4 id="输入法httpswikiarchlinuxcnorgwikifcitx5"><a href="https://wiki.archlinuxcn.org/wiki/Fcitx5" target="_blank" rel="noopener noreffer ">输入法</a></h4>
+</div><h4 id="输入法">输入法</h4>
+<p><a href="https://wiki.archlinuxcn.org/wiki/Fcitx5" target="_blank" rel="noopener noreffer ">fcitx5</a></p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -8644,7 +8645,7 @@ channel 作为一种引用类型，声明时需要指定传输数据类型，声
 </span></span></span><span class="line"><span class="cl"><span class="se"></span>    shotcut inkscape ninja gnu-netcat tcpdump cmake <span class="se">\
 </span></span></span><span class="line"><span class="cl"><span class="se"></span>    clang tree python-pip caj2pdf-qt ttf-hack-nerd <span class="se">\
 </span></span></span><span class="line"><span class="cl"><span class="se"></span>    transmission-gtk gpick speedcrunch drawio-desktop <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    crow-translate zeal electronic-wechat-uos-bin <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>    zeal electronic-wechat-uos-bin <span class="se">\
 </span></span></span><span class="line"><span class="cl"><span class="se"></span>    linuxqq lx-music-desktop
 </span></span></code></pre></td></tr></table>
 </div>
@@ -8653,10 +8654,81 @@ channel 作为一种引用类型，声明时需要指定传输数据类型，声
 <li><strong>SpeedCrunch</strong>: 一个漂亮，开源，高精度的科学计算器</li>
 <li><strong>Snipaste</strong>: 截图工具，如不可用可选用<code>spectacle</code></li>
 <li><strong>drawio-desktop</strong>: <a href="https://github.com/jgraph/drawio-desktop" target="_blank" rel="noopener noreffer ">Security-first diagramming for teams</a></li>
-<li><strong>crow-translate</strong>：<a href="https://github.com/crow-translate/crow-translate" target="_blank" rel="noopener noreffer ">翻译工具</a></li>
 <li><strong>zeal</strong>：离线文档浏览器</li>
 </ul>
 <hr>
+<h4 id="trans-shell">trans-shell</h4>
+<p>基础用法</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># 翻译到locale语言</span>
+</span></span><span class="line"><span class="cl">$ trans <span class="o">[</span>Words<span class="o">]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 翻译到指定语言</span>
+</span></span><span class="line"><span class="cl">$ trans :zh <span class="o">[</span>word<span class="o">]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 翻译到多种目标语言</span>
+</span></span><span class="line"><span class="cl">$ trans :zh+ja word
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 翻译句子和短语</span>
+</span></span><span class="line"><span class="cl">$ trans en:zh <span class="s2">&#34;word processor&#34;</span>
+</span></span><span class="line"><span class="cl">$ trans :zh <span class="s2">&#34;To-morrow, and to-morrow, and to-morrow,&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 简洁模式：默认情况下，Translate Shell 尽可能多的显示翻译信息。如果你希望只显示简要信息，只需要加上 -b选项。</span>
+</span></span><span class="line"><span class="cl">$ trans -b :zh <span class="s2">&#34;Saluton, Mondo&#34;</span>
+</span></span><span class="line"><span class="cl">$ trans -b :@ja <span class="s2">&#34;Saluton, Mondo&#34;</span> <span class="c1">#显示发音符号，如果有的话，如日语罗马音，汉语拼音</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 翻译文件或网页</span>
+</span></span><span class="line"><span class="cl">$ trans :zh file://&lt;input.txt&gt;
+</span></span><span class="line"><span class="cl">$ trans :zh //https://github.com/kydance/
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 进入交互模式</span>
+</span></span><span class="line"><span class="cl">$ trans -shell
+</span></span><span class="line"><span class="cl">$ trans -shell en:fr
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Alais</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">tsbz <span class="s1">&#39;trans -b :zh&#39;</span>
+</span></span><span class="line"><span class="cl">tsz <span class="s1">&#39;trans :zh&#39;</span>
+</span></span><span class="line"><span class="cl">tsbe <span class="s1">&#39;trans -b :en&#39;</span>
+</span></span><span class="line"><span class="cl">tse <span class="s1">&#39;trans :en&#39;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><hr>
 <h4 id="office">office</h4>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
