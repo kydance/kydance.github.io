@@ -1713,7 +1713,7 @@
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="c1"># 翻译文件或网页</span>
 </span></span><span class="line"><span class="cl">$ trans :zh file://&lt;input.txt&gt;
-</span></span><span class="line"><span class="cl">$ trans :zh //https://github.com/kydance/
+</span></span><span class="line"><span class="cl">$ trans :zh https://github.com/kydance/
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="c1"># 进入交互模式</span>
 </span></span><span class="line"><span class="cl">$ trans -shell
