@@ -12,7 +12,7 @@
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
     <meta property="article:published_time" content="2024-04-17T22:11:33+08:00">
-    <meta property="article:modified_time" content="2024-09-01T10:04:53+08:00">
+    <meta property="article:modified_time" content="2024-09-02T22:12:11+08:00">
     <meta property="article:tag" content="Arch">
     <meta property="article:tag" content="Linux">
     <meta property="article:tag" content="Software">
@@ -35,7 +35,7 @@
             "@type": "WebPage",
             "@id": "https:\/\/kydance.github.io\/posts\/arch-linux\/"
         },"image": ["https:\/\/kydance.github.io\/favicon.ico"],"genre": "posts","keywords": "Arch, Linux, Software","wordcount":  1981 ,
-        "url": "https:\/\/kydance.github.io\/posts\/arch-linux\/","datePublished": "2024-04-17T22:11:33+08:00","dateModified": "2024-09-01T10:04:53+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+        "url": "https:\/\/kydance.github.io\/posts\/arch-linux\/","datePublished": "2024-04-17T22:11:33+08:00","dateModified": "2024-09-02T22:12:11+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "kyden","logo": "https:\/\/kydance.github.io\/favicon.png"},"author": {
                 "@type": "Person",
@@ -181,6 +181,7 @@
             <li><a href="#配置-git">配置 git</a></li>
             <li><a href="#git-常用命令">Git 常用命令</a></li>
             <li><a href="#git实现从本地添加项目到远程仓库">Git实现从本地添加项目到远程仓库</a></li>
+            <li><a href="#用-ssh-密钥在一台机器上管理多个账户">用 SSH 密钥在一台机器上管理多个账户</a></li>
           </ul>
         </li>
         <li><a href="#golang">Golang</a></li>
@@ -812,7 +813,7 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ git init
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git init
 </span></span></code></pre></td></tr></table>
 </div>
 </div></li>
@@ -823,7 +824,7 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ git remote add origin git@github.com:kydance/&lt;repository name&gt;
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git remote add origin git@github.com:kydance/&lt;repository name&gt;
 </span></span></code></pre></td></tr></table>
 </div>
 </div></li>
@@ -840,13 +841,14 @@
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ git add file
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git add file
 </span></span><span class="line"><span class="cl">$ git commit -m <span class="s1">&#39;&lt;commit statements&gt;&#39;</span> file
 </span></span><span class="line"><span class="cl">$ git push -u origin master
 </span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 </ol>
+<h4 id="用-ssh-密钥在一台机器上管理多个账户">用 SSH 密钥在一台机器上管理多个账户</h4>
 <hr>
 <h3 id="golang">Golang</h3>
 <div class="highlight"><div class="chroma">
@@ -1556,9 +1558,9 @@ Windows 下简体中文采用的是 <code>GBK</code>/<code>GB312</code> 编码�
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>Updated on 2024-09-01
-                                &nbsp;<a class="git-hash" href="https://github.com/kydance/blog/commit/973d698a99ea83d635b258a72babd734aa17feec" target="_blank" title="commit by 973d698a99ea83d635b258a72babd734aa17feec: Fix: spell err.">
-                                    <i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>973d698</a></span>
+                <span>Updated on 2024-09-02
+                                &nbsp;<a class="git-hash" href="https://github.com/kydance/blog/commit/b079fed79e21f41f926e2f9cf14669c15c629782" target="_blank" title="commit by b079fed79e21f41f926e2f9cf14669c15c629782: Fix: 格式错误">
+                                    <i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>b079fed</a></span>
             </div><div class="post-info-license">
                 <span><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span>
             </div></div>
