@@ -10,9 +10,9 @@
     <pubDate>Sun, 19 May 2024 22:47:26 &#43;0800</pubDate>
     <author>kyden</author>
     <guid>https://kydance.github.io/posts/golang-escape-analysis/</guid>
-    <description><![CDATA[<div class="details admonition info open">
+    <description><![CDATA[<div class="details admonition abstract open">
         <div class="details-summary admonition-title">
-            <i class="icon fas fa-info-circle fa-fw" aria-hidden="true"></i>导语<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+            <i class="icon fas fa-list-ul fa-fw" aria-hidden="true"></i>导语<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
         </div>
         <div class="details-content">
             <div class="admonition-content"><strong>深入理解 Golang Escape Analysis：变量何时逃逸？</strong></div>
