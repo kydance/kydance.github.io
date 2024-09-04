@@ -190,30 +190,30 @@
 <p><strong>网络编程，是允许不同计算机上的程序通过网络通信的开发过程，涉及多种协议（HTTP、TCP/IP等）以及不同编程语言的应用</strong>。</p>
 <h3 id="同步异步并发模型">同步、异步、并发模型</h3>
 <table>
-<thead>
-<tr>
-<th>IO 模型</th>
-<th style="text-align:left">读写操作和阻塞阶段</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>阻塞 IO</td>
-<td style="text-align:left">程序阻塞于读写函数</td>
-</tr>
-<tr>
-<td>IO 复用</td>
-<td style="text-align:left">程序阻塞于 IO 复用系统调用，但可同时监听多个 IO 事件；对 IO 本身的读写操作是非阻塞的</td>
-</tr>
-<tr>
-<td>SIGIO 信号</td>
-<td style="text-align:left">信号触发读写就绪事件，用户程序执行读写操作；程序本身没有阻塞阶段</td>
-</tr>
-<tr>
-<td>异步 IO</td>
-<td style="text-align:left">内核执行读写操作并触发读写完成事件；程序没有阻塞阶段</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: left">IO 模型</th>
+          <th style="text-align: left">读写操作和阻塞阶段</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">阻塞 IO</td>
+          <td style="text-align: left">程序阻塞于读写函数</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">IO 复用</td>
+          <td style="text-align: left">程序阻塞于 IO 复用系统调用，但可同时监听多个 IO 事件；对 IO 本身的读写操作是非阻塞的</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">SIGIO 信号</td>
+          <td style="text-align: left">信号触发读写就绪事件，用户程序执行读写操作；程序本身没有阻塞阶段</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">异步 IO</td>
+          <td style="text-align: left">内核执行读写操作并触发读写完成事件；程序没有阻塞阶段</td>
+      </tr>
+  </tbody>
 </table>
 <blockquote>
 <p><strong>主要用于区分内核向应用程序通知的是何种 IO 事件（就绪事件 or 完成事件），以及由谁来完成 IO 读写（应用程序 or 内核）</strong></p>

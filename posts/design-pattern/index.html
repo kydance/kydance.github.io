@@ -12,7 +12,7 @@
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
     <meta property="article:published_time" content="2024-07-28T10:13:24+08:00">
-    <meta property="article:modified_time" content="2024-08-25T19:03:45+08:00">
+    <meta property="article:modified_time" content="2024-09-04T22:44:13+08:00">
     <meta property="article:tag" content="Design Patten">
     <meta property="article:tag" content="Golang">
     <meta property="article:tag" content="C&#43;&#43;">
@@ -35,8 +35,8 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/kydance.github.io\/posts\/design-pattern\/"
-        },"image": ["https:\/\/kydance.github.io\/favicon.ico"],"genre": "posts","keywords": "Design Patten, Golang, C\u002b\u002b, 最佳实践","wordcount":  141 ,
-        "url": "https:\/\/kydance.github.io\/posts\/design-pattern\/","datePublished": "2024-07-28T10:13:24+08:00","dateModified": "2024-08-25T19:03:45+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+        },"image": ["https:\/\/kydance.github.io\/favicon.ico"],"genre": "posts","keywords": "Design Patten, Golang, C\u002b\u002b, 最佳实践","wordcount":  177 ,
+        "url": "https:\/\/kydance.github.io\/posts\/design-pattern\/","datePublished": "2024-07-28T10:13:24+08:00","dateModified": "2024-09-04T22:44:13+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "kyden","logo": "https:\/\/kydance.github.io\/favicon.png"},"author": {
                 "@type": "Person",
@@ -133,7 +133,7 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Design Pattern</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https:github.com/kydance" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>kyden</a></span>&nbsp;<span class="post-category">included in <a href="/categories/design-patten/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Design Patten</a>&nbsp;<a href="/categories/golang/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Golang</a>&nbsp;<a href="/categories/c++/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>C++</a>&nbsp;<a href="/categories/%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>最佳实践</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-07-28">2024-07-28</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;141 words&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-07-28">2024-07-28</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;177 words&nbsp;
                 <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;One minute&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
@@ -150,7 +150,14 @@
     <li><a href="#ii-分类">II. 分类</a></li>
     <li><a href="#iii-创建型设计模式">III. 创建型设计模式</a>
       <ul>
-        <li><a href="#1-单例模式singleton-pattern">1. 单例模式（Singleton Pattern）</a></li>
+        <li><a href="#1-单例模式singleton-pattern">1. 单例模式（Singleton Pattern）</a>
+          <ul>
+            <li><a href="#应用场景">应用场景</a></li>
+            <li><a href="#解决方案">解决方案</a></li>
+            <li><a href="#单例模式结构">单例模式结构</a></li>
+            <li><a href="#应用示例">应用示例</a></li>
+          </ul>
+        </li>
         <li><a href="#2-简单工厂模式">2. 简单工厂模式</a></li>
       </ul>
     </li>
@@ -189,75 +196,75 @@
 <li>创建型（Creational）模式：如何创建对象</li>
 </ul>
 <table>
-<thead>
-<tr>
-<th style="text-align:left">模式名称</th>
-<th style="text-align:left">用途</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left"><strong>单例模式</strong> <br> 🌟🌟🌟🌟</td>
-<td style="text-align:left">保证一个类仅有一个实例，并提供一个访问它的全局访问点</td>
-</tr>
-<tr>
-<td style="text-align:left"><strong>简单工厂方法</strong> <br> 🌟🌟🌟</td>
-<td style="text-align:left">通过专门定义一个类来负责创建其他类的实例，被创建的实例通常都具有共同的基类</td>
-</tr>
-<tr>
-<td style="text-align:left"><strong>抽象工厂方法</strong> <br> 🌟🌟🌟🌟🌟</td>
-<td style="text-align:left">提供一个创建一系列相关或相互依赖的接口，而无需指定它们具体的类</td>
-</tr>
-<tr>
-<td style="text-align:left">原型模式</td>
-<td style="text-align:left">⽤原型实例指定创建对象的种类，并且通过拷⻉这些原型创建新的对象</td>
-</tr>
-<tr>
-<td style="text-align:left">建造者模式</td>
-<td style="text-align:left">将⼀个复杂的构建与其表示相分离，使得同样的构建过程可以创建不同的表示</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: left">模式名称</th>
+          <th style="text-align: left">用途</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><strong>单例模式</strong> <br> 🌟🌟🌟🌟</td>
+          <td style="text-align: left">保证一个类仅有一个实例，并提供一个访问它的全局访问点</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>简单工厂方法</strong> <br> 🌟🌟🌟</td>
+          <td style="text-align: left">通过专门定义一个类来负责创建其他类的实例，被创建的实例通常都具有共同的基类</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>抽象工厂方法</strong> <br> 🌟🌟🌟🌟🌟</td>
+          <td style="text-align: left">提供一个创建一系列相关或相互依赖的接口，而无需指定它们具体的类</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">原型模式</td>
+          <td style="text-align: left">⽤原型实例指定创建对象的种类，并且通过拷⻉这些原型创建新的对象</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">建造者模式</td>
+          <td style="text-align: left">将⼀个复杂的构建与其表示相分离，使得同样的构建过程可以创建不同的表示</td>
+      </tr>
+  </tbody>
 </table>
 <ul>
 <li>结构型（Structural）模式：如何实现类或对象的组合</li>
 </ul>
 <table>
-<thead>
-<tr>
-<th style="text-align:left">模式名称</th>
-<th style="text-align:left">用途</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left"><strong>适配器模式</strong> <br> 🌟🌟🌟🌟</td>
-<td style="text-align:left">将一个类的接口转换成客户希望的另外一个接口，使得原本由于接口不兼容而不能一起工作的那些类可以一起工作</td>
-</tr>
-<tr>
-<td style="text-align:left">桥接模式</td>
-<td style="text-align:left">将抽象部分与实际部分分离，使它们可以独立的变化</td>
-</tr>
-<tr>
-<td style="text-align:left"><strong>组合模式</strong> <br> 🌟🌟🌟🌟</td>
-<td style="text-align:left">将对象组合成树形结构以表示 “部分 - 整体” 的层次结构，使得用户对单个对象和组合对象的使用具有一致性</td>
-</tr>
-<tr>
-<td style="text-align:left"><strong>装饰模式</strong> <br> 🌟🌟🌟</td>
-<td style="text-align:left">动态地给一个对象添加一些额外的职责：就增加功能来说，此模式比生成子类更加灵活</td>
-</tr>
-<tr>
-<td style="text-align:left"><strong>外观模式</strong> <br> 🌟🌟🌟🌟🌟</td>
-<td style="text-align:left">为子系统的一组接口提供一个一致的界面，此模式定义了一个高层次接口，使得这一子系统更容易使用</td>
-</tr>
-<tr>
-<td style="text-align:left">享元模式</td>
-<td style="text-align:left">以共享的方式高效的支持大量的细粒度的对象</td>
-</tr>
-<tr>
-<td style="text-align:left">代理模式</td>
-<td style="text-align:left">为其他对象提供一种代理以控制这个对象的访问</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: left">模式名称</th>
+          <th style="text-align: left">用途</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><strong>适配器模式</strong> <br> 🌟🌟🌟🌟</td>
+          <td style="text-align: left">将一个类的接口转换成客户希望的另外一个接口，使得原本由于接口不兼容而不能一起工作的那些类可以一起工作</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">桥接模式</td>
+          <td style="text-align: left">将抽象部分与实际部分分离，使它们可以独立的变化</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>组合模式</strong> <br> 🌟🌟🌟🌟</td>
+          <td style="text-align: left">将对象组合成树形结构以表示 “部分 - 整体” 的层次结构，使得用户对单个对象和组合对象的使用具有一致性</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>装饰模式</strong> <br> 🌟🌟🌟</td>
+          <td style="text-align: left">动态地给一个对象添加一些额外的职责：就增加功能来说，此模式比生成子类更加灵活</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>外观模式</strong> <br> 🌟🌟🌟🌟🌟</td>
+          <td style="text-align: left">为子系统的一组接口提供一个一致的界面，此模式定义了一个高层次接口，使得这一子系统更容易使用</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">享元模式</td>
+          <td style="text-align: left">以共享的方式高效的支持大量的细粒度的对象</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">代理模式</td>
+          <td style="text-align: left">为其他对象提供一种代理以控制这个对象的访问</td>
+      </tr>
+  </tbody>
 </table>
 <ul>
 <li>行为型（Behavioral）模式：类或对象如何交互以及如何分配指责</li>
@@ -265,15 +272,19 @@
 <h2 id="iii-创建型设计模式">III. 创建型设计模式</h2>
 <h3 id="1-单例模式singleton-pattern">1. 单例模式（Singleton Pattern）</h3>
 <p>意图：它是一种创建型设计模式，限制了实例化类的对象个数，确保一个类只有一个实例，并且提供一个全局访问点。</p>
-<div class="details admonition problem open">
+<div class="details admonition warning open">
         <div class="details-summary admonition-title">
-            <i class="icon fas fa-pencil-alt fa-fw" aria-hidden="true"></i>Problem<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+            <i class="icon fas fa-exclamation-triangle fa-fw" aria-hidden="true"></i>warning<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
         </div>
         <div class="details-content">
-            <div class="admonition-content">Singleton Pattern 同时解决了两个问题，因此违法了<strong>单一职责原则</strong></div>
+            <div class="admonition-content"><p>Singleton Pattern 同时解决了两个问题，因此违法了<strong>单一职责原则</strong>:</p>
+<ol>
+<li>保证一个类只用一个实例。</li>
+<li>为该实例提供一个全局访问节点。</li>
+</ol></div>
         </div>
     </div>
-<p>应用场景：</p>
+<h4 id="应用场景">应用场景</h4>
 <ul>
 <li>配置管理器：在应用程序中，配置信息通常需要一个实例来管理，如此可以保证配置信息的一致性</li>
 <li>连接池：数据库连接池需要限制数据库连接的数量，以避免过多的连接消耗资源</li>
@@ -281,38 +292,80 @@
 <li>硬件管理器：对于某些硬件设备，如打印机 / 扫描仪等，可能只需要一个管理器来控制对它们的访问</li>
 <li>应用状态管理：在某些应用中，需要全局的管理状态，如用户会话管理或权限验证状态</li>
 </ul>
-<p>应用示例：</p>
-<pre><code>``` go
-type Singleton struct {
-	val string //
-}
+<h4 id="解决方案">解决方案</h4>
+<ul>
+<li>将默认构造函数设为私有，防止其他对象使用单例类的 <code>new</code> 运算符</li>
+<li>新建一个静态构建方法作为构造函数：该函数会“偷偷”调用私有构造函数来创建对象，并将其保存到一个静态成员变量中，之后所有对于该函数的调用都将返回这一缓存对象。</li>
+</ul>
+<h4 id="单例模式结构">单例模式结构</h4>
+<figure><img src="/posts/design-pattern/FactoryMethod-Singleton.svg">
+</figure>
 
-var once sync.Once
-
-var instance *Singleton
-
-func initSingleton() {
-	instance = &amp;Singleton{
-		val: &quot;unique instance&quot;,
-	}
-}
-
-func getInstance() *Singleton() {
-	once.Do(initSingleton)
-	return instance
-}
-```
-</code></pre>
-<h3 id="2-简单工厂模式">2. 简单工厂模式</h3>
+<h4 id="应用示例">应用示例</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-Go" data-lang="Go"><span class="line"><span class="cl"><span class="c1">// <a href="/posts/design-pattern/singleton.go" rel="">singleton.go</a>
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">designpattern</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="s">&#34;sync&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">var</span> <span class="nx">once</span> <span class="nx">sync</span><span class="p">.</span><span class="nx">Once</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">type</span> <span class="nx">Singleton</span> <span class="kd">struct</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">str</span> <span class="kt">string</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">var</span> <span class="nx">instance</span> <span class="o">*</span><span class="nx">Singleton</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">GetInstance</span><span class="p">()</span> <span class="o">*</span><span class="nx">Singleton</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="k">if</span> <span class="nx">instance</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="k">return</span> <span class="nx">instance</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="nx">once</span><span class="p">.</span><span class="nf">Do</span><span class="p">(</span><span class="kd">func</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">instance</span> <span class="p">=</span> <span class="o">&amp;</span><span class="nx">Singleton</span><span class="p">{}</span>
+</span></span><span class="line"><span class="cl">	<span class="p">})</span>
+</span></span><span class="line"><span class="cl">	<span class="k">return</span> <span class="nx">instance</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="2-简单工厂模式">2. 简单工厂模式</h3>
 <p>亦称：虚拟构造函数、Virtual Constructor、Factory Method</p>
 <p>意图：它是一种创建型设计模式，<strong>其在父类中提供一个创建对象的方法，允许子类决定实例化对象的类型</strong></p>
 <p>NOTE: 由于 Golang 中缺少类和继承等 OOP 特性，因此，无法使用 Go 来实现经典的工厂方法模式，但我们仍能实现基础版本，即简单工厂。</p></div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>Updated on 2024-08-25
-                                &nbsp;<a class="git-hash" href="https://github.com/kydance/blog/commit/6e95bb9827acbef694453134691747907ca29e68" target="_blank" title="commit by 6e95bb9827acbef694453134691747907ca29e68: Feat: design pattern">
-                                    <i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>6e95bb9</a></span>
+                <span>Updated on 2024-09-04
+                                &nbsp;<a class="git-hash" href="https://github.com/kydance/blog/commit/5573bb3f78911e493958bfbae932f15af3d129bf" target="_blank" title="commit by 5573bb3f78911e493958bfbae932f15af3d129bf: chore: update singleton pattern.">
+                                    <i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>5573bb3</a></span>
             </div><div class="post-info-license">
                 <span><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span>
             </div></div>
