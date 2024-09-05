@@ -35,7 +35,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/kydance.github.io\/posts\/design-pattern\/"
-        },"image": ["https:\/\/kydance.github.io\/favicon.ico"],"genre": "posts","keywords": "Design Patten, Golang, C\u002b\u002b, 最佳实践","wordcount":  177 ,
+        },"image": ["https:\/\/kydance.github.io\/favicon.ico"],"genre": "posts","keywords": "Design Patten, Golang, C\u002b\u002b, 最佳实践","wordcount":  183 ,
         "url": "https:\/\/kydance.github.io\/posts\/design-pattern\/","datePublished": "2024-07-28T10:13:24+08:00","dateModified": "2024-09-04T22:44:13+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "kyden","logo": "https:\/\/kydance.github.io\/favicon.png"},"author": {
@@ -133,7 +133,7 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Design Pattern</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https:github.com/kydance" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>kyden</a></span>&nbsp;<span class="post-category">included in <a href="/categories/design-patten/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Design Patten</a>&nbsp;<a href="/categories/golang/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Golang</a>&nbsp;<a href="/categories/c++/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>C++</a>&nbsp;<a href="/categories/%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>最佳实践</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-07-28">2024-07-28</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;177 words&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-07-28">2024-07-28</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;183 words&nbsp;
                 <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;One minute&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
@@ -155,6 +155,7 @@
             <li><a href="#应用场景">应用场景</a></li>
             <li><a href="#解决方案">解决方案</a></li>
             <li><a href="#单例模式结构">单例模式结构</a></li>
+            <li><a href="#与其他模式的关系">与其他模式的关系</a></li>
             <li><a href="#应用示例">应用示例</a></li>
           </ul>
         </li>
@@ -301,6 +302,17 @@
 <figure><img src="/posts/design-pattern/FactoryMethod-Singleton.svg">
 </figure>
 
+<h4 id="与其他模式的关系">与其他模式的关系</h4>
+<ul>
+<li><strong>外观模式</strong>类通常可以转化为<strong>单例模式</strong>类，因为在大部分情况下一个外观对象就足够啦</li>
+<li>如果能将对象的所有共享状态简化为一个享元对象，那么<strong>享元模式</strong>就和<strong>单例</strong>类似，但二者有两个根本性的不同：
+<ol>
+<li>单例只有一个单例实体，但享元类可以有多个实体，各实体的内在状态也可以不同</li>
+<li>单例对象可以是可变的，享元对象不可变</li>
+</ol>
+</li>
+<li><strong>抽象工厂模式</strong>、<strong>生成器模式</strong>和<strong>原型模式</strong>都可以用<strong>单例</strong>来实现</li>
+</ul>
 <h4 id="应用示例">应用示例</h4>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
