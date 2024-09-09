@@ -1,0 +1,24 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>设计与实现 - Category - Kyden Grocery</title>
+        <link>https://kydance.github.io/categories/%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0/</link>
+        <description>设计与实现 - Category - Kyden Grocery</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>kytedance@gmail.com (kyden)</managingEditor>
+            <webMaster>kytedance@gmail.com (kyden)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sat, 07 Sep 2024 20:56:52 &#43;0800</lastBuildDate><atom:link href="https://kydance.github.io/categories/%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0/" rel="self" type="application/rss+xml" /><item>
+    <title>资格校验接口的微服务设计与实现</title>
+    <link>https://kydance.github.io/posts/check-rule/</link>
+    <pubDate>Sat, 07 Sep 2024 20:56:52 &#43;0800</pubDate>
+    <author>kyden</author>
+    <guid>https://kydance.github.io/posts/check-rule/</guid>
+    <description><![CDATA[<div class="details admonition abstract open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-list-ul fa-fw" aria-hidden="true"></i>导语<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">当在设计微服务接口时，或许会遇到一个接口职责不单一时，此时应该如何处理呢？
+本文就以资格校验服务为例，详细介绍一下如何使用工厂方法、流量镜像、流量回放等技术手段解决该问题。</div>
+        </div>
+    </div>]]></description>
+</item>
+</channel>
+</rss>
