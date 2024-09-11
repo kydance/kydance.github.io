@@ -4,7 +4,39 @@
         <link>https://kydance.github.io/tags/</link>
         <description>Tags - Tag - Kyden Grocery</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>kytedance@gmail.com (kyden)</managingEditor>
-            <webMaster>kytedance@gmail.com (kyden)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Mon, 09 Sep 2024 22:39:40 &#43;0800</lastBuildDate><atom:link href="https://kydance.github.io/tags/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>kytedance@gmail.com (kyden)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Wed, 11 Sep 2024 22:13:48 &#43;0800</lastBuildDate><atom:link href="https://kydance.github.io/tags/" rel="self" type="application/rss+xml" /><item>
+    <title>Cmake</title>
+    <link>https://kydance.github.io/tags/cmake/</link>
+    <pubDate>Wed, 11 Sep 2024 22:13:48 &#43;0800</pubDate>
+    <author>kyden</author>
+    <guid>https://kydance.github.io/tags/cmake/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
+    <title>CMakeLists.txt</title>
+    <link>https://kydance.github.io/tags/cmakelists.txt/</link>
+    <pubDate>Wed, 11 Sep 2024 22:13:48 &#43;0800</pubDate>
+    <author>kyden</author>
+    <guid>https://kydance.github.io/tags/cmakelists.txt/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
+    <title>Make</title>
+    <link>https://kydance.github.io/tags/make/</link>
+    <pubDate>Wed, 11 Sep 2024 22:13:48 &#43;0800</pubDate>
+    <author>kyden</author>
+    <guid>https://kydance.github.io/tags/make/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
+    <title>Makefile</title>
+    <link>https://kydance.github.io/tags/makefile/</link>
+    <pubDate>Wed, 11 Sep 2024 22:13:48 &#43;0800</pubDate>
+    <author>kyden</author>
+    <guid>https://kydance.github.io/tags/makefile/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
     <title>Decoder</title>
     <link>https://kydance.github.io/tags/decoder/</link>
     <pubDate>Mon, 09 Sep 2024 22:39:40 &#43;0800</pubDate>
@@ -130,38 +162,6 @@
     <pubDate>Sat, 13 Jul 2024 21:04:57 &#43;0800</pubDate>
     <author>kyden</author>
     <guid>https://kydance.github.io/tags/stardard/</guid>
-    <description><![CDATA[]]></description>
-</item>
-<item>
-    <title>Context</title>
-    <link>https://kydance.github.io/tags/context/</link>
-    <pubDate>Sat, 01 Jun 2024 21:37:55 &#43;0800</pubDate>
-    <author>kyden</author>
-    <guid>https://kydance.github.io/tags/context/</guid>
-    <description><![CDATA[]]></description>
-</item>
-<item>
-    <title>Escape Analysis</title>
-    <link>https://kydance.github.io/tags/escape-analysis/</link>
-    <pubDate>Sun, 19 May 2024 22:47:26 &#43;0800</pubDate>
-    <author>kyden</author>
-    <guid>https://kydance.github.io/tags/escape-analysis/</guid>
-    <description><![CDATA[]]></description>
-</item>
-<item>
-    <title>Heap</title>
-    <link>https://kydance.github.io/tags/heap/</link>
-    <pubDate>Sun, 19 May 2024 22:47:26 &#43;0800</pubDate>
-    <author>kyden</author>
-    <guid>https://kydance.github.io/tags/heap/</guid>
-    <description><![CDATA[]]></description>
-</item>
-<item>
-    <title>Stack</title>
-    <link>https://kydance.github.io/tags/stack/</link>
-    <pubDate>Sun, 19 May 2024 22:47:26 &#43;0800</pubDate>
-    <author>kyden</author>
-    <guid>https://kydance.github.io/tags/stack/</guid>
     <description><![CDATA[]]></description>
 </item>
 </channel>
