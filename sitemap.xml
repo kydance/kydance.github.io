@@ -2,18 +2,29 @@
     xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
     xmlns:xhtml="http://www.w3.org/1999/xhtml"
     ><url>
-            <loc>https://kydance.github.io/categories/</loc><lastmod>2024-09-11T22:37:51&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://kydance.github.io/categories/</loc><lastmod>2024-09-15T16:11:13&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://kydance.github.io/tags/go/</loc><lastmod>2024-09-15T16:11:13&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://kydance.github.io/categories/go/</loc><lastmod>2024-09-15T16:11:13&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://kydance.github.io/</loc><lastmod>2024-09-15T16:11:13&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://kydance.github.io/posts/</loc><lastmod>2024-09-15T16:11:13&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://kydance.github.io/tags/regex/</loc><lastmod>2024-09-15T16:11:13&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://kydance.github.io/categories/regex/</loc><lastmod>2024-09-15T16:11:13&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://kydance.github.io/tags/regular-expression/</loc><lastmod>2024-09-15T16:11:13&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://kydance.github.io/categories/regular-expression/</loc><lastmod>2024-09-15T16:11:13&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://kydance.github.io/tags/</loc><lastmod>2024-09-15T16:11:13&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://kydance.github.io/tags/%E5%85%A5%E9%97%A8/</loc><lastmod>2024-09-15T16:11:13&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://kydance.github.io/categories/%E5%85%A5%E9%97%A8/</loc><lastmod>2024-09-15T16:11:13&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://kydance.github.io/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/</loc><lastmod>2024-09-15T16:11:13&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://kydance.github.io/categories/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/</loc><lastmod>2024-09-15T16:11:13&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://kydance.github.io/posts/regex-in-one/</loc><lastmod>2024-09-15T16:11:13&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>https://kydance.github.io/tags/cmake/</loc><lastmod>2024-09-11T22:37:51&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>https://kydance.github.io/categories/cmake/</loc><lastmod>2024-09-11T22:37:51&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>https://kydance.github.io/tags/cmakelists.txt/</loc><lastmod>2024-09-11T22:37:51&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>https://kydance.github.io/categories/cmakelists.txt/</loc><lastmod>2024-09-11T22:37:51&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>https://kydance.github.io/</loc><lastmod>2024-09-11T22:37:51&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>https://kydance.github.io/tags/make/</loc><lastmod>2024-09-11T22:37:51&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>https://kydance.github.io/categories/make/</loc><lastmod>2024-09-11T22:37:51&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>https://kydance.github.io/tags/makefile/</loc><lastmod>2024-09-11T22:37:51&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>https://kydance.github.io/categories/makefile/</loc><lastmod>2024-09-11T22:37:51&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>https://kydance.github.io/posts/</loc><lastmod>2024-09-11T22:37:51&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>https://kydance.github.io/tags/</loc><lastmod>2024-09-11T22:37:51&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>https://kydance.github.io/posts/make-cmake/</loc><lastmod>2024-09-11T22:37:51&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>https://kydance.github.io/tags/decoder/</loc><lastmod>2024-09-10T22:09:48&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>https://kydance.github.io/categories/decoder/</loc><lastmod>2024-09-10T22:09:48&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>

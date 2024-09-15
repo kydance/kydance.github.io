@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>浅析 Regular Expression (正则表达式) - Kyden Grocery</title><meta name="Description" content="Kyden&#39;s Blog Site"><meta property="og:url" content="https://kydance.github.io/posts/regex-in-one/">
+  <meta property="og:site_name" content="Kyden Grocery">
+  <meta property="og:title" content="浅析 Regular Expression (正则表达式)">
+  <meta property="og:description" content=" 导语 正则表达式, 是一种小型的、高度专业化的编程语言 ">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2024-09-15T14:45:47+08:00">
+    <meta property="article:modified_time" content="2024-09-15T16:11:13+08:00">
+    <meta property="article:tag" content="Regex">
+    <meta property="article:tag" content="Regular Expression">
+    <meta property="article:tag" content="正则表达式">
+    <meta property="article:tag" content="入门">
+    <meta property="article:tag" content="Go">
+    <meta property="og:image" content="https://kydance.github.io/favicon.png">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://kydance.github.io/favicon.png">
+  <meta name="twitter:title" content="浅析 Regular Expression (正则表达式)">
+  <meta name="twitter:description" content=" 导语 正则表达式, 是一种小型的、高度专业化的编程语言 ">
+<meta name="application-name" content="kyden">
+<meta name="apple-mobile-web-app-title" content="kyden"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="canonical" href="https://kydance.github.io/posts/regex-in-one/" /><link rel="prev" href="https://kydance.github.io/posts/make-cmake/" /><link rel="stylesheet" href="/css/style.min.cf6878db51c51b2d04ae155284a4403dbee8db33e16c066f954c95279c271fcd.css" integrity="sha256-z2h421HFGy0ErhVShKRAPb7o2zPhbAZvlUyVJ5wnH80="><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "浅析 Regular Expression (正则表达式)",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/kydance.github.io\/posts\/regex-in-one\/"
+        },"image": ["https:\/\/kydance.github.io\/favicon.ico"],"genre": "posts","keywords": "regex, Regular Expression, 正则表达式, 入门, Go","wordcount":  295 ,
+        "url": "https:\/\/kydance.github.io\/posts\/regex-in-one\/","datePublished": "2024-09-15T14:45:47+08:00","dateModified": "2024-09-15T16:11:13+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@type": "Organization",
+            "name": "kyden","logo": "https:\/\/kydance.github.io\/favicon.png"},"author": {
+                "@type": "Person",
+                "name": "kyden"
+            },"description": ""
+    }
+    </script>
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-M1S0PTJ6RH"></script>
+        <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-M1S0PTJ6RH');
+        </script>
+    </head>
+
+    <body data-header-desktop="auto" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Kyden Grocery"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/favicon.ico"
+        data-srcset="/favicon.ico, /favicon.ico 1.5x, /favicon.ico 2x"
+        data-sizes="auto"
+        alt="/favicon.ico"
+        title="/favicon.ico" /></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> Categories </a><a class="menu-item" href="/about/"> About </a><a class="menu-item" href="https://github.com/kydance" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw' aria-hidden='true'></i>  </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Type Something..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Kyden Grocery"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/favicon.ico"
+        data-srcset="/favicon.ico, /favicon.ico 1.5x, /favicon.ico 2x"
+        data-sizes="auto"
+        alt="/favicon.ico"
+        title="/favicon.ico" /></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Type Something..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">Categories</a><a class="menu-item" href="/about/" title="">About</a><a class="menu-item" href="https://github.com/kydance" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw' aria-hidden='true'></i></a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">浅析 Regular Expression (正则表达式)</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https:github.com/kydance" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>kyden</a></span>&nbsp;<span class="post-category">included in <a href="/categories/regex/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Regex</a>&nbsp;<a href="/categories/regular-expression/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Regular Expression</a>&nbsp;<a href="/categories/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>正则表达式</a>&nbsp;<a href="/categories/%E5%85%A5%E9%97%A8/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>入门</a>&nbsp;<a href="/categories/go/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Go</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-09-15">2024-09-15</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;295 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;2 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#i-何谓正则表达式">I. 何谓正则表达式</a></li>
+    <li><a href="#ii-普通字符-与-元字符">II. 普通字符 与 元字符</a></li>
+    <li><a href="#iii-预定义字符">III. 预定义字符</a></li>
+    <li><a href="#iv-特殊分组">IV. 特殊分组</a></li>
+    <li><a href="#v-matchsearch与findall">V. <code>match</code>、<code>search</code>与<code>findall</code></a>
+      <ul>
+        <li><a href="#1-match">1. <code>match</code></a></li>
+        <li><a href="#2-search">2. <code>search</code></a></li>
+        <li><a href="#3-findall">3. <code>findall</code></a></li>
+      </ul>
+    </li>
+    <li><a href="#vi-贪婪匹配与惰性匹配">VI. 贪婪匹配与惰性匹配</a>
+      <ul>
+        <li><a href="#1-贪婪匹配">1. 贪婪匹配</a></li>
+        <li><a href="#2-惰性匹配">2. 惰性匹配</a></li>
+      </ul>
+    </li>
+    <li><a href="#vii-reference">VII. Reference</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><div class="details admonition abstract open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-list-ul fa-fw" aria-hidden="true"></i>导语<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">正则表达式, 是一种小型的、高度专业化的编程语言</div>
+        </div>
+    </div>
+<h2 id="i-何谓正则表达式">I. 何谓正则表达式</h2>
+<p>正则表达式(Regular Expression，常简写为 regex、regexp、RE)，又称<strong>规律表达式</strong>、<strong>模式表达式</strong>、<strong>正则表达式</strong>、<strong>常规表达式</strong>，是计算机科学概念，用简单字符串来描述、匹配文中全部匹配指定格式的字符串，现在很多文本编辑器都支持用正则表达式搜索、取代匹配指定格式的字符串。</p>
+<p>总之, Regex 是一种小型的、高度专业化的编程语言, 它被用来检索、替换那些符合某个模式(规则)的文本。</p>
+<p>一个正则表达式通常被称为一个<strong>模式</strong>（pattern），为用来描述或者匹配一系列匹配某个句法规则的字符串.</p>
+<p>正则表达式是由普通字符(例如字符 <code>a</code> 到 <code>z</code>)以及特殊字符(称为 &ldquo;元字符&rdquo; )组成的文字模式。
+模式描述在搜索文本时要匹配的一个或多个字符串。
+正则表达式作为一个模板, 将某个字符模式与所搜索的字符串进行匹配。</p>
+<h2 id="ii-普通字符-与-元字符">II. 普通字符 与 元字符</h2>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left">模式</th>
+          <th style="text-align: left">描述</th>
+          <th style="text-align: left">正则表达式</th>
+          <th style="text-align: left">匹配项</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">普通字符 <code>a</code> ~ <code>z</code></td>
+          <td style="text-align: left">匹配自身</td>
+          <td style="text-align: left"><code>abc</code></td>
+          <td style="text-align: left"><code>abc</code></td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>.</code></td>
+          <td style="text-align: left">匹配除换行符 <code>\n</code> 以外的任意字符</td>
+          <td style="text-align: left"><code>a.c</code></td>
+          <td style="text-align: left"><code>abc</code> / <code>acc</code> / <code>awc</code></td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>\</code></td>
+          <td style="text-align: left">转义字符，使后一个字符改变原来的意思</td>
+          <td style="text-align: left"><code>a\.c;a\\c</code></td>
+          <td style="text-align: left"><code>a.c;a\c</code></td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>*</code></td>
+          <td style="text-align: left">匹配前一个字符 0 次或多次</td>
+          <td style="text-align: left"><code>a*c</code></td>
+          <td style="text-align: left"><code>ac</code> / <code>c</code> / <code>aaaaac</code></td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>+</code></td>
+          <td style="text-align: left">匹配前一个字符 1 次或多次</td>
+          <td style="text-align: left"><code>a+c</code></td>
+          <td style="text-align: left"><code>ac</code> / <code>aac</code> / <code>aaaaac</code></td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>?</code></td>
+          <td style="text-align: left">匹配前一个字符 0 次或 1 次</td>
+          <td style="text-align: left"><code>a?c</code></td>
+          <td style="text-align: left"><code>ac</code> / <code>c</code></td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>^</code></td>
+          <td style="text-align: left">匹配字符串开头，在多行模式中匹配每一行的开头</td>
+          <td style="text-align: left"><code>^ab</code></td>
+          <td style="text-align: left"><code>ab</code></td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>$</code></td>
+          <td style="text-align: left">匹配字符串结尾，在多行模式中匹配每一行的结尾</td>
+          <td style="text-align: left"><code>ab$</code></td>
+          <td style="text-align: left"><code>ab</code></td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>|</code></td>
+          <td style="text-align: left">或，匹配 <code>|</code> 左右任意一个表达式，从左向右匹配，若没有 <code>|</code> 包括在 <code>()</code> 中，则匹配整个表达式</td>
+          <td style="text-align: left"><code>abc|def</code></td>
+          <td style="text-align: left"><code>abc</code> / <code>def</code></td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>{}</code></td>
+          <td style="text-align: left"><code>{m}</code> 匹配前一个字符 m 次，<code>{m,n}</code> 匹配前一个字符 m 到 n 次</td>
+          <td style="text-align: left"><code>a{2}c</code></td>
+          <td style="text-align: left"><code>aac</code></td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>[]</code></td>
+          <td style="text-align: left">字符集合，匹配方括号中包含的任意一个字符: 字符可以逐个列出，也可给出范围，所有特殊字符在字符集中都失去其原有的特殊含义（使用 <code>\</code> 转义恢复其特殊含义）</td>
+          <td style="text-align: left"><code>[abc]</code></td>
+          <td style="text-align: left"><code>a</code> / <code>b</code> / <code>c</code></td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>()</code></td>
+          <td style="text-align: left">分组，将括号中字符作为一个整体，可以用来匹配括号中的字符</td>
+          <td style="text-align: left"><code>(abc)</code></td>
+          <td style="text-align: left"><code>abc</code></td>
+      </tr>
+  </tbody>
+</table>
+<div class="details admonition tip open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-lightbulb fa-fw" aria-hidden="true"></i>Tip<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><ul>
+<li>反斜杠 <code>\</code> 后边跟元字符去除特殊含义，即特殊字符普通化</li>
+<li>反斜杠 <code>\</code> 后边跟普通字符实现特殊功能，即普通字符特殊化，亦称预定义字符</li>
+<li>引用序号对应的字组成所匹配的字符串</li>
+</ul>
+</div>
+        </div>
+    </div>
+<h2 id="iii-预定义字符">III. 预定义字符</h2>
+<p>预定义字符集是指在正则表达式中具有特殊意义的专用字符集，如 <code>\d</code>、<code>\w</code>、<code>\s</code> 等，可以写在方括号 <code>[]</code> 中，也可以单独使用。</p>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left">模式</th>
+          <th style="text-align: left">描述</th>
+          <th style="text-align: left">正则表达式</th>
+          <th style="text-align: left">匹配项</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><code>\d</code></td>
+          <td style="text-align: left">匹配一个数字，等价于 <code>[0-9]</code></td>
+          <td style="text-align: left"><code>a\dc</code></td>
+          <td style="text-align: left"><code>a1c</code> / <code>a2c</code> / <code>a3c</code></td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>\D</code></td>
+          <td style="text-align: left">匹配一个非数字，等价于 <code>[^0-9]</code></td>
+          <td style="text-align: left"><code>a\Dc</code></td>
+          <td style="text-align: left"><code>a-c</code> / <code>a$c</code></td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>\s</code></td>
+          <td style="text-align: left">匹配一个空白字符，包括空格、制表符、换页符和换行符，等价于 <code>[ \f\n\r\t\v]</code></td>
+          <td style="text-align: left"><code>a\sc</code></td>
+          <td style="text-align: left"><code>a c</code> / <code>a\tc</code> / <code>a\nc</code></td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>\S</code></td>
+          <td style="text-align: left">匹配一个非空白字符，等价于 <code>[^ \f\n\r\t\v]</code> / <code>[^\s]</code></td>
+          <td style="text-align: left"><code>a\Sc</code></td>
+          <td style="text-align: left"><code>a$c</code> / <code>a-c</code></td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>\w</code></td>
+          <td style="text-align: left">匹配一个单字字符（字母、数字或者下划线），等价于 <code>[A-Za-z0-9_]</code></td>
+          <td style="text-align: left"><code>a\wc</code></td>
+          <td style="text-align: left"><code>a1c</code> / <code>abc</code> / <code>a_c</code></td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>\W</code></td>
+          <td style="text-align: left">匹配一个非单字字符，即特殊字符，等价于 <code>[^A-Za-z0-9_]</code></td>
+          <td style="text-align: left"><code>a\Wc</code></td>
+          <td style="text-align: left"><code>a$c</code> / <code>a-c</code></td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>\A</code></td>
+          <td style="text-align: left">仅匹配字符串开头，等价于 <code>^</code></td>
+          <td style="text-align: left"><code>\Aabc</code></td>
+          <td style="text-align: left"><code>abc</code></td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>\Z</code></td>
+          <td style="text-align: left">仅匹配字符串结尾，等价于 <code>$</code></td>
+          <td style="text-align: left"><code>abc\Z</code></td>
+          <td style="text-align: left"><code>abc</code></td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>\b</code></td>
+          <td style="text-align: left">匹配一个单词边界，即字与空格间的位置</td>
+          <td style="text-align: left"><code>\babc\b</code></td>
+          <td style="text-align: left"><code>&lt;space&gt;</code></td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>\B</code></td>
+          <td style="text-align: left">匹配非单词边界，等价于 <code>[^\b]</code></td>
+          <td style="text-align: left"><code>a\Bbc</code></td>
+          <td style="text-align: left"><code>abc</code></td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="iv-特殊分组">IV. 特殊分组</h2>
+<p>特殊分组是指在正则表达式中具有特殊意义的专用分组，如 <code>(?P&lt;name&gt;...)</code>、<code>(?P=name)</code>、<code>(?#...)</code>、<code>(?=...)</code>、<code>(?!...)</code>、<code>(?&lt;=...)</code>、<code>(?&lt;!...)</code> 等，可以写在方括号 <code>[]</code> 中，也可以单独使用。</p>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left">模式</th>
+          <th style="text-align: left">描述</th>
+          <th style="text-align: left">正则表达式</th>
+          <th style="text-align: left">匹配项</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><code>(?P&lt;name&gt;...)</code></td>
+          <td style="text-align: left">为分组起一个别名，匹配的字符串可以通过 <code>\g&lt;name&gt;</code> 或 <code>\k&lt;name&gt;</code> 引用</td>
+          <td style="text-align: left"><code>(?P&lt;name&gt;abc)</code></td>
+          <td style="text-align: left"><code>abc</code></td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>(?P=name)</code></td>
+          <td style="text-align: left">引用别名为 name 的分组匹配的字符串</td>
+          <td style="text-align: left"><code>(?P&lt;id&gt;\d)abc(?P=id)</code></td>
+          <td style="text-align: left"><code>1abc1</code> / <code>2abc2</code></td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>\&lt;number&gt;</code></td>
+          <td style="text-align: left">通过 <code>\g&lt;number&gt;</code> 或 <code>\k&lt;number&gt;</code> 引用编号为 number 的分组匹配的字符串</td>
+          <td style="text-align: left">`(\d)abc\1</td>
+          <td style="text-align: left"><code>1abc</code> / <code>2abc</code></td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="v-matchsearch与findall">V. <code>match</code>、<code>search</code>与<code>findall</code></h2>
+<h3 id="1-match">1. <code>match</code></h3>
+<p><code>match</code> 方法用于查找字符串的头部（也可以指定起始位置），它是一次匹配，只要找到了一个匹配的结果就返回，而不是查找所有匹配的结果。</p>
+<h3 id="2-search">2. <code>search</code></h3>
+<p><code>search</code> 方法用于查找字符串的任何位置，它也是一次匹配，只要找到了一个匹配的结果就返回，而不是查找所有匹配的结果。</p>
+<h3 id="3-findall">3. <code>findall</code></h3>
+<p><code>findall</code> 方法用于查找字符串所有（非重复）的匹配子串，返回一个列表，如果没有找到匹配的，则返回空列表。</p>
+<h2 id="vi-贪婪匹配与惰性匹配">VI. 贪婪匹配与惰性匹配</h2>
+<h3 id="1-贪婪匹配">1. 贪婪匹配</h3>
+<p>正则表达式一般趋向于最大长度匹配，即匹配直到下一个字符不满足匹配规则为止，这被称为贪婪匹配。</p>
+<p>例如，<code>*</code> 通常意味着匹配零个或多个字符（包括零个），<code>+</code> 通常意味着匹配一个或多个字符（包括一个），<code>?</code> 通常意味着匹配零个或一个字符，<code>{m,n}</code> 通常意味着匹配 m 到 n 个字符。</p>
+<h3 id="2-惰性匹配">2. 惰性匹配</h3>
+<p>惰性匹配，即匹配尽可能少的字符。在贪婪匹配符号后面加上一个问号 <code>?</code> 就可以实现惰性匹配。</p>
+<h2 id="vii-reference">VII. Reference</h2>
+<ul>
+<li><a href="https://zh.wikipedia.org/wiki/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F" target="_blank" rel="noopener noreffer ">正则表达式 wiki</a></li>
+</ul></div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2024-09-15
+                                &nbsp;<a class="git-hash" href="https://github.com/kydance/blog/commit/b35c54329cf83e327297e09836b63ebc3df238b9" target="_blank" title="commit by b35c54329cf83e327297e09836b63ebc3df238b9: Add new article: &#34;浅析 Regular Expression (正则表达式)&#34;">
+                                    <i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>b35c543</a></span>
+            </div><div class="post-info-license">
+                <span><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://kydance.github.io/posts/regex-in-one/" data-title="浅析 Regular Expression (正则表达式)" data-hashtags="regex,Regular Expression,正则表达式,入门,Go"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://kydance.github.io/posts/regex-in-one/" data-hashtag="regex"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Linkedin" data-sharer="linkedin" data-url="https://kydance.github.io/posts/regex-in-one/"><i class="fab fa-linkedin fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on WhatsApp" data-sharer="whatsapp" data-url="https://kydance.github.io/posts/regex-in-one/" data-title="浅析 Regular Expression (正则表达式)" data-web><i class="fab fa-whatsapp fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="https://kydance.github.io/posts/regex-in-one/" data-title="浅析 Regular Expression (正则表达式)"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Reddit" data-sharer="reddit" data-url="https://kydance.github.io/posts/regex-in-one/"><i class="fab fa-reddit fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="https://kydance.github.io/posts/regex-in-one/" data-title="浅析 Regular Expression (正则表达式)"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@7.3.0/icons/line.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://kydance.github.io/posts/regex-in-one/" data-title="浅析 Regular Expression (正则表达式)"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 百度" data-sharer="baidu" data-url="https://kydance.github.io/posts/regex-in-one/" data-title="浅析 Regular Expression (正则表达式)"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@7.3.0/icons/baidu.svg" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/regex/">Regex</a>,&nbsp;<a href="/tags/regular-expression/">Regular Expression</a>,&nbsp;<a href="/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/">正则表达式</a>,&nbsp;<a href="/tags/%E5%85%A5%E9%97%A8/">入门</a>,&nbsp;<a href="/tags/go/">Go</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/posts/make-cmake/" class="prev" rel="prev" title="浅析 Make 与 Cmake"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>浅析 Make 与 Cmake</a></div>
+</div>
+<div id="comments"><div id="gitalk" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://github.com/gitalk/gitalk"></a>Gitalk</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2024</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/kydance" target="_blank">kyden</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></br><script>
+                    function siteTime() {
+                        var seconds = 1000;
+                        var minutes = seconds * 60;
+                        var hours = minutes * 60;
+                        var days = hours * 24;
+                        var years = days * 365;
+                        var today = new Date();
+                        var startYear = 2024;
+                        var startMonth = 4;
+                        var startDate = 18;
+                        var startHour = 12;
+                        var startMinute = 57;
+                        var startSecond = 2;
+                        var todayYear = today.getFullYear();
+                        var todayMonth = today.getMonth() + 1;
+                        var todayDate = today.getDate();
+                        var todayHour = today.getHours();
+                        var todayMinute = today.getMinutes();
+                        var todaySecond = today.getSeconds();
+                        var t1 = Date.UTC(startYear, startMonth, startDate, startHour, startMinute, startSecond);
+                        var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+                        var diff = t2 - t1;
+                        var diffYears = Math.floor(diff / years);
+                        var diffDays = Math.floor((diff / days) - diffYears * 365);
+                        var diffHours = Math.floor((diff - (diffYears * 365 + diffDays) * days) / hours);
+                        var diffMinutes = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours) /
+                            minutes);
+                        var diffSeconds = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours -
+                            diffMinutes * minutes) / seconds);
+                        if (startYear == todayYear) {
+                            
+                            document.getElementById("sitetime").innerHTML = "已安全运行 " + diffDays + " 天 " + diffHours +
+                                " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                        } else {
+                            
+                            document.getElementById("sitetime").innerHTML = "已安全运行 " + diffYears + " 年 " + diffDays +
+                                " 天 " + diffHours + " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                        }
+                    }
+                    setInterval(siteTime, 1000);
+                </script>
+                <span id="sitetime">载入运行时间...</span>
+            </div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@2.5.0/css/lightgallery-bundle.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><script type="text/javascript" src="https://polyfill.io/v3/polyfill.min.js?features=Array.prototype.fill%2CArray.prototype.find%2CArray.from%2CIntersectionObserver%2CMath.sign%2CObject.assign%2CPromise%2CObject.entries%2Chtml5shiv%2CObject.values%2Cfetch%2CElement.prototype.after"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/object-fit-images@3.2.4/dist/ofi.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.38.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/algoliasearch@4.13.1/dist/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery@2.5.0/lightgallery.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery@2.5.0/plugins/thumbnail/lg-thumbnail.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery@2.5.0/plugins/zoom/lg-zoom.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/copy-tex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/mhchem.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{"gitalk":{"admin":["kydance"],"clientID":"Ov23li57QoCQY8gKyhxe","clientSecret":"bcd3cf3f8167ffcfeab2c033d961d1500f42447e","id":"2024-09-15T14:45:47+08:00","owner":"kydance","repo":"gitalk","title":"浅析 Regular Expression (正则表达式)"}},"cookieconsent":{"content":{"dismiss":"Got it!","link":"Learn more","message":"This website uses Cookies to improve your experience."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"lightgallery":true,"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"algoliaAppID":"PASDMWALPK","algoliaIndex":"index.en","algoliaSearchKey":"b42948e51daaa93df92381c8e2ac0f93","highlightTag":"em","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"algolia"}};</script><script type="text/javascript" src="/js/theme.min.d7121d72cd85153ec9d35a888cee3eb28c2700ca763f649a538f6c772d750021.js" integrity="sha256-1xIdcs2FFT7J01qIjO4+sownAMp2P2SaU49sdy11ACE="></script><script type="text/javascript">
+            window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());
+            gtag('config', 'G-M1S0PTJ6RH', { 'anonymize_ip': true });
+        </script><script type="text/javascript" src="https://www.googletagmanager.com/gtag/js?id=G-M1S0PTJ6RH" async></script></body>
+</html>
