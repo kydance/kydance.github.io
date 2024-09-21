@@ -4,7 +4,47 @@
         <link>https://kydance.github.io/categories/</link>
         <description>Categories - Category - Kyden Grocery</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>kytedance@gmail.com (kyden)</managingEditor>
-            <webMaster>kytedance@gmail.com (kyden)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sun, 15 Sep 2024 14:45:47 &#43;0800</lastBuildDate><atom:link href="https://kydance.github.io/categories/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>kytedance@gmail.com (kyden)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sat, 21 Sep 2024 09:55:48 &#43;0800</lastBuildDate><atom:link href="https://kydance.github.io/categories/" rel="self" type="application/rss+xml" /><item>
+    <title>CLI</title>
+    <link>https://kydance.github.io/categories/cli/</link>
+    <pubDate>Sat, 21 Sep 2024 09:55:48 &#43;0800</pubDate>
+    <author>kyden</author>
+    <guid>https://kydance.github.io/categories/cli/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
+    <title>Cobra</title>
+    <link>https://kydance.github.io/categories/cobra/</link>
+    <pubDate>Sat, 21 Sep 2024 09:55:48 &#43;0800</pubDate>
+    <author>kyden</author>
+    <guid>https://kydance.github.io/categories/cobra/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
+    <title>命令行</title>
+    <link>https://kydance.github.io/categories/%E5%91%BD%E4%BB%A4%E8%A1%8C/</link>
+    <pubDate>Sat, 21 Sep 2024 09:55:48 &#43;0800</pubDate>
+    <author>kyden</author>
+    <guid>https://kydance.github.io/categories/%E5%91%BD%E4%BB%A4%E8%A1%8C/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
+    <title>框架</title>
+    <link>https://kydance.github.io/categories/%E6%A1%86%E6%9E%B6/</link>
+    <pubDate>Sat, 21 Sep 2024 09:55:48 &#43;0800</pubDate>
+    <author>kyden</author>
+    <guid>https://kydance.github.io/categories/%E6%A1%86%E6%9E%B6/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
+    <title>现代化</title>
+    <link>https://kydance.github.io/categories/%E7%8E%B0%E4%BB%A3%E5%8C%96/</link>
+    <pubDate>Sat, 21 Sep 2024 09:55:48 &#43;0800</pubDate>
+    <author>kyden</author>
+    <guid>https://kydance.github.io/categories/%E7%8E%B0%E4%BB%A3%E5%8C%96/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
     <title>Go</title>
     <link>https://kydance.github.io/categories/go/</link>
     <pubDate>Sun, 15 Sep 2024 14:45:47 &#43;0800</pubDate>
@@ -122,46 +162,6 @@
     <pubDate>Sat, 07 Sep 2024 20:56:52 &#43;0800</pubDate>
     <author>kyden</author>
     <guid>https://kydance.github.io/categories/%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0/</guid>
-    <description><![CDATA[]]></description>
-</item>
-<item>
-    <title>Vim</title>
-    <link>https://kydance.github.io/categories/vim/</link>
-    <pubDate>Sun, 25 Aug 2024 14:10:44 &#43;0800</pubDate>
-    <author>kyden</author>
-    <guid>https://kydance.github.io/categories/vim/</guid>
-    <description><![CDATA[]]></description>
-</item>
-<item>
-    <title>VSCode</title>
-    <link>https://kydance.github.io/categories/vscode/</link>
-    <pubDate>Sun, 25 Aug 2024 14:10:44 &#43;0800</pubDate>
-    <author>kyden</author>
-    <guid>https://kydance.github.io/categories/vscode/</guid>
-    <description><![CDATA[]]></description>
-</item>
-<item>
-    <title>效率</title>
-    <link>https://kydance.github.io/categories/%E6%95%88%E7%8E%87/</link>
-    <pubDate>Sun, 25 Aug 2024 14:10:44 &#43;0800</pubDate>
-    <author>kyden</author>
-    <guid>https://kydance.github.io/categories/%E6%95%88%E7%8E%87/</guid>
-    <description><![CDATA[]]></description>
-</item>
-<item>
-    <title>最佳实践</title>
-    <link>https://kydance.github.io/categories/%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/</link>
-    <pubDate>Sun, 25 Aug 2024 14:10:44 &#43;0800</pubDate>
-    <author>kyden</author>
-    <guid>https://kydance.github.io/categories/%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/</guid>
-    <description><![CDATA[]]></description>
-</item>
-<item>
-    <title>Effective Go</title>
-    <link>https://kydance.github.io/categories/effective-go/</link>
-    <pubDate>Thu, 15 Aug 2024 22:41:50 &#43;0800</pubDate>
-    <author>kyden</author>
-    <guid>https://kydance.github.io/categories/effective-go/</guid>
     <description><![CDATA[]]></description>
 </item>
 </channel>

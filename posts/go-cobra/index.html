@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>浅析现代化命令行框架 Cobra - Kyden Grocery</title><meta name="Description" content="Kyden&#39;s Blog Site"><meta property="og:url" content="https://kydance.github.io/posts/go-cobra/">
+  <meta property="og:site_name" content="Kyden Grocery">
+  <meta property="og:title" content="浅析现代化命令行框架 Cobra">
+  <meta property="og:description" content=" 导语 Cobra 是一个可以创建强大的现代化 CLI 应用程序库，它还提供了一个可以生成应用和命令文件的程序的命令行工具：cobra-cli. ">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2024-09-21T09:55:48+08:00">
+    <meta property="article:modified_time" content="2024-09-21T11:37:07+08:00">
+    <meta property="article:tag" content="现代化">
+    <meta property="article:tag" content="命令行">
+    <meta property="article:tag" content="框架">
+    <meta property="article:tag" content="Cobra">
+    <meta property="article:tag" content="CLI">
+    <meta property="og:image" content="https://kydance.github.io/favicon.png">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://kydance.github.io/favicon.png">
+  <meta name="twitter:title" content="浅析现代化命令行框架 Cobra">
+  <meta name="twitter:description" content=" 导语 Cobra 是一个可以创建强大的现代化 CLI 应用程序库，它还提供了一个可以生成应用和命令文件的程序的命令行工具：cobra-cli. ">
+<meta name="application-name" content="kyden">
+<meta name="apple-mobile-web-app-title" content="kyden"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="canonical" href="https://kydance.github.io/posts/go-cobra/" /><link rel="prev" href="https://kydance.github.io/posts/regex-in-one/" /><link rel="stylesheet" href="/css/style.min.cf6878db51c51b2d04ae155284a4403dbee8db33e16c066f954c95279c271fcd.css" integrity="sha256-z2h421HFGy0ErhVShKRAPb7o2zPhbAZvlUyVJ5wnH80="><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "浅析现代化命令行框架 Cobra",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/kydance.github.io\/posts\/go-cobra\/"
+        },"image": ["https:\/\/kydance.github.io\/favicon.ico"],"genre": "posts","keywords": "现代化, 命令行, 框架, Cobra, CLI","wordcount":  653 ,
+        "url": "https:\/\/kydance.github.io\/posts\/go-cobra\/","datePublished": "2024-09-21T09:55:48+08:00","dateModified": "2024-09-21T11:37:07+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@type": "Organization",
+            "name": "kyden","logo": "https:\/\/kydance.github.io\/favicon.png"},"author": {
+                "@type": "Person",
+                "name": "kyden"
+            },"description": ""
+    }
+    </script>
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-M1S0PTJ6RH"></script>
+        <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-M1S0PTJ6RH');
+        </script>
+    </head>
+
+    <body data-header-desktop="auto" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Kyden Grocery"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/favicon.ico"
+        data-srcset="/favicon.ico, /favicon.ico 1.5x, /favicon.ico 2x"
+        data-sizes="auto"
+        alt="/favicon.ico"
+        title="/favicon.ico" /></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> Categories </a><a class="menu-item" href="/about/"> About </a><a class="menu-item" href="https://github.com/kydance" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw' aria-hidden='true'></i>  </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Type Something..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Kyden Grocery"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/favicon.ico"
+        data-srcset="/favicon.ico, /favicon.ico 1.5x, /favicon.ico 2x"
+        data-sizes="auto"
+        alt="/favicon.ico"
+        title="/favicon.ico" /></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Type Something..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">Categories</a><a class="menu-item" href="/about/" title="">About</a><a class="menu-item" href="https://github.com/kydance" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw' aria-hidden='true'></i></a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">浅析现代化命令行框架 Cobra</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https:github.com/kydance" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>kyden</a></span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%8E%B0%E4%BB%A3%E5%8C%96/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>现代化</a>&nbsp;<a href="/categories/%E5%91%BD%E4%BB%A4%E8%A1%8C/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>命令行</a>&nbsp;<a href="/categories/%E6%A1%86%E6%9E%B6/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>框架</a>&nbsp;<a href="/categories/cobra/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Cobra</a>&nbsp;<a href="/categories/cli/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>CLI</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-09-21">2024-09-21</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;653 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;4 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#i-cobra-简介">I. Cobra 简介</a></li>
+    <li><a href="#ii-cobra-cli-命令安装">II. <code>cobra-cli</code> 命令安装</a></li>
+    <li><a href="#iii-cobra-使用">III. Cobra 使用</a>
+      <ul>
+        <li><a href="#使用-cobra-cli-命令生成应用程序并添加子命令">使用 <code>cobra-cli</code> 命令生成应用程序并添加子命令</a>
+          <ul>
+            <li><a href="#1-初始化应用程序">1. 初始化应用程序</a></li>
+            <li><a href="#2-添加子命令">2. 添加子命令</a></li>
+            <li><a href="#3-编译运行">3. 编译运行</a></li>
+            <li><a href="#4-配置-cobra">4. 配置 cobra</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#iv-reference">IV. Reference</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><div class="details admonition abstract open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-list-ul fa-fw" aria-hidden="true"></i>导语<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><strong>Cobra</strong> 是一个可以创建强大的现代化 CLI 应用程序库，它还提供了一个可以生成应用和命令文件的程序的命令行工具：<code>cobra-cli</code>.</div>
+        </div>
+    </div>
+<h2 id="i-cobra-简介">I. Cobra 简介</h2>
+<p><strong>Cobra</strong> 是一个可以创建强大的现代化 CLI 应用程序库，它还提供了一个可以生成应用和命令文件的程序的命令行工具：<code>cobra-cli</code>。
+许多大型项目（e.g. kubernetes, Docker, Etcd, Rkt, Hugo etc.）都采用了 cobra 来构建他们的应用程序。</p>
+<figure><img src="/posts/go-cobra/CobraMain.png">
+</figure>
+
+<p>Cobra 具有很多特性，一些核心特性如下：</p>
+<ul>
+<li>可以构建基于子命令的 CLI，并支持嵌套子命令：<code>app server</code>, <code>app fetch</code></li>
+<li>可以通过 <code>cobra-cli init appname &amp; cobra-cli add cmdname</code> 轻松生成应用和子命令</li>
+<li>智能化命令建议：<code>app srver...did you mean app server</code></li>
+<li>自动生成命令和标志的 helpe 文本，并能自动识别 <code>-h</code>, <code>--help</code> 等标志</li>
+<li>自动为应用程序生成 bash、zsh、fish、powershell 自动补全脚本</li>
+<li>支持命令别名、自定义帮助、自定义用法等</li>
+<li>可以与 viper、pflag 紧密集成，用于构建 12-factor 应用程序</li>
+</ul>
+<p>Cobra 建立在 commands、arguments 和 flags 结构之上。Commands 代表命令，arguments 代表非选项参数，flags 代表选项参数（标志）。</p>
+<div class="details admonition Tips open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-pencil-alt fa-fw" aria-hidden="true"></i>CLI 模式<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><p>一个好的应用程序应该是易懂的，用户可以清晰知道如何去使用这个应用程序，因此通常遵循如下模式：
+<code>APPNAME VERB NOUN --ADJECTIVE</code> 或者 <code>APPNAME COMMAND ARG --FLAG</code>，例如：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># clone 是一个 Commands</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># URL 是一个非选项参数</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># bare 一个选项参数</span>
+</span></span><span class="line"><span class="cl">git clone URL --bare
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>NOTE：<code>VERB</code> 代表动词，<code>NOUN</code> 代表名词，<code>ADJECTIVE</code> 代表形容词</p>
+</div>
+        </div>
+    </div>
+<h2 id="ii-cobra-cli-命令安装">II. <code>cobra-cli</code> 命令安装</h2>
+<p>Cobra 提供了 <code>cobra-cli</code> 命令，用来初始化一个应用程序并为其添加命令，方便开发基于 Cobra 的应用，可用以下方法进行安装：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ go install github.com/spf13/cobra-cli@latest
+</span></span><span class="line"><span class="cl"><span class="c1"># ...</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><code>cobra-cli</code> 提供了 4 个子命令：</p>
+<ul>
+<li><code>init</code>: 初始化一个 cobra 应用程序</li>
+<li><code>add</code>: 给通过 cobra init 创建的应用程序添加子命令</li>
+<li><code>completion</code>: 为指定的 shell 生成命令自动补全脚本</li>
+<li><code>help</code>: 打印任意命令的帮助信息</li>
+</ul>
+<p><code>cobra-cli</code> 还提供了一些全局参数：</p>
+<ul>
+<li><code>-a</code>, <code>--author</code>: 指定 Copyright 版权声明中的作者</li>
+<li><code>--config</code>: 指定 cobra 配置文件的路径</li>
+<li><code>-l</code>, <code>--license</code>: 指定生成的应用程序所使用的开源协议，内置的有：GPLv2, GPLv3, LGPL, AGPL, MIT, 2-Clause BSD or 3-Clause BSD；</li>
+<li><code>--viper</code>: 使用 viper 作为命令行参数解析工具，默认为 true。</li>
+</ul>
+<h2 id="iii-cobra-使用">III. Cobra 使用</h2>
+<p>在构建 cobra 应用时，可以自行组织代码目录结构，但 cobra 建议如下目录结构：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ tree app_name
+</span></span><span class="line"><span class="cl">app_name
+</span></span><span class="line"><span class="cl">├── cmd
+</span></span><span class="line"><span class="cl">│   ├── add.go
+</span></span><span class="line"><span class="cl">│   ├── create.go
+</span></span><span class="line"><span class="cl">│   └── list.go
+</span></span><span class="line"><span class="cl">└── main.go
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><code>main.go</code> 文件的目的只有一个：初始化 cobra 应用程序并注册子命令</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="p">(</span>
+</span></span><span class="line"><span class="cl">  <span class="s">&#34;{pathtToApp}/cmd&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">cmd</span><span class="p">.</span><span class="nf">Execute</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="使用-cobra-cli-命令生成应用程序并添加子命令">使用 <code>cobra-cli</code> 命令生成应用程序并添加子命令</h3>
+<p>可以选择使用 <code>cobra-cli</code> 命令行工具快速生成一个应用程序，并添加子命令，然后基于生成的代码进行二次开发，提高开发效率，具体方法如下：</p>
+<h4 id="1-初始化应用程序">1. 初始化应用程序</h4>
+<p>使用 <code>cobra-cli init</code> 命令初始化一个应用程序，然后就可以基于这个 Demo 进行二次开发，提高开发效率：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ mkdir -p kyden-demo <span class="o">&amp;&amp;</span> <span class="nb">cd</span> kydne-demo <span class="o">&amp;&amp;</span> go mod init kyden-demo
+</span></span><span class="line"><span class="cl">$ cobra-cli init --license<span class="o">=</span>MIT --viper
+</span></span><span class="line"><span class="cl">$ ls
+</span></span><span class="line"><span class="cl">cmd  go.mod  go.sum  LICENSE  main.go
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="2-添加子命令">2. 添加子命令</h4>
+<p>当一个应用程序初始化完成之后，就可以使用 <code>cobra-cli add</code> 命令添加一些命令：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ cobra-cli add serve
+</span></span><span class="line"><span class="cl">$ cobra-cli add config
+</span></span><span class="line"><span class="cl">$ cobra-cli add create -p <span class="s1">&#39;configCmd&#39;</span> <span class="c1"># 此命令的父命令的变量名（默认为 &#39;rootCmd&#39;）</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">$ tree kyden-demo 
+</span></span><span class="line"><span class="cl">kyden-demo
+</span></span><span class="line"><span class="cl">├── LICENSE
+</span></span><span class="line"><span class="cl">├── cmd
+</span></span><span class="line"><span class="cl">│   ├── config.go
+</span></span><span class="line"><span class="cl">│   ├── create.go
+</span></span><span class="line"><span class="cl">│   ├── root.go
+</span></span><span class="line"><span class="cl">│   └── serve.go
+</span></span><span class="line"><span class="cl">├── go.mod
+</span></span><span class="line"><span class="cl">├── go.sum
+</span></span><span class="line"><span class="cl">└── main.go
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>执行 <code>cobra-cli add</code> 命令之后，会在 <code>cmd</code> 目录下生成命令源码文件。
+<code>cobra-cli</code> 不仅可以添加命令，也可以添加子命令，例如 <code>cobra-cli add create -p 'configCmd'</code> 给 <code>config</code> 命令添加了 <code>create</code> 子命令，<code>-p</code> 指定子命令的父命令：<code>&lt;父命令&gt;Cmd</code>.</p>
+<h4 id="3-编译运行">3. 编译运行</h4>
+<p>在生成命令后，可以直接执行 <code>go build</code> 命令编译应用程序：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ go build -v .
+</span></span><span class="line"><span class="cl">$ ./kyden-demo -h
+</span></span><span class="line"><span class="cl">A longer description that spans multiple lines and likely contains
+</span></span><span class="line"><span class="cl">examples and usage of using your application. For example:
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Cobra is a CLI library <span class="k">for</span> Go that empowers applications.
+</span></span><span class="line"><span class="cl">This application is a tool to generate the needed files
+</span></span><span class="line"><span class="cl">to quickly create a Cobra application.
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Usage:
+</span></span><span class="line"><span class="cl">  kyden-demo <span class="o">[</span>command<span class="o">]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Available Commands:
+</span></span><span class="line"><span class="cl">  completion  Generate the autocompletion script <span class="k">for</span> the specified shell
+</span></span><span class="line"><span class="cl">  config      A brief description of your <span class="nb">command</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">help</span>        Help about any <span class="nb">command</span>
+</span></span><span class="line"><span class="cl">  serve       A brief description of your <span class="nb">command</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Flags:
+</span></span><span class="line"><span class="cl">      --config string   config file <span class="o">(</span>default is <span class="nv">$HOME</span>/.kyden-demo.yaml<span class="o">)</span>
+</span></span><span class="line"><span class="cl">  -h, --help            <span class="nb">help</span> <span class="k">for</span> kyden-demo
+</span></span><span class="line"><span class="cl">  -t, --toggle          Help message <span class="k">for</span> toggle
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Use <span class="s2">&#34;kyden-demo [command] --help&#34;</span> <span class="k">for</span> more information about a command.
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="4-配置-cobra">4. 配置 cobra</h4>
+<p><code>cobra</code> 在生成应用程序时，也会在当前目录下生成 <code>LINCENSE</code> 文件，并且会在生成的 Go 源码文件中中，添加 LINCENSE Header。</p>
+<p>LINCENSE 和 LINCENSE Header 的内容可以通过 cobra 配置文进行配置，默认配置文件 <code>~/.cobra.yaml</code>:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ cat ~/.cobra.yaml
+</span></span><span class="line"><span class="cl">author: Kyden &lt;kytedance@gmail.com&gt;
+</span></span><span class="line"><span class="cl">year: <span class="m">2024</span>
+</span></span><span class="line"><span class="cl">license:
+</span></span><span class="line"><span class="cl">  header: This file is part of CLI application foo.
+</span></span><span class="line"><span class="cl">  text: <span class="p">|</span>
+</span></span><span class="line"><span class="cl">    <span class="o">{{</span> .copyright <span class="o">}}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    This is my license. There are many like it, but this one is mine.
+</span></span><span class="line"><span class="cl">    My license is my best friend. It is my life. I must master it as I must
+</span></span><span class="line"><span class="cl">    master my life.
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">$ cobra-cli init
+</span></span><span class="line"><span class="cl">Copyright © <span class="m">2024</span> Kyden &lt;kytedance@gmail.com&gt;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">This is my license. There are many like it, but this one is mine.
+</span></span><span class="line"><span class="cl">My license is my best friend. It is my life. I must master it as I must
+</span></span><span class="line"><span class="cl">master my life.
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><code>{{ .copyright }}</code> 的具体内容会根据 <code>author</code> 和 <code>year</code> 生成，根据此配置生成的 LICENSE 文件内容.</p>
+<p>也可以使用内建的 licenses，内建的 licenses 有：GPLv2, GPLv3, LGPL, AGPL, MIT, 2-Clause BSD or 3-Clause BSD。</p>
+<h2 id="iv-reference">IV. Reference</h2>
+<ul>
+<li><a href="https://github.com/spf13/cobra" target="_blank" rel="noopener noreffer ">cobra</a></li>
+</ul></div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2024-09-21
+                                &nbsp;<a class="git-hash" href="https://github.com/kydance/blog/commit/84f361da0d03792f899bbd879a4c1d345679885b" target="_blank" title="commit by 84f361da0d03792f899bbd879a4c1d345679885b: docs(go-cobra): 添加关于Cobra框架的介绍和使用教程">
+                                    <i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>84f361d</a></span>
+            </div><div class="post-info-license">
+                <span><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://kydance.github.io/posts/go-cobra/" data-title="浅析现代化命令行框架 Cobra" data-hashtags="现代化,命令行,框架,Cobra,CLI"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://kydance.github.io/posts/go-cobra/" data-hashtag="现代化"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Linkedin" data-sharer="linkedin" data-url="https://kydance.github.io/posts/go-cobra/"><i class="fab fa-linkedin fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on WhatsApp" data-sharer="whatsapp" data-url="https://kydance.github.io/posts/go-cobra/" data-title="浅析现代化命令行框架 Cobra" data-web><i class="fab fa-whatsapp fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="https://kydance.github.io/posts/go-cobra/" data-title="浅析现代化命令行框架 Cobra"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Reddit" data-sharer="reddit" data-url="https://kydance.github.io/posts/go-cobra/"><i class="fab fa-reddit fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="https://kydance.github.io/posts/go-cobra/" data-title="浅析现代化命令行框架 Cobra"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@7.3.0/icons/line.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://kydance.github.io/posts/go-cobra/" data-title="浅析现代化命令行框架 Cobra"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 百度" data-sharer="baidu" data-url="https://kydance.github.io/posts/go-cobra/" data-title="浅析现代化命令行框架 Cobra"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@7.3.0/icons/baidu.svg" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/%E7%8E%B0%E4%BB%A3%E5%8C%96/">现代化</a>,&nbsp;<a href="/tags/%E5%91%BD%E4%BB%A4%E8%A1%8C/">命令行</a>,&nbsp;<a href="/tags/%E6%A1%86%E6%9E%B6/">框架</a>,&nbsp;<a href="/tags/cobra/">Cobra</a>,&nbsp;<a href="/tags/cli/">CLI</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/posts/regex-in-one/" class="prev" rel="prev" title="浅析 Regular Expression (正则表达式)"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>浅析 Regular Expression (正则表达式)</a></div>
+</div>
+<div id="comments"><div id="gitalk" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://github.com/gitalk/gitalk"></a>Gitalk</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2024</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/kydance" target="_blank">kyden</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></br><script>
+                    function siteTime() {
+                        var seconds = 1000;
+                        var minutes = seconds * 60;
+                        var hours = minutes * 60;
+                        var days = hours * 24;
+                        var years = days * 365;
+                        var today = new Date();
+                        var startYear = 2024;
+                        var startMonth = 4;
+                        var startDate = 18;
+                        var startHour = 12;
+                        var startMinute = 57;
+                        var startSecond = 2;
+                        var todayYear = today.getFullYear();
+                        var todayMonth = today.getMonth() + 1;
+                        var todayDate = today.getDate();
+                        var todayHour = today.getHours();
+                        var todayMinute = today.getMinutes();
+                        var todaySecond = today.getSeconds();
+                        var t1 = Date.UTC(startYear, startMonth, startDate, startHour, startMinute, startSecond);
+                        var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+                        var diff = t2 - t1;
+                        var diffYears = Math.floor(diff / years);
+                        var diffDays = Math.floor((diff / days) - diffYears * 365);
+                        var diffHours = Math.floor((diff - (diffYears * 365 + diffDays) * days) / hours);
+                        var diffMinutes = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours) /
+                            minutes);
+                        var diffSeconds = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours -
+                            diffMinutes * minutes) / seconds);
+                        if (startYear == todayYear) {
+                            
+                            document.getElementById("sitetime").innerHTML = "已安全运行 " + diffDays + " 天 " + diffHours +
+                                " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                        } else {
+                            
+                            document.getElementById("sitetime").innerHTML = "已安全运行 " + diffYears + " 年 " + diffDays +
+                                " 天 " + diffHours + " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                        }
+                    }
+                    setInterval(siteTime, 1000);
+                </script>
+                <span id="sitetime">载入运行时间...</span>
+            </div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@2.5.0/css/lightgallery-bundle.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><script type="text/javascript" src="https://polyfill.io/v3/polyfill.min.js?features=Array.prototype.fill%2CArray.prototype.find%2CArray.from%2CIntersectionObserver%2CMath.sign%2CObject.assign%2CPromise%2CObject.entries%2Chtml5shiv%2CObject.values%2Cfetch%2CElement.prototype.after"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/object-fit-images@3.2.4/dist/ofi.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.38.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/algoliasearch@4.13.1/dist/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery@2.5.0/lightgallery.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery@2.5.0/plugins/thumbnail/lg-thumbnail.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery@2.5.0/plugins/zoom/lg-zoom.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/copy-tex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/mhchem.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{"gitalk":{"admin":["kydance"],"clientID":"Ov23li57QoCQY8gKyhxe","clientSecret":"bcd3cf3f8167ffcfeab2c033d961d1500f42447e","id":"2024-09-21T09:55:48+08:00","owner":"kydance","repo":"gitalk","title":"浅析现代化命令行框架 Cobra"}},"cookieconsent":{"content":{"dismiss":"Got it!","link":"Learn more","message":"This website uses Cookies to improve your experience."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"lightgallery":true,"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"algoliaAppID":"PASDMWALPK","algoliaIndex":"index.en","algoliaSearchKey":"b42948e51daaa93df92381c8e2ac0f93","highlightTag":"em","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"algolia"}};</script><script type="text/javascript" src="/js/theme.min.d7121d72cd85153ec9d35a888cee3eb28c2700ca763f649a538f6c772d750021.js" integrity="sha256-1xIdcs2FFT7J01qIjO4+sownAMp2P2SaU49sdy11ACE="></script><script type="text/javascript">
+            window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());
+            gtag('config', 'G-M1S0PTJ6RH', { 'anonymize_ip': true });
+        </script><script type="text/javascript" src="https://www.googletagmanager.com/gtag/js?id=G-M1S0PTJ6RH" async></script></body>
+</html>
