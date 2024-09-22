@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>Go 如何优雅地读取配置？ - Kyden Grocery</title><meta name="Description" content="Kyden&#39;s Blog Site"><meta property="og:url" content="https://kydance.github.io/posts/go-viper/">
+  <meta property="og:site_name" content="Kyden Grocery">
+  <meta property="og:title" content="Go 如何优雅地读取配置？">
+  <meta property="og:description" content=" 导语 ">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2024-09-22T21:26:34+08:00">
+    <meta property="article:modified_time" content="2024-09-23T00:07:35+08:00">
+    <meta property="article:tag" content="Golang">
+    <meta property="article:tag" content="配置文件">
+    <meta property="article:tag" content="YAML">
+    <meta property="article:tag" content="Viper">
+    <meta property="og:image" content="https://kydance.github.io/favicon.png">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://kydance.github.io/favicon.png">
+  <meta name="twitter:title" content="Go 如何优雅地读取配置？">
+  <meta name="twitter:description" content=" 导语 ">
+<meta name="application-name" content="kyden">
+<meta name="apple-mobile-web-app-title" content="kyden"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="canonical" href="https://kydance.github.io/posts/go-viper/" /><link rel="prev" href="https://kydance.github.io/posts/go-cobra/" /><link rel="stylesheet" href="/css/style.min.cf6878db51c51b2d04ae155284a4403dbee8db33e16c066f954c95279c271fcd.css" integrity="sha256-z2h421HFGy0ErhVShKRAPb7o2zPhbAZvlUyVJ5wnH80="><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Go 如何优雅地读取配置？",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/kydance.github.io\/posts\/go-viper\/"
+        },"image": ["https:\/\/kydance.github.io\/favicon.ico"],"genre": "posts","keywords": "Golang, 配置文件, YAML, Viper","wordcount":  481 ,
+        "url": "https:\/\/kydance.github.io\/posts\/go-viper\/","datePublished": "2024-09-22T21:26:34+08:00","dateModified": "2024-09-23T00:07:35+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@type": "Organization",
+            "name": "kyden","logo": "https:\/\/kydance.github.io\/favicon.png"},"author": {
+                "@type": "Person",
+                "name": "kyden"
+            },"description": ""
+    }
+    </script>
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-M1S0PTJ6RH"></script>
+        <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-M1S0PTJ6RH');
+        </script>
+    </head>
+
+    <body data-header-desktop="auto" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Kyden Grocery"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/favicon.ico"
+        data-srcset="/favicon.ico, /favicon.ico 1.5x, /favicon.ico 2x"
+        data-sizes="auto"
+        alt="/favicon.ico"
+        title="/favicon.ico" /></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> Categories </a><a class="menu-item" href="/about/"> About </a><a class="menu-item" href="https://github.com/kydance" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw' aria-hidden='true'></i>  </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Type Something..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Kyden Grocery"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/favicon.ico"
+        data-srcset="/favicon.ico, /favicon.ico 1.5x, /favicon.ico 2x"
+        data-sizes="auto"
+        alt="/favicon.ico"
+        title="/favicon.ico" /></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Type Something..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">Categories</a><a class="menu-item" href="/about/" title="">About</a><a class="menu-item" href="https://github.com/kydance" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw' aria-hidden='true'></i></a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Go 如何优雅地读取配置？</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https:github.com/kydance" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>kyden</a></span>&nbsp;<span class="post-category">included in <a href="/categories/golang/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Golang</a>&nbsp;<a href="/categories/%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>配置文件</a>&nbsp;<a href="/categories/yaml/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>YAML</a>&nbsp;<a href="/categories/viper/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Viper</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-09-22">2024-09-22</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;481 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;3 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#为何选择配置文件作为配置项的读取方式">为何选择配置文件作为配置项的读取方式？</a></li>
+    <li><a href="#为何选择-yaml-作为配置文件的格式">为何选择 YAML 作为配置文件的格式？</a></li>
+    <li><a href="#使用-viper-读取配置文件内容">使用 viper 读取配置文件内容</a></li>
+    <li><a href="#reference">Reference</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><div class="details admonition abstract open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-list-ul fa-fw" aria-hidden="true"></i>导语<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"></div>
+        </div>
+    </div>
+<figure><img src="/posts/go-viper/logo.png">
+</figure>
+
+<p><strong>对于一个 Go 应用程序，同城需要解析以下类别的配置：命令行选项、命令行参数、配置文件</strong>，而对于一个非命令行工具的应用程序，不需要考虑读取命令行参数这类场景，其需要的配置内容都可以通过命令行选项或配置文件加载到程序中。</p>
+<div class="details admonition Tip open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-pencil-alt fa-fw" aria-hidden="true"></i>Tips<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">命令行工具可能会有子命令，例如 <code>kubectr create</code> 中的 <code>create</code> 就是一个命令行参数</div>
+        </div>
+    </div>
+<h2 id="为何选择配置文件作为配置项的读取方式">为何选择配置文件作为配置项的读取方式？</h2>
+<p>对于一个配置项，既可以通过命令行选项，又能够通过配置文件来读取，而且二者是一个彼此可以取代的，因此，对于非命令行工具的应用程序个人更倾向于通过配置文件完成，原因如下：</p>
+<ul>
+<li><strong>配置文件更易部署</strong>：可以将应用所需要的所有配置聚合在一个配置文件中。
+当需署时，只需要部署、加载这个配置文件即可，不需要配置一大堆命令行选项；</li>
+<li><strong>配置文件更易维护</strong>：将所有的配置项都保存在配置文件中，加上详细的配置说明，不需要的配置项可以注释掉。
+一个具有全量配置项、详细说明的配置文件，更易于理解。并且在修改时，只需要修改配置项的值，而不需要修改配置项名称，更不易出错；</li>
+<li><strong>配置文件可以实现热加载功能</strong>：应用程序监听配置文件的变更，有变更时，自动重新加载配置文件，实现配置热加载功能；</li>
+<li><strong>配置层次表达更清晰</strong>：命令行参数无法直接表达&quot;层次&quot;，但配置文件可以。层次化的配置表达，更易于理解，也更易于维护。</li>
+<li><strong>方便新增配置项</strong>：多数情况下，配置项新增只需在配置文件中新增一行即可，不需要修改源码；</li>
+</ul>
+<div class="details admonition Tip open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-pencil-alt fa-fw" aria-hidden="true"></i>总结<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">命令行工具可能会有子命令，例如 <code>kubectr create</code> 中的 <code>create</code> 就是一个命令行参数
+总结：当配置项少的时候（比如 5 个以内），可以从命令行选项中读取。
+参数较多的时候，建议使用配置文件，配置文件更易部署、维护、热加载、层次表达更清晰。</div>
+        </div>
+    </div>
+<h2 id="为何选择-yaml-作为配置文件的格式">为何选择 YAML 作为配置文件的格式？</h2>
+<p>当打算采用配置文件来读取配置项时，那么就存在多种文件格式，例如：JSON、YAML、TOML、INI 等。
+个人推荐使用 YAML，理由如下：</p>
+<ul>
+<li>YAML 语法简单、格式易读、程序易处理；</li>
+<li>YAML 格式可以表达非常丰富、复杂的配置结构；</li>
+<li>YAML 格式普适性高，新人零理解成本；</li>
+</ul>
+<blockquote>
+<p>最终配置：使用 YAML 格式的配置文件，并采用 <code>viper</code> 来读取配置</p>
+</blockquote>
+<hr>
+<h2 id="使用-viper-读取配置文件内容">使用 viper 读取配置文件内容</h2>
+<p>在 <a href="https://kydance.github.io/posts/go-cobra/" target="_blank" rel="noopener noreffer ">浅析现代化命令行框架 Cobra</a> 中，我们了解到可以通过 <code>cobra-cli init --viper</code> 生成一个通过 viper 来配置应用程序的 Demo 应用，那么就可以知道它的应用加载逻辑如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span><span class="lnt">65
+</span><span class="lnt">66
+</span><span class="lnt">67
+</span><span class="lnt">68
+</span><span class="lnt">69
+</span><span class="lnt">70
+</span><span class="lnt">71
+</span><span class="lnt">72
+</span><span class="lnt">73
+</span><span class="lnt">74
+</span><span class="lnt">75
+</span><span class="lnt">76
+</span><span class="lnt">77
+</span><span class="lnt">78
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="cm">/*
+</span></span></span><span class="line"><span class="cl"><span class="cm">Copyright © 2024 Kyden &lt;kytedance@gmail.com&gt;
+</span></span></span><span class="line"><span class="cl"><span class="cm">This file is part of CLI application foo.
+</span></span></span><span class="line"><span class="cl"><span class="cm">*/</span>
+</span></span><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">cmd</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="p">(</span>
+</span></span><span class="line"><span class="cl">	<span class="s">&#34;fmt&#34;</span>
+</span></span><span class="line"><span class="cl">	<span class="s">&#34;os&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="s">&#34;github.com/spf13/cobra&#34;</span>
+</span></span><span class="line"><span class="cl">	<span class="s">&#34;github.com/spf13/viper&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">var</span> <span class="nx">cfgFile</span> <span class="kt">string</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// rootCmd represents the base command when called without any subcommands
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">var</span> <span class="nx">rootCmd</span> <span class="p">=</span> <span class="o">&amp;</span><span class="nx">cobra</span><span class="p">.</span><span class="nx">Command</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">Use</span><span class="p">:</span>   <span class="s">&#34;kydendemo&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">Short</span><span class="p">:</span> <span class="s">&#34;A brief description of your application&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">Long</span><span class="p">:</span> <span class="s">`A longer description that spans multiple lines and likely contains
+</span></span></span><span class="line"><span class="cl"><span class="s">examples and usage of using your application. For example:
+</span></span></span><span class="line"><span class="cl"><span class="s">
+</span></span></span><span class="line"><span class="cl"><span class="s">Cobra is a CLI library for Go that empowers applications.
+</span></span></span><span class="line"><span class="cl"><span class="s">This application is a tool to generate the needed files
+</span></span></span><span class="line"><span class="cl"><span class="s">to quickly create a Cobra application.`</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// Uncomment the following line if your bare application
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// has an action associated with it:
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// Run: func(cmd *cobra.Command, args []string) { },
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// Execute adds all child commands to the root command and sets flags appropriately.
+</span></span></span><span class="line"><span class="cl"><span class="c1">// This is called by main.main(). It only needs to happen once to the rootCmd.
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">func</span> <span class="nf">Execute</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">err</span> <span class="o">:=</span> <span class="nx">rootCmd</span><span class="p">.</span><span class="nf">Execute</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">	<span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">os</span><span class="p">.</span><span class="nf">Exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">init</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">cobra</span><span class="p">.</span><span class="nf">OnInitialize</span><span class="p">(</span><span class="nx">initConfig</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="c1">// Here you will define your flags and configuration settings.
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// Cobra supports persistent flags, which, if defined here,
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// will be global for your application.
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl">	<span class="nx">rootCmd</span><span class="p">.</span><span class="nf">PersistentFlags</span><span class="p">().</span><span class="nf">StringVar</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="o">&amp;</span><span class="nx">cfgFile</span><span class="p">,</span> <span class="s">&#34;config&#34;</span><span class="p">,</span> <span class="s">&#34;&#34;</span><span class="p">,</span> <span class="s">&#34;config file (default is $HOME/.kydendemo.yaml)&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="c1">// Cobra also supports local flags, which will only run
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// when this action is called directly.
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">rootCmd</span><span class="p">.</span><span class="nf">Flags</span><span class="p">().</span><span class="nf">BoolP</span><span class="p">(</span><span class="s">&#34;toggle&#34;</span><span class="p">,</span> <span class="s">&#34;t&#34;</span><span class="p">,</span> <span class="kc">false</span><span class="p">,</span> <span class="s">&#34;Help message for toggle&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// initConfig reads in config file and ENV variables if set.
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">func</span> <span class="nf">initConfig</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="k">if</span> <span class="nx">cfgFile</span> <span class="o">!=</span> <span class="s">&#34;&#34;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="c1">// Use config file from the flag.
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>		<span class="nx">viper</span><span class="p">.</span><span class="nf">SetConfigFile</span><span class="p">(</span><span class="nx">cfgFile</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="c1">// Find home directory.
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>		<span class="nx">home</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">os</span><span class="p">.</span><span class="nf">UserHomeDir</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">cobra</span><span class="p">.</span><span class="nf">CheckErr</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">		<span class="c1">// Search config in home directory with name &#34;.kydendemo&#34; (without extension).
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>		<span class="nx">viper</span><span class="p">.</span><span class="nf">AddConfigPath</span><span class="p">(</span><span class="nx">home</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">viper</span><span class="p">.</span><span class="nf">SetConfigType</span><span class="p">(</span><span class="s">&#34;yaml&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">viper</span><span class="p">.</span><span class="nf">SetConfigName</span><span class="p">(</span><span class="s">&#34;.kydendemo&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="nx">viper</span><span class="p">.</span><span class="nf">AutomaticEnv</span><span class="p">()</span> <span class="c1">// read in environment variables that match
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// If a config file is found, read it in.
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="k">if</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">viper</span><span class="p">.</span><span class="nf">ReadInConfig</span><span class="p">();</span> <span class="nx">err</span> <span class="o">==</span> <span class="kc">nil</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">fmt</span><span class="p">.</span><span class="nf">Fprintln</span><span class="p">(</span><span class="nx">os</span><span class="p">.</span><span class="nx">Stderr</span><span class="p">,</span> <span class="s">&#34;Using config file:&#34;</span><span class="p">,</span> <span class="nx">viper</span><span class="p">.</span><span class="nf">ConfigFileUsed</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>其中，<code>rootCmd</code> 设置了命令行选项 <code>--config</code>，用于指定配置文件路径，默认值是 <code>&quot;&quot;</code>；</p>
+<p>通过 <code>cobra.OnInitialize(initConfig)</code> 设置了 <code>kydendemo</code> 在运行时的回调函数 <code>initConfig</code>，
+它的执行逻辑主要是：</p>
+<ul>
+<li>如果指定了 <code>cfgFile</code>，则直接读取该配置文件；</li>
+<li>如果没有指定，则读取 <code>$HOME/.kydendemo.yaml</code>，找到则读取；
+若 <code>cfgFile == &quot;&quot;</code>，且没有找到配置文件，则调用 <code>viper.ReadInConfig()</code> 读取配置文件时报错；</li>
+</ul>
+<h2 id="reference">Reference</h2>
+<ul>
+<li><a href="https://github.com/spf13/viper" target="_blank" rel="noopener noreffer ">viper</a></li>
+</ul></div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2024-09-23
+                                &nbsp;<a class="git-hash" href="https://github.com/kydance/blog/commit/e4358cd2e3796507cf1ad72eefd0d63c6605d25a" target="_blank" title="commit by e4358cd2e3796507cf1ad72eefd0d63c6605d25a: docs(content/posts/go-viper): 添加关于 Go 优雅读取配置的文章及 YAML 配置文件示例">
+                                    <i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>e4358cd</a></span>
+            </div><div class="post-info-license">
+                <span><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://kydance.github.io/posts/go-viper/" data-title="Go 如何优雅地读取配置？" data-hashtags="Golang,配置文件,YAML,Viper"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://kydance.github.io/posts/go-viper/" data-hashtag="Golang"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Linkedin" data-sharer="linkedin" data-url="https://kydance.github.io/posts/go-viper/"><i class="fab fa-linkedin fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on WhatsApp" data-sharer="whatsapp" data-url="https://kydance.github.io/posts/go-viper/" data-title="Go 如何优雅地读取配置？" data-web><i class="fab fa-whatsapp fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="https://kydance.github.io/posts/go-viper/" data-title="Go 如何优雅地读取配置？"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Reddit" data-sharer="reddit" data-url="https://kydance.github.io/posts/go-viper/"><i class="fab fa-reddit fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="https://kydance.github.io/posts/go-viper/" data-title="Go 如何优雅地读取配置？"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@7.3.0/icons/line.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://kydance.github.io/posts/go-viper/" data-title="Go 如何优雅地读取配置？"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 百度" data-sharer="baidu" data-url="https://kydance.github.io/posts/go-viper/" data-title="Go 如何优雅地读取配置？"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@7.3.0/icons/baidu.svg" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/golang/">Golang</a>,&nbsp;<a href="/tags/%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6/">配置文件</a>,&nbsp;<a href="/tags/yaml/">YAML</a>,&nbsp;<a href="/tags/viper/">Viper</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/posts/go-cobra/" class="prev" rel="prev" title="浅析现代化命令行框架 Cobra"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>浅析现代化命令行框架 Cobra</a></div>
+</div>
+<div id="comments"><div id="gitalk" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://github.com/gitalk/gitalk"></a>Gitalk</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2024</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/kydance" target="_blank">kyden</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></br><script>
+                    function siteTime() {
+                        var seconds = 1000;
+                        var minutes = seconds * 60;
+                        var hours = minutes * 60;
+                        var days = hours * 24;
+                        var years = days * 365;
+                        var today = new Date();
+                        var startYear = 2024;
+                        var startMonth = 4;
+                        var startDate = 18;
+                        var startHour = 12;
+                        var startMinute = 57;
+                        var startSecond = 2;
+                        var todayYear = today.getFullYear();
+                        var todayMonth = today.getMonth() + 1;
+                        var todayDate = today.getDate();
+                        var todayHour = today.getHours();
+                        var todayMinute = today.getMinutes();
+                        var todaySecond = today.getSeconds();
+                        var t1 = Date.UTC(startYear, startMonth, startDate, startHour, startMinute, startSecond);
+                        var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+                        var diff = t2 - t1;
+                        var diffYears = Math.floor(diff / years);
+                        var diffDays = Math.floor((diff / days) - diffYears * 365);
+                        var diffHours = Math.floor((diff - (diffYears * 365 + diffDays) * days) / hours);
+                        var diffMinutes = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours) /
+                            minutes);
+                        var diffSeconds = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours -
+                            diffMinutes * minutes) / seconds);
+                        if (startYear == todayYear) {
+                            
+                            document.getElementById("sitetime").innerHTML = "已安全运行 " + diffDays + " 天 " + diffHours +
+                                " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                        } else {
+                            
+                            document.getElementById("sitetime").innerHTML = "已安全运行 " + diffYears + " 年 " + diffDays +
+                                " 天 " + diffHours + " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                        }
+                    }
+                    setInterval(siteTime, 1000);
+                </script>
+                <span id="sitetime">载入运行时间...</span>
+            </div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@2.5.0/css/lightgallery-bundle.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><script type="text/javascript" src="https://polyfill.io/v3/polyfill.min.js?features=Array.prototype.fill%2CArray.prototype.find%2CArray.from%2CIntersectionObserver%2CMath.sign%2CObject.assign%2CPromise%2CObject.entries%2Chtml5shiv%2CObject.values%2Cfetch%2CElement.prototype.after"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/object-fit-images@3.2.4/dist/ofi.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.38.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/algoliasearch@4.13.1/dist/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery@2.5.0/lightgallery.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery@2.5.0/plugins/thumbnail/lg-thumbnail.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery@2.5.0/plugins/zoom/lg-zoom.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/copy-tex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/mhchem.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{"gitalk":{"admin":["kydance"],"clientID":"Ov23li57QoCQY8gKyhxe","clientSecret":"bcd3cf3f8167ffcfeab2c033d961d1500f42447e","id":"2024-09-22T21:26:34+08:00","owner":"kydance","repo":"gitalk","title":"Go 如何优雅地读取配置？"}},"cookieconsent":{"content":{"dismiss":"Got it!","link":"Learn more","message":"This website uses Cookies to improve your experience."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"lightgallery":true,"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"algoliaAppID":"PASDMWALPK","algoliaIndex":"index.en","algoliaSearchKey":"b42948e51daaa93df92381c8e2ac0f93","highlightTag":"em","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"algolia"}};</script><script type="text/javascript" src="/js/theme.min.d7121d72cd85153ec9d35a888cee3eb28c2700ca763f649a538f6c772d750021.js" integrity="sha256-1xIdcs2FFT7J01qIjO4+sownAMp2P2SaU49sdy11ACE="></script><script type="text/javascript">
+            window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());
+            gtag('config', 'G-M1S0PTJ6RH', { 'anonymize_ip': true });
+        </script><script type="text/javascript" src="https://www.googletagmanager.com/gtag/js?id=G-M1S0PTJ6RH" async></script></body>
+</html>

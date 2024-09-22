@@ -4,7 +4,39 @@
         <link>https://kydance.github.io/categories/</link>
         <description>Categories - Category - Kyden Grocery</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>kytedance@gmail.com (kyden)</managingEditor>
-            <webMaster>kytedance@gmail.com (kyden)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sat, 21 Sep 2024 09:55:48 &#43;0800</lastBuildDate><atom:link href="https://kydance.github.io/categories/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>kytedance@gmail.com (kyden)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sun, 22 Sep 2024 21:26:34 &#43;0800</lastBuildDate><atom:link href="https://kydance.github.io/categories/" rel="self" type="application/rss+xml" /><item>
+    <title>Golang</title>
+    <link>https://kydance.github.io/categories/golang/</link>
+    <pubDate>Sun, 22 Sep 2024 21:26:34 &#43;0800</pubDate>
+    <author>kyden</author>
+    <guid>https://kydance.github.io/categories/golang/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
+    <title>Viper</title>
+    <link>https://kydance.github.io/categories/viper/</link>
+    <pubDate>Sun, 22 Sep 2024 21:26:34 &#43;0800</pubDate>
+    <author>kyden</author>
+    <guid>https://kydance.github.io/categories/viper/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
+    <title>YAML</title>
+    <link>https://kydance.github.io/categories/yaml/</link>
+    <pubDate>Sun, 22 Sep 2024 21:26:34 &#43;0800</pubDate>
+    <author>kyden</author>
+    <guid>https://kydance.github.io/categories/yaml/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
+    <title>配置文件</title>
+    <link>https://kydance.github.io/categories/%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6/</link>
+    <pubDate>Sun, 22 Sep 2024 21:26:34 &#43;0800</pubDate>
+    <author>kyden</author>
+    <guid>https://kydance.github.io/categories/%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
     <title>CLI</title>
     <link>https://kydance.github.io/categories/cli/</link>
     <pubDate>Sat, 21 Sep 2024 09:55:48 &#43;0800</pubDate>
@@ -130,38 +162,6 @@
     <pubDate>Mon, 09 Sep 2024 22:39:40 &#43;0800</pubDate>
     <author>kyden</author>
     <guid>https://kydance.github.io/categories/encoder/</guid>
-    <description><![CDATA[]]></description>
-</item>
-<item>
-    <title>JSON</title>
-    <link>https://kydance.github.io/categories/json/</link>
-    <pubDate>Mon, 09 Sep 2024 22:39:40 &#43;0800</pubDate>
-    <author>kyden</author>
-    <guid>https://kydance.github.io/categories/json/</guid>
-    <description><![CDATA[]]></description>
-</item>
-<item>
-    <title>Check.rule</title>
-    <link>https://kydance.github.io/categories/check.rule/</link>
-    <pubDate>Sat, 07 Sep 2024 20:56:52 &#43;0800</pubDate>
-    <author>kyden</author>
-    <guid>https://kydance.github.io/categories/check.rule/</guid>
-    <description><![CDATA[]]></description>
-</item>
-<item>
-    <title>微服务</title>
-    <link>https://kydance.github.io/categories/%E5%BE%AE%E6%9C%8D%E5%8A%A1/</link>
-    <pubDate>Sat, 07 Sep 2024 20:56:52 &#43;0800</pubDate>
-    <author>kyden</author>
-    <guid>https://kydance.github.io/categories/%E5%BE%AE%E6%9C%8D%E5%8A%A1/</guid>
-    <description><![CDATA[]]></description>
-</item>
-<item>
-    <title>设计与实现</title>
-    <link>https://kydance.github.io/categories/%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0/</link>
-    <pubDate>Sat, 07 Sep 2024 20:56:52 &#43;0800</pubDate>
-    <author>kyden</author>
-    <guid>https://kydance.github.io/categories/%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0/</guid>
     <description><![CDATA[]]></description>
 </item>
 </channel>

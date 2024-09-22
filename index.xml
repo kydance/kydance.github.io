@@ -4,9 +4,24 @@
         <link>https://kydance.github.io/</link>
         <description>Kyden&#39;s Blog Site</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>kytedance@gmail.com (kyden)</managingEditor>
-            <webMaster>kytedance@gmail.com (kyden)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sat, 21 Sep 2024 09:55:48 &#43;0800</lastBuildDate>
+            <webMaster>kytedance@gmail.com (kyden)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sun, 22 Sep 2024 21:26:34 &#43;0800</lastBuildDate>
             <atom:link href="https://kydance.github.io/index.xml" rel="self" type="application/rss+xml" />
         <item>
+    <title>Go 如何优雅地读取配置？</title>
+    <link>https://kydance.github.io/posts/go-viper/</link>
+    <pubDate>Sun, 22 Sep 2024 21:26:34 &#43;0800</pubDate>
+    <author>kyden</author>
+    <guid>https://kydance.github.io/posts/go-viper/</guid>
+    <description><![CDATA[<div class="details admonition abstract open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-list-ul fa-fw" aria-hidden="true"></i>导语<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"></div>
+        </div>
+    </div>]]></description>
+</item>
+<item>
     <title>浅析现代化命令行框架 Cobra</title>
     <link>https://kydance.github.io/posts/go-cobra/</link>
     <pubDate>Sat, 21 Sep 2024 09:55:48 &#43;0800</pubDate>
