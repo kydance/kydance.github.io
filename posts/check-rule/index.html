@@ -34,7 +34,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/kydance.github.io\/posts\/check-rule\/"
-        },"image": ["https:\/\/kydance.github.io\/favicon.ico"],"genre": "posts","keywords": "check.rule, 微服务, 设计与实现","wordcount":  108 ,
+        },"image": ["https:\/\/kydance.github.io\/favicon.ico"],"genre": "posts","keywords": "check.rule, 微服务, 设计与实现","wordcount":  110 ,
         "url": "https:\/\/kydance.github.io\/posts\/check-rule\/","datePublished": "2024-09-07T20:56:52+08:00","dateModified": "2024-09-07T20:56:52+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "kyden","logo": "https:\/\/kydance.github.io\/favicon.png"},"author": {
@@ -132,7 +132,7 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">资格校验接口的微服务设计与实现</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https:github.com/kydance" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>kyden</a></span>&nbsp;<span class="post-category">included in <a href="/categories/check.rule/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Check.rule</a>&nbsp;<a href="/categories/%E5%BE%AE%E6%9C%8D%E5%8A%A1/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>微服务</a>&nbsp;<a href="/categories/%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>设计与实现</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-09-07">2024-09-07</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;108 words&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-09-07">2024-09-07</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;110 words&nbsp;
                 <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;One minute&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
@@ -147,6 +147,7 @@
         <li><a href="#业务层bizservice">业务层（Biz/Service）</a></li>
         <li><a href="#存储层store">存储层（Store）</a></li>
         <li><a href="#层间交互">层间交互</a></li>
+        <li><a href="#资格服务代码设计">资格服务代码设计</a></li>
       </ul>
     </li>
     <li><a href="#微服务部署">微服务部署</a></li>
@@ -180,7 +181,7 @@ Controller 将逻辑分发给 Service，Service 处理后返回，返回数据�
 <h3 id="业务层bizservice">业务层（Biz/Service）</h3>
 <p>Service，主要用来完成<strong>业务逻辑处理</strong>，可以把所有的业务逻辑代码放在本层。
 Service 会处理来自 Controller 的请求，并根据需要请求 Store 完成数据的 CURD 操作。</p>
-<figure><img src="/posts/check-rule/Controller.svg">
+<figure><img src="/posts/check-rule/service-store.svg">
 </figure>
 
 <h3 id="存储层store">存储层（Store）</h3>
@@ -204,6 +205,8 @@ Service 会处理来自 Controller 的请求，并根据需要请求 Store 完�
 <p>Store 依赖于数据库，如果调用了其他微服务，则还依赖于第三方服务，此时可以通过 <a href="https://github.com/DATA-DOG/go-sqlmock" target="_blank" rel="noopener noreffer ">sqlmock</a> 来模拟数据库连接，通过 <a href="https://github.com/jarcoal/httpmock" target="_blank" rel="noopener noreffer ">httpmock</a> 来模拟 HTTP 请求。</p>
 </li>
 </ul>
+<h3 id="资格服务代码设计">资格服务代码设计</h3>
+<p>在了解资格服务三层架构后，我们就可以开始设计代码了。</p>
 <p><strong>工厂方法</strong>设计模式，相关类图如下：</p>
 <figure><img src="/posts/check-rule/outlines.svg">
 </figure>
