@@ -1,0 +1,45 @@
+@startuml 
+namespace services {
+    class DjcBaseService << (S,Aquamarine) >> {
+        - errCode int
+        - errMsg string
+        - errInfo string
+        - ext <font color=blue>map</font>[string]string
+        - ...
+
+        + GetExt() <font color=blue>map</font>[string]string
+        + Process(sRequestURI string, sParam string, rawQuery string, reqBody string, sCookie string) (int, string, error)
+        + CheckParam(sParam string, rawQuery string, reqBody string) int
+    }
+    class DjcRuleService << (S,Aquamarine) >> {
+        - appID int
+        - bizCode string
+        - uid string
+        - ...
+        - rt *djruntime.Runtime
+        - checker rule.Ruler
+
+        - ruleCheck() int
+        - getLuckyInfo(param string, cookie string) int
+        - getDcLuckyInfo(param string, cookie string) int
+        - signAndDecodeParam(param string, rawQuery string, reqBody string, reqParam *QueryInnerParam) (string, int, error)
+        - checkMustField(sTempParam string) int
+        - getRuleObject(mParam <font color=blue>map</font>[string]any) (rule.Ruler, error)
+        - setTips(mParam <font color=blue>map</font>[string]any, pRule rule.Ruler, sGoodsName *string) 
+        - handleRule(ruleConfig *InnerRuleConfig, goods string) int
+
+        + Process(requestURI string, param string, rawQuery string, reqBody string, cookie string) (int, string, error)
+        + CheckParam(param string, rawQuery string, reqBody string) int
+        + ShowMsg(errCode int, errMsg string, errInfo string, idipinfo string) int
+    }
+
+    interface Servicer  {
+        + Process(sRequestURI string, sParam string, rawQuery string, reqBody string, sCookie string) (int, string, error)
+        + CheckParam(sParam string, rawQuery string, reqBody string) int
+    }
+}
+"services.DjcBaseService" *-- "services.DjcRuleService"
+
+"services.Servicer" <|-- "services.DjcBaseService"
+"services.Servicer" <|-- "services.DjcRuleService"
+@enduml
