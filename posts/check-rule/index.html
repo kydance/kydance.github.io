@@ -34,7 +34,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/kydance.github.io\/posts\/check-rule\/"
-        },"image": ["https:\/\/kydance.github.io\/favicon.ico"],"genre": "posts","keywords": "check.rule, 微服务, 设计与实现","wordcount":  112 ,
+        },"image": ["https:\/\/kydance.github.io\/favicon.ico"],"genre": "posts","keywords": "check.rule, 微服务, 设计与实现","wordcount":  139 ,
         "url": "https:\/\/kydance.github.io\/posts\/check-rule\/","datePublished": "2024-09-07T20:56:52+08:00","dateModified": "2024-09-07T20:56:52+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "kyden","logo": "https:\/\/kydance.github.io\/favicon.png"},"author": {
@@ -132,7 +132,7 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">资格校验接口的微服务设计与实现</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https:github.com/kydance" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>kyden</a></span>&nbsp;<span class="post-category">included in <a href="/categories/check.rule/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Check.rule</a>&nbsp;<a href="/categories/%E5%BE%AE%E6%9C%8D%E5%8A%A1/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>微服务</a>&nbsp;<a href="/categories/%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>设计与实现</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-09-07">2024-09-07</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;112 words&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-09-07">2024-09-07</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;139 words&nbsp;
                 <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;One minute&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
@@ -211,7 +211,15 @@ Service 会处理来自 Controller 的请求，并根据需要请求 Store 完�
 <figure><img src="/posts/check-rule/Services.svg">
 </figure>
 
-<p>其中，从图中明显可以看到，整个软件体系采用了微服务架构，即分为 <code>services</code>、<code>controllers</code> 以及 <code>rule</code> 三个 Package，其中每一个 Packge 都采用了面向 <code>interface</code> 的编程范式。</p>
+<p>从图中明显可以看到，<code>Server</code> 接口定义了该服务所支持的功能，实现了接口就是规范的功能。
+另外在 <code>Server</code> 的实现类 <code>DjcRuleService</code> 中持有 <code>rule.Ruler</code> 接口的引用，
+该接口定义了 <code>Ckeck</code> 方法，<code>rule.Ruler</code> 接口的实现类(例如，<code>DJCFFriendsRule</code>、<code>DJCfmVipRule</code>)会实现 <code>Ckeck</code> 方法，从而实现规则的校验。</p>
+<p>在 Controller 层中，我们定义了如下的代码结构：</p>
+<figure><img src="/posts/check-rule/Services.svg">
+</figure>
+
+<p>它不仅持有 <code>services.Servicer</code> 接口，而且实现了 <code>POST</code>/<code>HEAD</code>/<code>GET</code> 等 HTTP 方法，实现了 HTTP 请求的响应、参数的解析与校验、Service 层业务逻辑的调用等操作。</p>
+<p>整个软件体系采用了分层架构，即分为 <code>controllers</code>、<code>services</code>以及 <code>rule</code> 三个 Package，其中每一个 Packge 都采用了面向 <code>interface</code> 的编程范式。</p>
 <h2 id="微服务部署">微服务部署</h2>
 <h2 id="接口测试之流量回放与镜像">接口测试之流量回放与镜像</h2>
 <h2 id="reference">Reference</h2>
