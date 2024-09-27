@@ -34,7 +34,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/kydance.github.io\/posts\/check-rule\/"
-        },"image": ["https:\/\/kydance.github.io\/favicon.ico"],"genre": "posts","keywords": "check.rule, 微服务, 设计与实现","wordcount":  139 ,
+        },"image": ["https:\/\/kydance.github.io\/favicon.ico"],"genre": "posts","keywords": "check.rule, 微服务, 设计与实现","wordcount":  186 ,
         "url": "https:\/\/kydance.github.io\/posts\/check-rule\/","datePublished": "2024-09-07T20:56:52+08:00","dateModified": "2024-09-07T20:56:52+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "kyden","logo": "https:\/\/kydance.github.io\/favicon.png"},"author": {
@@ -132,7 +132,7 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">资格校验接口的微服务设计与实现</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https:github.com/kydance" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>kyden</a></span>&nbsp;<span class="post-category">included in <a href="/categories/check.rule/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Check.rule</a>&nbsp;<a href="/categories/%E5%BE%AE%E6%9C%8D%E5%8A%A1/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>微服务</a>&nbsp;<a href="/categories/%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>设计与实现</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-09-07">2024-09-07</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;139 words&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-09-07">2024-09-07</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;186 words&nbsp;
                 <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;One minute&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
@@ -151,7 +151,13 @@
       </ul>
     </li>
     <li><a href="#微服务部署">微服务部署</a></li>
-    <li><a href="#接口测试之流量回放与镜像">接口测试之流量回放与镜像</a></li>
+    <li><a href="#接口测试之流量回放与镜像">接口测试之流量回放与镜像</a>
+      <ul>
+        <li><a href="#流量回放-traffic-replay">流量回放 (Traffic Replay)</a></li>
+        <li><a href="#流量镜像-traffic-mirror">流量镜像 (Traffic Mirror)</a></li>
+        <li><a href="#资格服务的应用">资格服务的应用</a></li>
+      </ul>
+    </li>
     <li><a href="#reference">Reference</a></li>
   </ul>
 </nav></div>
@@ -207,27 +213,60 @@ Service 会处理来自 Controller 的请求，并根据需要请求 Store 完�
 </ul>
 <h3 id="资格服务代码设计">资格服务代码设计</h3>
 <p>在了解本资格服务三层架构之后，我们就可以开始设计代码了。</p>
-<p>由于在本接口中需要实现多种资格的校验工作，并结合实际需求，最终在 Service 层采用<strong>工厂方法</strong>设计模式，相关类图如下：</p>
-<figure><img src="/posts/check-rule/Services.svg">
-</figure>
-
-<p>从图中明显可以看到，<code>Server</code> 接口定义了该服务所支持的功能，实现了接口就是规范的功能。
-另外在 <code>Server</code> 的实现类 <code>DjcRuleService</code> 中持有 <code>rule.Ruler</code> 接口的引用，
-该接口定义了 <code>Ckeck</code> 方法，<code>rule.Ruler</code> 接口的实现类(例如，<code>DJCFFriendsRule</code>、<code>DJCfmVipRule</code>)会实现 <code>Ckeck</code> 方法，从而实现规则的校验。</p>
+<p>由于在本接口中需要实现多种资格的校验工作，并结合实际需求，最终采用的相关类图如下：</p>
 <p>在 Controller 层中，我们定义了如下的代码结构：</p>
-<figure><img src="/posts/check-rule/Services.svg">
+<figure><img src="/posts/check-rule/class-Controllers.svg">
 </figure>
 
 <p>它不仅持有 <code>services.Servicer</code> 接口，而且实现了 <code>POST</code>/<code>HEAD</code>/<code>GET</code> 等 HTTP 方法，实现了 HTTP 请求的响应、参数的解析与校验、Service 层业务逻辑的调用等操作。</p>
-<p>整个软件体系采用了分层架构，即分为 <code>controllers</code>、<code>services</code>以及 <code>rule</code> 三个 Package，其中每一个 Packge 都采用了面向 <code>interface</code> 的编程范式。</p>
+<p>在 Service 层中，我们定义了如下的代码结构：</p>
+<figure><img src="/posts/check-rule/class-Services.svg">
+</figure>
+
+<p>从图中明显可以看到，<code>Server</code> 接口定义了该服务所支持的功能，实现了接口就是规范的功能。
+另外在 <code>Server</code> 的实现类 <code>DjcRuleService</code> 中持有 <code>rule.Ruler</code> 接口的引用。</p>
+<p>在 Store 层中，我们定义了如下的代码结构：</p>
+<figure><img src="/posts/check-rule/class-Store.svg">
+</figure>
+
+<p>为了应对各种不同的校验规则，在 Store 层采用了<strong>工厂方法</strong>这一设计模式，<code>rule.Ruler</code> 接口定义了核心 <code>Ckeck</code> 方法，
+<code>rule.Ruler</code> 接口的实现类 (例如: <code>DJCFFriendsRule</code>、<code>DJCfmVipRule</code>) 会实现 <code>Ckeck</code> 方法，并将具体规则校验实现类的创建工作交由 <code>service.createRuler</code> 方法，从而实现具体规则的校验功能。</p>
+<p>值得一提的是，整个软件体系采用了分层架构，即分为 <code>controllers</code>、<code>services</code>以及 <code>rule</code> 三个 Package，并且其中的每一个 Packge 都采用了面向 <code>interface</code> 的编程范式。</p>
 <h2 id="微服务部署">微服务部署</h2>
 <h2 id="接口测试之流量回放与镜像">接口测试之流量回放与镜像</h2>
+<h3 id="流量回放-traffic-replay">流量回放 (Traffic Replay)</h3>
+<p>流量回放，顾名思义，指的是通过复制线上真实流量（录制），然后在测试环境（或生产环境）进行模拟请求（回放）验证代码逻辑正确性的一种技术方法。
+它通过采集线上流量在测试环境（或生产环境）回放逐一对比每个子调用差异和入口调用结果来发现接口代码是否存在问题。</p>
+<p>通俗理解，流量回放和使用其他工具（比如 JMeter / postman）构造请求，然后根据返回的响应数据判断测试是否通过的本质相同。
+两者的区别在于：流量回放是线上真实流量，而在传统的利用测试工具来发送请求的手段中，人工介入较多。</p>
+<h3 id="流量镜像-traffic-mirror">流量镜像 (Traffic Mirror)</h3>
+<p>流量镜像（Traffic Mirror） ，也称流量影子（Traffic Shadow）, 是一种强大的、无风险的测试应用版本的方法，它将实时流量的副本发送给被镜像的服务。
+采用这种方法，可以轻松地测试新版本，而无需在生产环境中部署新版本。</p>
+<h3 id="资格服务的应用">资格服务的应用</h3>
+<p>由于本次资格服务接口项目属于重构项目，因此在代码重构结束之后，借助了流量回放与镜像技术，验证重构后的代码逻辑是否正确，保证重构后的代码逻辑与重构前的代码逻辑一致。</p>
+<p>另外，为了充分验证代码的正确性，我们采用了两种逐层递进的验证方式，
+即首先在 CLS 日志系统中抓取线上流量，然后通过流量回放技术手段，在测试环境（或生产环境）进行模拟请求，确保代码逻辑的稳定性，如下图所示；</p>
+<figure><img src="/posts/check-rule/Traffic-replay.svg">
+</figure>
+
+<p>接下来，采用流量镜像技术手段，直接在测试环境（或生产环境）的线上流量进行镜像，并持续监控镜像流量，确保代码逻辑的正确性。</p>
 <h2 id="reference">Reference</h2>
 <ul>
 <li><a href="https://github.com/beego/beego" target="_blank" rel="noopener noreffer ">beego</a></li>
 <li><a href="https://github.com/DATA-DOG/go-sqlmock" target="_blank" rel="noopener noreffer ">sqlmock</a></li>
 <li><a href="https://github.com/jarcoal/httpmock" target="_blank" rel="noopener noreffer ">httpmock</a></li>
-</ul></div><div class="post-footer" id="post-footer">
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">go install github.com/jfeliu007/goplantuml/cmd/goplantuml@latest
+</span></span><span class="line"><span class="cl">yum install graphviz
+</span></span></code></pre></td></tr></table>
+</div>
+</div></div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
