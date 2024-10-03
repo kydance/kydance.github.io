@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>Tmux Guide - Kyden Grocery</title><meta name="Description" content="Kyden&#39;s Blog Site"><meta property="og:url" content="https://kydance.github.io/posts/tmux-guide/">
+  <meta property="og:site_name" content="Kyden Grocery">
+  <meta property="og:title" content="Tmux Guide">
+  <meta property="og:description" content=" 导语 Tmux，一款优秀的终端复用工具，使用它最直观的好处就是，通过一个终端登录远程主机并运行tmux后，在其中可以开启多个控制台而无需再“浪费”多余的终端来连接这台远程主机 ">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2024-10-03T20:24:40+08:00">
+    <meta property="article:modified_time" content="2024-10-03T20:24:40+08:00">
+    <meta property="article:tag" content="Tmux">
+    <meta property="article:tag" content="Guide">
+    <meta property="article:tag" content="Tools&#34;">
+    <meta property="og:image" content="https://kydance.github.io/favicon.png">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://kydance.github.io/favicon.png">
+  <meta name="twitter:title" content="Tmux Guide">
+  <meta name="twitter:description" content=" 导语 Tmux，一款优秀的终端复用工具，使用它最直观的好处就是，通过一个终端登录远程主机并运行tmux后，在其中可以开启多个控制台而无需再“浪费”多余的终端来连接这台远程主机 ">
+<meta name="application-name" content="kyden">
+<meta name="apple-mobile-web-app-title" content="kyden"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="canonical" href="https://kydance.github.io/posts/tmux-guide/" /><link rel="prev" href="https://kydance.github.io/posts/go-viper/" /><link rel="stylesheet" href="/css/style.min.cf6878db51c51b2d04ae155284a4403dbee8db33e16c066f954c95279c271fcd.css" integrity="sha256-z2h421HFGy0ErhVShKRAPb7o2zPhbAZvlUyVJ5wnH80="><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Tmux Guide",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/kydance.github.io\/posts\/tmux-guide\/"
+        },"image": ["https:\/\/kydance.github.io\/favicon.ico"],"genre": "posts","keywords": "tmux, Guide, Tools\u0022","wordcount":  310 ,
+        "url": "https:\/\/kydance.github.io\/posts\/tmux-guide\/","datePublished": "2024-10-03T20:24:40+08:00","dateModified": "2024-10-03T20:24:40+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@type": "Organization",
+            "name": "kyden","logo": "https:\/\/kydance.github.io\/favicon.png"},"author": {
+                "@type": "Person",
+                "name": "kyden"
+            },"description": ""
+    }
+    </script>
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-M1S0PTJ6RH"></script>
+        <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-M1S0PTJ6RH');
+        </script>
+    </head>
+
+    <body data-header-desktop="auto" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Kyden Grocery"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/favicon.ico"
+        data-srcset="/favicon.ico, /favicon.ico 1.5x, /favicon.ico 2x"
+        data-sizes="auto"
+        alt="/favicon.ico"
+        title="/favicon.ico" /></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> Categories </a><a class="menu-item" href="/about/"> About </a><a class="menu-item" href="https://github.com/kydance" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw' aria-hidden='true'></i>  </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Type Something..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Kyden Grocery"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/favicon.ico"
+        data-srcset="/favicon.ico, /favicon.ico 1.5x, /favicon.ico 2x"
+        data-sizes="auto"
+        alt="/favicon.ico"
+        title="/favicon.ico" /></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Type Something..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">Categories</a><a class="menu-item" href="/about/" title="">About</a><a class="menu-item" href="https://github.com/kydance" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw' aria-hidden='true'></i></a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Tmux Guide</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https:github.com/kydance" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>kyden</a></span>&nbsp;<span class="post-category">included in <a href="/categories/tmux/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Tmux</a>&nbsp;<a href="/categories/guide/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Guide</a>&nbsp;<a href=""><i class="far fa-folder fa-fw" aria-hidden="true"></i></a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-10-03">2024-10-03</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;310 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;2 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#feature">Feature</a></li>
+    <li><a href="#tmux-中的-server-session-window-和-pane">Tmux 中的 server, session, window 和 Pane</a></li>
+    <li><a href="#installation">Installation</a>
+      <ul>
+        <li><a href="#linux">Linux</a></li>
+        <li><a href="#mac">Mac</a></li>
+      </ul>
+    </li>
+    <li><a href="#常用命令">常用命令</a>
+      <ul>
+        <li><a href="#启动新-session">启动新 session</a></li>
+        <li><a href="#恢复-session">恢复 Session</a></li>
+        <li><a href="#session-list">Session List</a></li>
+        <li><a href="#关闭-session">关闭 Session</a></li>
+        <li><a href="#关闭整个-tmux-服务器">关闭整个 tmux 服务器</a></li>
+        <li><a href="#session-command">Session Command</a></li>
+        <li><a href="#window-command">Window Command</a></li>
+        <li><a href="#pane-command">Pane Command</a></li>
+      </ul>
+    </li>
+    <li><a href="#配置文件">配置文件</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><div class="details admonition abstract open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-list-ul fa-fw" aria-hidden="true"></i>导语<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">Tmux，一款优秀的终端复用工具，使用它最直观的好处就是，通过一个终端登录远程主机并运行tmux后，在其中可以开启多个控制台而无需再“浪费”多余的终端来连接这台远程主机</div>
+        </div>
+    </div>
+<h2 id="feature">Feature</h2>
+<ul>
+<li>强劲的、易于使用的命令行界面</li>
+<li>可以横向、纵向分割窗口</li>
+<li>窗格可以自由移动和调整大小，或直接利用四个预设布局之一</li>
+<li>支持 UTF-8 编码及 256 色终端</li>
+<li>可在多个缓冲区进行复制和粘贴</li>
+<li>可通过交互式菜单来选择窗口、会话及客户端</li>
+<li>支持跨窗口搜索</li>
+<li>支持自动及手动锁定窗口</li>
+<li>可以自由配置绑定快捷键</li>
+</ul>
+<h2 id="tmux-中的-server-session-window-和-pane">Tmux 中的 server, session, window 和 Pane</h2>
+<p>在 Tmux 系统中，存在以下极其重要的大小层级: <code>Server</code> -&gt; <code>Session</code> -&gt; <code>Window</code> -&gt; <code>Pane</code>.</p>
+<ul>
+<li><strong><code>Server</code></strong>: 整个 tmux 的后台服务. NOTE: 当配置文件不生效时，就需要使用 <code>tmux kill-server</code> 来重启 Tmux</li>
+<li><strong><code>Session</code></strong>: 可以理解为 workplace</li>
+<li><strong><code>Window</code></strong>: 相当于 VIM 中的buffer</li>
+<li><strong><code>Pane</code></strong>: 窗口中的小分屏，相当于 VIM 中的 <code>split</code> / <code>vsplit</code></li>
+</ul>
+<h2 id="installation">Installation</h2>
+<p>Require: version &gt;= 2.1</p>
+<h3 id="linux">Linux</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">yum install -y tmux
+</span></span><span class="line"><span class="cl">yay -S tmux
+</span></span><span class="line"><span class="cl">apt-get install tmux
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="mac">Mac</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">brew install tmux
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="常用命令">常用命令</h2>
+<p>Tmux 的默认 prefix-key 是 <code>&lt;C-b&gt;</code></p>
+<h3 id="启动新-session">启动新 session</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ tmux <span class="o">[</span>new -s sessionName -n windowName<span class="o">]</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># e.g. tmux new -s kyden -n nvim</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="恢复-session">恢复 Session</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ tmux at<span class="o">[</span>-t sessionName<span class="o">]</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="session-list">Session List</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ tmux ls
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="关闭-session">关闭 Session</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ tmux kill-session -t sessionName
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="关闭整个-tmux-服务器">关闭整个 tmux 服务器</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ tmux kill-server
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="session-command">Session Command</h3>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left">prefix-key</th>
+          <th style="text-align: left">command</th>
+          <th style="text-align: left">description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><code>&lt;C-b&gt;</code></td>
+          <td style="text-align: left"><code>?</code></td>
+          <td style="text-align: left">显示快捷键帮助文档</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>&lt;C-b&gt;</code></td>
+          <td style="text-align: left"><code>d</code></td>
+          <td style="text-align: left">断开当前 Session</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>&lt;C-b&gt;</code></td>
+          <td style="text-align: left"><code>r</code></td>
+          <td style="text-align: left">强制重载当前 Session</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>&lt;C-b&gt;</code></td>
+          <td style="text-align: left"><code>:</code></td>
+          <td style="text-align: left">进入命令模式，可直接输入命令</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="window-command">Window Command</h3>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left">prefix-key</th>
+          <th style="text-align: left">command</th>
+          <th style="text-align: left">description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><code>&lt;C-b&gt;</code></td>
+          <td style="text-align: left"><code>c</code></td>
+          <td style="text-align: left">新建窗口</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>&lt;C-b&gt;</code></td>
+          <td style="text-align: left"><code>&amp;</code></td>
+          <td style="text-align: left">关闭当前窗口</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>&lt;C-b&gt;</code></td>
+          <td style="text-align: left"><code>p / n / &lt;number&gt;</code></td>
+          <td style="text-align: left">切换到上一个 / 下一个 / 指定窗口</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>&lt;C-b&gt;</code></td>
+          <td style="text-align: left"><code>w</code></td>
+          <td style="text-align: left">打开窗口列表，用于切换窗口</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>&lt;C-b&gt;</code></td>
+          <td style="text-align: left"><code>.</code></td>
+          <td style="text-align: left">重命名当前窗口</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="pane-command">Pane Command</h3>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left">prefix-key</th>
+          <th style="text-align: left">command</th>
+          <th style="text-align: left">description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><code>&lt;C-b&gt;</code></td>
+          <td style="text-align: left"><code>&quot;</code> / <code>%</code></td>
+          <td style="text-align: left">新建上下 / 左右 pane</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>&lt;C-b&gt;</code></td>
+          <td style="text-align: left"><code>x</code></td>
+          <td style="text-align: left">关闭当前 pane</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>&lt;C-b&gt;</code></td>
+          <td style="text-align: left"><code>z</code></td>
+          <td style="text-align: left">最大化当前 pane(重复取消最大化)</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>&lt;C-b&gt;</code></td>
+          <td style="text-align: left"><code>q</code></td>
+          <td style="text-align: left">显示面板编号，在编号消失前输入对应的数字可切换到相应的面板</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>&lt;C-b&gt;</code></td>
+          <td style="text-align: left"><code>&lt;left&gt;</code> / <code>&lt;right&gt;</code> / <code>up</code> / <code>down</code></td>
+          <td style="text-align: left">移动光标切换面板</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>&lt;C-b&gt;</code></td>
+          <td style="text-align: left"><code>o</code></td>
+          <td style="text-align: left">选择下一 pane</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>&lt;C-b&gt;</code></td>
+          <td style="text-align: left"><code>&lt;space&gt;</code></td>
+          <td style="text-align: left">在自带的面板布局中循环切换</td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="配置文件">配置文件</h2>
+<p>配置文件 <code>.tmux.conf</code> 通常位于 <code>~/.tmux.conf</code> 处，可输入 <code>restart tmux</code> 进行 mtum 重启</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl"># 从tmux v1.6版起，支持设置第二个指令前缀，使用 ` 作为第二指令前缀
+</span></span><span class="line"><span class="cl">set-option -g prefix2 `
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"># v2.1及以上的版本
+</span></span><span class="line"><span class="cl"># 支持鼠标
+</span></span><span class="line"><span class="cl"># 选取文本、调整面板大小、选中并切换面板
+</span></span><span class="line"><span class="cl">set-option -g mouse on
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"># 窗口面板起始序列号
+</span></span><span class="line"><span class="cl">set -g base-index 1
+</span></span><span class="line"><span class="cl">set -g pane-base-index 1
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">set -g  status-utf8 on
+</span></span><span class="line"><span class="cl">set -g status-interval 1
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">set -wg window-status-format &#34; #I #W &#34; # 状态栏窗口名称格式
+</span></span><span class="line"><span class="cl">set -wg window-status-current-format &#34; #I:#W#F &#34; # 状态栏当前窗口名称格式(#I：序号，#w：窗口名称，#F：间隔符)
+</span></span><span class="line"><span class="cl">set -wg window-status-separator &#34;&#34; # 状态栏窗口名称之间的间隔
+</span></span></code></pre></td></tr></table>
+</div>
+</div></div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2024-10-03</span>
+            </div><div class="post-info-license">
+                <span><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://kydance.github.io/posts/tmux-guide/" data-title="Tmux Guide" data-hashtags="tmux,Guide,Tools&#34;"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://kydance.github.io/posts/tmux-guide/" data-hashtag="tmux"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Linkedin" data-sharer="linkedin" data-url="https://kydance.github.io/posts/tmux-guide/"><i class="fab fa-linkedin fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on WhatsApp" data-sharer="whatsapp" data-url="https://kydance.github.io/posts/tmux-guide/" data-title="Tmux Guide" data-web><i class="fab fa-whatsapp fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="https://kydance.github.io/posts/tmux-guide/" data-title="Tmux Guide"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Reddit" data-sharer="reddit" data-url="https://kydance.github.io/posts/tmux-guide/"><i class="fab fa-reddit fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="https://kydance.github.io/posts/tmux-guide/" data-title="Tmux Guide"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@7.3.0/icons/line.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://kydance.github.io/posts/tmux-guide/" data-title="Tmux Guide"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 百度" data-sharer="baidu" data-url="https://kydance.github.io/posts/tmux-guide/" data-title="Tmux Guide"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@7.3.0/icons/baidu.svg" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/tmux/">Tmux</a>,&nbsp;<a href="/tags/guide/">Guide</a>,&nbsp;<a href=""></a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/posts/go-viper/" class="prev" rel="prev" title="Go 如何优雅地读取配置？"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>Go 如何优雅地读取配置？</a></div>
+</div>
+<div id="comments"><div id="gitalk" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://github.com/gitalk/gitalk"></a>Gitalk</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2024</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://github.com/kydance" target="_blank">kyden</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></br><script>
+                    function siteTime() {
+                        var seconds = 1000;
+                        var minutes = seconds * 60;
+                        var hours = minutes * 60;
+                        var days = hours * 24;
+                        var years = days * 365;
+                        var today = new Date();
+                        var startYear = 2024;
+                        var startMonth = 4;
+                        var startDate = 18;
+                        var startHour = 12;
+                        var startMinute = 57;
+                        var startSecond = 2;
+                        var todayYear = today.getFullYear();
+                        var todayMonth = today.getMonth() + 1;
+                        var todayDate = today.getDate();
+                        var todayHour = today.getHours();
+                        var todayMinute = today.getMinutes();
+                        var todaySecond = today.getSeconds();
+                        var t1 = Date.UTC(startYear, startMonth, startDate, startHour, startMinute, startSecond);
+                        var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+                        var diff = t2 - t1;
+                        var diffYears = Math.floor(diff / years);
+                        var diffDays = Math.floor((diff / days) - diffYears * 365);
+                        var diffHours = Math.floor((diff - (diffYears * 365 + diffDays) * days) / hours);
+                        var diffMinutes = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours) /
+                            minutes);
+                        var diffSeconds = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours -
+                            diffMinutes * minutes) / seconds);
+                        if (startYear == todayYear) {
+                            
+                            document.getElementById("sitetime").innerHTML = "已安全运行 " + diffDays + " 天 " + diffHours +
+                                " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                        } else {
+                            
+                            document.getElementById("sitetime").innerHTML = "已安全运行 " + diffYears + " 年 " + diffDays +
+                                " 天 " + diffHours + " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                        }
+                    }
+                    setInterval(siteTime, 1000);
+                </script>
+                <span id="sitetime">载入运行时间...</span>
+            </div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@2.5.0/css/lightgallery-bundle.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><script type="text/javascript" src="https://polyfill.io/v3/polyfill.min.js?features=Array.prototype.fill%2CArray.prototype.find%2CArray.from%2CIntersectionObserver%2CMath.sign%2CObject.assign%2CPromise%2CObject.entries%2Chtml5shiv%2CObject.values%2Cfetch%2CElement.prototype.after"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/object-fit-images@3.2.4/dist/ofi.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.38.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/algoliasearch@4.13.1/dist/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery@2.5.0/lightgallery.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery@2.5.0/plugins/thumbnail/lg-thumbnail.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery@2.5.0/plugins/zoom/lg-zoom.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/copy-tex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/mhchem.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{"gitalk":{"admin":["kydance"],"clientID":"Ov23li57QoCQY8gKyhxe","clientSecret":"bcd3cf3f8167ffcfeab2c033d961d1500f42447e","id":"2024-10-03T20:24:40+08:00","owner":"kydance","repo":"gitalk","title":"Tmux Guide"}},"cookieconsent":{"content":{"dismiss":"Got it!","link":"Learn more","message":"This website uses Cookies to improve your experience."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"lightgallery":true,"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"algoliaAppID":"PASDMWALPK","algoliaIndex":"index.en","algoliaSearchKey":"b42948e51daaa93df92381c8e2ac0f93","highlightTag":"em","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"algolia"}};</script><script type="text/javascript" src="/js/theme.min.d7121d72cd85153ec9d35a888cee3eb28c2700ca763f649a538f6c772d750021.js" integrity="sha256-1xIdcs2FFT7J01qIjO4+sownAMp2P2SaU49sdy11ACE="></script><script type="text/javascript">
+            window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());
+            gtag('config', 'G-M1S0PTJ6RH', { 'anonymize_ip': true });
+        </script><script type="text/javascript" src="https://www.googletagmanager.com/gtag/js?id=G-M1S0PTJ6RH" async></script></body>
+</html>

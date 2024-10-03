@@ -15,8 +15,8 @@
             <i class="icon fas fa-list-ul fa-fw" aria-hidden="true"></i>导语<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
         </div>
         <div class="details-content">
-            <div class="admonition-content">当在设计微服务接口时，或许会遇到一个接口职责不单一时，此时应该如何处理呢？
-本文就以资格校验服务为例，详细介绍一下如何使用工厂方法、流量镜像、流量回放等技术手段解决该问题。</div>
+            <div class="admonition-content">在设计和开发微服务接口的过程中，常常会遇到接口职责不够单一、功能混杂的问题。面对这种情况，该如何有效处理呢？
+本文以资格校验服务为例，详细介绍如何通过工厂方法、流量镜像和流量回放等技术手段，来解决开发、测试和部署中遇到的此类问题。</div>
         </div>
     </div>]]></description>
 </item>

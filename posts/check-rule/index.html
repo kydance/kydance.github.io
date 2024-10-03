@@ -7,7 +7,7 @@
         <title>资格校验接口的微服务设计与实现 - Kyden Grocery</title><meta name="Description" content="Kyden&#39;s Blog Site"><meta property="og:url" content="https://kydance.github.io/posts/check-rule/">
   <meta property="og:site_name" content="Kyden Grocery">
   <meta property="og:title" content="资格校验接口的微服务设计与实现">
-  <meta property="og:description" content=" 导语 当在设计微服务接口时，或许会遇到一个接口职责不单一时，此时应该如何处理呢？ 本文就以资格校验服务为例，详细介绍一下如何使用工厂方法、流量镜像、流量回放等技术手段解决该问题。 ">
+  <meta property="og:description" content=" 导语 在设计和开发微服务接口的过程中，常常会遇到接口职责不够单一、功能混杂的问题。面对这种情况，该如何有效处理呢？ 本文以资格校验服务为例，详细介绍如何通过工厂方法、流量镜像和流量回放等技术手段，来解决开发、测试和部署中遇到的此类问题。 ">
   <meta property="og:locale" content="en">
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
@@ -21,7 +21,7 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:image" content="https://kydance.github.io/favicon.png">
   <meta name="twitter:title" content="资格校验接口的微服务设计与实现">
-  <meta name="twitter:description" content=" 导语 当在设计微服务接口时，或许会遇到一个接口职责不单一时，此时应该如何处理呢？ 本文就以资格校验服务为例，详细介绍一下如何使用工厂方法、流量镜像、流量回放等技术手段解决该问题。 ">
+  <meta name="twitter:description" content=" 导语 在设计和开发微服务接口的过程中，常常会遇到接口职责不够单一、功能混杂的问题。面对这种情况，该如何有效处理呢？ 本文以资格校验服务为例，详细介绍如何通过工厂方法、流量镜像和流量回放等技术手段，来解决开发、测试和部署中遇到的此类问题。 ">
 <meta name="application-name" content="kyden">
 <meta name="apple-mobile-web-app-title" content="kyden"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="canonical" href="https://kydance.github.io/posts/check-rule/" /><link rel="prev" href="https://kydance.github.io/posts/vscode-vim/" /><link rel="next" href="https://kydance.github.io/posts/json-encoder-decoder/" /><link rel="stylesheet" href="/css/style.min.cf6878db51c51b2d04ae155284a4403dbee8db33e16c066f954c95279c271fcd.css" integrity="sha256-z2h421HFGy0ErhVShKRAPb7o2zPhbAZvlUyVJ5wnH80="><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
@@ -34,7 +34,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/kydance.github.io\/posts\/check-rule\/"
-        },"image": ["https:\/\/kydance.github.io\/favicon.ico"],"genre": "posts","keywords": "check.rule, 微服务, 设计与实现","wordcount":  186 ,
+        },"image": ["https:\/\/kydance.github.io\/favicon.ico"],"genre": "posts","keywords": "check.rule, 微服务, 设计与实现","wordcount":  346 ,
         "url": "https:\/\/kydance.github.io\/posts\/check-rule\/","datePublished": "2024-09-07T20:56:52+08:00","dateModified": "2024-09-07T20:56:52+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "kyden","logo": "https:\/\/kydance.github.io\/favicon.png"},"author": {
@@ -132,8 +132,8 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">资格校验接口的微服务设计与实现</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https:github.com/kydance" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>kyden</a></span>&nbsp;<span class="post-category">included in <a href="/categories/check.rule/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Check.rule</a>&nbsp;<a href="/categories/%E5%BE%AE%E6%9C%8D%E5%8A%A1/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>微服务</a>&nbsp;<a href="/categories/%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>设计与实现</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-09-07">2024-09-07</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;186 words&nbsp;
-                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;One minute&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-09-07">2024-09-07</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;346 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;2 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
@@ -141,21 +141,42 @@
                 </div>
                 <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
   <ul>
-    <li><a href="#资格服务的三层架构">资格服务的三层架构</a>
+    <li><a href="#资格服务的三层架构设计">资格服务的三层架构设计</a>
       <ul>
         <li><a href="#控制层controller">控制层（Controller）</a></li>
         <li><a href="#业务层bizservice">业务层（Biz/Service）</a></li>
         <li><a href="#存储层store">存储层（Store）</a></li>
         <li><a href="#层间交互">层间交互</a></li>
-        <li><a href="#资格服务代码设计">资格服务代码设计</a></li>
+        <li><a href="#资格服务代码设计">资格服务代码设计</a>
+          <ul>
+            <li><a href="#controller">Controller</a></li>
+            <li><a href="#service">Service</a></li>
+            <li><a href="#store">Store</a></li>
+          </ul>
+        </li>
       </ul>
     </li>
-    <li><a href="#微服务部署">微服务部署</a></li>
-    <li><a href="#接口测试之流量回放与镜像">接口测试之流量回放与镜像</a>
+    <li><a href="#微服务部署">微服务部署</a>
+      <ul>
+        <li><a href="#服务发现">服务发现</a>
+          <ul>
+            <li><a href="#服务配置">服务配置</a></li>
+            <li><a href="#环境配置">环境配置</a></li>
+            <li><a href="#部署配置">部署配置</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#接口测试流量回放与镜像">【接口测试】流量回放与镜像</a>
       <ul>
         <li><a href="#流量回放-traffic-replay">流量回放 (Traffic Replay)</a></li>
         <li><a href="#流量镜像-traffic-mirror">流量镜像 (Traffic Mirror)</a></li>
-        <li><a href="#资格服务的应用">资格服务的应用</a></li>
+        <li><a href="#验证资格服务的稳定性与准确性">验证资格服务的稳定性与准确性</a>
+          <ul>
+            <li><a href="#稳定性">稳定性</a></li>
+            <li><a href="#准确性">准确性</a></li>
+          </ul>
+        </li>
       </ul>
     </li>
     <li><a href="#reference">Reference</a></li>
@@ -166,74 +187,251 @@
             <i class="icon fas fa-list-ul fa-fw" aria-hidden="true"></i>导语<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
         </div>
         <div class="details-content">
-            <div class="admonition-content">当在设计微服务接口时，或许会遇到一个接口职责不单一时，此时应该如何处理呢？
-本文就以资格校验服务为例，详细介绍一下如何使用工厂方法、流量镜像、流量回放等技术手段解决该问题。</div>
+            <div class="admonition-content">在设计和开发微服务接口的过程中，常常会遇到接口职责不够单一、功能混杂的问题。面对这种情况，该如何有效处理呢？
+本文以资格校验服务为例，详细介绍如何通过工厂方法、流量镜像和流量回放等技术手段，来解决开发、测试和部署中遇到的此类问题。</div>
         </div>
     </div>
-<h2 id="资格服务的三层架构">资格服务的三层架构</h2>
-<p>由于在本接口中需要实现多种规则的校验工作，并结合实际需求，最终的代码设计遵循简洁架构设计，划分为如下几层：控制层（Controller）、业务层（Biz/Service）、存储层（Store）。
-其中，从 Controller、Service 到 Store 的层级依次逐渐加深，具体代码架构如下图所示：</p>
+<h2 id="资格服务的三层架构设计">资格服务的三层架构设计</h2>
+<p>在实现本接口的过程中，为了应对多种规则校验需求，我们设计了一个基于三层架构的系统。
+该设计遵循简洁架构的原则，以确保系统的高内聚和低耦合。
+具体划分为以下三层：<strong>控制层（Controller）</strong>、<strong>业务层（Service / Biz）</strong>、<strong>存储层（Store）</strong>。</p>
+<p>其中，控制层负责处理外部请求和响应，业务层负责规则的具体逻辑校验，
+另外，由于本接口不会存储用户数据，因此存储层的职责由<strong>负责数据的持久化存储</strong> 转变为了<strong>负责外部数据进行交互</strong>。</p>
+<p>从架构上看，层与层之间的依赖关系自上而下递进，即控制层依赖业务层，业务层依赖存储层，具体代码架构如下图所示：</p>
 <figure><img src="/posts/check-rule/Outline.svg">
 </figure>
 
-<p>层与层之间导入包时，都有严格的导入关系，可以有效防止包的循环导入问题，即 Controller 能够导入 Service 的和 Store 的包。
-但需要注意的是，如若没有特殊需求，Controller 要避免直接导入 Store 层的包，而是其业务功能都由 Sercive 层完成。</p>
+<p>在各层之间的代码设计上，遵循了严格的依赖倒置原则（DIP）。
+具体来说， <strong>控制层（Controller）可以导入业务层（Service）和存储层（Store）</strong> 的包，而非直接与存储层交互。
+这样设计的好处是确保业务逻辑独立于数据存储，实现更强的扩展性和维护性。</p>
+<p>需要特别注意的是，控制层不应直接导入存储层，除非有非常特殊的需求。
+所有涉及存储的操作应通过业务层来完成，从而确保系统设计的层次清晰，职责明确。</p>
 <h3 id="控制层controller">控制层（Controller）</h3>
-<p>Controller 负责<strong>接收 HTTP 请求，并进行参数的解析与校验、逻辑的分发处理、请求返回</strong>等操作。
-Controller 将逻辑分发给 Service，Service 处理后返回，返回数据在 Controller 中被整合加工，最终返回给请求方，即实现了业务路由的功能。</p>
-<figure><img src="/posts/check-rule/Controller.svg">
+<p>控制层负责接收并处理来自客户端的请求，
+具体操作包括：<strong>解析请求参数、进行参数校验、分发业务逻辑、整合处理结果并返回响应</strong>。
+它的主要职责是将请求路由到业务层进行处理，而不直接涉及业务逻辑的实现。</p>
+<p>在控制层中，我们通过 <code>services.Servicer</code> 接口将请求分发给业务层（Service）。
+业务逻辑处理完成后，控制层将结果整合并返回给客户端，从而实现业务路由的功能。</p>
+<div class="details admonition warning open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-exclamation-triangle fa-fw" aria-hidden="true"></i>FIXME<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">框图需要修改，应该严格按照具体操作来画</div>
+        </div>
+    </div>
+<figure><img src="/posts/check-rule/Controller.svg"><figcaption>
+      <h4>控制层结构示意图</h4>
+    </figcaption>
 </figure>
 
 <h3 id="业务层bizservice">业务层（Biz/Service）</h3>
-<p>Service，主要用来完成<strong>业务逻辑处理</strong>，可以把所有的业务逻辑代码放在本层。
-Service 会处理来自 Controller 的请求，并根据需要请求 Store 完成数据的 CURD 操作。</p>
-<figure><img src="/posts/check-rule/service-store.svg">
+<p>业务层是整个系统的核心，负责处理所有的业务逻辑。
+当控制层接收到请求并将其转发至业务层时，业务层将根据具体的业务规则，调用存储层（Store）进行数据的 CURD。</p>
+<p>在此层级中，所有的业务逻辑代码应集中于此，确保业务逻辑与其他逻辑（如存储和控制）解耦。
+业务层的设计目标是让代码更具扩展性和可维护性。</p>
+<figure><img src="/posts/check-rule/service-store.svg"><figcaption>
+      <h4>业务层与存储层的交互</h4>
+    </figcaption>
 </figure>
 
 <h3 id="存储层store">存储层（Store）</h3>
-<p>Store，用来<strong>跟数据库/第三方服务进行 CRUD 交互，作为应用程序的数据引擎进行数据的输入与输出</strong>。
-需要注意的是，Store 仅对数据库/第三方服务执行 CRUD 操作，不封装任何业务逻辑。</p>
-<p>Store 同时也起到数据转换的作用：</p>
+<p>存储层是数据交互的入口，它负责与数据库 / 第三方服务进行 CURD 操作。
+由于本接口不会存储用户数据，因此存储层的职责由<strong>负责数据的持久化存储</strong> 转变为了<strong>负责外部数据进行交互</strong>，并为上层提供所需的数据。</p>
+<p>该层不会涉及任何业务逻辑，而仅专注于数据的存储与转换。</p>
+<p>同时，存储层也负责数据的格式转换，例如：</p>
 <ul>
-<li>将数据库/微服务中获取到的数据转换为 Controller、Service 能识别的数据结构；</li>
-<li>将 Controller、Service 的数据格式转换为数据库或微服务能识别的数据格式。</li>
+<li>将数据库或第三方服务返回的数据格式转换为业务层和控制层能处理的数据格式；</li>
+<li>将业务层和控制层的数据转换为存储系统或外部服务能够识别的格式。</li>
 </ul>
 <h3 id="层间交互">层间交互</h3>
-<p>Controller、Service、Store 各层之间都是通过接口进行通信，如此，可使得相同的功能支持不同的实现（即插件化能力），同时也使得每一层的代码变得可测试。</p>
+<p>在整个系统中，各层之间通过接口进行交互，确保功能的独立性和可扩展性。
+层与层之间的通信遵循依赖倒置原则，以便实现模块化和插件化的设计目标，同时大大提高了系统的测试性。</p>
 <ul>
-<li>
-<p>Controller 依赖于 Service 层，意味着该层需要 Service 层来支持测试，此时可以通过 <code>golang/mock</code> 来 mock Service。</p>
-</li>
-<li>
-<p>Service 依赖于 Store 层，意味着该层需要 Store 层来支持测试，此时可以通过 <code>golang/mock</code> 来 mock Store。</p>
-</li>
-<li>
-<p>Store 依赖于数据库，如果调用了其他微服务，则还依赖于第三方服务，此时可以通过 <a href="https://github.com/DATA-DOG/go-sqlmock" target="_blank" rel="noopener noreffer ">sqlmock</a> 来模拟数据库连接，通过 <a href="https://github.com/jarcoal/httpmock" target="_blank" rel="noopener noreffer ">httpmock</a> 来模拟 HTTP 请求。</p>
-</li>
+<li>Controller 依赖于 Service 层：Controller 通过调用 Service 层接口处理业务逻辑，可利用 <code>golang/mock</code> 模拟 Service 层进行单元测试。</li>
+<li>Service 依赖于 Store 层：Service 层通过 Store 层接口与存储系统/第三方服务交互，可通过 <code>golang/mock</code> 模拟操作。</li>
+<li>Store 依赖于数据库和外部服务：Store 层与数据库或微服务进行直接交互，可以使用 <a href="https://github.com/DATA-DOG/go-sqlmock" target="_blank" rel="noopener noreffer ">sqlmock</a> 模拟数据库操作，使用 <a href="https://github.com/jarcoal/httpmock" target="_blank" rel="noopener noreffer ">httpmock</a> 模拟外部 HTTP 请求。</li>
 </ul>
 <h3 id="资格服务代码设计">资格服务代码设计</h3>
-<p>在了解本资格服务三层架构之后，我们就可以开始设计代码了。</p>
-<p>由于在本接口中需要实现多种资格的校验工作，并结合实际需求，最终采用的相关类图如下：</p>
+<p>在了解了三层架构的基础后，资格服务的代码设计也基于此结构实现。
+在具体实现中，我们遵循面向接口编程的原则，以提高代码的扩展性和可测试性。</p>
+<h4 id="controller">Controller</h4>
 <p>在 Controller 层中，我们定义了如下的代码结构：</p>
 <figure><img src="/posts/check-rule/class-Controllers.svg">
 </figure>
 
-<p>它不仅持有 <code>services.Servicer</code> 接口，而且实现了 <code>POST</code>/<code>HEAD</code>/<code>GET</code> 等 HTTP 方法，实现了 HTTP 请求的响应、参数的解析与校验、Service 层业务逻辑的调用等操作。</p>
+<p>它持有 <code>services.Servicer</code> 接口，并且实现了 <code>POST</code>/<code>HEAD</code>/<code>GET</code> 等 HTTP 方法，
+用于处理 HTTP 请求的响应、请求参数的解析与合法性校验、Service 层业务逻辑的调用执行等操作。</p>
+<h4 id="service">Service</h4>
 <p>在 Service 层中，我们定义了如下的代码结构：</p>
 <figure><img src="/posts/check-rule/class-Services.svg">
 </figure>
 
-<p>从图中明显可以看到，<code>Server</code> 接口定义了该服务所支持的功能，实现了接口就是规范的功能。
-另外在 <code>Server</code> 的实现类 <code>DjcRuleService</code> 中持有 <code>rule.Ruler</code> 接口的引用。</p>
-<p>在 Store 层中，我们定义了如下的代码结构：</p>
+<p><code>Server</code> 接口定义了该服务所支持的功能，实现了接口就是规范的功能。
+与此同时，在 <code>Server</code> 的实现类（例如，<code>DjcRuleService</code>） 中持有 <code>rule.Ruler</code> 接口的引用，用于执行资格校验规则。</p>
+<h4 id="store">Store</h4>
+<p>在存储层中，我们采用了工厂方法设计模式，以实现不同规则的动态校验。
+<code>rule.Ruler</code> 接口定义了核心的 Check 方法，具体的校验规则类（如 <code>DJCFFriendsRule</code>, <code>DJCfmVipRule</code> 等）通过工厂方法创建，并在 <code>service.createRuler</code> 中创建具体规则校验实现类，用以实现具体校验逻辑。</p>
+<p>代码结构定义如下：</p>
 <figure><img src="/posts/check-rule/class-Store.svg">
 </figure>
 
-<p>为了应对各种不同的校验规则，在 Store 层采用了<strong>工厂方法</strong>这一设计模式，<code>rule.Ruler</code> 接口定义了核心 <code>Ckeck</code> 方法，
-<code>rule.Ruler</code> 接口的实现类 (例如: <code>DJCFFriendsRule</code>、<code>DJCfmVipRule</code>) 会实现 <code>Ckeck</code> 方法，并将具体规则校验实现类的创建工作交由 <code>service.createRuler</code> 方法，从而实现具体规则的校验功能。</p>
-<p>值得一提的是，整个软件体系采用了分层架构，即分为 <code>controllers</code>、<code>services</code>以及 <code>rule</code> 三个 Package，并且其中的每一个 Packge 都采用了面向 <code>interface</code> 的编程范式。</p>
 <h2 id="微服务部署">微服务部署</h2>
-<h2 id="接口测试之流量回放与镜像">接口测试之流量回放与镜像</h2>
+<h3 id="服务发现">服务发现</h3>
+<p>在上游客户端向某个服务发送请求时，它首先会根据<strong>所请求的服务名称</strong>（例如<code>check.rule</code>）在<strong>配置管理中心</strong>（例如<code>etcd</code>）查找该服务对应的配置文件：</p>
+<ul>
+<li>服务配置文件: <code>/cfg/daoju/.../info/check/rule/check.rule.cfg</code></li>
+<li>环境配置文件: <code>/cfg/daoju/.../info/check/rule/check.rule.1_1.cfg</code></li>
+<li>部署配置文件: <code>/cfg/daoju/.../deployment/djc_rule_test.cfg</code></li>
+</ul>
+<p>需要注意的是，<strong>部署配置文件的文件名是由环境部署文件中的 <code>deployment[_number].name</code> 配置项所确定</strong>.</p>
+<h4 id="服务配置">服务配置</h4>
+<p>服务配置文件中通常包含以下关键消息：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1"># /cfg/daoju/.../info/check/rule/check.rule.cfg</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">[</span>api<span class="o">]</span>
+</span></span><span class="line"><span class="cl"><span class="nv">name</span><span class="o">=</span>check.rule
+</span></span><span class="line"><span class="cl"><span class="nv">api</span><span class="o">=</span>/cgi-bin/daoju/.../rule_check.cgi
+</span></span><span class="line"><span class="cl"><span class="nv">timeout</span><span class="o">=</span><span class="m">5000</span>
+</span></span><span class="line"><span class="cl"><span class="nv">proto</span><span class="o">=</span>http
+</span></span><span class="line"><span class="cl"><span class="nv">method</span><span class="o">=</span>post
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">[</span>verify<span class="o">]</span>
+</span></span><span class="line"><span class="cl"><span class="nv">key</span><span class="o">=</span>xxxxxxxxxxxxxxxxxxxx
+</span></span><span class="line"><span class="cl">...
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>其中:</p>
+<ul>
+<li><code>api.name</code> 描述了该服务的名称</li>
+<li><code>api.api</code> 描述了该服务的 URL 路径</li>
+<li><code>api.timeout</code> 描述了该服务的请求超时时间</li>
+<li><code>api.proto</code> 描述了该服务采用的协议格式</li>
+<li><code>api.method</code> 描述了该服务具体采用哪种请求方法</li>
+<li><code>verify.key</code> 描述了请求数据进行校验的密钥</li>
+</ul>
+<h4 id="环境配置">环境配置</h4>
+<p>环境配置文件中通常包含以下关键消息：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1"># /cfg/daoju/.../info/check/rule/check.rule.1_1.cfg</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">[</span>weight<span class="o">]</span>
+</span></span><span class="line"><span class="cl"><span class="nv">total</span><span class="o">=</span><span class="m">100</span>
+</span></span><span class="line"><span class="cl"><span class="nv">depcnt</span><span class="o">=</span><span class="m">2</span>
+</span></span><span class="line"><span class="cl"><span class="nv">weight_0</span><span class="o">=</span><span class="m">40</span>
+</span></span><span class="line"><span class="cl"><span class="nv">weight_1</span><span class="o">=</span><span class="m">60</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">[</span>maintenance<span class="o">]</span>
+</span></span><span class="line"><span class="cl"><span class="nv">status</span><span class="o">=</span><span class="m">0</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">[</span>limit<span class="o">]</span>
+</span></span><span class="line"><span class="cl"><span class="nv">qps</span><span class="o">=</span><span class="m">1000</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">[</span>deployment<span class="o">]</span>
+</span></span><span class="line"><span class="cl"><span class="nv">name</span><span class="o">=</span>djc_rule_test
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">[</span>deployment_1<span class="o">]</span>
+</span></span><span class="line"><span class="cl"><span class="nv">name</span><span class="o">=</span>djc_check_rule_go_test
+</span></span><span class="line"><span class="cl">...
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>其中:</p>
+<ul>
+<li><code>weight.total</code> 描述了所有部署环境的权重总和，通常是 100</li>
+<li><code>weight.depcnt</code> 描述了该服务部署在本环境下（测试环境或生产环境）的服务数量</li>
+<li><code>weight.weight_&lt;number&gt;</code> 描述了第 <code>&lt;number&gt;</code> 服务的获取请求数据的占比（<code>weight_&lt;number&gt; / weight.total</code>）</li>
+<li><code>maintenance.status</code> 描述了当前环境是否已发布 / 正常</li>
+<li><code>limit.qps</code> 描述了该服务所支持的最大 QPS</li>
+<li><code>deployment[_number].name</code> 描述了该服务的环境部署名称</li>
+</ul>
+<h4 id="部署配置">部署配置</h4>
+<p>部署配置文件中通常包含以下关键消息：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1"># /cfg/daoju/.../deployment/djc_rule_test.cfg</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">[</span>djc_check_rule_go_test<span class="o">]</span>
+</span></span><span class="line"><span class="cl"><span class="nv">modid</span><span class="o">=</span>xxxxxxx:yyyyyyy
+</span></span><span class="line"><span class="cl"><span class="nv">mod</span><span class="o">=</span>xxxx
+</span></span><span class="line"><span class="cl"><span class="nv">cmd</span><span class="o">=</span>xxxxx
+</span></span><span class="line"><span class="cl"><span class="nv">domain</span><span class="o">=</span>
+</span></span><span class="line"><span class="cl"><span class="nv">ip_num</span><span class="o">=</span><span class="m">1</span>
+</span></span><span class="line"><span class="cl"><span class="nv">defaultip_0</span><span class="o">=</span>&lt;ip&gt;
+</span></span><span class="line"><span class="cl"><span class="nv">defaultport_0</span><span class="o">=</span>&lt;port&gt;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">[</span>polaris<span class="o">]</span>
+</span></span><span class="line"><span class="cl"><span class="nv">namespace</span><span class="o">=</span>Development
+</span></span><span class="line"><span class="cl"><span class="nv">service</span><span class="o">=</span>gdp.aaa.bbb.ccc
+</span></span><span class="line"><span class="cl">...
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>其中:</p>
+<ul>
+<li><code>djc_check_rule_go_test</code> 主要用于指向该部署</li>
+<li><code>polaris.namespace</code> 描述了该部署处于何种环境下，例如 <code>Development</code> / <code>Production</code> / <code>Test</code></li>
+<li><code>polaris.service</code> 描述了该部署所指向的北极星服务地址</li>
+</ul>
+<p>一旦通过上面的流程确定了 <code>polaris.service</code> 就可以确定 GDP 中的具体代码，大致流程如下：</p>
+<figure><img src="/posts/check-rule/%E6%9C%8D%E5%8A%A1%E6%B3%A8%E5%86%8C%E4%B8%8E%E5%8F%91%E7%8E%B0.svg">
+</figure>
+
+<h2 id="接口测试流量回放与镜像">【接口测试】流量回放与镜像</h2>
 <h3 id="流量回放-traffic-replay">流量回放 (Traffic Replay)</h3>
 <p>流量回放，顾名思义，指的是通过复制线上真实流量（录制），然后在测试环境（或生产环境）进行模拟请求（回放）验证代码逻辑正确性的一种技术方法。
 它通过采集线上流量在测试环境（或生产环境）回放逐一对比每个子调用差异和入口调用结果来发现接口代码是否存在问题。</p>
@@ -242,19 +440,48 @@ Service 会处理来自 Controller 的请求，并根据需要请求 Store 完�
 <h3 id="流量镜像-traffic-mirror">流量镜像 (Traffic Mirror)</h3>
 <p>流量镜像（Traffic Mirror） ，也称流量影子（Traffic Shadow）, 是一种强大的、无风险的测试应用版本的方法，它将实时流量的副本发送给被镜像的服务。
 采用这种方法，可以轻松地测试新版本，而无需在生产环境中部署新版本。</p>
-<h3 id="资格服务的应用">资格服务的应用</h3>
+<h3 id="验证资格服务的稳定性与准确性">验证资格服务的稳定性与准确性</h3>
+<h4 id="稳定性">稳定性</h4>
 <p>由于本次资格服务接口项目属于重构项目，因此在代码重构结束之后，借助了流量回放与镜像技术，验证重构后的代码逻辑是否正确，保证重构后的代码逻辑与重构前的代码逻辑一致。</p>
 <p>另外，为了充分验证代码的正确性，我们采用了两种逐层递进的验证方式，
 即首先在 CLS 日志系统中抓取线上流量，然后通过流量回放技术手段，在测试环境（或生产环境）进行模拟请求，确保代码逻辑的稳定性，如下图所示；</p>
 <figure><img src="/posts/check-rule/Traffic-replay.svg">
 </figure>
 
-<p>接下来，采用流量镜像技术手段，直接在测试环境（或生产环境）的线上流量进行镜像，并持续监控镜像流量，确保代码逻辑的正确性。</p>
+<p>在进行代码稳定性验证阶段，主要关注以下几个指标：</p>
+<ul>
+<li>响应时间</li>
+<li>吞吐量</li>
+<li>并发用户数</li>
+<li>CPU 使用率</li>
+<li>内存占用</li>
+<li>磁盘 I/O</li>
+<li>网络带宽使用情况</li>
+<li>出现异常或错误的请求比例</li>
+</ul>
+<h4 id="准确性">准确性</h4>
+<p>在充分验证重构代码的<strong>稳定性</strong>之后，接下来就需要验证代码的<strong>准确性</strong>。
+这里采用了流量镜像的强大验证技术手段，也就是说，在测试环境（或生产环境）中，直接对线上流量进行镜像，并持续监控镜像流量，确保代码逻辑的准确性。</p>
+<figure><img src="/posts/check-rule/Traffic-Mirror.svg">
+</figure>
+
+<p>在进行代码准确性性验证阶段，主要关注以下几个指标：</p>
+<ul>
+<li>功能正确性：
+<ul>
+<li>输入、输出是否符合预期</li>
+<li>边界条件</li>
+<li>异常情况处理</li>
+</ul>
+</li>
+<li>Online 与 Local 数据是否一致</li>
+</ul>
 <h2 id="reference">Reference</h2>
 <ul>
 <li><a href="https://github.com/beego/beego" target="_blank" rel="noopener noreffer ">beego</a></li>
 <li><a href="https://github.com/DATA-DOG/go-sqlmock" target="_blank" rel="noopener noreffer ">sqlmock</a></li>
 <li><a href="https://github.com/jarcoal/httpmock" target="_blank" rel="noopener noreffer ">httpmock</a></li>
+<li><a href="https://km.woa.com/articles/show/408014" target="_blank" rel="noopener noreffer ">【道聚城】微服务建设实践总结</a></li>
 </ul>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
