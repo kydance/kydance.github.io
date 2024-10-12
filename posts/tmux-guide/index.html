@@ -12,7 +12,7 @@
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
     <meta property="article:published_time" content="2024-10-03T20:24:40+08:00">
-    <meta property="article:modified_time" content="2024-10-03T20:24:40+08:00">
+    <meta property="article:modified_time" content="2024-10-03T22:20:00+08:00">
     <meta property="article:tag" content="Tmux">
     <meta property="article:tag" content="Guide">
     <meta property="article:tag" content="Tools&#34;">
@@ -34,8 +34,8 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/kydance.github.io\/posts\/tmux-guide\/"
-        },"image": ["https:\/\/kydance.github.io\/favicon.ico"],"genre": "posts","keywords": "tmux, Guide, Tools\u0022","wordcount":  310 ,
-        "url": "https:\/\/kydance.github.io\/posts\/tmux-guide\/","datePublished": "2024-10-03T20:24:40+08:00","dateModified": "2024-10-03T20:24:40+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+        },"image": ["https:\/\/kydance.github.io\/favicon.ico"],"genre": "posts","keywords": "tmux, Guide, Tools\u0022","wordcount":  342 ,
+        "url": "https:\/\/kydance.github.io\/posts\/tmux-guide\/","datePublished": "2024-10-03T20:24:40+08:00","dateModified": "2024-10-03T22:20:00+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "kyden","logo": "https:\/\/kydance.github.io\/favicon.png"},"author": {
                 "@type": "Person",
@@ -132,7 +132,7 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Tmux Guide</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https:github.com/kydance" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>kyden</a></span>&nbsp;<span class="post-category">included in <a href="/categories/tmux/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Tmux</a>&nbsp;<a href="/categories/guide/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Guide</a>&nbsp;<a href=""><i class="far fa-folder fa-fw" aria-hidden="true"></i></a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-10-03">2024-10-03</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;310 words&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-10-03">2024-10-03</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;342 words&nbsp;
                 <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;2 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
@@ -403,33 +403,53 @@
 </span><span class="lnt">16
 </span><span class="lnt">17
 </span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl"># 从tmux v1.6版起，支持设置第二个指令前缀，使用 ` 作为第二指令前缀
-</span></span><span class="line"><span class="cl">set-option -g prefix2 `
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"># v2.1及以上的版本
-</span></span><span class="line"><span class="cl"># 支持鼠标
-</span></span><span class="line"><span class="cl"># 选取文本、调整面板大小、选中并切换面板
-</span></span><span class="line"><span class="cl">set-option -g mouse on
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl"># recover colorful terminal
+</span></span><span class="line"><span class="cl">set -g default-terminal &#34;xterm-256color&#34;
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"># 窗口面板起始序列号
 </span></span><span class="line"><span class="cl">set -g base-index 1
 </span></span><span class="line"><span class="cl">set -g pane-base-index 1
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">set -g  status-utf8 on
-</span></span><span class="line"><span class="cl">set -g status-interval 1
+</span></span><span class="line"><span class="cl"># 从tmux v1.6版起，支持设置第二个指令前缀，使用 ` 作为第二指令前缀
+</span></span><span class="line"><span class="cl"># set-option -g prefix2 `
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">set -wg window-status-format &#34; #I #W &#34; # 状态栏窗口名称格式
-</span></span><span class="line"><span class="cl">set -wg window-status-current-format &#34; #I:#W#F &#34; # 状态栏当前窗口名称格式(#I：序号，#w：窗口名称，#F：间隔符)
-</span></span><span class="line"><span class="cl">set -wg window-status-separator &#34;&#34; # 状态栏窗口名称之间的间隔
+</span></span><span class="line"><span class="cl"># (Tmux v2.1) 支持鼠标: 选取文本、调整面板大小、选中并切换面板
+</span></span><span class="line"><span class="cl">set-option -g mouse on
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"># 状态栏窗口名称格式
+</span></span><span class="line"><span class="cl">set -wg window-status-format &#34; #I #W &#34;
+</span></span><span class="line"><span class="cl"># 状态栏当前窗口名称格式(#I：序号，#w：窗口名称，#F：间隔符)
+</span></span><span class="line"><span class="cl">set -wg window-status-current-format &#34; #I:#W#F &#34;
+</span></span><span class="line"><span class="cl"># 状态栏窗口名称之间的间隔
+</span></span><span class="line"><span class="cl">set -wg window-status-separator &#34;&#34;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"># 开启vi风格后，支持vi的C-d、C-u、hjkl等快捷键
+</span></span><span class="line"><span class="cl">setw -g mode-keys vi
+</span></span><span class="line"><span class="cl"># 绑定 Escape 进入 复制 模式
+</span></span><span class="line"><span class="cl">bind Escape copy-mode
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">setw -g automatic-rename off
+</span></span><span class="line"><span class="cl">setw -g allow-rename off
 </span></span></code></pre></td></tr></table>
 </div>
 </div></div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>Updated on 2024-10-03</span>
+                <span>Updated on 2024-10-03
+                                &nbsp;<a class="git-hash" href="https://github.com/kydance/blog/commit/1603083e2656b3aaf355dea0c06269c757a5a77f" target="_blank" title="commit by 1603083e2656b3aaf355dea0c06269c757a5a77f: feat(tmux): tmux guide">
+                                    <i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>1603083</a></span>
             </div><div class="post-info-license">
                 <span><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span>
             </div></div>
