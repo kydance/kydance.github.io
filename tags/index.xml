@@ -5,14 +5,6 @@
         <description>Tags - Tag - Kyden Grocery</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>kytedance@gmail.com (kyden)</managingEditor>
             <webMaster>kytedance@gmail.com (kyden)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Thu, 03 Oct 2024 20:24:40 &#43;0800</lastBuildDate><atom:link href="https://kydance.github.io/tags/" rel="self" type="application/rss+xml" /><item>
-    <title>Guide</title>
-    <link>https://kydance.github.io/tags/guide/</link>
-    <pubDate>Thu, 03 Oct 2024 20:24:40 &#43;0800</pubDate>
-    <author>kyden</author>
-    <guid>https://kydance.github.io/tags/guide/</guid>
-    <description><![CDATA[]]></description>
-</item>
-<item>
     <title>Tmux</title>
     <link>https://kydance.github.io/tags/tmux/</link>
     <pubDate>Thu, 03 Oct 2024 20:24:40 &#43;0800</pubDate>
@@ -26,6 +18,14 @@
     <pubDate>Thu, 03 Oct 2024 20:24:40 &#43;0800</pubDate>
     <author>kyden</author>
     <guid>https://kydance.github.io/tags/tools/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
+    <title>使用指南</title>
+    <link>https://kydance.github.io/tags/%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/</link>
+    <pubDate>Thu, 03 Oct 2024 20:24:40 &#43;0800</pubDate>
+    <author>kyden</author>
+    <guid>https://kydance.github.io/tags/%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/</guid>
     <description><![CDATA[]]></description>
 </item>
 <item>
