@@ -7,12 +7,12 @@
         <title>浅析 Redis - Kyden Grocery</title><meta name="Description" content="Kyden&#39;s Blog Site"><meta property="og:url" content="https://kydance.github.io/posts/redis/">
   <meta property="og:site_name" content="Kyden Grocery">
   <meta property="og:title" content="浅析 Redis">
-  <meta property="og:description" content="导语 导语内容">
+  <meta property="og:description" content="导语 Redis is an in-memory data structure store used as a database, cache, message broker, and streaming engine.">
   <meta property="og:locale" content="en">
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
     <meta property="article:published_time" content="2024-10-22T11:58:44+08:00">
-    <meta property="article:modified_time" content="2024-10-23T00:08:39+08:00">
+    <meta property="article:modified_time" content="2024-10-23T00:42:45+08:00">
     <meta property="article:tag" content="Redis">
     <meta property="article:tag" content="数据库">
     <meta property="og:image" content="https://kydance.github.io/favicon.png">
@@ -20,7 +20,7 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:image" content="https://kydance.github.io/favicon.png">
   <meta name="twitter:title" content="浅析 Redis">
-  <meta name="twitter:description" content="导语 导语内容">
+  <meta name="twitter:description" content="导语 Redis is an in-memory data structure store used as a database, cache, message broker, and streaming engine.">
 <meta name="application-name" content="kyden">
 <meta name="apple-mobile-web-app-title" content="kyden"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="canonical" href="https://kydance.github.io/posts/redis/" /><link rel="prev" href="https://kydance.github.io/posts/golang-zap/" /><link rel="stylesheet" href="/css/style.min.cf6878db51c51b2d04ae155284a4403dbee8db33e16c066f954c95279c271fcd.css" integrity="sha256-z2h421HFGy0ErhVShKRAPb7o2zPhbAZvlUyVJ5wnH80="><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
@@ -33,8 +33,8 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/kydance.github.io\/posts\/redis\/"
-        },"image": ["https:\/\/kydance.github.io\/favicon.ico"],"genre": "posts","keywords": "Redis, 数据库","wordcount":  9 ,
-        "url": "https:\/\/kydance.github.io\/posts\/redis\/","datePublished": "2024-10-22T11:58:44+08:00","dateModified": "2024-10-23T00:08:39+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+        },"image": ["https:\/\/kydance.github.io\/favicon.ico"],"genre": "posts","keywords": "Redis, 数据库","wordcount":  117 ,
+        "url": "https:\/\/kydance.github.io\/posts\/redis\/","datePublished": "2024-10-22T11:58:44+08:00","dateModified": "2024-10-23T00:42:45+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "kyden","logo": "https:\/\/kydance.github.io\/favicon.png"},"author": {
                 "@type": "Person",
@@ -131,7 +131,7 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">浅析 Redis</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https:github.com/kydance" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>kyden</a></span>&nbsp;<span class="post-category">included in <a href="/categories/redis/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Redis</a>&nbsp;<a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>数据库</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-10-22">2024-10-22</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;9 words&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-10-22">2024-10-22</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;117 words&nbsp;
                 <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;One minute&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
@@ -141,6 +141,17 @@
                 <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
   <ul>
     <li><a href="#i-简介">I. 简介</a></li>
+    <li><a href="#ii-基本数据类型">II. 基本数据类型</a>
+      <ul>
+        <li><a href="#string-字符串类型">String 字符串类型</a></li>
+        <li><a href="#list-列表类型">List 列表类型</a></li>
+      </ul>
+    </li>
+    <li><a href="#iii-常见问题">III. 常见问题</a>
+      <ul>
+        <li><a href="#iv-reference">IV. Reference</a></li>
+      </ul>
+    </li>
   </ul>
 </nav></div>
             </div><div class="content" id="content"><div class="details admonition abstract open">
@@ -148,17 +159,60 @@
             <i class="icon fas fa-list-ul fa-fw" aria-hidden="true"></i>导语<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
         </div>
         <div class="details-content">
-            <div class="admonition-content">导语内容</div>
+            <div class="admonition-content">Redis is an in-memory data structure store used as a database,
+cache, message broker, and streaming engine.</div>
         </div>
     </div>
 <h2 id="i-简介">I. 简介</h2>
-<p>Redis (Remote Dictionary Service) 全称远程字典服务，一种</p></div><div class="post-footer" id="post-footer">
+<p><strong>Redis</strong>(Remote Dictionary Service) 全称远程字典服务，一种<strong>NoSQL</strong> (Not Only SQL).</p>
+<hr>
+<h2 id="ii-基本数据类型">II. 基本数据类型</h2>
+<p>Redis 数据库中的每个键值对（Key-Value pair）都是由对象（Object）组成，其中：</p>
+<ul>
+<li>数据库键（<strong>Key</strong>）：总是一个字符串对象（String Object）</li>
+<li>数据库键对应的值（<strong>Value</strong>）：可以是
+<strong>字符串对象（String Object）</strong>、<strong>列表对象（List Object）</strong>、
+<strong>哈希对象（Hash Object）</strong>、<strong>集合对象（Set Object）</strong>、
+**有序集合对象（Sorted Set Object）**中的一种</li>
+</ul>
+<h3 id="string-字符串类型">String 字符串类型</h3>
+<p>Value 可以是字符串、也可以是数字</p>
+<p>使用场景：计数（点赞数、粉丝数）、缓存</p>
+<h3 id="list-列表类型">List 列表类型</h3>
+<p>在 Redis 中，可以把 List 搞成队列、栈、阻塞队列.</p>
+<p>List 的 Key 的底层实现就是一个链表，其中链表的每一个节点都保存了一个整数值.</p>
+<p>Redis 链表实现的特性：</p>
+<ul>
+<li>双向：链表节点都有 <code>prev</code> 和 <code>next</code> 指针 -&gt; 获取某个节点的前继节点和后继节点的复杂度都是O(1)</li>
+<li>无环：链表头节点的 <code>prev</code> 指针和表尾节点的 <code>next</code> 指针都指向 <code>NULL</code></li>
+<li>表头指针 / 表尾指针：List 结构中存在 <code>head</code> 和 <code>tail</code> 指针</li>
+<li>长度计数器：List 结构中存在 <code>len</code> 属性</li>
+<li>多态：List 节点使用 <code>void*</code> 指针来保存节点值，并可以通过 List 结构中的
+<code>dup</code>、<code>free</code>、<code>match</code>、<code>sane</code> 属性为节点值设置类型特定函数 -&gt; List 可以存储各种不同类型的值</li>
+</ul>
+<p>使用场景：列表（关注列表、粉丝列表、消息列表，&hellip;）</p>
+<hr>
+<h2 id="iii-常见问题">III. 常见问题</h2>
+<ol>
+<li>
+<p>Redis 为什么是单线程？</p>
+<p>官方表示：Redis 是基于内存操作的，CPU不是Redis的性能瓶颈，Redis的瓶颈是根据机器的内存和网络带宽，既然可以用单线程实现，就没必要使用多线程了。</p>
+<p>Redis 的提供数据为 100000+ (10W+) 的QPS，非常快</p>
+</li>
+<li>
+<p>Redis 为什么单线程还这么快？</p>
+<p>多线程（CPU上下文切换）不一定比单线程效率高！！！Redis 是将所有的数据全部存放在内存中的，所有说单线程去操作效率就是最高的，多线程（CPU上下文切换，是一个耗时操作）；</p>
+<p>对于内存系统来说，如果没有上下文切换效率就是最高的！多次读写都是在一个CPU上完成的，在内存情况下就是最佳方案！</p>
+</li>
+</ol>
+<hr>
+<h3 id="iv-reference">IV. Reference</h3></div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
                 <span>Updated on 2024-10-23
-                                &nbsp;<a class="git-hash" href="https://github.com/kydance/blog/commit/a128498553680e2c8ab5f392ffc3dd43895f3cd4" target="_blank" title="commit by a128498553680e2c8ab5f392ffc3dd43895f3cd4: docs: Update author configuration and add new articles on Golang Zap and Redis">
-                                    <i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>a128498</a></span>
+                                &nbsp;<a class="git-hash" href="https://github.com/kydance/blog/commit/e68904eb49c220396752c9e21723014503c2f4ba" target="_blank" title="commit by e68904eb49c220396752c9e21723014503c2f4ba: docs: Enhance Redis documentation with detailed data types and common questions">
+                                    <i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>e68904e</a></span>
             </div><div class="post-info-license">
                 <span><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span>
             </div></div>

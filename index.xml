@@ -16,7 +16,8 @@
             <i class="icon fas fa-list-ul fa-fw" aria-hidden="true"></i>导语<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
         </div>
         <div class="details-content">
-            <div class="admonition-content">导语内容</div>
+            <div class="admonition-content">Redis is an in-memory data structure store used as a database,
+cache, message broker, and streaming engine.</div>
         </div>
     </div>]]></description>
 </item>
