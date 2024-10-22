@@ -4,7 +4,23 @@
         <link>https://kydance.github.io/categories/</link>
         <description>Categories - Category - Kyden Grocery</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>kytedance@gmail.com (kyden)</managingEditor>
-            <webMaster>kytedance@gmail.com (kyden)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Thu, 03 Oct 2024 20:24:40 &#43;0800</lastBuildDate><atom:link href="https://kydance.github.io/categories/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>kytedance@gmail.com (kyden)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Tue, 22 Oct 2024 11:58:44 &#43;0800</lastBuildDate><atom:link href="https://kydance.github.io/categories/" rel="self" type="application/rss+xml" /><item>
+    <title>Redis</title>
+    <link>https://kydance.github.io/categories/redis/</link>
+    <pubDate>Tue, 22 Oct 2024 11:58:44 &#43;0800</pubDate>
+    <author>kyden</author>
+    <guid>https://kydance.github.io/categories/redis/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
+    <title>数据库</title>
+    <link>https://kydance.github.io/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/</link>
+    <pubDate>Tue, 22 Oct 2024 11:58:44 &#43;0800</pubDate>
+    <author>kyden</author>
+    <guid>https://kydance.github.io/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
     <title>Tmux</title>
     <link>https://kydance.github.io/categories/tmux/</link>
     <pubDate>Thu, 03 Oct 2024 20:24:40 &#43;0800</pubDate>
@@ -146,22 +162,6 @@
     <pubDate>Wed, 11 Sep 2024 22:13:48 &#43;0800</pubDate>
     <author>kyden</author>
     <guid>https://kydance.github.io/categories/cmake/</guid>
-    <description><![CDATA[]]></description>
-</item>
-<item>
-    <title>CMakeLists.txt</title>
-    <link>https://kydance.github.io/categories/cmakelists.txt/</link>
-    <pubDate>Wed, 11 Sep 2024 22:13:48 &#43;0800</pubDate>
-    <author>kyden</author>
-    <guid>https://kydance.github.io/categories/cmakelists.txt/</guid>
-    <description><![CDATA[]]></description>
-</item>
-<item>
-    <title>Make</title>
-    <link>https://kydance.github.io/categories/make/</link>
-    <pubDate>Wed, 11 Sep 2024 22:13:48 &#43;0800</pubDate>
-    <author>kyden</author>
-    <guid>https://kydance.github.io/categories/make/</guid>
     <description><![CDATA[]]></description>
 </item>
 </channel>
