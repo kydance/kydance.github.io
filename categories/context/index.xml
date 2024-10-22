@@ -3,8 +3,7 @@
         <title>Context - Category - Kyden Grocery</title>
         <link>https://kydance.github.io/categories/context/</link>
         <description>Context - Category - Kyden Grocery</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>kytedance@gmail.com (kyden)</managingEditor>
-            <webMaster>kytedance@gmail.com (kyden)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sat, 01 Jun 2024 21:37:55 &#43;0800</lastBuildDate><atom:link href="https://kydance.github.io/categories/context/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sat, 01 Jun 2024 21:37:55 &#43;0800</lastBuildDate><atom:link href="https://kydance.github.io/categories/context/" rel="self" type="application/rss+xml" /><item>
     <title>浅析 Golang Context</title>
     <link>https://kydance.github.io/posts/golang-context/</link>
     <pubDate>Sat, 01 Jun 2024 21:37:55 &#43;0800</pubDate>

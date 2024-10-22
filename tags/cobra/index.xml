@@ -3,8 +3,7 @@
         <title>Cobra - Tag - Kyden Grocery</title>
         <link>https://kydance.github.io/tags/cobra/</link>
         <description>Cobra - Tag - Kyden Grocery</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>kytedance@gmail.com (kyden)</managingEditor>
-            <webMaster>kytedance@gmail.com (kyden)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sat, 21 Sep 2024 09:55:48 &#43;0800</lastBuildDate><atom:link href="https://kydance.github.io/tags/cobra/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sat, 21 Sep 2024 09:55:48 &#43;0800</lastBuildDate><atom:link href="https://kydance.github.io/tags/cobra/" rel="self" type="application/rss+xml" /><item>
     <title>浅析现代化命令行框架 Cobra</title>
     <link>https://kydance.github.io/posts/go-cobra/</link>
     <pubDate>Sat, 21 Sep 2024 09:55:48 &#43;0800</pubDate>
