@@ -1,8 +1,8 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
-        <title>Vim - Category - Kyden Grocery</title>
+        <title>Vim - Category - Kyden 杂货铺</title>
         <link>https://kydance.github.io/categories/vim/</link>
-        <description>Vim - Category - Kyden Grocery</description>
+        <description>Vim - Category - Kyden 杂货铺</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sun, 25 Aug 2024 14:10:44 &#43;0800</lastBuildDate><atom:link href="https://kydance.github.io/categories/vim/" rel="self" type="application/rss+xml" /><item>
     <title>【最佳实践】VSCode &#43; Vim = 效率之神</title>
     <link>https://kydance.github.io/posts/vscode-vim/</link>

@@ -4,8 +4,8 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
-        <title>Golang Netpoll - Kyden Grocery</title><meta name="Description" content="Kyden&#39;s Blog Site"><meta property="og:url" content="https://kydance.github.io/posts/golang-netpoll/">
-  <meta property="og:site_name" content="Kyden Grocery">
+        <title>Golang Netpoll - Kyden 杂货铺</title><meta name="Description" content="Kyden&#39;s Blog Site"><meta property="og:url" content="https://kydance.github.io/posts/golang-netpoll/">
+  <meta property="og:site_name" content="Kyden 杂货铺">
   <meta property="og:title" content="Golang Netpoll">
   <meta property="og:description" content="导语 深入剖析 Golang 网络编程之 Netpoll，主要涉及 Linux 环境下的 Epoll 初始化、 Go 网络编程基本流程（Listen、Accept、Read、Write）以及netpoll 执行流程">
   <meta property="og:locale" content="en">
@@ -24,8 +24,8 @@
   <meta name="twitter:image" content="https://kydance.github.io/favicon.png">
   <meta name="twitter:title" content="Golang Netpoll">
   <meta name="twitter:description" content="导语 深入剖析 Golang 网络编程之 Netpoll，主要涉及 Linux 环境下的 Epoll 初始化、 Go 网络编程基本流程（Listen、Accept、Read、Write）以及netpoll 执行流程">
-<meta name="application-name" content="kyden">
-<meta name="apple-mobile-web-app-title" content="kyden"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="canonical" href="https://kydance.github.io/posts/golang-netpoll/" /><link rel="prev" href="https://kydance.github.io/posts/golang-profile/" /><link rel="next" href="https://kydance.github.io/posts/golang-gmp/" /><link rel="stylesheet" href="/css/style.min.cf6878db51c51b2d04ae155284a4403dbee8db33e16c066f954c95279c271fcd.css" integrity="sha256-z2h421HFGy0ErhVShKRAPb7o2zPhbAZvlUyVJ5wnH80="><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<meta name="application-name" content="Kyden">
+<meta name="apple-mobile-web-app-title" content="Kyden"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="canonical" href="https://kydance.github.io/posts/golang-netpoll/" /><link rel="prev" href="https://kydance.github.io/posts/golang-profile/" /><link rel="next" href="https://kydance.github.io/posts/golang-gmp/" /><link rel="stylesheet" href="/css/style.min.cf6878db51c51b2d04ae155284a4403dbee8db33e16c066f954c95279c271fcd.css" integrity="sha256-z2h421HFGy0ErhVShKRAPb7o2zPhbAZvlUyVJ5wnH80="><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
     {
@@ -60,7 +60,7 @@
         <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
     <div class="header-wrapper">
         <div class="header-title">
-            <a href="/" title="Kyden Grocery"><img
+            <a href="/" title="Kyden 杂货铺"><img
         class="lazyload logo"
         src="/svg/loading.min.svg"
         data-src="/favicon.ico"
@@ -90,7 +90,7 @@
     <div class="header-container">
         <div class="header-wrapper">
             <div class="header-title">
-                <a href="/" title="Kyden Grocery"><img
+                <a href="/" title="Kyden 杂货铺"><img
         class="lazyload logo"
         src="/svg/loading.min.svg"
         data-src="/favicon.ico"

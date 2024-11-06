@@ -1,8 +1,8 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
-        <title>Theme - Category - Kyden Grocery</title>
+        <title>Theme - Category - Kyden 杂货铺</title>
         <link>https://kydance.github.io/categories/theme/</link>
-        <description>Theme - Category - Kyden Grocery</description>
+        <description>Theme - Category - Kyden 杂货铺</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Thu, 18 Apr 2024 21:50:17 &#43;0800</lastBuildDate><atom:link href="https://kydance.github.io/categories/theme/" rel="self" type="application/rss+xml" /><item>
     <title>Typora Theme</title>
     <link>https://kydance.github.io/posts/typora-theme/</link>

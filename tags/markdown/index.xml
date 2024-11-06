@@ -1,8 +1,8 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
-        <title>Markdown - Tag - Kyden Grocery</title>
+        <title>Markdown - Tag - Kyden 杂货铺</title>
         <link>https://kydance.github.io/tags/markdown/</link>
-        <description>Markdown - Tag - Kyden Grocery</description>
+        <description>Markdown - Tag - Kyden 杂货铺</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Thu, 18 Apr 2024 21:50:17 &#43;0800</lastBuildDate><atom:link href="https://kydance.github.io/tags/markdown/" rel="self" type="application/rss+xml" /><item>
     <title>Typora Theme</title>
     <link>https://kydance.github.io/posts/typora-theme/</link>

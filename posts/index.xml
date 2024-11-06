@@ -1,9 +1,24 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
-        <title>All Posts - Kyden Grocery</title>
+        <title>All Posts - Kyden 杂货铺</title>
         <link>https://kydance.github.io/posts/</link>
-        <description>All Posts | Kyden Grocery</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Thu, 31 Oct 2024 23:08:43 &#43;0800</lastBuildDate><atom:link href="https://kydance.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+        <description>All Posts | Kyden 杂货铺</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Wed, 06 Nov 2024 11:53:42 &#43;0800</lastBuildDate><atom:link href="https://kydance.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>Golang Generic</title>
+    <link>https://kydance.github.io/posts/golang-generic/</link>
+    <pubDate>Wed, 06 Nov 2024 11:53:42 &#43;0800</pubDate>
+    <author>kyden</author>
+    <guid>https://kydance.github.io/posts/golang-generic/</guid>
+    <description><![CDATA[<div class="details admonition abstract open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-list-ul fa-fw" aria-hidden="true"></i>导语<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">导语内容</div>
+        </div>
+    </div>]]></description>
+</item>
+<item>
     <title>浅析 MySQL</title>
     <link>https://kydance.github.io/posts/mysql/</link>
     <pubDate>Thu, 31 Oct 2024 23:08:43 &#43;0800</pubDate>
@@ -287,22 +302,6 @@ cache, message broker, and streaming engine.</div>
         </div>
         <div class="details-content">
             <div class="admonition-content">Golang 常见的性能剖析 (Profile) 与优化 (Optimize)</div>
-        </div>
-    </div>]]></description>
-</item>
-<item>
-    <title>深入解读 Golang 常用 Linter 工具及最佳实践</title>
-    <link>https://kydance.github.io/posts/golang-linter/</link>
-    <pubDate>Fri, 19 Apr 2024 11:24:23 &#43;0800</pubDate>
-    <author>Kyden</author>
-    <guid>https://kydance.github.io/posts/golang-linter/</guid>
-    <description><![CDATA[<div class="details admonition abstract open">
-        <div class="details-summary admonition-title">
-            <i class="icon fas fa-list-ul fa-fw" aria-hidden="true"></i>导语<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
-        </div>
-        <div class="details-content">
-            <div class="admonition-content">在 Golang 生态系统中，Linter 工具是开发者提升代码质量的关键。
-本文将深入介绍几款常用的 Linter 工具及其最佳实践，帮助您在开发中避免常见错误并提高代码的可维护性。</div>
         </div>
     </div>]]></description>
 </item>

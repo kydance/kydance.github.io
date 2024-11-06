@@ -1,8 +1,8 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
-        <title>Hugo - Category - Kyden Grocery</title>
+        <title>Hugo - Category - Kyden 杂货铺</title>
         <link>https://kydance.github.io/categories/hugo/</link>
-        <description>Hugo - Category - Kyden Grocery</description>
+        <description>Hugo - Category - Kyden 杂货铺</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Wed, 17 Apr 2024 21:42:02 &#43;0800</lastBuildDate><atom:link href="https://kydance.github.io/categories/hugo/" rel="self" type="application/rss+xml" /><item>
     <title>建站指南(GitHub Pages &#43; Hugo)</title>
     <link>https://kydance.github.io/posts/build-blog/</link>

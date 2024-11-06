@@ -4,15 +4,15 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
-        <title>Effective Go - Kyden Grocery</title><meta name="Description" content="Kyden&#39;s Blog Site"><meta property="og:url" content="https://kydance.github.io/posts/effective-go/">
-  <meta property="og:site_name" content="Kyden Grocery">
+        <title>Effective Go - Kyden 杂货铺</title><meta name="Description" content="Kyden&#39;s Blog Site"><meta property="og:url" content="https://kydance.github.io/posts/effective-go/">
+  <meta property="og:site_name" content="Kyden 杂货铺">
   <meta property="og:title" content="Effective Go">
   <meta property="og:description" content="导语 如何编写清晰、地道的 Go 代码">
   <meta property="og:locale" content="en">
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
     <meta property="article:published_time" content="2024-08-15T22:41:50+08:00">
-    <meta property="article:modified_time" content="2024-09-03T23:23:37+08:00">
+    <meta property="article:modified_time" content="2024-11-06T22:30:43+08:00">
     <meta property="article:tag" content="Golang">
     <meta property="article:tag" content="Effective Go">
     <meta property="og:image" content="https://kydance.github.io/favicon.png">
@@ -21,8 +21,8 @@
   <meta name="twitter:image" content="https://kydance.github.io/favicon.png">
   <meta name="twitter:title" content="Effective Go">
   <meta name="twitter:description" content="导语 如何编写清晰、地道的 Go 代码">
-<meta name="application-name" content="kyden">
-<meta name="apple-mobile-web-app-title" content="kyden"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="canonical" href="https://kydance.github.io/posts/effective-go/" /><link rel="prev" href="https://kydance.github.io/posts/design-pattern/" /><link rel="next" href="https://kydance.github.io/posts/vscode-vim/" /><link rel="stylesheet" href="/css/style.min.cf6878db51c51b2d04ae155284a4403dbee8db33e16c066f954c95279c271fcd.css" integrity="sha256-z2h421HFGy0ErhVShKRAPb7o2zPhbAZvlUyVJ5wnH80="><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<meta name="application-name" content="Kyden">
+<meta name="apple-mobile-web-app-title" content="Kyden"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="canonical" href="https://kydance.github.io/posts/effective-go/" /><link rel="prev" href="https://kydance.github.io/posts/design-pattern/" /><link rel="next" href="https://kydance.github.io/posts/vscode-vim/" /><link rel="stylesheet" href="/css/style.min.cf6878db51c51b2d04ae155284a4403dbee8db33e16c066f954c95279c271fcd.css" integrity="sha256-z2h421HFGy0ErhVShKRAPb7o2zPhbAZvlUyVJ5wnH80="><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
     {
@@ -33,8 +33,8 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/kydance.github.io\/posts\/effective-go\/"
-        },"image": ["https:\/\/kydance.github.io\/favicon.ico"],"genre": "posts","keywords": "Golang, effective go","wordcount":  763 ,
-        "url": "https:\/\/kydance.github.io\/posts\/effective-go\/","datePublished": "2024-08-15T22:41:50+08:00","dateModified": "2024-09-03T23:23:37+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+        },"image": ["https:\/\/kydance.github.io\/favicon.ico"],"genre": "posts","keywords": "Golang, effective go","wordcount":  1329 ,
+        "url": "https:\/\/kydance.github.io\/posts\/effective-go\/","datePublished": "2024-08-15T22:41:50+08:00","dateModified": "2024-11-06T22:30:43+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "kyden","logo": "https:\/\/kydance.github.io\/favicon.png"},"author": {
                 "@type": "Person",
@@ -57,7 +57,7 @@
         <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
     <div class="header-wrapper">
         <div class="header-title">
-            <a href="/" title="Kyden Grocery"><img
+            <a href="/" title="Kyden 杂货铺"><img
         class="lazyload logo"
         src="/svg/loading.min.svg"
         data-src="/favicon.ico"
@@ -87,7 +87,7 @@
     <div class="header-container">
         <div class="header-wrapper">
             <div class="header-title">
-                <a href="/" title="Kyden Grocery"><img
+                <a href="/" title="Kyden 杂货铺"><img
         class="lazyload logo"
         src="/svg/loading.min.svg"
         data-src="/favicon.ico"
@@ -131,8 +131,8 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Effective Go</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https:github.com/kydance" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>kyden</a></span>&nbsp;<span class="post-category">included in <a href="/categories/golang/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Golang</a>&nbsp;<a href="/categories/effective-go/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Effective Go</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-08-15">2024-08-15</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;763 words&nbsp;
-                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;4 minutes&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-08-15">2024-08-15</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;1329 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;7 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
@@ -159,6 +159,7 @@
         <li><a href="#slice-切片">Slice 切片</a>
           <ul>
             <li><a href="#二维数组">二维数组</a></li>
+            <li><a href="#切片操作及性能">切片操作及性能</a></li>
           </ul>
         </li>
         <li><a href="#map">Map</a></li>
@@ -483,13 +484,201 @@
 </span></span><span class="line"><span class="cl"><span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nf">Sum</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">aV</span><span class="p">))</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><h3 id="slice-切片">Slice 切片</h3>
-<p>切片通过对数组进行封装，为数据序列提供了更通用、强大而方便的接口。</p>
-<p>slice 保存了对底层数组的引用，如将某个 slice 赋值给另一个 slice，则他们会引用同一个数组。</p>
-<p><strong>若某个函数将一个切片作为参数传入，则它对该切片元素的修改对调用者而言同样可见， 这可以理解为传递了底层数组的指针</strong></p>
-<p>只要切片不超出底层数组的限制，它的长度就是可变的，只需将它赋予其自身的切片即可。切片的容量可通过内建函数 <code>cap</code> 获得，它将给出该切片可取得的最大长度。</p>
-<p>若数据超出其容量，则会重新分配该切片，返回值即为所得的切片。</p>
+</div><div class="details admonition note open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-pencil-alt fa-fw" aria-hidden="true"></i>Go array<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><p>在 C 语言中，数组变量是指向第一个元素的指针，但 Go 语言中并不是。</p>
+<p>Go 语言中，数组变量属于值类型（value type），因此当一个数组变量呗赋值或传递时，实际上会复制整个数组 -&gt;</p>
+<p>为了避免复制数组，一般传递指向数组的指针: <code>func f(pa *[3]uint8) { ... }</code></p>
+</div>
+        </div>
+    </div>
+<div class="details admonition tip open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-lightbulb fa-fw" aria-hidden="true"></i>Go array<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><p>Go 中的数组类型定义了长度和元素类型。
+例如，<code>[2]int</code> 类型表示由 2 个 int 整型组成的数组。</p>
+<p>数组以索引方式访问（a[i] 访问数组 a 的第 i 个元素）。
+数组的长度固定，且是数组类型的一部分 -&gt; 长度不同的 2 个数组不可以相互赋值，因为它们属于不同的类型。</p>
+</div>
+        </div>
+    </div>
+<h3 id="slice-切片">Slice 切片</h3>
+<p>切片通过对数组进行封装，为数据序列提供了更通用、强大而方便的接口，其本质是是在数组 Array 之上的抽象数据类型。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-Go" data-lang="Go"><span class="line"><span class="cl"><span class="kd">struct</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">ptr</span> <span class="o">*</span><span class="p">[]</span><span class="nx">T</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">len</span> <span class="kt">int</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">cap</span> <span class="kt">int</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>slice 保存了对底层数组的引用，如将某个 slice 赋值给另一个 slice，则他们会引用同一个数组。</p>
+<p><strong>若某个函数将一个切片作为参数传入，则它对该切片元素的修改对调用者而言同样可见，
+这可以理解为传递了底层数组的指针</strong></p>
+<p>只要切片不超出底层数组的限制，它的长度就是可变的，只需将它赋予其自身的切片即可。
+切片的容量可通过内建函数 <code>cap</code> 获得，它将给出该切片可取得的最大长度。</p>
 <p>尽管 Append 可修改 slice 的元素，但切片自身（其运行时数据结构包含指针、长度和容量）是通过值传递的.</p>
+<div class="details admonition tip open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-lightbulb fa-fw" aria-hidden="true"></i>Go slice<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><p>Go 中 slice 容量指的是当前切片以及预分配的内存能够容纳的元素个数.</p>
+<p>若数据超出其容量，则会重新分配该切片，返回值即为所得的切片。</p>
+<p>为了减少内存分配、拷贝的次数，在容量较小时，一般是以 2 的倍数进行扩大（2 -&gt; 4 -&gt; 8 -&gt; 16），
+当达到 2048 时，为避免申请的内存过大，从而浪费空间 =&gt; <a href="https://github.com/golang/go/blob/release-branch.go1.20/src/runtime/slice.go#L157" target="_blank" rel="noopener noreffer ">Go 语言 1.20 实现如下</a>：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span><span class="lnt">65
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-Go" data-lang="Go"><span class="line"><span class="cl"><span class="c1">// growslice allocates new backing store for a slice.
+</span></span></span><span class="line"><span class="cl"><span class="c1">//
+</span></span></span><span class="line"><span class="cl"><span class="c1">// arguments:
+</span></span></span><span class="line"><span class="cl"><span class="c1">//
+</span></span></span><span class="line"><span class="cl"><span class="c1">// oldPtr = pointer to the slice&#39;s backing array
+</span></span></span><span class="line"><span class="cl"><span class="c1">// newLen = new length (= oldLen + num)
+</span></span></span><span class="line"><span class="cl"><span class="c1">// oldCap = original slice&#39;s capacity.
+</span></span></span><span class="line"><span class="cl"><span class="c1">//    num = number of elements being added
+</span></span></span><span class="line"><span class="cl"><span class="c1">//     et = element type
+</span></span></span><span class="line"><span class="cl"><span class="c1">//
+</span></span></span><span class="line"><span class="cl"><span class="c1">// return values:
+</span></span></span><span class="line"><span class="cl"><span class="c1">//
+</span></span></span><span class="line"><span class="cl"><span class="c1">// newPtr = pointer to the new backing store
+</span></span></span><span class="line"><span class="cl"><span class="c1">// newLen = same value as the argument
+</span></span></span><span class="line"><span class="cl"><span class="c1">// newCap = capacity of the new backing store
+</span></span></span><span class="line"><span class="cl"><span class="c1">//
+</span></span></span><span class="line"><span class="cl"><span class="c1">// Requires that uint(newLen) &gt; uint(oldCap).
+</span></span></span><span class="line"><span class="cl"><span class="c1">// Assumes the original slice length is newLen - num
+</span></span></span><span class="line"><span class="cl"><span class="c1">//
+</span></span></span><span class="line"><span class="cl"><span class="c1">// A new backing store is allocated with space for at least newLen elements.
+</span></span></span><span class="line"><span class="cl"><span class="c1">// Existing entries [0, oldLen) are copied over to the new backing store.
+</span></span></span><span class="line"><span class="cl"><span class="c1">// Added entries [oldLen, newLen) are not initialized by growslice
+</span></span></span><span class="line"><span class="cl"><span class="c1">// (although for pointer-containing element types, they are zeroed). They
+</span></span></span><span class="line"><span class="cl"><span class="c1">// must be initialized by the caller.
+</span></span></span><span class="line"><span class="cl"><span class="c1">// Trailing entries [newLen, newCap) are zeroed.
+</span></span></span><span class="line"><span class="cl"><span class="c1">//
+</span></span></span><span class="line"><span class="cl"><span class="c1">// growslice&#39;s odd calling convention makes the generated code that calls
+</span></span></span><span class="line"><span class="cl"><span class="c1">// this function simpler. In particular, it accepts and returns the
+</span></span></span><span class="line"><span class="cl"><span class="c1">// new length so that the old length is not live (does not need to be
+</span></span></span><span class="line"><span class="cl"><span class="c1">// spilled/restored) and the new length is returned (also does not need
+</span></span></span><span class="line"><span class="cl"><span class="c1">// to be spilled/restored).
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">func</span> <span class="nf">growslice</span><span class="p">(</span><span class="nx">oldPtr</span> <span class="nx">unsafe</span><span class="p">.</span><span class="nx">Pointer</span><span class="p">,</span> <span class="nx">newLen</span><span class="p">,</span> <span class="nx">oldCap</span><span class="p">,</span> <span class="nx">num</span> <span class="kt">int</span><span class="p">,</span> <span class="nx">et</span> <span class="o">*</span><span class="nx">_type</span><span class="p">)</span> <span class="nx">slice</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl"> <span class="nx">oldLen</span> <span class="o">:=</span> <span class="nx">newLen</span> <span class="o">-</span> <span class="nx">num</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"> <span class="c1">// ...
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"> <span class="nx">newcap</span> <span class="o">:=</span> <span class="nx">oldCap</span>
+</span></span><span class="line"><span class="cl"> <span class="nx">doublecap</span> <span class="o">:=</span> <span class="nx">newcap</span> <span class="o">+</span> <span class="nx">newcap</span>
+</span></span><span class="line"><span class="cl"> <span class="k">if</span> <span class="nx">newLen</span> <span class="p">&gt;</span> <span class="nx">doublecap</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">newcap</span> <span class="p">=</span> <span class="nx">newLen</span>
+</span></span><span class="line"><span class="cl"> <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="kd">const</span> <span class="nx">threshold</span> <span class="p">=</span> <span class="mi">256</span>
+</span></span><span class="line"><span class="cl">  <span class="k">if</span> <span class="nx">oldCap</span> <span class="p">&lt;</span> <span class="nx">threshold</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">   <span class="nx">newcap</span> <span class="p">=</span> <span class="nx">doublecap</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">   <span class="c1">// Check 0 &lt; newcap to detect overflow
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>   <span class="c1">// and prevent an infinite loop.
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>   <span class="k">for</span> <span class="mi">0</span> <span class="p">&lt;</span> <span class="nx">newcap</span> <span class="o">&amp;&amp;</span> <span class="nx">newcap</span> <span class="p">&lt;</span> <span class="nx">newLen</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// Transition from growing 2x for small slices
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="c1">// to growing 1.25x for large slices. This formula
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="c1">// gives a smooth-ish transition between the two.
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="nx">newcap</span> <span class="o">+=</span> <span class="p">(</span><span class="nx">newcap</span> <span class="o">+</span> <span class="mi">3</span><span class="o">*</span><span class="nx">threshold</span><span class="p">)</span> <span class="o">/</span> <span class="mi">4</span>
+</span></span><span class="line"><span class="cl">   <span class="p">}</span>
+</span></span><span class="line"><span class="cl">   <span class="c1">// Set newcap to the requested cap when
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>   <span class="c1">// the newcap calculation overflowed.
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>   <span class="k">if</span> <span class="nx">newcap</span> <span class="o">&lt;=</span> <span class="mi">0</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">newcap</span> <span class="p">=</span> <span class="nx">newLen</span>
+</span></span><span class="line"><span class="cl">   <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"> <span class="c1">// ...
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"> <span class="k">return</span> <span class="nx">slice</span><span class="p">{</span><span class="nx">p</span><span class="p">,</span> <span class="nx">newLen</span><span class="p">,</span> <span class="nx">newcap</span><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></div>
+        </div>
+    </div>
 <h4 id="二维数组">二维数组</h4>
 <p>一种是独立地分配每一个切片；而另一种就是只分配一个数组， 将各个切片都指向它</p>
 <div class="highlight"><div class="chroma">
@@ -528,7 +717,73 @@
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><h3 id="map">Map</h3>
+</div><h4 id="切片操作及性能">切片操作及性能</h4>
+<p>Go 语言在 Github 上的官方
+wiki - <a href="https://github.com/golang/go/wiki/SliceTricks" target="_blank" rel="noopener noreffer ">SliceTricks</a> 介绍了切片常见的操作技巧。
+另一个项目
+<a href="https://ueokande.github.io/go-slice-tricks/" target="_blank" rel="noopener noreffer ">Go Slice Tricks Cheat Sheet</a> 将这些操作以图片的形式呈现了出来，非常直观。</p>
+<figure><img src="/posts/effective-go/copy.png">
+</figure>
+
+<hr>
+<figure><img src="/posts/effective-go/append.png">
+</figure>
+
+<p>slice 有 3 个属性，指针（ptr）、长度（len）和容量（cap），因此当 append 时存在两种场景：</p>
+<ul>
+<li>append 后的长度小于等于 cap，将会直接使用原底层数组剩余的空间</li>
+<li>append 后的长度大于 cap，将会分配一块更大的区域来容纳新的底层数组</li>
+</ul>
+<blockquote>
+<p>为了避免内存发生拷贝，若能够知道最终的切片的大小，预先设置 cap 的值能够获得最好的性能</p>
+</blockquote>
+<hr>
+<figure><img src="/posts/effective-go/delete.png">
+</figure>
+
+<p>slice 的底层是数组，所以 delete 意味着后面的元素需要逐个向前移位
+=&gt; delete 的复杂度为O(N)
+=&gt; slice 不适合大量随机删除的场景（链表 list 更适合）</p>
+<hr>
+<figure><img src="/posts/effective-go/delete_gc.png">
+</figure>
+
+<p>删除后，将空余位置置空，有助于垃圾回收。</p>
+<hr>
+<figure><img src="/posts/effective-go/insert.png">
+</figure>
+
+<p>insert 和 append 类似，即在某个位置添加一个元素后，将该位置后面的元素再 append 回去，复杂度为 O(N) =&gt; 不适合大量随机插入的场景。</p>
+<hr>
+<figure><img src="/posts/effective-go/filter_in_place.png">
+</figure>
+
+<p>当原切片不会再被使用时，就地 filter 方式是比较推荐的，可以节省内存空间。</p>
+<hr>
+<figure><img src="/posts/effective-go/push.png">
+</figure>
+
+<p>在末尾追加元素，不考虑内存拷贝的情况，复杂度为 O(1)。</p>
+<hr>
+<figure><img src="/posts/effective-go/push_front.png">
+</figure>
+
+<p>在头部追加元素，时间和空间复杂度均为 O(N)，不推荐。</p>
+<hr>
+<figure><img src="/posts/effective-go/pop.png">
+</figure>
+
+<p>尾部删除元素，复杂度 O(1)</p>
+<hr>
+<figure><img src="/posts/effective-go/pop_front.png">
+</figure>
+
+<p>头部删除元素，如果使用切片方式，复杂度为 O(1)。</p>
+<blockquote>
+<p>需要注意的是，底层数组没有发生改变，第 0 个位置的内存仍旧没有释放。
+如果有大量这样的操作，头部的内存会一直被占用。</p>
+</blockquote>
+<h3 id="map">Map</h3>
 <p>可以关联不同类型的值。其键可以是任何相等性操作符支持的类型， 如整数、浮点数、复数、字符串、指针、接口（只要其动态类型支持相等性判断）、结构以及数组。 切片不能用作映射键，因为它们的相等性还未定义。与切片一样，</p>
 <p>映射也是引用类型。 若将映射传入函数中，并更改了该映射的内容，则此修改对调用者同样可见。</p>
 <p><strong>若试图通过映射中不存在的键来取值，就会返回与该映射中项的类型对应的零值</strong></p>
@@ -541,9 +796,9 @@
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>Updated on 2024-09-03
-                                &nbsp;<a class="git-hash" href="https://github.com/kydance/blog/commit/e28bb4030b879f56b3d4a833390eb46258809a14" target="_blank" title="commit by e28bb4030b879f56b3d4a833390eb46258809a14: Fix: info -&gt; abstract.">
-                                    <i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>e28bb40</a></span>
+                <span>Updated on 2024-11-06
+                                &nbsp;<a class="git-hash" href="https://github.com/kydance/blog/commit/51d675833ecc66809ce467f016b1a262dba6bcd9" target="_blank" title="commit by 51d675833ecc66809ce467f016b1a262dba6bcd9: docs: Enhance Go documentation with slice operations, array details, and visual aids">
+                                    <i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>51d6758</a></span>
             </div><div class="post-info-license">
                 <span><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span>
             </div></div>

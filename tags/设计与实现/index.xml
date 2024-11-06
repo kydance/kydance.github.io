@@ -1,8 +1,8 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
-        <title>设计与实现 - Tag - Kyden Grocery</title>
+        <title>设计与实现 - Tag - Kyden 杂货铺</title>
         <link>https://kydance.github.io/tags/%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0/</link>
-        <description>设计与实现 - Tag - Kyden Grocery</description>
+        <description>设计与实现 - Tag - Kyden 杂货铺</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sat, 07 Sep 2024 20:56:52 &#43;0800</lastBuildDate><atom:link href="https://kydance.github.io/tags/%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0/" rel="self" type="application/rss+xml" /><item>
     <title>资格校验接口的微服务设计与实现</title>
     <link>https://kydance.github.io/posts/check-rule/</link>

@@ -1,8 +1,8 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
-        <title>Go - Category - Kyden Grocery</title>
+        <title>Go - Category - Kyden 杂货铺</title>
         <link>https://kydance.github.io/categories/go/</link>
-        <description>Go - Category - Kyden Grocery</description>
+        <description>Go - Category - Kyden 杂货铺</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sun, 15 Sep 2024 14:45:47 &#43;0800</lastBuildDate><atom:link href="https://kydance.github.io/categories/go/" rel="self" type="application/rss+xml" /><item>
     <title>浅析 Regular Expression (正则表达式)</title>
     <link>https://kydance.github.io/posts/regex-in-one/</link>

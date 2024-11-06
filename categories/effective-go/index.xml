@@ -1,8 +1,8 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
-        <title>Effective Go - Category - Kyden Grocery</title>
+        <title>Effective Go - Category - Kyden 杂货铺</title>
         <link>https://kydance.github.io/categories/effective-go/</link>
-        <description>Effective Go - Category - Kyden Grocery</description>
+        <description>Effective Go - Category - Kyden 杂货铺</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Thu, 15 Aug 2024 22:41:50 &#43;0800</lastBuildDate><atom:link href="https://kydance.github.io/categories/effective-go/" rel="self" type="application/rss+xml" /><item>
     <title>Effective Go</title>
     <link>https://kydance.github.io/posts/effective-go/</link>

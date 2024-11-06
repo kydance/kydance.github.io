@@ -1,8 +1,8 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
-        <title>Redis - Tag - Kyden Grocery</title>
+        <title>Redis - Tag - Kyden 杂货铺</title>
         <link>https://kydance.github.io/tags/redis/</link>
-        <description>Redis - Tag - Kyden Grocery</description>
+        <description>Redis - Tag - Kyden 杂货铺</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Tue, 22 Oct 2024 11:58:44 &#43;0800</lastBuildDate><atom:link href="https://kydance.github.io/tags/redis/" rel="self" type="application/rss+xml" /><item>
     <title>浅析 Redis</title>
     <link>https://kydance.github.io/posts/redis/</link>
