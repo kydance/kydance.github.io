@@ -303,7 +303,7 @@ cache, message broker, and streaming engine.</div>
             <i class="icon fas fa-list-ul fa-fw" aria-hidden="true"></i>导语<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
         </div>
         <div class="details-content">
-            <div class="admonition-content">Golang 常见的性能剖析 (Profile) 与优化 (Optimize)</div>
+            <div class="admonition-content">Golang 生态中常见的性能分析 (Benchmark / Profile) 与优化 (Optimize)</div>
         </div>
     </div>]]></description>
 </item>

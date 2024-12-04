@@ -7,13 +7,14 @@
         <title>Golang Profile and Optimize - Kyden 杂货铺</title><meta name="Description" content="Kyden&#39;s Blog Site"><meta property="og:url" content="https://kydance.github.io/posts/golang-profile/">
   <meta property="og:site_name" content="Kyden 杂货铺">
   <meta property="og:title" content="Golang Profile and Optimize">
-  <meta property="og:description" content="导语 Golang 常见的性能剖析 (Profile) 与优化 (Optimize)">
+  <meta property="og:description" content="导语 Golang 生态中常见的性能分析 (Benchmark / Profile) 与优化 (Optimize)">
   <meta property="og:locale" content="en">
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
     <meta property="article:published_time" content="2024-04-20T20:39:50+08:00">
-    <meta property="article:modified_time" content="2024-09-03T23:23:37+08:00">
+    <meta property="article:modified_time" content="2024-12-04T23:23:50+08:00">
     <meta property="article:tag" content="Golang">
+    <meta property="article:tag" content="Benchmark">
     <meta property="article:tag" content="Profile">
     <meta property="article:tag" content="Optimize">
     <meta property="og:image" content="https://kydance.github.io/favicon.png">
@@ -21,7 +22,7 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:image" content="https://kydance.github.io/favicon.png">
   <meta name="twitter:title" content="Golang Profile and Optimize">
-  <meta name="twitter:description" content="导语 Golang 常见的性能剖析 (Profile) 与优化 (Optimize)">
+  <meta name="twitter:description" content="导语 Golang 生态中常见的性能分析 (Benchmark / Profile) 与优化 (Optimize)">
 <meta name="application-name" content="Kyden">
 <meta name="apple-mobile-web-app-title" content="Kyden"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="canonical" href="https://kydance.github.io/posts/golang-profile/" /><link rel="prev" href="https://kydance.github.io/posts/golang-linter/" /><link rel="next" href="https://kydance.github.io/posts/golang-netpoll/" /><link rel="stylesheet" href="/css/style.min.cf6878db51c51b2d04ae155284a4403dbee8db33e16c066f954c95279c271fcd.css" integrity="sha256-z2h421HFGy0ErhVShKRAPb7o2zPhbAZvlUyVJ5wnH80="><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
@@ -34,8 +35,8 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/kydance.github.io\/posts\/golang-profile\/"
-        },"image": ["https:\/\/kydance.github.io\/favicon.ico"],"genre": "posts","keywords": "Golang, Profile, Optimize","wordcount":  1682 ,
-        "url": "https:\/\/kydance.github.io\/posts\/golang-profile\/","datePublished": "2024-04-20T20:39:50+08:00","dateModified": "2024-09-03T23:23:37+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+        },"image": ["https:\/\/kydance.github.io\/favicon.ico"],"genre": "posts","keywords": "Golang, Benchmark, Profile, Optimize","wordcount":  1909 ,
+        "url": "https:\/\/kydance.github.io\/posts\/golang-profile\/","datePublished": "2024-04-20T20:39:50+08:00","dateModified": "2024-12-04T23:23:50+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "kyden","logo": "https:\/\/kydance.github.io\/favicon.png"},"author": {
                 "@type": "Person",
@@ -131,9 +132,9 @@
             <h2 class="toc-title">Contents</h2>
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Golang Profile and Optimize</h1><div class="post-meta">
-            <div class="post-meta-line"><span class="post-author"><a href="https:github.com/kydance" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>kyden</a></span>&nbsp;<span class="post-category">included in <a href="/categories/golang/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Golang</a>&nbsp;<a href="/categories/profile/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Profile</a>&nbsp;<a href="/categories/optimize/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Optimize</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-04-20">2024-04-20</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;1682 words&nbsp;
-                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;8 minutes&nbsp;</div>
+            <div class="post-meta-line"><span class="post-author"><a href="https:github.com/kydance" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>kyden</a></span>&nbsp;<span class="post-category">included in <a href="/categories/golang/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Golang</a>&nbsp;<a href="/categories/benchmark/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Benchmark</a>&nbsp;<a href="/categories/profile/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Profile</a>&nbsp;<a href="/categories/optimize/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Optimize</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-04-20">2024-04-20</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;1909 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;9 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
@@ -141,14 +142,20 @@
                 </div>
                 <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
   <ul>
-    <li><a href="#i-profile">I. Profile</a>
+    <li><a href="#i-benchmark">I. Benchmark</a>
+      <ul>
+        <li><a href="#浅析-benchmark-工作原理">浅析 Benchmark 工作原理</a></li>
+        <li><a href="#resettimer--stoptimer--starttimer">ResetTimer &amp; StopTimer &amp; StartTimer</a></li>
+      </ul>
+    </li>
+    <li><a href="#ii-profile">II. Profile</a>
       <ul>
         <li><a href="#压测时需要关注的服务指标">压测时需要关注的服务指标</a></li>
         <li><a href="#压测手段">压测手段</a></li>
         <li><a href="#pprof-应用实例">pprof 应用实例</a></li>
       </ul>
     </li>
-    <li><a href="#ii-optimize">II. Optimize</a>
+    <li><a href="#iii-optimize">III. Optimize</a>
       <ul>
         <li><a href="#优化方向">优化方向</a></li>
         <li><a href="#基本优化流程">基本优化流程</a></li>
@@ -168,9 +175,9 @@
         </li>
       </ul>
     </li>
-    <li><a href="#iii-coutinuous-profiling">III. Coutinuous Profiling</a></li>
-    <li><a href="#iv-summary">IV. Summary</a></li>
-    <li><a href="#v-reference">V. Reference</a></li>
+    <li><a href="#iv-coutinuous-profiling">IV. Coutinuous Profiling</a></li>
+    <li><a href="#v-summary">V. Summary</a></li>
+    <li><a href="#vi-reference">VI. Reference</a></li>
   </ul>
 </nav></div>
             </div><div class="content" id="content"><div class="details admonition abstract open">
@@ -178,10 +185,83 @@
             <i class="icon fas fa-list-ul fa-fw" aria-hidden="true"></i>导语<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
         </div>
         <div class="details-content">
-            <div class="admonition-content">Golang 常见的性能剖析 (Profile) 与优化 (Optimize)</div>
+            <div class="admonition-content">Golang 生态中常见的性能分析 (Benchmark / Profile) 与优化 (Optimize)</div>
         </div>
     </div>
-<h2 id="i-profile">I. Profile</h2>
+<div class="details admonition note open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-pencil-alt fa-fw" aria-hidden="true"></i>测试环境的稳定性、一致性<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><p>性能测试的结果在很大程度上受到测试环境的影响，因此，在进行性能测试时应尽可能保持测试环境的稳定和一致。</p>
+<ul>
+<li>测试机器在测试时，不要执行其他任务，不要与其他人共享硬件资源，不要开启节能模式</li>
+<li>避免使用虚拟机和云主机：一般情况下，为了尽可能地提高资源利用率，虚拟机和云主机 CPU 和内存一般进行超分配，会导致超分机器的性能表现不稳定</li>
+</ul>
+<blockquote>
+<p>超分配是针对硬件资源来说的，商业上对应的就是云主机的超卖。虚拟化技术带来的最大直接收益是服务器整合，通过 CPU、内存、存储、网络的超分配（Overcommitment）技术，最大化服务器的使用率。Linux 上专门有一个指标，Steal Time(st)，用来衡量被虚拟机监视器(Hypervisor)偷去给其它虚拟机使用的 CPU 时间所占的比例。</p>
+<p>例如，虚拟化的技能之一就是随心所欲的操控 CPU，例如一台 32U(物理核心)的服务器可能会创建出 128 个 1U(虚拟核心)的虚拟机，当物理服务器资源闲置时，CPU 超分配一般不会对虚拟机上的业务产生明显影响，但如果大部分虚拟机都处于繁忙状态时，那么各个虚拟机为了获得物理服务器的资源就要相互竞争，相互等待。</p>
+</blockquote>
+</div>
+        </div>
+    </div>
+<h2 id="i-benchmark">I. Benchmark</h2>
+<p>Go 语言 <code>testing</code> 标准库内置支持 Benchmark 测试。</p>
+<p>Benchmark 和普通单元测试用例一样，都位于 <code>_test.go</code> 文件，并且函数名以 <code>Benchmark</code> 开头，参数是 <code>b *testing.B</code>.</p>
+<p><code>go test</code> 命令默认不运行 Benchmark 测试，需要在命令中加上 <code>-bench</code> 参数来进行测试：</p>
+<ul>
+<li><code>go test -bench .</code>: 运行当前 <code>packge</code> 内的用例</li>
+<li><code>go test -bench 'In$' .</code>: <code>-bench</code> 参数支持正则表达式，只有匹配到的用例才会运行</li>
+<li><code>go test -bench ./&lt;package name&gt;</code>: 运行子 <code>package</code> 内的用例</li>
+<li><code>go test -bench ./...</code>: 运行当前目录下所有的 <code>package</code> 内的用例</li>
+</ul>
+<h3 id="浅析-benchmark-工作原理">浅析 Benchmark 工作原理</h3>
+<p>Benchmark 用例参数 <code>b *testing.B</code> 中的 <code>N</code> 属性表示该用例需要运行的次数。
+一般情况下，不同用例的 <code>b.N</code> 是不一样的。</p>
+<p><code>b.N</code> 从 1 开始，若该用例能够在 1s 内完成，<code>b.N</code> 的值则会增加，再次执行。<code>b.N</code> 的值大概以 1, 2, 3, 5, 10, 20, 30, 50, 100 &hellip; 这样的序列增加，越到后面，增加越快。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">➜  ziwi go <span class="nb">test</span> -bench<span class="o">=</span><span class="s1">&#39;Fib$&#39;</span> -cpu<span class="o">=</span>2,4 -benchtime<span class="o">=</span>50x -count<span class="o">=</span><span class="m">2</span> -benchmem .
+</span></span><span class="line"><span class="cl">goos: darwin
+</span></span><span class="line"><span class="cl">goarch: arm64
+</span></span><span class="line"><span class="cl">pkg: go-temp/ziwi
+</span></span><span class="line"><span class="cl">cpu: Apple M1 Pro
+</span></span><span class="line"><span class="cl">BenchmarkFib-2                <span class="m">50</span>               205.0 ns/op             <span class="m">0</span> B/op          <span class="m">0</span> allocs/op
+</span></span><span class="line"><span class="cl">BenchmarkFib-2                <span class="m">50</span>               386.7 ns/op             <span class="m">0</span> B/op          <span class="m">0</span> allocs/op
+</span></span><span class="line"><span class="cl">BenchmarkFib-4                <span class="m">50</span>               383.3 ns/op             <span class="m">0</span> B/op          <span class="m">0</span> allocs/op
+</span></span><span class="line"><span class="cl">BenchmarkFib-4                <span class="m">50</span>               385.0 ns/op             <span class="m">0</span> B/op          <span class="m">0</span> allocs/op
+</span></span><span class="line"><span class="cl">PASS
+</span></span><span class="line"><span class="cl">ok      go-temp/ziwi    0.196s
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li><code>BenchmarkFib-10</code>: <code>-10</code> 即 <code>GOMAXPROCS</code>，默认等于 CPU 核数，可通过 <code>-cpu</code> 参数改变 <code>GOMAXPROCS</code>，<code>-cpu</code> 支持传入一个列表作为参数</li>
+<li><code>6097884</code> 和 <code>183.7 ns/op</code>: 表示该用例执行了 <code>6097884</code> 次，每次执行需要花费的时间为 <code>183.7 ns/op</code></li>
+<li>为了提高性能测试的准确度，可以使用 <code>-benchtime</code> 和 <code>-count</code> 两个参数分别调整测试时长(默认 1s)和执行轮数。
+其中，<code>-benchtime</code> 的值除了是时间外，还可以是具体次数：<code>go test -bench='Fib$' -benchtime=300x .</code></li>
+<li><code>-benchmem</code> 参数可以度量内存分配的次数</li>
+</ul>
+<h3 id="resettimer--stoptimer--starttimer">ResetTimer &amp; StopTimer &amp; StartTimer</h3>
+<ul>
+<li><code>b.ResetTimer()</code>: 用于将进行 Benchmark 开始前的准备工作所消耗的时间忽略掉</li>
+<li><code>b.StopTimer()</code>: 暂停计时</li>
+<li><code>b.StartTimer()</code>: 开始计时</li>
+</ul>
+<hr>
+<h2 id="ii-profile">II. Profile</h2>
 <p>在进行 <strong>API 压测</strong>、<strong>全链路压测</strong>、<strong>线上生产环境被高峰流量打爆</strong>的过程中随时可能发生故障等问题，例如：</p>
 <ul>
 <li>CPU 占用过高，超过 90%；</li>
@@ -282,7 +362,7 @@
 </ol>
 </blockquote>
 <hr>
-<h2 id="ii-optimize">II. Optimize</h2>
+<h2 id="iii-optimize">III. Optimize</h2>
 <h3 id="优化方向">优化方向</h3>
 <figure><img src="/posts/golang-profile/%E4%BC%98%E5%8C%96%E8%8C%83%E5%9B%B4.svg">
 </figure>
@@ -1092,7 +1172,7 @@
 </li>
 </ol>
 <hr>
-<h2 id="iii-coutinuous-profiling">III. Coutinuous Profiling</h2>
+<h2 id="iv-coutinuous-profiling">IV. Coutinuous Profiling</h2>
 <p>压测是一个蹲点行为，然而真实场景并不美好，它们通常是难以发现的偶发问题：</p>
 <ul>
 <li>该到吃饭的时候，CPU 使用尖刺</li>
@@ -1106,7 +1186,7 @@
 
 <p><strong>自省式的 Profile Dumper</strong>，可以根据 CPU 利用率、Memory 利用率、Goroutine 数量等多个指标检测系统，设置定时周期进行检测，当发现某个指标异常时，自动 Dump file.</p>
 <hr>
-<h2 id="iv-summary">IV. Summary</h2>
+<h2 id="v-summary">V. Summary</h2>
 <ol>
 <li>
 <p><code>_pad</code> 优化，针对<strong>多个线程更新同一个结构体内不同的字段</strong>场景有效，而针对<strong>一个线程同时更新整个结构体</strong>的场景意义不大；</p>
@@ -1127,7 +1207,7 @@
 </li>
 </ol>
 <hr>
-<h2 id="v-reference">V. Reference</h2>
+<h2 id="vi-reference">VI. Reference</h2>
 <ul>
 <li><a href="https://benchmarksgame-team.pages.debian.net/benchmarksgame/fastest/go-gpp.html" target="_blank" rel="noopener noreffer ">Benchmarks Game</a></li>
 <li><a href="https://github.com/smallnest/go-web-framework-benchmark" target="_blank" rel="noopener noreffer ">Go Web Frame Benchmarks</a></li>
@@ -1139,26 +1219,29 @@
 <li><a href="https://github.com/go-delve/delve/tree/master/Documentation" target="_blank" rel="noopener noreffer ">Delve</a></li>
 <li><a href="https://www.opsian.com/blog/what-is-continuous-profiling" target="_blank" rel="noopener noreffer ">What is Continuous Profiling?</a></li>
 <li><a href="https://research.google/pubs/google-wide-profiling-a-continuous-profiling-infrastructure-for-data-centers/" target="_blank" rel="noopener noreffer ">Google-Wide Profiling: A Continuous Profiling Infrastructure for Data Centers</a></li>
+<li><a href="https://geektutu.com/post/qa-golang.html" target="_blank" rel="noopener noreffer ">Go 语言笔试面试题汇总</a></li>
+<li><a href="https://geektutu.com/post/gee.html" target="_blank" rel="noopener noreffer ">七天用Go从零实现系列</a></li>
+<li><a href="https://dave.cheney.net/2013/06/30/how-to-write-benchmarks-in-go" target="_blank" rel="noopener noreffer ">How to write benchmarks in Go</a></li>
 </ul></div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>Updated on 2024-09-03
-                                &nbsp;<a class="git-hash" href="https://github.com/kydance/blog/commit/e28bb4030b879f56b3d4a833390eb46258809a14" target="_blank" title="commit by e28bb4030b879f56b3d4a833390eb46258809a14: Fix: info -&gt; abstract.">
-                                    <i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>e28bb40</a></span>
+                <span>Updated on 2024-12-04
+                                &nbsp;<a class="git-hash" href="https://github.com/kydance/blog/commit/3995bcd10339279591c1194a0bf94459f4e21f7e" target="_blank" title="commit by 3995bcd10339279591c1194a0bf94459f4e21f7e: feat: Add benchmarking details">
+                                    <i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>3995bcd</a></span>
             </div><div class="post-info-license">
                 <span><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span>
             </div></div>
         <div class="post-info-line">
             <div class="post-info-md"></div>
             <div class="post-info-share">
-                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://kydance.github.io/posts/golang-profile/" data-title="Golang Profile and Optimize" data-hashtags="Golang,Profile,Optimize"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://kydance.github.io/posts/golang-profile/" data-hashtag="Golang"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Linkedin" data-sharer="linkedin" data-url="https://kydance.github.io/posts/golang-profile/"><i class="fab fa-linkedin fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on WhatsApp" data-sharer="whatsapp" data-url="https://kydance.github.io/posts/golang-profile/" data-title="Golang Profile and Optimize" data-web><i class="fab fa-whatsapp fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="https://kydance.github.io/posts/golang-profile/" data-title="Golang Profile and Optimize"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Reddit" data-sharer="reddit" data-url="https://kydance.github.io/posts/golang-profile/"><i class="fab fa-reddit fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="https://kydance.github.io/posts/golang-profile/" data-title="Golang Profile and Optimize"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@7.3.0/icons/line.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://kydance.github.io/posts/golang-profile/" data-title="Golang Profile and Optimize"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 百度" data-sharer="baidu" data-url="https://kydance.github.io/posts/golang-profile/" data-title="Golang Profile and Optimize"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@7.3.0/icons/baidu.svg" aria-hidden="true"></i></a></span>
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://kydance.github.io/posts/golang-profile/" data-title="Golang Profile and Optimize" data-hashtags="Golang,Benchmark,Profile,Optimize"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://kydance.github.io/posts/golang-profile/" data-hashtag="Golang"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Linkedin" data-sharer="linkedin" data-url="https://kydance.github.io/posts/golang-profile/"><i class="fab fa-linkedin fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on WhatsApp" data-sharer="whatsapp" data-url="https://kydance.github.io/posts/golang-profile/" data-title="Golang Profile and Optimize" data-web><i class="fab fa-whatsapp fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="https://kydance.github.io/posts/golang-profile/" data-title="Golang Profile and Optimize"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Reddit" data-sharer="reddit" data-url="https://kydance.github.io/posts/golang-profile/"><i class="fab fa-reddit fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="https://kydance.github.io/posts/golang-profile/" data-title="Golang Profile and Optimize"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@7.3.0/icons/line.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://kydance.github.io/posts/golang-profile/" data-title="Golang Profile and Optimize"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 百度" data-sharer="baidu" data-url="https://kydance.github.io/posts/golang-profile/" data-title="Golang Profile and Optimize"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@7.3.0/icons/baidu.svg" aria-hidden="true"></i></a></span>
             </div>
         </div>
     </div>
 
     <div class="post-info-more">
-        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/golang/">Golang</a>,&nbsp;<a href="/tags/profile/">Profile</a>,&nbsp;<a href="/tags/optimize/">Optimize</a></section>
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/golang/">Golang</a>,&nbsp;<a href="/tags/benchmark/">Benchmark</a>,&nbsp;<a href="/tags/profile/">Profile</a>,&nbsp;<a href="/tags/optimize/">Optimize</a></section>
         <section>
             <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
         </section>
