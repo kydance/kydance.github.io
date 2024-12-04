@@ -12,7 +12,7 @@
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
     <meta property="article:published_time" content="2024-09-07T20:56:52+08:00">
-    <meta property="article:modified_time" content="2024-09-07T20:56:52+08:00">
+    <meta property="article:modified_time" content="2024-12-04T22:00:46+08:00">
     <meta property="article:tag" content="Check.rule">
     <meta property="article:tag" content="微服务">
     <meta property="article:tag" content="设计与实现">
@@ -34,8 +34,8 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/kydance.github.io\/posts\/check-rule\/"
-        },"image": ["https:\/\/kydance.github.io\/favicon.ico"],"genre": "posts","keywords": "check.rule, 微服务, 设计与实现","wordcount":  346 ,
-        "url": "https:\/\/kydance.github.io\/posts\/check-rule\/","datePublished": "2024-09-07T20:56:52+08:00","dateModified": "2024-09-07T20:56:52+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+        },"image": ["https:\/\/kydance.github.io\/favicon.ico"],"genre": "posts","keywords": "check.rule, 微服务, 设计与实现","wordcount":  338 ,
+        "url": "https:\/\/kydance.github.io\/posts\/check-rule\/","datePublished": "2024-09-07T20:56:52+08:00","dateModified": "2024-12-04T22:00:46+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "kyden","logo": "https:\/\/kydance.github.io\/favicon.png"},"author": {
                 "@type": "Person",
@@ -132,7 +132,7 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">资格校验接口的微服务设计与实现</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https:github.com/kydance" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>kyden</a></span>&nbsp;<span class="post-category">included in <a href="/categories/check.rule/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Check.rule</a>&nbsp;<a href="/categories/%E5%BE%AE%E6%9C%8D%E5%8A%A1/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>微服务</a>&nbsp;<a href="/categories/%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>设计与实现</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-09-07">2024-09-07</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;346 words&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-09-07">2024-09-07</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;338 words&nbsp;
                 <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;2 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
@@ -257,14 +257,14 @@
 在具体实现中，我们遵循面向接口编程的原则，以提高代码的扩展性和可测试性。</p>
 <h4 id="controller">Controller</h4>
 <p>在 Controller 层中，我们定义了如下的代码结构：</p>
-<figure><img src="/posts/check-rule/class-Controllers.svg">
+<figure><img src="/posts/check-rule/class-Controllers.v2.svg">
 </figure>
 
 <p>它持有 <code>services.Servicer</code> 接口，并且实现了 <code>POST</code>/<code>HEAD</code>/<code>GET</code> 等 HTTP 方法，
 用于处理 HTTP 请求的响应、请求参数的解析与合法性校验、Service 层业务逻辑的调用执行等操作。</p>
 <h4 id="service">Service</h4>
 <p>在 Service 层中，我们定义了如下的代码结构：</p>
-<figure><img src="/posts/check-rule/class-Services.svg">
+<figure><img src="/posts/check-rule/class-Services.v2.svg">
 </figure>
 
 <p><code>Server</code> 接口定义了该服务所支持的功能，实现了接口就是规范的功能。
@@ -273,7 +273,7 @@
 <p>在存储层中，我们采用了工厂方法设计模式，以实现不同规则的动态校验。
 <code>rule.Ruler</code> 接口定义了核心的 Check 方法，具体的校验规则类（如 <code>DJCFFriendsRule</code>, <code>DJCfmVipRule</code> 等）通过工厂方法创建，并在 <code>service.createRuler</code> 中创建具体规则校验实现类，用以实现具体校验逻辑。</p>
 <p>代码结构定义如下：</p>
-<figure><img src="/posts/check-rule/class-Store.svg">
+<figure><img src="/posts/check-rule/class-Store.v2.svg">
 </figure>
 
 <h2 id="微服务部署">微服务部署</h2>
@@ -482,22 +482,13 @@
 <li><a href="https://github.com/DATA-DOG/go-sqlmock" target="_blank" rel="noopener noreffer ">sqlmock</a></li>
 <li><a href="https://github.com/jarcoal/httpmock" target="_blank" rel="noopener noreffer ">httpmock</a></li>
 <li><a href="https://km.woa.com/articles/show/408014" target="_blank" rel="noopener noreffer ">【道聚城】微服务建设实践总结</a></li>
-</ul>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">go install github.com/jfeliu007/goplantuml/cmd/goplantuml@latest
-</span></span><span class="line"><span class="cl">yum install graphviz
-</span></span></code></pre></td></tr></table>
-</div>
-</div></div><div class="post-footer" id="post-footer">
+</ul></div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>Updated on 2024-09-07</span>
+                <span>Updated on 2024-12-04
+                                &nbsp;<a class="git-hash" href="https://github.com/kydance/blog/commit/e28fd04bb1ef1d6c70df1c6e8e721dadfa47e35a" target="_blank" title="commit by e28fd04bb1ef1d6c70df1c6e8e721dadfa47e35a: update: check.rule">
+                                    <i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>e28fd04</a></span>
             </div><div class="post-info-license">
                 <span><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span>
             </div></div>
