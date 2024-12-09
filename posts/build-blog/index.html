@@ -12,7 +12,7 @@
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
     <meta property="article:published_time" content="2024-04-17T21:42:02+08:00">
-    <meta property="article:modified_time" content="2024-09-03T23:23:37+08:00">
+    <meta property="article:modified_time" content="2024-12-09T22:32:11+08:00">
     <meta property="article:tag" content="Github Pages">
     <meta property="article:tag" content="Hugo">
     <meta property="article:tag" content="博客">
@@ -35,8 +35,8 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/kydance.github.io\/posts\/build-blog\/"
-        },"image": ["https:\/\/kydance.github.io\/favicon.ico"],"genre": "posts","keywords": "Github Pages, Hugo, 博客, Linux","wordcount":  991 ,
-        "url": "https:\/\/kydance.github.io\/posts\/build-blog\/","datePublished": "2024-04-17T21:42:02+08:00","dateModified": "2024-09-03T23:23:37+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+        },"image": ["https:\/\/kydance.github.io\/favicon.ico"],"genre": "posts","keywords": "Github Pages, Hugo, 博客, Linux","wordcount":  1132 ,
+        "url": "https:\/\/kydance.github.io\/posts\/build-blog\/","datePublished": "2024-04-17T21:42:02+08:00","dateModified": "2024-12-09T22:32:11+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "kyden","logo": "https:\/\/kydance.github.io\/favicon.png"},"author": {
                 "@type": "Person",
@@ -133,8 +133,8 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">建站指南(GitHub Pages + Hugo)</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https:github.com/kydance" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>kyden</a></span>&nbsp;<span class="post-category">included in <a href="/categories/github-pages/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Github Pages</a>&nbsp;<a href="/categories/hugo/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Hugo</a>&nbsp;<a href="/categories/%E5%8D%9A%E5%AE%A2/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>博客</a>&nbsp;<a href="/categories/linux/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Linux</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-04-17">2024-04-17</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;991 words&nbsp;
-                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;5 minutes&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-04-17">2024-04-17</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;1132 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;6 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
@@ -229,9 +229,11 @@
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ git clone git@github.com:kydance/blog.git
+</span></span><span class="line"><span class="cl"><span class="c1"># ...</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>然后，进入本地的 <code>A</code> 目录（即，<code>blog</code>）下，使用 hugo 建站：</p>
@@ -266,10 +268,12 @@
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
+</span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ <span class="nb">cd</span> themes
 </span></span><span class="line"><span class="cl">$ git clone https://github.com/kakawait/hugo-tranquilpeak-theme.git tranquilpeak
+</span></span><span class="line"><span class="cl"><span class="c1"># ...</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>安装 Hugo 主题后，根据个人情况修改相应的配置文件即可；</p>
@@ -279,10 +283,58 @@
 <p>启动本地 server：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ hugo server -D
+</span></span><span class="line"><span class="cl">Watching <span class="k">for</span> changes in /Users/kyden/git-space/kyden-blog/<span class="o">{</span>archetypes,assets,content,i18n,layouts,static<span class="o">}</span>
+</span></span><span class="line"><span class="cl">Watching <span class="k">for</span> config changes in /Users/kyden/git-space/kyden-blog/config.toml
+</span></span><span class="line"><span class="cl">Start building sites … 
+</span></span><span class="line"><span class="cl">hugo v0.139.3+extended+withdeploy darwin/arm64 <span class="nv">BuildDate</span><span class="o">=</span>2024-11-29T15:36:56Z <span class="nv">VendorInfo</span><span class="o">=</span>brew
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">WARN  Current environment is <span class="s2">&#34;development&#34;</span>. The <span class="s2">&#34;comment system&#34;</span>, <span class="s2">&#34;CDN&#34;</span> and <span class="s2">&#34;fingerprint&#34;</span> will be disabled.
+</span></span><span class="line"><span class="cl">当前运行环境是 <span class="s2">&#34;development&#34;</span>. <span class="s2">&#34;评论系统&#34;</span>, <span class="s2">&#34;CDN&#34;</span> 和 <span class="s2">&#34;fingerprint&#34;</span> 不会启用.
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">                   <span class="p">|</span> EN   
+</span></span><span class="line"><span class="cl">-------------------+------
+</span></span><span class="line"><span class="cl">  Pages            <span class="p">|</span> <span class="m">303</span>  
+</span></span><span class="line"><span class="cl">  Paginator pages  <span class="p">|</span>   <span class="m">2</span>  
+</span></span><span class="line"><span class="cl">  Non-page files   <span class="p">|</span>  <span class="m">62</span>  
+</span></span><span class="line"><span class="cl">  Static files     <span class="p">|</span>  <span class="m">86</span>  
+</span></span><span class="line"><span class="cl">  Processed images <span class="p">|</span>   <span class="m">0</span>  
+</span></span><span class="line"><span class="cl">  Aliases          <span class="p">|</span> <span class="m">135</span>  
+</span></span><span class="line"><span class="cl">  Cleaned          <span class="p">|</span>   <span class="m">0</span>  
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Built in <span class="m">436</span> ms
+</span></span><span class="line"><span class="cl">Environment: <span class="s2">&#34;development&#34;</span>
+</span></span><span class="line"><span class="cl">Serving pages from disk
+</span></span><span class="line"><span class="cl">Running in Fast Render Mode. For full rebuilds on change: hugo server --disableFastRender
+</span></span><span class="line"><span class="cl">Web Server is available at http://localhost:1313/ <span class="o">(</span><span class="nb">bind</span> address 127.0.0.1<span class="o">)</span> 
+</span></span><span class="line"><span class="cl">Press Ctrl+C to stop
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>浏览器打开 <a href="http://localhost:1313/" target="_blank" rel="noopener noreffer ">http://localhost:1313/</a> 进行预览；</p>
@@ -353,9 +405,11 @@
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ hugo
+</span></span><span class="line"><span class="cl"><span class="c1"># ...</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div><hr>
@@ -368,6 +422,7 @@
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
+</span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ git init
@@ -375,6 +430,7 @@
 </span></span><span class="line"><span class="cl">$ git branch -M master
 </span></span><span class="line"><span class="cl">$ git remote add origin https://github.com/kydance/kydance.github.io.git
 </span></span><span class="line"><span class="cl">$ git push -u origin master
+</span></span><span class="line"><span class="cl"><span class="c1"># ...</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>自动化一键部署：<code>deploy.sh</code></p>
@@ -789,9 +845,9 @@
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>Updated on 2024-09-03
-                                &nbsp;<a class="git-hash" href="https://github.com/kydance/blog/commit/e28bb4030b879f56b3d4a833390eb46258809a14" target="_blank" title="commit by e28bb4030b879f56b3d4a833390eb46258809a14: Fix: info -&gt; abstract.">
-                                    <i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>e28bb40</a></span>
+                <span>Updated on 2024-12-09
+                                &nbsp;<a class="git-hash" href="https://github.com/kydance/blog/commit/2adec5e79836d81e43309c873218b739ee7f193e" target="_blank" title="commit by 2adec5e79836d81e43309c873218b739ee7f193e: feat: init golang-feneric.">
+                                    <i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>2adec5e</a></span>
             </div><div class="post-info-license">
                 <span><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span>
             </div></div>
