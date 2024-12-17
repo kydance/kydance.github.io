@@ -34,7 +34,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/kydance.github.io\/posts\/arch-linux\/"
-        },"image": ["https:\/\/kydance.github.io\/favicon.ico"],"genre": "posts","keywords": "Arch, Linux, Software","wordcount":  2098 ,
+        },"image": ["https:\/\/kydance.github.io\/favicon.ico"],"genre": "posts","keywords": "Arch, Linux, Software","wordcount":  2179 ,
         "url": "https:\/\/kydance.github.io\/posts\/arch-linux\/","datePublished": "2024-04-17T22:11:33+08:00","dateModified": "2024-04-18T12:57:02+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "kyden","logo": "https:\/\/kydance.github.io\/favicon.png"},"author": {
@@ -132,8 +132,8 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Arch Linux 指南</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https:github.com/kydance" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>kyden</a></span>&nbsp;<span class="post-category">included in <a href="/categories/linux/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Linux</a>&nbsp;<a href="/categories/software/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Software</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-04-17">2024-04-17</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;2098 words&nbsp;
-                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;10 minutes&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-04-17">2024-04-17</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;2179 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;11 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
@@ -155,7 +155,7 @@
             <li><a href="#设置时区">设置时区</a></li>
             <li><a href="#修改-hostname">修改 <code>hostname</code></a></li>
             <li><a href="#设置-locale">设置 locale</a></li>
-            <li><a href="#网络管理器蓝牙">网络管理器，蓝牙</a></li>
+            <li><a href="#网络管理器蓝牙-音频">网络管理器，蓝牙, 音频</a></li>
             <li><a href="#设置-password">设置 password</a></li>
             <li><a href="#引导相关">引导相关</a></li>
             <li><a href="#create-user-and-usergroup">Create user and usergroup</a></li>
@@ -166,7 +166,7 @@
     </li>
     <li><a href="#ii-software">II. Software</a>
       <ul>
-        <li><a href="#networkmanager">NetworkManager</a></li>
+        <li><a href="#test-networkmanager">Test NetworkManager</a></li>
         <li><a href="#pacman-镜像修改">pacman 镜像修改</a></li>
         <li><a href="#常见通用软件">常见通用软件</a>
           <ul>
@@ -188,7 +188,6 @@
         <li><a href="#mysql">MySQL</a></li>
         <li><a href="#挂载其他硬盘分区">挂载其他硬盘分区</a></li>
         <li><a href="#present-windows">Present Windows</a></li>
-        <li><a href="#scp-文件上传下载"><code>scp</code>: 文件上传、下载</a></li>
         <li><a href="#picgo-picgo-core">picgo <code>picgo-core</code></a></li>
         <li><a href="#cuda--cudnn">CUDA &amp; cuDNN</a></li>
         <li><a href="#clash-verge">Clash Verge</a>
@@ -262,9 +261,11 @@
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ timedatectl
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Update system clock</span>
+</span></span><span class="line"><span class="cl">$ timedatectl
 </span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="4-分区设置">4. 分区设置</h3>
@@ -322,9 +323,11 @@
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
+</span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ pacman -Sy archlinuxcn-keyring
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Update keyring</span>
+</span></span><span class="line"><span class="cl">$ pacman -Sy archlinuxcn-keyring
 </span></span><span class="line"><span class="cl">$ pacman -Syyu
 </span></span></code></pre></td></tr></table>
 </div>
@@ -348,9 +351,11 @@
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ arch-chroot /mnt
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># chroot</span>
+</span></span><span class="line"><span class="cl">$ arch-chroot /mnt
 </span></span></code></pre></td></tr></table>
 </div>
 </div><h4 id="设置时区">设置时区</h4>
@@ -358,9 +363,11 @@
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
+</span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Set time zone</span>
+</span></span><span class="line"><span class="cl">$ ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 </span></span><span class="line"><span class="cl">$ hwclock --systohc
 </span></span></code></pre></td></tr></table>
 </div>
@@ -398,15 +405,17 @@
 </span></span><span class="line"><span class="cl">$ locale-gen
 </span></span></code></pre></td></tr></table>
 </div>
-</div><h4 id="网络管理器蓝牙">网络管理器，蓝牙</h4>
+</div><h4 id="网络管理器蓝牙-音频">网络管理器，蓝牙, 音频</h4>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
+</span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ pacman -S networkmanager bluez bluez-utils pulseaudio-bluetooth alsa-utils pulseaudio pulseaudio-alsa sof-firmware
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Install and enable NetworkManager, bluetooth, audio</span>
+</span></span><span class="line"><span class="cl">$ pacman -S networkmanager bluez bluez-utils pulseaudio-bluetooth alsa-utils pulseaudio pulseaudio-alsa sof-firmware
 </span></span><span class="line"><span class="cl">$ systemctl <span class="nb">enable</span> NetworkManager.service
 </span></span><span class="line"><span class="cl">$ systemctl <span class="nb">enable</span> bluetooth.service
 </span></span></code></pre></td></tr></table>
@@ -415,9 +424,11 @@
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ passwd
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Set password</span>
+</span></span><span class="line"><span class="cl">$ passwd
 </span></span></code></pre></td></tr></table>
 </div>
 </div><h4 id="引导相关">引导相关</h4>
@@ -507,14 +518,16 @@
 </div>
 </div><hr>
 <h2 id="ii-software">II. Software</h2>
-<h3 id="networkmanager">NetworkManager</h3>
+<h3 id="test-networkmanager">Test NetworkManager</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
+</span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ ping baidu.com
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Test networkManager</span>
+</span></span><span class="line"><span class="cl">$ ping baidu.com
 </span></span><span class="line"><span class="cl">$ systemctl <span class="nb">enable</span> NetworkManager
 </span></span></code></pre></td></tr></table>
 </div>
@@ -728,9 +741,11 @@
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ yay -S wps-office wps-office-mui-zh-cn ttf-wps-fonts
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Install WPS</span>
+</span></span><span class="line"><span class="cl">$ yay -S wps-office wps-office-mui-zh-cn ttf-wps-fonts
 </span></span></code></pre></td></tr></table>
 </div>
 </div><hr>
@@ -957,9 +972,11 @@
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ sudo pacman -Sy mariadb
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># install</span>
+</span></span><span class="line"><span class="cl">$ sudo pacman -Sy mariadb
 </span></span></code></pre></td></tr></table>
 </div>
 </div></li>
@@ -968,9 +985,11 @@
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ sudo mysql_install_db --user<span class="o">=</span>mysql --basedir<span class="o">=</span>/usr --datadir<span class="o">=</span>/var/lib/mysql
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Config</span>
+</span></span><span class="line"><span class="cl">$ sudo mysql_install_db --user<span class="o">=</span>mysql --basedir<span class="o">=</span>/usr --datadir<span class="o">=</span>/var/lib/mysql
 </span></span></code></pre></td></tr></table>
 </div>
 </div></li>
@@ -979,9 +998,11 @@
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ systemctl start mariadb
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Enable service</span>
+</span></span><span class="line"><span class="cl">$ systemctl start mariadb
 </span></span></code></pre></td></tr></table>
 </div>
 </div></li>
@@ -990,9 +1011,11 @@
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ sudo /usr/bin/mysql_secure_installation
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Set password</span>
+</span></span><span class="line"><span class="cl">$ sudo /usr/bin/mysql_secure_installation
 </span></span></code></pre></td></tr></table>
 </div>
 </div></li>
@@ -1001,9 +1024,11 @@
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ mysql -u root -p
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Test</span>
+</span></span><span class="line"><span class="cl">$ mysql -u root -p
 </span></span></code></pre></td></tr></table>
 </div>
 </div></li>
@@ -1012,9 +1037,11 @@
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ systemctl <span class="nb">enable</span> mariadb
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Enable</span>
+</span></span><span class="line"><span class="cl">$ systemctl <span class="nb">enable</span> mariadb
 </span></span></code></pre></td></tr></table>
 </div>
 </div></li>
@@ -1067,30 +1094,6 @@
         data-sizes="auto"
         alt="https://cdn.jsdelivr.net/gh/lutianen/PicBed@master/202309141103383.png"
         title="Present Windows" /></p>
-<hr>
-<h3 id="scp-文件上传下载"><code>scp</code>: 文件上传、下载</h3>
-<ul>
-<li>上传
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ scp ./cifar-10-python.tar.gz kyden@&lt;ip&gt;:/home/kyden/
-</span></span></code></pre></td></tr></table>
-</div>
-</div></li>
-<li>下载
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ scp kyden@&lt;ip&gt;:/var/tmp/a.txt /var
-</span></span></code></pre></td></tr></table>
-</div>
-</div></li>
-</ul>
 <hr>
 <h3 id="picgo-picgo-core">picgo <code>picgo-core</code></h3>
 <ol>
@@ -1168,9 +1171,11 @@
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ yay -S cuda-11.7 cudnn8-cuda11.0
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># install</span>
+</span></span><span class="line"><span class="cl">$ yay -S cuda-11.7 cudnn8-cuda11.0
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>Arch Linux 会将 CUDA 相关档案安装至 <code>/opt/cuda</code>，有需要的话可以将 CUDA 的 <code>PATH</code> 加到 <code>~/bashrc</code>，此路径永远指向最新版CUDA</p>
@@ -1194,7 +1199,7 @@
 <h3 id="clash-verge">Clash Verge</h3>
 <h4 id="dns-泄露问题">DNS 泄露问题</h4>
 <p>DNS 泄露其实并没有一个明确的定义，也不存在一个官方解释。</p>
-<p>大概就是说你访问YouTube等黑名单网站的时候，使用中国大陆的DNS服务器进行了解析，这可能导致隐私问题的。</p>
+<p>举个例子，当你在访问一个需要代理才能访问的域名时（例如 YouTube，Netflix 等黑名单网站），在获取其 IP 的过程中，没有使用代理的 DNS 服务器解析，而是使用当前网络环境的 DNS 服务器解析，这个过程就是所谓的 <strong>DNS 泄露</strong>，存在隐私问题泄漏的风险。</p>
 <p>如果在 <a href="https://browserleaks.com/dns" target="_blank" rel="noopener noreffer ">DNS Leak Test</a> 、<a href="https://ipleak.net/" target="_blank" rel="noopener noreffer ">ipleak</a>这种网站的列表中看到了中国国旗，就要意识到可能发生了DNS泄露。
 虽然没有人知道具体的探测机制是什么，但很可能是从网络层面获取的。在一般的家庭网络拓扑中，wireshark可以看到什么内容，运营商就能看见什么内容，所以你使用114.114.114.114、223.5.5.5这样的DNS解析去访问了什么网站是很清晰的。</p>
 <p><strong>Clash开启TUN模式，关闭系统代理去使用</strong>：与普通的系统代理模式区别在于，TUN模式下Clash会创建一张虚拟网卡，从网络层面接管所有的网络流量。</p>
@@ -1307,91 +1312,93 @@
 </span><span class="lnt">82
 </span><span class="lnt">83
 </span><span class="lnt">84
+</span><span class="lnt">85
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-JavaScript" data-lang="JavaScript"><span class="line"><span class="cl"><span class="kd">function</span> <span class="nx">main</span><span class="p">(</span><span class="nx">content</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">isObject</span> <span class="o">=</span> <span class="p">(</span><span class="nx">value</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="nx">value</span> <span class="o">!==</span> <span class="kc">null</span> <span class="o">&amp;&amp;</span> <span class="k">typeof</span> <span class="nx">value</span> <span class="o">===</span> <span class="s1">&#39;object&#39;</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">mergeConfig</span> <span class="o">=</span> <span class="p">(</span><span class="nx">existingConfig</span><span class="p">,</span> <span class="nx">newConfig</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">isObject</span><span class="p">(</span><span class="nx">existingConfig</span><span class="p">))</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="nx">existingConfig</span> <span class="o">=</span> <span class="p">{}</span>
+</span></span><span class="line"><span class="cl">    <span class="kr">const</span> <span class="nx">isObject</span> <span class="o">=</span> <span class="p">(</span><span class="nx">value</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="nx">value</span> <span class="o">!==</span> <span class="kc">null</span> <span class="o">&amp;&amp;</span> <span class="k">typeof</span> <span class="nx">value</span> <span class="o">===</span> <span class="s1">&#39;object&#39;</span>
 </span></span><span class="line"><span class="cl">    <span class="p">}</span>
-</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">isObject</span><span class="p">(</span><span class="nx">newConfig</span><span class="p">))</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="nx">existingConfig</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kr">const</span> <span class="nx">mergeConfig</span> <span class="o">=</span> <span class="p">(</span><span class="nx">existingConfig</span><span class="p">,</span> <span class="nx">newConfig</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">isObject</span><span class="p">(</span><span class="nx">existingConfig</span><span class="p">))</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">existingConfig</span> <span class="o">=</span> <span class="p">{}</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">isObject</span><span class="p">(</span><span class="nx">newConfig</span><span class="p">))</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="nx">existingConfig</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="p">{</span> <span class="p">...</span><span class="nx">existingConfig</span><span class="p">,</span> <span class="p">...</span><span class="nx">newConfig</span> <span class="p">}</span>
 </span></span><span class="line"><span class="cl">    <span class="p">}</span>
-</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="p">{</span> <span class="p">...</span><span class="nx">existingConfig</span><span class="p">,</span> <span class="p">...</span><span class="nx">newConfig</span> <span class="p">}</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">cnDnsList</span> <span class="o">=</span> <span class="p">[</span>
-</span></span><span class="line"><span class="cl">    <span class="s1">&#39;tls://223.5.5.5&#39;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">    <span class="s1">&#39;tls://1.12.12.12&#39;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl"><span class="p">]</span>
-</span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">trustDnsList</span> <span class="o">=</span> <span class="p">[</span>
-</span></span><span class="line"><span class="cl">    <span class="s1">&#39;https://doh.apad.pro/dns-query&#39;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">    <span class="s1">&#39;https://dns.cooluc.com/dns-query&#39;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">    <span class="s1">&#39;https://1.0.0.1/dns-query&#39;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl"><span class="p">]</span>
-</span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">notionDns</span> <span class="o">=</span> <span class="s1">&#39;tls://dns.jerryw.cn&#39;</span>
-</span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">notionUrls</span> <span class="o">=</span> <span class="p">[</span>
-</span></span><span class="line"><span class="cl">    <span class="s1">&#39;http-inputs-notion.splunkcloud.com&#39;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">    <span class="s1">&#39;+.notion-static.com&#39;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">    <span class="s1">&#39;+.notion.com&#39;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">    <span class="s1">&#39;+.notion.new&#39;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">    <span class="s1">&#39;+.notion.site&#39;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">    <span class="s1">&#39;+.notion.so&#39;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl"><span class="p">]</span>
-</span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">combinedUrls</span> <span class="o">=</span> <span class="nx">notionUrls</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">dnsOptions</span> <span class="o">=</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="s1">&#39;enable&#39;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">    <span class="s1">&#39;default-nameserver&#39;</span><span class="o">:</span> <span class="nx">cnDnsList</span><span class="p">,</span> <span class="c1">// 用于解析DNS服务器 的域名, 必须为IP, 可为加密DNS
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="s1">&#39;nameserver-policy&#39;</span><span class="o">:</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="p">[</span><span class="nx">combinedUrls</span><span class="p">]</span><span class="o">:</span> <span class="nx">notionDns</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">    <span class="s1">&#39;geosite:geolocation-!cn&#39;</span><span class="o">:</span> <span class="nx">trustDnsList</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">    <span class="p">},</span>
-</span></span><span class="line"><span class="cl">    <span class="s1">&#39;nameserver&#39;</span><span class="o">:</span> <span class="nx">trustDnsList</span><span class="p">,</span> <span class="c1">// 默认的域名解析服务器, 如不配置fallback/proxy-server-nameserver, 则所有域名都由nameserver解析
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="kr">const</span> <span class="nx">cnDnsList</span> <span class="o">=</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">        <span class="s1">&#39;tls://223.5.5.5&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="s1">&#39;tls://1.12.12.12&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="p">]</span>
+</span></span><span class="line"><span class="cl">    <span class="kr">const</span> <span class="nx">trustDnsList</span> <span class="o">=</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">        <span class="s1">&#39;https://doh.apad.pro/dns-query&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="s1">&#39;https://dns.cooluc.com/dns-query&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="s1">&#39;https://1.0.0.1/dns-query&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="p">]</span>
+</span></span><span class="line"><span class="cl">    <span class="kr">const</span> <span class="nx">notionDns</span> <span class="o">=</span> <span class="s1">&#39;tls://dns.jerryw.cn&#39;</span>
+</span></span><span class="line"><span class="cl">    <span class="kr">const</span> <span class="nx">notionUrls</span> <span class="o">=</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">        <span class="s1">&#39;http-inputs-notion.splunkcloud.com&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="s1">&#39;+.notion-static.com&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="s1">&#39;+.notion.com&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="s1">&#39;+.notion.new&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="s1">&#39;+.notion.site&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="s1">&#39;+.notion.so&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="p">]</span>
+</span></span><span class="line"><span class="cl">    <span class="kr">const</span> <span class="nx">combinedUrls</span> <span class="o">=</span> <span class="nx">notionUrls</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1">// GitHub加速前缀
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kr">const</span> <span class="nx">githubPrefix</span> <span class="o">=</span> <span class="s1">&#39;https://ghproxy.lainbo.com/&#39;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1">// GEO数据GitHub资源原始下载地址
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kr">const</span> <span class="nx">rawGeoxURLs</span> <span class="o">=</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="nx">geoip</span><span class="o">:</span> <span class="s1">&#39;https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/geoip-lite.dat&#39;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">    <span class="nx">geosite</span><span class="o">:</span> <span class="s1">&#39;https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/geosite.dat&#39;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">    <span class="nx">mmdb</span><span class="o">:</span> <span class="s1">&#39;https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/country-lite.mmdb&#39;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1">// 生成带有加速前缀的GEO数据资源对象
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kr">const</span> <span class="nx">accelURLs</span> <span class="o">=</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">fromEntries</span><span class="p">(</span>
-</span></span><span class="line"><span class="cl">    <span class="nb">Object</span><span class="p">.</span><span class="nx">entries</span><span class="p">(</span><span class="nx">rawGeoxURLs</span><span class="p">).</span><span class="nx">map</span><span class="p">(([</span><span class="nx">key</span><span class="p">,</span> <span class="nx">githubUrl</span><span class="p">])</span> <span class="p">=&gt;</span> <span class="p">[</span><span class="nx">key</span><span class="p">,</span> <span class="sb">`</span><span class="si">${</span><span class="nx">githubPrefix</span><span class="si">}${</span><span class="nx">githubUrl</span><span class="si">}</span><span class="sb">`</span><span class="p">]),</span>
-</span></span><span class="line"><span class="cl"><span class="p">)</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">otherOptions</span> <span class="o">=</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="s1">&#39;unified-delay&#39;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">    <span class="s1">&#39;tcp-concurrent&#39;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">    <span class="s1">&#39;profile&#39;</span><span class="o">:</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="s1">&#39;store-selected&#39;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">    <span class="s1">&#39;store-fake-ip&#39;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">    <span class="p">},</span>
-</span></span><span class="line"><span class="cl">    <span class="s1">&#39;sniffer&#39;</span><span class="o">:</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="nx">enable</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">    <span class="nx">sniff</span><span class="o">:</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">        <span class="nx">TLS</span><span class="o">:</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">        <span class="nx">ports</span><span class="o">:</span> <span class="p">[</span><span class="mi">443</span><span class="p">,</span> <span class="mi">8443</span><span class="p">],</span>
+</span></span><span class="line"><span class="cl">    <span class="kr">const</span> <span class="nx">dnsOptions</span> <span class="o">=</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="s1">&#39;enable&#39;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="s1">&#39;default-nameserver&#39;</span><span class="o">:</span> <span class="nx">cnDnsList</span><span class="p">,</span> <span class="c1">// 用于解析DNS服务器 的域名, 必须为IP, 可为加密DNS
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="s1">&#39;nameserver-policy&#39;</span><span class="o">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="p">[</span><span class="nx">combinedUrls</span><span class="p">]</span><span class="o">:</span> <span class="nx">notionDns</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="s1">&#39;geosite:geolocation-!cn&#39;</span><span class="o">:</span> <span class="nx">trustDnsList</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">        <span class="p">},</span>
-</span></span><span class="line"><span class="cl">        <span class="nx">HTTP</span><span class="o">:</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">        <span class="s1">&#39;ports&#39;</span><span class="o">:</span> <span class="p">[</span><span class="mi">80</span><span class="p">,</span> <span class="s1">&#39;8080-8880&#39;</span><span class="p">],</span>
-</span></span><span class="line"><span class="cl">        <span class="s1">&#39;override-destination&#39;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="s1">&#39;nameserver&#39;</span><span class="o">:</span> <span class="nx">trustDnsList</span><span class="p">,</span> <span class="c1">// 默认的域名解析服务器, 如不配置fallback/proxy-server-nameserver, 则所有域名都由nameserver解析
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">// GitHub加速前缀
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="kr">const</span> <span class="nx">githubPrefix</span> <span class="o">=</span> <span class="s1">&#39;https://ghproxy.lainbo.com/&#39;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">// GEO数据GitHub资源原始下载地址
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="kr">const</span> <span class="nx">rawGeoxURLs</span> <span class="o">=</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">geoip</span><span class="o">:</span> <span class="s1">&#39;https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/geoip-lite.dat&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">geosite</span><span class="o">:</span> <span class="s1">&#39;https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/geosite.dat&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">mmdb</span><span class="o">:</span> <span class="s1">&#39;https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/country-lite.mmdb&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">// 生成带有加速前缀的GEO数据资源对象
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="kr">const</span> <span class="nx">accelURLs</span> <span class="o">=</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">fromEntries</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">Object</span><span class="p">.</span><span class="nx">entries</span><span class="p">(</span><span class="nx">rawGeoxURLs</span><span class="p">).</span><span class="nx">map</span><span class="p">(([</span><span class="nx">key</span><span class="p">,</span> <span class="nx">githubUrl</span><span class="p">])</span> <span class="p">=&gt;</span> <span class="p">[</span><span class="nx">key</span><span class="p">,</span> <span class="sb">`</span><span class="si">${</span><span class="nx">githubPrefix</span><span class="si">}${</span><span class="nx">githubUrl</span><span class="si">}</span><span class="sb">`</span><span class="p">]),</span>
+</span></span><span class="line"><span class="cl">    <span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kr">const</span> <span class="nx">otherOptions</span> <span class="o">=</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="s1">&#39;unified-delay&#39;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="s1">&#39;tcp-concurrent&#39;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="s1">&#39;profile&#39;</span><span class="o">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="s1">&#39;store-selected&#39;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="s1">&#39;store-fake-ip&#39;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">        <span class="p">},</span>
-</span></span><span class="line"><span class="cl">    <span class="p">},</span>
-</span></span><span class="line"><span class="cl">    <span class="p">},</span>
-</span></span><span class="line"><span class="cl">    <span class="s1">&#39;geodata-mode&#39;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">    <span class="s1">&#39;geox-url&#39;</span><span class="o">:</span> <span class="nx">accelURLs</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span><span class="line"><span class="cl"><span class="nx">content</span><span class="p">.</span><span class="nx">dns</span> <span class="o">=</span> <span class="nx">mergeConfig</span><span class="p">(</span><span class="nx">content</span><span class="p">.</span><span class="nx">dns</span><span class="p">,</span> <span class="nx">dnsOptions</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="k">return</span> <span class="p">{</span> <span class="p">...</span><span class="nx">content</span><span class="p">,</span> <span class="p">...</span><span class="nx">otherOptions</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="s1">&#39;sniffer&#39;</span><span class="o">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">enable</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">sniff</span><span class="o">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="nx">TLS</span><span class="o">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="nx">ports</span><span class="o">:</span> <span class="p">[</span><span class="mi">443</span><span class="p">,</span> <span class="mi">8443</span><span class="p">],</span>
+</span></span><span class="line"><span class="cl">            <span class="p">},</span>
+</span></span><span class="line"><span class="cl">            <span class="nx">HTTP</span><span class="o">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="s1">&#39;ports&#39;</span><span class="o">:</span> <span class="p">[</span><span class="mi">80</span><span class="p">,</span> <span class="s1">&#39;8080-8880&#39;</span><span class="p">],</span>
+</span></span><span class="line"><span class="cl">            <span class="s1">&#39;override-destination&#39;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="p">},</span>
+</span></span><span class="line"><span class="cl">        <span class="p">},</span>
+</span></span><span class="line"><span class="cl">        <span class="p">},</span>
+</span></span><span class="line"><span class="cl">        <span class="s1">&#39;geodata-mode&#39;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="s1">&#39;geox-url&#39;</span><span class="o">:</span> <span class="nx">accelURLs</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">content</span><span class="p">.</span><span class="nx">dns</span> <span class="o">=</span> <span class="nx">mergeConfig</span><span class="p">(</span><span class="nx">content</span><span class="p">.</span><span class="nx">dns</span><span class="p">,</span> <span class="nx">dnsOptions</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="p">{</span> <span class="p">...</span><span class="nx">content</span><span class="p">,</span> <span class="p">...</span><span class="nx">otherOptions</span> <span class="p">}</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></td></tr></table>
 </div>
@@ -1432,9 +1439,11 @@
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ sudo pacman -S linux-lts linux-lts-headers
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># linux-lts linux-lts-headers</span>
+</span></span><span class="line"><span class="cl">$ sudo pacman -S linux-lts linux-lts-headers
 </span></span></code></pre></td></tr></table>
 </div>
 </div></li>
@@ -1462,9 +1471,11 @@
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ sudo grub-mkconfig -o /boot/grub/grub.cfg
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># grub-mkconfig</span>
+</span></span><span class="line"><span class="cl">$ sudo grub-mkconfig -o /boot/grub/grub.cfg
 </span></span></code></pre></td></tr></table>
 </div>
 </div></li>
@@ -1480,9 +1491,11 @@
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
+</span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ sudo systemctl <span class="nb">enable</span> fstrim.timer
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># SSD Optimal</span>
+</span></span><span class="line"><span class="cl">$ sudo systemctl <span class="nb">enable</span> fstrim.timer
 </span></span><span class="line"><span class="cl">$ sudo systemctl start fstrim.timer
 </span></span></code></pre></td></tr></table>
 </div>
@@ -1530,9 +1543,11 @@
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ setenv TERMINFO /usr/lib/terminfo
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># setenv</span>
+</span></span><span class="line"><span class="cl">$ setenv TERMINFO /usr/lib/terminfo
 </span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="3-更新内核后双屏显示时某一个屏幕黑屏但鼠标能够移动过去并显示另一屏幕正常">3. 更新内核后，双屏显示时，某一个屏幕黑屏，但鼠标能够移动过去并显示，另一屏幕正常</h3>
@@ -1572,9 +1587,11 @@ Windows 下简体中文采用的是 <code>GBK</code>/<code>GB312</code> 编码�
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ unzip -O GBK xxx.zip
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Use `-O GBK`</span>
+</span></span><span class="line"><span class="cl">$ unzip -O GBK xxx.zip
 </span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="5-wps-office大部分字体粗体出现过粗无法正常显示问题">5. wps-office大部分字体粗体出现过粗无法正常显示问题</h3>
@@ -1594,9 +1611,11 @@ Windows 下简体中文采用的是 <code>GBK</code>/<code>GB312</code> 编码�
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
+</span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ env <span class="nv">LD_LIBRARY_PATH</span><span class="o">=</span>/usr/local/freetype2-2.13.0-1-x86_64/usr/lib
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># update</span>
+</span></span><span class="line"><span class="cl">$ env <span class="nv">LD_LIBRARY_PATH</span><span class="o">=</span>/usr/local/freetype2-2.13.0-1-x86_64/usr/lib
 </span></span><span class="line"><span class="cl">$ update-desktop-database ~/.local/share/applications
 </span></span></code></pre></td></tr></table>
 </div>
