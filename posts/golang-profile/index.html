@@ -35,7 +35,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/kydance.github.io\/posts\/golang-profile\/"
-        },"image": ["https:\/\/kydance.github.io\/favicon.ico"],"genre": "posts","keywords": "Golang, Benchmark, Profile, Optimize","wordcount":  1909 ,
+        },"image": ["https:\/\/kydance.github.io\/favicon.ico"],"genre": "posts","keywords": "Golang, Benchmark, Profile, Optimize","wordcount":  1993 ,
         "url": "https:\/\/kydance.github.io\/posts\/golang-profile\/","datePublished": "2024-04-20T20:39:50+08:00","dateModified": "2024-04-20T20:39:50+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "kyden","logo": "https:\/\/kydance.github.io\/favicon.png"},"author": {
@@ -133,8 +133,8 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Golang Profile and Optimize</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https:github.com/kydance" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>kyden</a></span>&nbsp;<span class="post-category">included in <a href="/categories/golang/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Golang</a>&nbsp;<a href="/categories/benchmark/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Benchmark</a>&nbsp;<a href="/categories/profile/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Profile</a>&nbsp;<a href="/categories/optimize/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Optimize</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-04-20">2024-04-20</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;1909 words&nbsp;
-                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;9 minutes&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-04-20">2024-04-20</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;1993 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;10 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
@@ -150,6 +150,10 @@
     </li>
     <li><a href="#ii-profile">II. Profile</a>
       <ul>
+        <li><a href="#cpu-性能分析">CPU 性能分析</a></li>
+        <li><a href="#内存性能分析">内存性能分析</a></li>
+        <li><a href="#阻塞性能分析">阻塞性能分析</a></li>
+        <li><a href="#实践场景">实践场景</a></li>
         <li><a href="#压测时需要关注的服务指标">压测时需要关注的服务指标</a></li>
         <li><a href="#压测手段">压测手段</a></li>
         <li><a href="#pprof-应用实例">pprof 应用实例</a></li>
@@ -262,6 +266,44 @@
 </ul>
 <hr>
 <h2 id="ii-profile">II. Profile</h2>
+<blockquote>
+<p>当面对一个未知程序，如何分析这个程序的性能，并找到瓶颈点呢？</p>
+<p><strong>pprof 就是用来解决这个问题的</strong></p>
+</blockquote>
+<h3 id="cpu-性能分析">CPU 性能分析</h3>
+<p>CPU性能分析（CPU profiling）是最常见的性能分析类型，当启动 CPU 性能分析时，运行时（runtime）将每隔 10ms 中断一次，记录此时正在运行的协程（goroutines）的堆栈信息。
+程序结束后，可以分析记录的数据找到最热代码路径（hosttest code paths）。</p>
+<div class="details admonition note open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-pencil-alt fa-fw" aria-hidden="true"></i>What’s the meaning of “hot codepath”<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><p>Compiler hot paths are code execution paths in the compiler in which most of the execution time is spent, and which are potentially executed very often.</p>
+<p>– <a href="https://english.stackexchange.com/questions/402436/whats-the-meaning-of-hot-codepath-or-hot-code-path" target="_blank" rel="noopener noreffer ">What’s the meaning of “hot codepath”</a></p>
+</div>
+        </div>
+    </div>
+<p>一个函数在性能分析数据中出现的次数越多，说明执行该函数代码路径（code path）花费的时间占总运行时间的比重越大。</p>
+<h3 id="内存性能分析">内存性能分析</h3>
+<p>内存性能分析（Memory profiling）记录堆内存分配时的堆栈信息，忽略栈内存分配信息，当启动 memory 性能分析时，默认每 1000 次采样 1 次（这个比例可调整）。</p>
+<p>由于内存性能分析是基于采样的，因此<strong>基于内存分析数据来判断程序所有的内存使用情况是很困难的</strong>。</p>
+<h3 id="阻塞性能分析">阻塞性能分析</h3>
+<p>阻塞性能分析（block profiling）是 Go 特有的，它用来记录一个协程等待一个共享资源花费的时间，因此在判断程序的并发瓶颈时会很有用。</p>
+<p>阻塞场景：</p>
+<ul>
+<li>在没有缓冲区的信道上发送或接收数据</li>
+<li>从空的信道上接收数据，或发送数据到满的信道上</li>
+<li>尝试获得一个已经被其他协程锁住的排它锁</li>
+</ul>
+<div class="details admonition tip open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-lightbulb fa-fw" aria-hidden="true"></i>When using block profilling<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">一般情况下，当所有的 CPU 和 memory 瓶颈解决后，才会考虑阻塞性能分析。</div>
+        </div>
+    </div>
+<h3 id="实践场景">实践场景</h3>
 <p>在进行 <strong>API 压测</strong>、<strong>全链路压测</strong>、<strong>线上生产环境被高峰流量打爆</strong>的过程中随时可能发生故障等问题，例如：</p>
 <ul>
 <li>CPU 占用过高，超过 90%；</li>
