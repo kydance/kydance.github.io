@@ -86,8 +86,8 @@
       <pubDate>Wed, 11 Sep 2024 22:13:48 +0800</pubDate><author>kytedance@gmail.com (kyden)</author>
       <guid>http://kyden.us.kg/posts/make-cmake/</guid>
       <category domain="http://kyden.us.kg/categories/make/">Make</category>
-      <category domain="http://kyden.us.kg/categories/cmake/">Cmake</category>
       <category domain="http://kyden.us.kg/categories/makefile/">Makefile</category>
+      <category domain="http://kyden.us.kg/categories/cmake/">Cmake</category>
       <category domain="http://kyden.us.kg/categories/cmakelists.txt/">CMakeLists.txt</category>
       <category domain="http://kyden.us.kg/categories/golang/">Golang</category>
       <category domain="http://kyden.us.kg/categories/c&#43;&#43;/">C&#43;&#43;</category>
@@ -122,6 +122,7 @@
       <category domain="http://kyden.us.kg/categories/golang/">Golang</category>
       <category domain="http://kyden.us.kg/categories/project-layout/">Project Layout</category>
       <category domain="http://kyden.us.kg/categories/stardard/">Stardard</category>
+      <category domain="http://kyden.us.kg/categories/%E9%A1%B9%E7%9B%AE%E5%B8%83%E5%B1%80/">项目布局</category>
       <description>&lt;div class=&#34;details admonition abstract open&#34;&gt;&#xA;  &lt;div class=&#34;details-summary admonition-title&#34;&gt;&lt;i class=&#34;icon fa-fw fa-solid fa-clipboard-list&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;导语&lt;i class=&#34;details-icon fa-solid fa-angle-right fa-fw&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;details-content&#34;&gt;&#xA;    &lt;div class=&#34;admonition-content&#34;&gt;Go 应用程序项目的基本布局介绍&lt;/div&gt;&#xA;  &lt;/div&gt;&#xA;&lt;/div&gt;</description>
     </item>
     <item>
@@ -151,9 +152,10 @@
       <pubDate>Wed, 15 May 2024 13:41:49 +0800</pubDate><author>kytedance@gmail.com (kyden)</author>
       <guid>http://kyden.us.kg/posts/golang-gmp/</guid>
       <category domain="http://kyden.us.kg/categories/golang/">Golang</category>
-      <category domain="http://kyden.us.kg/categories/generic/">Generic</category>
-      <category domain="http://kyden.us.kg/categories/programe-language/">Programe Language</category>
-      <category domain="http://kyden.us.kg/categories/%E6%B3%9B%E5%9E%8B/">泛型</category>
+      <category domain="http://kyden.us.kg/categories/gmp/">GMP</category>
+      <category domain="http://kyden.us.kg/categories/goroutine/">Goroutine</category>
+      <category domain="http://kyden.us.kg/categories/machine/">Machine</category>
+      <category domain="http://kyden.us.kg/categories/process/">Process</category>
       <description>&lt;div class=&#34;details admonition abstract open&#34;&gt;&#xA;  &lt;div class=&#34;details-summary admonition-title&#34;&gt;&lt;i class=&#34;icon fa-fw fa-solid fa-clipboard-list&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;导语&lt;i class=&#34;details-icon fa-solid fa-angle-right fa-fw&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;details-content&#34;&gt;&#xA;    &lt;div class=&#34;admonition-content&#34;&gt;&lt;strong&gt;Go 的调度流程本质上是一个生产-消费流程.&lt;/strong&gt;&lt;/div&gt;&#xA;  &lt;/div&gt;&#xA;&lt;/div&gt;</description>
     </item>
     <item>

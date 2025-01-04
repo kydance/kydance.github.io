@@ -21,16 +21,5 @@
       <category domain="http://kyden.us.kg/categories/%E6%B3%9B%E5%9E%8B/">泛型</category>
       <description>&lt;div class=&#34;details admonition abstract open&#34;&gt;&#xA;  &lt;div class=&#34;details-summary admonition-title&#34;&gt;&lt;i class=&#34;icon fa-fw fa-solid fa-clipboard-list&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;导语&lt;i class=&#34;details-icon fa-solid fa-angle-right fa-fw&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;details-content&#34;&gt;&#xA;    &lt;div class=&#34;admonition-content&#34;&gt;导语内容&lt;/div&gt;&#xA;  &lt;/div&gt;&#xA;&lt;/div&gt;</description>
     </item>
-    <item>
-      <title>深入理解 Golang GMP</title>
-      <link>http://kyden.us.kg/posts/golang-gmp/</link>
-      <pubDate>Wed, 15 May 2024 13:41:49 +0800</pubDate><author>kytedance@gmail.com (kyden)</author>
-      <guid>http://kyden.us.kg/posts/golang-gmp/</guid>
-      <category domain="http://kyden.us.kg/categories/golang/">Golang</category>
-      <category domain="http://kyden.us.kg/categories/generic/">Generic</category>
-      <category domain="http://kyden.us.kg/categories/programe-language/">Programe Language</category>
-      <category domain="http://kyden.us.kg/categories/%E6%B3%9B%E5%9E%8B/">泛型</category>
-      <description>&lt;div class=&#34;details admonition abstract open&#34;&gt;&#xA;  &lt;div class=&#34;details-summary admonition-title&#34;&gt;&lt;i class=&#34;icon fa-fw fa-solid fa-clipboard-list&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;导语&lt;i class=&#34;details-icon fa-solid fa-angle-right fa-fw&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;details-content&#34;&gt;&#xA;    &lt;div class=&#34;admonition-content&#34;&gt;&lt;strong&gt;Go 的调度流程本质上是一个生产-消费流程.&lt;/strong&gt;&lt;/div&gt;&#xA;  &lt;/div&gt;&#xA;&lt;/div&gt;</description>
-    </item>
   </channel>
 </rss>

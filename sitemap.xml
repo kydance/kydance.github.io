@@ -7,7 +7,19 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>http://kyden.us.kg/collections/</loc>
+    <lastmod>2024-12-20T22:37:36+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>http://kyden.us.kg/tags/concurrency/</loc>
+    <lastmod>2024-12-20T22:37:36+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://kyden.us.kg/collections/concurrency/</loc>
     <lastmod>2024-12-20T22:37:36+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
@@ -37,6 +49,12 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>http://kyden.us.kg/collections/mutex/</loc>
+    <lastmod>2024-12-20T22:37:36+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>http://kyden.us.kg/categories/mutex/</loc>
     <lastmod>2024-12-20T22:37:36+08:00</lastmod>
     <changefreq>daily</changefreq>
@@ -44,6 +62,12 @@
   </url>
   <url>
     <loc>http://kyden.us.kg/tags/pool/</loc>
+    <lastmod>2024-12-20T22:37:36+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://kyden.us.kg/collections/pool/</loc>
     <lastmod>2024-12-20T22:37:36+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
@@ -67,6 +91,12 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>http://kyden.us.kg/collections/sync/</loc>
+    <lastmod>2024-12-20T22:37:36+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>http://kyden.us.kg/categories/sync/</loc>
     <lastmod>2024-12-20T22:37:36+08:00</lastmod>
     <changefreq>daily</changefreq>
@@ -85,6 +115,12 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>http://kyden.us.kg/collections/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/</loc>
+    <lastmod>2024-12-20T22:37:36+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>http://kyden.us.kg/categories/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/</loc>
     <lastmod>2024-12-20T22:37:36+08:00</lastmod>
     <changefreq>daily</changefreq>
@@ -97,6 +133,12 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>http://kyden.us.kg/collections/generic/</loc>
+    <lastmod>2024-11-06T11:53:42+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>http://kyden.us.kg/categories/generic/</loc>
     <lastmod>2024-11-06T11:53:42+08:00</lastmod>
     <changefreq>daily</changefreq>
@@ -104,6 +146,12 @@
   </url>
   <url>
     <loc>http://kyden.us.kg/tags/golang/</loc>
+    <lastmod>2024-11-06T11:53:42+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://kyden.us.kg/collections/golang/</loc>
     <lastmod>2024-11-06T11:53:42+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
@@ -127,6 +175,12 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>http://kyden.us.kg/collections/programe-language/</loc>
+    <lastmod>2024-11-06T11:53:42+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>http://kyden.us.kg/categories/programe-language/</loc>
     <lastmod>2024-11-06T11:53:42+08:00</lastmod>
     <changefreq>daily</changefreq>
@@ -134,6 +188,12 @@
   </url>
   <url>
     <loc>http://kyden.us.kg/tags/regex/</loc>
+    <lastmod>2024-11-06T11:53:42+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://kyden.us.kg/collections/regex/</loc>
     <lastmod>2024-11-06T11:53:42+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
@@ -151,6 +211,12 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>http://kyden.us.kg/collections/regular-expression/</loc>
+    <lastmod>2024-11-06T11:53:42+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>http://kyden.us.kg/categories/regular-expression/</loc>
     <lastmod>2024-11-06T11:53:42+08:00</lastmod>
     <changefreq>daily</changefreq>
@@ -158,6 +224,12 @@
   </url>
   <url>
     <loc>http://kyden.us.kg/tags/%E5%85%A5%E9%97%A8/</loc>
+    <lastmod>2024-11-06T11:53:42+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://kyden.us.kg/collections/%E5%85%A5%E9%97%A8/</loc>
     <lastmod>2024-11-06T11:53:42+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
@@ -175,6 +247,12 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>http://kyden.us.kg/collections/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/</loc>
+    <lastmod>2024-11-06T11:53:42+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>http://kyden.us.kg/categories/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/</loc>
     <lastmod>2024-11-06T11:53:42+08:00</lastmod>
     <changefreq>daily</changefreq>
@@ -182,6 +260,12 @@
   </url>
   <url>
     <loc>http://kyden.us.kg/tags/%E6%B3%9B%E5%9E%8B/</loc>
+    <lastmod>2024-11-06T11:53:42+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://kyden.us.kg/collections/%E6%B3%9B%E5%9E%8B/</loc>
     <lastmod>2024-11-06T11:53:42+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
@@ -205,6 +289,12 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>http://kyden.us.kg/collections/database/</loc>
+    <lastmod>2024-10-31T23:08:43+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>http://kyden.us.kg/categories/database/</loc>
     <lastmod>2024-10-31T23:08:43+08:00</lastmod>
     <changefreq>daily</changefreq>
@@ -217,6 +307,12 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>http://kyden.us.kg/collections/mysql/</loc>
+    <lastmod>2024-10-31T23:08:43+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>http://kyden.us.kg/categories/mysql/</loc>
     <lastmod>2024-10-31T23:08:43+08:00</lastmod>
     <changefreq>daily</changefreq>
@@ -224,6 +320,12 @@
   </url>
   <url>
     <loc>http://kyden.us.kg/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/</loc>
+    <lastmod>2024-10-31T23:08:43+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://kyden.us.kg/collections/%E6%95%B0%E6%8D%AE%E5%BA%93/</loc>
     <lastmod>2024-10-31T23:08:43+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
@@ -242,6 +344,12 @@
   </url>
   <url>
     <loc>http://kyden.us.kg/tags/redis/</loc>
+    <lastmod>2024-10-22T11:58:44+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://kyden.us.kg/collections/redis/</loc>
     <lastmod>2024-10-22T11:58:44+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
@@ -271,6 +379,12 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>http://kyden.us.kg/collections/zap/</loc>
+    <lastmod>2024-10-20T15:40:17+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>http://kyden.us.kg/categories/zap/</loc>
     <lastmod>2024-10-20T15:40:17+08:00</lastmod>
     <changefreq>daily</changefreq>
@@ -283,13 +397,43 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>http://kyden.us.kg/collections/%E6%97%A5%E5%BF%97%E7%B3%BB%E7%BB%9F/</loc>
+    <lastmod>2024-10-20T15:40:17+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>http://kyden.us.kg/categories/%E6%97%A5%E5%BF%97%E7%B3%BB%E7%BB%9F/</loc>
     <lastmod>2024-10-20T15:40:17+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>http://kyden.us.kg/tags/cli-tools/</loc>
+    <lastmod>2024-10-03T20:24:40+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://kyden.us.kg/collections/cli-tools/</loc>
+    <lastmod>2024-10-03T20:24:40+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://kyden.us.kg/categories/cli-tools/</loc>
+    <lastmod>2024-10-03T20:24:40+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>http://kyden.us.kg/tags/tmux/</loc>
+    <lastmod>2024-10-03T20:24:40+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://kyden.us.kg/collections/tmux/</loc>
     <lastmod>2024-10-03T20:24:40+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
@@ -307,19 +451,13 @@
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>http://kyden.us.kg/tags/tools/</loc>
-    <lastmod>2024-10-03T20:24:40+08:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>http://kyden.us.kg/categories/tools/</loc>
-    <lastmod>2024-10-03T20:24:40+08:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
     <loc>http://kyden.us.kg/tags/%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/</loc>
+    <lastmod>2024-10-03T20:24:40+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://kyden.us.kg/collections/%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/</loc>
     <lastmod>2024-10-03T20:24:40+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
@@ -331,7 +469,31 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>http://kyden.us.kg/tags/%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%B7%A5%E5%85%B7/</loc>
+    <lastmod>2024-10-03T20:24:40+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://kyden.us.kg/collections/%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%B7%A5%E5%85%B7/</loc>
+    <lastmod>2024-10-03T20:24:40+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://kyden.us.kg/categories/%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%B7%A5%E5%85%B7/</loc>
+    <lastmod>2024-10-03T20:24:40+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>http://kyden.us.kg/tags/etc/</loc>
+    <lastmod>2024-09-22T21:26:34+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://kyden.us.kg/collections/etc/</loc>
     <lastmod>2024-09-22T21:26:34+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
@@ -355,6 +517,12 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>http://kyden.us.kg/collections/viper/</loc>
+    <lastmod>2024-09-22T21:26:34+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>http://kyden.us.kg/categories/viper/</loc>
     <lastmod>2024-09-22T21:26:34+08:00</lastmod>
     <changefreq>daily</changefreq>
@@ -362,6 +530,12 @@
   </url>
   <url>
     <loc>http://kyden.us.kg/tags/yaml/</loc>
+    <lastmod>2024-09-22T21:26:34+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://kyden.us.kg/collections/yaml/</loc>
     <lastmod>2024-09-22T21:26:34+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
@@ -379,6 +553,12 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>http://kyden.us.kg/collections/%E7%8E%B0%E4%BB%A3%E5%8C%96/</loc>
+    <lastmod>2024-09-22T21:26:34+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>http://kyden.us.kg/categories/%E7%8E%B0%E4%BB%A3%E5%8C%96/</loc>
     <lastmod>2024-09-22T21:26:34+08:00</lastmod>
     <changefreq>daily</changefreq>
@@ -386,6 +566,12 @@
   </url>
   <url>
     <loc>http://kyden.us.kg/tags/%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6/</loc>
+    <lastmod>2024-09-22T21:26:34+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://kyden.us.kg/collections/%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6/</loc>
     <lastmod>2024-09-22T21:26:34+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
@@ -403,6 +589,12 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>http://kyden.us.kg/collections/cli/</loc>
+    <lastmod>2024-09-21T09:55:48+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>http://kyden.us.kg/categories/cli/</loc>
     <lastmod>2024-09-21T09:55:48+08:00</lastmod>
     <changefreq>daily</changefreq>
@@ -410,6 +602,12 @@
   </url>
   <url>
     <loc>http://kyden.us.kg/tags/cobra/</loc>
+    <lastmod>2024-09-21T09:55:48+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://kyden.us.kg/collections/cobra/</loc>
     <lastmod>2024-09-21T09:55:48+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
@@ -427,6 +625,12 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>http://kyden.us.kg/collections/%E5%91%BD%E4%BB%A4%E8%A1%8C/</loc>
+    <lastmod>2024-09-21T09:55:48+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>http://kyden.us.kg/categories/%E5%91%BD%E4%BB%A4%E8%A1%8C/</loc>
     <lastmod>2024-09-21T09:55:48+08:00</lastmod>
     <changefreq>daily</changefreq>
@@ -434,6 +638,12 @@
   </url>
   <url>
     <loc>http://kyden.us.kg/tags/%E6%A1%86%E6%9E%B6/</loc>
+    <lastmod>2024-09-21T09:55:48+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://kyden.us.kg/collections/%E6%A1%86%E6%9E%B6/</loc>
     <lastmod>2024-09-21T09:55:48+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
@@ -457,6 +667,12 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>http://kyden.us.kg/collections/c&#43;&#43;/</loc>
+    <lastmod>2024-09-11T22:13:48+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>http://kyden.us.kg/categories/c&#43;&#43;/</loc>
     <lastmod>2024-09-11T22:13:48+08:00</lastmod>
     <changefreq>daily</changefreq>
@@ -464,6 +680,12 @@
   </url>
   <url>
     <loc>http://kyden.us.kg/tags/cmake/</loc>
+    <lastmod>2024-09-11T22:13:48+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://kyden.us.kg/collections/cmake/</loc>
     <lastmod>2024-09-11T22:13:48+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
@@ -481,6 +703,12 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>http://kyden.us.kg/collections/cmakelists.txt/</loc>
+    <lastmod>2024-09-11T22:13:48+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>http://kyden.us.kg/categories/cmakelists.txt/</loc>
     <lastmod>2024-09-11T22:13:48+08:00</lastmod>
     <changefreq>daily</changefreq>
@@ -488,6 +716,12 @@
   </url>
   <url>
     <loc>http://kyden.us.kg/tags/make/</loc>
+    <lastmod>2024-09-11T22:13:48+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://kyden.us.kg/collections/make/</loc>
     <lastmod>2024-09-11T22:13:48+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
@@ -505,6 +739,12 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>http://kyden.us.kg/collections/makefile/</loc>
+    <lastmod>2024-09-11T22:13:48+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>http://kyden.us.kg/categories/makefile/</loc>
     <lastmod>2024-09-11T22:13:48+08:00</lastmod>
     <changefreq>daily</changefreq>
@@ -512,6 +752,12 @@
   </url>
   <url>
     <loc>http://kyden.us.kg/tags/%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/</loc>
+    <lastmod>2024-09-11T22:13:48+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://kyden.us.kg/collections/%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/</loc>
     <lastmod>2024-09-11T22:13:48+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
@@ -535,6 +781,12 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>http://kyden.us.kg/collections/decoder/</loc>
+    <lastmod>2024-09-09T22:39:40+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>http://kyden.us.kg/categories/decoder/</loc>
     <lastmod>2024-09-09T22:39:40+08:00</lastmod>
     <changefreq>daily</changefreq>
@@ -547,6 +799,12 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>http://kyden.us.kg/collections/encoder/</loc>
+    <lastmod>2024-09-09T22:39:40+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>http://kyden.us.kg/categories/encoder/</loc>
     <lastmod>2024-09-09T22:39:40+08:00</lastmod>
     <changefreq>daily</changefreq>
@@ -554,6 +812,12 @@
   </url>
   <url>
     <loc>http://kyden.us.kg/tags/json/</loc>
+    <lastmod>2024-09-09T22:39:40+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://kyden.us.kg/collections/json/</loc>
     <lastmod>2024-09-09T22:39:40+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
@@ -577,6 +841,12 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>http://kyden.us.kg/collections/check.rule/</loc>
+    <lastmod>2024-09-07T20:56:52+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>http://kyden.us.kg/categories/check.rule/</loc>
     <lastmod>2024-09-07T20:56:52+08:00</lastmod>
     <changefreq>daily</changefreq>
@@ -584,6 +854,12 @@
   </url>
   <url>
     <loc>http://kyden.us.kg/tags/linux/</loc>
+    <lastmod>2024-09-07T20:56:52+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://kyden.us.kg/collections/linux/</loc>
     <lastmod>2024-09-07T20:56:52+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
@@ -601,6 +877,12 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>http://kyden.us.kg/collections/%E5%BE%AE%E6%9C%8D%E5%8A%A1/</loc>
+    <lastmod>2024-09-07T20:56:52+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>http://kyden.us.kg/categories/%E5%BE%AE%E6%9C%8D%E5%8A%A1/</loc>
     <lastmod>2024-09-07T20:56:52+08:00</lastmod>
     <changefreq>daily</changefreq>
@@ -608,6 +890,12 @@
   </url>
   <url>
     <loc>http://kyden.us.kg/tags/%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0/</loc>
+    <lastmod>2024-09-07T20:56:52+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://kyden.us.kg/collections/%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0/</loc>
     <lastmod>2024-09-07T20:56:52+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
@@ -637,6 +925,12 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>http://kyden.us.kg/collections/vim/</loc>
+    <lastmod>2024-08-25T14:10:44+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>http://kyden.us.kg/categories/vim/</loc>
     <lastmod>2024-08-25T14:10:44+08:00</lastmod>
     <changefreq>daily</changefreq>
@@ -644,6 +938,12 @@
   </url>
   <url>
     <loc>http://kyden.us.kg/tags/visual-studio-code/</loc>
+    <lastmod>2024-08-25T14:10:44+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://kyden.us.kg/collections/visual-studio-code/</loc>
     <lastmod>2024-08-25T14:10:44+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
@@ -661,6 +961,12 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>http://kyden.us.kg/collections/vscode/</loc>
+    <lastmod>2024-08-25T14:10:44+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>http://kyden.us.kg/categories/vscode/</loc>
     <lastmod>2024-08-25T14:10:44+08:00</lastmod>
     <changefreq>daily</changefreq>
@@ -668,6 +974,12 @@
   </url>
   <url>
     <loc>http://kyden.us.kg/tags/%E5%85%A8%E9%94%AE%E7%9B%98%E6%93%8D%E4%BD%9C/</loc>
+    <lastmod>2024-08-25T14:10:44+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://kyden.us.kg/collections/%E5%85%A8%E9%94%AE%E7%9B%98%E6%93%8D%E4%BD%9C/</loc>
     <lastmod>2024-08-25T14:10:44+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
@@ -685,6 +997,12 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>http://kyden.us.kg/collections/%E6%95%88%E7%8E%87/</loc>
+    <lastmod>2024-08-25T14:10:44+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>http://kyden.us.kg/categories/%E6%95%88%E7%8E%87/</loc>
     <lastmod>2024-08-25T14:10:44+08:00</lastmod>
     <changefreq>daily</changefreq>
@@ -692,6 +1010,12 @@
   </url>
   <url>
     <loc>http://kyden.us.kg/tags/effective-go/</loc>
+    <lastmod>2024-08-15T22:41:50+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://kyden.us.kg/collections/effective-go/</loc>
     <lastmod>2024-08-15T22:41:50+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
@@ -710,6 +1034,12 @@
   </url>
   <url>
     <loc>http://kyden.us.kg/tags/design-patten/</loc>
+    <lastmod>2024-07-28T10:13:24+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://kyden.us.kg/collections/design-patten/</loc>
     <lastmod>2024-07-28T10:13:24+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
@@ -739,6 +1069,12 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>http://kyden.us.kg/collections/project-layout/</loc>
+    <lastmod>2024-07-13T21:04:57+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>http://kyden.us.kg/categories/project-layout/</loc>
     <lastmod>2024-07-13T21:04:57+08:00</lastmod>
     <changefreq>daily</changefreq>
@@ -751,13 +1087,43 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>http://kyden.us.kg/collections/stardard/</loc>
+    <lastmod>2024-07-13T21:04:57+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>http://kyden.us.kg/categories/stardard/</loc>
     <lastmod>2024-07-13T21:04:57+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>http://kyden.us.kg/tags/%E9%A1%B9%E7%9B%AE%E5%B8%83%E5%B1%80/</loc>
+    <lastmod>2024-07-13T21:04:57+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://kyden.us.kg/collections/%E9%A1%B9%E7%9B%AE%E5%B8%83%E5%B1%80/</loc>
+    <lastmod>2024-07-13T21:04:57+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://kyden.us.kg/categories/%E9%A1%B9%E7%9B%AE%E5%B8%83%E5%B1%80/</loc>
+    <lastmod>2024-07-13T21:04:57+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>http://kyden.us.kg/tags/context/</loc>
+    <lastmod>2024-06-01T21:37:55+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://kyden.us.kg/collections/context/</loc>
     <lastmod>2024-06-01T21:37:55+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
@@ -781,6 +1147,12 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>http://kyden.us.kg/collections/escape-analysis/</loc>
+    <lastmod>2024-05-19T22:47:26+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>http://kyden.us.kg/categories/escape-analysis/</loc>
     <lastmod>2024-05-19T22:47:26+08:00</lastmod>
     <changefreq>daily</changefreq>
@@ -793,6 +1165,12 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>http://kyden.us.kg/collections/heap/</loc>
+    <lastmod>2024-05-19T22:47:26+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>http://kyden.us.kg/categories/heap/</loc>
     <lastmod>2024-05-19T22:47:26+08:00</lastmod>
     <changefreq>daily</changefreq>
@@ -800,6 +1178,12 @@
   </url>
   <url>
     <loc>http://kyden.us.kg/tags/stack/</loc>
+    <lastmod>2024-05-19T22:47:26+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://kyden.us.kg/collections/stack/</loc>
     <lastmod>2024-05-19T22:47:26+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
@@ -823,6 +1207,12 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>http://kyden.us.kg/collections/%E9%80%83%E9%80%B8%E5%88%86%E6%9E%90/</loc>
+    <lastmod>2024-05-19T22:47:26+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>http://kyden.us.kg/categories/%E9%80%83%E9%80%B8%E5%88%86%E6%9E%90/</loc>
     <lastmod>2024-05-19T22:47:26+08:00</lastmod>
     <changefreq>daily</changefreq>
@@ -835,7 +1225,31 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>http://kyden.us.kg/collections/gmp/</loc>
+    <lastmod>2024-05-15T13:41:49+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://kyden.us.kg/categories/gmp/</loc>
+    <lastmod>2024-05-15T13:41:49+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>http://kyden.us.kg/tags/goroutine/</loc>
+    <lastmod>2024-05-15T13:41:49+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://kyden.us.kg/collections/goroutine/</loc>
+    <lastmod>2024-05-15T13:41:49+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://kyden.us.kg/categories/goroutine/</loc>
     <lastmod>2024-05-15T13:41:49+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
@@ -847,7 +1261,31 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>http://kyden.us.kg/collections/machine/</loc>
+    <lastmod>2024-05-15T13:41:49+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://kyden.us.kg/categories/machine/</loc>
+    <lastmod>2024-05-15T13:41:49+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>http://kyden.us.kg/tags/process/</loc>
+    <lastmod>2024-05-15T13:41:49+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://kyden.us.kg/collections/process/</loc>
+    <lastmod>2024-05-15T13:41:49+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://kyden.us.kg/categories/process/</loc>
     <lastmod>2024-05-15T13:41:49+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
@@ -860,6 +1298,12 @@
   </url>
   <url>
     <loc>http://kyden.us.kg/tags/epoll/</loc>
+    <lastmod>2024-05-08T11:43:38+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://kyden.us.kg/collections/epoll/</loc>
     <lastmod>2024-05-08T11:43:38+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
@@ -883,6 +1327,12 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>http://kyden.us.kg/collections/netpoll/</loc>
+    <lastmod>2024-05-08T11:43:38+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>http://kyden.us.kg/categories/netpoll/</loc>
     <lastmod>2024-05-08T11:43:38+08:00</lastmod>
     <changefreq>daily</changefreq>
@@ -895,6 +1345,12 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>http://kyden.us.kg/collections/network-program/</loc>
+    <lastmod>2024-05-08T11:43:38+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>http://kyden.us.kg/categories/network-program/</loc>
     <lastmod>2024-05-08T11:43:38+08:00</lastmod>
     <changefreq>daily</changefreq>
@@ -902,6 +1358,12 @@
   </url>
   <url>
     <loc>http://kyden.us.kg/tags/benchmark/</loc>
+    <lastmod>2024-04-20T20:39:50+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://kyden.us.kg/collections/benchmark/</loc>
     <lastmod>2024-04-20T20:39:50+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
@@ -925,6 +1387,12 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>http://kyden.us.kg/collections/optimize/</loc>
+    <lastmod>2024-04-20T20:39:50+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>http://kyden.us.kg/categories/optimize/</loc>
     <lastmod>2024-04-20T20:39:50+08:00</lastmod>
     <changefreq>daily</changefreq>
@@ -932,6 +1400,12 @@
   </url>
   <url>
     <loc>http://kyden.us.kg/tags/profile/</loc>
+    <lastmod>2024-04-20T20:39:50+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://kyden.us.kg/collections/profile/</loc>
     <lastmod>2024-04-20T20:39:50+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
@@ -949,6 +1423,12 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>http://kyden.us.kg/collections/ci/cd/</loc>
+    <lastmod>2024-04-19T11:24:23+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>http://kyden.us.kg/categories/ci/cd/</loc>
     <lastmod>2024-04-19T11:24:23+08:00</lastmod>
     <changefreq>daily</changefreq>
@@ -961,6 +1441,12 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>http://kyden.us.kg/collections/linter/</loc>
+    <lastmod>2024-04-19T11:24:23+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>http://kyden.us.kg/categories/linter/</loc>
     <lastmod>2024-04-19T11:24:23+08:00</lastmod>
     <changefreq>daily</changefreq>
@@ -968,6 +1454,12 @@
   </url>
   <url>
     <loc>http://kyden.us.kg/tags/static-check/</loc>
+    <lastmod>2024-04-19T11:24:23+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://kyden.us.kg/collections/static-check/</loc>
     <lastmod>2024-04-19T11:24:23+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
@@ -991,6 +1483,12 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>http://kyden.us.kg/collections/markdown/</loc>
+    <lastmod>2024-04-18T21:50:17+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>http://kyden.us.kg/categories/markdown/</loc>
     <lastmod>2024-04-18T21:50:17+08:00</lastmod>
     <changefreq>daily</changefreq>
@@ -998,6 +1496,12 @@
   </url>
   <url>
     <loc>http://kyden.us.kg/tags/software/</loc>
+    <lastmod>2024-04-18T21:50:17+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://kyden.us.kg/collections/software/</loc>
     <lastmod>2024-04-18T21:50:17+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
@@ -1015,6 +1519,12 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>http://kyden.us.kg/collections/theme/</loc>
+    <lastmod>2024-04-18T21:50:17+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>http://kyden.us.kg/categories/theme/</loc>
     <lastmod>2024-04-18T21:50:17+08:00</lastmod>
     <changefreq>daily</changefreq>
@@ -1022,6 +1532,12 @@
   </url>
   <url>
     <loc>http://kyden.us.kg/tags/typora/</loc>
+    <lastmod>2024-04-18T21:50:17+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://kyden.us.kg/collections/typora/</loc>
     <lastmod>2024-04-18T21:50:17+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
@@ -1051,6 +1567,12 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>http://kyden.us.kg/collections/arch/</loc>
+    <lastmod>2024-04-18T12:57:02+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>http://kyden.us.kg/categories/arch/</loc>
     <lastmod>2024-04-18T12:57:02+08:00</lastmod>
     <changefreq>daily</changefreq>
@@ -1069,6 +1591,12 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>http://kyden.us.kg/collections/github-pages/</loc>
+    <lastmod>2024-04-18T12:57:02+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>http://kyden.us.kg/categories/github-pages/</loc>
     <lastmod>2024-04-18T12:57:02+08:00</lastmod>
     <changefreq>daily</changefreq>
@@ -1076,6 +1604,12 @@
   </url>
   <url>
     <loc>http://kyden.us.kg/tags/hugo/</loc>
+    <lastmod>2024-04-18T12:57:02+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://kyden.us.kg/collections/hugo/</loc>
     <lastmod>2024-04-18T12:57:02+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
@@ -1093,6 +1627,12 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>http://kyden.us.kg/collections/%E5%8D%9A%E5%AE%A2/</loc>
+    <lastmod>2024-04-18T12:57:02+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>http://kyden.us.kg/categories/%E5%8D%9A%E5%AE%A2/</loc>
     <lastmod>2024-04-18T12:57:02+08:00</lastmod>
     <changefreq>daily</changefreq>
@@ -1101,11 +1641,6 @@
   <url>
     <loc>http://kyden.us.kg/posts/build-blog/</loc>
     <lastmod>2024-04-18T12:57:02+08:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>http://kyden.us.kg/collections/</loc>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
