@@ -1,7 +1,7 @@
 {
 	"version": 3,
 	"file": "style.min.css",
-	"sourceRoot": "/Users/kyden/git-space/kyden-blog-new",
+	"sourceRoot": "/Users/kyden/git-space/kyden-blog",
 	"sources": [
 		"assets/css/style.scss",
 		"assets/css/_variables.scss",
