@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title> = Kyden 杂货铺</title>
+    <title>All Posts  Kyden&#39;s 博客</title>
     <link>http://kyden.us.kg/posts/</link>
     <description>Kyden&#39;s Blog Site</description>
     <generator>Hugo 0.140.2 &amp; FixIt v0.3.16</generator>
-    <language>zh-CN</language>
+    <language>en</language>
     <managingEditor>kytedance@gmail.com (kyden)</managingEditor>
     <webMaster>kytedance@gmail.com (kyden)</webMaster>
     <lastBuildDate>Fri, 20 Dec 2024 22:37:36 +0800</lastBuildDate>

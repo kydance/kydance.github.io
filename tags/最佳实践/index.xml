@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>最佳实践 - tag = Kyden 杂货铺</title>
+    <title>最佳实践 - Tag  Kyden&#39;s 博客</title>
     <link>http://kyden.us.kg/tags/%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/</link>
     <description>Kyden&#39;s Blog Site</description>
     <generator>Hugo 0.140.2 &amp; FixIt v0.3.16</generator>
-    <language>zh-CN</language>
+    <language>en</language>
     <managingEditor>kytedance@gmail.com (kyden)</managingEditor>
     <webMaster>kytedance@gmail.com (kyden)</webMaster>
     <lastBuildDate>Wed, 11 Sep 2024 22:13:48 +0800</lastBuildDate>

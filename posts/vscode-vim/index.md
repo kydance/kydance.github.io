@@ -382,6 +382,6 @@ VSCodeVim 的相关配置文件是放在 `settings.json` 中，而不是 `vimrc`
 
 ---
 
-> : [kyden](https:github.com/kydance)  
+> Author: [kyden](https:github.com/kydance)  
 > URL: http://kyden.us.kg/posts/vscode-vim/  
 

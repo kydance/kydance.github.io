@@ -30,6 +30,6 @@ Thanks to the authors of following resources included in the theme:
 
 ---
 
-> :   
+> Author:   
 > URL: http://kyden.us.kg/about/  
 

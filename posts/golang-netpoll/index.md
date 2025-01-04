@@ -521,6 +521,6 @@ func netpollready(toRun *gList, pd *pollDesc, mode int32) int32 {
 
 ---
 
-> : [kyden](https:github.com/kydance)  
+> Author: [kyden](https:github.com/kydance)  
 > URL: http://kyden.us.kg/posts/golang-netpoll/  
 

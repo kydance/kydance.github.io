@@ -111,6 +111,6 @@ Go 应用程序项目的基本布局介绍
 
 ---
 
-> : [kyden](https:github.com/kydance)  
+> Author: [kyden](https:github.com/kydance)  
 > URL: http://kyden.us.kg/posts/golang-project-layout/  
 

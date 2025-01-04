@@ -150,6 +150,6 @@ setw -g allow-rename off
 
 ---
 
-> : [kyden](https:github.com/kydance)  
+> Author: [kyden](https:github.com/kydance)  
 > URL: http://kyden.us.kg/posts/tmux-guide/  
 

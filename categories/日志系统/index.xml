@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>日志系统 - category = Kyden 杂货铺</title>
+    <title>日志系统 - Category  Kyden&#39;s 博客</title>
     <link>http://kyden.us.kg/categories/%E6%97%A5%E5%BF%97%E7%B3%BB%E7%BB%9F/</link>
     <description>Kyden&#39;s Blog Site</description>
     <generator>Hugo 0.140.2 &amp; FixIt v0.3.16</generator>
-    <language>zh-CN</language>
+    <language>en</language>
     <managingEditor>kytedance@gmail.com (kyden)</managingEditor>
     <webMaster>kytedance@gmail.com (kyden)</webMaster>
     <lastBuildDate>Sun, 20 Oct 2024 15:40:17 +0800</lastBuildDate>

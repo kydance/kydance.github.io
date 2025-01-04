@@ -152,6 +152,6 @@ Observer 模式建议为发布者类添加订阅机制，让每个对象都能�
 
 ---
 
-> : [kyden](https:github.com/kydance)  
+> Author: [kyden](https:github.com/kydance)  
 > URL: http://kyden.us.kg/posts/design-pattern/  
 
