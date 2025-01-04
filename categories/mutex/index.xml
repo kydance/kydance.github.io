@@ -1,22 +1,26 @@
-<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
-    <channel>
-        <title>Mutex - Category - Kyden 杂货铺</title>
-        <link>https://kydance.github.io/categories/mutex/</link>
-        <description>Mutex - Category - Kyden 杂货铺</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Fri, 20 Dec 2024 22:37:36 &#43;0800</lastBuildDate><atom:link href="https://kydance.github.io/categories/mutex/" rel="self" type="application/rss+xml" /><item>
-    <title>Golang 并发编程</title>
-    <link>https://kydance.github.io/posts/golang-concurrecy-programming/</link>
-    <pubDate>Fri, 20 Dec 2024 22:37:36 &#43;0800</pubDate>
-    <author>kyden</author>
-    <guid>https://kydance.github.io/posts/golang-concurrecy-programming/</guid>
-    <description><![CDATA[<div class="details admonition abstract open">
-        <div class="details-summary admonition-title">
-            <i class="icon fas fa-list-ul fa-fw" aria-hidden="true"></i>导语<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
-        </div>
-        <div class="details-content">
-            <div class="admonition-content">导语内容</div>
-        </div>
-    </div>]]></description>
-</item>
-</channel>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Mutex - category = Kyden 杂货铺</title>
+    <link>http://kyden.us.kg/categories/mutex/</link>
+    <description>Kyden&#39;s Blog Site</description>
+    <generator>Hugo 0.140.2 &amp; FixIt v0.3.16</generator>
+    <language>zh-CN</language>
+    <managingEditor>kytedance@gmail.com (kyden)</managingEditor>
+    <webMaster>kytedance@gmail.com (kyden)</webMaster>
+    <lastBuildDate>Fri, 20 Dec 2024 22:37:36 +0800</lastBuildDate>
+    <atom:link href="http://kyden.us.kg/categories/mutex/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Golang 并发编程</title>
+      <link>http://kyden.us.kg/posts/golang-concurrecy-programming/</link>
+      <pubDate>Fri, 20 Dec 2024 22:37:36 +0800</pubDate><author>kytedance@gmail.com (kyden)</author>
+      <guid>http://kyden.us.kg/posts/golang-concurrecy-programming/</guid>
+      <category domain="http://kyden.us.kg/categories/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/">并发编程</category>
+      <category domain="http://kyden.us.kg/categories/sync/">Sync</category>
+      <category domain="http://kyden.us.kg/categories/mutex/">Mutex</category>
+      <category domain="http://kyden.us.kg/categories/pool/">Pool</category>
+      <category domain="http://kyden.us.kg/categories/concurrency/">Concurrency</category>
+      <description>&lt;div class=&#34;details admonition abstract open&#34;&gt;&#xA;  &lt;div class=&#34;details-summary admonition-title&#34;&gt;&lt;i class=&#34;icon fa-fw fa-solid fa-clipboard-list&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;导语&lt;i class=&#34;details-icon fa-solid fa-angle-right fa-fw&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;details-content&#34;&gt;&#xA;    &lt;div class=&#34;admonition-content&#34;&gt;导语内容&lt;/div&gt;&#xA;  &lt;/div&gt;&#xA;&lt;/div&gt;</description>
+    </item>
+  </channel>
 </rss>

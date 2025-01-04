@@ -1,22 +1,24 @@
-<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
-    <channel>
-        <title>Tmux - Tag - Kyden 杂货铺</title>
-        <link>https://kydance.github.io/tags/tmux/</link>
-        <description>Tmux - Tag - Kyden 杂货铺</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Thu, 03 Oct 2024 20:24:40 &#43;0800</lastBuildDate><atom:link href="https://kydance.github.io/tags/tmux/" rel="self" type="application/rss+xml" /><item>
-    <title>Tmux 使用指南</title>
-    <link>https://kydance.github.io/posts/tmux-guide/</link>
-    <pubDate>Thu, 03 Oct 2024 20:24:40 &#43;0800</pubDate>
-    <author>kyden</author>
-    <guid>https://kydance.github.io/posts/tmux-guide/</guid>
-    <description><![CDATA[<div class="details admonition abstract open">
-        <div class="details-summary admonition-title">
-            <i class="icon fas fa-list-ul fa-fw" aria-hidden="true"></i>导语<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
-        </div>
-        <div class="details-content">
-            <div class="admonition-content">Tmux，一款优秀的终端复用工具，使用它最直观的好处就是，通过一个终端登录远程主机并运行tmux后，在其中可以开启多个控制台而无需再“浪费”多余的终端来连接这台远程主机</div>
-        </div>
-    </div>]]></description>
-</item>
-</channel>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tmux - tag = Kyden 杂货铺</title>
+    <link>http://kyden.us.kg/tags/tmux/</link>
+    <description>Kyden&#39;s Blog Site</description>
+    <generator>Hugo 0.140.2 &amp; FixIt v0.3.16</generator>
+    <language>zh-CN</language>
+    <managingEditor>kytedance@gmail.com (kyden)</managingEditor>
+    <webMaster>kytedance@gmail.com (kyden)</webMaster>
+    <lastBuildDate>Thu, 03 Oct 2024 20:24:40 +0800</lastBuildDate>
+    <atom:link href="http://kyden.us.kg/tags/tmux/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Tmux 使用指南</title>
+      <link>http://kyden.us.kg/posts/tmux-guide/</link>
+      <pubDate>Thu, 03 Oct 2024 20:24:40 +0800</pubDate><author>kytedance@gmail.com (kyden)</author>
+      <guid>http://kyden.us.kg/posts/tmux-guide/</guid>
+      <category domain="http://kyden.us.kg/categories/tmux/">Tmux</category>
+      <category domain="http://kyden.us.kg/categories/%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/">使用指南</category>
+      <category domain="http://kyden.us.kg/categories/tools/">Tools</category>
+      <description>&lt;div class=&#34;details admonition abstract open&#34;&gt;&#xA;  &lt;div class=&#34;details-summary admonition-title&#34;&gt;&lt;i class=&#34;icon fa-fw fa-solid fa-clipboard-list&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;导语&lt;i class=&#34;details-icon fa-solid fa-angle-right fa-fw&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;details-content&#34;&gt;&#xA;    &lt;div class=&#34;admonition-content&#34;&gt;Tmux，一款优秀的终端复用工具，使用它最直观的好处就是，通过一个终端登录远程主机并运行tmux后，在其中可以开启多个控制台而无需再“浪费”多余的终端来连接这台远程主机&lt;/div&gt;&#xA;  &lt;/div&gt;&#xA;&lt;/div&gt;</description>
+    </item>
+  </channel>
 </rss>

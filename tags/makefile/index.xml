@@ -1,22 +1,28 @@
-<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
-    <channel>
-        <title>Makefile - Tag - Kyden 杂货铺</title>
-        <link>https://kydance.github.io/tags/makefile/</link>
-        <description>Makefile - Tag - Kyden 杂货铺</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Wed, 11 Sep 2024 22:13:48 &#43;0800</lastBuildDate><atom:link href="https://kydance.github.io/tags/makefile/" rel="self" type="application/rss+xml" /><item>
-    <title>浅析 Make 与 Cmake</title>
-    <link>https://kydance.github.io/posts/make-cmake/</link>
-    <pubDate>Wed, 11 Sep 2024 22:13:48 &#43;0800</pubDate>
-    <author>kyden</author>
-    <guid>https://kydance.github.io/posts/make-cmake/</guid>
-    <description><![CDATA[<div class="details admonition abstract open">
-        <div class="details-summary admonition-title">
-            <i class="icon fas fa-list-ul fa-fw" aria-hidden="true"></i>导语<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
-        </div>
-        <div class="details-content">
-            <div class="admonition-content">导语内容</div>
-        </div>
-    </div>]]></description>
-</item>
-</channel>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Makefile - tag = Kyden 杂货铺</title>
+    <link>http://kyden.us.kg/tags/makefile/</link>
+    <description>Kyden&#39;s Blog Site</description>
+    <generator>Hugo 0.140.2 &amp; FixIt v0.3.16</generator>
+    <language>zh-CN</language>
+    <managingEditor>kytedance@gmail.com (kyden)</managingEditor>
+    <webMaster>kytedance@gmail.com (kyden)</webMaster>
+    <lastBuildDate>Wed, 11 Sep 2024 22:13:48 +0800</lastBuildDate>
+    <atom:link href="http://kyden.us.kg/tags/makefile/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>浅析 Make 与 Cmake</title>
+      <link>http://kyden.us.kg/posts/make-cmake/</link>
+      <pubDate>Wed, 11 Sep 2024 22:13:48 +0800</pubDate><author>kytedance@gmail.com (kyden)</author>
+      <guid>http://kyden.us.kg/posts/make-cmake/</guid>
+      <category domain="http://kyden.us.kg/categories/make/">Make</category>
+      <category domain="http://kyden.us.kg/categories/cmake/">Cmake</category>
+      <category domain="http://kyden.us.kg/categories/makefile/">Makefile</category>
+      <category domain="http://kyden.us.kg/categories/cmakelists.txt/">CMakeLists.txt</category>
+      <category domain="http://kyden.us.kg/categories/golang/">Golang</category>
+      <category domain="http://kyden.us.kg/categories/c&#43;&#43;/">C&#43;&#43;</category>
+      <category domain="http://kyden.us.kg/categories/%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/">最佳实践</category>
+      <description>&lt;div class=&#34;details admonition abstract open&#34;&gt;&#xA;  &lt;div class=&#34;details-summary admonition-title&#34;&gt;&lt;i class=&#34;icon fa-fw fa-solid fa-clipboard-list&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;导语&lt;i class=&#34;details-icon fa-solid fa-angle-right fa-fw&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;details-content&#34;&gt;&#xA;    &lt;div class=&#34;admonition-content&#34;&gt;导语内容&lt;/div&gt;&#xA;  &lt;/div&gt;&#xA;&lt;/div&gt;</description>
+    </item>
+  </channel>
 </rss>

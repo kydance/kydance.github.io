@@ -1,22 +1,36 @@
-<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
-    <channel>
-        <title>Programe Language - Category - Kyden 杂货铺</title>
-        <link>https://kydance.github.io/categories/programe-language/</link>
-        <description>Programe Language - Category - Kyden 杂货铺</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Wed, 06 Nov 2024 11:53:42 &#43;0800</lastBuildDate><atom:link href="https://kydance.github.io/categories/programe-language/" rel="self" type="application/rss+xml" /><item>
-    <title>Golang Generic</title>
-    <link>https://kydance.github.io/posts/golang-generic/</link>
-    <pubDate>Wed, 06 Nov 2024 11:53:42 &#43;0800</pubDate>
-    <author>kyden</author>
-    <guid>https://kydance.github.io/posts/golang-generic/</guid>
-    <description><![CDATA[<div class="details admonition abstract open">
-        <div class="details-summary admonition-title">
-            <i class="icon fas fa-list-ul fa-fw" aria-hidden="true"></i>导语<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
-        </div>
-        <div class="details-content">
-            <div class="admonition-content">导语内容</div>
-        </div>
-    </div>]]></description>
-</item>
-</channel>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Programe Language - category = Kyden 杂货铺</title>
+    <link>http://kyden.us.kg/categories/programe-language/</link>
+    <description>Kyden&#39;s Blog Site</description>
+    <generator>Hugo 0.140.2 &amp; FixIt v0.3.16</generator>
+    <language>zh-CN</language>
+    <managingEditor>kytedance@gmail.com (kyden)</managingEditor>
+    <webMaster>kytedance@gmail.com (kyden)</webMaster>
+    <lastBuildDate>Wed, 06 Nov 2024 11:53:42 +0800</lastBuildDate>
+    <atom:link href="http://kyden.us.kg/categories/programe-language/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Golang Generic</title>
+      <link>http://kyden.us.kg/posts/golang-generic/</link>
+      <pubDate>Wed, 06 Nov 2024 11:53:42 +0800</pubDate><author>kytedance@gmail.com (kyden)</author>
+      <guid>http://kyden.us.kg/posts/golang-generic/</guid>
+      <category domain="http://kyden.us.kg/categories/golang/">Golang</category>
+      <category domain="http://kyden.us.kg/categories/generic/">Generic</category>
+      <category domain="http://kyden.us.kg/categories/programe-language/">Programe Language</category>
+      <category domain="http://kyden.us.kg/categories/%E6%B3%9B%E5%9E%8B/">泛型</category>
+      <description>&lt;div class=&#34;details admonition abstract open&#34;&gt;&#xA;  &lt;div class=&#34;details-summary admonition-title&#34;&gt;&lt;i class=&#34;icon fa-fw fa-solid fa-clipboard-list&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;导语&lt;i class=&#34;details-icon fa-solid fa-angle-right fa-fw&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;details-content&#34;&gt;&#xA;    &lt;div class=&#34;admonition-content&#34;&gt;导语内容&lt;/div&gt;&#xA;  &lt;/div&gt;&#xA;&lt;/div&gt;</description>
+    </item>
+    <item>
+      <title>深入理解 Golang GMP</title>
+      <link>http://kyden.us.kg/posts/golang-gmp/</link>
+      <pubDate>Wed, 15 May 2024 13:41:49 +0800</pubDate><author>kytedance@gmail.com (kyden)</author>
+      <guid>http://kyden.us.kg/posts/golang-gmp/</guid>
+      <category domain="http://kyden.us.kg/categories/golang/">Golang</category>
+      <category domain="http://kyden.us.kg/categories/generic/">Generic</category>
+      <category domain="http://kyden.us.kg/categories/programe-language/">Programe Language</category>
+      <category domain="http://kyden.us.kg/categories/%E6%B3%9B%E5%9E%8B/">泛型</category>
+      <description>&lt;div class=&#34;details admonition abstract open&#34;&gt;&#xA;  &lt;div class=&#34;details-summary admonition-title&#34;&gt;&lt;i class=&#34;icon fa-fw fa-solid fa-clipboard-list&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;导语&lt;i class=&#34;details-icon fa-solid fa-angle-right fa-fw&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;details-content&#34;&gt;&#xA;    &lt;div class=&#34;admonition-content&#34;&gt;&lt;strong&gt;Go 的调度流程本质上是一个生产-消费流程.&lt;/strong&gt;&lt;/div&gt;&#xA;  &lt;/div&gt;&#xA;&lt;/div&gt;</description>
+    </item>
+  </channel>
 </rss>
