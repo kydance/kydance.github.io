@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Golang - Category  Kyden&#39;s 博客</title>
+    <link>http://kyden.us.kg/categories/golang/</link>
+    <description>Kyden&#39;s Blog Site</description>
+    <generator>Hugo 0.140.2 &amp; FixIt v0.3.16</generator>
+    <language>en</language>
+    <managingEditor>kytedance@gmail.com (kyden)</managingEditor>
+    <webMaster>kytedance@gmail.com (kyden)</webMaster>
+    <lastBuildDate>Wed, 06 Nov 2024 11:53:42 +0800</lastBuildDate>
+    <atom:link href="http://kyden.us.kg/categories/golang/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Golang Generic</title>
+      <link>http://kyden.us.kg/posts/golang-generic/</link>
+      <pubDate>Wed, 06 Nov 2024 11:53:42 +0800</pubDate><author>kytedance@gmail.com (kyden)</author>
+      <guid>http://kyden.us.kg/posts/golang-generic/</guid>
+      <category domain="http://kyden.us.kg/categories/golang/">Golang</category>
+      <category domain="http://kyden.us.kg/categories/generic/">Generic</category>
+      <category domain="http://kyden.us.kg/categories/programe-language/">Programe Language</category>
+      <category domain="http://kyden.us.kg/categories/%E6%B3%9B%E5%9E%8B/">泛型</category>
+      <description>&lt;div class=&#34;details admonition abstract open&#34;&gt;&#xA;  &lt;div class=&#34;details-summary admonition-title&#34;&gt;&lt;i class=&#34;icon fa-fw fa-solid fa-clipboard-list&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;导语&lt;i class=&#34;details-icon fa-solid fa-angle-right fa-fw&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;details-content&#34;&gt;&#xA;    &lt;div class=&#34;admonition-content&#34;&gt;导语内容&lt;/div&gt;&#xA;  &lt;/div&gt;&#xA;&lt;/div&gt;</description>
+    </item>
+    <item>
+      <title>浅析 Regular Expression (正则表达式)</title>
+      <link>http://kyden.us.kg/posts/regex-in-one/</link>
+      <pubDate>Wed, 06 Nov 2024 11:53:42 +0800</pubDate><author>kytedance@gmail.com (kyden)</author>
+      <guid>http://kyden.us.kg/posts/regex-in-one/</guid>
+      <category domain="http://kyden.us.kg/categories/regex/">Regex</category>
+      <category domain="http://kyden.us.kg/categories/regular-expression/">Regular Expression</category>
+      <category domain="http://kyden.us.kg/categories/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/">正则表达式</category>
+      <category domain="http://kyden.us.kg/categories/%E5%85%A5%E9%97%A8/">入门</category>
+      <category domain="http://kyden.us.kg/categories/golang/">Golang</category>
+      <description>&lt;div class=&#34;details admonition abstract open&#34;&gt;&#xA;  &lt;div class=&#34;details-summary admonition-title&#34;&gt;&lt;i class=&#34;icon fa-fw fa-solid fa-clipboard-list&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;导语&lt;i class=&#34;details-icon fa-solid fa-angle-right fa-fw&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;details-content&#34;&gt;&#xA;    &lt;div class=&#34;admonition-content&#34;&gt;正则表达式, 是一种小型的、高度专业化的编程语言&lt;/div&gt;&#xA;  &lt;/div&gt;&#xA;&lt;/div&gt;</description>
+    </item>
+    <item>
+      <title>浅析 MySQL</title>
+      <link>http://kyden.us.kg/posts/mysql/</link>
+      <pubDate>Thu, 31 Oct 2024 23:08:43 +0800</pubDate><author>kytedance@gmail.com (kyden)</author>
+      <guid>http://kyden.us.kg/posts/mysql/</guid>
+      <category domain="http://kyden.us.kg/categories/golang/">Golang</category>
+      <category domain="http://kyden.us.kg/categories/mysql/">MySQL</category>
+      <category domain="http://kyden.us.kg/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</category>
+      <category domain="http://kyden.us.kg/categories/database/">Database</category>
+      <description>&lt;div class=&#34;details admonition abstract open&#34;&gt;&#xA;  &lt;div class=&#34;details-summary admonition-title&#34;&gt;&lt;i class=&#34;icon fa-fw fa-solid fa-clipboard-list&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;导语&lt;i class=&#34;details-icon fa-solid fa-angle-right fa-fw&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;details-content&#34;&gt;&#xA;    &lt;div class=&#34;admonition-content&#34;&gt;导语内容&lt;/div&gt;&#xA;  &lt;/div&gt;&#xA;&lt;/div&gt;</description>
+    </item>
+    <item>
+      <title>Golang Zap</title>
+      <link>http://kyden.us.kg/posts/golang-zap/</link>
+      <pubDate>Sun, 20 Oct 2024 15:40:17 +0800</pubDate><author>kytedance@gmail.com (kyden)</author>
+      <guid>http://kyden.us.kg/posts/golang-zap/</guid>
+      <category domain="http://kyden.us.kg/categories/golang/">Golang</category>
+      <category domain="http://kyden.us.kg/categories/zap/">Zap</category>
+      <category domain="http://kyden.us.kg/categories/%E6%97%A5%E5%BF%97%E7%B3%BB%E7%BB%9F/">日志系统</category>
+      <description>&lt;div class=&#34;details admonition abstract open&#34;&gt;&#xA;  &lt;div class=&#34;details-summary admonition-title&#34;&gt;&lt;i class=&#34;icon fa-fw fa-solid fa-clipboard-list&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;导语&lt;i class=&#34;details-icon fa-solid fa-angle-right fa-fw&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;details-content&#34;&gt;&#xA;    &lt;div class=&#34;admonition-content&#34;&gt;导语内容&lt;/div&gt;&#xA;  &lt;/div&gt;&#xA;&lt;/div&gt;</description>
+    </item>
+    <item>
+      <title>Go 如何优雅地读取配置？</title>
+      <link>http://kyden.us.kg/posts/go-viper/</link>
+      <pubDate>Sun, 22 Sep 2024 21:26:34 +0800</pubDate><author>kytedance@gmail.com (kyden)</author>
+      <guid>http://kyden.us.kg/posts/go-viper/</guid>
+      <category domain="http://kyden.us.kg/categories/golang/">Golang</category>
+      <category domain="http://kyden.us.kg/categories/%E7%8E%B0%E4%BB%A3%E5%8C%96/">现代化</category>
+      <category domain="http://kyden.us.kg/categories/%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6/">配置文件</category>
+      <category domain="http://kyden.us.kg/categories/yaml/">YAML</category>
+      <category domain="http://kyden.us.kg/categories/viper/">Viper</category>
+      <category domain="http://kyden.us.kg/categories/etc/">Etc</category>
+      <description>&lt;div class=&#34;details admonition abstract open&#34;&gt;&#xA;  &lt;div class=&#34;details-summary admonition-title&#34;&gt;&lt;i class=&#34;icon fa-fw fa-solid fa-clipboard-list&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;导语&lt;i class=&#34;details-icon fa-solid fa-angle-right fa-fw&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;details-content&#34;&gt;&#xA;    &lt;div class=&#34;admonition-content&#34;&gt;&lt;/div&gt;&#xA;  &lt;/div&gt;&#xA;&lt;/div&gt;</description>
+    </item>
+    <item>
+      <title>浅析现代化命令行框架 Cobra</title>
+      <link>http://kyden.us.kg/posts/go-cobra/</link>
+      <pubDate>Sat, 21 Sep 2024 09:55:48 +0800</pubDate><author>kytedance@gmail.com (kyden)</author>
+      <guid>http://kyden.us.kg/posts/go-cobra/</guid>
+      <category domain="http://kyden.us.kg/categories/golang/">Golang</category>
+      <category domain="http://kyden.us.kg/categories/%E7%8E%B0%E4%BB%A3%E5%8C%96/">现代化</category>
+      <category domain="http://kyden.us.kg/categories/%E5%91%BD%E4%BB%A4%E8%A1%8C/">命令行</category>
+      <category domain="http://kyden.us.kg/categories/%E6%A1%86%E6%9E%B6/">框架</category>
+      <category domain="http://kyden.us.kg/categories/cobra/">Cobra</category>
+      <category domain="http://kyden.us.kg/categories/cli/">CLI</category>
+      <description>&lt;div class=&#34;details admonition abstract open&#34;&gt;&#xA;  &lt;div class=&#34;details-summary admonition-title&#34;&gt;&lt;i class=&#34;icon fa-fw fa-solid fa-clipboard-list&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;导语&lt;i class=&#34;details-icon fa-solid fa-angle-right fa-fw&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;details-content&#34;&gt;&#xA;    &lt;div class=&#34;admonition-content&#34;&gt;&lt;strong&gt;Cobra&lt;/strong&gt; 是一个可以创建强大的现代化 CLI 应用程序库，它还提供了一个可以生成应用和命令文件的程序的命令行工具：&lt;code&gt;cobra-cli&lt;/code&gt;.&lt;/div&gt;&#xA;  &lt;/div&gt;&#xA;&lt;/div&gt;</description>
+    </item>
+    <item>
+      <title>浅析 Make 与 Cmake</title>
+      <link>http://kyden.us.kg/posts/make-cmake/</link>
+      <pubDate>Wed, 11 Sep 2024 22:13:48 +0800</pubDate><author>kytedance@gmail.com (kyden)</author>
+      <guid>http://kyden.us.kg/posts/make-cmake/</guid>
+      <category domain="http://kyden.us.kg/categories/make/">Make</category>
+      <category domain="http://kyden.us.kg/categories/makefile/">Makefile</category>
+      <category domain="http://kyden.us.kg/categories/cmake/">Cmake</category>
+      <category domain="http://kyden.us.kg/categories/cmakelists.txt/">CMakeLists.txt</category>
+      <category domain="http://kyden.us.kg/categories/golang/">Golang</category>
+      <category domain="http://kyden.us.kg/categories/c&#43;&#43;/">C&#43;&#43;</category>
+      <category domain="http://kyden.us.kg/categories/%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/">最佳实践</category>
+      <description>&lt;div class=&#34;details admonition abstract open&#34;&gt;&#xA;  &lt;div class=&#34;details-summary admonition-title&#34;&gt;&lt;i class=&#34;icon fa-fw fa-solid fa-clipboard-list&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;导语&lt;i class=&#34;details-icon fa-solid fa-angle-right fa-fw&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;details-content&#34;&gt;&#xA;    &lt;div class=&#34;admonition-content&#34;&gt;导语内容&lt;/div&gt;&#xA;  &lt;/div&gt;&#xA;&lt;/div&gt;</description>
+    </item>
+    <item>
+      <title>Effective Go</title>
+      <link>http://kyden.us.kg/posts/effective-go/</link>
+      <pubDate>Thu, 15 Aug 2024 22:41:50 +0800</pubDate><author>kytedance@gmail.com (kyden)</author>
+      <guid>http://kyden.us.kg/posts/effective-go/</guid>
+      <category domain="http://kyden.us.kg/categories/golang/">Golang</category>
+      <category domain="http://kyden.us.kg/categories/effective-go/">Effective Go</category>
+      <description>&lt;div class=&#34;details admonition abstract open&#34;&gt;&#xA;  &lt;div class=&#34;details-summary admonition-title&#34;&gt;&lt;i class=&#34;icon fa-fw fa-solid fa-clipboard-list&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;导语&lt;i class=&#34;details-icon fa-solid fa-angle-right fa-fw&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;details-content&#34;&gt;&#xA;    &lt;div class=&#34;admonition-content&#34;&gt;如何编写清晰、地道的 Go 代码&lt;/div&gt;&#xA;  &lt;/div&gt;&#xA;&lt;/div&gt;</description>
+    </item>
+    <item>
+      <title>Design Pattern</title>
+      <link>http://kyden.us.kg/posts/design-pattern/</link>
+      <pubDate>Sun, 28 Jul 2024 10:13:24 +0800</pubDate><author>kytedance@gmail.com (kyden)</author>
+      <guid>http://kyden.us.kg/posts/design-pattern/</guid>
+      <category domain="http://kyden.us.kg/categories/design-patten/">Design Patten</category>
+      <category domain="http://kyden.us.kg/categories/golang/">Golang</category>
+      <category domain="http://kyden.us.kg/categories/c&#43;&#43;/">C&#43;&#43;</category>
+      <category domain="http://kyden.us.kg/categories/%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/">最佳实践</category>
+      <description>&lt;div class=&#34;details admonition abstract open&#34;&gt;&#xA;  &lt;div class=&#34;details-summary admonition-title&#34;&gt;&lt;i class=&#34;icon fa-fw fa-solid fa-clipboard-list&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;导语&lt;i class=&#34;details-icon fa-solid fa-angle-right fa-fw&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;details-content&#34;&gt;&#xA;    &lt;div class=&#34;admonition-content&#34;&gt;设计模式: 在特定环境下人们解决某类重复出现的一套成功或有效的解决方案.&lt;/div&gt;&#xA;  &lt;/div&gt;&#xA;&lt;/div&gt;</description>
+    </item>
+    <item>
+      <title>Golang Project Stardard Layout</title>
+      <link>http://kyden.us.kg/posts/golang-project-layout/</link>
+      <pubDate>Sat, 13 Jul 2024 21:04:57 +0800</pubDate><author>kytedance@gmail.com (kyden)</author>
+      <guid>http://kyden.us.kg/posts/golang-project-layout/</guid>
+      <category domain="http://kyden.us.kg/categories/golang/">Golang</category>
+      <category domain="http://kyden.us.kg/categories/project-layout/">Project Layout</category>
+      <category domain="http://kyden.us.kg/categories/stardard/">Stardard</category>
+      <category domain="http://kyden.us.kg/categories/%E9%A1%B9%E7%9B%AE%E5%B8%83%E5%B1%80/">项目布局</category>
+      <description>&lt;div class=&#34;details admonition abstract open&#34;&gt;&#xA;  &lt;div class=&#34;details-summary admonition-title&#34;&gt;&lt;i class=&#34;icon fa-fw fa-solid fa-clipboard-list&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;导语&lt;i class=&#34;details-icon fa-solid fa-angle-right fa-fw&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;details-content&#34;&gt;&#xA;    &lt;div class=&#34;admonition-content&#34;&gt;Go 应用程序项目的基本布局介绍&lt;/div&gt;&#xA;  &lt;/div&gt;&#xA;&lt;/div&gt;</description>
+    </item>
+    <item>
+      <title>浅析 Golang Context</title>
+      <link>http://kyden.us.kg/posts/golang-context/</link>
+      <pubDate>Sat, 01 Jun 2024 21:37:55 +0800</pubDate><author>kytedance@gmail.com (kyden)</author>
+      <guid>http://kyden.us.kg/posts/golang-context/</guid>
+      <category domain="http://kyden.us.kg/categories/golang/">Golang</category>
+      <category domain="http://kyden.us.kg/categories/context/">Context</category>
+      <description>&lt;div class=&#34;details admonition abstract open&#34;&gt;&#xA;  &lt;div class=&#34;details-summary admonition-title&#34;&gt;&lt;i class=&#34;icon fa-fw fa-solid fa-clipboard-list&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;导语&lt;i class=&#34;details-icon fa-solid fa-angle-right fa-fw&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;details-content&#34;&gt;&#xA;    &lt;div class=&#34;admonition-content&#34;&gt;当需要在多个 Goroutine 中传递上下文信息时，可以使用 Context 实现&lt;/div&gt;&#xA;  &lt;/div&gt;&#xA;&lt;/div&gt;</description>
+    </item>
+    <item>
+      <title>深入探讨 Golang Escape Analysis</title>
+      <link>http://kyden.us.kg/posts/golang-escape-analysis/</link>
+      <pubDate>Sun, 19 May 2024 22:47:26 +0800</pubDate><author>kytedance@gmail.com (kyden)</author>
+      <guid>http://kyden.us.kg/posts/golang-escape-analysis/</guid>
+      <category domain="http://kyden.us.kg/categories/golang/">Golang</category>
+      <category domain="http://kyden.us.kg/categories/%E9%80%83%E9%80%B8%E5%88%86%E6%9E%90/">逃逸分析</category>
+      <category domain="http://kyden.us.kg/categories/escape-analysis/">Escape Analysis</category>
+      <category domain="http://kyden.us.kg/categories/heap/">Heap</category>
+      <category domain="http://kyden.us.kg/categories/stack/">Stack</category>
+      <description>&lt;div class=&#34;details admonition abstract open&#34;&gt;&#xA;  &lt;div class=&#34;details-summary admonition-title&#34;&gt;&lt;i class=&#34;icon fa-fw fa-solid fa-clipboard-list&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;导语&lt;i class=&#34;details-icon fa-solid fa-angle-right fa-fw&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;details-content&#34;&gt;&#xA;    &lt;div class=&#34;admonition-content&#34;&gt;&lt;strong&gt;深入理解 Golang Escape Analysis：变量何时逃逸？&lt;/strong&gt;&lt;/div&gt;&#xA;  &lt;/div&gt;&#xA;&lt;/div&gt;</description>
+    </item>
+    <item>
+      <title>深入理解 Golang GMP</title>
+      <link>http://kyden.us.kg/posts/golang-gmp/</link>
+      <pubDate>Wed, 15 May 2024 13:41:49 +0800</pubDate><author>kytedance@gmail.com (kyden)</author>
+      <guid>http://kyden.us.kg/posts/golang-gmp/</guid>
+      <category domain="http://kyden.us.kg/categories/golang/">Golang</category>
+      <category domain="http://kyden.us.kg/categories/gmp/">GMP</category>
+      <category domain="http://kyden.us.kg/categories/goroutine/">Goroutine</category>
+      <category domain="http://kyden.us.kg/categories/machine/">Machine</category>
+      <category domain="http://kyden.us.kg/categories/process/">Process</category>
+      <description>&lt;div class=&#34;details admonition abstract open&#34;&gt;&#xA;  &lt;div class=&#34;details-summary admonition-title&#34;&gt;&lt;i class=&#34;icon fa-fw fa-solid fa-clipboard-list&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;导语&lt;i class=&#34;details-icon fa-solid fa-angle-right fa-fw&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;details-content&#34;&gt;&#xA;    &lt;div class=&#34;admonition-content&#34;&gt;&lt;strong&gt;Go 的调度流程本质上是一个生产-消费流程.&lt;/strong&gt;&lt;/div&gt;&#xA;  &lt;/div&gt;&#xA;&lt;/div&gt;</description>
+    </item>
+    <item>
+      <title>Golang Netpoll</title>
+      <link>http://kyden.us.kg/posts/golang-netpoll/</link>
+      <pubDate>Wed, 08 May 2024 11:43:38 +0800</pubDate><author>kytedance@gmail.com (kyden)</author>
+      <guid>http://kyden.us.kg/posts/golang-netpoll/</guid>
+      <category domain="http://kyden.us.kg/categories/golang/">Golang</category>
+      <category domain="http://kyden.us.kg/categories/netpoll/">Netpoll</category>
+      <category domain="http://kyden.us.kg/categories/epoll/">Epoll</category>
+      <category domain="http://kyden.us.kg/categories/network-program/">Network Program</category>
+      <category domain="http://kyden.us.kg/categories/linux/">Linux</category>
+      <description>&lt;div class=&#34;details admonition abstract open&#34;&gt;&#xA;  &lt;div class=&#34;details-summary admonition-title&#34;&gt;&lt;i class=&#34;icon fa-fw fa-solid fa-clipboard-list&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;导语&lt;i class=&#34;details-icon fa-solid fa-angle-right fa-fw&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;details-content&#34;&gt;&#xA;    &lt;div class=&#34;admonition-content&#34;&gt;深入剖析 Golang 网络编程之 Netpoll，主要涉及 Linux 环境下的 Epoll 初始化、 Go 网络编程基本流程（Listen、Accept、Read、Write）以及netpoll 执行流程&lt;/div&gt;&#xA;  &lt;/div&gt;&#xA;&lt;/div&gt;</description>
+    </item>
+    <item>
+      <title>Golang Profile and Optimize</title>
+      <link>http://kyden.us.kg/posts/golang-profile/</link>
+      <pubDate>Sat, 20 Apr 2024 20:39:50 +0800</pubDate><author>kytedance@gmail.com (kyden)</author>
+      <guid>http://kyden.us.kg/posts/golang-profile/</guid>
+      <category domain="http://kyden.us.kg/categories/golang/">Golang</category>
+      <category domain="http://kyden.us.kg/categories/benchmark/">Benchmark</category>
+      <category domain="http://kyden.us.kg/categories/profile/">Profile</category>
+      <category domain="http://kyden.us.kg/categories/optimize/">Optimize</category>
+      <description>&lt;div class=&#34;details admonition abstract open&#34;&gt;&#xA;  &lt;div class=&#34;details-summary admonition-title&#34;&gt;&lt;i class=&#34;icon fa-fw fa-solid fa-clipboard-list&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;导语&lt;i class=&#34;details-icon fa-solid fa-angle-right fa-fw&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;details-content&#34;&gt;&#xA;    &lt;div class=&#34;admonition-content&#34;&gt;Golang 生态中常见的性能分析 (Benchmark / Profile) 与优化 (Optimize)&lt;/div&gt;&#xA;  &lt;/div&gt;&#xA;&lt;/div&gt;</description>
+    </item>
+    <item>
+      <title>深入解读 Golang 常用 Linter 工具及最佳实践</title>
+      <link>http://kyden.us.kg/posts/golang-linter/</link>
+      <pubDate>Fri, 19 Apr 2024 11:24:23 +0800</pubDate><author>kytedance@gmail.com (kyden)</author>
+      <guid>http://kyden.us.kg/posts/golang-linter/</guid>
+      <category domain="http://kyden.us.kg/categories/golang/">Golang</category>
+      <category domain="http://kyden.us.kg/categories/linter/">Linter</category>
+      <category domain="http://kyden.us.kg/categories/static-check/">Static Check</category>
+      <category domain="http://kyden.us.kg/categories/ci/cd/">CI/CD</category>
+      <description>&lt;div class=&#34;details admonition abstract open&#34;&gt;&#xA;  &lt;div class=&#34;details-summary admonition-title&#34;&gt;&lt;i class=&#34;icon fa-fw fa-solid fa-clipboard-list&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;导语&lt;i class=&#34;details-icon fa-solid fa-angle-right fa-fw&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;details-content&#34;&gt;&#xA;    &lt;div class=&#34;admonition-content&#34;&gt;在 Golang 生态系统中，Linter 工具是开发者提升代码质量的关键。&#xA;本文将深入介绍几款常用的 Linter 工具及其最佳实践，帮助您在开发中避免常见错误并提高代码的可维护性。&lt;/div&gt;&#xA;  &lt;/div&gt;&#xA;&lt;/div&gt;</description>
+    </item>
+  </channel>
+</rss>

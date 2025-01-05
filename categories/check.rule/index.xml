@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Check.rule - Category  Kyden&#39;s 博客</title>
+    <link>http://kyden.us.kg/categories/check.rule/</link>
+    <description>Kyden&#39;s Blog Site</description>
+    <generator>Hugo 0.140.2 &amp; FixIt v0.3.16</generator>
+    <language>en</language>
+    <managingEditor>kytedance@gmail.com (kyden)</managingEditor>
+    <webMaster>kytedance@gmail.com (kyden)</webMaster>
+    <lastBuildDate>Sat, 07 Sep 2024 20:56:52 +0800</lastBuildDate>
+    <atom:link href="http://kyden.us.kg/categories/check.rule/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>资格校验接口的微服务设计与实现</title>
+      <link>http://kyden.us.kg/posts/check-rule/</link>
+      <pubDate>Sat, 07 Sep 2024 20:56:52 +0800</pubDate><author>kytedance@gmail.com (kyden)</author>
+      <guid>http://kyden.us.kg/posts/check-rule/</guid>
+      <category domain="http://kyden.us.kg/categories/check.rule/">Check.rule</category>
+      <category domain="http://kyden.us.kg/categories/linux/">Linux</category>
+      <category domain="http://kyden.us.kg/categories/%E5%BE%AE%E6%9C%8D%E5%8A%A1/">微服务</category>
+      <category domain="http://kyden.us.kg/categories/%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0/">设计与实现</category>
+      <description>&lt;div class=&#34;details admonition abstract open&#34;&gt;&#xA;  &lt;div class=&#34;details-summary admonition-title&#34;&gt;&lt;i class=&#34;icon fa-fw fa-solid fa-clipboard-list&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;导语&lt;i class=&#34;details-icon fa-solid fa-angle-right fa-fw&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;details-content&#34;&gt;&#xA;    &lt;div class=&#34;admonition-content&#34;&gt;在设计和开发微服务接口的过程中，常常会遇到接口职责不够单一、功能混杂的问题。面对这种情况，该如何有效处理呢？&#xA;本文以资格校验服务为例，详细介绍如何通过工厂方法、流量镜像和流量回放等技术手段，来解决开发、测试和部署中遇到的此类问题。&lt;/div&gt;&#xA;  &lt;/div&gt;&#xA;&lt;/div&gt;</description>
+    </item>
+  </channel>
+</rss>
