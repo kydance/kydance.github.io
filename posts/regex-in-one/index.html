@@ -6,14 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
     <meta name="robots" content="noodp" />
     <title>正则表达式速成宝典：从零基础到实战高手  Kyden&#39;s 博客</title><meta name="author" content="kyden">
-<meta name="description" content="全面解析正则表达式的核心概念和实战技巧，从基础语法到高级特性，从简单匹配到复杂模式。通过实例讲解帮助你掌握这门专业的文本处理语言，提升代码开发效率。特别适合需要处理文本数据的开发者。"><meta name="keywords" content='regex, Regular Expression, 正则表达式, 入门, Golang'>
+<meta name="description" content="全面解析正则表达式的核心概念和实战技巧，从基础语法到高级特性，从简单匹配到复杂模式。通过实例讲解帮助你掌握这门专业的文本处理语言，提升代码开发效率。特别适合需要处理文本数据的开发者。"><meta name="keywords" content='正则表达式, Regular Expression, regex, regexp, 文本处理, 字符串匹配, 模式匹配, 文本搜索, 字符串处理, 文本验证, 编程技巧, 开发工具, 字符串操作, 代码优化'>
   <meta itemprop="name" content="正则表达式速成宝典：从零基础到实战高手">
   <meta itemprop="description" content="全面解析正则表达式的核心概念和实战技巧，从基础语法到高级特性，从简单匹配到复杂模式。通过实例讲解帮助你掌握这门专业的文本处理语言，提升代码开发效率。特别适合需要处理文本数据的开发者。">
   <meta itemprop="datePublished" content="2024-11-06T11:53:42+08:00">
   <meta itemprop="dateModified" content="2024-11-06T11:53:42+08:00">
   <meta itemprop="wordCount" content="1831">
   <meta itemprop="image" content="http://kyden.us.kg/favicon.png">
-  <meta itemprop="keywords" content="regex,Regular Expression,正则表达式,入门,Golang"><meta property="og:url" content="http://kyden.us.kg/posts/regex-in-one/">
+  <meta itemprop="keywords" content="正则表达式,Regular Expression,regex,regexp,文本处理,字符串匹配,模式匹配,文本搜索,字符串处理,文本验证,编程技巧,开发工具,字符串操作,代码优化"><meta property="og:url" content="http://kyden.us.kg/posts/regex-in-one/">
   <meta property="og:site_name" content="Kyden&#39;s 博客">
   <meta property="og:title" content="正则表达式速成宝典：从零基础到实战高手">
   <meta property="og:description" content="全面解析正则表达式的核心概念和实战技巧，从基础语法到高级特性，从简单匹配到复杂模式。通过实例讲解帮助你掌握这门专业的文本处理语言，提升代码开发效率。特别适合需要处理文本数据的开发者。">
@@ -22,11 +22,12 @@
     <meta property="article:section" content="posts">
     <meta property="article:published_time" content="2024-11-06T11:53:42+08:00">
     <meta property="article:modified_time" content="2024-11-06T11:53:42+08:00">
-    <meta property="article:tag" content="Regex">
-    <meta property="article:tag" content="Regular Expression">
     <meta property="article:tag" content="正则表达式">
-    <meta property="article:tag" content="入门">
-    <meta property="article:tag" content="Golang">
+    <meta property="article:tag" content="Regular Expression">
+    <meta property="article:tag" content="Regex">
+    <meta property="article:tag" content="文本处理">
+    <meta property="article:tag" content="字符串匹配">
+    <meta property="article:tag" content="编程工具">
     <meta property="og:image" content="http://kyden.us.kg/favicon.png">
 
   <meta name="twitter:card" content="summary_large_image">
@@ -48,7 +49,7 @@
     "mainEntityOfPage": {
       "@type": "WebPage",
       "@id": "http:\/\/kyden.us.kg\/posts\/regex-in-one\/"
-    },"image": ["http:\/\/kyden.us.kg\/favicon-seo.jpg"],"genre": "posts","keywords": "regex, Regular Expression, 正则表达式, 入门, Golang","wordcount":  1831 ,
+    },"image": ["http:\/\/kyden.us.kg\/favicon-seo.jpg"],"genre": "posts","keywords": "正则表达式, Regular Expression, regex, 文本处理, 字符串匹配, 编程工具, 开发技巧, 代码优化, 编程基础, 实用技能","wordcount":  1831 ,
     "url": "http:\/\/kyden.us.kg\/posts\/regex-in-one\/","datePublished": "2024-11-06T11:53:42+08:00","dateModified": "2024-11-06T11:53:42+08:00","publisher": {
       "@type": "Organization",
       "name": "kyden","logo": "https:\/\/kyden.us.kg"},"author": {
@@ -124,7 +125,7 @@
   </nav><main class="container container-reverse"><aside class="aside-collection animate__animated animate__fadeIn animate__faster" aria-label="Collections"><div class="details collection-details open">
       <div class="details-summary collection-summary">
         <i class="fa-solid fa-layer-group fa-fw" aria-hidden="true"></i>
-        <span class="collection-name" data-collections="Collections">Regex</span>
+        <span class="collection-name" data-collections="Collections">编程基础</span>
         <span class="collection-count">1</span><i class="details-icon fa-solid fa-angle-right fa-fw" aria-hidden="true"></i></div>
       <div class="details-content collection-content">
         <nav>
@@ -135,7 +136,18 @@
     </div><div class="details collection-details">
       <div class="details-summary collection-summary">
         <i class="fa-solid fa-layer-group fa-fw" aria-hidden="true"></i>
-        <span class="collection-name" data-collections="Collections">Regular Expression</span>
+        <span class="collection-name" data-collections="Collections">开发工具</span>
+        <span class="collection-count">5</span><i class="details-icon fa-solid fa-angle-right fa-fw" aria-hidden="true"></i></div>
+      <div class="details-content collection-content">
+        <nav>
+          <ul class="collection-list"><li class="collection-item"><span class="active" title="正则表达式速成宝典：从零基础到实战高手">正则表达式速成宝典：从零基础到实战高手</span></li><li class="collection-item"><a href="/posts/tmux-guide/" title="Tmux 终端神器：一篇文章玩转终端复用">Tmux 终端神器：一篇文章玩转终端复用</a></li><li class="collection-item"><a href="/posts/make/" title="Make 构建系统详解：从基础到实战">Make 构建系统详解：从基础到实战</a></li><li class="collection-item"><a href="/posts/vscode-vim/" title="【最佳实践】VSCode &#43; Vim = 效率之神">【最佳实践】VSCode &#43; Vim = 效率之神</a></li><li class="collection-item"><a href="/posts/golang-linter/" title="Go 代码质量守护者：12 个必备 Linter 工具完全指南">Go 代码质量守护者：12 个必备 Linter 工具完全指南</a></li></ul>
+          <div class="collection-nav-simple"><i class="fa-solid fa-angle-left fa-fw collection-nav-item text-secondary" aria-hidden="true"></i><span class="text-secondary">1/5</span><a href="/posts/tmux-guide/" class="collection-nav-item" rel="next" title="Tmux 终端神器：一篇文章玩转终端复用"><i class="fa-solid fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+        </nav>
+      </div>
+    </div><div class="details collection-details">
+      <div class="details-summary collection-summary">
+        <i class="fa-solid fa-layer-group fa-fw" aria-hidden="true"></i>
+        <span class="collection-name" data-collections="Collections">编程技巧</span>
         <span class="collection-count">1</span><i class="details-icon fa-solid fa-angle-right fa-fw" aria-hidden="true"></i></div>
       <div class="details-content collection-content">
         <nav>
@@ -146,34 +158,12 @@
     </div><div class="details collection-details">
       <div class="details-summary collection-summary">
         <i class="fa-solid fa-layer-group fa-fw" aria-hidden="true"></i>
-        <span class="collection-name" data-collections="Collections">正则表达式</span>
-        <span class="collection-count">1</span><i class="details-icon fa-solid fa-angle-right fa-fw" aria-hidden="true"></i></div>
+        <span class="collection-name" data-collections="Collections">最佳实践</span>
+        <span class="collection-count">5</span><i class="details-icon fa-solid fa-angle-right fa-fw" aria-hidden="true"></i></div>
       <div class="details-content collection-content">
         <nav>
-          <ul class="collection-list"><li class="collection-item"><span class="active" title="正则表达式速成宝典：从零基础到实战高手">正则表达式速成宝典：从零基础到实战高手</span></li></ul>
-          <div class="collection-nav-simple"><i class="fa-solid fa-angle-left fa-fw collection-nav-item text-secondary" aria-hidden="true"></i><span class="text-secondary">1/1</span><i class="fa-solid fa-angle-right fa-fw collection-nav-item text-secondary" aria-hidden="true"></i></div>
-        </nav>
-      </div>
-    </div><div class="details collection-details">
-      <div class="details-summary collection-summary">
-        <i class="fa-solid fa-layer-group fa-fw" aria-hidden="true"></i>
-        <span class="collection-name" data-collections="Collections">入门</span>
-        <span class="collection-count">1</span><i class="details-icon fa-solid fa-angle-right fa-fw" aria-hidden="true"></i></div>
-      <div class="details-content collection-content">
-        <nav>
-          <ul class="collection-list"><li class="collection-item"><span class="active" title="正则表达式速成宝典：从零基础到实战高手">正则表达式速成宝典：从零基础到实战高手</span></li></ul>
-          <div class="collection-nav-simple"><i class="fa-solid fa-angle-left fa-fw collection-nav-item text-secondary" aria-hidden="true"></i><span class="text-secondary">1/1</span><i class="fa-solid fa-angle-right fa-fw collection-nav-item text-secondary" aria-hidden="true"></i></div>
-        </nav>
-      </div>
-    </div><div class="details collection-details">
-      <div class="details-summary collection-summary">
-        <i class="fa-solid fa-layer-group fa-fw" aria-hidden="true"></i>
-        <span class="collection-name" data-collections="Collections">Golang</span>
-        <span class="collection-count">17</span><i class="details-icon fa-solid fa-angle-right fa-fw" aria-hidden="true"></i></div>
-      <div class="details-content collection-content">
-        <nav>
-          <ul class="collection-list"><li class="collection-item"><a href="/posts/golang-concurrecy-programming/" title="Go 并发编程实战指南：从理论到性能优化">Go 并发编程实战指南：从理论到性能优化</a></li><li class="collection-item"><a href="/posts/golang-generic/" title="Golang Generic">Golang Generic</a></li><li class="collection-item"><span class="active" title="正则表达式速成宝典：从零基础到实战高手">正则表达式速成宝典：从零基础到实战高手</span></li><li class="collection-item"><a href="/posts/mysql/" title="MySQL 核心操作精讲：从基础语法到实战应用">MySQL 核心操作精讲：从基础语法到实战应用</a></li><li class="collection-item"><a href="/posts/golang-zap/" title="Go 日志最佳实践：Zap 从入门到实战">Go 日志最佳实践：Zap 从入门到实战</a></li><li class="collection-item"><a href="/posts/go-viper/" title="Go 配置管理最佳实践：Viper 从入门到精通">Go 配置管理最佳实践：Viper 从入门到精通</a></li><li class="collection-item"><a href="/posts/go-cobra/" title="Cobra 实战指南：10分钟搭建现代化命令行应用">Cobra 实战指南：10分钟搭建现代化命令行应用</a></li><li class="collection-item"><a href="/posts/make-cmake/" title="Make 与 CMake 实战指南：现代 C/C&#43;&#43; 构建系统精解">Make 与 CMake 实战指南：现代 C/C&#43;&#43; 构建系统精解</a></li><li class="collection-item"><a href="/posts/effective-go/" title="Go 语言编程之道：编写优雅高效的 Golang 代码">Go 语言编程之道：编写优雅高效的 Golang 代码</a></li><li class="collection-item"><a href="/posts/design-pattern/" title="设计模式精讲：从理论到实战的最佳实践指南">设计模式精讲：从理论到实战的最佳实践指南</a></li><li class="collection-item"><a href="/posts/golang-project-layout/" title="Go 工程目录最佳实践：打造清晰、可维护的项目结构">Go 工程目录最佳实践：打造清晰、可维护的项目结构</a></li><li class="collection-item"><a href="/posts/golang-context/" title="深入理解 Go Context：优雅的并发控制与请求管理">深入理解 Go Context：优雅的并发控制与请求管理</a></li><li class="collection-item"><a href="/posts/golang-escape-analysis/" title="Go 内存优化实战：逃逸分析完全指南">Go 内存优化实战：逃逸分析完全指南</a></li><li class="collection-item"><a href="/posts/golang-gmp/" title="图解 Go 调度器：GMP 模型深度剖析">图解 Go 调度器：GMP 模型深度剖析</a></li><li class="collection-item"><a href="/posts/golang-netpoll/" title="揭秘 Go 网络轮询器：从 Epoll 到 Netpoll 的架构实现">揭秘 Go 网络轮询器：从 Epoll 到 Netpoll 的架构实现</a></li><li class="collection-item"><a href="/posts/golang-profile/" title="Go 性能优化实战：从 Benchmark 到 Profile 的完整指南">Go 性能优化实战：从 Benchmark 到 Profile 的完整指南</a></li><li class="collection-item"><a href="/posts/golang-linter/" title="Go 代码质量守护者：12 个必备 Linter 工具完全指南">Go 代码质量守护者：12 个必备 Linter 工具完全指南</a></li></ul>
-          <div class="collection-nav-simple"><a href="/posts/golang-generic/" class="collection-nav-item" rel="prev" title="Golang Generic"><i class="fa-solid fa-angle-left fa-fw" aria-hidden="true"></i></a><span class="text-secondary">3/17</span><a href="/posts/mysql/" class="collection-nav-item" rel="next" title="MySQL 核心操作精讲：从基础语法到实战应用"><i class="fa-solid fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+          <ul class="collection-list"><li class="collection-item"><span class="active" title="正则表达式速成宝典：从零基础到实战高手">正则表达式速成宝典：从零基础到实战高手</span></li><li class="collection-item"><a href="/posts/check-rule/" title="微服务架构实战：打造高可用的资格校验服务">微服务架构实战：打造高可用的资格校验服务</a></li><li class="collection-item"><a href="/posts/effective-go/" title="Go 语言编程之道：编写优雅高效的 Golang 代码">Go 语言编程之道：编写优雅高效的 Golang 代码</a></li><li class="collection-item"><a href="/posts/design-pattern/" title="设计模式精讲：从理论到实战的最佳实践指南">设计模式精讲：从理论到实战的最佳实践指南</a></li><li class="collection-item"><a href="/posts/golang-project-layout/" title="Go 工程目录最佳实践：打造清晰、可维护的项目结构">Go 工程目录最佳实践：打造清晰、可维护的项目结构</a></li></ul>
+          <div class="collection-nav-simple"><i class="fa-solid fa-angle-left fa-fw collection-nav-item text-secondary" aria-hidden="true"></i><span class="text-secondary">1/5</span><a href="/posts/check-rule/" class="collection-nav-item" rel="next" title="微服务架构实战：打造高可用的资格校验服务"><i class="fa-solid fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
         </nav>
       </div>
     </div></aside>
@@ -181,7 +171,7 @@
   <article class="page single">
     <div class="header"><h1 class="single-title animate__animated animate__flipInX"><span title="Repost" class="icon-repost"><i class="fa-solid fa-share fa-fw" aria-hidden="true"></i></span><span>正则表达式速成宝典：从零基础到实战高手</span>
       </h1><p class="single-subtitle animate__animated animate__fadeIn">一篇文章精通正则：模式匹配、文本处理与高级技巧全解析</p></div><div class="post-meta">
-      <div class="post-meta-line"><span class="post-author"><a href="https:github.com/kydance" title="Author"target="_blank" rel="external nofollow noopener noreferrer author" class="author"><img loading="lazy" src="/favicon.ico" alt="kyden" data-title="kyden" width="20" height="20" class="avatar" style="background: url(/images/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}"/>&nbsp;kyden</a></span><span class="post-included-in">&nbsp;included in <a href="/categories/regex/" class="post-category" title="Category - Regex"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> Regex</a>&ensp;<a href="/categories/regular-expression/" class="post-category" title="Category - Regular Expression"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> Regular Expression</a>&ensp;<a href="/categories/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" class="post-category" title="Category - 正则表达式"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 正则表达式</a>&ensp;<a href="/categories/%E5%85%A5%E9%97%A8/" class="post-category" title="Category - 入门"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 入门</a>&ensp;<a href="/categories/golang/" class="post-category" title="Category - Golang"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> Golang</a> and <a href="/collections/regex/" class="post-collection" title="Collection - Regex"><i class="fa-solid fa-layer-group fa-fw" aria-hidden="true"></i> Regex</a>&ensp;<a href="/collections/regular-expression/" class="post-collection" title="Collection - Regular Expression"><i class="fa-solid fa-layer-group fa-fw" aria-hidden="true"></i> Regular Expression</a>&ensp;<a href="/collections/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" class="post-collection" title="Collection - 正则表达式"><i class="fa-solid fa-layer-group fa-fw" aria-hidden="true"></i> 正则表达式</a>&ensp;<a href="/collections/%E5%85%A5%E9%97%A8/" class="post-collection" title="Collection - 入门"><i class="fa-solid fa-layer-group fa-fw" aria-hidden="true"></i> 入门</a>&ensp;<a href="/collections/golang/" class="post-collection" title="Collection - Golang"><i class="fa-solid fa-layer-group fa-fw" aria-hidden="true"></i> Golang</a></span></div><div class="post-meta-line"><span title="published on 2024-11-06 11:53:42"><i class="fa-solid fa-calendar-days fa-fw me-1" aria-hidden="true"></i><time datetime="2024-11-06">2024-11-06</time></span>&nbsp;<span title="1831 words"><i class="fa-solid fa-pencil-alt fa-fw me-1" aria-hidden="true"></i>About 1900 words</span>&nbsp;<span><i class="fa-regular fa-clock fa-fw me-1" aria-hidden="true"></i>4 minutes</span>&nbsp;<span id="busuanzi_container_page_pv" class="busuanzi_visitors comment-visitors" data-flag-title="正则表达式速成宝典：从零基础到实战高手"><i class="fa-regular fa-eye fa-fw me-1" aria-hidden="true"></i><span id="busuanzi_value_page_pv">-</span>&nbsp;views
+      <div class="post-meta-line"><span class="post-author"><a href="https:github.com/kydance" title="Author"target="_blank" rel="external nofollow noopener noreferrer author" class="author"><img loading="lazy" src="/favicon.ico" alt="kyden" data-title="kyden" width="20" height="20" class="avatar" style="background: url(/images/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}"/>&nbsp;kyden</a></span><span class="post-included-in">&nbsp;included in <a href="/categories/%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80/" class="post-category" title="Category - 编程基础"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 编程基础</a>&ensp;<a href="/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/" class="post-category" title="Category - 开发工具"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 开发工具</a>&ensp;<a href="/categories/%E7%BC%96%E7%A8%8B%E6%8A%80%E5%B7%A7/" class="post-category" title="Category - 编程技巧"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 编程技巧</a>&ensp;<a href="/categories/%E6%96%87%E6%9C%AC%E5%A4%84%E7%90%86/" class="post-category" title="Category - 文本处理"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 文本处理</a>&ensp;<a href="/categories/%E5%AE%9E%E7%94%A8%E6%95%99%E7%A8%8B/" class="post-category" title="Category - 实用教程"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 实用教程</a> and <a href="/collections/%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80/" class="post-collection" title="Collection - 编程基础"><i class="fa-solid fa-layer-group fa-fw" aria-hidden="true"></i> 编程基础</a>&ensp;<a href="/collections/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/" class="post-collection" title="Collection - 开发工具"><i class="fa-solid fa-layer-group fa-fw" aria-hidden="true"></i> 开发工具</a>&ensp;<a href="/collections/%E7%BC%96%E7%A8%8B%E6%8A%80%E5%B7%A7/" class="post-collection" title="Collection - 编程技巧"><i class="fa-solid fa-layer-group fa-fw" aria-hidden="true"></i> 编程技巧</a>&ensp;<a href="/collections/%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/" class="post-collection" title="Collection - 最佳实践"><i class="fa-solid fa-layer-group fa-fw" aria-hidden="true"></i> 最佳实践</a></span></div><div class="post-meta-line"><span title="published on 2024-11-06 11:53:42"><i class="fa-solid fa-calendar-days fa-fw me-1" aria-hidden="true"></i><time datetime="2024-11-06">2024-11-06</time></span>&nbsp;<span title="1831 words"><i class="fa-solid fa-pencil-alt fa-fw me-1" aria-hidden="true"></i>About 1900 words</span>&nbsp;<span><i class="fa-regular fa-clock fa-fw me-1" aria-hidden="true"></i>4 minutes</span>&nbsp;<span id="busuanzi_container_page_pv" class="busuanzi_visitors comment-visitors" data-flag-title="正则表达式速成宝典：从零基础到实战高手"><i class="fa-regular fa-eye fa-fw me-1" aria-hidden="true"></i><span id="busuanzi_value_page_pv">-</span>&nbsp;views
           </span>&nbsp;</div>
     </div><div class="details toc" id="toc-static" data-kept="false">
         <div class="details-summary toc-title">
@@ -480,11 +470,11 @@
 </ul></div><hr class="awesome-hr" />
     <h2 id="see-also">Related Content</h2>
     <ul><li>
-          <a href="/posts/golang-netpoll/" title="揭秘 Go 网络轮询器：从 Epoll 到 Netpoll 的架构实现">揭秘 Go 网络轮询器：从 Epoll 到 Netpoll 的架构实现</a></li><li>
-          <a href="/posts/golang-generic/" title="Golang Generic">Golang Generic</a></li><li>
-          <a href="/posts/mysql/" title="MySQL 核心操作精讲：从基础语法到实战应用">MySQL 核心操作精讲：从基础语法到实战应用</a></li><li>
-          <a href="/posts/golang-zap/" title="Go 日志最佳实践：Zap 从入门到实战">Go 日志最佳实践：Zap 从入门到实战</a></li><li>
-          <a href="/posts/go-viper/" title="Go 配置管理最佳实践：Viper 从入门到精通">Go 配置管理最佳实践：Viper 从入门到精通</a></li></ul><div class="post-footer" id="post-footer">
+          <a href="/posts/vscode-vim/" title="【最佳实践】VSCode &#43; Vim = 效率之神">【最佳实践】VSCode &#43; Vim = 效率之神</a></li><li>
+          <a href="/posts/golang-linter/" title="Go 代码质量守护者：12 个必备 Linter 工具完全指南">Go 代码质量守护者：12 个必备 Linter 工具完全指南</a></li><li>
+          <a href="/posts/tmux-guide/" title="Tmux 终端神器：一篇文章玩转终端复用">Tmux 终端神器：一篇文章玩转终端复用</a></li><li>
+          <a href="/posts/go-viper/" title="Go 配置管理最佳实践：Viper 从入门到精通">Go 配置管理最佳实践：Viper 从入门到精通</a></li><li>
+          <a href="/posts/go-cobra/" title="Cobra 实战指南：10分钟搭建现代化命令行应用">Cobra 实战指南：10分钟搭建现代化命令行应用</a></li></ul><div class="post-footer" id="post-footer">
   <div class="post-info">
     <div class="post-info-line">
       <div class="post-info-mod">
@@ -492,8 +482,8 @@
       </div></div><div class="post-info-line">
         <div class="post-info-md"><span><a href="/posts/regex-in-one/index.md" title="Read Markdown" class="link-to-markdown">Read Markdown</a></span><span><a href="https://github.com/kydance/kydance.github.io/blob/master/content/posts/regex-in-one/regex-in-one.md?plain=1" title="View source"target="_blank" rel="external nofollow noopener noreferrer" class="link-to-source">View source</a></span><span><a href="https://github.com/kydance/kydance.github.io/edit/master/content/posts/regex-in-one/regex-in-one.md" title="Edit this page"target="_blank" rel="external nofollow noopener noreferrer" class="link-to-edit">Edit this page</a></span><span><a href="https://github.com/kydance/kydance.github.io/issues/new?title=[BUG]%20%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E9%80%9F%E6%88%90%E5%AE%9D%E5%85%B8%EF%BC%9A%E4%BB%8E%E9%9B%B6%E5%9F%BA%E7%A1%80%E5%88%B0%E5%AE%9E%E6%88%98%E9%AB%98%E6%89%8B&amp;body=%7cField%7cValue%7c%0A%7c-%7c-%7c%0A%7cTitle%7c%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E9%80%9F%E6%88%90%E5%AE%9D%E5%85%B8%EF%BC%9A%E4%BB%8E%E9%9B%B6%E5%9F%BA%E7%A1%80%E5%88%B0%E5%AE%9E%E6%88%98%E9%AB%98%E6%89%8B%7c%0A%7cURL%7chttp://kyden.us.kg/posts/regex-in-one/%7c%0A%7cFilename%7chttps://github.com/kydance/kydance.github.io/blob/master/content/posts/regex-in-one/regex-in-one.md?plain=1%7c" title="Report issue"target="_blank" rel="external nofollow noopener noreferrer" class="link-to-report">Report issue</a></span></div>
         <div class="post-info-share">
-          <span><a href="javascript:void(0);" title="Share on X" data-sharer="twitter" data-url="http://kyden.us.kg/posts/regex-in-one/" data-title="正则表达式速成宝典：从零基础到实战高手" data-via="kytedance" data-hashtags="regex,Regular Expression,正则表达式,入门,Golang"><i class="fa-brands fa-x-twitter fa-fw" aria-hidden="true"></i></a>
-  <a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="http://kyden.us.kg/posts/regex-in-one/" data-hashtag="regex"><i class="fa-brands fa-facebook-square fa-fw" aria-hidden="true"></i></a>
+          <span><a href="javascript:void(0);" title="Share on X" data-sharer="twitter" data-url="http://kyden.us.kg/posts/regex-in-one/" data-title="正则表达式速成宝典：从零基础到实战高手" data-via="kytedance" data-hashtags="正则表达式,Regular Expression,regex,文本处理,字符串匹配,编程工具,开发技巧,代码优化,编程基础,实用技能"><i class="fa-brands fa-x-twitter fa-fw" aria-hidden="true"></i></a>
+  <a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="http://kyden.us.kg/posts/regex-in-one/" data-hashtag="正则表达式"><i class="fa-brands fa-facebook-square fa-fw" aria-hidden="true"></i></a>
   <a href="javascript:void(0);" title="Share on Linkedin" data-sharer="linkedin" data-url="http://kyden.us.kg/posts/regex-in-one/"><i class="fa-brands fa-linkedin fa-fw" aria-hidden="true"></i></a>
   <a href="javascript:void(0);" title="Share on WhatsApp" data-sharer="whatsapp" data-url="http://kyden.us.kg/posts/regex-in-one/" data-title="正则表达式速成宝典：从零基础到实战高手" data-web><i class="fa-brands fa-whatsapp fa-fw" aria-hidden="true"></i></a>
   <a href="javascript:void(0);" title="Share on Reddit" data-sharer="reddit" data-url="http://kyden.us.kg/posts/regex-in-one/"><i class="fa-brands fa-reddit fa-fw" aria-hidden="true"></i></a>
@@ -509,7 +499,7 @@
       </div></div>
 
   <div class="post-info-more">
-    <section class="post-tags"><i class="fa-solid fa-tags fa-fw me-1" aria-hidden="true"></i><a href="/tags/regex/" class="post-tag" title="Tags - Regex">Regex</a><a href="/tags/regular-expression/" class="post-tag" title="Tags - Regular Expression">Regular Expression</a><a href="/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" class="post-tag" title="Tags - 正则表达式">正则表达式</a><a href="/tags/%E5%85%A5%E9%97%A8/" class="post-tag" title="Tags - 入门">入门</a><a href="/tags/golang/" class="post-tag" title="Tags - Golang">Golang</a></section>
+    <section class="post-tags"><i class="fa-solid fa-tags fa-fw me-1" aria-hidden="true"></i><a href="/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" class="post-tag" title="Tags - 正则表达式">正则表达式</a><a href="/tags/regular-expression/" class="post-tag" title="Tags - Regular Expression">Regular Expression</a><a href="/tags/regex/" class="post-tag" title="Tags - Regex">Regex</a><a href="/tags/%E6%96%87%E6%9C%AC%E5%A4%84%E7%90%86/" class="post-tag" title="Tags - 文本处理">文本处理</a><a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%8C%B9%E9%85%8D/" class="post-tag" title="Tags - 字符串匹配">字符串匹配</a><a href="/tags/%E7%BC%96%E7%A8%8B%E5%B7%A5%E5%85%B7/" class="post-tag" title="Tags - 编程工具">编程工具</a><a href="/tags/%E5%BC%80%E5%8F%91%E6%8A%80%E5%B7%A7/" class="post-tag" title="Tags - 开发技巧">开发技巧</a><a href="/tags/%E4%BB%A3%E7%A0%81%E4%BC%98%E5%8C%96/" class="post-tag" title="Tags - 代码优化">代码优化</a><a href="/tags/%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80/" class="post-tag" title="Tags - 编程基础">编程基础</a><a href="/tags/%E5%AE%9E%E7%94%A8%E6%8A%80%E8%83%BD/" class="post-tag" title="Tags - 实用技能">实用技能</a></section>
     <section>
       <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
     </section>

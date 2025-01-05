@@ -15,10 +15,11 @@
       <link>http://kyden.us.kg/posts/tmux-guide/</link>
       <pubDate>Thu, 03 Oct 2024 20:24:40 +0800</pubDate><author>kytedance@gmail.com (kyden)</author>
       <guid>http://kyden.us.kg/posts/tmux-guide/</guid>
-      <category domain="http://kyden.us.kg/categories/tmux/">Tmux</category>
-      <category domain="http://kyden.us.kg/categories/%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/">使用指南</category>
+      <category domain="http://kyden.us.kg/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/">开发工具</category>
       <category domain="http://kyden.us.kg/categories/%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%B7%A5%E5%85%B7/">命令行工具</category>
-      <category domain="http://kyden.us.kg/categories/cli-tools/">CLI Tools</category>
+      <category domain="http://kyden.us.kg/categories/%E6%95%88%E7%8E%87%E5%B7%A5%E5%85%B7/">效率工具</category>
+      <category domain="http://kyden.us.kg/categories/linux%E5%B7%A5%E5%85%B7/">Linux工具</category>
+      <category domain="http://kyden.us.kg/categories/%E8%BF%9C%E7%A8%8B%E5%BC%80%E5%8F%91/">远程开发</category>
       <description>&lt;div class=&#34;details admonition abstract open&#34;&gt;&#xA;  &lt;div class=&#34;details-summary admonition-title&#34;&gt;&lt;i class=&#34;icon fa-fw fa-solid fa-clipboard-list&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;导语&lt;i class=&#34;details-icon fa-solid fa-angle-right fa-fw&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;details-content&#34;&gt;&#xA;    &lt;div class=&#34;admonition-content&#34;&gt;在现代开发环境中，高效的终端管理是提升工作效率的关键。Tmux 作为一款强大的终端复用工具，不仅能让你在一个终端窗口中同时操作多个会话，还能实现窗口分割、会话保持等高级功能。无论是本地开发还是远程服务器管理，Tmux 都能让你的终端操作更加得心应手。本文将带你全面了解 Tmux 的各项功能，从基础操作到高级配置，让你的终端使用效率得到质的飞跃。&lt;/div&gt;&#xA;  &lt;/div&gt;&#xA;&lt;/div&gt;</description>
     </item>
   </channel>

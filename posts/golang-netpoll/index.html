@@ -6,14 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
     <meta name="robots" content="noodp" />
     <title>揭秘 Go 网络轮询器：从 Epoll 到 Netpoll 的架构实现  Kyden&#39;s 博客</title><meta name="author" content="kyden">
-<meta name="description" content="深入剖析 Go 语言网络轮询器的实现原理，从 Linux epoll 机制到 Go runtime 的调度集成。通过源码分析和实例讲解，全面介绍 netpoll 的初始化流程、事件处理机制以及与 goroutine 调度的交互过程，帮助你掌握 Go 高性能网络编程的核心知识。"><meta name="keywords" content='Golang, Netpoll, Epoll, Network Program, Linux'>
+<meta name="description" content="深入剖析 Go 语言网络轮询器的实现原理，从 Linux epoll 机制到 Go runtime 的调度集成。通过源码分析和实例讲解，全面介绍 netpoll 的初始化流程、事件处理机制以及与 goroutine 调度的交互过程，帮助你掌握 Go 高性能网络编程的核心知识。"><meta name="keywords" content='Go, Golang, 网络编程, netpoll, IO多路复用, epoll, 网络模型, 高性能网络, 事件驱动, 网络框架, 异步IO, 网络优化, 系统编程, 网络通信'>
   <meta itemprop="name" content="揭秘 Go 网络轮询器：从 epoll 到 netpoll 的架构实现">
   <meta itemprop="description" content="深入剖析 Go 语言网络轮询器的实现原理，从 Linux epoll 机制到 Go runtime 的调度集成。通过源码分析和实例讲解，全面介绍 netpoll 的初始化流程、事件处理机制以及与 goroutine 调度的交互过程，帮助你掌握 Go 高性能网络编程的核心知识。">
   <meta itemprop="datePublished" content="2024-05-08T11:43:38+08:00">
   <meta itemprop="dateModified" content="2024-05-08T11:43:38+08:00">
   <meta itemprop="wordCount" content="4029">
   <meta itemprop="image" content="http://kyden.us.kg/favicon.png">
-  <meta itemprop="keywords" content="Golang,Netpoll,Epoll,Network Program,Linux"><meta property="og:url" content="http://kyden.us.kg/posts/golang-netpoll/">
+  <meta itemprop="keywords" content="Go,Golang,网络编程,netpoll,IO多路复用,epoll,网络模型,高性能网络,事件驱动,网络框架,异步IO,网络优化,系统编程,网络通信"><meta property="og:url" content="http://kyden.us.kg/posts/golang-netpoll/">
   <meta property="og:site_name" content="Kyden&#39;s 博客">
   <meta property="og:title" content="揭秘 Go 网络轮询器：从 epoll 到 netpoll 的架构实现">
   <meta property="og:description" content="深入剖析 Go 语言网络轮询器的实现原理，从 Linux epoll 机制到 Go runtime 的调度集成。通过源码分析和实例讲解，全面介绍 netpoll 的初始化流程、事件处理机制以及与 goroutine 调度的交互过程，帮助你掌握 Go 高性能网络编程的核心知识。">
@@ -22,11 +22,12 @@
     <meta property="article:section" content="posts">
     <meta property="article:published_time" content="2024-05-08T11:43:38+08:00">
     <meta property="article:modified_time" content="2024-05-08T11:43:38+08:00">
+    <meta property="article:tag" content="Go">
     <meta property="article:tag" content="Golang">
     <meta property="article:tag" content="Netpoll">
-    <meta property="article:tag" content="Epoll">
-    <meta property="article:tag" content="Network Program">
-    <meta property="article:tag" content="Linux">
+    <meta property="article:tag" content="网络编程">
+    <meta property="article:tag" content="IO多路复用">
+    <meta property="article:tag" content="网络模型">
     <meta property="og:image" content="http://kyden.us.kg/favicon.png">
 
   <meta name="twitter:card" content="summary_large_image">
@@ -48,7 +49,7 @@
     "mainEntityOfPage": {
       "@type": "WebPage",
       "@id": "http:\/\/kyden.us.kg\/posts\/golang-netpoll\/"
-    },"image": ["http:\/\/kyden.us.kg\/favicon-seo.jpg"],"genre": "posts","keywords": "Golang, Netpoll, Epoll, Network Program, Linux","wordcount":  4029 ,
+    },"image": ["http:\/\/kyden.us.kg\/favicon-seo.jpg"],"genre": "posts","keywords": "Go, Golang, netpoll, 网络编程, IO多路复用, 网络模型, 高性能, 系统编程, 网络框架, 性能优化","wordcount":  4029 ,
     "url": "http:\/\/kyden.us.kg\/posts\/golang-netpoll\/","datePublished": "2024-05-08T11:43:38+08:00","dateModified": "2024-05-08T11:43:38+08:00","publisher": {
       "@type": "Organization",
       "name": "kyden","logo": "https:\/\/kyden.us.kg"},"author": {
@@ -124,18 +125,18 @@
   </nav><main class="container container-reverse"><aside class="aside-collection animate__animated animate__fadeIn animate__faster" aria-label="Collections"><div class="details collection-details open">
       <div class="details-summary collection-summary">
         <i class="fa-solid fa-layer-group fa-fw" aria-hidden="true"></i>
-        <span class="collection-name" data-collections="Collections">Golang</span>
-        <span class="collection-count">17</span><i class="details-icon fa-solid fa-angle-right fa-fw" aria-hidden="true"></i></div>
+        <span class="collection-name" data-collections="Collections">Go进阶</span>
+        <span class="collection-count">7</span><i class="details-icon fa-solid fa-angle-right fa-fw" aria-hidden="true"></i></div>
       <div class="details-content collection-content">
         <nav>
-          <ul class="collection-list"><li class="collection-item"><a href="/posts/golang-concurrecy-programming/" title="Go 并发编程实战指南：从理论到性能优化">Go 并发编程实战指南：从理论到性能优化</a></li><li class="collection-item"><a href="/posts/golang-generic/" title="Golang Generic">Golang Generic</a></li><li class="collection-item"><a href="/posts/regex-in-one/" title="正则表达式速成宝典：从零基础到实战高手">正则表达式速成宝典：从零基础到实战高手</a></li><li class="collection-item"><a href="/posts/mysql/" title="MySQL 核心操作精讲：从基础语法到实战应用">MySQL 核心操作精讲：从基础语法到实战应用</a></li><li class="collection-item"><a href="/posts/golang-zap/" title="Go 日志最佳实践：Zap 从入门到实战">Go 日志最佳实践：Zap 从入门到实战</a></li><li class="collection-item"><a href="/posts/go-viper/" title="Go 配置管理最佳实践：Viper 从入门到精通">Go 配置管理最佳实践：Viper 从入门到精通</a></li><li class="collection-item"><a href="/posts/go-cobra/" title="Cobra 实战指南：10分钟搭建现代化命令行应用">Cobra 实战指南：10分钟搭建现代化命令行应用</a></li><li class="collection-item"><a href="/posts/make-cmake/" title="Make 与 CMake 实战指南：现代 C/C&#43;&#43; 构建系统精解">Make 与 CMake 实战指南：现代 C/C&#43;&#43; 构建系统精解</a></li><li class="collection-item"><a href="/posts/effective-go/" title="Go 语言编程之道：编写优雅高效的 Golang 代码">Go 语言编程之道：编写优雅高效的 Golang 代码</a></li><li class="collection-item"><a href="/posts/design-pattern/" title="设计模式精讲：从理论到实战的最佳实践指南">设计模式精讲：从理论到实战的最佳实践指南</a></li><li class="collection-item"><a href="/posts/golang-project-layout/" title="Go 工程目录最佳实践：打造清晰、可维护的项目结构">Go 工程目录最佳实践：打造清晰、可维护的项目结构</a></li><li class="collection-item"><a href="/posts/golang-context/" title="深入理解 Go Context：优雅的并发控制与请求管理">深入理解 Go Context：优雅的并发控制与请求管理</a></li><li class="collection-item"><a href="/posts/golang-escape-analysis/" title="Go 内存优化实战：逃逸分析完全指南">Go 内存优化实战：逃逸分析完全指南</a></li><li class="collection-item"><a href="/posts/golang-gmp/" title="图解 Go 调度器：GMP 模型深度剖析">图解 Go 调度器：GMP 模型深度剖析</a></li><li class="collection-item"><span class="active" title="揭秘 Go 网络轮询器：从 Epoll 到 Netpoll 的架构实现">揭秘 Go 网络轮询器：从 Epoll 到 Netpoll 的架构实现</span></li><li class="collection-item"><a href="/posts/golang-profile/" title="Go 性能优化实战：从 Benchmark 到 Profile 的完整指南">Go 性能优化实战：从 Benchmark 到 Profile 的完整指南</a></li><li class="collection-item"><a href="/posts/golang-linter/" title="Go 代码质量守护者：12 个必备 Linter 工具完全指南">Go 代码质量守护者：12 个必备 Linter 工具完全指南</a></li></ul>
-          <div class="collection-nav-simple"><a href="/posts/golang-gmp/" class="collection-nav-item" rel="prev" title="图解 Go 调度器：GMP 模型深度剖析"><i class="fa-solid fa-angle-left fa-fw" aria-hidden="true"></i></a><span class="text-secondary">15/17</span><a href="/posts/golang-profile/" class="collection-nav-item" rel="next" title="Go 性能优化实战：从 Benchmark 到 Profile 的完整指南"><i class="fa-solid fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+          <ul class="collection-list"><li class="collection-item"><a href="/posts/golang-concurrecy-programming/" title="Go 并发编程实战指南：从理论到性能优化">Go 并发编程实战指南：从理论到性能优化</a></li><li class="collection-item"><a href="/posts/effective-go/" title="Go 语言编程之道：编写优雅高效的 Golang 代码">Go 语言编程之道：编写优雅高效的 Golang 代码</a></li><li class="collection-item"><a href="/posts/golang-context/" title="深入理解 Go Context：优雅的并发控制与请求管理">深入理解 Go Context：优雅的并发控制与请求管理</a></li><li class="collection-item"><a href="/posts/golang-escape-analysis/" title="Go 内存优化实战：逃逸分析完全指南">Go 内存优化实战：逃逸分析完全指南</a></li><li class="collection-item"><a href="/posts/golang-gmp/" title="图解 Go 调度器：GMP 模型深度剖析">图解 Go 调度器：GMP 模型深度剖析</a></li><li class="collection-item"><span class="active" title="揭秘 Go 网络轮询器：从 Epoll 到 Netpoll 的架构实现">揭秘 Go 网络轮询器：从 Epoll 到 Netpoll 的架构实现</span></li><li class="collection-item"><a href="/posts/golang-profile/" title="Go 性能优化实战：从 Benchmark 到 Profile 的完整指南">Go 性能优化实战：从 Benchmark 到 Profile 的完整指南</a></li></ul>
+          <div class="collection-nav-simple"><a href="/posts/golang-gmp/" class="collection-nav-item" rel="prev" title="图解 Go 调度器：GMP 模型深度剖析"><i class="fa-solid fa-angle-left fa-fw" aria-hidden="true"></i></a><span class="text-secondary">6/7</span><a href="/posts/golang-profile/" class="collection-nav-item" rel="next" title="Go 性能优化实战：从 Benchmark 到 Profile 的完整指南"><i class="fa-solid fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
         </nav>
       </div>
     </div><div class="details collection-details">
       <div class="details-summary collection-summary">
         <i class="fa-solid fa-layer-group fa-fw" aria-hidden="true"></i>
-        <span class="collection-name" data-collections="Collections">Netpoll</span>
+        <span class="collection-name" data-collections="Collections">网络编程</span>
         <span class="collection-count">1</span><i class="details-icon fa-solid fa-angle-right fa-fw" aria-hidden="true"></i></div>
       <div class="details-content collection-content">
         <nav>
@@ -146,34 +147,23 @@
     </div><div class="details collection-details">
       <div class="details-summary collection-summary">
         <i class="fa-solid fa-layer-group fa-fw" aria-hidden="true"></i>
-        <span class="collection-name" data-collections="Collections">Epoll</span>
-        <span class="collection-count">1</span><i class="details-icon fa-solid fa-angle-right fa-fw" aria-hidden="true"></i></div>
+        <span class="collection-name" data-collections="Collections">系统编程</span>
+        <span class="collection-count">2</span><i class="details-icon fa-solid fa-angle-right fa-fw" aria-hidden="true"></i></div>
       <div class="details-content collection-content">
         <nav>
-          <ul class="collection-list"><li class="collection-item"><span class="active" title="揭秘 Go 网络轮询器：从 Epoll 到 Netpoll 的架构实现">揭秘 Go 网络轮询器：从 Epoll 到 Netpoll 的架构实现</span></li></ul>
-          <div class="collection-nav-simple"><i class="fa-solid fa-angle-left fa-fw collection-nav-item text-secondary" aria-hidden="true"></i><span class="text-secondary">1/1</span><i class="fa-solid fa-angle-right fa-fw collection-nav-item text-secondary" aria-hidden="true"></i></div>
+          <ul class="collection-list"><li class="collection-item"><a href="/posts/golang-gmp/" title="图解 Go 调度器：GMP 模型深度剖析">图解 Go 调度器：GMP 模型深度剖析</a></li><li class="collection-item"><span class="active" title="揭秘 Go 网络轮询器：从 Epoll 到 Netpoll 的架构实现">揭秘 Go 网络轮询器：从 Epoll 到 Netpoll 的架构实现</span></li></ul>
+          <div class="collection-nav-simple"><a href="/posts/golang-gmp/" class="collection-nav-item" rel="prev" title="图解 Go 调度器：GMP 模型深度剖析"><i class="fa-solid fa-angle-left fa-fw" aria-hidden="true"></i></a><span class="text-secondary">2/2</span><i class="fa-solid fa-angle-right fa-fw collection-nav-item text-secondary" aria-hidden="true"></i></div>
         </nav>
       </div>
     </div><div class="details collection-details">
       <div class="details-summary collection-summary">
         <i class="fa-solid fa-layer-group fa-fw" aria-hidden="true"></i>
-        <span class="collection-name" data-collections="Collections">Network Program</span>
-        <span class="collection-count">1</span><i class="details-icon fa-solid fa-angle-right fa-fw" aria-hidden="true"></i></div>
+        <span class="collection-name" data-collections="Collections">性能优化</span>
+        <span class="collection-count">7</span><i class="details-icon fa-solid fa-angle-right fa-fw" aria-hidden="true"></i></div>
       <div class="details-content collection-content">
         <nav>
-          <ul class="collection-list"><li class="collection-item"><span class="active" title="揭秘 Go 网络轮询器：从 Epoll 到 Netpoll 的架构实现">揭秘 Go 网络轮询器：从 Epoll 到 Netpoll 的架构实现</span></li></ul>
-          <div class="collection-nav-simple"><i class="fa-solid fa-angle-left fa-fw collection-nav-item text-secondary" aria-hidden="true"></i><span class="text-secondary">1/1</span><i class="fa-solid fa-angle-right fa-fw collection-nav-item text-secondary" aria-hidden="true"></i></div>
-        </nav>
-      </div>
-    </div><div class="details collection-details">
-      <div class="details-summary collection-summary">
-        <i class="fa-solid fa-layer-group fa-fw" aria-hidden="true"></i>
-        <span class="collection-name" data-collections="Collections">Linux</span>
-        <span class="collection-count">4</span><i class="details-icon fa-solid fa-angle-right fa-fw" aria-hidden="true"></i></div>
-      <div class="details-content collection-content">
-        <nav>
-          <ul class="collection-list"><li class="collection-item"><a href="/posts/check-rule/" title="微服务架构实战：打造高可用的资格校验服务">微服务架构实战：打造高可用的资格校验服务</a></li><li class="collection-item"><span class="active" title="揭秘 Go 网络轮询器：从 Epoll 到 Netpoll 的架构实现">揭秘 Go 网络轮询器：从 Epoll 到 Netpoll 的架构实现</span></li><li class="collection-item"><a href="/posts/arch-linux/" title="从零开始的 Arch Linux 完全上手指南：打造你的理想工作环境">从零开始的 Arch Linux 完全上手指南：打造你的理想工作环境</a></li><li class="collection-item"><a href="/posts/build-blog/" title="30分钟搭建个人技术博客：Hugo &#43; GitHub Pages 零基础建站指南">30分钟搭建个人技术博客：Hugo &#43; GitHub Pages 零基础建站指南</a></li></ul>
-          <div class="collection-nav-simple"><a href="/posts/check-rule/" class="collection-nav-item" rel="prev" title="微服务架构实战：打造高可用的资格校验服务"><i class="fa-solid fa-angle-left fa-fw" aria-hidden="true"></i></a><span class="text-secondary">2/4</span><a href="/posts/arch-linux/" class="collection-nav-item" rel="next" title="从零开始的 Arch Linux 完全上手指南：打造你的理想工作环境"><i class="fa-solid fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+          <ul class="collection-list"><li class="collection-item"><a href="/posts/golang-concurrecy-programming/" title="Go 并发编程实战指南：从理论到性能优化">Go 并发编程实战指南：从理论到性能优化</a></li><li class="collection-item"><a href="/posts/mysql/" title="MySQL 核心操作精讲：从基础语法到实战应用">MySQL 核心操作精讲：从基础语法到实战应用</a></li><li class="collection-item"><a href="/posts/golang-zap/" title="Go 日志最佳实践：Zap 从入门到实战">Go 日志最佳实践：Zap 从入门到实战</a></li><li class="collection-item"><a href="/posts/golang-escape-analysis/" title="Go 内存优化实战：逃逸分析完全指南">Go 内存优化实战：逃逸分析完全指南</a></li><li class="collection-item"><a href="/posts/golang-gmp/" title="图解 Go 调度器：GMP 模型深度剖析">图解 Go 调度器：GMP 模型深度剖析</a></li><li class="collection-item"><span class="active" title="揭秘 Go 网络轮询器：从 Epoll 到 Netpoll 的架构实现">揭秘 Go 网络轮询器：从 Epoll 到 Netpoll 的架构实现</span></li><li class="collection-item"><a href="/posts/golang-profile/" title="Go 性能优化实战：从 Benchmark 到 Profile 的完整指南">Go 性能优化实战：从 Benchmark 到 Profile 的完整指南</a></li></ul>
+          <div class="collection-nav-simple"><a href="/posts/golang-gmp/" class="collection-nav-item" rel="prev" title="图解 Go 调度器：GMP 模型深度剖析"><i class="fa-solid fa-angle-left fa-fw" aria-hidden="true"></i></a><span class="text-secondary">6/7</span><a href="/posts/golang-profile/" class="collection-nav-item" rel="next" title="Go 性能优化实战：从 Benchmark 到 Profile 的完整指南"><i class="fa-solid fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
         </nav>
       </div>
     </div></aside>
@@ -181,7 +171,7 @@
   <article class="page single">
     <div class="header"><h1 class="single-title animate__animated animate__flipInX"><span title="Repost" class="icon-repost"><i class="fa-solid fa-share fa-fw" aria-hidden="true"></i></span><span>揭秘 Go 网络轮询器：从 Epoll 到 Netpoll 的架构实现</span>
       </h1><p class="single-subtitle animate__animated animate__fadeIn">深入理解 Go 网络编程的核心机制：Linux epoll 与 goroutine 调度的完美结合</p></div><div class="post-meta">
-      <div class="post-meta-line"><span class="post-author"><a href="https://github.com/kydance" title="Author"target="_blank" rel="external nofollow noopener noreferrer author" class="author"><img loading="lazy" src="/favicon.ico" alt="kyden" data-title="kyden" width="20" height="20" class="avatar" style="background: url(/images/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}"/>&nbsp;kyden</a></span><span class="post-included-in">&nbsp;included in <a href="/categories/golang/" class="post-category" title="Category - Golang"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> Golang</a>&ensp;<a href="/categories/netpoll/" class="post-category" title="Category - Netpoll"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> Netpoll</a>&ensp;<a href="/categories/epoll/" class="post-category" title="Category - Epoll"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> Epoll</a>&ensp;<a href="/categories/network-program/" class="post-category" title="Category - Network Program"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> Network Program</a>&ensp;<a href="/categories/linux/" class="post-category" title="Category - Linux"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> Linux</a> and <a href="/collections/golang/" class="post-collection" title="Collection - Golang"><i class="fa-solid fa-layer-group fa-fw" aria-hidden="true"></i> Golang</a>&ensp;<a href="/collections/netpoll/" class="post-collection" title="Collection - Netpoll"><i class="fa-solid fa-layer-group fa-fw" aria-hidden="true"></i> Netpoll</a>&ensp;<a href="/collections/epoll/" class="post-collection" title="Collection - Epoll"><i class="fa-solid fa-layer-group fa-fw" aria-hidden="true"></i> Epoll</a>&ensp;<a href="/collections/network-program/" class="post-collection" title="Collection - Network Program"><i class="fa-solid fa-layer-group fa-fw" aria-hidden="true"></i> Network Program</a>&ensp;<a href="/collections/linux/" class="post-collection" title="Collection - Linux"><i class="fa-solid fa-layer-group fa-fw" aria-hidden="true"></i> Linux</a></span></div><div class="post-meta-line"><span title="published on 2024-05-08 11:43:38"><i class="fa-solid fa-calendar-days fa-fw me-1" aria-hidden="true"></i><time datetime="2024-05-08">2024-05-08</time></span>&nbsp;<span title="4029 words"><i class="fa-solid fa-pencil-alt fa-fw me-1" aria-hidden="true"></i>About 4100 words</span>&nbsp;<span><i class="fa-regular fa-clock fa-fw me-1" aria-hidden="true"></i>9 minutes</span>&nbsp;<span id="busuanzi_container_page_pv" class="busuanzi_visitors comment-visitors" data-flag-title="揭秘 Go 网络轮询器：从 Epoll 到 Netpoll 的架构实现"><i class="fa-regular fa-eye fa-fw me-1" aria-hidden="true"></i><span id="busuanzi_value_page_pv">-</span>&nbsp;views
+      <div class="post-meta-line"><span class="post-author"><a href="https://github.com/kydance" title="Author"target="_blank" rel="external nofollow noopener noreferrer author" class="author"><img loading="lazy" src="/favicon.ico" alt="kyden" data-title="kyden" width="20" height="20" class="avatar" style="background: url(/images/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}"/>&nbsp;kyden</a></span><span class="post-included-in">&nbsp;included in <a href="/categories/go%E8%AF%AD%E8%A8%80/" class="post-category" title="Category - Go语言"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> Go语言</a>&ensp;<a href="/categories/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/" class="post-category" title="Category - 网络编程"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 网络编程</a>&ensp;<a href="/categories/%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/" class="post-category" title="Category - 系统编程"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 系统编程</a>&ensp;<a href="/categories/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/" class="post-category" title="Category - 性能优化"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 性能优化</a>&ensp;<a href="/categories/%E7%BC%96%E7%A8%8B%E5%8E%9F%E7%90%86/" class="post-category" title="Category - 编程原理"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 编程原理</a> and <a href="/collections/go%E8%BF%9B%E9%98%B6/" class="post-collection" title="Collection - Go进阶"><i class="fa-solid fa-layer-group fa-fw" aria-hidden="true"></i> Go进阶</a>&ensp;<a href="/collections/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/" class="post-collection" title="Collection - 网络编程"><i class="fa-solid fa-layer-group fa-fw" aria-hidden="true"></i> 网络编程</a>&ensp;<a href="/collections/%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/" class="post-collection" title="Collection - 系统编程"><i class="fa-solid fa-layer-group fa-fw" aria-hidden="true"></i> 系统编程</a>&ensp;<a href="/collections/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/" class="post-collection" title="Collection - 性能优化"><i class="fa-solid fa-layer-group fa-fw" aria-hidden="true"></i> 性能优化</a></span></div><div class="post-meta-line"><span title="published on 2024-05-08 11:43:38"><i class="fa-solid fa-calendar-days fa-fw me-1" aria-hidden="true"></i><time datetime="2024-05-08">2024-05-08</time></span>&nbsp;<span title="4029 words"><i class="fa-solid fa-pencil-alt fa-fw me-1" aria-hidden="true"></i>About 4100 words</span>&nbsp;<span><i class="fa-regular fa-clock fa-fw me-1" aria-hidden="true"></i>9 minutes</span>&nbsp;<span id="busuanzi_container_page_pv" class="busuanzi_visitors comment-visitors" data-flag-title="揭秘 Go 网络轮询器：从 Epoll 到 Netpoll 的架构实现"><i class="fa-regular fa-eye fa-fw me-1" aria-hidden="true"></i><span id="busuanzi_value_page_pv">-</span>&nbsp;views
           </span>&nbsp;</div>
     </div><div class="details toc" id="toc-static" data-kept="false">
         <div class="details-summary toc-title">
@@ -1180,9 +1170,7 @@
     <h2 id="see-also">Related Content</h2>
     <ul><li>
           <a href="/posts/golang-profile/" title="Go 性能优化实战：从 Benchmark 到 Profile 的完整指南">Go 性能优化实战：从 Benchmark 到 Profile 的完整指南</a></li><li>
-          <a href="/posts/golang-linter/" title="Go 代码质量守护者：12 个必备 Linter 工具完全指南">Go 代码质量守护者：12 个必备 Linter 工具完全指南</a></li><li>
-          <a href="/posts/arch-linux/" title="从零开始的 Arch Linux 完全上手指南：打造你的理想工作环境">从零开始的 Arch Linux 完全上手指南：打造你的理想工作环境</a></li><li>
-          <a href="/posts/build-blog/" title="30分钟搭建个人技术博客：Hugo &#43; GitHub Pages 零基础建站指南">30分钟搭建个人技术博客：Hugo &#43; GitHub Pages 零基础建站指南</a></li></ul><div class="post-footer" id="post-footer">
+          <a href="/posts/golang-linter/" title="Go 代码质量守护者：12 个必备 Linter 工具完全指南">Go 代码质量守护者：12 个必备 Linter 工具完全指南</a></li></ul><div class="post-footer" id="post-footer">
   <div class="post-info">
     <div class="post-info-line">
       <div class="post-info-mod">
@@ -1190,8 +1178,8 @@
       </div></div><div class="post-info-line">
         <div class="post-info-md"><span><a href="/posts/golang-netpoll/index.md" title="Read Markdown" class="link-to-markdown">Read Markdown</a></span><span><a href="https://github.com/kydance/kydance.github.io/blob/master/content/posts/golang-netpoll/golang-netpoll.md?plain=1" title="View source"target="_blank" rel="external nofollow noopener noreferrer" class="link-to-source">View source</a></span><span><a href="https://github.com/kydance/kydance.github.io/edit/master/content/posts/golang-netpoll/golang-netpoll.md" title="Edit this page"target="_blank" rel="external nofollow noopener noreferrer" class="link-to-edit">Edit this page</a></span><span><a href="https://github.com/kydance/kydance.github.io/issues/new?title=[BUG]%20%E6%8F%AD%E7%A7%98&#43;Go&#43;%E7%BD%91%E7%BB%9C%E8%BD%AE%E8%AF%A2%E5%99%A8%EF%BC%9A%E4%BB%8E&#43;epoll&#43;%E5%88%B0&#43;netpoll&#43;%E7%9A%84%E6%9E%B6%E6%9E%84%E5%AE%9E%E7%8E%B0&amp;body=%7cField%7cValue%7c%0A%7c-%7c-%7c%0A%7cTitle%7c%E6%8F%AD%E7%A7%98&#43;Go&#43;%E7%BD%91%E7%BB%9C%E8%BD%AE%E8%AF%A2%E5%99%A8%EF%BC%9A%E4%BB%8E&#43;epoll&#43;%E5%88%B0&#43;netpoll&#43;%E7%9A%84%E6%9E%B6%E6%9E%84%E5%AE%9E%E7%8E%B0%7c%0A%7cURL%7chttp://kyden.us.kg/posts/golang-netpoll/%7c%0A%7cFilename%7chttps://github.com/kydance/kydance.github.io/blob/master/content/posts/golang-netpoll/golang-netpoll.md?plain=1%7c" title="Report issue"target="_blank" rel="external nofollow noopener noreferrer" class="link-to-report">Report issue</a></span></div>
         <div class="post-info-share">
-          <span><a href="javascript:void(0);" title="Share on X" data-sharer="twitter" data-url="http://kyden.us.kg/posts/golang-netpoll/" data-title="揭秘 Go 网络轮询器：从 Epoll 到 Netpoll 的架构实现" data-via="kytedance" data-hashtags="Golang,Netpoll,Epoll,Network Program,Linux"><i class="fa-brands fa-x-twitter fa-fw" aria-hidden="true"></i></a>
-  <a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="http://kyden.us.kg/posts/golang-netpoll/" data-hashtag="Golang"><i class="fa-brands fa-facebook-square fa-fw" aria-hidden="true"></i></a>
+          <span><a href="javascript:void(0);" title="Share on X" data-sharer="twitter" data-url="http://kyden.us.kg/posts/golang-netpoll/" data-title="揭秘 Go 网络轮询器：从 Epoll 到 Netpoll 的架构实现" data-via="kytedance" data-hashtags="Go,Golang,netpoll,网络编程,IO多路复用,网络模型,高性能,系统编程,网络框架,性能优化"><i class="fa-brands fa-x-twitter fa-fw" aria-hidden="true"></i></a>
+  <a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="http://kyden.us.kg/posts/golang-netpoll/" data-hashtag="Go"><i class="fa-brands fa-facebook-square fa-fw" aria-hidden="true"></i></a>
   <a href="javascript:void(0);" title="Share on Linkedin" data-sharer="linkedin" data-url="http://kyden.us.kg/posts/golang-netpoll/"><i class="fa-brands fa-linkedin fa-fw" aria-hidden="true"></i></a>
   <a href="javascript:void(0);" title="Share on WhatsApp" data-sharer="whatsapp" data-url="http://kyden.us.kg/posts/golang-netpoll/" data-title="揭秘 Go 网络轮询器：从 Epoll 到 Netpoll 的架构实现" data-web><i class="fa-brands fa-whatsapp fa-fw" aria-hidden="true"></i></a>
   <a href="javascript:void(0);" title="Share on Reddit" data-sharer="reddit" data-url="http://kyden.us.kg/posts/golang-netpoll/"><i class="fa-brands fa-reddit fa-fw" aria-hidden="true"></i></a>
@@ -1207,7 +1195,7 @@
       </div></div>
 
   <div class="post-info-more">
-    <section class="post-tags"><i class="fa-solid fa-tags fa-fw me-1" aria-hidden="true"></i><a href="/tags/golang/" class="post-tag" title="Tags - Golang">Golang</a><a href="/tags/netpoll/" class="post-tag" title="Tags - Netpoll">Netpoll</a><a href="/tags/epoll/" class="post-tag" title="Tags - Epoll">Epoll</a><a href="/tags/network-program/" class="post-tag" title="Tags - Network Program">Network Program</a><a href="/tags/linux/" class="post-tag" title="Tags - Linux">Linux</a></section>
+    <section class="post-tags"><i class="fa-solid fa-tags fa-fw me-1" aria-hidden="true"></i><a href="/tags/go/" class="post-tag" title="Tags - Go">Go</a><a href="/tags/golang/" class="post-tag" title="Tags - Golang">Golang</a><a href="/tags/netpoll/" class="post-tag" title="Tags - Netpoll">Netpoll</a><a href="/tags/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/" class="post-tag" title="Tags - 网络编程">网络编程</a><a href="/tags/io%E5%A4%9A%E8%B7%AF%E5%A4%8D%E7%94%A8/" class="post-tag" title="Tags - IO多路复用">IO多路复用</a><a href="/tags/%E7%BD%91%E7%BB%9C%E6%A8%A1%E5%9E%8B/" class="post-tag" title="Tags - 网络模型">网络模型</a><a href="/tags/%E9%AB%98%E6%80%A7%E8%83%BD/" class="post-tag" title="Tags - 高性能">高性能</a><a href="/tags/%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/" class="post-tag" title="Tags - 系统编程">系统编程</a><a href="/tags/%E7%BD%91%E7%BB%9C%E6%A1%86%E6%9E%B6/" class="post-tag" title="Tags - 网络框架">网络框架</a><a href="/tags/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/" class="post-tag" title="Tags - 性能优化">性能优化</a></section>
     <section>
       <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
     </section>

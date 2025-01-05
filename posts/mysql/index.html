@@ -6,14 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
     <meta name="robots" content="noodp" />
     <title>MySQL 核心操作精讲：从基础语法到实战应用  Kyden&#39;s 博客</title><meta name="author" content="kyden">
-<meta name="description" content="系统讲解 MySQL 数据库的核心操作和最佳实践，从基础的 CRUD 操作到高级的表结构管理，从数据类型选择到性能优化建议。帮助开发者构建可靠、高效的数据库应用，提供全面的 MySQL 开发指南。"><meta name="keywords" content='Golang, MySQL, 数据库, database'>
+<meta name="description" content="系统讲解 MySQL 数据库的核心操作和最佳实践，从基础的 CRUD 操作到高级的表结构管理，从数据类型选择到性能优化建议。帮助开发者构建可靠、高效的数据库应用，提供全面的 MySQL 开发指南。"><meta name="keywords" content='MySQL, 数据库, SQL, 关系型数据库, 数据库管理, 数据库优化, 数据库设计, SQL语法, 数据库操作, 数据库教程, Database, RDBMS, 数据存储, 数据查询'>
   <meta itemprop="name" content="MySQL 核心操作精讲：从基础语法到实战应用">
   <meta itemprop="description" content="系统讲解 MySQL 数据库的核心操作和最佳实践，从基础的 CRUD 操作到高级的表结构管理，从数据类型选择到性能优化建议。帮助开发者构建可靠、高效的数据库应用，提供全面的 MySQL 开发指南。">
   <meta itemprop="datePublished" content="2024-10-31T23:08:43+08:00">
   <meta itemprop="dateModified" content="2024-10-31T23:08:43+08:00">
   <meta itemprop="wordCount" content="1146">
   <meta itemprop="image" content="http://kyden.us.kg/favicon.png">
-  <meta itemprop="keywords" content="Golang,MySQL,数据库,database"><meta property="og:url" content="http://kyden.us.kg/posts/mysql/">
+  <meta itemprop="keywords" content="MySQL,数据库,SQL,关系型数据库,数据库管理,数据库优化,数据库设计,SQL语法,数据库操作,数据库教程,Database,RDBMS,数据存储,数据查询"><meta property="og:url" content="http://kyden.us.kg/posts/mysql/">
   <meta property="og:site_name" content="Kyden&#39;s 博客">
   <meta property="og:title" content="MySQL 核心操作精讲：从基础语法到实战应用">
   <meta property="og:description" content="系统讲解 MySQL 数据库的核心操作和最佳实践，从基础的 CRUD 操作到高级的表结构管理，从数据类型选择到性能优化建议。帮助开发者构建可靠、高效的数据库应用，提供全面的 MySQL 开发指南。">
@@ -22,10 +22,12 @@
     <meta property="article:section" content="posts">
     <meta property="article:published_time" content="2024-10-31T23:08:43+08:00">
     <meta property="article:modified_time" content="2024-10-31T23:08:43+08:00">
-    <meta property="article:tag" content="Golang">
     <meta property="article:tag" content="MySQL">
     <meta property="article:tag" content="数据库">
+    <meta property="article:tag" content="SQL">
     <meta property="article:tag" content="Database">
+    <meta property="article:tag" content="数据库优化">
+    <meta property="article:tag" content="数据库管理">
     <meta property="og:image" content="http://kyden.us.kg/favicon.png">
 
   <meta name="twitter:card" content="summary_large_image">
@@ -47,7 +49,7 @@
     "mainEntityOfPage": {
       "@type": "WebPage",
       "@id": "http:\/\/kyden.us.kg\/posts\/mysql\/"
-    },"image": ["http:\/\/kyden.us.kg\/favicon-seo.jpg"],"genre": "posts","keywords": "Golang, MySQL, 数据库, database","wordcount":  1146 ,
+    },"image": ["http:\/\/kyden.us.kg\/favicon-seo.jpg"],"genre": "posts","keywords": "MySQL, 数据库, SQL, Database, 数据库优化, 数据库管理, 后端开发, 服务器, 企业级应用, 性能优化","wordcount":  1146 ,
     "url": "http:\/\/kyden.us.kg\/posts\/mysql\/","datePublished": "2024-10-31T23:08:43+08:00","dateModified": "2024-10-31T23:08:43+08:00","publisher": {
       "@type": "Organization",
       "name": "kyden","logo": "https:\/\/kyden.us.kg"},"author": {
@@ -123,29 +125,7 @@
   </nav><main class="container container-reverse"><aside class="aside-collection animate__animated animate__fadeIn animate__faster" aria-label="Collections"><div class="details collection-details open">
       <div class="details-summary collection-summary">
         <i class="fa-solid fa-layer-group fa-fw" aria-hidden="true"></i>
-        <span class="collection-name" data-collections="Collections">Golang</span>
-        <span class="collection-count">17</span><i class="details-icon fa-solid fa-angle-right fa-fw" aria-hidden="true"></i></div>
-      <div class="details-content collection-content">
-        <nav>
-          <ul class="collection-list"><li class="collection-item"><a href="/posts/golang-concurrecy-programming/" title="Go 并发编程实战指南：从理论到性能优化">Go 并发编程实战指南：从理论到性能优化</a></li><li class="collection-item"><a href="/posts/golang-generic/" title="Golang Generic">Golang Generic</a></li><li class="collection-item"><a href="/posts/regex-in-one/" title="正则表达式速成宝典：从零基础到实战高手">正则表达式速成宝典：从零基础到实战高手</a></li><li class="collection-item"><span class="active" title="MySQL 核心操作精讲：从基础语法到实战应用">MySQL 核心操作精讲：从基础语法到实战应用</span></li><li class="collection-item"><a href="/posts/golang-zap/" title="Go 日志最佳实践：Zap 从入门到实战">Go 日志最佳实践：Zap 从入门到实战</a></li><li class="collection-item"><a href="/posts/go-viper/" title="Go 配置管理最佳实践：Viper 从入门到精通">Go 配置管理最佳实践：Viper 从入门到精通</a></li><li class="collection-item"><a href="/posts/go-cobra/" title="Cobra 实战指南：10分钟搭建现代化命令行应用">Cobra 实战指南：10分钟搭建现代化命令行应用</a></li><li class="collection-item"><a href="/posts/make-cmake/" title="Make 与 CMake 实战指南：现代 C/C&#43;&#43; 构建系统精解">Make 与 CMake 实战指南：现代 C/C&#43;&#43; 构建系统精解</a></li><li class="collection-item"><a href="/posts/effective-go/" title="Go 语言编程之道：编写优雅高效的 Golang 代码">Go 语言编程之道：编写优雅高效的 Golang 代码</a></li><li class="collection-item"><a href="/posts/design-pattern/" title="设计模式精讲：从理论到实战的最佳实践指南">设计模式精讲：从理论到实战的最佳实践指南</a></li><li class="collection-item"><a href="/posts/golang-project-layout/" title="Go 工程目录最佳实践：打造清晰、可维护的项目结构">Go 工程目录最佳实践：打造清晰、可维护的项目结构</a></li><li class="collection-item"><a href="/posts/golang-context/" title="深入理解 Go Context：优雅的并发控制与请求管理">深入理解 Go Context：优雅的并发控制与请求管理</a></li><li class="collection-item"><a href="/posts/golang-escape-analysis/" title="Go 内存优化实战：逃逸分析完全指南">Go 内存优化实战：逃逸分析完全指南</a></li><li class="collection-item"><a href="/posts/golang-gmp/" title="图解 Go 调度器：GMP 模型深度剖析">图解 Go 调度器：GMP 模型深度剖析</a></li><li class="collection-item"><a href="/posts/golang-netpoll/" title="揭秘 Go 网络轮询器：从 Epoll 到 Netpoll 的架构实现">揭秘 Go 网络轮询器：从 Epoll 到 Netpoll 的架构实现</a></li><li class="collection-item"><a href="/posts/golang-profile/" title="Go 性能优化实战：从 Benchmark 到 Profile 的完整指南">Go 性能优化实战：从 Benchmark 到 Profile 的完整指南</a></li><li class="collection-item"><a href="/posts/golang-linter/" title="Go 代码质量守护者：12 个必备 Linter 工具完全指南">Go 代码质量守护者：12 个必备 Linter 工具完全指南</a></li></ul>
-          <div class="collection-nav-simple"><a href="/posts/regex-in-one/" class="collection-nav-item" rel="prev" title="正则表达式速成宝典：从零基础到实战高手"><i class="fa-solid fa-angle-left fa-fw" aria-hidden="true"></i></a><span class="text-secondary">4/17</span><a href="/posts/golang-zap/" class="collection-nav-item" rel="next" title="Go 日志最佳实践：Zap 从入门到实战"><i class="fa-solid fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
-        </nav>
-      </div>
-    </div><div class="details collection-details">
-      <div class="details-summary collection-summary">
-        <i class="fa-solid fa-layer-group fa-fw" aria-hidden="true"></i>
-        <span class="collection-name" data-collections="Collections">MySQL</span>
-        <span class="collection-count">1</span><i class="details-icon fa-solid fa-angle-right fa-fw" aria-hidden="true"></i></div>
-      <div class="details-content collection-content">
-        <nav>
-          <ul class="collection-list"><li class="collection-item"><span class="active" title="MySQL 核心操作精讲：从基础语法到实战应用">MySQL 核心操作精讲：从基础语法到实战应用</span></li></ul>
-          <div class="collection-nav-simple"><i class="fa-solid fa-angle-left fa-fw collection-nav-item text-secondary" aria-hidden="true"></i><span class="text-secondary">1/1</span><i class="fa-solid fa-angle-right fa-fw collection-nav-item text-secondary" aria-hidden="true"></i></div>
-        </nav>
-      </div>
-    </div><div class="details collection-details">
-      <div class="details-summary collection-summary">
-        <i class="fa-solid fa-layer-group fa-fw" aria-hidden="true"></i>
-        <span class="collection-name" data-collections="Collections">数据库</span>
+        <span class="collection-name" data-collections="Collections">数据库技术</span>
         <span class="collection-count">2</span><i class="details-icon fa-solid fa-angle-right fa-fw" aria-hidden="true"></i></div>
       <div class="details-content collection-content">
         <nav>
@@ -156,7 +136,18 @@
     </div><div class="details collection-details">
       <div class="details-summary collection-summary">
         <i class="fa-solid fa-layer-group fa-fw" aria-hidden="true"></i>
-        <span class="collection-name" data-collections="Collections">Database</span>
+        <span class="collection-name" data-collections="Collections">后端开发</span>
+        <span class="collection-count">2</span><i class="details-icon fa-solid fa-angle-right fa-fw" aria-hidden="true"></i></div>
+      <div class="details-content collection-content">
+        <nav>
+          <ul class="collection-list"><li class="collection-item"><span class="active" title="MySQL 核心操作精讲：从基础语法到实战应用">MySQL 核心操作精讲：从基础语法到实战应用</span></li><li class="collection-item"><a href="/posts/redis/" title="Redis 核心精讲：从入门到性能优化">Redis 核心精讲：从入门到性能优化</a></li></ul>
+          <div class="collection-nav-simple"><i class="fa-solid fa-angle-left fa-fw collection-nav-item text-secondary" aria-hidden="true"></i><span class="text-secondary">1/2</span><a href="/posts/redis/" class="collection-nav-item" rel="next" title="Redis 核心精讲：从入门到性能优化"><i class="fa-solid fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+        </nav>
+      </div>
+    </div><div class="details collection-details">
+      <div class="details-summary collection-summary">
+        <i class="fa-solid fa-layer-group fa-fw" aria-hidden="true"></i>
+        <span class="collection-name" data-collections="Collections">系统架构</span>
         <span class="collection-count">1</span><i class="details-icon fa-solid fa-angle-right fa-fw" aria-hidden="true"></i></div>
       <div class="details-content collection-content">
         <nav>
@@ -164,12 +155,23 @@
           <div class="collection-nav-simple"><i class="fa-solid fa-angle-left fa-fw collection-nav-item text-secondary" aria-hidden="true"></i><span class="text-secondary">1/1</span><i class="fa-solid fa-angle-right fa-fw collection-nav-item text-secondary" aria-hidden="true"></i></div>
         </nav>
       </div>
+    </div><div class="details collection-details">
+      <div class="details-summary collection-summary">
+        <i class="fa-solid fa-layer-group fa-fw" aria-hidden="true"></i>
+        <span class="collection-name" data-collections="Collections">性能优化</span>
+        <span class="collection-count">7</span><i class="details-icon fa-solid fa-angle-right fa-fw" aria-hidden="true"></i></div>
+      <div class="details-content collection-content">
+        <nav>
+          <ul class="collection-list"><li class="collection-item"><a href="/posts/golang-concurrecy-programming/" title="Go 并发编程实战指南：从理论到性能优化">Go 并发编程实战指南：从理论到性能优化</a></li><li class="collection-item"><span class="active" title="MySQL 核心操作精讲：从基础语法到实战应用">MySQL 核心操作精讲：从基础语法到实战应用</span></li><li class="collection-item"><a href="/posts/golang-zap/" title="Go 日志最佳实践：Zap 从入门到实战">Go 日志最佳实践：Zap 从入门到实战</a></li><li class="collection-item"><a href="/posts/golang-escape-analysis/" title="Go 内存优化实战：逃逸分析完全指南">Go 内存优化实战：逃逸分析完全指南</a></li><li class="collection-item"><a href="/posts/golang-gmp/" title="图解 Go 调度器：GMP 模型深度剖析">图解 Go 调度器：GMP 模型深度剖析</a></li><li class="collection-item"><a href="/posts/golang-netpoll/" title="揭秘 Go 网络轮询器：从 Epoll 到 Netpoll 的架构实现">揭秘 Go 网络轮询器：从 Epoll 到 Netpoll 的架构实现</a></li><li class="collection-item"><a href="/posts/golang-profile/" title="Go 性能优化实战：从 Benchmark 到 Profile 的完整指南">Go 性能优化实战：从 Benchmark 到 Profile 的完整指南</a></li></ul>
+          <div class="collection-nav-simple"><a href="/posts/golang-concurrecy-programming/" class="collection-nav-item" rel="prev" title="Go 并发编程实战指南：从理论到性能优化"><i class="fa-solid fa-angle-left fa-fw" aria-hidden="true"></i></a><span class="text-secondary">2/7</span><a href="/posts/golang-zap/" class="collection-nav-item" rel="next" title="Go 日志最佳实践：Zap 从入门到实战"><i class="fa-solid fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+        </nav>
+      </div>
     </div></aside>
 
   <article class="page single">
     <div class="header"><h1 class="single-title animate__animated animate__flipInX"><span title="Repost" class="icon-repost"><i class="fa-solid fa-share fa-fw" aria-hidden="true"></i></span><span>MySQL 核心操作精讲：从基础语法到实战应用</span>
       </h1><p class="single-subtitle animate__animated animate__fadeIn">掌握数据库增删改查、表结构管理与数据类型：全方位 MySQL 实践指南</p></div><div class="post-meta">
-      <div class="post-meta-line"><span class="post-author"><a href="https:github.com/kydance" title="Author"target="_blank" rel="external nofollow noopener noreferrer author" class="author"><img loading="lazy" src="/favicon.ico" alt="kyden" data-title="kyden" width="20" height="20" class="avatar" style="background: url(/images/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}"/>&nbsp;kyden</a></span><span class="post-included-in">&nbsp;included in <a href="/categories/golang/" class="post-category" title="Category - Golang"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> Golang</a>&ensp;<a href="/categories/mysql/" class="post-category" title="Category - MySQL"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> MySQL</a>&ensp;<a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" class="post-category" title="Category - 数据库"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 数据库</a>&ensp;<a href="/categories/database/" class="post-category" title="Category - Database"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> Database</a> and <a href="/collections/golang/" class="post-collection" title="Collection - Golang"><i class="fa-solid fa-layer-group fa-fw" aria-hidden="true"></i> Golang</a>&ensp;<a href="/collections/mysql/" class="post-collection" title="Collection - MySQL"><i class="fa-solid fa-layer-group fa-fw" aria-hidden="true"></i> MySQL</a>&ensp;<a href="/collections/%E6%95%B0%E6%8D%AE%E5%BA%93/" class="post-collection" title="Collection - 数据库"><i class="fa-solid fa-layer-group fa-fw" aria-hidden="true"></i> 数据库</a>&ensp;<a href="/collections/database/" class="post-collection" title="Collection - Database"><i class="fa-solid fa-layer-group fa-fw" aria-hidden="true"></i> Database</a></span></div><div class="post-meta-line"><span title="published on 2024-10-31 23:08:43"><i class="fa-solid fa-calendar-days fa-fw me-1" aria-hidden="true"></i><time datetime="2024-10-31">2024-10-31</time></span>&nbsp;<span title="1146 words"><i class="fa-solid fa-pencil-alt fa-fw me-1" aria-hidden="true"></i>About 1200 words</span>&nbsp;<span><i class="fa-regular fa-clock fa-fw me-1" aria-hidden="true"></i>3 minutes</span>&nbsp;<span id="busuanzi_container_page_pv" class="busuanzi_visitors comment-visitors" data-flag-title="MySQL 核心操作精讲：从基础语法到实战应用"><i class="fa-regular fa-eye fa-fw me-1" aria-hidden="true"></i><span id="busuanzi_value_page_pv">-</span>&nbsp;views
+      <div class="post-meta-line"><span class="post-author"><a href="https:github.com/kydance" title="Author"target="_blank" rel="external nofollow noopener noreferrer author" class="author"><img loading="lazy" src="/favicon.ico" alt="kyden" data-title="kyden" width="20" height="20" class="avatar" style="background: url(/images/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}"/>&nbsp;kyden</a></span><span class="post-included-in">&nbsp;included in <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" class="post-category" title="Category - 数据库"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 数据库</a>&ensp;<a href="/categories/%E5%90%8E%E7%AB%AF%E6%8A%80%E6%9C%AF/" class="post-category" title="Category - 后端技术"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 后端技术</a>&ensp;<a href="/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%8A%80%E6%9C%AF/" class="post-category" title="Category - 服务器技术"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 服务器技术</a>&ensp;<a href="/categories/%E7%BC%96%E7%A8%8B%E6%95%99%E7%A8%8B/" class="post-category" title="Category - 编程教程"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 编程教程</a>&ensp;<a href="/categories/%E6%8A%80%E6%9C%AF%E6%9E%B6%E6%9E%84/" class="post-category" title="Category - 技术架构"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 技术架构</a> and <a href="/collections/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%8A%80%E6%9C%AF/" class="post-collection" title="Collection - 数据库技术"><i class="fa-solid fa-layer-group fa-fw" aria-hidden="true"></i> 数据库技术</a>&ensp;<a href="/collections/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/" class="post-collection" title="Collection - 后端开发"><i class="fa-solid fa-layer-group fa-fw" aria-hidden="true"></i> 后端开发</a>&ensp;<a href="/collections/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/" class="post-collection" title="Collection - 系统架构"><i class="fa-solid fa-layer-group fa-fw" aria-hidden="true"></i> 系统架构</a>&ensp;<a href="/collections/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/" class="post-collection" title="Collection - 性能优化"><i class="fa-solid fa-layer-group fa-fw" aria-hidden="true"></i> 性能优化</a></span></div><div class="post-meta-line"><span title="published on 2024-10-31 23:08:43"><i class="fa-solid fa-calendar-days fa-fw me-1" aria-hidden="true"></i><time datetime="2024-10-31">2024-10-31</time></span>&nbsp;<span title="1146 words"><i class="fa-solid fa-pencil-alt fa-fw me-1" aria-hidden="true"></i>About 1200 words</span>&nbsp;<span><i class="fa-regular fa-clock fa-fw me-1" aria-hidden="true"></i>3 minutes</span>&nbsp;<span id="busuanzi_container_page_pv" class="busuanzi_visitors comment-visitors" data-flag-title="MySQL 核心操作精讲：从基础语法到实战应用"><i class="fa-regular fa-eye fa-fw me-1" aria-hidden="true"></i><span id="busuanzi_value_page_pv">-</span>&nbsp;views
           </span>&nbsp;</div>
     </div><div class="details toc" id="toc-static" data-kept="false">
         <div class="details-summary toc-title">
@@ -608,9 +610,9 @@
     <ul><li>
           <a href="/posts/redis/" title="Redis 核心精讲：从入门到性能优化">Redis 核心精讲：从入门到性能优化</a></li><li>
           <a href="/posts/golang-zap/" title="Go 日志最佳实践：Zap 从入门到实战">Go 日志最佳实践：Zap 从入门到实战</a></li><li>
-          <a href="/posts/go-viper/" title="Go 配置管理最佳实践：Viper 从入门到精通">Go 配置管理最佳实践：Viper 从入门到精通</a></li><li>
-          <a href="/posts/go-cobra/" title="Cobra 实战指南：10分钟搭建现代化命令行应用">Cobra 实战指南：10分钟搭建现代化命令行应用</a></li><li>
-          <a href="/posts/make-cmake/" title="Make 与 CMake 实战指南：现代 C/C&#43;&#43; 构建系统精解">Make 与 CMake 实战指南：现代 C/C&#43;&#43; 构建系统精解</a></li></ul><div class="post-footer" id="post-footer">
+          <a href="/posts/effective-go/" title="Go 语言编程之道：编写优雅高效的 Golang 代码">Go 语言编程之道：编写优雅高效的 Golang 代码</a></li><li>
+          <a href="/posts/golang-context/" title="深入理解 Go Context：优雅的并发控制与请求管理">深入理解 Go Context：优雅的并发控制与请求管理</a></li><li>
+          <a href="/posts/golang-escape-analysis/" title="Go 内存优化实战：逃逸分析完全指南">Go 内存优化实战：逃逸分析完全指南</a></li></ul><div class="post-footer" id="post-footer">
   <div class="post-info">
     <div class="post-info-line">
       <div class="post-info-mod">
@@ -618,8 +620,8 @@
       </div></div><div class="post-info-line">
         <div class="post-info-md"><span><a href="/posts/mysql/index.md" title="Read Markdown" class="link-to-markdown">Read Markdown</a></span><span><a href="https://github.com/kydance/kydance.github.io/blob/master/content/posts/mysql/mysql.md?plain=1" title="View source"target="_blank" rel="external nofollow noopener noreferrer" class="link-to-source">View source</a></span><span><a href="https://github.com/kydance/kydance.github.io/edit/master/content/posts/mysql/mysql.md" title="Edit this page"target="_blank" rel="external nofollow noopener noreferrer" class="link-to-edit">Edit this page</a></span><span><a href="https://github.com/kydance/kydance.github.io/issues/new?title=[BUG]%20MySQL&#43;%E6%A0%B8%E5%BF%83%E6%93%8D%E4%BD%9C%E7%B2%BE%E8%AE%B2%EF%BC%9A%E4%BB%8E%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E5%88%B0%E5%AE%9E%E6%88%98%E5%BA%94%E7%94%A8&amp;body=%7cField%7cValue%7c%0A%7c-%7c-%7c%0A%7cTitle%7cMySQL&#43;%E6%A0%B8%E5%BF%83%E6%93%8D%E4%BD%9C%E7%B2%BE%E8%AE%B2%EF%BC%9A%E4%BB%8E%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E5%88%B0%E5%AE%9E%E6%88%98%E5%BA%94%E7%94%A8%7c%0A%7cURL%7chttp://kyden.us.kg/posts/mysql/%7c%0A%7cFilename%7chttps://github.com/kydance/kydance.github.io/blob/master/content/posts/mysql/mysql.md?plain=1%7c" title="Report issue"target="_blank" rel="external nofollow noopener noreferrer" class="link-to-report">Report issue</a></span></div>
         <div class="post-info-share">
-          <span><a href="javascript:void(0);" title="Share on X" data-sharer="twitter" data-url="http://kyden.us.kg/posts/mysql/" data-title="MySQL 核心操作精讲：从基础语法到实战应用" data-via="kytedance" data-hashtags="Golang,MySQL,数据库,database"><i class="fa-brands fa-x-twitter fa-fw" aria-hidden="true"></i></a>
-  <a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="http://kyden.us.kg/posts/mysql/" data-hashtag="Golang"><i class="fa-brands fa-facebook-square fa-fw" aria-hidden="true"></i></a>
+          <span><a href="javascript:void(0);" title="Share on X" data-sharer="twitter" data-url="http://kyden.us.kg/posts/mysql/" data-title="MySQL 核心操作精讲：从基础语法到实战应用" data-via="kytedance" data-hashtags="MySQL,数据库,SQL,Database,数据库优化,数据库管理,后端开发,服务器,企业级应用,性能优化"><i class="fa-brands fa-x-twitter fa-fw" aria-hidden="true"></i></a>
+  <a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="http://kyden.us.kg/posts/mysql/" data-hashtag="MySQL"><i class="fa-brands fa-facebook-square fa-fw" aria-hidden="true"></i></a>
   <a href="javascript:void(0);" title="Share on Linkedin" data-sharer="linkedin" data-url="http://kyden.us.kg/posts/mysql/"><i class="fa-brands fa-linkedin fa-fw" aria-hidden="true"></i></a>
   <a href="javascript:void(0);" title="Share on WhatsApp" data-sharer="whatsapp" data-url="http://kyden.us.kg/posts/mysql/" data-title="MySQL 核心操作精讲：从基础语法到实战应用" data-web><i class="fa-brands fa-whatsapp fa-fw" aria-hidden="true"></i></a>
   <a href="javascript:void(0);" title="Share on Reddit" data-sharer="reddit" data-url="http://kyden.us.kg/posts/mysql/"><i class="fa-brands fa-reddit fa-fw" aria-hidden="true"></i></a>
@@ -635,7 +637,7 @@
       </div></div>
 
   <div class="post-info-more">
-    <section class="post-tags"><i class="fa-solid fa-tags fa-fw me-1" aria-hidden="true"></i><a href="/tags/golang/" class="post-tag" title="Tags - Golang">Golang</a><a href="/tags/mysql/" class="post-tag" title="Tags - MySQL">MySQL</a><a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" class="post-tag" title="Tags - 数据库">数据库</a><a href="/tags/database/" class="post-tag" title="Tags - Database">Database</a></section>
+    <section class="post-tags"><i class="fa-solid fa-tags fa-fw me-1" aria-hidden="true"></i><a href="/tags/mysql/" class="post-tag" title="Tags - MySQL">MySQL</a><a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" class="post-tag" title="Tags - 数据库">数据库</a><a href="/tags/sql/" class="post-tag" title="Tags - SQL">SQL</a><a href="/tags/database/" class="post-tag" title="Tags - Database">Database</a><a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93%E4%BC%98%E5%8C%96/" class="post-tag" title="Tags - 数据库优化">数据库优化</a><a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AE%A1%E7%90%86/" class="post-tag" title="Tags - 数据库管理">数据库管理</a><a href="/tags/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/" class="post-tag" title="Tags - 后端开发">后端开发</a><a href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/" class="post-tag" title="Tags - 服务器">服务器</a><a href="/tags/%E4%BC%81%E4%B8%9A%E7%BA%A7%E5%BA%94%E7%94%A8/" class="post-tag" title="Tags - 企业级应用">企业级应用</a><a href="/tags/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/" class="post-tag" title="Tags - 性能优化">性能优化</a></section>
     <section>
       <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
     </section>

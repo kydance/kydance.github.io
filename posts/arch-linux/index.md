@@ -442,7 +442,7 @@ Host github.com
 
 {{&lt; admonition type=note title=&#34;注意更换 `Host`&#34; open=true &gt;}}
 当你克隆一个仓库或为本地仓库设置 remote origin 时，确保与你使用的主机名记号一致
-(`@` 和 `:` 之间的字符串应该与我们在 SSH 配置文件中给出的内容相匹配):
+(`@` 和 `:` 之间的字符串应该与我们在 SSH 配置文件中给出的内容相匹配）:
 
 ```bash
 # git clone git@github.com:kydance/dotfiles.git

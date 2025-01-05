@@ -52,7 +52,7 @@
 
 ```go
 /*
-Copyright © 2024 Kyden &lt;kytedance@gmail.com&gt;
+Copyright 2024 Kyden 
 This file is part of CLI application foo.
 */
 package cmd

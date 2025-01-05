@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>工具开发 - Tag  Kyden&#39;s 博客</title>
+    <link>http://kyden.us.kg/tags/%E5%B7%A5%E5%85%B7%E5%BC%80%E5%8F%91/</link>
+    <description>Kyden&#39;s Blog Site</description>
+    <generator>Hugo 0.140.2 &amp; FixIt v0.3.16</generator>
+    <language>en</language>
+    <managingEditor>kytedance@gmail.com (kyden)</managingEditor>
+    <webMaster>kytedance@gmail.com (kyden)</webMaster>
+    <lastBuildDate>Sat, 21 Sep 2024 09:55:48 +0800</lastBuildDate>
+    <atom:link href="http://kyden.us.kg/tags/%E5%B7%A5%E5%85%B7%E5%BC%80%E5%8F%91/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Cobra 实战指南：10分钟搭建现代化命令行应用</title>
+      <link>http://kyden.us.kg/posts/go-cobra/</link>
+      <pubDate>Sat, 21 Sep 2024 09:55:48 +0800</pubDate><author>kytedance@gmail.com (kyden)</author>
+      <guid>http://kyden.us.kg/posts/go-cobra/</guid>
+      <category domain="http://kyden.us.kg/categories/go%E8%AF%AD%E8%A8%80/">Go语言</category>
+      <category domain="http://kyden.us.kg/categories/%E5%B7%A5%E5%85%B7%E5%BC%80%E5%8F%91/">工具开发</category>
+      <category domain="http://kyden.us.kg/categories/cli%E5%B7%A5%E5%85%B7/">CLI工具</category>
+      <category domain="http://kyden.us.kg/categories/%E5%BA%94%E7%94%A8%E6%A1%86%E6%9E%B6/">应用框架</category>
+      <category domain="http://kyden.us.kg/categories/%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/">最佳实践</category>
+      <description>本文全面介绍了 Cobra 这一强大的命令行框架，涵盖了从项目搭建、命令设计到特性使用的完整开发流程。通过实际示例讲解如何利用 Cobra 快速构建出类似 Kubernetes、Docker 这样的专业级 CLI 工具，助你掌握现代化命令行应用开发的精髓。</description>
+    </item>
+  </channel>
+</rss>

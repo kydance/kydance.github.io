@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>SEO优化 - Tag  Kyden&#39;s 博客</title>
+    <link>http://kyden.us.kg/tags/seo%E4%BC%98%E5%8C%96/</link>
+    <description>Kyden&#39;s Blog Site</description>
+    <generator>Hugo 0.140.2 &amp; FixIt v0.3.16</generator>
+    <language>en</language>
+    <managingEditor>kytedance@gmail.com (kyden)</managingEditor>
+    <webMaster>kytedance@gmail.com (kyden)</webMaster>
+    <lastBuildDate>Thu, 18 Apr 2024 12:57:02 +0800</lastBuildDate>
+    <atom:link href="http://kyden.us.kg/tags/seo%E4%BC%98%E5%8C%96/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>30分钟搭建个人技术博客：Hugo &#43; GitHub Pages 零基础建站指南</title>
+      <link>http://kyden.us.kg/posts/build-blog/</link>
+      <pubDate>Wed, 17 Apr 2024 21:42:02 +0800</pubDate><author>kytedance@gmail.com (kyden)</author>
+      <guid>http://kyden.us.kg/posts/build-blog/</guid>
+      <category domain="http://kyden.us.kg/categories/%E7%BD%91%E7%AB%99%E5%BB%BA%E8%AE%BE/">网站建设</category>
+      <category domain="http://kyden.us.kg/categories/%E5%8D%9A%E5%AE%A2%E7%B3%BB%E7%BB%9F/">博客系统</category>
+      <category domain="http://kyden.us.kg/categories/%E9%9D%99%E6%80%81%E7%BD%91%E7%AB%99/">静态网站</category>
+      <category domain="http://kyden.us.kg/categories/%E7%BD%91%E7%AB%99%E9%83%A8%E7%BD%B2/">网站部署</category>
+      <category domain="http://kyden.us.kg/categories/%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/">最佳实践</category>
+      <description>&lt;div class=&#34;details admonition abstract open&#34;&gt;&#xA;  &lt;div class=&#34;details-summary admonition-title&#34;&gt;&lt;i class=&#34;icon fa-fw fa-solid fa-clipboard-list&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;导语&lt;i class=&#34;details-icon fa-solid fa-angle-right fa-fw&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;details-content&#34;&gt;&#xA;    &lt;div class=&#34;admonition-content&#34;&gt;想要拥有一个专业的技术博客，但又担心过程繁琐？本文将教你如何利用 Hugo 的快速建站框架，结合 GitHub Pages 的免费托管服务，在短短 30 分钟内搭建一个美观实用的个人博客网站。无需购买服务器，零基础也能轻松驾驭！&lt;/div&gt;&#xA;  &lt;/div&gt;&#xA;&lt;/div&gt;</description>
+    </item>
+  </channel>
+</rss>

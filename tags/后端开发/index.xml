@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>后端开发 - Tag  Kyden&#39;s 博客</title>
+    <link>http://kyden.us.kg/tags/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/</link>
+    <description>Kyden&#39;s Blog Site</description>
+    <generator>Hugo 0.140.2 &amp; FixIt v0.3.16</generator>
+    <language>en</language>
+    <managingEditor>kytedance@gmail.com (kyden)</managingEditor>
+    <webMaster>kytedance@gmail.com (kyden)</webMaster>
+    <lastBuildDate>Thu, 31 Oct 2024 23:08:43 +0800</lastBuildDate>
+    <atom:link href="http://kyden.us.kg/tags/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>MySQL 核心操作精讲：从基础语法到实战应用</title>
+      <link>http://kyden.us.kg/posts/mysql/</link>
+      <pubDate>Thu, 31 Oct 2024 23:08:43 +0800</pubDate><author>kytedance@gmail.com (kyden)</author>
+      <guid>http://kyden.us.kg/posts/mysql/</guid>
+      <category domain="http://kyden.us.kg/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</category>
+      <category domain="http://kyden.us.kg/categories/%E5%90%8E%E7%AB%AF%E6%8A%80%E6%9C%AF/">后端技术</category>
+      <category domain="http://kyden.us.kg/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%8A%80%E6%9C%AF/">服务器技术</category>
+      <category domain="http://kyden.us.kg/categories/%E7%BC%96%E7%A8%8B%E6%95%99%E7%A8%8B/">编程教程</category>
+      <category domain="http://kyden.us.kg/categories/%E6%8A%80%E6%9C%AF%E6%9E%B6%E6%9E%84/">技术架构</category>
+      <description>&lt;div class=&#34;details admonition abstract open&#34;&gt;&#xA;  &lt;div class=&#34;details-summary admonition-title&#34;&gt;&lt;i class=&#34;icon fa-fw fa-solid fa-clipboard-list&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;导语&lt;i class=&#34;details-icon fa-solid fa-angle-right fa-fw&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;details-content&#34;&gt;&#xA;    &lt;div class=&#34;admonition-content&#34;&gt;数据库是现代应用程序的核心基础设施，而 MySQL 作为最流行的关系型数据库之一，其重要性不言而喻。本文将带你系统掌握 MySQL 的核心操作，从基础的增删改查到表结构管理，从数据类型选择到性能优化，为你提供一份全面且实用的 MySQL 开发指南。无论你是数据库新手，还是想要提升数据库开发技能的开发者，都能从本文中获得实用的知识和技巧。&lt;/div&gt;&#xA;  &lt;/div&gt;&#xA;&lt;/div&gt;</description>
+    </item>
+    <item>
+      <title>Redis 核心精讲：从入门到性能优化</title>
+      <link>http://kyden.us.kg/posts/redis/</link>
+      <pubDate>Tue, 22 Oct 2024 11:58:44 +0800</pubDate><author>kytedance@gmail.com (kyden)</author>
+      <guid>http://kyden.us.kg/posts/redis/</guid>
+      <category domain="http://kyden.us.kg/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</category>
+      <category domain="http://kyden.us.kg/categories/%E7%BC%93%E5%AD%98%E6%8A%80%E6%9C%AF/">缓存技术</category>
+      <category domain="http://kyden.us.kg/categories/%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F/">分布式系统</category>
+      <category domain="http://kyden.us.kg/categories/%E5%90%8E%E7%AB%AF%E6%8A%80%E6%9C%AF/">后端技术</category>
+      <category domain="http://kyden.us.kg/categories/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/">性能优化</category>
+      <description>&lt;div class=&#34;details admonition abstract open&#34;&gt;&#xA;  &lt;div class=&#34;details-summary admonition-title&#34;&gt;&lt;i class=&#34;icon fa-fw fa-solid fa-clipboard-list&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;导语&lt;i class=&#34;details-icon fa-solid fa-angle-right fa-fw&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;details-content&#34;&gt;&#xA;    &lt;div class=&#34;admonition-content&#34;&gt;在当今高并发的互联网应用中，Redis 作为内存数据库和缓存系统的标配，以其卓越的性能和灵活的数据结构赢得了开发者的青睐。本文将带你深入了解 Redis 的核心特性，从五大数据类型的实战应用到单线程架构的性能优势，全方位提升你的 Redis 开发技能。无论是构建高性能缓存系统，还是开发实时数据处理应用，这都是一份不可或缺的实战指南。&lt;/div&gt;&#xA;  &lt;/div&gt;&#xA;&lt;/div&gt;</description>
+    </item>
+  </channel>
+</rss>

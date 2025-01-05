@@ -6,14 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
     <meta name="robots" content="noodp" />
     <title>Tmux 终端神器：一篇文章玩转终端复用  Kyden&#39;s 博客</title><meta name="author" content="kyden">
-<meta name="description" content="全面解析 Tmux 的核心功能和实用技巧，从基础命令到高级配置，从简单操作到复杂场景。通过实例讲解帮助你掌握这款强大的终端复用工具，提升命令行操作效率。特别适合需要远程管理服务器的开发者和系统管理员。"><meta name="keywords" content='tmux, 使用指南, 命令行工具, CLI Tools'>
+<meta name="description" content="全面解析 Tmux 的核心功能和实用技巧，从基础命令到高级配置，从简单操作到复杂场景。通过实例讲解帮助你掌握这款强大的终端复用工具，提升命令行操作效率。特别适合需要远程管理服务器的开发者和系统管理员。"><meta name="keywords" content='tmux, 终端复用, terminal multiplexer, 终端管理, 命令行工具, CLI, 远程会话, SSH, 终端工具, 开发工具, 终端配置, 效率工具, Linux工具, 终端会话'>
   <meta itemprop="name" content="Tmux 终端神器：一篇文章玩转终端复用">
   <meta itemprop="description" content="全面解析 Tmux 的核心功能和实用技巧，从基础命令到高级配置，从简单操作到复杂场景。通过实例讲解帮助你掌握这款强大的终端复用工具，提升命令行操作效率。特别适合需要远程管理服务器的开发者和系统管理员。">
   <meta itemprop="datePublished" content="2024-10-03T20:24:40+08:00">
   <meta itemprop="dateModified" content="2024-10-03T20:24:40+08:00">
   <meta itemprop="wordCount" content="999">
   <meta itemprop="image" content="http://kyden.us.kg/favicon.png">
-  <meta itemprop="keywords" content="tmux,使用指南,命令行工具,CLI Tools"><meta property="og:url" content="http://kyden.us.kg/posts/tmux-guide/">
+  <meta itemprop="keywords" content="tmux,终端复用,terminal multiplexer,终端管理,命令行工具,CLI,远程会话,SSH,终端工具,开发工具,终端配置,效率工具,Linux工具,终端会话"><meta property="og:url" content="http://kyden.us.kg/posts/tmux-guide/">
   <meta property="og:site_name" content="Kyden&#39;s 博客">
   <meta property="og:title" content="Tmux 终端神器：一篇文章玩转终端复用">
   <meta property="og:description" content="全面解析 Tmux 的核心功能和实用技巧，从基础命令到高级配置，从简单操作到复杂场景。通过实例讲解帮助你掌握这款强大的终端复用工具，提升命令行操作效率。特别适合需要远程管理服务器的开发者和系统管理员。">
@@ -23,9 +23,11 @@
     <meta property="article:published_time" content="2024-10-03T20:24:40+08:00">
     <meta property="article:modified_time" content="2024-10-03T20:24:40+08:00">
     <meta property="article:tag" content="Tmux">
-    <meta property="article:tag" content="使用指南">
+    <meta property="article:tag" content="终端复用">
     <meta property="article:tag" content="命令行工具">
-    <meta property="article:tag" content="CLI Tools">
+    <meta property="article:tag" content="CLI">
+    <meta property="article:tag" content="终端管理">
+    <meta property="article:tag" content="远程开发">
     <meta property="og:image" content="http://kyden.us.kg/favicon.png">
 
   <meta name="twitter:card" content="summary_large_image">
@@ -47,7 +49,7 @@
     "mainEntityOfPage": {
       "@type": "WebPage",
       "@id": "http:\/\/kyden.us.kg\/posts\/tmux-guide\/"
-    },"image": ["http:\/\/kyden.us.kg\/favicon-seo.jpg"],"genre": "posts","keywords": "tmux, 使用指南, 命令行工具, CLI Tools","wordcount":  999 ,
+    },"image": ["http:\/\/kyden.us.kg\/favicon-seo.jpg"],"genre": "posts","keywords": "tmux, 终端复用, 命令行工具, CLI, 终端管理, 远程开发, 效率工具, Linux工具, 开发环境, SSH工具","wordcount":  999 ,
     "url": "http:\/\/kyden.us.kg\/posts\/tmux-guide\/","datePublished": "2024-10-03T20:24:40+08:00","dateModified": "2024-10-03T20:24:40+08:00","publisher": {
       "@type": "Organization",
       "name": "kyden","logo": "https:\/\/kyden.us.kg"},"author": {
@@ -123,7 +125,18 @@
   </nav><main class="container container-reverse"><aside class="aside-collection animate__animated animate__fadeIn animate__faster" aria-label="Collections"><div class="details collection-details open">
       <div class="details-summary collection-summary">
         <i class="fa-solid fa-layer-group fa-fw" aria-hidden="true"></i>
-        <span class="collection-name" data-collections="Collections">Tmux</span>
+        <span class="collection-name" data-collections="Collections">开发工具</span>
+        <span class="collection-count">5</span><i class="details-icon fa-solid fa-angle-right fa-fw" aria-hidden="true"></i></div>
+      <div class="details-content collection-content">
+        <nav>
+          <ul class="collection-list"><li class="collection-item"><a href="/posts/regex-in-one/" title="正则表达式速成宝典：从零基础到实战高手">正则表达式速成宝典：从零基础到实战高手</a></li><li class="collection-item"><span class="active" title="Tmux 终端神器：一篇文章玩转终端复用">Tmux 终端神器：一篇文章玩转终端复用</span></li><li class="collection-item"><a href="/posts/make/" title="Make 构建系统详解：从基础到实战">Make 构建系统详解：从基础到实战</a></li><li class="collection-item"><a href="/posts/vscode-vim/" title="【最佳实践】VSCode &#43; Vim = 效率之神">【最佳实践】VSCode &#43; Vim = 效率之神</a></li><li class="collection-item"><a href="/posts/golang-linter/" title="Go 代码质量守护者：12 个必备 Linter 工具完全指南">Go 代码质量守护者：12 个必备 Linter 工具完全指南</a></li></ul>
+          <div class="collection-nav-simple"><a href="/posts/regex-in-one/" class="collection-nav-item" rel="prev" title="正则表达式速成宝典：从零基础到实战高手"><i class="fa-solid fa-angle-left fa-fw" aria-hidden="true"></i></a><span class="text-secondary">2/5</span><a href="/posts/make/" class="collection-nav-item" rel="next" title="Make 构建系统详解：从基础到实战"><i class="fa-solid fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+        </nav>
+      </div>
+    </div><div class="details collection-details">
+      <div class="details-summary collection-summary">
+        <i class="fa-solid fa-layer-group fa-fw" aria-hidden="true"></i>
+        <span class="collection-name" data-collections="Collections">效率工具</span>
         <span class="collection-count">1</span><i class="details-icon fa-solid fa-angle-right fa-fw" aria-hidden="true"></i></div>
       <div class="details-content collection-content">
         <nav>
@@ -134,7 +147,7 @@
     </div><div class="details collection-details">
       <div class="details-summary collection-summary">
         <i class="fa-solid fa-layer-group fa-fw" aria-hidden="true"></i>
-        <span class="collection-name" data-collections="Collections">使用指南</span>
+        <span class="collection-name" data-collections="Collections">Linux工具</span>
         <span class="collection-count">1</span><i class="details-icon fa-solid fa-angle-right fa-fw" aria-hidden="true"></i></div>
       <div class="details-content collection-content">
         <nav>
@@ -145,18 +158,7 @@
     </div><div class="details collection-details">
       <div class="details-summary collection-summary">
         <i class="fa-solid fa-layer-group fa-fw" aria-hidden="true"></i>
-        <span class="collection-name" data-collections="Collections">命令行工具</span>
-        <span class="collection-count">1</span><i class="details-icon fa-solid fa-angle-right fa-fw" aria-hidden="true"></i></div>
-      <div class="details-content collection-content">
-        <nav>
-          <ul class="collection-list"><li class="collection-item"><span class="active" title="Tmux 终端神器：一篇文章玩转终端复用">Tmux 终端神器：一篇文章玩转终端复用</span></li></ul>
-          <div class="collection-nav-simple"><i class="fa-solid fa-angle-left fa-fw collection-nav-item text-secondary" aria-hidden="true"></i><span class="text-secondary">1/1</span><i class="fa-solid fa-angle-right fa-fw collection-nav-item text-secondary" aria-hidden="true"></i></div>
-        </nav>
-      </div>
-    </div><div class="details collection-details">
-      <div class="details-summary collection-summary">
-        <i class="fa-solid fa-layer-group fa-fw" aria-hidden="true"></i>
-        <span class="collection-name" data-collections="Collections">CLI Tools</span>
+        <span class="collection-name" data-collections="Collections">远程开发</span>
         <span class="collection-count">1</span><i class="details-icon fa-solid fa-angle-right fa-fw" aria-hidden="true"></i></div>
       <div class="details-content collection-content">
         <nav>
@@ -169,7 +171,7 @@
   <article class="page single">
     <div class="header"><h1 class="single-title animate__animated animate__flipInX"><span title="Repost" class="icon-repost"><i class="fa-solid fa-share fa-fw" aria-hidden="true"></i></span><span>Tmux 终端神器：一篇文章玩转终端复用</span>
       </h1><p class="single-subtitle animate__animated animate__fadeIn">从入门到精通：窗口管理、会话控制与效率提升的终极指南</p></div><div class="post-meta">
-      <div class="post-meta-line"><span class="post-author"><a href="https:github.com/kydance" title="Author"target="_blank" rel="external nofollow noopener noreferrer author" class="author"><img loading="lazy" src="/favicon.ico" alt="kyden" data-title="kyden" width="20" height="20" class="avatar" style="background: url(/images/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}"/>&nbsp;kyden</a></span><span class="post-included-in">&nbsp;included in <a href="/categories/tmux/" class="post-category" title="Category - Tmux"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> Tmux</a>&ensp;<a href="/categories/%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/" class="post-category" title="Category - 使用指南"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 使用指南</a>&ensp;<a href="/categories/%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%B7%A5%E5%85%B7/" class="post-category" title="Category - 命令行工具"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 命令行工具</a>&ensp;<a href="/categories/cli-tools/" class="post-category" title="Category - CLI Tools"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> CLI Tools</a> and <a href="/collections/tmux/" class="post-collection" title="Collection - Tmux"><i class="fa-solid fa-layer-group fa-fw" aria-hidden="true"></i> Tmux</a>&ensp;<a href="/collections/%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/" class="post-collection" title="Collection - 使用指南"><i class="fa-solid fa-layer-group fa-fw" aria-hidden="true"></i> 使用指南</a>&ensp;<a href="/collections/%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%B7%A5%E5%85%B7/" class="post-collection" title="Collection - 命令行工具"><i class="fa-solid fa-layer-group fa-fw" aria-hidden="true"></i> 命令行工具</a>&ensp;<a href="/collections/cli-tools/" class="post-collection" title="Collection - CLI Tools"><i class="fa-solid fa-layer-group fa-fw" aria-hidden="true"></i> CLI Tools</a></span></div><div class="post-meta-line"><span title="published on 2024-10-03 20:24:40"><i class="fa-solid fa-calendar-days fa-fw me-1" aria-hidden="true"></i><time datetime="2024-10-03">2024-10-03</time></span>&nbsp;<span title="999 words"><i class="fa-solid fa-pencil-alt fa-fw me-1" aria-hidden="true"></i>About 1000 words</span>&nbsp;<span><i class="fa-regular fa-clock fa-fw me-1" aria-hidden="true"></i>2 minutes</span>&nbsp;<span id="busuanzi_container_page_pv" class="busuanzi_visitors comment-visitors" data-flag-title="Tmux 终端神器：一篇文章玩转终端复用"><i class="fa-regular fa-eye fa-fw me-1" aria-hidden="true"></i><span id="busuanzi_value_page_pv">-</span>&nbsp;views
+      <div class="post-meta-line"><span class="post-author"><a href="https:github.com/kydance" title="Author"target="_blank" rel="external nofollow noopener noreferrer author" class="author"><img loading="lazy" src="/favicon.ico" alt="kyden" data-title="kyden" width="20" height="20" class="avatar" style="background: url(/images/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}"/>&nbsp;kyden</a></span><span class="post-included-in">&nbsp;included in <a href="/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/" class="post-category" title="Category - 开发工具"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 开发工具</a>&ensp;<a href="/categories/%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%B7%A5%E5%85%B7/" class="post-category" title="Category - 命令行工具"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 命令行工具</a>&ensp;<a href="/categories/%E6%95%88%E7%8E%87%E5%B7%A5%E5%85%B7/" class="post-category" title="Category - 效率工具"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 效率工具</a>&ensp;<a href="/categories/linux%E5%B7%A5%E5%85%B7/" class="post-category" title="Category - Linux工具"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> Linux工具</a>&ensp;<a href="/categories/%E8%BF%9C%E7%A8%8B%E5%BC%80%E5%8F%91/" class="post-category" title="Category - 远程开发"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 远程开发</a> and <a href="/collections/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/" class="post-collection" title="Collection - 开发工具"><i class="fa-solid fa-layer-group fa-fw" aria-hidden="true"></i> 开发工具</a>&ensp;<a href="/collections/%E6%95%88%E7%8E%87%E5%B7%A5%E5%85%B7/" class="post-collection" title="Collection - 效率工具"><i class="fa-solid fa-layer-group fa-fw" aria-hidden="true"></i> 效率工具</a>&ensp;<a href="/collections/linux%E5%B7%A5%E5%85%B7/" class="post-collection" title="Collection - Linux工具"><i class="fa-solid fa-layer-group fa-fw" aria-hidden="true"></i> Linux工具</a>&ensp;<a href="/collections/%E8%BF%9C%E7%A8%8B%E5%BC%80%E5%8F%91/" class="post-collection" title="Collection - 远程开发"><i class="fa-solid fa-layer-group fa-fw" aria-hidden="true"></i> 远程开发</a></span></div><div class="post-meta-line"><span title="published on 2024-10-03 20:24:40"><i class="fa-solid fa-calendar-days fa-fw me-1" aria-hidden="true"></i><time datetime="2024-10-03">2024-10-03</time></span>&nbsp;<span title="999 words"><i class="fa-solid fa-pencil-alt fa-fw me-1" aria-hidden="true"></i>About 1000 words</span>&nbsp;<span><i class="fa-regular fa-clock fa-fw me-1" aria-hidden="true"></i>2 minutes</span>&nbsp;<span id="busuanzi_container_page_pv" class="busuanzi_visitors comment-visitors" data-flag-title="Tmux 终端神器：一篇文章玩转终端复用"><i class="fa-regular fa-eye fa-fw me-1" aria-hidden="true"></i><span id="busuanzi_value_page_pv">-</span>&nbsp;views
           </span>&nbsp;</div>
     </div><div class="details toc" id="toc-static" data-kept="false">
         <div class="details-summary toc-title">
@@ -520,7 +522,14 @@
 </span></span><span class="line"><span class="cl">setw -g automatic-rename off
 </span></span><span class="line"><span class="cl">setw -g allow-rename off</span></span></code></pre></td></tr></table>
 </div>
-</div></div><div class="post-footer" id="post-footer">
+</div></div><hr class="awesome-hr" />
+    <h2 id="see-also">Related Content</h2>
+    <ul><li>
+          <a href="/posts/go-cobra/" title="Cobra 实战指南：10分钟搭建现代化命令行应用">Cobra 实战指南：10分钟搭建现代化命令行应用</a></li><li>
+          <a href="/posts/vscode-vim/" title="【最佳实践】VSCode &#43; Vim = 效率之神">【最佳实践】VSCode &#43; Vim = 效率之神</a></li><li>
+          <a href="/posts/arch-linux/" title="从零开始的 Arch Linux 完全上手指南：打造你的理想工作环境">从零开始的 Arch Linux 完全上手指南：打造你的理想工作环境</a></li><li>
+          <a href="/posts/go-viper/" title="Go 配置管理最佳实践：Viper 从入门到精通">Go 配置管理最佳实践：Viper 从入门到精通</a></li><li>
+          <a href="/posts/make/" title="Make 构建系统详解：从基础到实战">Make 构建系统详解：从基础到实战</a></li></ul><div class="post-footer" id="post-footer">
   <div class="post-info">
     <div class="post-info-line">
       <div class="post-info-mod">
@@ -528,7 +537,7 @@
       </div></div><div class="post-info-line">
         <div class="post-info-md"><span><a href="/posts/tmux-guide/index.md" title="Read Markdown" class="link-to-markdown">Read Markdown</a></span><span><a href="https://github.com/kydance/kydance.github.io/blob/master/content/posts/tmux-guide/tmux-guide.md?plain=1" title="View source"target="_blank" rel="external nofollow noopener noreferrer" class="link-to-source">View source</a></span><span><a href="https://github.com/kydance/kydance.github.io/edit/master/content/posts/tmux-guide/tmux-guide.md" title="Edit this page"target="_blank" rel="external nofollow noopener noreferrer" class="link-to-edit">Edit this page</a></span><span><a href="https://github.com/kydance/kydance.github.io/issues/new?title=[BUG]%20Tmux&#43;%E7%BB%88%E7%AB%AF%E7%A5%9E%E5%99%A8%EF%BC%9A%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0%E7%8E%A9%E8%BD%AC%E7%BB%88%E7%AB%AF%E5%A4%8D%E7%94%A8&amp;body=%7cField%7cValue%7c%0A%7c-%7c-%7c%0A%7cTitle%7cTmux&#43;%E7%BB%88%E7%AB%AF%E7%A5%9E%E5%99%A8%EF%BC%9A%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0%E7%8E%A9%E8%BD%AC%E7%BB%88%E7%AB%AF%E5%A4%8D%E7%94%A8%7c%0A%7cURL%7chttp://kyden.us.kg/posts/tmux-guide/%7c%0A%7cFilename%7chttps://github.com/kydance/kydance.github.io/blob/master/content/posts/tmux-guide/tmux-guide.md?plain=1%7c" title="Report issue"target="_blank" rel="external nofollow noopener noreferrer" class="link-to-report">Report issue</a></span></div>
         <div class="post-info-share">
-          <span><a href="javascript:void(0);" title="Share on X" data-sharer="twitter" data-url="http://kyden.us.kg/posts/tmux-guide/" data-title="Tmux 终端神器：一篇文章玩转终端复用" data-via="kytedance" data-hashtags="tmux,使用指南,命令行工具,CLI Tools"><i class="fa-brands fa-x-twitter fa-fw" aria-hidden="true"></i></a>
+          <span><a href="javascript:void(0);" title="Share on X" data-sharer="twitter" data-url="http://kyden.us.kg/posts/tmux-guide/" data-title="Tmux 终端神器：一篇文章玩转终端复用" data-via="kytedance" data-hashtags="tmux,终端复用,命令行工具,CLI,终端管理,远程开发,效率工具,Linux工具,开发环境,SSH工具"><i class="fa-brands fa-x-twitter fa-fw" aria-hidden="true"></i></a>
   <a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="http://kyden.us.kg/posts/tmux-guide/" data-hashtag="tmux"><i class="fa-brands fa-facebook-square fa-fw" aria-hidden="true"></i></a>
   <a href="javascript:void(0);" title="Share on Linkedin" data-sharer="linkedin" data-url="http://kyden.us.kg/posts/tmux-guide/"><i class="fa-brands fa-linkedin fa-fw" aria-hidden="true"></i></a>
   <a href="javascript:void(0);" title="Share on WhatsApp" data-sharer="whatsapp" data-url="http://kyden.us.kg/posts/tmux-guide/" data-title="Tmux 终端神器：一篇文章玩转终端复用" data-web><i class="fa-brands fa-whatsapp fa-fw" aria-hidden="true"></i></a>
@@ -545,7 +554,7 @@
       </div></div>
 
   <div class="post-info-more">
-    <section class="post-tags"><i class="fa-solid fa-tags fa-fw me-1" aria-hidden="true"></i><a href="/tags/tmux/" class="post-tag" title="Tags - Tmux">Tmux</a><a href="/tags/%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/" class="post-tag" title="Tags - 使用指南">使用指南</a><a href="/tags/%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%B7%A5%E5%85%B7/" class="post-tag" title="Tags - 命令行工具">命令行工具</a><a href="/tags/cli-tools/" class="post-tag" title="Tags - CLI Tools">CLI Tools</a></section>
+    <section class="post-tags"><i class="fa-solid fa-tags fa-fw me-1" aria-hidden="true"></i><a href="/tags/tmux/" class="post-tag" title="Tags - Tmux">Tmux</a><a href="/tags/%E7%BB%88%E7%AB%AF%E5%A4%8D%E7%94%A8/" class="post-tag" title="Tags - 终端复用">终端复用</a><a href="/tags/%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%B7%A5%E5%85%B7/" class="post-tag" title="Tags - 命令行工具">命令行工具</a><a href="/tags/cli/" class="post-tag" title="Tags - CLI">CLI</a><a href="/tags/%E7%BB%88%E7%AB%AF%E7%AE%A1%E7%90%86/" class="post-tag" title="Tags - 终端管理">终端管理</a><a href="/tags/%E8%BF%9C%E7%A8%8B%E5%BC%80%E5%8F%91/" class="post-tag" title="Tags - 远程开发">远程开发</a><a href="/tags/%E6%95%88%E7%8E%87%E5%B7%A5%E5%85%B7/" class="post-tag" title="Tags - 效率工具">效率工具</a><a href="/tags/linux%E5%B7%A5%E5%85%B7/" class="post-tag" title="Tags - Linux工具">Linux工具</a><a href="/tags/%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/" class="post-tag" title="Tags - 开发环境">开发环境</a><a href="/tags/ssh%E5%B7%A5%E5%85%B7/" class="post-tag" title="Tags - SSH工具">SSH工具</a></section>
     <section>
       <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
     </section>
