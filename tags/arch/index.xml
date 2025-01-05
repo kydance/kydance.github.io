@@ -11,14 +11,14 @@
     <lastBuildDate>Thu, 18 Apr 2024 12:57:02 +0800</lastBuildDate>
     <atom:link href="http://kyden.us.kg/tags/arch/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Arch Linux 使用完全指南</title>
+      <title>从零开始的 Arch Linux 完全上手指南：打造你的理想工作环境</title>
       <link>http://kyden.us.kg/posts/arch-linux/</link>
       <pubDate>Wed, 17 Apr 2024 22:11:33 +0800</pubDate><author>kytedance@gmail.com (kyden)</author>
       <guid>http://kyden.us.kg/posts/arch-linux/</guid>
       <category domain="http://kyden.us.kg/categories/arch/">Arch</category>
       <category domain="http://kyden.us.kg/categories/linux/">Linux</category>
       <category domain="http://kyden.us.kg/categories/software/">Software</category>
-      <description>&lt;div class=&#34;details admonition abstract open&#34;&gt;&#xA;  &lt;div class=&#34;details-summary admonition-title&#34;&gt;&lt;i class=&#34;icon fa-fw fa-solid fa-clipboard-list&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;导语&lt;i class=&#34;details-icon fa-solid fa-angle-right fa-fw&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;details-content&#34;&gt;&#xA;    &lt;div class=&#34;admonition-content&#34;&gt;详细介绍日常使用 Arch Linux 的各种问题与解决方案，包括 Arch 安装、常用软件推荐、系统优化等.&lt;/div&gt;&#xA;  &lt;/div&gt;&#xA;&lt;/div&gt;</description>
+      <description>本文是一份全面的 Arch Linux 使用指南，涵盖了从系统安装、软件配置到性能优化的各个方面。无论你是 Linux 新手还是经验用户，都能在这里找到有价值的信息，帮助你构建一个稳定、高效的 Arch Linux 工作环境。</description>
     </item>
   </channel>
 </rss>

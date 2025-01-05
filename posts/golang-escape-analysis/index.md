@@ -1,8 +1,8 @@
-# 深入探讨 Golang Escape Analysis
+# Go 内存优化实战：逃逸分析完全指南
 
 
 {{&lt; admonition type=abstract title=&#34;导语&#34; open=true &gt;}}
-**深入理解 Golang Escape Analysis：变量何时逃逸？**
+在 Go 语言中，编译器通过逃逸分析来决定变量的内存分配位置，这直接影响着程序的性能和内存使用效率。但很多开发者对此知之甚少，导致代码中潜藏着性能隐患。本文将带你深入理解 Go 的逃逸分析机制，通过丰富的示例解析各种逃逸场景，帮助你掌握内存优化的关键技巧。从理论到实践，让你的 Go 程序更快、更高效。
 {{&lt; /admonition &gt;}}
 
 &lt;!--more--&gt;

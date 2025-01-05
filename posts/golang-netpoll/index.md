@@ -1,8 +1,8 @@
-# Golang Netpoll
+# 揭秘 Go 网络轮询器：从 Epoll 到 Netpoll 的架构实现
 
 
 {{&lt; admonition type=abstract title=&#34;导语&#34; open=true &gt;}}
-深入剖析 Golang 网络编程之 Netpoll，主要涉及 Linux 环境下的 Epoll 初始化、 Go 网络编程基本流程（Listen、Accept、Read、Write）以及netpoll 执行流程
+Go 语言的高性能网络编程背后，隐藏着一个精心设计的网络轮询器。它巧妙地将 Linux epoll 的高效事件通知机制与 Go runtime 的 goroutine 调度系统完美结合，成就了 Go 简单优雅却高效强大的网络编程模型。本文将带你深入探索这个神奇的系统，从底层的 epoll 实现到上层的 goroutine 调度，全方位解析 Go 网络轮询器的工作原理。无论你是想深入理解 Go 的并发机制，还是追求网络应用的极致性能，这都是一篇不容错过的技术探索。
 {{&lt; /admonition &gt;}}
 
 &lt;!--more--&gt;
@@ -521,6 +521,6 @@ func netpollready(toRun *gList, pd *pollDesc, mode int32) int32 {
 
 ---
 
-> Author: [kyden](https:github.com/kydance)  
+> Author: [kyden](https://github.com/kydance)  
 > URL: http://kyden.us.kg/posts/golang-netpoll/  
 

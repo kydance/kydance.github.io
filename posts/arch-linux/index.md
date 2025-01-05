@@ -1,9 +1,5 @@
-# Arch Linux 使用完全指南
+# 从零开始的 Arch Linux 完全上手指南：打造你的理想工作环境
 
-
-{{&lt; admonition type=abstract title=&#34;导语&#34; open=true &gt;}}
-详细介绍日常使用 Arch Linux 的各种问题与解决方案，包括 Arch 安装、常用软件推荐、系统优化等.
-{{&lt; /admonition &gt;}}
 
 &lt;!--more--&gt;
 
@@ -739,7 +735,7 @@ DNS 泄露其实并没有一个明确的定义，也不存在一个官方解释�
         }
         ```
 
-    5. 设置完成后，验证DNS解析结果是否都是来自国外的Cloudflare和Google的DNS, 这时节点服务器不管拿到了你传过去的真ip还是假ip地址, 他都会再去请求一次Cloudflare/Google的DNS服务, 确保解析的正确性。
+    5. 设置完成后，验证DNS解析结果是否都是来自国外的Cloudflare和Google的DNS, 这时节点服务器不管拿到了你传过去的真ip地址还是假ip地址, 他都会再去请求一次Cloudflare/Google的DNS服务, 确保解析的正确性。
         重要的是**没有中国大陆的DNS服务器**了，如果还是有，那你应该往当前设备的更上层寻找问题所在，比如路由器的设置等。
 
 #### GEOIP，CN问题

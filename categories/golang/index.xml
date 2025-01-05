@@ -8,8 +8,21 @@
     <language>en</language>
     <managingEditor>kytedance@gmail.com (kyden)</managingEditor>
     <webMaster>kytedance@gmail.com (kyden)</webMaster>
-    <lastBuildDate>Wed, 06 Nov 2024 11:53:42 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 20 Dec 2024 22:37:36 +0800</lastBuildDate>
     <atom:link href="http://kyden.us.kg/categories/golang/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Go 并发编程实战指南：从理论到性能优化</title>
+      <link>http://kyden.us.kg/posts/golang-concurrecy-programming/</link>
+      <pubDate>Fri, 20 Dec 2024 22:37:36 +0800</pubDate><author>kytedance@gmail.com (kyden)</author>
+      <guid>http://kyden.us.kg/posts/golang-concurrecy-programming/</guid>
+      <category domain="http://kyden.us.kg/categories/golang/">Golang</category>
+      <category domain="http://kyden.us.kg/categories/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/">并发编程</category>
+      <category domain="http://kyden.us.kg/categories/sync/">Sync</category>
+      <category domain="http://kyden.us.kg/categories/mutex/">Mutex</category>
+      <category domain="http://kyden.us.kg/categories/pool/">Pool</category>
+      <category domain="http://kyden.us.kg/categories/concurrency/">Concurrency</category>
+      <description>&lt;div class=&#34;details admonition abstract open&#34;&gt;&#xA;  &lt;div class=&#34;details-summary admonition-title&#34;&gt;&lt;i class=&#34;icon fa-fw fa-solid fa-clipboard-list&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;导语&lt;i class=&#34;details-icon fa-solid fa-angle-right fa-fw&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;details-content&#34;&gt;&#xA;    &lt;div class=&#34;admonition-content&#34;&gt;并发编程是 Go 语言最引以为豪的特性之一，但如何正确、高效地使用并发特性却是每个 Go 开发者必须面对的挑战。本文将带你深入探索 Go 并发编程的核心机制，从锁的选择到协程的生命周期管理，通过实战案例和性能数据，帮你掌握并发编程的精髓。无论是构建高并发服务还是优化性能瓶颈，这篇文章都能给你带来实用的指导。&lt;/div&gt;&#xA;  &lt;/div&gt;&#xA;&lt;/div&gt;</description>
+    </item>
     <item>
       <title>Golang Generic</title>
       <link>http://kyden.us.kg/posts/golang-generic/</link>
@@ -22,7 +35,7 @@
       <description>&lt;div class=&#34;details admonition abstract open&#34;&gt;&#xA;  &lt;div class=&#34;details-summary admonition-title&#34;&gt;&lt;i class=&#34;icon fa-fw fa-solid fa-clipboard-list&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;导语&lt;i class=&#34;details-icon fa-solid fa-angle-right fa-fw&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;details-content&#34;&gt;&#xA;    &lt;div class=&#34;admonition-content&#34;&gt;导语内容&lt;/div&gt;&#xA;  &lt;/div&gt;&#xA;&lt;/div&gt;</description>
     </item>
     <item>
-      <title>浅析 Regular Expression (正则表达式)</title>
+      <title>正则表达式速成宝典：从零基础到实战高手</title>
       <link>http://kyden.us.kg/posts/regex-in-one/</link>
       <pubDate>Wed, 06 Nov 2024 11:53:42 +0800</pubDate><author>kytedance@gmail.com (kyden)</author>
       <guid>http://kyden.us.kg/posts/regex-in-one/</guid>
@@ -31,10 +44,10 @@
       <category domain="http://kyden.us.kg/categories/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/">正则表达式</category>
       <category domain="http://kyden.us.kg/categories/%E5%85%A5%E9%97%A8/">入门</category>
       <category domain="http://kyden.us.kg/categories/golang/">Golang</category>
-      <description>&lt;div class=&#34;details admonition abstract open&#34;&gt;&#xA;  &lt;div class=&#34;details-summary admonition-title&#34;&gt;&lt;i class=&#34;icon fa-fw fa-solid fa-clipboard-list&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;导语&lt;i class=&#34;details-icon fa-solid fa-angle-right fa-fw&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;details-content&#34;&gt;&#xA;    &lt;div class=&#34;admonition-content&#34;&gt;正则表达式, 是一种小型的、高度专业化的编程语言&lt;/div&gt;&#xA;  &lt;/div&gt;&#xA;&lt;/div&gt;</description>
+      <description>&lt;div class=&#34;details admonition abstract open&#34;&gt;&#xA;  &lt;div class=&#34;details-summary admonition-title&#34;&gt;&lt;i class=&#34;icon fa-fw fa-solid fa-clipboard-list&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;导语&lt;i class=&#34;details-icon fa-solid fa-angle-right fa-fw&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;details-content&#34;&gt;&#xA;    &lt;div class=&#34;admonition-content&#34;&gt;正则表达式是程序员必备的技能之一，它不仅是一种强大的文本处理工具，更是提升开发效率的利器。本文将为你揭开正则表达式的神秘面纱，通过系统的讲解和丰富的实例，帮助你掌握从基础到高级的正则表达式技巧。无论是文本搜索、数据验证，还是复杂的模式匹配，正则表达式都能让你事半功倍。&lt;/div&gt;&#xA;  &lt;/div&gt;&#xA;&lt;/div&gt;</description>
     </item>
     <item>
-      <title>浅析 MySQL</title>
+      <title>MySQL 核心操作精讲：从基础语法到实战应用</title>
       <link>http://kyden.us.kg/posts/mysql/</link>
       <pubDate>Thu, 31 Oct 2024 23:08:43 +0800</pubDate><author>kytedance@gmail.com (kyden)</author>
       <guid>http://kyden.us.kg/posts/mysql/</guid>
@@ -42,20 +55,20 @@
       <category domain="http://kyden.us.kg/categories/mysql/">MySQL</category>
       <category domain="http://kyden.us.kg/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</category>
       <category domain="http://kyden.us.kg/categories/database/">Database</category>
-      <description>&lt;div class=&#34;details admonition abstract open&#34;&gt;&#xA;  &lt;div class=&#34;details-summary admonition-title&#34;&gt;&lt;i class=&#34;icon fa-fw fa-solid fa-clipboard-list&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;导语&lt;i class=&#34;details-icon fa-solid fa-angle-right fa-fw&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;details-content&#34;&gt;&#xA;    &lt;div class=&#34;admonition-content&#34;&gt;导语内容&lt;/div&gt;&#xA;  &lt;/div&gt;&#xA;&lt;/div&gt;</description>
+      <description>&lt;div class=&#34;details admonition abstract open&#34;&gt;&#xA;  &lt;div class=&#34;details-summary admonition-title&#34;&gt;&lt;i class=&#34;icon fa-fw fa-solid fa-clipboard-list&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;导语&lt;i class=&#34;details-icon fa-solid fa-angle-right fa-fw&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;details-content&#34;&gt;&#xA;    &lt;div class=&#34;admonition-content&#34;&gt;数据库是现代应用程序的核心基础设施，而 MySQL 作为最流行的关系型数据库之一，其重要性不言而喻。本文将带你系统掌握 MySQL 的核心操作，从基础的增删改查到表结构管理，从数据类型选择到性能优化，为你提供一份全面且实用的 MySQL 开发指南。无论你是数据库新手，还是想要提升数据库开发技能的开发者，都能从本文中获得实用的知识和技巧。&lt;/div&gt;&#xA;  &lt;/div&gt;&#xA;&lt;/div&gt;</description>
     </item>
     <item>
-      <title>Golang Zap</title>
+      <title>Go 日志最佳实践：Zap 从入门到实战</title>
       <link>http://kyden.us.kg/posts/golang-zap/</link>
       <pubDate>Sun, 20 Oct 2024 15:40:17 +0800</pubDate><author>kytedance@gmail.com (kyden)</author>
       <guid>http://kyden.us.kg/posts/golang-zap/</guid>
       <category domain="http://kyden.us.kg/categories/golang/">Golang</category>
       <category domain="http://kyden.us.kg/categories/zap/">Zap</category>
       <category domain="http://kyden.us.kg/categories/%E6%97%A5%E5%BF%97%E7%B3%BB%E7%BB%9F/">日志系统</category>
-      <description>&lt;div class=&#34;details admonition abstract open&#34;&gt;&#xA;  &lt;div class=&#34;details-summary admonition-title&#34;&gt;&lt;i class=&#34;icon fa-fw fa-solid fa-clipboard-list&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;导语&lt;i class=&#34;details-icon fa-solid fa-angle-right fa-fw&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;details-content&#34;&gt;&#xA;    &lt;div class=&#34;admonition-content&#34;&gt;导语内容&lt;/div&gt;&#xA;  &lt;/div&gt;&#xA;&lt;/div&gt;</description>
+      <description>&lt;div class=&#34;details admonition abstract open&#34;&gt;&#xA;  &lt;div class=&#34;details-summary admonition-title&#34;&gt;&lt;i class=&#34;icon fa-fw fa-solid fa-clipboard-list&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;导语&lt;i class=&#34;details-icon fa-solid fa-angle-right fa-fw&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;details-content&#34;&gt;&#xA;    &lt;div class=&#34;admonition-content&#34;&gt;在现代微服务架构中，一个优秀的日志系统是保障应用可观测性的关键。Zap 作为 Go 生态中最受欢迎的日志库之一，以其卓越的性能和灵活的配置闻名。本文将带你深入了解 Zap 的实践应用，从基础配置到容器化环境下的最佳实践，帮助你构建一个既高效又易于维护的日志系统。无论是构建新项目还是优化现有系统，这都是一份不可或缺的实战指南。&lt;/div&gt;&#xA;  &lt;/div&gt;&#xA;&lt;/div&gt;</description>
     </item>
     <item>
-      <title>Go 如何优雅地读取配置？</title>
+      <title>Go 配置管理最佳实践：Viper 从入门到精通</title>
       <link>http://kyden.us.kg/posts/go-viper/</link>
       <pubDate>Sun, 22 Sep 2024 21:26:34 +0800</pubDate><author>kytedance@gmail.com (kyden)</author>
       <guid>http://kyden.us.kg/posts/go-viper/</guid>
@@ -65,10 +78,10 @@
       <category domain="http://kyden.us.kg/categories/yaml/">YAML</category>
       <category domain="http://kyden.us.kg/categories/viper/">Viper</category>
       <category domain="http://kyden.us.kg/categories/etc/">Etc</category>
-      <description>&lt;div class=&#34;details admonition abstract open&#34;&gt;&#xA;  &lt;div class=&#34;details-summary admonition-title&#34;&gt;&lt;i class=&#34;icon fa-fw fa-solid fa-clipboard-list&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;导语&lt;i class=&#34;details-icon fa-solid fa-angle-right fa-fw&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;details-content&#34;&gt;&#xA;    &lt;div class=&#34;admonition-content&#34;&gt;&lt;/div&gt;&#xA;  &lt;/div&gt;&#xA;&lt;/div&gt;</description>
+      <description>&lt;div class=&#34;details admonition abstract open&#34;&gt;&#xA;  &lt;div class=&#34;details-summary admonition-title&#34;&gt;&lt;i class=&#34;icon fa-fw fa-solid fa-clipboard-list&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;导语&lt;i class=&#34;details-icon fa-solid fa-angle-right fa-fw&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;details-content&#34;&gt;&#xA;    &lt;div class=&#34;admonition-content&#34;&gt;配置管理看似简单，但要做好却不容易。如何选择合适的配置方式？如何实现配置热重载？如何优雅地处理多环境配置？本文将带你探索 Go 生态中最受欢迎的配置管理解决方案 Viper，通过实战案例和最佳实践，帮助你构建一个灵活、强大、易维护的配置管理系统。从配置文件格式的选择到 Viper 的高级特性，一文掌握配置管理的精髓。&lt;/div&gt;&#xA;  &lt;/div&gt;&#xA;&lt;/div&gt;</description>
     </item>
     <item>
-      <title>浅析现代化命令行框架 Cobra</title>
+      <title>Cobra 实战指南：10分钟搭建现代化命令行应用</title>
       <link>http://kyden.us.kg/posts/go-cobra/</link>
       <pubDate>Sat, 21 Sep 2024 09:55:48 +0800</pubDate><author>kytedance@gmail.com (kyden)</author>
       <guid>http://kyden.us.kg/posts/go-cobra/</guid>
@@ -78,10 +91,10 @@
       <category domain="http://kyden.us.kg/categories/%E6%A1%86%E6%9E%B6/">框架</category>
       <category domain="http://kyden.us.kg/categories/cobra/">Cobra</category>
       <category domain="http://kyden.us.kg/categories/cli/">CLI</category>
-      <description>&lt;div class=&#34;details admonition abstract open&#34;&gt;&#xA;  &lt;div class=&#34;details-summary admonition-title&#34;&gt;&lt;i class=&#34;icon fa-fw fa-solid fa-clipboard-list&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;导语&lt;i class=&#34;details-icon fa-solid fa-angle-right fa-fw&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;details-content&#34;&gt;&#xA;    &lt;div class=&#34;admonition-content&#34;&gt;&lt;strong&gt;Cobra&lt;/strong&gt; 是一个可以创建强大的现代化 CLI 应用程序库，它还提供了一个可以生成应用和命令文件的程序的命令行工具：&lt;code&gt;cobra-cli&lt;/code&gt;.&lt;/div&gt;&#xA;  &lt;/div&gt;&#xA;&lt;/div&gt;</description>
+      <description>本文全面介绍了 Cobra 这一强大的命令行框架，涵盖了从项目搭建、命令设计到特性使用的完整开发流程。通过实际示例讲解如何利用 Cobra 快速构建出类似 Kubernetes、Docker 这样的专业级 CLI 工具，助你掌握现代化命令行应用开发的精髓。</description>
     </item>
     <item>
-      <title>浅析 Make 与 Cmake</title>
+      <title>Make 与 CMake 实战指南：现代 C/C&#43;&#43; 构建系统精解</title>
       <link>http://kyden.us.kg/posts/make-cmake/</link>
       <pubDate>Wed, 11 Sep 2024 22:13:48 +0800</pubDate><author>kytedance@gmail.com (kyden)</author>
       <guid>http://kyden.us.kg/posts/make-cmake/</guid>
@@ -92,19 +105,19 @@
       <category domain="http://kyden.us.kg/categories/golang/">Golang</category>
       <category domain="http://kyden.us.kg/categories/c&#43;&#43;/">C&#43;&#43;</category>
       <category domain="http://kyden.us.kg/categories/%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/">最佳实践</category>
-      <description>&lt;div class=&#34;details admonition abstract open&#34;&gt;&#xA;  &lt;div class=&#34;details-summary admonition-title&#34;&gt;&lt;i class=&#34;icon fa-fw fa-solid fa-clipboard-list&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;导语&lt;i class=&#34;details-icon fa-solid fa-angle-right fa-fw&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;details-content&#34;&gt;&#xA;    &lt;div class=&#34;admonition-content&#34;&gt;导语内容&lt;/div&gt;&#xA;  &lt;/div&gt;&#xA;&lt;/div&gt;</description>
+      <description>&lt;div class=&#34;details admonition abstract open&#34;&gt;&#xA;  &lt;div class=&#34;details-summary admonition-title&#34;&gt;&lt;i class=&#34;icon fa-fw fa-solid fa-clipboard-list&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;导语&lt;i class=&#34;details-icon fa-solid fa-angle-right fa-fw&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;details-content&#34;&gt;&#xA;    &lt;div class=&#34;admonition-content&#34;&gt;在现代软件开发中，高效的构建系统是项目成功的关键要素。Make 作为经典的构建工具，以其简洁的语法和强大的功能闻名；而 CMake 则通过其跨平台能力和灵活的配置，成为了现代 C/C++ 项目的标配工具。本文将带你深入了解这两个强大工具的使用方法，从基础概念到高级技巧，帮助你构建更加专业和高效的开发工作流。&lt;/div&gt;&#xA;  &lt;/div&gt;&#xA;&lt;/div&gt;</description>
     </item>
     <item>
-      <title>Effective Go</title>
+      <title>Go 语言编程之道：编写优雅高效的 Golang 代码</title>
       <link>http://kyden.us.kg/posts/effective-go/</link>
       <pubDate>Thu, 15 Aug 2024 22:41:50 +0800</pubDate><author>kytedance@gmail.com (kyden)</author>
       <guid>http://kyden.us.kg/posts/effective-go/</guid>
       <category domain="http://kyden.us.kg/categories/golang/">Golang</category>
       <category domain="http://kyden.us.kg/categories/effective-go/">Effective Go</category>
-      <description>&lt;div class=&#34;details admonition abstract open&#34;&gt;&#xA;  &lt;div class=&#34;details-summary admonition-title&#34;&gt;&lt;i class=&#34;icon fa-fw fa-solid fa-clipboard-list&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;导语&lt;i class=&#34;details-icon fa-solid fa-angle-right fa-fw&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;details-content&#34;&gt;&#xA;    &lt;div class=&#34;admonition-content&#34;&gt;如何编写清晰、地道的 Go 代码&lt;/div&gt;&#xA;  &lt;/div&gt;&#xA;&lt;/div&gt;</description>
+      <description>&lt;div class=&#34;details admonition abstract open&#34;&gt;&#xA;  &lt;div class=&#34;details-summary admonition-title&#34;&gt;&lt;i class=&#34;icon fa-fw fa-solid fa-clipboard-list&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;导语&lt;i class=&#34;details-icon fa-solid fa-angle-right fa-fw&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;details-content&#34;&gt;&#xA;    &lt;div class=&#34;admonition-content&#34;&gt;想要写出优雅且高效的 Go 代码，仅仅了解语法是远远不够的。本文将带你深入探索 Go 语言的设计哲学和最佳实践，从代码格式化、命名规范到控制结构的巧妙运用，帮助你掌握编写地道 Go 代码的精髓。无论你是 Go 新手还是有经验的开发者，都能从中获得实用的编程技巧和深刻的设计思想。&lt;/div&gt;&#xA;  &lt;/div&gt;&#xA;&lt;/div&gt;</description>
     </item>
     <item>
-      <title>Design Pattern</title>
+      <title>设计模式精讲：从理论到实战的最佳实践指南</title>
       <link>http://kyden.us.kg/posts/design-pattern/</link>
       <pubDate>Sun, 28 Jul 2024 10:13:24 +0800</pubDate><author>kytedance@gmail.com (kyden)</author>
       <guid>http://kyden.us.kg/posts/design-pattern/</guid>
@@ -112,10 +125,10 @@
       <category domain="http://kyden.us.kg/categories/golang/">Golang</category>
       <category domain="http://kyden.us.kg/categories/c&#43;&#43;/">C&#43;&#43;</category>
       <category domain="http://kyden.us.kg/categories/%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/">最佳实践</category>
-      <description>&lt;div class=&#34;details admonition abstract open&#34;&gt;&#xA;  &lt;div class=&#34;details-summary admonition-title&#34;&gt;&lt;i class=&#34;icon fa-fw fa-solid fa-clipboard-list&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;导语&lt;i class=&#34;details-icon fa-solid fa-angle-right fa-fw&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;details-content&#34;&gt;&#xA;    &lt;div class=&#34;admonition-content&#34;&gt;设计模式: 在特定环境下人们解决某类重复出现的一套成功或有效的解决方案.&lt;/div&gt;&#xA;  &lt;/div&gt;&#xA;&lt;/div&gt;</description>
+      <description>&lt;div class=&#34;details admonition abstract open&#34;&gt;&#xA;  &lt;div class=&#34;details-summary admonition-title&#34;&gt;&lt;i class=&#34;icon fa-fw fa-solid fa-clipboard-list&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;导语&lt;i class=&#34;details-icon fa-solid fa-angle-right fa-fw&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;details-content&#34;&gt;&#xA;    &lt;div class=&#34;admonition-content&#34;&gt;设计模式是每个程序员的必修课，但如何正确理解和灵活运用却是一门艺术。本文将带你深入浅出地探索 23 种经典设计模式，通过 Go 和 C++ 的实际代码示例，让你真正理解每种模式的精髓。从面向对象设计原则到具体实现，从模式分类到实战应用，助你构建更优雅、更可维护的代码架构。&lt;/div&gt;&#xA;  &lt;/div&gt;&#xA;&lt;/div&gt;</description>
     </item>
     <item>
-      <title>Golang Project Stardard Layout</title>
+      <title>Go 工程目录最佳实践：打造清晰、可维护的项目结构</title>
       <link>http://kyden.us.kg/posts/golang-project-layout/</link>
       <pubDate>Sat, 13 Jul 2024 21:04:57 +0800</pubDate><author>kytedance@gmail.com (kyden)</author>
       <guid>http://kyden.us.kg/posts/golang-project-layout/</guid>
@@ -123,19 +136,19 @@
       <category domain="http://kyden.us.kg/categories/project-layout/">Project Layout</category>
       <category domain="http://kyden.us.kg/categories/stardard/">Stardard</category>
       <category domain="http://kyden.us.kg/categories/%E9%A1%B9%E7%9B%AE%E5%B8%83%E5%B1%80/">项目布局</category>
-      <description>&lt;div class=&#34;details admonition abstract open&#34;&gt;&#xA;  &lt;div class=&#34;details-summary admonition-title&#34;&gt;&lt;i class=&#34;icon fa-fw fa-solid fa-clipboard-list&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;导语&lt;i class=&#34;details-icon fa-solid fa-angle-right fa-fw&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;details-content&#34;&gt;&#xA;    &lt;div class=&#34;admonition-content&#34;&gt;Go 应用程序项目的基本布局介绍&lt;/div&gt;&#xA;  &lt;/div&gt;&#xA;&lt;/div&gt;</description>
+      <description>&lt;div class=&#34;details admonition abstract open&#34;&gt;&#xA;  &lt;div class=&#34;details-summary admonition-title&#34;&gt;&lt;i class=&#34;icon fa-fw fa-solid fa-clipboard-list&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;导语&lt;i class=&#34;details-icon fa-solid fa-angle-right fa-fw&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;details-content&#34;&gt;&#xA;    &lt;div class=&#34;admonition-content&#34;&gt;项目结构是代码质量的第一道防线。一个优秀的目录结构不仅能提高代码的可维护性，更能体现工程师的专业素养。本文将为你详细解读 Go 项目的标准目录结构，从微服务到单体应用，从命令行工具到共享库，帮助你掌握 Go 项目组织的最佳实践。无论是经验丰富的 Go 开发者，还是刚接触 Go 的新手，都能从这套久经考验的项目结构方案中获益。&lt;/div&gt;&#xA;  &lt;/div&gt;&#xA;&lt;/div&gt;</description>
     </item>
     <item>
-      <title>浅析 Golang Context</title>
+      <title>深入理解 Go Context：优雅的并发控制与请求管理</title>
       <link>http://kyden.us.kg/posts/golang-context/</link>
       <pubDate>Sat, 01 Jun 2024 21:37:55 +0800</pubDate><author>kytedance@gmail.com (kyden)</author>
       <guid>http://kyden.us.kg/posts/golang-context/</guid>
       <category domain="http://kyden.us.kg/categories/golang/">Golang</category>
       <category domain="http://kyden.us.kg/categories/context/">Context</category>
-      <description>&lt;div class=&#34;details admonition abstract open&#34;&gt;&#xA;  &lt;div class=&#34;details-summary admonition-title&#34;&gt;&lt;i class=&#34;icon fa-fw fa-solid fa-clipboard-list&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;导语&lt;i class=&#34;details-icon fa-solid fa-angle-right fa-fw&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;details-content&#34;&gt;&#xA;    &lt;div class=&#34;admonition-content&#34;&gt;当需要在多个 Goroutine 中传递上下文信息时，可以使用 Context 实现&lt;/div&gt;&#xA;  &lt;/div&gt;&#xA;&lt;/div&gt;</description>
+      <description>&lt;div class=&#34;details admonition abstract open&#34;&gt;&#xA;  &lt;div class=&#34;details-summary admonition-title&#34;&gt;&lt;i class=&#34;icon fa-fw fa-solid fa-clipboard-list&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;导语&lt;i class=&#34;details-icon fa-solid fa-angle-right fa-fw&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;details-content&#34;&gt;&#xA;    &lt;div class=&#34;admonition-content&#34;&gt;在现代 Go 应用中，Context 是实现并发控制和请求管理的核心机制。它不仅能够优雅地传递请求上下文，还能有效管理 goroutine 的生命周期，实现超时控制和优雅退出。本文将带你深入理解 Context 的设计理念和最佳实践，通过实例讲解如何在实际项目中运用 Context 来构建可靠、高效的并发应用。从链路追踪到资源管理，一文掌握 Context 的精髓。&lt;/div&gt;&#xA;  &lt;/div&gt;&#xA;&lt;/div&gt;</description>
     </item>
     <item>
-      <title>深入探讨 Golang Escape Analysis</title>
+      <title>Go 内存优化实战：逃逸分析完全指南</title>
       <link>http://kyden.us.kg/posts/golang-escape-analysis/</link>
       <pubDate>Sun, 19 May 2024 22:47:26 +0800</pubDate><author>kytedance@gmail.com (kyden)</author>
       <guid>http://kyden.us.kg/posts/golang-escape-analysis/</guid>
@@ -144,10 +157,10 @@
       <category domain="http://kyden.us.kg/categories/escape-analysis/">Escape Analysis</category>
       <category domain="http://kyden.us.kg/categories/heap/">Heap</category>
       <category domain="http://kyden.us.kg/categories/stack/">Stack</category>
-      <description>&lt;div class=&#34;details admonition abstract open&#34;&gt;&#xA;  &lt;div class=&#34;details-summary admonition-title&#34;&gt;&lt;i class=&#34;icon fa-fw fa-solid fa-clipboard-list&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;导语&lt;i class=&#34;details-icon fa-solid fa-angle-right fa-fw&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;details-content&#34;&gt;&#xA;    &lt;div class=&#34;admonition-content&#34;&gt;&lt;strong&gt;深入理解 Golang Escape Analysis：变量何时逃逸？&lt;/strong&gt;&lt;/div&gt;&#xA;  &lt;/div&gt;&#xA;&lt;/div&gt;</description>
+      <description>&lt;div class=&#34;details admonition abstract open&#34;&gt;&#xA;  &lt;div class=&#34;details-summary admonition-title&#34;&gt;&lt;i class=&#34;icon fa-fw fa-solid fa-clipboard-list&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;导语&lt;i class=&#34;details-icon fa-solid fa-angle-right fa-fw&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;details-content&#34;&gt;&#xA;    &lt;div class=&#34;admonition-content&#34;&gt;在 Go 语言中，编译器通过逃逸分析来决定变量的内存分配位置，这直接影响着程序的性能和内存使用效率。但很多开发者对此知之甚少，导致代码中潜藏着性能隐患。本文将带你深入理解 Go 的逃逸分析机制，通过丰富的示例解析各种逃逸场景，帮助你掌握内存优化的关键技巧。从理论到实践，让你的 Go 程序更快、更高效。&lt;/div&gt;&#xA;  &lt;/div&gt;&#xA;&lt;/div&gt;</description>
     </item>
     <item>
-      <title>深入理解 Golang GMP</title>
+      <title>图解 Go 调度器：GMP 模型深度剖析</title>
       <link>http://kyden.us.kg/posts/golang-gmp/</link>
       <pubDate>Wed, 15 May 2024 13:41:49 +0800</pubDate><author>kytedance@gmail.com (kyden)</author>
       <guid>http://kyden.us.kg/posts/golang-gmp/</guid>
@@ -156,10 +169,10 @@
       <category domain="http://kyden.us.kg/categories/goroutine/">Goroutine</category>
       <category domain="http://kyden.us.kg/categories/machine/">Machine</category>
       <category domain="http://kyden.us.kg/categories/process/">Process</category>
-      <description>&lt;div class=&#34;details admonition abstract open&#34;&gt;&#xA;  &lt;div class=&#34;details-summary admonition-title&#34;&gt;&lt;i class=&#34;icon fa-fw fa-solid fa-clipboard-list&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;导语&lt;i class=&#34;details-icon fa-solid fa-angle-right fa-fw&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;details-content&#34;&gt;&#xA;    &lt;div class=&#34;admonition-content&#34;&gt;&lt;strong&gt;Go 的调度流程本质上是一个生产-消费流程.&lt;/strong&gt;&lt;/div&gt;&#xA;  &lt;/div&gt;&#xA;&lt;/div&gt;</description>
+      <description>&lt;div class=&#34;details admonition abstract open&#34;&gt;&#xA;  &lt;div class=&#34;details-summary admonition-title&#34;&gt;&lt;i class=&#34;icon fa-fw fa-solid fa-clipboard-list&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;导语&lt;i class=&#34;details-icon fa-solid fa-angle-right fa-fw&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;details-content&#34;&gt;&#xA;    &lt;div class=&#34;admonition-content&#34;&gt;Go 语言因其强大的并发特性而备受欢迎，而这一切的基础都在于其独特的 GMP 调度模型。本文将带你揭开 Go 调度器的神秘面纱，从操作系统的进程、线程概念开始，一步步深入理解 Goroutine 的工作原理。通过图解和源码分析，让你真正理解 Go 是如何实现高效的并发调度，以及为什么 Go 的并发编程如此简单优雅。无论你是 Go 开发新手还是经验丰富的工程师，这篇文章都能帮你更深入地理解 Go 的并发机制。&lt;/div&gt;&#xA;  &lt;/div&gt;&#xA;&lt;/div&gt;</description>
     </item>
     <item>
-      <title>Golang Netpoll</title>
+      <title>揭秘 Go 网络轮询器：从 epoll 到 netpoll 的架构实现</title>
       <link>http://kyden.us.kg/posts/golang-netpoll/</link>
       <pubDate>Wed, 08 May 2024 11:43:38 +0800</pubDate><author>kytedance@gmail.com (kyden)</author>
       <guid>http://kyden.us.kg/posts/golang-netpoll/</guid>
@@ -168,10 +181,10 @@
       <category domain="http://kyden.us.kg/categories/epoll/">Epoll</category>
       <category domain="http://kyden.us.kg/categories/network-program/">Network Program</category>
       <category domain="http://kyden.us.kg/categories/linux/">Linux</category>
-      <description>&lt;div class=&#34;details admonition abstract open&#34;&gt;&#xA;  &lt;div class=&#34;details-summary admonition-title&#34;&gt;&lt;i class=&#34;icon fa-fw fa-solid fa-clipboard-list&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;导语&lt;i class=&#34;details-icon fa-solid fa-angle-right fa-fw&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;details-content&#34;&gt;&#xA;    &lt;div class=&#34;admonition-content&#34;&gt;深入剖析 Golang 网络编程之 Netpoll，主要涉及 Linux 环境下的 Epoll 初始化、 Go 网络编程基本流程（Listen、Accept、Read、Write）以及netpoll 执行流程&lt;/div&gt;&#xA;  &lt;/div&gt;&#xA;&lt;/div&gt;</description>
+      <description>&lt;div class=&#34;details admonition abstract open&#34;&gt;&#xA;  &lt;div class=&#34;details-summary admonition-title&#34;&gt;&lt;i class=&#34;icon fa-fw fa-solid fa-clipboard-list&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;导语&lt;i class=&#34;details-icon fa-solid fa-angle-right fa-fw&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;details-content&#34;&gt;&#xA;    &lt;div class=&#34;admonition-content&#34;&gt;Go 语言的高性能网络编程背后，隐藏着一个精心设计的网络轮询器。它巧妙地将 Linux epoll 的高效事件通知机制与 Go runtime 的 goroutine 调度系统完美结合，成就了 Go 简单优雅却高效强大的网络编程模型。本文将带你深入探索这个神奇的系统，从底层的 epoll 实现到上层的 goroutine 调度，全方位解析 Go 网络轮询器的工作原理。无论你是想深入理解 Go 的并发机制，还是追求网络应用的极致性能，这都是一篇不容错过的技术探索。&lt;/div&gt;&#xA;  &lt;/div&gt;&#xA;&lt;/div&gt;</description>
     </item>
     <item>
-      <title>Golang Profile and Optimize</title>
+      <title>Go 性能优化实战：从 Benchmark 到 Profile 的完整指南</title>
       <link>http://kyden.us.kg/posts/golang-profile/</link>
       <pubDate>Sat, 20 Apr 2024 20:39:50 +0800</pubDate><author>kytedance@gmail.com (kyden)</author>
       <guid>http://kyden.us.kg/posts/golang-profile/</guid>
@@ -179,10 +192,10 @@
       <category domain="http://kyden.us.kg/categories/benchmark/">Benchmark</category>
       <category domain="http://kyden.us.kg/categories/profile/">Profile</category>
       <category domain="http://kyden.us.kg/categories/optimize/">Optimize</category>
-      <description>&lt;div class=&#34;details admonition abstract open&#34;&gt;&#xA;  &lt;div class=&#34;details-summary admonition-title&#34;&gt;&lt;i class=&#34;icon fa-fw fa-solid fa-clipboard-list&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;导语&lt;i class=&#34;details-icon fa-solid fa-angle-right fa-fw&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;details-content&#34;&gt;&#xA;    &lt;div class=&#34;admonition-content&#34;&gt;Golang 生态中常见的性能分析 (Benchmark / Profile) 与优化 (Optimize)&lt;/div&gt;&#xA;  &lt;/div&gt;&#xA;&lt;/div&gt;</description>
+      <description>&lt;div class=&#34;details admonition abstract open&#34;&gt;&#xA;  &lt;div class=&#34;details-summary admonition-title&#34;&gt;&lt;i class=&#34;icon fa-fw fa-solid fa-clipboard-list&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;导语&lt;i class=&#34;details-icon fa-solid fa-angle-right fa-fw&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;details-content&#34;&gt;&#xA;    &lt;div class=&#34;admonition-content&#34;&gt;在高并发的生产环境中，性能问题往往在最意想不到的时候出现：CPU 突然飙升、内存悄然泄露、Goroutine 数暴增、接口延迟陡升&amp;hellip;&amp;hellip;如何在这些危机时刻快速定位和解决问题？本文将为你揭示 Go 语言性能优化的完整工具链和方法论，从基准测试的正确姿势，到性能分析工具的熟练应用，再到实战中的优化策略。无论你是在进行性能优化，还是在为未来的性能问题未雨绸缪，这都是一份不可或缺的实战指南。&lt;/div&gt;&#xA;  &lt;/div&gt;&#xA;&lt;/div&gt;</description>
     </item>
     <item>
-      <title>深入解读 Golang 常用 Linter 工具及最佳实践</title>
+      <title>Go 代码质量守护者：12 个必备 Linter 工具完全指南</title>
       <link>http://kyden.us.kg/posts/golang-linter/</link>
       <pubDate>Fri, 19 Apr 2024 11:24:23 +0800</pubDate><author>kytedance@gmail.com (kyden)</author>
       <guid>http://kyden.us.kg/posts/golang-linter/</guid>
@@ -190,7 +203,7 @@
       <category domain="http://kyden.us.kg/categories/linter/">Linter</category>
       <category domain="http://kyden.us.kg/categories/static-check/">Static Check</category>
       <category domain="http://kyden.us.kg/categories/ci/cd/">CI/CD</category>
-      <description>&lt;div class=&#34;details admonition abstract open&#34;&gt;&#xA;  &lt;div class=&#34;details-summary admonition-title&#34;&gt;&lt;i class=&#34;icon fa-fw fa-solid fa-clipboard-list&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;导语&lt;i class=&#34;details-icon fa-solid fa-angle-right fa-fw&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;details-content&#34;&gt;&#xA;    &lt;div class=&#34;admonition-content&#34;&gt;在 Golang 生态系统中，Linter 工具是开发者提升代码质量的关键。&#xA;本文将深入介绍几款常用的 Linter 工具及其最佳实践，帮助您在开发中避免常见错误并提高代码的可维护性。&lt;/div&gt;&#xA;  &lt;/div&gt;&#xA;&lt;/div&gt;</description>
+      <description>&lt;div class=&#34;details admonition abstract open&#34;&gt;&#xA;  &lt;div class=&#34;details-summary admonition-title&#34;&gt;&lt;i class=&#34;icon fa-fw fa-solid fa-clipboard-list&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;导语&lt;i class=&#34;details-icon fa-solid fa-angle-right fa-fw&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;details-content&#34;&gt;&#xA;    &lt;div class=&#34;admonition-content&#34;&gt;在追求高质量 Go 代码的道路上，Linter 工具是你最可靠的伙伴。从代码风格的统一到潜在 bug 的预防，从性能隐患的发现到最佳实践的保证，一个优秀的 Linter 配置可以帮你规避 80% 的常见问题。本文将带你全面了解 Go 生态中最实用的 12 个 Linter 工具，通过实例讲解它们的特点和使用方法，帮助你打造一个强大的代码质量保障体系。无论是个人项目还是团队协作，这些工具都能帮你写出更好的 Go 代码。&lt;/div&gt;&#xA;  &lt;/div&gt;&#xA;&lt;/div&gt;</description>
     </item>
   </channel>
 </rss>

@@ -1,8 +1,8 @@
-# 浅析 MySQL
+# MySQL 核心操作精讲：从基础语法到实战应用
 
 
 {{&lt; admonition type=abstract title=&#34;导语&#34; open=true &gt;}}
-导语内容
+数据库是现代应用程序的核心基础设施，而 MySQL 作为最流行的关系型数据库之一，其重要性不言而喻。本文将带你系统掌握 MySQL 的核心操作，从基础的增删改查到表结构管理，从数据类型选择到性能优化，为你提供一份全面且实用的 MySQL 开发指南。无论你是数据库新手，还是想要提升数据库开发技能的开发者，都能从本文中获得实用的知识和技巧。
 {{&lt; /admonition &gt;}}
 
 &lt;!--more--&gt;
@@ -160,7 +160,7 @@ ALTER TABLE oldTable RENAME [TO | AS] newTable;
 
 | Type | Size(Byte) | DESC |
 | --- | --- | --- |
-| CHAR | 0 - 255 | **定长字符串** (需指定长度），性能较VARCHAR更高些 |
+| CHAR | 0 - 255 | **定长字符串** (需指定长度)，性能较VARCHAR更高些 |
 | VARCHAR | 0 - 65535 | **变长字符串** (需指定长度) |
 | TINYBLOB | 0 - 255 | 不超过 255 个字符的二进制数据 |
 | TINYTEXT | 0 - 255 | 短文本字符串 |

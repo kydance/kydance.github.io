@@ -1,8 +1,8 @@
-# Golang Profile and Optimize
+# Go 性能优化实战：从 Benchmark 到 Profile 的完整指南
 
 
 {{&lt; admonition type=abstract title=&#34;导语&#34; open=true &gt;}}
-Golang 生态中常见的性能分析 (Benchmark / Profile) 与优化 (Optimize)
+在高并发的生产环境中，性能问题往往在最意想不到的时候出现：CPU 突然飙升、内存悄然泄露、Goroutine 数暴增、接口延迟陡升......如何在这些危机时刻快速定位和解决问题？本文将为你揭示 Go 语言性能优化的完整工具链和方法论，从基准测试的正确姿势，到性能分析工具的熟练应用，再到实战中的优化策略。无论你是在进行性能优化，还是在为未来的性能问题未雨绸缪，这都是一份不可或缺的实战指南。
 {{&lt; /admonition &gt;}}
 
 &lt;!--more--&gt;

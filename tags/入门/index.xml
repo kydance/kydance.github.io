@@ -11,7 +11,7 @@
     <lastBuildDate>Wed, 06 Nov 2024 11:53:42 +0800</lastBuildDate>
     <atom:link href="http://kyden.us.kg/tags/%E5%85%A5%E9%97%A8/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>浅析 Regular Expression (正则表达式)</title>
+      <title>正则表达式速成宝典：从零基础到实战高手</title>
       <link>http://kyden.us.kg/posts/regex-in-one/</link>
       <pubDate>Wed, 06 Nov 2024 11:53:42 +0800</pubDate><author>kytedance@gmail.com (kyden)</author>
       <guid>http://kyden.us.kg/posts/regex-in-one/</guid>
@@ -20,7 +20,7 @@
       <category domain="http://kyden.us.kg/categories/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/">正则表达式</category>
       <category domain="http://kyden.us.kg/categories/%E5%85%A5%E9%97%A8/">入门</category>
       <category domain="http://kyden.us.kg/categories/golang/">Golang</category>
-      <description>&lt;div class=&#34;details admonition abstract open&#34;&gt;&#xA;  &lt;div class=&#34;details-summary admonition-title&#34;&gt;&lt;i class=&#34;icon fa-fw fa-solid fa-clipboard-list&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;导语&lt;i class=&#34;details-icon fa-solid fa-angle-right fa-fw&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;details-content&#34;&gt;&#xA;    &lt;div class=&#34;admonition-content&#34;&gt;正则表达式, 是一种小型的、高度专业化的编程语言&lt;/div&gt;&#xA;  &lt;/div&gt;&#xA;&lt;/div&gt;</description>
+      <description>&lt;div class=&#34;details admonition abstract open&#34;&gt;&#xA;  &lt;div class=&#34;details-summary admonition-title&#34;&gt;&lt;i class=&#34;icon fa-fw fa-solid fa-clipboard-list&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;导语&lt;i class=&#34;details-icon fa-solid fa-angle-right fa-fw&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;details-content&#34;&gt;&#xA;    &lt;div class=&#34;admonition-content&#34;&gt;正则表达式是程序员必备的技能之一，它不仅是一种强大的文本处理工具，更是提升开发效率的利器。本文将为你揭开正则表达式的神秘面纱，通过系统的讲解和丰富的实例，帮助你掌握从基础到高级的正则表达式技巧。无论是文本搜索、数据验证，还是复杂的模式匹配，正则表达式都能让你事半功倍。&lt;/div&gt;&#xA;  &lt;/div&gt;&#xA;&lt;/div&gt;</description>
     </item>
   </channel>
 </rss>

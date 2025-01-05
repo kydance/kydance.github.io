@@ -1,8 +1,8 @@
-# 浅析 Golang Context
+# 深入理解 Go Context：优雅的并发控制与请求管理
 
 
 {{&lt; admonition type=abstract title=&#34;导语&#34; open=true &gt;}}
-当需要在多个 Goroutine 中传递上下文信息时，可以使用 Context 实现
+在现代 Go 应用中，Context 是实现并发控制和请求管理的核心机制。它不仅能够优雅地传递请求上下文，还能有效管理 goroutine 的生命周期，实现超时控制和优雅退出。本文将带你深入理解 Context 的设计理念和最佳实践，通过实例讲解如何在实际项目中运用 Context 来构建可靠、高效的并发应用。从链路追踪到资源管理，一文掌握 Context 的精髓。
 {{&lt; /admonition &gt;}}
 
 &lt;!--more--&gt;

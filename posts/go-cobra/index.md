@@ -1,11 +1,9 @@
-# 浅析现代化命令行框架 Cobra
+# Cobra 实战指南：10分钟搭建现代化命令行应用
 
 
 {{&lt; admonition type=abstract title=&#34;导语&#34; open=true &gt;}}
-**Cobra** 是一个可以创建强大的现代化 CLI 应用程序库，它还提供了一个可以生成应用和命令文件的程序的命令行工具：`cobra-cli`.
+想要开发一个专业的命令行工具，但又担心开发过程繁琐？Cobra 框架可以帮你轻松实现！本文将带你探索这个被 Kubernetes、Docker 等知名项目广泛采用的命令行框架，通过实例演示和最佳实践，让你快速掌握构建现代化 CLI 应用的核心技巧。从基础概念到高级特性，从项目初始化到功能实现，一文掌握 Cobra 开发精髓。
 {{&lt; /admonition &gt;}}
-
-&lt;!--more--&gt;
 
 ## I. Cobra 简介
 
@@ -190,7 +188,6 @@ master my life.
 ```
 
 `{{ .copyright }}` 的具体内容会根据 `author` 和 `year` 生成，根据此配置生成的 LICENSE 文件内容.
-
 也可以使用内建的 licenses，内建的 licenses 有：GPLv2, GPLv3, LGPL, AGPL, MIT, 2-Clause BSD or 3-Clause BSD。
 
 ### 使用 `cobra` 库创建命令

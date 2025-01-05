@@ -11,7 +11,7 @@
     <lastBuildDate>Sat, 21 Sep 2024 09:55:48 +0800</lastBuildDate>
     <atom:link href="http://kyden.us.kg/collections/cobra/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>浅析现代化命令行框架 Cobra</title>
+      <title>Cobra 实战指南：10分钟搭建现代化命令行应用</title>
       <link>http://kyden.us.kg/posts/go-cobra/</link>
       <pubDate>Sat, 21 Sep 2024 09:55:48 +0800</pubDate><author>kytedance@gmail.com (kyden)</author>
       <guid>http://kyden.us.kg/posts/go-cobra/</guid>
@@ -21,7 +21,7 @@
       <category domain="http://kyden.us.kg/categories/%E6%A1%86%E6%9E%B6/">框架</category>
       <category domain="http://kyden.us.kg/categories/cobra/">Cobra</category>
       <category domain="http://kyden.us.kg/categories/cli/">CLI</category>
-      <description>&lt;div class=&#34;details admonition abstract open&#34;&gt;&#xA;  &lt;div class=&#34;details-summary admonition-title&#34;&gt;&lt;i class=&#34;icon fa-fw fa-solid fa-clipboard-list&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;导语&lt;i class=&#34;details-icon fa-solid fa-angle-right fa-fw&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;details-content&#34;&gt;&#xA;    &lt;div class=&#34;admonition-content&#34;&gt;&lt;strong&gt;Cobra&lt;/strong&gt; 是一个可以创建强大的现代化 CLI 应用程序库，它还提供了一个可以生成应用和命令文件的程序的命令行工具：&lt;code&gt;cobra-cli&lt;/code&gt;.&lt;/div&gt;&#xA;  &lt;/div&gt;&#xA;&lt;/div&gt;</description>
+      <description>本文全面介绍了 Cobra 这一强大的命令行框架，涵盖了从项目搭建、命令设计到特性使用的完整开发流程。通过实际示例讲解如何利用 Cobra 快速构建出类似 Kubernetes、Docker 这样的专业级 CLI 工具，助你掌握现代化命令行应用开发的精髓。</description>
     </item>
   </channel>
 </rss>

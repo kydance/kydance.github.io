@@ -1,8 +1,8 @@
-# Tmux 使用指南
+# Tmux 终端神器：一篇文章玩转终端复用
 
 
 {{&lt; admonition type=abstract title=&#34;导语&#34; open=true &gt;}}
-Tmux，一款优秀的终端复用工具，使用它最直观的好处就是，通过一个终端登录远程主机并运行tmux后，在其中可以开启多个控制台而无需再“浪费”多余的终端来连接这台远程主机
+在现代开发环境中，高效的终端管理是提升工作效率的关键。Tmux 作为一款强大的终端复用工具，不仅能让你在一个终端窗口中同时操作多个会话，还能实现窗口分割、会话保持等高级功能。无论是本地开发还是远程服务器管理，Tmux 都能让你的终端操作更加得心应手。本文将带你全面了解 Tmux 的各项功能，从基础操作到高级配置，让你的终端使用效率得到质的飞跃。
 {{&lt; /admonition &gt;}}
 
 &lt;!--more--&gt;
@@ -115,7 +115,7 @@ tmux kill-server
 
 ## 配置文件
 
-配置文件 `.tmux.conf` 通常位于 `~/.tmux.conf` 处，可输入 `restart tmux` 进行 mtum 重启
+配置文件 `.tmux.conf` 通常位于 `~/.tmux.conf` 处，可输入 `restart tmux` 进行 mtux 重启
 
 ```conf
 # recover colorful terminal
@@ -145,7 +145,6 @@ bind Escape copy-mode
 
 setw -g automatic-rename off
 setw -g allow-rename off
-```
 
 
 ---

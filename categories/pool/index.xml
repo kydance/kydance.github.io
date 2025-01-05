@@ -11,16 +11,17 @@
     <lastBuildDate>Fri, 20 Dec 2024 22:37:36 +0800</lastBuildDate>
     <atom:link href="http://kyden.us.kg/categories/pool/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Golang 并发编程</title>
+      <title>Go 并发编程实战指南：从理论到性能优化</title>
       <link>http://kyden.us.kg/posts/golang-concurrecy-programming/</link>
       <pubDate>Fri, 20 Dec 2024 22:37:36 +0800</pubDate><author>kytedance@gmail.com (kyden)</author>
       <guid>http://kyden.us.kg/posts/golang-concurrecy-programming/</guid>
+      <category domain="http://kyden.us.kg/categories/golang/">Golang</category>
       <category domain="http://kyden.us.kg/categories/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/">并发编程</category>
       <category domain="http://kyden.us.kg/categories/sync/">Sync</category>
       <category domain="http://kyden.us.kg/categories/mutex/">Mutex</category>
       <category domain="http://kyden.us.kg/categories/pool/">Pool</category>
       <category domain="http://kyden.us.kg/categories/concurrency/">Concurrency</category>
-      <description>&lt;div class=&#34;details admonition abstract open&#34;&gt;&#xA;  &lt;div class=&#34;details-summary admonition-title&#34;&gt;&lt;i class=&#34;icon fa-fw fa-solid fa-clipboard-list&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;导语&lt;i class=&#34;details-icon fa-solid fa-angle-right fa-fw&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;details-content&#34;&gt;&#xA;    &lt;div class=&#34;admonition-content&#34;&gt;导语内容&lt;/div&gt;&#xA;  &lt;/div&gt;&#xA;&lt;/div&gt;</description>
+      <description>&lt;div class=&#34;details admonition abstract open&#34;&gt;&#xA;  &lt;div class=&#34;details-summary admonition-title&#34;&gt;&lt;i class=&#34;icon fa-fw fa-solid fa-clipboard-list&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;导语&lt;i class=&#34;details-icon fa-solid fa-angle-right fa-fw&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;details-content&#34;&gt;&#xA;    &lt;div class=&#34;admonition-content&#34;&gt;并发编程是 Go 语言最引以为豪的特性之一，但如何正确、高效地使用并发特性却是每个 Go 开发者必须面对的挑战。本文将带你深入探索 Go 并发编程的核心机制，从锁的选择到协程的生命周期管理，通过实战案例和性能数据，帮你掌握并发编程的精髓。无论是构建高并发服务还是优化性能瓶颈，这篇文章都能给你带来实用的指导。&lt;/div&gt;&#xA;  &lt;/div&gt;&#xA;&lt;/div&gt;</description>
     </item>
   </channel>
 </rss>

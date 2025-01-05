@@ -1,8 +1,8 @@
-# 建站指南(GitHub Pages &#43; Hugo)
+# 30分钟搭建个人技术博客：Hugo &#43; GitHub Pages 零基础建站指南
 
 
 {{&lt; admonition type=abstract title=&#34;导语&#34; open=true &gt;}}
-借助于 Github Pages 提供的静态网站托管服务，并采用了 Hugo 这一开源项目，加快了建站流程，而且有多种开源网站主题可供选择.
+想要拥有一个专业的技术博客，但又担心过程繁琐？本文将教你如何利用 Hugo 的快速建站框架，结合 GitHub Pages 的免费托管服务，在短短 30 分钟内搭建一个美观实用的个人博客网站。无需购买服务器，零基础也能轻松驾驭！
 {{&lt; /admonition &gt;}}
 
 &lt;!--more--&gt;
@@ -54,7 +54,7 @@ GitHub Pages 是一个免费的静态网站托管服务，它允许用户通过 
 
 ### 2. 使用 Hugo 创建网站
 
-首先，使用 Git 将 `A` 拉取下来:
+首先，使用 Git 将 `A` 拉取下来：
 
 ```bash
 $ git clone git@github.com:kydance/blog.git

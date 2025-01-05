@@ -2,7 +2,7 @@
 
 
 {{&lt; admonition type=abstract title=&#34;导语&#34; open=true &gt;}}
-在 Visual Studio Code 中引入 Vim 模式，无疑可以极大程度上提高个人的编码效率。
+想要在现代编辑器中获得极致的编码体验？VSCode 与 Vim 的强强联合将带给你意想不到的效率提升。本文将详细介绍如何通过 VSCodeVim 插件，在 VSCode 中完美复刻 Vim 的操作方式，让你既能享受 VSCode 强大的功能生态，又能保持 Vim 快速高效的编辑体验。无论你是 Vim 老手还是新手，这份完整指南都能帮你打造一个更高效的编码环境。
 {{&lt; /admonition &gt;}}
 
 &lt;!--more--&gt;

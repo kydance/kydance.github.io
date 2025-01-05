@@ -11,7 +11,7 @@
     <lastBuildDate>Sat, 20 Apr 2024 20:39:50 +0800</lastBuildDate>
     <atom:link href="http://kyden.us.kg/collections/profile/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Golang Profile and Optimize</title>
+      <title>Go 性能优化实战：从 Benchmark 到 Profile 的完整指南</title>
       <link>http://kyden.us.kg/posts/golang-profile/</link>
       <pubDate>Sat, 20 Apr 2024 20:39:50 +0800</pubDate><author>kytedance@gmail.com (kyden)</author>
       <guid>http://kyden.us.kg/posts/golang-profile/</guid>
@@ -19,7 +19,7 @@
       <category domain="http://kyden.us.kg/categories/benchmark/">Benchmark</category>
       <category domain="http://kyden.us.kg/categories/profile/">Profile</category>
       <category domain="http://kyden.us.kg/categories/optimize/">Optimize</category>
-      <description>&lt;div class=&#34;details admonition abstract open&#34;&gt;&#xA;  &lt;div class=&#34;details-summary admonition-title&#34;&gt;&lt;i class=&#34;icon fa-fw fa-solid fa-clipboard-list&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;导语&lt;i class=&#34;details-icon fa-solid fa-angle-right fa-fw&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;details-content&#34;&gt;&#xA;    &lt;div class=&#34;admonition-content&#34;&gt;Golang 生态中常见的性能分析 (Benchmark / Profile) 与优化 (Optimize)&lt;/div&gt;&#xA;  &lt;/div&gt;&#xA;&lt;/div&gt;</description>
+      <description>&lt;div class=&#34;details admonition abstract open&#34;&gt;&#xA;  &lt;div class=&#34;details-summary admonition-title&#34;&gt;&lt;i class=&#34;icon fa-fw fa-solid fa-clipboard-list&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;导语&lt;i class=&#34;details-icon fa-solid fa-angle-right fa-fw&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;details-content&#34;&gt;&#xA;    &lt;div class=&#34;admonition-content&#34;&gt;在高并发的生产环境中，性能问题往往在最意想不到的时候出现：CPU 突然飙升、内存悄然泄露、Goroutine 数暴增、接口延迟陡升&amp;hellip;&amp;hellip;如何在这些危机时刻快速定位和解决问题？本文将为你揭示 Go 语言性能优化的完整工具链和方法论，从基准测试的正确姿势，到性能分析工具的熟练应用，再到实战中的优化策略。无论你是在进行性能优化，还是在为未来的性能问题未雨绸缪，这都是一份不可或缺的实战指南。&lt;/div&gt;&#xA;  &lt;/div&gt;&#xA;&lt;/div&gt;</description>
     </item>
   </channel>
 </rss>

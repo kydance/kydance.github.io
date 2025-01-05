@@ -11,7 +11,7 @@
     <lastBuildDate>Fri, 19 Apr 2024 11:24:23 +0800</lastBuildDate>
     <atom:link href="http://kyden.us.kg/categories/linter/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>深入解读 Golang 常用 Linter 工具及最佳实践</title>
+      <title>Go 代码质量守护者：12 个必备 Linter 工具完全指南</title>
       <link>http://kyden.us.kg/posts/golang-linter/</link>
       <pubDate>Fri, 19 Apr 2024 11:24:23 +0800</pubDate><author>kytedance@gmail.com (kyden)</author>
       <guid>http://kyden.us.kg/posts/golang-linter/</guid>
@@ -19,7 +19,7 @@
       <category domain="http://kyden.us.kg/categories/linter/">Linter</category>
       <category domain="http://kyden.us.kg/categories/static-check/">Static Check</category>
       <category domain="http://kyden.us.kg/categories/ci/cd/">CI/CD</category>
-      <description>&lt;div class=&#34;details admonition abstract open&#34;&gt;&#xA;  &lt;div class=&#34;details-summary admonition-title&#34;&gt;&lt;i class=&#34;icon fa-fw fa-solid fa-clipboard-list&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;导语&lt;i class=&#34;details-icon fa-solid fa-angle-right fa-fw&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;details-content&#34;&gt;&#xA;    &lt;div class=&#34;admonition-content&#34;&gt;在 Golang 生态系统中，Linter 工具是开发者提升代码质量的关键。&#xA;本文将深入介绍几款常用的 Linter 工具及其最佳实践，帮助您在开发中避免常见错误并提高代码的可维护性。&lt;/div&gt;&#xA;  &lt;/div&gt;&#xA;&lt;/div&gt;</description>
+      <description>&lt;div class=&#34;details admonition abstract open&#34;&gt;&#xA;  &lt;div class=&#34;details-summary admonition-title&#34;&gt;&lt;i class=&#34;icon fa-fw fa-solid fa-clipboard-list&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;导语&lt;i class=&#34;details-icon fa-solid fa-angle-right fa-fw&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;details-content&#34;&gt;&#xA;    &lt;div class=&#34;admonition-content&#34;&gt;在追求高质量 Go 代码的道路上，Linter 工具是你最可靠的伙伴。从代码风格的统一到潜在 bug 的预防，从性能隐患的发现到最佳实践的保证，一个优秀的 Linter 配置可以帮你规避 80% 的常见问题。本文将带你全面了解 Go 生态中最实用的 12 个 Linter 工具，通过实例讲解它们的特点和使用方法，帮助你打造一个强大的代码质量保障体系。无论是个人项目还是团队协作，这些工具都能帮你写出更好的 Go 代码。&lt;/div&gt;&#xA;  &lt;/div&gt;&#xA;&lt;/div&gt;</description>
     </item>
   </channel>
 </rss>
