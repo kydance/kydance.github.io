@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Context - Tag  Kyden&#39;s 博客</title>
+    <link>http://kyden.us.kg/tags/context/</link>
+    <description>Kyden&#39;s Blog Site</description>
+    <generator>Hugo 0.140.2 &amp; FixIt v0.3.16</generator>
+    <language>en</language>
+    <managingEditor>kytedance@gmail.com (kyden)</managingEditor>
+    <webMaster>kytedance@gmail.com (kyden)</webMaster>
+    <lastBuildDate>Sat, 01 Jun 2024 21:37:55 +0800</lastBuildDate>
+    <atom:link href="http://kyden.us.kg/tags/context/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>浅析 Golang Context</title>
+      <link>http://kyden.us.kg/posts/golang-context/</link>
+      <pubDate>Sat, 01 Jun 2024 21:37:55 +0800</pubDate><author>kytedance@gmail.com (kyden)</author>
+      <guid>http://kyden.us.kg/posts/golang-context/</guid>
+      <category domain="http://kyden.us.kg/categories/golang/">Golang</category>
+      <category domain="http://kyden.us.kg/categories/context/">Context</category>
+      <description>&lt;div class=&#34;details admonition abstract open&#34;&gt;&#xA;  &lt;div class=&#34;details-summary admonition-title&#34;&gt;&lt;i class=&#34;icon fa-fw fa-solid fa-clipboard-list&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;导语&lt;i class=&#34;details-icon fa-solid fa-angle-right fa-fw&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;details-content&#34;&gt;&#xA;    &lt;div class=&#34;admonition-content&#34;&gt;当需要在多个 Goroutine 中传递上下文信息时，可以使用 Context 实现&lt;/div&gt;&#xA;  &lt;/div&gt;&#xA;&lt;/div&gt;</description>
+    </item>
+  </channel>
+</rss>
