@@ -1,4 +1,4 @@
-# Tmux 终端神器：一篇文章玩转终端复用
+# 终端神器：一篇文章玩转终端神器 Tmux，ZSH，Oh-My-Zsh
 
 
 {{&lt; admonition type=abstract title=&#34;导语&#34; open=true &gt;}}
@@ -7,7 +7,9 @@
 
 &lt;!--more--&gt;
 
-## Feature
+## TMux
+
+### Feature
 
 - 强劲的、易于使用的命令行界面
 - 可以横向、纵向分割窗口
@@ -19,7 +21,7 @@
 - 支持自动及手动锁定窗口
 - 可以自由配置绑定快捷键
 
-## Tmux 中的 server, session, window 和 Pane
+### Tmux 中的 server, session, window 和 Pane
 
 在 Tmux 系统中，存在以下极其重要的大小层级: `Server` -&gt; `Session` -&gt; `Window` -&gt; `Pane`.
 
@@ -28,11 +30,11 @@
 - **`Window`**: 相当于 VIM 中的buffer
 - **`Pane`**: 窗口中的小分屏，相当于 VIM 中的 `split` / `vsplit`
 
-## Installation
+### Installation
 
 Require: version &gt;= 2.1
 
-### Linux
+#### Linux
 
 ```shell
 yum install -y tmux
@@ -40,48 +42,48 @@ yay -S tmux
 apt-get install tmux
 ```
 
-### Mac
+#### Mac
 
 ```shell
 brew install tmux
 ```
 
-## 常用命令
+### 常用命令
 
 Tmux 的默认 prefix-key 是 `&lt;C-b&gt;`
 
-### 启动新 session
+#### 启动新 session
 
 ```shell
 $ tmux [new -s sessionName -n windowName]
 # e.g. tmux new -s kyden -n nvim
 ```
 
-### 恢复 Session
+#### 恢复 Session
 
 ```shell
 tmux at[-t sessionName]
 ```
 
-### Session List
+#### Session List
 
 ```shell
 tmux ls
 ```
 
-### 关闭 Session
+#### 关闭 Session
 
 ```shell
 tmux kill-session -t sessionName
 ```
 
-### 关闭整个 tmux 服务器
+#### 关闭整个 tmux 服务器
 
 ```shell
 tmux kill-server
 ```
 
-### Session Command
+#### Session Command
 
 | prefix-key | command | description |
 | :--- | :--- | :--- |
@@ -90,7 +92,7 @@ tmux kill-server
 | `&lt;C-b&gt;` | `r` | 强制重载当前 Session |
 | `&lt;C-b&gt;` | `:` | 进入命令模式，可直接输入命令 |
 
-### Window Command
+#### Window Command
 
 | prefix-key | command | description |
 | :--- | :--- | :--- |
@@ -101,7 +103,7 @@ tmux kill-server
 | `&lt;C-b&gt;` | `,` | 重命名当前窗口 |
 | `&lt;C-b&gt;` | `.` | 修改窗口编号 |
 
-### Pane Command
+#### Pane Command
 
 | prefix-key | command | description |
 | :--- | :--- | :--- |
@@ -113,7 +115,7 @@ tmux kill-server
 | `&lt;C-b&gt;` | `o` | 选择下一 pane |
 | `&lt;C-b&gt;` | `&lt;space&gt;` | 在自带的面板布局中循环切换 |
 
-## 配置文件
+### 配置文件
 
 配置文件 `.tmux.conf` 通常位于 `~/.tmux.conf` 处，可输入 `restart tmux` 进行 mtux 重启
 
@@ -145,10 +147,181 @@ bind Escape copy-mode
 
 setw -g automatic-rename off
 setw -g allow-rename off
+```
+
+## zsh
+
+### zsh 介绍与安装
+
+[ZSH](https://www.zsh.org/) 是一个兼容 bash 的 shell，相较于 bash 具有以下优点：
+
+- Tab 补全功能强大。命令、命令参数、文件路径均可以补全
+- 插件丰富。快速输入以前使用过的命令、快速跳转文件夹、显示系统负载这些都可以通过插件实现
+- 主题丰富
+- 可定制性高
+
+Installation
+
+```shell
+# macos
+brew install zsh
+
+# Arch Linux
+pacman -S zsh
+```
+
+**设置 zsh 为默认 shell**: `chsh -s /bin/zsh`
+
+### oh-my-zsh
+
+`cURL` 下载并安装 oh-my-zsh
+
+```zsh
+sh -c &#34;$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)&#34;
+```
+
+#### powerlevel10k theme
+
+```zsh
+# 下载
+git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
+
+# 设置 in .zshrc
+ZSH_THEME=&#34;powerlevel10k/powerlevel10k&#34;
+```
+
+#### zsh-autosuggestions
+
+[**zsh-autosuggestions**](https://github.com/zsh-users/zsh-autosuggestions) 是一个命令提示插件，当你输入命令时，会自动推测你可能需要输入的命令，按下右键可以快速采用建议
+
+```zsh
+# Download
+git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+
+# Set in .zshrc
+plugins=(... zsh-autosuggestions ...)
+```
+
+#### zsh-syntax-highlighting
+
+[zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting) 是一个命令语法校验插件，在输入命令的过程中，若指令不合法，则指令显示为红色，若指令合法就会显示为绿色。
+
+```zsh
+# Download
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+
+# Set in .zshrc
+plugins=(... zsh-syntax-highlighting ...)
+```
+
+#### z
+
+oh-my-zsh 内置了 z 插件。z 是一个文件夹快捷跳转插件，对于曾经跳转过的目录，只需要输入最终目标文件夹名称，就可以快速跳转，避免再输入长串路径，提高切换文件夹的效率。
+
+```zsh
+# Set in .zshrc
+plugins=(... z ...)
+```
+
+#### extract
+
+oh-my-zsh 内置了 extract 插件。extract 用于解压任何压缩文件，不必根据压缩文件的后缀名来记忆压缩软件
+
+使用 x 命令即可解压文件
+
+```zsh
+# Set in .zshrc
+plugins=(... extract ...)
+```
+
+##### Supported file extensions
+
+| Extension         | Description                          |
+| :---------------- | :----------------------------------- |
+| `7z`              | 7zip file                            |
+| `Z`               | Z archive (LZW)                      |
+| `apk`             | Android app file                     |
+| `aar`             | Android library file                 |
+| `bz2`             | Bzip2 file                           |
+| `cab`             | Microsoft cabinet archive            |
+| `cpio`            | Cpio archive                         |
+| `deb`             | Debian package                       |
+| `ear`             | Enterprise Application aRchive       |
+| `exe`             | Windows executable file              |
+| `gz`              | Gzip file                            |
+| `ipa`             | iOS app package                      |
+| `ipsw`            | iOS firmware file                    |
+| `jar`             | Java Archive                         |
+| `lrz`             | LRZ archive                          |
+| `lz4`             | LZ4 archive                          |
+| `lzma`            | LZMA archive                         |
+| `obscpio`         | cpio archive used on OBS             |
+| `rar`             | WinRAR archive                       |
+| `rpm`             | RPM package                          |
+| `sublime-package` | Sublime Text package                 |
+| `tar`             | Tarball                              |
+| `tar.bz2`         | Tarball with bzip2 compression       |
+| `tar.gz`          | Tarball with gzip compression        |
+| `tar.lrz`         | Tarball with lrzip compression       |
+| `tar.lz`          | Tarball with lzip compression        |
+| `tar.lz4`         | Tarball with lz4 compression         |
+| `tar.xz`          | Tarball with lzma2 compression       |
+| `tar.zma`         | Tarball with lzma compression        |
+| `tar.zst`         | Tarball with zstd compression        |
+| `tbz`             | Tarball with bzip compression        |
+| `tbz2`            | Tarball with bzip2 compression       |
+| `tgz`             | Tarball with gzip compression        |
+| `tlz`             | Tarball with lzma compression        |
+| `txz`             | Tarball with lzma2 compression       |
+| `tzst`            | Tarball with zstd compression        |
+| `vsix`            | VS Code extension zip file           |
+| `war`             | Web Application archive (Java-based) |
+| `whl`             | Python wheel file                    |
+| `xpi`             | Mozilla XPI module file              |
+| `xz`              | LZMA2 archive                        |
+| `zip`             | Zip archive                          |
+| `zlib`            | zlib archive                         |
+| `zst`             | Zstandard file (zstd)                |
+| `zpaq`            | Zpaq file                            |
+
+#### web-search
+
+oh-my-zsh 内置了 web-search 插件。web-search 能让我们在命令行中使用搜索引擎进行搜索。使用搜索引擎关键字&#43;搜索内容 即可自动打开浏览器进行搜索
+
+使用 web-search 命令即可搜索
+
+```zsh
+# Set in .zshrc
+plugins=(... web-search ...)
+```
+
+例如，这两个是等价的:
+
+```zsh
+web_search google oh-my-zsh
+google oh-my-zsh
+```
+
+一些常用的搜索上下文如下：
+
+| Context               | URL                                             |
+| --------------------- | ----------------------------------------------- |
+| `bing`                | `https://www.bing.com/search?q=`                |
+| `google`              | `https://www.google.com/search?q=`              |
+| `github`              | `https://github.com/search?q=`                  |
+| `baidu`               | `https://www.baidu.com/s?wd=`                   |
+| `youtube`             | `https://www.youtube.com/results?search_query=` |
+| `chatgpt`             | `https://chatgpt.com/?q=`                       |
+
+#### Uninstall
+
+```zsh
+uninstall_oh_my_zsh
+```
 
 
 ---
 
 > Author: [kyden](https:github.com/kydance)  
-> URL: http://kyden.us.kg/posts/tmux-guide/  
+> URL: http://localhost:1313/posts/tmux-guide/  
 

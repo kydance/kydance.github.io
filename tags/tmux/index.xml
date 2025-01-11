@@ -11,10 +11,10 @@
     <lastBuildDate>Thu, 03 Oct 2024 20:24:40 +0800</lastBuildDate>
     <atom:link href="http://kyden.us.kg/tags/tmux/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Tmux 终端神器：一篇文章玩转终端复用</title>
-      <link>http://kyden.us.kg/posts/tmux-guide/</link>
+      <title>终端神器：一篇文章玩转终端神器 Tmux，ZSH，Oh-My-Zsh</title>
+      <link>http://kyden.us.kg/posts/terminal-configure-guide/</link>
       <pubDate>Thu, 03 Oct 2024 20:24:40 +0800</pubDate><author>kytedance@gmail.com (kyden)</author>
-      <guid>http://kyden.us.kg/posts/tmux-guide/</guid>
+      <guid>http://kyden.us.kg/posts/terminal-configure-guide/</guid>
       <category domain="http://kyden.us.kg/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/">开发工具</category>
       <category domain="http://kyden.us.kg/categories/%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%B7%A5%E5%85%B7/">命令行工具</category>
       <category domain="http://kyden.us.kg/categories/%E6%95%88%E7%8E%87%E5%B7%A5%E5%85%B7/">效率工具</category>
