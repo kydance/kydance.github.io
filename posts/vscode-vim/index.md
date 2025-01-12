@@ -374,10 +374,22 @@ VSCodeVim 的相关配置文件是放在 `settings.json` 中，而不是 `vimrc`
 ]
 ```
 
+## Gitlens.pro
+
+[gitlens-pro](https://github.com/chengazhen/gitlens-pro)
+
+## Monokai Pro
+
+License
+
+- Email: `id@chinapyg.com`
+- Password: `d055c-36b72-151ce-350f4-a8f69`
+
 ## Reference
 
 - [Visual Studio Code](https://code.visualstudio.com/)
 - [VSCodeVim](https://github.com/VSCodeVim/Vim/#key-remapping)
+- [gitlens-pro](https://github.com/chengazhen/gitlens-pro)
 
 
 ---
