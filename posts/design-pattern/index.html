@@ -573,9 +573,9 @@ func GunFactory(gunType string) (Gun, error) {
 </span><span class="lnt">48
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-Go" data-lang="Go"><span class="line"><span class="cl"><span class="c1">// cache.go
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">type</span> <span class="nx">Cache</span> <span class="kd">struct</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="nx">storage</span>     <span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="nx">any</span>
+<pre tabindex="0" class="chroma"><code class="language-Go" data-lang="Go"><span class="line"><span class="cl"><span class="c1">// cache.go</span>
+</span></span><span class="line"><span class="cl"><span class="kd">type</span> <span class="nx">Cache</span> <span class="kd">struct</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">storage</span>     <span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">any</span>
 </span></span><span class="line"><span class="cl">    <span class="nx">rmAlgo</span>      <span class="nx">RmAlgo</span>
 </span></span><span class="line"><span class="cl">    <span class="nx">capacity</span>    <span class="kt">int</span>
 </span></span><span class="line"><span class="cl">    <span class="nx">maxCapacity</span> <span class="kt">int</span>
@@ -583,7 +583,7 @@ func GunFactory(gunType string) (Gun, error) {
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">initCache</span><span class="p">(</span><span class="nx">algo</span> <span class="nx">RmAlgo</span><span class="p">)</span> <span class="o">*</span><span class="nx">Cache</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="o">&amp;</span><span class="nx">Cache</span><span class="p">{</span>
-</span></span><span class="line"><span class="cl">        <span class="nx">storage</span><span class="p">:</span>     <span class="nb">make</span><span class="p">(</span><span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="nx">any</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">storage</span><span class="p">:</span>     <span class="nb">make</span><span class="p">(</span><span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">any</span><span class="p">),</span>
 </span></span><span class="line"><span class="cl">        <span class="nx">rmAlgo</span><span class="p">:</span>      <span class="nx">algo</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">        <span class="nx">capacity</span><span class="p">:</span>    <span class="mi">0</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">        <span class="nx">maxCapacity</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span>
@@ -595,9 +595,9 @@ func GunFactory(gunType string) (Gun, error) {
 </span></span><span class="line"><span class="cl">    <span class="nx">c</span><span class="p">.</span><span class="nx">capacity</span><span class="o">--</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="p">(</span><span class="nx">c</span> <span class="o">*</span><span class="nx">Cache</span><span class="p">)</span> <span class="nf">setRmAlgo</span><span class="p">(</span><span class="nx">algo</span> <span class="nx">RmAlgo</span><span class="p">)</span> <span class="p">{</span> <span class="nx">c</span><span class="p">.</span><span class="nx">rmAlgo</span> <span class="p">=</span> <span class="nx">algo</span> <span class="p">}</span>
-</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="p">(</span><span class="nx">c</span> <span class="o">*</span><span class="nx">Cache</span><span class="p">)</span> <span class="nf">get</span><span class="p">(</span><span class="nx">key</span> <span class="kt">string</span><span class="p">)</span> <span class="nx">any</span> <span class="p">{</span> <span class="k">return</span> <span class="nx">c</span><span class="p">.</span><span class="nx">storage</span><span class="p">[</span><span class="nx">key</span><span class="p">]</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="p">(</span><span class="nx">c</span> <span class="o">*</span><span class="nx">Cache</span><span class="p">)</span> <span class="nf">get</span><span class="p">(</span><span class="nx">key</span> <span class="kt">string</span><span class="p">)</span> <span class="kt">any</span> <span class="p">{</span> <span class="k">return</span> <span class="nx">c</span><span class="p">.</span><span class="nx">storage</span><span class="p">[</span><span class="nx">key</span><span class="p">]</span> <span class="p">}</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="p">(</span><span class="nx">c</span> <span class="o">*</span><span class="nx">Cache</span><span class="p">)</span> <span class="nf">add</span><span class="p">(</span><span class="nx">key</span> <span class="kt">string</span><span class="p">,</span> <span class="nx">value</span> <span class="nx">any</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="p">(</span><span class="nx">c</span> <span class="o">*</span><span class="nx">Cache</span><span class="p">)</span> <span class="nf">add</span><span class="p">(</span><span class="nx">key</span> <span class="kt">string</span><span class="p">,</span> <span class="nx">value</span> <span class="kt">any</span><span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="nx">c</span><span class="p">.</span><span class="nx">capacity</span> <span class="o">&gt;=</span> <span class="nx">c</span><span class="p">.</span><span class="nx">maxCapacity</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">        <span class="nx">c</span><span class="p">.</span><span class="nf">rm</span><span class="p">()</span>
 </span></span><span class="line"><span class="cl">    <span class="p">}</span>
@@ -605,21 +605,21 @@ func GunFactory(gunType string) (Gun, error) {
 </span></span><span class="line"><span class="cl">    <span class="nx">c</span><span class="p">.</span><span class="nx">capacity</span><span class="o">++</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1">// iCache.go 策略接口
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">type</span> <span class="nx">RmAlgo</span> <span class="kd">interface</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// iCache.go 策略接口</span>
+</span></span><span class="line"><span class="cl"><span class="kd">type</span> <span class="nx">RmAlgo</span> <span class="kd">interface</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="nf">Rm</span><span class="p">(</span><span class="nx">c</span> <span class="o">*</span><span class="nx">Cache</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1">// fifo.go
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">type</span> <span class="nx">Fifo</span> <span class="kd">struct</span><span class="p">{}</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// fifo.go</span>
+</span></span><span class="line"><span class="cl"><span class="kd">type</span> <span class="nx">Fifo</span> <span class="kd">struct</span><span class="p">{}</span>
 </span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="p">(</span><span class="nx">f</span> <span class="o">*</span><span class="nx">Fifo</span><span class="p">)</span> <span class="nf">Rm</span><span class="p">(</span><span class="nx">c</span> <span class="o">*</span><span class="nx">Cache</span><span class="p">)</span> <span class="p">{</span> <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;rm by fifo strategy&#34;</span><span class="p">)</span> <span class="p">}</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1">// lru.go
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">type</span> <span class="nx">Lru</span> <span class="kd">struct</span><span class="p">{}</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// lru.go</span>
+</span></span><span class="line"><span class="cl"><span class="kd">type</span> <span class="nx">Lru</span> <span class="kd">struct</span><span class="p">{}</span>
 </span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="p">(</span><span class="nx">l</span> <span class="o">*</span><span class="nx">Lru</span><span class="p">)</span> <span class="nf">Rm</span><span class="p">(</span><span class="nx">c</span> <span class="o">*</span><span class="nx">Cache</span><span class="p">)</span> <span class="p">{</span> <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;rm by lru strategy&#34;</span><span class="p">)</span> <span class="p">}</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1">// lfu.go
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">type</span> <span class="nx">Lfu</span> <span class="kd">struct</span><span class="p">{}</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// lfu.go</span>
+</span></span><span class="line"><span class="cl"><span class="kd">type</span> <span class="nx">Lfu</span> <span class="kd">struct</span><span class="p">{}</span>
 </span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="p">(</span><span class="nx">l</span> <span class="o">*</span><span class="nx">Lfu</span><span class="p">)</span> <span class="nf">Rm</span><span class="p">(</span><span class="nx">c</span> <span class="o">*</span><span class="nx">Cache</span><span class="p">)</span> <span class="p">{</span> <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;rm by lfu strategy&#34;</span><span class="p">)</span> <span class="p">}</span></span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="2-模板方法模式template-method-pattern" class="heading-element"><span>2. 模板方法模式（Template Method Pattern）</span>
@@ -699,8 +699,8 @@ func GunFactory(gunType string) (Gun, error) {
 </span><span class="lnt">55
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-Go" data-lang="Go"><span class="line"><span class="cl"><span class="c1">// iOtp.go
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">type</span> <span class="nx">IOtp</span> <span class="kd">interface</span> <span class="p">{</span>
+<pre tabindex="0" class="chroma"><code class="language-Go" data-lang="Go"><span class="line"><span class="cl"><span class="c1">// iOtp.go</span>
+</span></span><span class="line"><span class="cl"><span class="kd">type</span> <span class="nx">IOtp</span> <span class="kd">interface</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="nf">GenerateRandomOtp</span><span class="p">(</span><span class="nx">length</span> <span class="kt">int</span><span class="p">)</span> <span class="kt">string</span>
 </span></span><span class="line"><span class="cl">    <span class="nf">CacheOtp</span><span class="p">(</span><span class="nx">otp</span> <span class="kt">string</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="nf">PrepareContent</span><span class="p">()</span> <span class="kt">string</span>
@@ -717,8 +717,8 @@ func GunFactory(gunType string) (Gun, error) {
 </span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="nx">o</span><span class="p">.</span><span class="nx">iOtp</span><span class="p">.</span><span class="nf">SendNotification</span><span class="p">(</span><span class="nx">content</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1">// sms.go
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">type</span> <span class="nx">Sms</span> <span class="kd">struct</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// sms.go</span>
+</span></span><span class="line"><span class="cl"><span class="kd">type</span> <span class="nx">Sms</span> <span class="kd">struct</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="nx">Otp</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="p">(</span><span class="nx">s</span> <span class="o">*</span><span class="nx">Sms</span><span class="p">)</span> <span class="nf">GenerateRandomOtp</span><span class="p">(</span><span class="nx">length</span> <span class="kt">int</span><span class="p">)</span> <span class="kt">string</span> <span class="p">{</span>
@@ -736,8 +736,8 @@ func GunFactory(gunType string) (Gun, error) {
 </span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="kc">nil</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1">// email.go
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">type</span> <span class="nx">Email</span> <span class="kd">struct</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// email.go</span>
+</span></span><span class="line"><span class="cl"><span class="kd">type</span> <span class="nx">Email</span> <span class="kd">struct</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="nx">Otp</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="p">(</span><span class="nx">e</span> <span class="o">*</span><span class="nx">Email</span><span class="p">)</span> <span class="nf">GenerateRandomOtp</span><span class="p">(</span><span class="nx">length</span> <span class="kt">int</span><span class="p">)</span> <span class="kt">string</span> <span class="p">{</span>
@@ -832,13 +832,13 @@ func GunFactory(gunType string) (Gun, error) {
 </span><span class="lnt">51
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-Go" data-lang="Go"><span class="line"><span class="cl"><span class="c1">// server.go
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">type</span> <span class="nx">Server</span> <span class="kd">interface</span> <span class="p">{</span>
+<pre tabindex="0" class="chroma"><code class="language-Go" data-lang="Go"><span class="line"><span class="cl"><span class="c1">// server.go</span>
+</span></span><span class="line"><span class="cl"><span class="kd">type</span> <span class="nx">Server</span> <span class="kd">interface</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="nf">HandleRequest</span><span class="p">(</span><span class="kt">string</span><span class="p">,</span> <span class="kt">string</span><span class="p">)</span> <span class="p">(</span><span class="kt">int</span><span class="p">,</span> <span class="kt">string</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1">// nginx.go
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">type</span> <span class="nx">Nginx</span> <span class="kd">struct</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// nginx.go</span>
+</span></span><span class="line"><span class="cl"><span class="kd">type</span> <span class="nx">Nginx</span> <span class="kd">struct</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="nx">application</span>       <span class="o">*</span><span class="nx">Application</span>
 </span></span><span class="line"><span class="cl">    <span class="nx">maxAllowedRequest</span> <span class="kt">int</span>
 </span></span><span class="line"><span class="cl">    <span class="nx">rateLimiter</span>       <span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">int</span>
@@ -870,8 +870,8 @@ func GunFactory(gunType string) (Gun, error) {
 </span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="kc">true</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1">// application.go
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">type</span> <span class="nx">Application</span> <span class="kd">struct</span> <span class="p">{}</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// application.go</span>
+</span></span><span class="line"><span class="cl"><span class="kd">type</span> <span class="nx">Application</span> <span class="kd">struct</span> <span class="p">{}</span>
 </span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="p">(</span><span class="nx">a</span> <span class="o">*</span><span class="nx">Application</span><span class="p">)</span> <span class="nf">HandleRequest</span><span class="p">(</span><span class="nx">url</span> <span class="kt">string</span><span class="p">,</span> <span class="nx">method</span> <span class="kt">string</span><span class="p">)</span> <span class="p">(</span><span class="kt">int</span><span class="p">,</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="nx">url</span> <span class="o">==</span> <span class="s">&#34;/app/status&#34;</span> <span class="o">&amp;&amp;</span> <span class="nx">method</span> <span class="o">==</span> <span class="s">&#34;GET&#34;</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="mi">200</span><span class="p">,</span> <span class="s">&#34;OK&#34;</span>
@@ -1113,8 +1113,8 @@ func GunFactory(gunType string) (Gun, error) {
 </span></span><span class="line"><span class="cl">    <span class="nx">cache</span>   <span class="kt">bool</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1">// Option overrides behavior of Connection
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">type</span> <span class="nx">Option</span> <span class="kd">interface</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// Option overrides behavior of Connection</span>
+</span></span><span class="line"><span class="cl"><span class="kd">type</span> <span class="nx">Option</span> <span class="kd">interface</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="nf">apply</span><span class="p">(</span><span class="o">*</span><span class="nx">options</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span><span class="line"><span class="cl">
@@ -1214,7 +1214,7 @@ func GunFactory(gunType string) (Gun, error) {
 
   <aside class="toc" id="toc-auto" aria-label="Contents"><h2 class="toc-title">Contents&nbsp;<i class="toc-icon fa-solid fa-angle-down fa-fw" aria-hidden="true"></i></h2>
       <div class="toc-content" id="toc-content-auto"></div></aside></main><footer class="footer">
-    <div class="footer-container"><div class="footer-line powered order-1">Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreferrer" title="Hugo 0.140.2"><img class="hugo-icon" src="/images/hugo.min.svg" alt="Hugo logo" /> Hugo</a> | Theme - <a href="https://github.com/hugo-fixit/FixIt" target="_blank" rel="external" title="FixIt v0.3.16"><img class="fixit-icon" src="/images/fixit.min.svg" alt="FixIt logo" /> FixIt</a>
+    <div class="footer-container"><div class="footer-line powered order-1">Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreferrer" title="Hugo 0.141.0"><img class="hugo-icon" src="/images/hugo.min.svg" alt="Hugo logo" /> Hugo</a> | Theme - <a href="https://github.com/hugo-fixit/FixIt" target="_blank" rel="external" title="FixIt v0.3.16"><img class="fixit-icon" src="/images/fixit.min.svg" alt="FixIt logo" /> FixIt</a>
         </div><div class="footer-line copyright" itemscope itemtype="http://schema.org/CreativeWork"><i class="fa-regular fa-copyright fa-fw" aria-hidden="true"></i>
             <span itemprop="copyrightYear">2024 - 2025</span><span class="author" itemprop="copyrightHolder">
               <a href="/">kyden</a></span><span class="license footer-divider"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a></span></div><div class="footer-line statistics order-2"><span class="site-time" title='Website running ...'><i class="fa-solid fa-heartbeat fa-fw animate-icon" aria-hidden="true"></i><span class="ms-1 d-none">时光荏苒，本站已陪伴您</span><span class="run-times ms-1">Website running ...</span></span></div><div class="footer-line visitor order-3">

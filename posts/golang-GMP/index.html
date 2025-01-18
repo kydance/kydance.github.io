@@ -324,22 +324,21 @@ channel 作为一种引用类型，声明时需要指定传输数据类型，声
 </span><span class="lnt">15
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="c1">// 声明 channel
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">var</span> <span class="nx">ch</span> <span class="kd">chan</span> <span class="nx">T</span>	<span class="c1">// 双向 channel
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">var</span> <span class="nx">ch</span> <span class="kd">chan</span><span class="o">&lt;-</span> <span class="nx">T</span>	<span class="c1">// 只能发送 msg 的 channel
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">var</span> <span class="nx">ch</span> <span class="o">&lt;-</span><span class="kd">chan</span> <span class="nx">T</span> 	<span class="c1">// 只能接收 msg 的 channel
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
-</span></span><span class="line"><span class="cl"><span class="c1">// 创建 channel
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">ch</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">chan</span> <span class="nx">T</span><span class="p">,</span> <span class="nx">capicity</span><span class="p">)</span>	<span class="c1">// 双向 channel
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">ch</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">chan</span><span class="o">&lt;-</span> <span class="nx">T</span><span class="p">,</span> <span class="nx">capicity</span><span class="p">)</span>	<span class="c1">// 只能发送 msg 的 channel
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">ch</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">(</span><span class="o">&lt;-</span><span class="kd">chan</span> <span class="nx">T</span><span class="p">,</span> <span class="nx">capicity</span><span class="p">)</span>	<span class="c1">// 只能接收 msg 的 channel
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
-</span></span><span class="line"><span class="cl"><span class="c1">// 访问 channel
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">ch</span> <span class="o">&lt;-</span> <span class="nx">msg</span>	<span class="c1">// 发送 msg
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">msg</span> <span class="o">:=</span> <span class="o">&lt;-</span><span class="nx">ch</span>	<span class="c1">// 接收 msg
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">msg</span><span class="p">,</span> <span class="nx">ok</span> <span class="o">:=</span> <span class="o">&lt;-</span><span class="nx">ch</span> <span class="c1">// 接收 msg，同时判断 channel 是否接收成功
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nb">close</span><span class="p">(</span><span class="nx">ch</span><span class="p">)</span>	<span class="c1">// 关闭 channel
-</span></span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="c1">// 声明 channel</span>
+</span></span><span class="line"><span class="cl"><span class="kd">var</span> <span class="nx">ch</span> <span class="kd">chan</span> <span class="nx">T</span>	<span class="c1">// 双向 channel</span>
+</span></span><span class="line"><span class="cl"><span class="kd">var</span> <span class="nx">ch</span> <span class="kd">chan</span><span class="o">&lt;-</span> <span class="nx">T</span>	<span class="c1">// 只能发送 msg 的 channel</span>
+</span></span><span class="line"><span class="cl"><span class="kd">var</span> <span class="nx">ch</span> <span class="o">&lt;-</span><span class="kd">chan</span> <span class="nx">T</span> 	<span class="c1">// 只能接收 msg 的 channel</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// 创建 channel</span>
+</span></span><span class="line"><span class="cl"><span class="nx">ch</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">chan</span> <span class="nx">T</span><span class="p">,</span> <span class="nx">capicity</span><span class="p">)</span>	<span class="c1">// 双向 channel</span>
+</span></span><span class="line"><span class="cl"><span class="nx">ch</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">chan</span><span class="o">&lt;-</span> <span class="nx">T</span><span class="p">,</span> <span class="nx">capicity</span><span class="p">)</span>	<span class="c1">// 只能发送 msg 的 channel</span>
+</span></span><span class="line"><span class="cl"><span class="nx">ch</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">(</span><span class="o">&lt;-</span><span class="kd">chan</span> <span class="nx">T</span><span class="p">,</span> <span class="nx">capicity</span><span class="p">)</span>	<span class="c1">// 只能接收 msg 的 channel</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// 访问 channel</span>
+</span></span><span class="line"><span class="cl"><span class="nx">ch</span> <span class="o">&lt;-</span> <span class="nx">msg</span>	<span class="c1">// 发送 msg</span>
+</span></span><span class="line"><span class="cl"><span class="nx">msg</span> <span class="o">:=</span> <span class="o">&lt;-</span><span class="nx">ch</span>	<span class="c1">// 接收 msg</span>
+</span></span><span class="line"><span class="cl"><span class="nx">msg</span><span class="p">,</span> <span class="nx">ok</span> <span class="o">:=</span> <span class="o">&lt;-</span><span class="nx">ch</span> <span class="c1">// 接收 msg，同时判断 channel 是否接收成功</span>
+</span></span><span class="line"><span class="cl"><span class="nb">close</span><span class="p">(</span><span class="nx">ch</span><span class="p">)</span>	<span class="c1">// 关闭 channel</span></span></span></code></pre></td></tr></table>
 </div>
 </div><hr>
 <h3 id="golang-调度" class="heading-element"><span>Golang 调度</span>
@@ -471,113 +470,113 @@ channel 作为一种引用类型，声明时需要指定传输数据类型，声
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-Go" data-lang="Go"><span class="line"><span class="cl"><span class="kd">type</span> <span class="nx">g</span> <span class="kd">struct</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">	<span class="c1">// Stack parameters.
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// stack describes the actual stack memory: [stack.lo, stack.hi).
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// stackguard0 is the stack pointer compared in the Go stack growth prologue.
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// It is stack.lo+StackGuard normally, but can be StackPreempt to trigger a preemption.
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// stackguard1 is the stack pointer compared in the //go:systemstack stack growth prologue.
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// It is stack.lo+StackGuard on g0 and gsignal stacks.
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// It is ~0 on other goroutine stacks, to trigger a call to morestackc (and crash).
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">stack</span>       <span class="nx">stack</span>   <span class="c1">// offset known to runtime/cgo
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">stackguard0</span> <span class="kt">uintptr</span> <span class="c1">// offset known to liblink
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">stackguard1</span> <span class="kt">uintptr</span> <span class="c1">// offset known to liblink
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
-</span></span><span class="line"><span class="cl">	<span class="nx">_panic</span>    <span class="o">*</span><span class="nx">_panic</span> <span class="c1">// innermost panic - offset known to liblink
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">_defer</span>    <span class="o">*</span><span class="nx">_defer</span> <span class="c1">// innermost defer
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">m</span>         <span class="o">*</span><span class="nx">m</span>      <span class="c1">// current m; offset known to arm liblink
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">sched</span>     <span class="nx">gobuf</span>
-</span></span><span class="line"><span class="cl">	<span class="nx">syscallsp</span> <span class="kt">uintptr</span> <span class="c1">// if status==Gsyscall, syscallsp = sched.sp to use during gc
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">syscallpc</span> <span class="kt">uintptr</span> <span class="c1">// if status==Gsyscall, syscallpc = sched.pc to use during gc
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">stktopsp</span>  <span class="kt">uintptr</span> <span class="c1">// expected sp at top of stack, to check in traceback
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// param is a generic pointer parameter field used to pass
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// values in particular contexts where other storage for the
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// parameter would be difficult to find. It is currently used
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// in four ways:
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// 1. When a channel operation wakes up a blocked goroutine, it sets param to
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">//    point to the sudog of the completed blocking operation.
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// 2. By gcAssistAlloc1 to signal back to its caller that the goroutine completed
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">//    the GC cycle. It is unsafe to do so in any other way, because the goroutine&#39;s
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">//    stack may have moved in the meantime.
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// 3. By debugCallWrap to pass parameters to a new goroutine because allocating a
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">//    closure in the runtime is forbidden.
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// 4. When a panic is recovered and control returns to the respective frame,
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">//    param may point to a savedOpenDeferState.
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">param</span>        <span class="nx">unsafe</span><span class="p">.</span><span class="nx">Pointer</span>
-</span></span><span class="line"><span class="cl">	<span class="nx">atomicstatus</span> <span class="nx">atomic</span><span class="p">.</span><span class="nx">Uint32</span>
-</span></span><span class="line"><span class="cl">	<span class="nx">stackLock</span>    <span class="kt">uint32</span> <span class="c1">// sigprof/scang lock; TODO: fold in to atomicstatus
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">goid</span>         <span class="kt">uint64</span>
-</span></span><span class="line"><span class="cl">	<span class="nx">schedlink</span>    <span class="nx">guintptr</span>
-</span></span><span class="line"><span class="cl">	<span class="nx">waitsince</span>    <span class="kt">int64</span>      <span class="c1">// approx time when the g become blocked
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">waitreason</span>   <span class="nx">waitReason</span> <span class="c1">// if status==Gwaiting
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
-</span></span><span class="line"><span class="cl">	<span class="nx">preempt</span>       <span class="kt">bool</span> <span class="c1">// preemption signal, duplicates stackguard0 = stackpreempt
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">preemptStop</span>   <span class="kt">bool</span> <span class="c1">// transition to _Gpreempted on preemption; otherwise, just deschedule
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">preemptShrink</span> <span class="kt">bool</span> <span class="c1">// shrink stack at synchronous safe point
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
-</span></span><span class="line"><span class="cl">	<span class="c1">// asyncSafePoint is set if g is stopped at an asynchronous
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// safe point. This means there are frames on the stack
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// without precise pointer information.
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">asyncSafePoint</span> <span class="kt">bool</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// Stack parameters.</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// stack describes the actual stack memory: [stack.lo, stack.hi).</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// stackguard0 is the stack pointer compared in the Go stack growth prologue.</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// It is stack.lo+StackGuard normally, but can be StackPreempt to trigger a preemption.</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// stackguard1 is the stack pointer compared in the //go:systemstack stack growth prologue.</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// It is stack.lo+StackGuard on g0 and gsignal stacks.</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// It is ~0 on other goroutine stacks, to trigger a call to morestackc (and crash).</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">stack</span>       <span class="nx">stack</span>   <span class="c1">// offset known to runtime/cgo</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">stackguard0</span> <span class="kt">uintptr</span> <span class="c1">// offset known to liblink</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">stackguard1</span> <span class="kt">uintptr</span> <span class="c1">// offset known to liblink</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">	<span class="nx">paniconfault</span> <span class="kt">bool</span> <span class="c1">// panic (instead of crash) on unexpected fault address
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">gcscandone</span>   <span class="kt">bool</span> <span class="c1">// g has scanned stack; protected by _Gscan bit in status
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">throwsplit</span>   <span class="kt">bool</span> <span class="c1">// must not split stack
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// activeStackChans indicates that there are unlocked channels
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// pointing into this goroutine&#39;s stack. If true, stack
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// copying needs to acquire channel locks to protect these
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// areas of the stack.
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">activeStackChans</span> <span class="kt">bool</span>
-</span></span><span class="line"><span class="cl">	<span class="c1">// parkingOnChan indicates that the goroutine is about to
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// park on a chansend or chanrecv. Used to signal an unsafe point
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// for stack shrinking.
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">parkingOnChan</span> <span class="nx">atomic</span><span class="p">.</span><span class="nx">Bool</span>
-</span></span><span class="line"><span class="cl">	<span class="c1">// inMarkAssist indicates whether the goroutine is in mark assist.
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// Used by the execution tracer.
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">inMarkAssist</span> <span class="kt">bool</span>
-</span></span><span class="line"><span class="cl">	<span class="nx">coroexit</span>     <span class="kt">bool</span> <span class="c1">// argument to coroswitch_m
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
-</span></span><span class="line"><span class="cl">	<span class="nx">raceignore</span>    <span class="kt">int8</span>  <span class="c1">// ignore race detection events
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">nocgocallback</span> <span class="kt">bool</span>  <span class="c1">// whether disable callback from C
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">tracking</span>      <span class="kt">bool</span>  <span class="c1">// whether we&#39;re tracking this G for sched latency statistics
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">trackingSeq</span>   <span class="kt">uint8</span> <span class="c1">// used to decide whether to track this G
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">trackingStamp</span> <span class="kt">int64</span> <span class="c1">// timestamp of when the G last started being tracked
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">runnableTime</span>  <span class="kt">int64</span> <span class="c1">// the amount of time spent runnable, cleared when running, only used when tracking
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">lockedm</span>       <span class="nx">muintptr</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">_panic</span>    <span class="o">*</span><span class="nx">_panic</span> <span class="c1">// innermost panic - offset known to liblink</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">_defer</span>    <span class="o">*</span><span class="nx">_defer</span> <span class="c1">// innermost defer</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">m</span>         <span class="o">*</span><span class="nx">m</span>      <span class="c1">// current m; offset known to arm liblink</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">sched</span>     <span class="nx">gobuf</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">syscallsp</span> <span class="kt">uintptr</span> <span class="c1">// if status==Gsyscall, syscallsp = sched.sp to use during gc</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">syscallpc</span> <span class="kt">uintptr</span> <span class="c1">// if status==Gsyscall, syscallpc = sched.pc to use during gc</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">stktopsp</span>  <span class="kt">uintptr</span> <span class="c1">// expected sp at top of stack, to check in traceback</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// param is a generic pointer parameter field used to pass</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// values in particular contexts where other storage for the</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// parameter would be difficult to find. It is currently used</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// in four ways:</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// 1. When a channel operation wakes up a blocked goroutine, it sets param to</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">//    point to the sudog of the completed blocking operation.</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// 2. By gcAssistAlloc1 to signal back to its caller that the goroutine completed</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">//    the GC cycle. It is unsafe to do so in any other way, because the goroutine&#39;s</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">//    stack may have moved in the meantime.</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// 3. By debugCallWrap to pass parameters to a new goroutine because allocating a</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">//    closure in the runtime is forbidden.</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// 4. When a panic is recovered and control returns to the respective frame,</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">//    param may point to a savedOpenDeferState.</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">param</span>        <span class="nx">unsafe</span><span class="p">.</span><span class="nx">Pointer</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">atomicstatus</span> <span class="nx">atomic</span><span class="p">.</span><span class="nx">Uint32</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">stackLock</span>    <span class="kt">uint32</span> <span class="c1">// sigprof/scang lock; TODO: fold in to atomicstatus</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">goid</span>         <span class="kt">uint64</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">schedlink</span>    <span class="nx">guintptr</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">waitsince</span>    <span class="kt">int64</span>      <span class="c1">// approx time when the g become blocked</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">waitreason</span>   <span class="nx">waitReason</span> <span class="c1">// if status==Gwaiting</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="nx">preempt</span>       <span class="kt">bool</span> <span class="c1">// preemption signal, duplicates stackguard0 = stackpreempt</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">preemptStop</span>   <span class="kt">bool</span> <span class="c1">// transition to _Gpreempted on preemption; otherwise, just deschedule</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">preemptShrink</span> <span class="kt">bool</span> <span class="c1">// shrink stack at synchronous safe point</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="c1">// asyncSafePoint is set if g is stopped at an asynchronous</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// safe point. This means there are frames on the stack</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// without precise pointer information.</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">asyncSafePoint</span> <span class="kt">bool</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="nx">paniconfault</span> <span class="kt">bool</span> <span class="c1">// panic (instead of crash) on unexpected fault address</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">gcscandone</span>   <span class="kt">bool</span> <span class="c1">// g has scanned stack; protected by _Gscan bit in status</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">throwsplit</span>   <span class="kt">bool</span> <span class="c1">// must not split stack</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// activeStackChans indicates that there are unlocked channels</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// pointing into this goroutine&#39;s stack. If true, stack</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// copying needs to acquire channel locks to protect these</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// areas of the stack.</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">activeStackChans</span> <span class="kt">bool</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// parkingOnChan indicates that the goroutine is about to</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// park on a chansend or chanrecv. Used to signal an unsafe point</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// for stack shrinking.</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">parkingOnChan</span> <span class="nx">atomic</span><span class="p">.</span><span class="nx">Bool</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// inMarkAssist indicates whether the goroutine is in mark assist.</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// Used by the execution tracer.</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">inMarkAssist</span> <span class="kt">bool</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">coroexit</span>     <span class="kt">bool</span> <span class="c1">// argument to coroswitch_m</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="nx">raceignore</span>    <span class="kt">int8</span>  <span class="c1">// ignore race detection events</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">nocgocallback</span> <span class="kt">bool</span>  <span class="c1">// whether disable callback from C</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">tracking</span>      <span class="kt">bool</span>  <span class="c1">// whether we&#39;re tracking this G for sched latency statistics</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">trackingSeq</span>   <span class="kt">uint8</span> <span class="c1">// used to decide whether to track this G</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">trackingStamp</span> <span class="kt">int64</span> <span class="c1">// timestamp of when the G last started being tracked</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">runnableTime</span>  <span class="kt">int64</span> <span class="c1">// the amount of time spent runnable, cleared when running, only used when tracking</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">lockedm</span>       <span class="nx">muintptr</span>
 </span></span><span class="line"><span class="cl">	<span class="nx">sig</span>           <span class="kt">uint32</span>
 </span></span><span class="line"><span class="cl">	<span class="nx">writebuf</span>      <span class="p">[]</span><span class="kt">byte</span>
 </span></span><span class="line"><span class="cl">	<span class="nx">sigcode0</span>      <span class="kt">uintptr</span>
 </span></span><span class="line"><span class="cl">	<span class="nx">sigcode1</span>      <span class="kt">uintptr</span>
 </span></span><span class="line"><span class="cl">	<span class="nx">sigpc</span>         <span class="kt">uintptr</span>
-</span></span><span class="line"><span class="cl">	<span class="nx">parentGoid</span>    <span class="kt">uint64</span>          <span class="c1">// goid of goroutine that created this goroutine
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">gopc</span>          <span class="kt">uintptr</span>         <span class="c1">// pc of go statement that created this goroutine
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">ancestors</span>     <span class="o">*</span><span class="p">[]</span><span class="nx">ancestorInfo</span> <span class="c1">// ancestor information goroutine(s) that created this goroutine (only used if debug.tracebackancestors)
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">startpc</span>       <span class="kt">uintptr</span>         <span class="c1">// pc of goroutine function
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">racectx</span>       <span class="kt">uintptr</span>
-</span></span><span class="line"><span class="cl">	<span class="nx">waiting</span>       <span class="o">*</span><span class="nx">sudog</span>         <span class="c1">// sudog structures this g is waiting on (that have a valid elem ptr); in lock order
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">cgoCtxt</span>       <span class="p">[]</span><span class="kt">uintptr</span>      <span class="c1">// cgo traceback context
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">labels</span>        <span class="nx">unsafe</span><span class="p">.</span><span class="nx">Pointer</span> <span class="c1">// profiler labels
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">timer</span>         <span class="o">*</span><span class="nx">timer</span>         <span class="c1">// cached timer for time.Sleep
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">selectDone</span>    <span class="nx">atomic</span><span class="p">.</span><span class="nx">Uint32</span>  <span class="c1">// are we participating in a select and did someone win the race?
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
-</span></span><span class="line"><span class="cl">	<span class="nx">coroarg</span> <span class="o">*</span><span class="nx">coro</span> <span class="c1">// argument during coroutine transfers
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
-</span></span><span class="line"><span class="cl">	<span class="c1">// goroutineProfiled indicates the status of this goroutine&#39;s stack for the
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// current in-progress goroutine profile
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">goroutineProfiled</span> <span class="nx">goroutineProfileStateHolder</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">parentGoid</span>    <span class="kt">uint64</span>          <span class="c1">// goid of goroutine that created this goroutine</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">gopc</span>          <span class="kt">uintptr</span>         <span class="c1">// pc of go statement that created this goroutine</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">ancestors</span>     <span class="o">*</span><span class="p">[]</span><span class="nx">ancestorInfo</span> <span class="c1">// ancestor information goroutine(s) that created this goroutine (only used if debug.tracebackancestors)</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">startpc</span>       <span class="kt">uintptr</span>         <span class="c1">// pc of goroutine function</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">racectx</span>       <span class="kt">uintptr</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">waiting</span>       <span class="o">*</span><span class="nx">sudog</span>         <span class="c1">// sudog structures this g is waiting on (that have a valid elem ptr); in lock order</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">cgoCtxt</span>       <span class="p">[]</span><span class="kt">uintptr</span>      <span class="c1">// cgo traceback context</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">labels</span>        <span class="nx">unsafe</span><span class="p">.</span><span class="nx">Pointer</span> <span class="c1">// profiler labels</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">timer</span>         <span class="o">*</span><span class="nx">timer</span>         <span class="c1">// cached timer for time.Sleep</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">selectDone</span>    <span class="nx">atomic</span><span class="p">.</span><span class="nx">Uint32</span>  <span class="c1">// are we participating in a select and did someone win the race?</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">	<span class="c1">// Per-G tracer state.
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">trace</span> <span class="nx">gTraceState</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">coroarg</span> <span class="o">*</span><span class="nx">coro</span> <span class="c1">// argument during coroutine transfers</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">	<span class="c1">// Per-G GC state
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
-</span></span><span class="line"><span class="cl">	<span class="c1">// gcAssistBytes is this G&#39;s GC assist credit in terms of
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// bytes allocated. If this is positive, then the G has credit
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// to allocate gcAssistBytes bytes without assisting. If this
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// is negative, then the G must correct this by performing
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// scan work. We track this in bytes to make it fast to update
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// and check for debt in the malloc hot path. The assist ratio
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// determines how this corresponds to scan work debt.
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">gcAssistBytes</span> <span class="kt">int64</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// goroutineProfiled indicates the status of this goroutine&#39;s stack for the</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// current in-progress goroutine profile</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">goroutineProfiled</span> <span class="nx">goroutineProfileStateHolder</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="c1">// Per-G tracer state.</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">trace</span> <span class="nx">gTraceState</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="c1">// Per-G GC state</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="c1">// gcAssistBytes is this G&#39;s GC assist credit in terms of</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// bytes allocated. If this is positive, then the G has credit</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// to allocate gcAssistBytes bytes without assisting. If this</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// is negative, then the G must correct this by performing</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// scan work. We track this in bytes to make it fast to update</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// and check for debt in the malloc hot path. The assist ratio</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// determines how this corresponds to scan work debt.</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">gcAssistBytes</span> <span class="kt">int64</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></table>
 </div>
 </div><p><code>m</code> 的数据结构：</p>
@@ -681,88 +680,88 @@ channel 作为一种引用类型，声明时需要指定传输数据类型，声
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-Go" data-lang="Go"><span class="line"><span class="cl"><span class="kd">type</span> <span class="nx">m</span> <span class="kd">struct</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">	<span class="nx">g0</span>      <span class="o">*</span><span class="nx">g</span>     <span class="c1">// goroutine with scheduling stack
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">morebuf</span> <span class="nx">gobuf</span>  <span class="c1">// gobuf arg to morestack
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">divmod</span>  <span class="kt">uint32</span> <span class="c1">// div/mod denominator for arm - known to liblink
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">_</span>       <span class="kt">uint32</span> <span class="c1">// align next field to 8 bytes
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
-</span></span><span class="line"><span class="cl">	<span class="c1">// Fields not known to debuggers.
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">procid</span>        <span class="kt">uint64</span>            <span class="c1">// for debuggers, but offset not hard-coded
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">gsignal</span>       <span class="o">*</span><span class="nx">g</span>                <span class="c1">// signal-handling g
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">goSigStack</span>    <span class="nx">gsignalStack</span>      <span class="c1">// Go-allocated signal handling stack
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">sigmask</span>       <span class="nx">sigset</span>            <span class="c1">// storage for saved signal mask
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">tls</span>           <span class="p">[</span><span class="nx">tlsSlots</span><span class="p">]</span><span class="kt">uintptr</span> <span class="c1">// thread-local storage (for x86 extern register)
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">mstartfn</span>      <span class="kd">func</span><span class="p">()</span>
-</span></span><span class="line"><span class="cl">	<span class="nx">curg</span>          <span class="o">*</span><span class="nx">g</span>       <span class="c1">// current running goroutine
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">caughtsig</span>     <span class="nx">guintptr</span> <span class="c1">// goroutine running during fatal signal
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">p</span>             <span class="nx">puintptr</span> <span class="c1">// attached p for executing go code (nil if not executing go code)
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">nextp</span>         <span class="nx">puintptr</span>
-</span></span><span class="line"><span class="cl">	<span class="nx">oldp</span>          <span class="nx">puintptr</span> <span class="c1">// the p that was attached before executing a syscall
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">id</span>            <span class="kt">int64</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">g0</span>      <span class="o">*</span><span class="nx">g</span>     <span class="c1">// goroutine with scheduling stack</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">morebuf</span> <span class="nx">gobuf</span>  <span class="c1">// gobuf arg to morestack</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">divmod</span>  <span class="kt">uint32</span> <span class="c1">// div/mod denominator for arm - known to liblink</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">_</span>       <span class="kt">uint32</span> <span class="c1">// align next field to 8 bytes</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="c1">// Fields not known to debuggers.</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">procid</span>        <span class="kt">uint64</span>            <span class="c1">// for debuggers, but offset not hard-coded</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">gsignal</span>       <span class="o">*</span><span class="nx">g</span>                <span class="c1">// signal-handling g</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">goSigStack</span>    <span class="nx">gsignalStack</span>      <span class="c1">// Go-allocated signal handling stack</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">sigmask</span>       <span class="nx">sigset</span>            <span class="c1">// storage for saved signal mask</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">tls</span>           <span class="p">[</span><span class="nx">tlsSlots</span><span class="p">]</span><span class="kt">uintptr</span> <span class="c1">// thread-local storage (for x86 extern register)</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">mstartfn</span>      <span class="kd">func</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">curg</span>          <span class="o">*</span><span class="nx">g</span>       <span class="c1">// current running goroutine</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">caughtsig</span>     <span class="nx">guintptr</span> <span class="c1">// goroutine running during fatal signal</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">p</span>             <span class="nx">puintptr</span> <span class="c1">// attached p for executing go code (nil if not executing go code)</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">nextp</span>         <span class="nx">puintptr</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">oldp</span>          <span class="nx">puintptr</span> <span class="c1">// the p that was attached before executing a syscall</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">id</span>            <span class="kt">int64</span>
 </span></span><span class="line"><span class="cl">	<span class="nx">mallocing</span>     <span class="kt">int32</span>
 </span></span><span class="line"><span class="cl">	<span class="nx">throwing</span>      <span class="nx">throwType</span>
-</span></span><span class="line"><span class="cl">	<span class="nx">preemptoff</span>    <span class="kt">string</span> <span class="c1">// if != &#34;&#34;, keep curg running on this m
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">locks</span>         <span class="kt">int32</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">preemptoff</span>    <span class="kt">string</span> <span class="c1">// if != &#34;&#34;, keep curg running on this m</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">locks</span>         <span class="kt">int32</span>
 </span></span><span class="line"><span class="cl">	<span class="nx">dying</span>         <span class="kt">int32</span>
 </span></span><span class="line"><span class="cl">	<span class="nx">profilehz</span>     <span class="kt">int32</span>
-</span></span><span class="line"><span class="cl">	<span class="nx">spinning</span>      <span class="kt">bool</span> <span class="c1">// m is out of work and is actively looking for work
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">blocked</span>       <span class="kt">bool</span> <span class="c1">// m is blocked on a note
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">newSigstack</span>   <span class="kt">bool</span> <span class="c1">// minit on C thread called sigaltstack
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">printlock</span>     <span class="kt">int8</span>
-</span></span><span class="line"><span class="cl">	<span class="nx">incgo</span>         <span class="kt">bool</span>          <span class="c1">// m is executing a cgo call
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">isextra</span>       <span class="kt">bool</span>          <span class="c1">// m is an extra m
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">isExtraInC</span>    <span class="kt">bool</span>          <span class="c1">// m is an extra m that is not executing Go code
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">isExtraInSig</span>  <span class="kt">bool</span>          <span class="c1">// m is an extra m in a signal handler
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">freeWait</span>      <span class="nx">atomic</span><span class="p">.</span><span class="nx">Uint32</span> <span class="c1">// Whether it is safe to free g0 and delete m (one of freeMRef, freeMStack, freeMWait)
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">needextram</span>    <span class="kt">bool</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">spinning</span>      <span class="kt">bool</span> <span class="c1">// m is out of work and is actively looking for work</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">blocked</span>       <span class="kt">bool</span> <span class="c1">// m is blocked on a note</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">newSigstack</span>   <span class="kt">bool</span> <span class="c1">// minit on C thread called sigaltstack</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">printlock</span>     <span class="kt">int8</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">incgo</span>         <span class="kt">bool</span>          <span class="c1">// m is executing a cgo call</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">isextra</span>       <span class="kt">bool</span>          <span class="c1">// m is an extra m</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">isExtraInC</span>    <span class="kt">bool</span>          <span class="c1">// m is an extra m that is not executing Go code</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">isExtraInSig</span>  <span class="kt">bool</span>          <span class="c1">// m is an extra m in a signal handler</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">freeWait</span>      <span class="nx">atomic</span><span class="p">.</span><span class="nx">Uint32</span> <span class="c1">// Whether it is safe to free g0 and delete m (one of freeMRef, freeMStack, freeMWait)</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">needextram</span>    <span class="kt">bool</span>
 </span></span><span class="line"><span class="cl">	<span class="nx">traceback</span>     <span class="kt">uint8</span>
-</span></span><span class="line"><span class="cl">	<span class="nx">ncgocall</span>      <span class="kt">uint64</span>        <span class="c1">// number of cgo calls in total
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">ncgo</span>          <span class="kt">int32</span>         <span class="c1">// number of cgo calls currently in progress
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">cgoCallersUse</span> <span class="nx">atomic</span><span class="p">.</span><span class="nx">Uint32</span> <span class="c1">// if non-zero, cgoCallers in use temporarily
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">cgoCallers</span>    <span class="o">*</span><span class="nx">cgoCallers</span>   <span class="c1">// cgo traceback if crashing in cgo call
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">park</span>          <span class="nx">note</span>
-</span></span><span class="line"><span class="cl">	<span class="nx">alllink</span>       <span class="o">*</span><span class="nx">m</span> <span class="c1">// on allm
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">schedlink</span>     <span class="nx">muintptr</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">ncgocall</span>      <span class="kt">uint64</span>        <span class="c1">// number of cgo calls in total</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">ncgo</span>          <span class="kt">int32</span>         <span class="c1">// number of cgo calls currently in progress</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">cgoCallersUse</span> <span class="nx">atomic</span><span class="p">.</span><span class="nx">Uint32</span> <span class="c1">// if non-zero, cgoCallers in use temporarily</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">cgoCallers</span>    <span class="o">*</span><span class="nx">cgoCallers</span>   <span class="c1">// cgo traceback if crashing in cgo call</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">park</span>          <span class="nx">note</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">alllink</span>       <span class="o">*</span><span class="nx">m</span> <span class="c1">// on allm</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">schedlink</span>     <span class="nx">muintptr</span>
 </span></span><span class="line"><span class="cl">	<span class="nx">lockedg</span>       <span class="nx">guintptr</span>
-</span></span><span class="line"><span class="cl">	<span class="nx">createstack</span>   <span class="p">[</span><span class="mi">32</span><span class="p">]</span><span class="kt">uintptr</span> <span class="c1">// stack that created this thread, it&#39;s used for StackRecord.Stack0, so it must align with it.
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">lockedExt</span>     <span class="kt">uint32</span>      <span class="c1">// tracking for external LockOSThread
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">lockedInt</span>     <span class="kt">uint32</span>      <span class="c1">// tracking for internal lockOSThread
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">nextwaitm</span>     <span class="nx">muintptr</span>    <span class="c1">// next m waiting for lock
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
-</span></span><span class="line"><span class="cl">	<span class="nx">mLockProfile</span> <span class="nx">mLockProfile</span> <span class="c1">// fields relating to runtime.lock contention
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
-</span></span><span class="line"><span class="cl">	<span class="c1">// wait* are used to carry arguments from gopark into park_m, because
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// there&#39;s no stack to put them on. That is their sole purpose.
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">waitunlockf</span>          <span class="kd">func</span><span class="p">(</span><span class="o">*</span><span class="nx">g</span><span class="p">,</span> <span class="nx">unsafe</span><span class="p">.</span><span class="nx">Pointer</span><span class="p">)</span> <span class="kt">bool</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">createstack</span>   <span class="p">[</span><span class="mi">32</span><span class="p">]</span><span class="kt">uintptr</span> <span class="c1">// stack that created this thread, it&#39;s used for StackRecord.Stack0, so it must align with it.</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">lockedExt</span>     <span class="kt">uint32</span>      <span class="c1">// tracking for external LockOSThread</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">lockedInt</span>     <span class="kt">uint32</span>      <span class="c1">// tracking for internal lockOSThread</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">nextwaitm</span>     <span class="nx">muintptr</span>    <span class="c1">// next m waiting for lock</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="nx">mLockProfile</span> <span class="nx">mLockProfile</span> <span class="c1">// fields relating to runtime.lock contention</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="c1">// wait* are used to carry arguments from gopark into park_m, because</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// there&#39;s no stack to put them on. That is their sole purpose.</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">waitunlockf</span>          <span class="kd">func</span><span class="p">(</span><span class="o">*</span><span class="nx">g</span><span class="p">,</span> <span class="nx">unsafe</span><span class="p">.</span><span class="nx">Pointer</span><span class="p">)</span> <span class="kt">bool</span>
 </span></span><span class="line"><span class="cl">	<span class="nx">waitlock</span>             <span class="nx">unsafe</span><span class="p">.</span><span class="nx">Pointer</span>
 </span></span><span class="line"><span class="cl">	<span class="nx">waitTraceBlockReason</span> <span class="nx">traceBlockReason</span>
 </span></span><span class="line"><span class="cl">	<span class="nx">waitTraceSkip</span>        <span class="kt">int</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">	<span class="nx">syscalltick</span> <span class="kt">uint32</span>
-</span></span><span class="line"><span class="cl">	<span class="nx">freelink</span>    <span class="o">*</span><span class="nx">m</span> <span class="c1">// on sched.freem
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">trace</span>       <span class="nx">mTraceState</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">freelink</span>    <span class="o">*</span><span class="nx">m</span> <span class="c1">// on sched.freem</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">trace</span>       <span class="nx">mTraceState</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">	<span class="c1">// these are here because they are too large to be on the stack
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// of low-level NOSPLIT functions.
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">libcall</span>   <span class="nx">libcall</span>
-</span></span><span class="line"><span class="cl">	<span class="nx">libcallpc</span> <span class="kt">uintptr</span> <span class="c1">// for cpu profiler
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">libcallsp</span> <span class="kt">uintptr</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// these are here because they are too large to be on the stack</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// of low-level NOSPLIT functions.</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">libcall</span>   <span class="nx">libcall</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">libcallpc</span> <span class="kt">uintptr</span> <span class="c1">// for cpu profiler</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">libcallsp</span> <span class="kt">uintptr</span>
 </span></span><span class="line"><span class="cl">	<span class="nx">libcallg</span>  <span class="nx">guintptr</span>
-</span></span><span class="line"><span class="cl">	<span class="nx">syscall</span>   <span class="nx">libcall</span> <span class="c1">// stores syscall parameters on windows
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
-</span></span><span class="line"><span class="cl">	<span class="nx">vdsoSP</span> <span class="kt">uintptr</span> <span class="c1">// SP for traceback while in VDSO call (0 if not in call)
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">vdsoPC</span> <span class="kt">uintptr</span> <span class="c1">// PC for traceback while in VDSO call
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
-</span></span><span class="line"><span class="cl">	<span class="c1">// preemptGen counts the number of completed preemption
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// signals. This is used to detect when a preemption is
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// requested, but fails.
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">preemptGen</span> <span class="nx">atomic</span><span class="p">.</span><span class="nx">Uint32</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">syscall</span>   <span class="nx">libcall</span> <span class="c1">// stores syscall parameters on windows</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">	<span class="c1">// Whether this is a pending preemption signal on this M.
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">signalPending</span> <span class="nx">atomic</span><span class="p">.</span><span class="nx">Uint32</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">vdsoSP</span> <span class="kt">uintptr</span> <span class="c1">// SP for traceback while in VDSO call (0 if not in call)</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">vdsoPC</span> <span class="kt">uintptr</span> <span class="c1">// PC for traceback while in VDSO call</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">	<span class="c1">// pcvalue lookup cache
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">pcvalueCache</span> <span class="nx">pcvalueCache</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// preemptGen counts the number of completed preemption</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// signals. This is used to detect when a preemption is</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// requested, but fails.</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">preemptGen</span> <span class="nx">atomic</span><span class="p">.</span><span class="nx">Uint32</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="c1">// Whether this is a pending preemption signal on this M.</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">signalPending</span> <span class="nx">atomic</span><span class="p">.</span><span class="nx">Uint32</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="c1">// pcvalue lookup cache</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">pcvalueCache</span> <span class="nx">pcvalueCache</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">	<span class="nx">dlogPerM</span>
 </span></span><span class="line"><span class="cl">
@@ -771,8 +770,8 @@ channel 作为一种引用类型，声明时需要指定传输数据类型，声
 </span></span><span class="line"><span class="cl">	<span class="nx">chacha8</span>   <span class="nx">chacha8rand</span><span class="p">.</span><span class="nx">State</span>
 </span></span><span class="line"><span class="cl">	<span class="nx">cheaprand</span> <span class="kt">uint64</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">	<span class="c1">// Up to 10 locks held by this m, maintained by the lock ranking code.
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">locksHeldLen</span> <span class="kt">int</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// Up to 10 locks held by this m, maintained by the lock ranking code.</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">locksHeldLen</span> <span class="kt">int</span>
 </span></span><span class="line"><span class="cl">	<span class="nx">locksHeld</span>    <span class="p">[</span><span class="mi">10</span><span class="p">]</span><span class="nx">heldLockInfo</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></table>
 </div>
@@ -935,43 +934,43 @@ channel 作为一种引用类型，声明时需要指定传输数据类型，声
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-Go" data-lang="Go"><span class="line"><span class="cl"><span class="kd">type</span> <span class="nx">p</span> <span class="kd">struct</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">	<span class="nx">id</span>          <span class="kt">int32</span>
-</span></span><span class="line"><span class="cl">	<span class="nx">status</span>      <span class="kt">uint32</span> <span class="c1">// one of pidle/prunning/...
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">link</span>        <span class="nx">puintptr</span>
-</span></span><span class="line"><span class="cl">	<span class="nx">schedtick</span>   <span class="kt">uint32</span>     <span class="c1">// incremented on every scheduler call
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">syscalltick</span> <span class="kt">uint32</span>     <span class="c1">// incremented on every system call
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">sysmontick</span>  <span class="nx">sysmontick</span> <span class="c1">// last tick observed by sysmon
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">m</span>           <span class="nx">muintptr</span>   <span class="c1">// back-link to associated m (nil if idle)
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">mcache</span>      <span class="o">*</span><span class="nx">mcache</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">status</span>      <span class="kt">uint32</span> <span class="c1">// one of pidle/prunning/...</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">link</span>        <span class="nx">puintptr</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">schedtick</span>   <span class="kt">uint32</span>     <span class="c1">// incremented on every scheduler call</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">syscalltick</span> <span class="kt">uint32</span>     <span class="c1">// incremented on every system call</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">sysmontick</span>  <span class="nx">sysmontick</span> <span class="c1">// last tick observed by sysmon</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">m</span>           <span class="nx">muintptr</span>   <span class="c1">// back-link to associated m (nil if idle)</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">mcache</span>      <span class="o">*</span><span class="nx">mcache</span>
 </span></span><span class="line"><span class="cl">	<span class="nx">pcache</span>      <span class="nx">pageCache</span>
 </span></span><span class="line"><span class="cl">	<span class="nx">raceprocctx</span> <span class="kt">uintptr</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">	<span class="nx">deferpool</span>    <span class="p">[]</span><span class="o">*</span><span class="nx">_defer</span> <span class="c1">// pool of available defer structs (see panic.go)
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">deferpoolbuf</span> <span class="p">[</span><span class="mi">32</span><span class="p">]</span><span class="o">*</span><span class="nx">_defer</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">deferpool</span>    <span class="p">[]</span><span class="o">*</span><span class="nx">_defer</span> <span class="c1">// pool of available defer structs (see panic.go)</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">deferpoolbuf</span> <span class="p">[</span><span class="mi">32</span><span class="p">]</span><span class="o">*</span><span class="nx">_defer</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">	<span class="c1">// Cache of goroutine ids, amortizes accesses to runtime·sched.goidgen.
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">goidcache</span>    <span class="kt">uint64</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// Cache of goroutine ids, amortizes accesses to runtime·sched.goidgen.</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">goidcache</span>    <span class="kt">uint64</span>
 </span></span><span class="line"><span class="cl">	<span class="nx">goidcacheend</span> <span class="kt">uint64</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">	<span class="c1">// Queue of runnable goroutines. Accessed without lock.
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">runqhead</span> <span class="kt">uint32</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// Queue of runnable goroutines. Accessed without lock.</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">runqhead</span> <span class="kt">uint32</span>
 </span></span><span class="line"><span class="cl">	<span class="nx">runqtail</span> <span class="kt">uint32</span>
 </span></span><span class="line"><span class="cl">	<span class="nx">runq</span>     <span class="p">[</span><span class="mi">256</span><span class="p">]</span><span class="nx">guintptr</span>
-</span></span><span class="line"><span class="cl">	<span class="c1">// runnext, if non-nil, is a runnable G that was ready&#39;d by
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// the current G and should be run next instead of what&#39;s in
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// runq if there&#39;s time remaining in the running G&#39;s time
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// slice. It will inherit the time left in the current time
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// slice. If a set of goroutines is locked in a
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// communicate-and-wait pattern, this schedules that set as a
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// unit and eliminates the (potentially large) scheduling
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// latency that otherwise arises from adding the ready&#39;d
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// goroutines to the end of the run queue.
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">//
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// Note that while other P&#39;s may atomically CAS this to zero,
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// only the owner P can CAS it to a valid G.
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">runnext</span> <span class="nx">guintptr</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// runnext, if non-nil, is a runnable G that was ready&#39;d by</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// the current G and should be run next instead of what&#39;s in</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// runq if there&#39;s time remaining in the running G&#39;s time</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// slice. It will inherit the time left in the current time</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// slice. If a set of goroutines is locked in a</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// communicate-and-wait pattern, this schedules that set as a</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// unit and eliminates the (potentially large) scheduling</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// latency that otherwise arises from adding the ready&#39;d</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// goroutines to the end of the run queue.</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">//</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// Note that while other P&#39;s may atomically CAS this to zero,</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// only the owner P can CAS it to a valid G.</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">runnext</span> <span class="nx">guintptr</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">	<span class="c1">// Available G&#39;s (status == Gdead)
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">gFree</span> <span class="kd">struct</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// Available G&#39;s (status == Gdead)</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">gFree</span> <span class="kd">struct</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">		<span class="nx">gList</span>
 </span></span><span class="line"><span class="cl">		<span class="nx">n</span> <span class="kt">int32</span>
 </span></span><span class="line"><span class="cl">	<span class="p">}</span>
@@ -979,112 +978,112 @@ channel 作为一种引用类型，声明时需要指定传输数据类型，声
 </span></span><span class="line"><span class="cl">	<span class="nx">sudogcache</span> <span class="p">[]</span><span class="o">*</span><span class="nx">sudog</span>
 </span></span><span class="line"><span class="cl">	<span class="nx">sudogbuf</span>   <span class="p">[</span><span class="mi">128</span><span class="p">]</span><span class="o">*</span><span class="nx">sudog</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">	<span class="c1">// Cache of mspan objects from the heap.
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">mspancache</span> <span class="kd">struct</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">		<span class="c1">// We need an explicit length here because this field is used
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>		<span class="c1">// in allocation codepaths where write barriers are not allowed,
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>		<span class="c1">// and eliminating the write barrier/keeping it eliminated from
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>		<span class="c1">// slice updates is tricky, more so than just managing the length
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>		<span class="c1">// ourselves.
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>		<span class="nx">len</span> <span class="kt">int</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// Cache of mspan objects from the heap.</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">mspancache</span> <span class="kd">struct</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="c1">// We need an explicit length here because this field is used</span>
+</span></span><span class="line"><span class="cl">		<span class="c1">// in allocation codepaths where write barriers are not allowed,</span>
+</span></span><span class="line"><span class="cl">		<span class="c1">// and eliminating the write barrier/keeping it eliminated from</span>
+</span></span><span class="line"><span class="cl">		<span class="c1">// slice updates is tricky, more so than just managing the length</span>
+</span></span><span class="line"><span class="cl">		<span class="c1">// ourselves.</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">len</span> <span class="kt">int</span>
 </span></span><span class="line"><span class="cl">		<span class="nx">buf</span> <span class="p">[</span><span class="mi">128</span><span class="p">]</span><span class="o">*</span><span class="nx">mspan</span>
 </span></span><span class="line"><span class="cl">	<span class="p">}</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">	<span class="c1">// Cache of a single pinner object to reduce allocations from repeated
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// pinner creation.
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">pinnerCache</span> <span class="o">*</span><span class="nx">pinner</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// Cache of a single pinner object to reduce allocations from repeated</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// pinner creation.</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">pinnerCache</span> <span class="o">*</span><span class="nx">pinner</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">	<span class="nx">trace</span> <span class="nx">pTraceState</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">	<span class="nx">palloc</span> <span class="nx">persistentAlloc</span> <span class="c1">// per-P to avoid mutex
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
-</span></span><span class="line"><span class="cl">	<span class="c1">// The when field of the first entry on the timer heap.
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// This is 0 if the timer heap is empty.
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">timer0When</span> <span class="nx">atomic</span><span class="p">.</span><span class="nx">Int64</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">palloc</span> <span class="nx">persistentAlloc</span> <span class="c1">// per-P to avoid mutex</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">	<span class="c1">// The earliest known nextwhen field of a timer with
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// timerModifiedEarlier status. Because the timer may have been
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// modified again, there need not be any timer with this value.
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// This is 0 if there are no timerModifiedEarlier timers.
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">timerModifiedEarliest</span> <span class="nx">atomic</span><span class="p">.</span><span class="nx">Int64</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// The when field of the first entry on the timer heap.</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// This is 0 if the timer heap is empty.</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">timer0When</span> <span class="nx">atomic</span><span class="p">.</span><span class="nx">Int64</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">	<span class="c1">// Per-P GC state
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">gcAssistTime</span>         <span class="kt">int64</span> <span class="c1">// Nanoseconds in assistAlloc
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">gcFractionalMarkTime</span> <span class="kt">int64</span> <span class="c1">// Nanoseconds in fractional mark worker (atomic)
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
-</span></span><span class="line"><span class="cl">	<span class="c1">// limiterEvent tracks events for the GC CPU limiter.
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">limiterEvent</span> <span class="nx">limiterEvent</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// The earliest known nextwhen field of a timer with</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// timerModifiedEarlier status. Because the timer may have been</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// modified again, there need not be any timer with this value.</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// This is 0 if there are no timerModifiedEarlier timers.</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">timerModifiedEarliest</span> <span class="nx">atomic</span><span class="p">.</span><span class="nx">Int64</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">	<span class="c1">// gcMarkWorkerMode is the mode for the next mark worker to run in.
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// That is, this is used to communicate with the worker goroutine
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// selected for immediate execution by
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// gcController.findRunnableGCWorker. When scheduling other goroutines,
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// this field must be set to gcMarkWorkerNotWorker.
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">gcMarkWorkerMode</span> <span class="nx">gcMarkWorkerMode</span>
-</span></span><span class="line"><span class="cl">	<span class="c1">// gcMarkWorkerStartTime is the nanotime() at which the most recent
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// mark worker started.
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">gcMarkWorkerStartTime</span> <span class="kt">int64</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// Per-P GC state</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">gcAssistTime</span>         <span class="kt">int64</span> <span class="c1">// Nanoseconds in assistAlloc</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">gcFractionalMarkTime</span> <span class="kt">int64</span> <span class="c1">// Nanoseconds in fractional mark worker (atomic)</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">	<span class="c1">// gcw is this P&#39;s GC work buffer cache. The work buffer is
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// filled by write barriers, drained by mutator assists, and
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// disposed on certain GC state transitions.
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">gcw</span> <span class="nx">gcWork</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// limiterEvent tracks events for the GC CPU limiter.</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">limiterEvent</span> <span class="nx">limiterEvent</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">	<span class="c1">// wbBuf is this P&#39;s GC write barrier buffer.
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">//
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// TODO: Consider caching this in the running G.
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">wbBuf</span> <span class="nx">wbBuf</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// gcMarkWorkerMode is the mode for the next mark worker to run in.</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// That is, this is used to communicate with the worker goroutine</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// selected for immediate execution by</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// gcController.findRunnableGCWorker. When scheduling other goroutines,</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// this field must be set to gcMarkWorkerNotWorker.</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">gcMarkWorkerMode</span> <span class="nx">gcMarkWorkerMode</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// gcMarkWorkerStartTime is the nanotime() at which the most recent</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// mark worker started.</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">gcMarkWorkerStartTime</span> <span class="kt">int64</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">	<span class="nx">runSafePointFn</span> <span class="kt">uint32</span> <span class="c1">// if 1, run sched.safePointFn at next safe point
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
-</span></span><span class="line"><span class="cl">	<span class="c1">// statsSeq is a counter indicating whether this P is currently
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// writing any stats. Its value is even when not, odd when it is.
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">statsSeq</span> <span class="nx">atomic</span><span class="p">.</span><span class="nx">Uint32</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// gcw is this P&#39;s GC work buffer cache. The work buffer is</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// filled by write barriers, drained by mutator assists, and</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// disposed on certain GC state transitions.</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">gcw</span> <span class="nx">gcWork</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">	<span class="c1">// Lock for timers. We normally access the timers while running
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// on this P, but the scheduler can also do it from a different P.
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">timersLock</span> <span class="nx">mutex</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// wbBuf is this P&#39;s GC write barrier buffer.</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">//</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// TODO: Consider caching this in the running G.</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">wbBuf</span> <span class="nx">wbBuf</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">	<span class="c1">// Actions to take at some time. This is used to implement the
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// standard library&#39;s time package.
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// Must hold timersLock to access.
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">timers</span> <span class="p">[]</span><span class="o">*</span><span class="nx">timer</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">runSafePointFn</span> <span class="kt">uint32</span> <span class="c1">// if 1, run sched.safePointFn at next safe point</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">	<span class="c1">// Number of timers in P&#39;s heap.
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">numTimers</span> <span class="nx">atomic</span><span class="p">.</span><span class="nx">Uint32</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// statsSeq is a counter indicating whether this P is currently</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// writing any stats. Its value is even when not, odd when it is.</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">statsSeq</span> <span class="nx">atomic</span><span class="p">.</span><span class="nx">Uint32</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">	<span class="c1">// Number of timerDeleted timers in P&#39;s heap.
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">deletedTimers</span> <span class="nx">atomic</span><span class="p">.</span><span class="nx">Uint32</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// Lock for timers. We normally access the timers while running</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// on this P, but the scheduler can also do it from a different P.</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">timersLock</span> <span class="nx">mutex</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">	<span class="c1">// Race context used while executing timer functions.
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">timerRaceCtx</span> <span class="kt">uintptr</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// Actions to take at some time. This is used to implement the</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// standard library&#39;s time package.</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// Must hold timersLock to access.</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">timers</span> <span class="p">[]</span><span class="o">*</span><span class="nx">timer</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">	<span class="c1">// maxStackScanDelta accumulates the amount of stack space held by
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// live goroutines (i.e. those eligible for stack scanning).
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// Flushed to gcController.maxStackScan once maxStackScanSlack
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// or -maxStackScanSlack is reached.
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">maxStackScanDelta</span> <span class="kt">int64</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// Number of timers in P&#39;s heap.</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">numTimers</span> <span class="nx">atomic</span><span class="p">.</span><span class="nx">Uint32</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">	<span class="c1">// gc-time statistics about current goroutines
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// Note that this differs from maxStackScan in that this
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// accumulates the actual stack observed to be used at GC time (hi - sp),
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// not an instantaneous measure of the total stack size that might need
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// to be scanned (hi - lo).
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">scannedStackSize</span> <span class="kt">uint64</span> <span class="c1">// stack size of goroutines scanned by this P
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">scannedStacks</span>    <span class="kt">uint64</span> <span class="c1">// number of goroutines scanned by this P
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
-</span></span><span class="line"><span class="cl">	<span class="c1">// preempt is set to indicate that this P should be enter the
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// scheduler ASAP (regardless of what G is running on it).
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">preempt</span> <span class="kt">bool</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// Number of timerDeleted timers in P&#39;s heap.</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">deletedTimers</span> <span class="nx">atomic</span><span class="p">.</span><span class="nx">Uint32</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">	<span class="c1">// pageTraceBuf is a buffer for writing out page allocation/free/scavenge traces.
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">//
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// Used only if GOEXPERIMENT=pagetrace.
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">pageTraceBuf</span> <span class="nx">pageTraceBuf</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// Race context used while executing timer functions.</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">timerRaceCtx</span> <span class="kt">uintptr</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">	<span class="c1">// Padding is no longer needed. False sharing is now not a worry because p is large enough
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// that its size class is an integer multiple of the cache line size (for any of our architectures).
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">}</span></span></span></code></pre></td></tr></table>
+</span></span><span class="line"><span class="cl">	<span class="c1">// maxStackScanDelta accumulates the amount of stack space held by</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// live goroutines (i.e. those eligible for stack scanning).</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// Flushed to gcController.maxStackScan once maxStackScanSlack</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// or -maxStackScanSlack is reached.</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">maxStackScanDelta</span> <span class="kt">int64</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="c1">// gc-time statistics about current goroutines</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// Note that this differs from maxStackScan in that this</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// accumulates the actual stack observed to be used at GC time (hi - sp),</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// not an instantaneous measure of the total stack size that might need</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// to be scanned (hi - lo).</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">scannedStackSize</span> <span class="kt">uint64</span> <span class="c1">// stack size of goroutines scanned by this P</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">scannedStacks</span>    <span class="kt">uint64</span> <span class="c1">// number of goroutines scanned by this P</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="c1">// preempt is set to indicate that this P should be enter the</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// scheduler ASAP (regardless of what G is running on it).</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">preempt</span> <span class="kt">bool</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="c1">// pageTraceBuf is a buffer for writing out page allocation/free/scavenge traces.</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">//</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// Used only if GOEXPERIMENT=pagetrace.</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">pageTraceBuf</span> <span class="nx">pageTraceBuf</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="c1">// Padding is no longer needed. False sharing is now not a worry because p is large enough</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// that its size class is an integer multiple of the cache line size (for any of our architectures).</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></table>
 </div>
 </div><ul>
 <li>在 <code>p</code> 的结构中，<code>runnext guintptr</code> 就是 run next，大小为 1，存放下一个将要运行的 G</li>
@@ -1164,26 +1163,26 @@ channel 作为一种引用类型，声明时需要指定传输数据类型，声
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-Go" data-lang="Go"><span class="line"><span class="cl"><span class="kd">type</span> <span class="nx">gobuf</span> <span class="kd">struct</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">	<span class="c1">// The offsets of sp, pc, and g are known to (hard-coded in) libmach.
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">//
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// ctxt is unusual with respect to GC: it may be a
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// heap-allocated funcval, so GC needs to track it, but it
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// needs to be set and cleared from assembly, where it&#39;s
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// difficult to have write barriers. However, ctxt is really a
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// saved, live register, and we only ever exchange it between
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// the real register and the gobuf. Hence, we treat it as a
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// root during stack scanning, which means assembly that saves
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// and restores it doesn&#39;t need write barriers. It&#39;s still
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// typed as a pointer so that any other writes from Go get
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// write barriers.
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">sp</span>   <span class="kt">uintptr</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// The offsets of sp, pc, and g are known to (hard-coded in) libmach.</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">//</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// ctxt is unusual with respect to GC: it may be a</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// heap-allocated funcval, so GC needs to track it, but it</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// needs to be set and cleared from assembly, where it&#39;s</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// difficult to have write barriers. However, ctxt is really a</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// saved, live register, and we only ever exchange it between</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// the real register and the gobuf. Hence, we treat it as a</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// root during stack scanning, which means assembly that saves</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// and restores it doesn&#39;t need write barriers. It&#39;s still</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// typed as a pointer so that any other writes from Go get</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// write barriers.</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">sp</span>   <span class="kt">uintptr</span>
 </span></span><span class="line"><span class="cl">	<span class="nx">pc</span>   <span class="kt">uintptr</span>
 </span></span><span class="line"><span class="cl">	<span class="nx">g</span>    <span class="nx">guintptr</span>
 </span></span><span class="line"><span class="cl">	<span class="nx">ctxt</span> <span class="nx">unsafe</span><span class="p">.</span><span class="nx">Pointer</span>
 </span></span><span class="line"><span class="cl">	<span class="nx">ret</span>  <span class="kt">uintptr</span>
 </span></span><span class="line"><span class="cl">	<span class="nx">lr</span>   <span class="kt">uintptr</span>
-</span></span><span class="line"><span class="cl">	<span class="nx">bp</span>   <span class="kt">uintptr</span> <span class="c1">// for framepointer-enabled architectures
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">}</span></span></span></code></pre></td></tr></table>
+</span></span><span class="line"><span class="cl">	<span class="nx">bp</span>   <span class="kt">uintptr</span> <span class="c1">// for framepointer-enabled architectures</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></table>
 </div>
 </div><hr>
 <h3 id="runtime-可拦截-goroutine-阻塞场景解析" class="heading-element"><span>runtime 可拦截 goroutine 阻塞场景解析</span>
@@ -1361,11 +1360,11 @@ channel 作为一种引用类型，声明时需要指定传输数据类型，声
 </span></span><span class="line"><span class="cl">    <span class="nx">gp</span><span class="p">.</span><span class="nx">waiting</span> <span class="p">=</span> <span class="nx">mysg</span>
 </span></span><span class="line"><span class="cl">    <span class="nx">gp</span><span class="p">.</span><span class="nx">param</span> <span class="p">=</span> <span class="kc">nil</span>
 </span></span><span class="line"><span class="cl">    <span class="nx">c</span><span class="p">.</span><span class="nx">sendq</span><span class="p">.</span><span class="nf">enqueue</span><span class="p">(</span><span class="nx">mysg</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">    <span class="c1">// Signal to anyone trying to shrink our stack that we&#39;re about
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="c1">// to park on a channel. The window between when this G&#39;s status
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="c1">// changes and when we set gp.activeStackChans is not safe for
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="c1">// stack shrinking.
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="nx">gp</span><span class="p">.</span><span class="nx">parkingOnChan</span><span class="p">.</span><span class="nf">Store</span><span class="p">(</span><span class="kc">true</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// Signal to anyone trying to shrink our stack that we&#39;re about</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// to park on a channel. The window between when this G&#39;s status</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// changes and when we set gp.activeStackChans is not safe for</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// stack shrinking.</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">gp</span><span class="p">.</span><span class="nx">parkingOnChan</span><span class="p">.</span><span class="nf">Store</span><span class="p">(</span><span class="kc">true</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="nf">gopark</span><span class="p">(</span><span class="nx">chanparkcommit</span><span class="p">,</span> <span class="nx">unsafe</span><span class="p">.</span><span class="nf">Pointer</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">c</span><span class="p">.</span><span class="nx">lock</span><span class="p">),</span> <span class="nx">waitReasonChanSend</span><span class="p">,</span> <span class="nx">traceBlockChanSend</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="o">...</span>
 </span></span><span class="line"><span class="cl">  <span class="p">}</span> <span class="o">-</span><span class="p">&gt;</span>
@@ -1400,19 +1399,19 @@ channel 作为一种引用类型，声明时需要指定传输数据类型，声
 </span></span><span class="line"><span class="cl">  <span class="nx">runtime</span><span class="p">.</span><span class="nf">chanrecv1</span><span class="p">(</span><span class="nx">c</span> <span class="o">*</span><span class="nx">hchan</span><span class="p">,</span> <span class="nx">elem</span> <span class="nx">unsafe</span><span class="p">.</span><span class="nx">Pointer</span><span class="p">)</span> <span class="o">-</span><span class="p">&gt;</span>
 </span></span><span class="line"><span class="cl">    <span class="nx">runtime</span><span class="p">.</span><span class="nf">chanrecv</span><span class="p">(</span><span class="nx">c</span> <span class="o">*</span><span class="nx">hchan</span><span class="p">,</span> <span class="nx">ep</span> <span class="nx">unsafe</span><span class="p">.</span><span class="nx">Pointer</span><span class="p">,</span> <span class="nx">block</span> <span class="kt">bool</span><span class="p">)</span> <span class="p">(</span><span class="nx">selected</span><span class="p">,</span> <span class="nx">received</span> <span class="kt">bool</span><span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">      <span class="o">...</span>
-</span></span><span class="line"><span class="cl">      <span class="c1">// no sender available: block on this channel.
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>      <span class="nx">gp</span> <span class="o">:=</span> <span class="nf">getg</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">      <span class="c1">// no sender available: block on this channel.</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">gp</span> <span class="o">:=</span> <span class="nf">getg</span><span class="p">()</span>
 </span></span><span class="line"><span class="cl">      <span class="nx">mysg</span> <span class="o">:=</span> <span class="nf">acquireSudog</span><span class="p">()</span>
 </span></span><span class="line"><span class="cl">      <span class="o">...</span>
 </span></span><span class="line"><span class="cl">      <span class="nx">gp</span><span class="p">.</span><span class="nx">waiting</span> <span class="p">=</span> <span class="nx">mysg</span>
 </span></span><span class="line"><span class="cl">      <span class="nx">mysg</span><span class="p">.</span><span class="nx">g</span> <span class="p">=</span> <span class="nx">gp</span>
 </span></span><span class="line"><span class="cl">      <span class="o">...</span>
 </span></span><span class="line"><span class="cl">      <span class="nx">c</span><span class="p">.</span><span class="nx">recvq</span><span class="p">.</span><span class="nf">enqueue</span><span class="p">(</span><span class="nx">mysg</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">      <span class="c1">// Signal to anyone trying to shrink our stack that we&#39;re about
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>      <span class="c1">// to park on a channel. The window between when this G&#39;s status
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>      <span class="c1">// changes and when we set gp.activeStackChans is not safe for
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>      <span class="c1">// stack shrinking.
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>      <span class="nx">gp</span><span class="p">.</span><span class="nx">parkingOnChan</span><span class="p">.</span><span class="nf">Store</span><span class="p">(</span><span class="kc">true</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">      <span class="c1">// Signal to anyone trying to shrink our stack that we&#39;re about</span>
+</span></span><span class="line"><span class="cl">      <span class="c1">// to park on a channel. The window between when this G&#39;s status</span>
+</span></span><span class="line"><span class="cl">      <span class="c1">// changes and when we set gp.activeStackChans is not safe for</span>
+</span></span><span class="line"><span class="cl">      <span class="c1">// stack shrinking.</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">gp</span><span class="p">.</span><span class="nx">parkingOnChan</span><span class="p">.</span><span class="nf">Store</span><span class="p">(</span><span class="kc">true</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">      <span class="nf">gopark</span><span class="p">(</span><span class="nx">chanparkcommit</span><span class="p">,</span> <span class="nx">unsafe</span><span class="p">.</span><span class="nf">Pointer</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">c</span><span class="p">.</span><span class="nx">lock</span><span class="p">),</span> <span class="nx">waitReasonChanReceive</span><span class="p">,</span> <span class="nx">traceBlockChanRecv</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="p">}</span> <span class="o">-</span><span class="p">&gt;</span>
 </span></span><span class="line"><span class="cl">      <span class="nx">runtime</span><span class="p">.</span><span class="nf">gopark</span><span class="p">(</span><span class="nx">unlockf</span> <span class="kd">func</span><span class="p">(</span><span class="o">*</span><span class="nx">g</span><span class="p">,</span> <span class="nx">unsafe</span><span class="p">.</span><span class="nx">Pointer</span><span class="p">)</span> <span class="kt">bool</span><span class="p">,</span> <span class="nx">lock</span> <span class="nx">unsafe</span><span class="p">.</span><span class="nx">Pointer</span><span class="p">,</span> <span class="nx">reason</span> <span class="nx">waitReason</span><span class="p">,</span> <span class="nx">traceReason</span> <span class="nx">traceBlockReason</span><span class="p">,</span> <span class="nx">traceskip</span> <span class="kt">int</span><span class="p">)</span></span></span></code></pre></td></tr></table>
@@ -1476,58 +1475,58 @@ channel 作为一种引用类型，声明时需要指定传输数据类型，声
 </span><span class="lnt">52
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-Go" data-lang="Go"><span class="line"><span class="cl"><span class="c1">// sudog (pseudo-g) represents a g in a wait list, such as for sending/receiving
-</span></span></span><span class="line"><span class="cl"><span class="c1">// on a channel.
-</span></span></span><span class="line"><span class="cl"><span class="c1">//
-</span></span></span><span class="line"><span class="cl"><span class="c1">// sudog is necessary because the g ↔ synchronization object relation
-</span></span></span><span class="line"><span class="cl"><span class="c1">// is many-to-many. A g can be on many wait lists, so there may be
-</span></span></span><span class="line"><span class="cl"><span class="c1">// many sudogs for one g; and many gs may be waiting on the same
-</span></span></span><span class="line"><span class="cl"><span class="c1">// synchronization object, so there may be many sudogs for one object.
-</span></span></span><span class="line"><span class="cl"><span class="c1">//
-</span></span></span><span class="line"><span class="cl"><span class="c1">// sudogs are allocated from a special pool. Use acquireSudog and
-</span></span></span><span class="line"><span class="cl"><span class="c1">// releaseSudog to allocate and free them.
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">type</span> <span class="nx">sudog</span> <span class="kd">struct</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">	<span class="c1">// The following fields are protected by the hchan.lock of the
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// channel this sudog is blocking on. shrinkstack depends on
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// this for sudogs involved in channel ops.
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+<pre tabindex="0" class="chroma"><code class="language-Go" data-lang="Go"><span class="line"><span class="cl"><span class="c1">// sudog (pseudo-g) represents a g in a wait list, such as for sending/receiving</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// on a channel.</span>
+</span></span><span class="line"><span class="cl"><span class="c1">//</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// sudog is necessary because the g ↔ synchronization object relation</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// is many-to-many. A g can be on many wait lists, so there may be</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// many sudogs for one g; and many gs may be waiting on the same</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// synchronization object, so there may be many sudogs for one object.</span>
+</span></span><span class="line"><span class="cl"><span class="c1">//</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// sudogs are allocated from a special pool. Use acquireSudog and</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// releaseSudog to allocate and free them.</span>
+</span></span><span class="line"><span class="cl"><span class="kd">type</span> <span class="nx">sudog</span> <span class="kd">struct</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// The following fields are protected by the hchan.lock of the</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// channel this sudog is blocking on. shrinkstack depends on</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// this for sudogs involved in channel ops.</span>
+</span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">	<span class="nx">g</span> <span class="o">*</span><span class="nx">g</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">	<span class="nx">next</span> <span class="o">*</span><span class="nx">sudog</span>
 </span></span><span class="line"><span class="cl">	<span class="nx">prev</span> <span class="o">*</span><span class="nx">sudog</span>
-</span></span><span class="line"><span class="cl">	<span class="nx">elem</span> <span class="nx">unsafe</span><span class="p">.</span><span class="nx">Pointer</span> <span class="c1">// data element (may point to stack)
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
-</span></span><span class="line"><span class="cl">	<span class="c1">// The following fields are never accessed concurrently.
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// For channels, waitlink is only accessed by g.
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// For semaphores, all fields (including the ones above)
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// are only accessed when holding a semaRoot lock.
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl">	<span class="nx">elem</span> <span class="nx">unsafe</span><span class="p">.</span><span class="nx">Pointer</span> <span class="c1">// data element (may point to stack)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="c1">// The following fields are never accessed concurrently.</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// For channels, waitlink is only accessed by g.</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// For semaphores, all fields (including the ones above)</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// are only accessed when holding a semaRoot lock.</span>
+</span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">	<span class="nx">acquiretime</span> <span class="kt">int64</span>
 </span></span><span class="line"><span class="cl">	<span class="nx">releasetime</span> <span class="kt">int64</span>
 </span></span><span class="line"><span class="cl">	<span class="nx">ticket</span>      <span class="kt">uint32</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">	<span class="c1">// isSelect indicates g is participating in a select, so
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// g.selectDone must be CAS&#39;d to win the wake-up race.
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">isSelect</span> <span class="kt">bool</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// isSelect indicates g is participating in a select, so</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// g.selectDone must be CAS&#39;d to win the wake-up race.</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">isSelect</span> <span class="kt">bool</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">	<span class="c1">// success indicates whether communication over channel c
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// succeeded. It is true if the goroutine was awoken because a
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// value was delivered over channel c, and false if awoken
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// because c was closed.
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">success</span> <span class="kt">bool</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// success indicates whether communication over channel c</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// succeeded. It is true if the goroutine was awoken because a</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// value was delivered over channel c, and false if awoken</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// because c was closed.</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">success</span> <span class="kt">bool</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">	<span class="c1">// waiters is a count of semaRoot waiting list other than head of list,
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// clamped to a uint16 to fit in unused space.
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// Only meaningful at the head of the list.
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// (If we wanted to be overly clever, we could store a high 16 bits
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// in the second entry in the list.)
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">waiters</span> <span class="kt">uint16</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// waiters is a count of semaRoot waiting list other than head of list,</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// clamped to a uint16 to fit in unused space.</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// Only meaningful at the head of the list.</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// (If we wanted to be overly clever, we could store a high 16 bits</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// in the second entry in the list.)</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">waiters</span> <span class="kt">uint16</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">	<span class="nx">parent</span>   <span class="o">*</span><span class="nx">sudog</span> <span class="c1">// semaRoot binary tree
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">waitlink</span> <span class="o">*</span><span class="nx">sudog</span> <span class="c1">// g.waiting list or semaRoot
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">waittail</span> <span class="o">*</span><span class="nx">sudog</span> <span class="c1">// semaRoot
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">c</span>        <span class="o">*</span><span class="nx">hchan</span> <span class="c1">// channel
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">}</span></span></span></code></pre></td></tr></table>
+</span></span><span class="line"><span class="cl">	<span class="nx">parent</span>   <span class="o">*</span><span class="nx">sudog</span> <span class="c1">// semaRoot binary tree</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">waitlink</span> <span class="o">*</span><span class="nx">sudog</span> <span class="c1">// g.waiting list or semaRoot</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">waittail</span> <span class="o">*</span><span class="nx">sudog</span> <span class="c1">// semaRoot</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">c</span>        <span class="o">*</span><span class="nx">hchan</span> <span class="c1">// channel</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></table>
 </div>
 </div><p><code>hchan</code> / <code>waitq</code> 的数据结构：</p>
 <div class="highlight"><div class="chroma">
@@ -1560,24 +1559,24 @@ channel 作为一种引用类型，声明时需要指定传输数据类型，声
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-Go" data-lang="Go"><span class="line"><span class="cl"><span class="kd">type</span> <span class="nx">hchan</span> <span class="kd">struct</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">	<span class="nx">qcount</span>   <span class="kt">uint</span>           <span class="c1">// total data in the queue
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">dataqsiz</span> <span class="kt">uint</span>           <span class="c1">// size of the circular queue
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">buf</span>      <span class="nx">unsafe</span><span class="p">.</span><span class="nx">Pointer</span> <span class="c1">// points to an array of dataqsiz elements
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">elemsize</span> <span class="kt">uint16</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">qcount</span>   <span class="kt">uint</span>           <span class="c1">// total data in the queue</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">dataqsiz</span> <span class="kt">uint</span>           <span class="c1">// size of the circular queue</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">buf</span>      <span class="nx">unsafe</span><span class="p">.</span><span class="nx">Pointer</span> <span class="c1">// points to an array of dataqsiz elements</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">elemsize</span> <span class="kt">uint16</span>
 </span></span><span class="line"><span class="cl">	<span class="nx">closed</span>   <span class="kt">uint32</span>
-</span></span><span class="line"><span class="cl">	<span class="nx">elemtype</span> <span class="o">*</span><span class="nx">_type</span> <span class="c1">// element type
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">sendx</span>    <span class="kt">uint</span>   <span class="c1">// send index
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">recvx</span>    <span class="kt">uint</span>   <span class="c1">// receive index
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">recvq</span>    <span class="nx">waitq</span>  <span class="c1">// list of recv waiters
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">sendq</span>    <span class="nx">waitq</span>  <span class="c1">// list of send waiters
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
-</span></span><span class="line"><span class="cl">	<span class="c1">// lock protects all fields in hchan, as well as several
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// fields in sudogs blocked on this channel.
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">//
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// Do not change another G&#39;s status while holding this lock
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// (in particular, do not ready a G), as this can deadlock
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// with stack shrinking.
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">lock</span> <span class="nx">mutex</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">elemtype</span> <span class="o">*</span><span class="nx">_type</span> <span class="c1">// element type</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">sendx</span>    <span class="kt">uint</span>   <span class="c1">// send index</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">recvx</span>    <span class="kt">uint</span>   <span class="c1">// receive index</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">recvq</span>    <span class="nx">waitq</span>  <span class="c1">// list of recv waiters</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">sendq</span>    <span class="nx">waitq</span>  <span class="c1">// list of send waiters</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="c1">// lock protects all fields in hchan, as well as several</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// fields in sudogs blocked on this channel.</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">//</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// Do not change another G&#39;s status while holding this lock</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// (in particular, do not ready a G), as this can deadlock</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// with stack shrinking.</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">lock</span> <span class="nx">mutex</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="kd">type</span> <span class="nx">waitq</span> <span class="kd">struct</span> <span class="p">{</span>
@@ -1774,8 +1773,8 @@ channel 作为一种引用类型，声明时需要指定传输数据类型，声
 </span></span><span class="line"><span class="cl">		<span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;End\n&#34;</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">	<span class="p">}()</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">	<span class="nx">time</span><span class="p">.</span><span class="nf">Sleep</span><span class="p">(</span><span class="nx">time</span><span class="p">.</span><span class="nx">Second</span><span class="p">)</span> <span class="c1">// Ensure child goroutine gets the mutex before main goroutine
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl">	<span class="nx">time</span><span class="p">.</span><span class="nf">Sleep</span><span class="p">(</span><span class="nx">time</span><span class="p">.</span><span class="nx">Second</span><span class="p">)</span> <span class="c1">// Ensure child goroutine gets the mutex before main goroutine</span>
+</span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">	<span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;Try to acquire mutex\n&#34;</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">	<span class="nx">mtx</span><span class="p">.</span><span class="nf">Lock</span><span class="p">()</span>
 </span></span><span class="line"><span class="cl">	<span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;Main goroutine\n&#34;</span><span class="p">)</span>
@@ -1831,23 +1830,23 @@ channel 作为一种引用类型，声明时需要指定传输数据类型，声
 </span></span><span class="line"><span class="cl">							<span class="nf">throw</span><span class="p">(</span><span class="s">&#34;semacquire not on the G stack&#34;</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">						<span class="p">}</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">						<span class="c1">// Easy case.
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>						<span class="k">if</span> <span class="nf">cansemacquire</span><span class="p">(</span><span class="nx">addr</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">						<span class="c1">// Easy case.</span>
+</span></span><span class="line"><span class="cl">						<span class="k">if</span> <span class="nf">cansemacquire</span><span class="p">(</span><span class="nx">addr</span><span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">							<span class="k">return</span>
 </span></span><span class="line"><span class="cl">						<span class="p">}</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">						<span class="c1">// Harder case:
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>						<span class="c1">//	increment waiter count
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>						<span class="c1">//	try cansemacquire one more time, return if succeeded
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>						<span class="c1">//	enqueue itself as a waiter
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>						<span class="c1">//	sleep
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>						<span class="c1">//	(waiter descriptor is dequeued by signaler)
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>						<span class="nx">s</span> <span class="o">:=</span> <span class="nf">acquireSudog</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">						<span class="c1">// Harder case:</span>
+</span></span><span class="line"><span class="cl">						<span class="c1">//	increment waiter count</span>
+</span></span><span class="line"><span class="cl">						<span class="c1">//	try cansemacquire one more time, return if succeeded</span>
+</span></span><span class="line"><span class="cl">						<span class="c1">//	enqueue itself as a waiter</span>
+</span></span><span class="line"><span class="cl">						<span class="c1">//	sleep</span>
+</span></span><span class="line"><span class="cl">						<span class="c1">//	(waiter descriptor is dequeued by signaler)</span>
+</span></span><span class="line"><span class="cl">						<span class="nx">s</span> <span class="o">:=</span> <span class="nf">acquireSudog</span><span class="p">()</span>
 </span></span><span class="line"><span class="cl">						<span class="nx">root</span> <span class="o">:=</span> <span class="nx">semtable</span><span class="p">.</span><span class="nf">rootFor</span><span class="p">(</span><span class="nx">addr</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">						<span class="o">...</span>
-</span></span><span class="line"><span class="cl">							<span class="c1">// Any semrelease after the cansemacquire knows we&#39;re waiting
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>							<span class="c1">// (we set nwait above), so go to sleep.
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>							<span class="nx">root</span><span class="p">.</span><span class="nf">queue</span><span class="p">(</span><span class="nx">addr</span><span class="p">,</span> <span class="nx">s</span><span class="p">,</span> <span class="nx">lifo</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">							<span class="c1">// Any semrelease after the cansemacquire knows we&#39;re waiting</span>
+</span></span><span class="line"><span class="cl">							<span class="c1">// (we set nwait above), so go to sleep.</span>
+</span></span><span class="line"><span class="cl">							<span class="nx">root</span><span class="p">.</span><span class="nf">queue</span><span class="p">(</span><span class="nx">addr</span><span class="p">,</span> <span class="nx">s</span><span class="p">,</span> <span class="nx">lifo</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">							<span class="nf">goparkunlock</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">root</span><span class="p">.</span><span class="nx">lock</span><span class="p">,</span> <span class="nx">reason</span><span class="p">,</span> <span class="nx">traceBlockSync</span><span class="p">,</span> <span class="mi">4</span><span class="o">+</span><span class="nx">skipframes</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">							<span class="o">...</span>
 </span></span><span class="line"><span class="cl">					<span class="p">}</span> <span class="o">---</span><span class="p">&gt;</span>
@@ -1885,26 +1884,26 @@ channel 作为一种引用类型，声明时需要指定传输数据类型，声
 </span><span class="lnt">25
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-Go" data-lang="Go"><span class="line"><span class="cl"><span class="c1">// Asynchronous semaphore for sync.Mutex.
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
-</span></span><span class="line"><span class="cl"><span class="c1">// A semaRoot holds a balanced tree of sudog with distinct addresses (s.elem).
-</span></span></span><span class="line"><span class="cl"><span class="c1">// Each of those sudog may in turn point (through s.waitlink) to a list
-</span></span></span><span class="line"><span class="cl"><span class="c1">// of other sudogs waiting on the same address.
-</span></span></span><span class="line"><span class="cl"><span class="c1">// The operations on the inner lists of sudogs with the same address
-</span></span></span><span class="line"><span class="cl"><span class="c1">// are all O(1). The scanning of the top-level semaRoot list is O(log n),
-</span></span></span><span class="line"><span class="cl"><span class="c1">// where n is the number of distinct addresses with goroutines blocked
-</span></span></span><span class="line"><span class="cl"><span class="c1">// on them that hash to the given semaRoot.
-</span></span></span><span class="line"><span class="cl"><span class="c1">// See golang.org/issue/17953 for a program that worked badly
-</span></span></span><span class="line"><span class="cl"><span class="c1">// before we introduced the second level of list, and
-</span></span></span><span class="line"><span class="cl"><span class="c1">// BenchmarkSemTable/OneAddrCollision/* for a benchmark that exercises this.
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">type</span> <span class="nx">semaRoot</span> <span class="kd">struct</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">	<span class="nx">lock</span>  <span class="nx">mutex</span>
-</span></span><span class="line"><span class="cl">	<span class="nx">treap</span> <span class="o">*</span><span class="nx">sudog</span>        <span class="c1">// root of balanced tree of unique waiters.
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">nwait</span> <span class="nx">atomic</span><span class="p">.</span><span class="nx">Uint32</span> <span class="c1">// Number of waiters. Read w/o the lock.
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">}</span>
+<pre tabindex="0" class="chroma"><code class="language-Go" data-lang="Go"><span class="line"><span class="cl"><span class="c1">// Asynchronous semaphore for sync.Mutex.</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1">// Prime to not correlate with any user patterns.
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">const</span> <span class="nx">semTabSize</span> <span class="p">=</span> <span class="mi">251</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// A semaRoot holds a balanced tree of sudog with distinct addresses (s.elem).</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// Each of those sudog may in turn point (through s.waitlink) to a list</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// of other sudogs waiting on the same address.</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// The operations on the inner lists of sudogs with the same address</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// are all O(1). The scanning of the top-level semaRoot list is O(log n),</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// where n is the number of distinct addresses with goroutines blocked</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// on them that hash to the given semaRoot.</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// See golang.org/issue/17953 for a program that worked badly</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// before we introduced the second level of list, and</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// BenchmarkSemTable/OneAddrCollision/* for a benchmark that exercises this.</span>
+</span></span><span class="line"><span class="cl"><span class="kd">type</span> <span class="nx">semaRoot</span> <span class="kd">struct</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">lock</span>  <span class="nx">mutex</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">treap</span> <span class="o">*</span><span class="nx">sudog</span>        <span class="c1">// root of balanced tree of unique waiters.</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">nwait</span> <span class="nx">atomic</span><span class="p">.</span><span class="nx">Uint32</span> <span class="c1">// Number of waiters. Read w/o the lock.</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// Prime to not correlate with any user patterns.</span>
+</span></span><span class="line"><span class="cl"><span class="kd">const</span> <span class="nx">semTabSize</span> <span class="p">=</span> <span class="mi">251</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="kd">type</span> <span class="nx">semTable</span> <span class="p">[</span><span class="nx">semTabSize</span><span class="p">]</span><span class="kd">struct</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">	<span class="nx">root</span> <span class="nx">semaRoot</span>
@@ -2051,7 +2050,7 @@ channel 作为一种引用类型，声明时需要指定传输数据类型，声
 
   <aside class="toc" id="toc-auto" aria-label="Contents"><h2 class="toc-title">Contents&nbsp;<i class="toc-icon fa-solid fa-angle-down fa-fw" aria-hidden="true"></i></h2>
       <div class="toc-content" id="toc-content-auto"></div></aside></main><footer class="footer">
-    <div class="footer-container"><div class="footer-line powered order-1">Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreferrer" title="Hugo 0.140.2"><img class="hugo-icon" src="/images/hugo.min.svg" alt="Hugo logo" /> Hugo</a> | Theme - <a href="https://github.com/hugo-fixit/FixIt" target="_blank" rel="external" title="FixIt v0.3.16"><img class="fixit-icon" src="/images/fixit.min.svg" alt="FixIt logo" /> FixIt</a>
+    <div class="footer-container"><div class="footer-line powered order-1">Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreferrer" title="Hugo 0.141.0"><img class="hugo-icon" src="/images/hugo.min.svg" alt="Hugo logo" /> Hugo</a> | Theme - <a href="https://github.com/hugo-fixit/FixIt" target="_blank" rel="external" title="FixIt v0.3.16"><img class="fixit-icon" src="/images/fixit.min.svg" alt="FixIt logo" /> FixIt</a>
         </div><div class="footer-line copyright" itemscope itemtype="http://schema.org/CreativeWork"><i class="fa-regular fa-copyright fa-fw" aria-hidden="true"></i>
             <span itemprop="copyrightYear">2024 - 2025</span><span class="author" itemprop="copyrightHolder">
               <a href="/">kyden</a></span><span class="license footer-divider"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a></span></div><div class="footer-line statistics order-2"><span class="site-time" title='Website running ...'><i class="fa-solid fa-heartbeat fa-fw animate-icon" aria-hidden="true"></i><span class="ms-1 d-none">时光荏苒，本站已陪伴您</span><span class="run-times ms-1">Website running ...</span></span></div><div class="footer-line visitor order-3">

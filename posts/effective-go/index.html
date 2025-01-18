@@ -354,15 +354,15 @@
 </span><span class="lnt">11
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="c1">// C: for
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">for</span> <span class="nx">init</span><span class="p">;</span> <span class="nx">condition</span><span class="p">;</span> <span class="nx">post</span> <span class="p">{</span> <span class="p">}</span>
-</span></span><span class="line"><span class="cl"><span class="c1">// C: while
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">for</span> <span class="nx">condition</span> <span class="p">{</span> <span class="p">}</span>
-</span></span><span class="line"><span class="cl"><span class="c1">// C: for(;;)
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">for</span> <span class="p">{</span> <span class="p">}</span>
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="c1">// C: for</span>
+</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="nx">init</span><span class="p">;</span> <span class="nx">condition</span><span class="p">;</span> <span class="nx">post</span> <span class="p">{</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// C: while</span>
+</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="nx">condition</span> <span class="p">{</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// C: for(;;)</span>
+</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="p">{</span> <span class="p">}</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1">// [12]aT, []vT, map[sting]any mT
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">for</span> <span class="nx">key</span><span class="p">,</span> <span class="nx">value</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">aT</span><span class="o">/</span><span class="nx">vT</span><span class="o">/</span><span class="nx">mT</span> <span class="p">{</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// [12]aT, []vT, map[sting]any mT</span>
+</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="nx">key</span><span class="p">,</span> <span class="nx">value</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">aT</span><span class="o">/</span><span class="nx">vT</span><span class="o">/</span><span class="nx">mT</span> <span class="p">{</span> <span class="p">}</span>
 </span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="nx">key</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">aT</span><span class="o">/</span><span class="nx">vT</span><span class="o">/</span><span class="nx">mT</span> <span class="p">{</span> <span class="p">}</span>
 </span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">value</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">aT</span><span class="o">/</span><span class="nx">vT</span><span class="o">/</span><span class="nx">mT</span> <span class="p">{</span> <span class="p">}</span></span></span></code></pre></td></tr></table>
 </div>
@@ -376,8 +376,8 @@
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="k">for</span> <span class="nx">i</span><span class="p">,</span> <span class="nx">j</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="nx">aT</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="nx">j</span><span class="p">;</span> <span class="nx">i</span><span class="p">,</span> <span class="nx">j</span> <span class="p">=</span> <span class="nx">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="nx">j</span> <span class="o">-</span> <span class="mi">1</span> <span class="p">{</span> <span class="c1">// Not: i++, j--
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="nx">a</span><span class="p">[</span><span class="nx">i</span><span class="p">],</span> <span class="nx">a</span><span class="p">[</span><span class="nx">j</span><span class="p">]</span> <span class="p">=</span> <span class="nx">a</span><span class="p">[</span><span class="nx">j</span><span class="p">],</span> <span class="nx">a</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span>
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="k">for</span> <span class="nx">i</span><span class="p">,</span> <span class="nx">j</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="nx">aT</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="nx">j</span><span class="p">;</span> <span class="nx">i</span><span class="p">,</span> <span class="nx">j</span> <span class="p">=</span> <span class="nx">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="nx">j</span> <span class="o">-</span> <span class="mi">1</span> <span class="p">{</span> <span class="c1">// Not: i++, j--</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">a</span><span class="p">[</span><span class="nx">i</span><span class="p">],</span> <span class="nx">a</span><span class="p">[</span><span class="nx">j</span><span class="p">]</span> <span class="p">=</span> <span class="nx">a</span><span class="p">[</span><span class="nx">j</span><span class="p">],</span> <span class="nx">a</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></table>
 </div>
 </div><p><code>switch</code> 更加灵活，其表达式无需为常量或整数，<code>case</code> 语句会自上而下逐一进行求值直至匹配为止，它不会自动下溯，但 <code>case</code> 可通过逗号分隔来列举相同的处理条件</p>
@@ -508,13 +508,13 @@
 </span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="c1">// Allocates slice structure; *p == nil; rarely useful
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">var</span> <span class="nx">p</span> <span class="o">*</span><span class="p">[]</span><span class="kt">int</span> <span class="p">=</span> <span class="nb">new</span><span class="p">([]</span><span class="kt">int</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="c1">// The slice v now refers to a new array of 100 ints
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">var</span> <span class="nx">v</span> <span class="p">[]</span><span class="kt">int</span> <span class="p">=</span> <span class="nb">make</span><span class="p">([]</span><span class="kt">int</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="c1">// Allocates slice structure; *p == nil; rarely useful</span>
+</span></span><span class="line"><span class="cl"><span class="kd">var</span> <span class="nx">p</span> <span class="o">*</span><span class="p">[]</span><span class="kt">int</span> <span class="p">=</span> <span class="nb">new</span><span class="p">([]</span><span class="kt">int</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// The slice v now refers to a new array of 100 ints</span>
+</span></span><span class="line"><span class="cl"><span class="kd">var</span> <span class="nx">v</span> <span class="p">[]</span><span class="kt">int</span> <span class="p">=</span> <span class="nb">make</span><span class="p">([]</span><span class="kt">int</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1">// 惯用法
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">v</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">([]</span><span class="kt">int</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span></span></span></code></pre></td></tr></table>
+</span></span><span class="line"><span class="cl"><span class="c1">// 惯用法</span>
+</span></span><span class="line"><span class="cl"><span class="nx">v</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">([]</span><span class="kt">int</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span></span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="array-数组" class="heading-element"><span>Array 数组</span>
   <a href="#array-%e6%95%b0%e7%bb%84" class="heading-mark">
@@ -670,42 +670,42 @@
 </span><span class="lnt">65
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-Go" data-lang="Go"><span class="line"><span class="cl"><span class="c1">// growslice allocates new backing store for a slice.
-</span></span></span><span class="line"><span class="cl"><span class="c1">//
-</span></span></span><span class="line"><span class="cl"><span class="c1">// arguments:
-</span></span></span><span class="line"><span class="cl"><span class="c1">//
-</span></span></span><span class="line"><span class="cl"><span class="c1">// oldPtr = pointer to the slice&#39;s backing array
-</span></span></span><span class="line"><span class="cl"><span class="c1">// newLen = new length (= oldLen + num)
-</span></span></span><span class="line"><span class="cl"><span class="c1">// oldCap = original slice&#39;s capacity.
-</span></span></span><span class="line"><span class="cl"><span class="c1">//    num = number of elements being added
-</span></span></span><span class="line"><span class="cl"><span class="c1">//     et = element type
-</span></span></span><span class="line"><span class="cl"><span class="c1">//
-</span></span></span><span class="line"><span class="cl"><span class="c1">// return values:
-</span></span></span><span class="line"><span class="cl"><span class="c1">//
-</span></span></span><span class="line"><span class="cl"><span class="c1">// newPtr = pointer to the new backing store
-</span></span></span><span class="line"><span class="cl"><span class="c1">// newLen = same value as the argument
-</span></span></span><span class="line"><span class="cl"><span class="c1">// newCap = capacity of the new backing store
-</span></span></span><span class="line"><span class="cl"><span class="c1">//
-</span></span></span><span class="line"><span class="cl"><span class="c1">// Requires that uint(newLen) &gt; uint(oldCap).
-</span></span></span><span class="line"><span class="cl"><span class="c1">// Assumes the original slice length is newLen - num
-</span></span></span><span class="line"><span class="cl"><span class="c1">//
-</span></span></span><span class="line"><span class="cl"><span class="c1">// A new backing store is allocated with space for at least newLen elements.
-</span></span></span><span class="line"><span class="cl"><span class="c1">// Existing entries [0, oldLen) are copied over to the new backing store.
-</span></span></span><span class="line"><span class="cl"><span class="c1">// Added entries [oldLen, newLen) are not initialized by growslice
-</span></span></span><span class="line"><span class="cl"><span class="c1">// (although for pointer-containing element types, they are zeroed). They
-</span></span></span><span class="line"><span class="cl"><span class="c1">// must be initialized by the caller.
-</span></span></span><span class="line"><span class="cl"><span class="c1">// Trailing entries [newLen, newCap) are zeroed.
-</span></span></span><span class="line"><span class="cl"><span class="c1">//
-</span></span></span><span class="line"><span class="cl"><span class="c1">// growslice&#39;s odd calling convention makes the generated code that calls
-</span></span></span><span class="line"><span class="cl"><span class="c1">// this function simpler. In particular, it accepts and returns the
-</span></span></span><span class="line"><span class="cl"><span class="c1">// new length so that the old length is not live (does not need to be
-</span></span></span><span class="line"><span class="cl"><span class="c1">// spilled/restored) and the new length is returned (also does not need
-</span></span></span><span class="line"><span class="cl"><span class="c1">// to be spilled/restored).
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">func</span> <span class="nf">growslice</span><span class="p">(</span><span class="nx">oldPtr</span> <span class="nx">unsafe</span><span class="p">.</span><span class="nx">Pointer</span><span class="p">,</span> <span class="nx">newLen</span><span class="p">,</span> <span class="nx">oldCap</span><span class="p">,</span> <span class="nx">num</span> <span class="kt">int</span><span class="p">,</span> <span class="nx">et</span> <span class="o">*</span><span class="nx">_type</span><span class="p">)</span> <span class="nx">slice</span> <span class="p">{</span>
+<pre tabindex="0" class="chroma"><code class="language-Go" data-lang="Go"><span class="line"><span class="cl"><span class="c1">// growslice allocates new backing store for a slice.</span>
+</span></span><span class="line"><span class="cl"><span class="c1">//</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// arguments:</span>
+</span></span><span class="line"><span class="cl"><span class="c1">//</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// oldPtr = pointer to the slice&#39;s backing array</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// newLen = new length (= oldLen + num)</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// oldCap = original slice&#39;s capacity.</span>
+</span></span><span class="line"><span class="cl"><span class="c1">//    num = number of elements being added</span>
+</span></span><span class="line"><span class="cl"><span class="c1">//     et = element type</span>
+</span></span><span class="line"><span class="cl"><span class="c1">//</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// return values:</span>
+</span></span><span class="line"><span class="cl"><span class="c1">//</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// newPtr = pointer to the new backing store</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// newLen = same value as the argument</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// newCap = capacity of the new backing store</span>
+</span></span><span class="line"><span class="cl"><span class="c1">//</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// Requires that uint(newLen) &gt; uint(oldCap).</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// Assumes the original slice length is newLen - num</span>
+</span></span><span class="line"><span class="cl"><span class="c1">//</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// A new backing store is allocated with space for at least newLen elements.</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// Existing entries [0, oldLen) are copied over to the new backing store.</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// Added entries [oldLen, newLen) are not initialized by growslice</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// (although for pointer-containing element types, they are zeroed). They</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// must be initialized by the caller.</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// Trailing entries [newLen, newCap) are zeroed.</span>
+</span></span><span class="line"><span class="cl"><span class="c1">//</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// growslice&#39;s odd calling convention makes the generated code that calls</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// this function simpler. In particular, it accepts and returns the</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// new length so that the old length is not live (does not need to be</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// spilled/restored) and the new length is returned (also does not need</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// to be spilled/restored).</span>
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">growslice</span><span class="p">(</span><span class="nx">oldPtr</span> <span class="nx">unsafe</span><span class="p">.</span><span class="nx">Pointer</span><span class="p">,</span> <span class="nx">newLen</span><span class="p">,</span> <span class="nx">oldCap</span><span class="p">,</span> <span class="nx">num</span> <span class="kt">int</span><span class="p">,</span> <span class="nx">et</span> <span class="o">*</span><span class="nx">_type</span><span class="p">)</span> <span class="nx">slice</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl"> <span class="nx">oldLen</span> <span class="o">:=</span> <span class="nx">newLen</span> <span class="o">-</span> <span class="nx">num</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"> <span class="c1">// ...
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"> <span class="c1">// ...</span>
+</span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"> <span class="nx">newcap</span> <span class="o">:=</span> <span class="nx">oldCap</span>
 </span></span><span class="line"><span class="cl"> <span class="nx">doublecap</span> <span class="o">:=</span> <span class="nx">newcap</span> <span class="o">+</span> <span class="nx">newcap</span>
 </span></span><span class="line"><span class="cl"> <span class="k">if</span> <span class="nx">newLen</span> <span class="p">&gt;</span> <span class="nx">doublecap</span> <span class="p">{</span>
@@ -715,24 +715,24 @@
 </span></span><span class="line"><span class="cl">  <span class="k">if</span> <span class="nx">oldCap</span> <span class="p">&lt;</span> <span class="nx">threshold</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">   <span class="nx">newcap</span> <span class="p">=</span> <span class="nx">doublecap</span>
 </span></span><span class="line"><span class="cl">  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">   <span class="c1">// Check 0 &lt; newcap to detect overflow
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>   <span class="c1">// and prevent an infinite loop.
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>   <span class="k">for</span> <span class="mi">0</span> <span class="p">&lt;</span> <span class="nx">newcap</span> <span class="o">&amp;&amp;</span> <span class="nx">newcap</span> <span class="p">&lt;</span> <span class="nx">newLen</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="c1">// Transition from growing 2x for small slices
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="c1">// to growing 1.25x for large slices. This formula
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="c1">// gives a smooth-ish transition between the two.
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="nx">newcap</span> <span class="o">+=</span> <span class="p">(</span><span class="nx">newcap</span> <span class="o">+</span> <span class="mi">3</span><span class="o">*</span><span class="nx">threshold</span><span class="p">)</span> <span class="o">/</span> <span class="mi">4</span>
+</span></span><span class="line"><span class="cl">   <span class="c1">// Check 0 &lt; newcap to detect overflow</span>
+</span></span><span class="line"><span class="cl">   <span class="c1">// and prevent an infinite loop.</span>
+</span></span><span class="line"><span class="cl">   <span class="k">for</span> <span class="mi">0</span> <span class="p">&lt;</span> <span class="nx">newcap</span> <span class="o">&amp;&amp;</span> <span class="nx">newcap</span> <span class="p">&lt;</span> <span class="nx">newLen</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// Transition from growing 2x for small slices</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// to growing 1.25x for large slices. This formula</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// gives a smooth-ish transition between the two.</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">newcap</span> <span class="o">+=</span> <span class="p">(</span><span class="nx">newcap</span> <span class="o">+</span> <span class="mi">3</span><span class="o">*</span><span class="nx">threshold</span><span class="p">)</span> <span class="o">/</span> <span class="mi">4</span>
 </span></span><span class="line"><span class="cl">   <span class="p">}</span>
-</span></span><span class="line"><span class="cl">   <span class="c1">// Set newcap to the requested cap when
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>   <span class="c1">// the newcap calculation overflowed.
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>   <span class="k">if</span> <span class="nx">newcap</span> <span class="o">&lt;=</span> <span class="mi">0</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">   <span class="c1">// Set newcap to the requested cap when</span>
+</span></span><span class="line"><span class="cl">   <span class="c1">// the newcap calculation overflowed.</span>
+</span></span><span class="line"><span class="cl">   <span class="k">if</span> <span class="nx">newcap</span> <span class="o">&lt;=</span> <span class="mi">0</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="nx">newcap</span> <span class="p">=</span> <span class="nx">newLen</span>
 </span></span><span class="line"><span class="cl">   <span class="p">}</span>
 </span></span><span class="line"><span class="cl">  <span class="p">}</span>
 </span></span><span class="line"><span class="cl"> <span class="p">}</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"> <span class="c1">// ...
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"> <span class="c1">// ...</span>
+</span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"> <span class="k">return</span> <span class="nx">slice</span><span class="p">{</span><span class="nx">p</span><span class="p">,</span> <span class="nx">newLen</span><span class="p">,</span> <span class="nx">newcap</span><span class="p">}</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></table>
 </div>
@@ -763,19 +763,19 @@
 </span><span class="lnt">15
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="c1">// 独立地分配每一个切片
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">pic</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">([][]</span><span class="kt">uint8</span><span class="p">,</span> <span class="nx">YSize</span><span class="p">)</span>
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="c1">// 独立地分配每一个切片</span>
+</span></span><span class="line"><span class="cl"><span class="nx">pic</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">([][]</span><span class="kt">uint8</span><span class="p">,</span> <span class="nx">YSize</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">pic</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">  <span class="c1">// 一次一行
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="nx">pic</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="p">=</span> <span class="nb">make</span><span class="p">([]</span><span class="kt">uint8</span><span class="p">,</span> <span class="nx">XSize</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="c1">// 一次一行</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">pic</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="p">=</span> <span class="nb">make</span><span class="p">([]</span><span class="kt">uint8</span><span class="p">,</span> <span class="nx">XSize</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1">// 顶层 slice
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">pic</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">([][]</span><span class="kt">uint8</span><span class="p">,</span> <span class="nx">YSize</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="c1">// 分配一个大的切片来保存所有像素
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">pixels</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">([]</span><span class="kt">uint8</span><span class="p">,</span> <span class="nx">XSize</span><span class="o">*</span><span class="nx">YSize</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="c1">// 遍历行，从剩余像素切片的前面切出每一行
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">pic</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// 顶层 slice</span>
+</span></span><span class="line"><span class="cl"><span class="nx">pic</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">([][]</span><span class="kt">uint8</span><span class="p">,</span> <span class="nx">YSize</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// 分配一个大的切片来保存所有像素</span>
+</span></span><span class="line"><span class="cl"><span class="nx">pixels</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">([]</span><span class="kt">uint8</span><span class="p">,</span> <span class="nx">XSize</span><span class="o">*</span><span class="nx">YSize</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// 遍历行，从剩余像素切片的前面切出每一行</span>
+</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">pic</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">  <span class="nx">pic</span><span class="p">[</span><span class="nx">i</span><span class="p">],</span> <span class="nx">pixels</span> <span class="p">=</span> <span class="nx">picxels</span><span class="p">[:</span><span class="nx">XSize</span><span class="p">],</span> <span class="nx">pixels</span><span class="p">[</span><span class="nx">XSize</span><span class="p">:]</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></table>
 </div>
@@ -914,7 +914,7 @@ wiki - <a href="https://github.com/golang/go/wiki/SliceTricks"target="_blank" re
 
   <aside class="toc" id="toc-auto" aria-label="Contents"><h2 class="toc-title">Contents&nbsp;<i class="toc-icon fa-solid fa-angle-down fa-fw" aria-hidden="true"></i></h2>
       <div class="toc-content" id="toc-content-auto"></div></aside></main><footer class="footer">
-    <div class="footer-container"><div class="footer-line powered order-1">Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreferrer" title="Hugo 0.140.2"><img class="hugo-icon" src="/images/hugo.min.svg" alt="Hugo logo" /> Hugo</a> | Theme - <a href="https://github.com/hugo-fixit/FixIt" target="_blank" rel="external" title="FixIt v0.3.16"><img class="fixit-icon" src="/images/fixit.min.svg" alt="FixIt logo" /> FixIt</a>
+    <div class="footer-container"><div class="footer-line powered order-1">Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreferrer" title="Hugo 0.141.0"><img class="hugo-icon" src="/images/hugo.min.svg" alt="Hugo logo" /> Hugo</a> | Theme - <a href="https://github.com/hugo-fixit/FixIt" target="_blank" rel="external" title="FixIt v0.3.16"><img class="fixit-icon" src="/images/fixit.min.svg" alt="FixIt logo" /> FixIt</a>
         </div><div class="footer-line copyright" itemscope itemtype="http://schema.org/CreativeWork"><i class="fa-regular fa-copyright fa-fw" aria-hidden="true"></i>
             <span itemprop="copyrightYear">2024 - 2025</span><span class="author" itemprop="copyrightHolder">
               <a href="/">kyden</a></span><span class="license footer-divider"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a></span></div><div class="footer-line statistics order-2"><span class="site-time" title='Website running ...'><i class="fa-solid fa-heartbeat fa-fw animate-icon" aria-hidden="true"></i><span class="ms-1 d-none">时光荏苒，本站已陪伴您</span><span class="run-times ms-1">Website running ...</span></span></div><div class="footer-line visitor order-3">

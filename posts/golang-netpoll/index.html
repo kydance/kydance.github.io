@@ -463,83 +463,83 @@
 </span><span class="lnt">82
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-Go" data-lang="Go"><span class="line"><span class="cl"><span class="c1">// src/net/fd_fake.go
-</span></span></span><span class="line"><span class="cl"><span class="c1">// Network file descriptor.
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">type</span> <span class="nx">netFD</span> <span class="kd">struct</span> <span class="p">{</span>
+<pre tabindex="0" class="chroma"><code class="language-Go" data-lang="Go"><span class="line"><span class="cl"><span class="c1">// src/net/fd_fake.go</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// Network file descriptor.</span>
+</span></span><span class="line"><span class="cl"><span class="kd">type</span> <span class="nx">netFD</span> <span class="kd">struct</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">	<span class="nx">pfd</span> <span class="nx">poll</span><span class="p">.</span><span class="nx">FD</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">	<span class="c1">// immutable until Close
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">family</span>      <span class="kt">int</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// immutable until Close</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">family</span>      <span class="kt">int</span>
 </span></span><span class="line"><span class="cl">	<span class="nx">sotype</span>      <span class="kt">int</span>
-</span></span><span class="line"><span class="cl">	<span class="nx">isConnected</span> <span class="kt">bool</span> <span class="c1">// handshake completed or use of association with peer
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">net</span>         <span class="kt">string</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">isConnected</span> <span class="kt">bool</span> <span class="c1">// handshake completed or use of association with peer</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">net</span>         <span class="kt">string</span>
 </span></span><span class="line"><span class="cl">	<span class="nx">laddr</span>       <span class="nx">Addr</span>
 </span></span><span class="line"><span class="cl">	<span class="nx">raddr</span>       <span class="nx">Addr</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">	<span class="c1">// The only networking available in WASI preview 1 is the ability to
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// sock_accept on a pre-opened socket, and then fd_read, fd_write,
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// fd_close, and sock_shutdown on the resulting connection. We
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// intercept applicable netFD calls on this instance, and then pass
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// the remainder of the netFD calls to fakeNetFD.
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="o">*</span><span class="nx">fakeNetFD</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// The only networking available in WASI preview 1 is the ability to</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// sock_accept on a pre-opened socket, and then fd_read, fd_write,</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// fd_close, and sock_shutdown on the resulting connection. We</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// intercept applicable netFD calls on this instance, and then pass</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// the remainder of the netFD calls to fakeNetFD.</span>
+</span></span><span class="line"><span class="cl">	<span class="o">*</span><span class="nx">fakeNetFD</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1">// poll.FD`: `src/internal/poll/fd_unix.go
-</span></span></span><span class="line"><span class="cl"><span class="c1">// FD is a file descriptor. The net and os packages use this type as a
-</span></span></span><span class="line"><span class="cl"><span class="c1">// field of a larger type representing a network connection or OS file.
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">type</span> <span class="nx">FD</span> <span class="kd">struct</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">	<span class="c1">// Lock sysfd and serialize access to Read and Write methods.
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">fdmu</span> <span class="nx">fdMutex</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// poll.FD`: `src/internal/poll/fd_unix.go</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// FD is a file descriptor. The net and os packages use this type as a</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// field of a larger type representing a network connection or OS file.</span>
+</span></span><span class="line"><span class="cl"><span class="kd">type</span> <span class="nx">FD</span> <span class="kd">struct</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// Lock sysfd and serialize access to Read and Write methods.</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">fdmu</span> <span class="nx">fdMutex</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">	<span class="c1">// System file descriptor. Immutable until Close.
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">Sysfd</span> <span class="kt">int</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// System file descriptor. Immutable until Close.</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">Sysfd</span> <span class="kt">int</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">	<span class="c1">// Platform dependent state of the file descriptor.
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">SysFile</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// Platform dependent state of the file descriptor.</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">SysFile</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">	<span class="c1">// I/O poller.
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">pd</span> <span class="nx">pollDesc</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// I/O poller.</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">pd</span> <span class="nx">pollDesc</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">	<span class="c1">// Semaphore signaled when file is closed.
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">csema</span> <span class="kt">uint32</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// Semaphore signaled when file is closed.</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">csema</span> <span class="kt">uint32</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">	<span class="c1">// Non-zero if this file has been set to blocking mode.
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">isBlocking</span> <span class="kt">uint32</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// Non-zero if this file has been set to blocking mode.</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">isBlocking</span> <span class="kt">uint32</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">	<span class="c1">// Whether this is a streaming descriptor, as opposed to a
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// packet-based descriptor like a UDP socket. Immutable.
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">IsStream</span> <span class="kt">bool</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// Whether this is a streaming descriptor, as opposed to a</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// packet-based descriptor like a UDP socket. Immutable.</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">IsStream</span> <span class="kt">bool</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">	<span class="c1">// Whether a zero byte read indicates EOF. This is false for a
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// message based socket connection.
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">ZeroReadIsEOF</span> <span class="kt">bool</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// Whether a zero byte read indicates EOF. This is false for a</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// message based socket connection.</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">ZeroReadIsEOF</span> <span class="kt">bool</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">	<span class="c1">// Whether this is a file rather than a network socket.
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">isFile</span> <span class="kt">bool</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// Whether this is a file rather than a network socket.</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">isFile</span> <span class="kt">bool</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1">// Addr represents a network end point address.
-</span></span></span><span class="line"><span class="cl"><span class="c1">//
-</span></span></span><span class="line"><span class="cl"><span class="c1">// The two methods [Addr.Network] and [Addr.String] conventionally return strings
-</span></span></span><span class="line"><span class="cl"><span class="c1">// that can be passed as the arguments to [Dial], but the exact form
-</span></span></span><span class="line"><span class="cl"><span class="c1">// and meaning of the strings is up to the implementation.
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">type</span> <span class="nx">Addr</span> <span class="kd">interface</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">	<span class="nf">Network</span><span class="p">()</span> <span class="kt">string</span> <span class="c1">// name of the network (for example, &#34;tcp&#34;, &#34;udp&#34;)
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nf">String</span><span class="p">()</span> <span class="kt">string</span>  <span class="c1">// string form of address (for example, &#34;192.0.2.1:25&#34;, &#34;[2001:db8::1]:80&#34;)
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// Addr represents a network end point address.</span>
+</span></span><span class="line"><span class="cl"><span class="c1">//</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// The two methods [Addr.Network] and [Addr.String] conventionally return strings</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// that can be passed as the arguments to [Dial], but the exact form</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// and meaning of the strings is up to the implementation.</span>
+</span></span><span class="line"><span class="cl"><span class="kd">type</span> <span class="nx">Addr</span> <span class="kd">interface</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="nf">Network</span><span class="p">()</span> <span class="kt">string</span> <span class="c1">// name of the network (for example, &#34;tcp&#34;, &#34;udp&#34;)</span>
+</span></span><span class="line"><span class="cl">	<span class="nf">String</span><span class="p">()</span> <span class="kt">string</span>  <span class="c1">// string form of address (for example, &#34;192.0.2.1:25&#34;, &#34;[2001:db8::1]:80&#34;)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1">// fdMutex is a specialized synchronization primitive that manages
-</span></span></span><span class="line"><span class="cl"><span class="c1">// lifetime of an fd and serializes access to Read, Write and Close
-</span></span></span><span class="line"><span class="cl"><span class="c1">// methods on FD.
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">type</span> <span class="nx">fdMutex</span> <span class="kd">struct</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// fdMutex is a specialized synchronization primitive that manages</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// lifetime of an fd and serializes access to Read, Write and Close</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// methods on FD.</span>
+</span></span><span class="line"><span class="cl"><span class="kd">type</span> <span class="nx">fdMutex</span> <span class="kd">struct</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">	<span class="nx">state</span> <span class="kt">uint64</span>
 </span></span><span class="line"><span class="cl">	<span class="nx">rsema</span> <span class="kt">uint32</span>
 </span></span><span class="line"><span class="cl">	<span class="nx">wsema</span> <span class="kt">uint32</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="kd">type</span> <span class="nx">SysFile</span> <span class="kd">struct</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">	<span class="c1">// Writev cache.
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">iovecs</span> <span class="o">*</span><span class="p">[]</span><span class="nx">syscall</span><span class="p">.</span><span class="nx">Iovec</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// Writev cache.</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">iovecs</span> <span class="o">*</span><span class="p">[]</span><span class="nx">syscall</span><span class="p">.</span><span class="nx">Iovec</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="kd">type</span> <span class="nx">pollDesc</span> <span class="kd">struct</span> <span class="p">{</span>
@@ -591,12 +591,12 @@
 </span><span class="lnt">10
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-Go" data-lang="Go"><span class="line"><span class="cl"><span class="c1">// doaddtimer adds t to the current P&#39;s heap.
-</span></span></span><span class="line"><span class="cl"><span class="c1">// The caller must have locked the timers for pp.
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">func</span> <span class="nf">doaddtimer</span><span class="p">(</span><span class="nx">pp</span> <span class="o">*</span><span class="nx">p</span><span class="p">,</span> <span class="nx">t</span> <span class="o">*</span><span class="nx">timer</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">	<span class="c1">// Timers rely on the network poller, so make sure the poller
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// has started.
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="k">if</span> <span class="nx">netpollInited</span><span class="p">.</span><span class="nf">Load</span><span class="p">()</span> <span class="o">==</span> <span class="mi">0</span> <span class="p">{</span>
+<pre tabindex="0" class="chroma"><code class="language-Go" data-lang="Go"><span class="line"><span class="cl"><span class="c1">// doaddtimer adds t to the current P&#39;s heap.</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// The caller must have locked the timers for pp.</span>
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">doaddtimer</span><span class="p">(</span><span class="nx">pp</span> <span class="o">*</span><span class="nx">p</span><span class="p">,</span> <span class="nx">t</span> <span class="o">*</span><span class="nx">timer</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// Timers rely on the network poller, so make sure the poller</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// has started.</span>
+</span></span><span class="line"><span class="cl">	<span class="k">if</span> <span class="nx">netpollInited</span><span class="p">.</span><span class="nf">Load</span><span class="p">()</span> <span class="o">==</span> <span class="mi">0</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">		<span class="nf">netpollGenericInit</span><span class="p">()</span>
 </span></span><span class="line"><span class="cl">	<span class="p">}</span>
 </span></span><span class="line"><span class="cl">  <span class="o">...</span>
@@ -669,19 +669,19 @@
 </span><span class="lnt">33
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-Go" data-lang="Go"><span class="line"><span class="cl"><span class="c1">// reason is the same STW reason passed to stopTheWorld. start is the start
-</span></span></span><span class="line"><span class="cl"><span class="c1">// time returned by stopTheWorld.
-</span></span></span><span class="line"><span class="cl"><span class="c1">//
-</span></span></span><span class="line"><span class="cl"><span class="c1">// now is the current time; prefer to pass 0 to capture a fresh timestamp.
-</span></span></span><span class="line"><span class="cl"><span class="c1">//
-</span></span></span><span class="line"><span class="cl"><span class="c1">// stattTheWorldWithSema returns now.
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">func</span> <span class="nf">startTheWorldWithSema</span><span class="p">(</span><span class="nx">now</span> <span class="kt">int64</span><span class="p">,</span> <span class="nx">w</span> <span class="nx">worldStop</span><span class="p">)</span> <span class="kt">int64</span> <span class="p">{</span>
+<pre tabindex="0" class="chroma"><code class="language-Go" data-lang="Go"><span class="line"><span class="cl"><span class="c1">// reason is the same STW reason passed to stopTheWorld. start is the start</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// time returned by stopTheWorld.</span>
+</span></span><span class="line"><span class="cl"><span class="c1">//</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// now is the current time; prefer to pass 0 to capture a fresh timestamp.</span>
+</span></span><span class="line"><span class="cl"><span class="c1">//</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// stattTheWorldWithSema returns now.</span>
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">startTheWorldWithSema</span><span class="p">(</span><span class="nx">now</span> <span class="kt">int64</span><span class="p">,</span> <span class="nx">w</span> <span class="nx">worldStop</span><span class="p">)</span> <span class="kt">int64</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">	<span class="nf">assertWorldStopped</span><span class="p">()</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">	<span class="nx">mp</span> <span class="o">:=</span> <span class="nf">acquirem</span><span class="p">()</span> <span class="c1">// disable preemption because it can be holding p in a local var
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="k">if</span> <span class="nf">netpollinited</span><span class="p">()</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">		<span class="nx">list</span><span class="p">,</span> <span class="nx">delta</span> <span class="o">:=</span> <span class="nf">netpoll</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="c1">// non-blocking
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>		<span class="nf">injectglist</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">list</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">mp</span> <span class="o">:=</span> <span class="nf">acquirem</span><span class="p">()</span> <span class="c1">// disable preemption because it can be holding p in a local var</span>
+</span></span><span class="line"><span class="cl">	<span class="k">if</span> <span class="nf">netpollinited</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">list</span><span class="p">,</span> <span class="nx">delta</span> <span class="o">:=</span> <span class="nf">netpoll</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="c1">// non-blocking</span>
+</span></span><span class="line"><span class="cl">		<span class="nf">injectglist</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">list</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">		<span class="nf">netpollAdjustWaiters</span><span class="p">(</span><span class="nx">delta</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">	<span class="p">}</span>
 </span></span><span class="line"><span class="cl">	<span class="nf">lock</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">sched</span><span class="p">.</span><span class="nx">lock</span><span class="p">)</span>
@@ -744,14 +744,14 @@
 </span><span class="lnt">34
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-Go" data-lang="Go"><span class="line"><span class="cl"><span class="c1">// Finds a runnable goroutine to execute.
-</span></span></span><span class="line"><span class="cl"><span class="c1">// Tries to steal from other P&#39;s, get g from local or global queue, poll network.
-</span></span></span><span class="line"><span class="cl"><span class="c1">// tryWakeP indicates that the returned goroutine is not normal (GC worker, trace
-</span></span></span><span class="line"><span class="cl"><span class="c1">// reader) so the caller should try to wake a P.
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">func</span> <span class="nf">findRunnable</span><span class="p">()</span> <span class="p">(</span><span class="nx">gp</span> <span class="o">*</span><span class="nx">g</span><span class="p">,</span> <span class="nx">inheritTime</span><span class="p">,</span> <span class="nx">tryWakeP</span> <span class="kt">bool</span><span class="p">)</span> <span class="p">{</span>
+<pre tabindex="0" class="chroma"><code class="language-Go" data-lang="Go"><span class="line"><span class="cl"><span class="c1">// Finds a runnable goroutine to execute.</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// Tries to steal from other P&#39;s, get g from local or global queue, poll network.</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// tryWakeP indicates that the returned goroutine is not normal (GC worker, trace</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// reader) so the caller should try to wake a P.</span>
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">findRunnable</span><span class="p">()</span> <span class="p">(</span><span class="nx">gp</span> <span class="o">*</span><span class="nx">g</span><span class="p">,</span> <span class="nx">inheritTime</span><span class="p">,</span> <span class="nx">tryWakeP</span> <span class="kt">bool</span><span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">	<span class="o">...</span>
-</span></span><span class="line"><span class="cl">	<span class="c1">// Poll network until next timer.
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="k">if</span> <span class="nf">netpollinited</span><span class="p">()</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="nf">netpollAnyWaiters</span><span class="p">()</span> <span class="o">||</span> <span class="nx">pollUntil</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="nx">sched</span><span class="p">.</span><span class="nx">lastpoll</span><span class="p">.</span><span class="nf">Swap</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// Poll network until next timer.</span>
+</span></span><span class="line"><span class="cl">	<span class="k">if</span> <span class="nf">netpollinited</span><span class="p">()</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="nf">netpollAnyWaiters</span><span class="p">()</span> <span class="o">||</span> <span class="nx">pollUntil</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="nx">sched</span><span class="p">.</span><span class="nx">lastpoll</span><span class="p">.</span><span class="nf">Swap</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">		<span class="nx">sched</span><span class="p">.</span><span class="nx">pollUntil</span><span class="p">.</span><span class="nf">Store</span><span class="p">(</span><span class="nx">pollUntil</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">		<span class="k">if</span> <span class="nx">mp</span><span class="p">.</span><span class="nx">p</span> <span class="o">!=</span> <span class="mi">0</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">			<span class="nf">throw</span><span class="p">(</span><span class="s">&#34;findrunnable: netpoll with p&#34;</span><span class="p">)</span>
@@ -770,11 +770,11 @@
 </span></span><span class="line"><span class="cl">			<span class="p">}</span>
 </span></span><span class="line"><span class="cl">		<span class="p">}</span>
 </span></span><span class="line"><span class="cl">		<span class="k">if</span> <span class="nx">faketime</span> <span class="o">!=</span> <span class="mi">0</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">			<span class="c1">// When using fake time, just poll.
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>			<span class="nx">delay</span> <span class="p">=</span> <span class="mi">0</span>
+</span></span><span class="line"><span class="cl">			<span class="c1">// When using fake time, just poll.</span>
+</span></span><span class="line"><span class="cl">			<span class="nx">delay</span> <span class="p">=</span> <span class="mi">0</span>
 </span></span><span class="line"><span class="cl">		<span class="p">}</span>
-</span></span><span class="line"><span class="cl">		<span class="nx">list</span><span class="p">,</span> <span class="nx">delta</span> <span class="o">:=</span> <span class="nf">netpoll</span><span class="p">(</span><span class="nx">delay</span><span class="p">)</span> <span class="c1">// block until new work is available
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>		<span class="o">...</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">list</span><span class="p">,</span> <span class="nx">delta</span> <span class="o">:=</span> <span class="nf">netpoll</span><span class="p">(</span><span class="nx">delay</span><span class="p">)</span> <span class="c1">// block until new work is available</span>
+</span></span><span class="line"><span class="cl">		<span class="o">...</span>
 </span></span><span class="line"><span class="cl">	<span class="p">}</span>
 </span></span><span class="line"><span class="cl">	<span class="o">...</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></table>
@@ -807,11 +807,11 @@
 </span><span class="lnt">21
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-Go" data-lang="Go"><span class="line"><span class="cl"><span class="c1">// pollWork reports whether there is non-background work this P could
-</span></span></span><span class="line"><span class="cl"><span class="c1">// be doing. This is a fairly lightweight check to be used for
-</span></span></span><span class="line"><span class="cl"><span class="c1">// background work loops, like idle GC. It checks a subset of the
-</span></span></span><span class="line"><span class="cl"><span class="c1">// conditions checked by the actual scheduler.
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">func</span> <span class="nf">pollWork</span><span class="p">()</span> <span class="kt">bool</span> <span class="p">{</span>
+<pre tabindex="0" class="chroma"><code class="language-Go" data-lang="Go"><span class="line"><span class="cl"><span class="c1">// pollWork reports whether there is non-background work this P could</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// be doing. This is a fairly lightweight check to be used for</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// background work loops, like idle GC. It checks a subset of the</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// conditions checked by the actual scheduler.</span>
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">pollWork</span><span class="p">()</span> <span class="kt">bool</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">	<span class="k">if</span> <span class="nx">sched</span><span class="p">.</span><span class="nx">runqsize</span> <span class="o">!=</span> <span class="mi">0</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">		<span class="k">return</span> <span class="kc">true</span>
 </span></span><span class="line"><span class="cl">	<span class="p">}</span>
@@ -871,34 +871,34 @@
 </span><span class="lnt">35
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-Go" data-lang="Go"><span class="line"><span class="cl"><span class="c1">// Always runs without a P, so write barriers are not allowed.
-</span></span></span><span class="line"><span class="cl"><span class="c1">//
-</span></span></span><span class="line"><span class="cl"><span class="c1">//go:nowritebarrierrec
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">func</span> <span class="nf">sysmon</span><span class="p">()</span> <span class="p">{</span>
+<pre tabindex="0" class="chroma"><code class="language-Go" data-lang="Go"><span class="line"><span class="cl"><span class="c1">// Always runs without a P, so write barriers are not allowed.</span>
+</span></span><span class="line"><span class="cl"><span class="c1">//</span>
+</span></span><span class="line"><span class="cl"><span class="c1">//go:nowritebarrierrec</span>
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">sysmon</span><span class="p">()</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">	<span class="o">...</span>
 </span></span><span class="line"><span class="cl">	<span class="nf">lock</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">sched</span><span class="p">.</span><span class="nx">sysmonlock</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">	<span class="c1">// Update now in case we blocked on sysmonnote or spent a long time
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// blocked on schedlock or sysmonlock above.
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">now</span> <span class="p">=</span> <span class="nf">nanotime</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// Update now in case we blocked on sysmonnote or spent a long time</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// blocked on schedlock or sysmonlock above.</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">now</span> <span class="p">=</span> <span class="nf">nanotime</span><span class="p">()</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">	<span class="c1">// trigger libc interceptors if needed
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="k">if</span> <span class="o">*</span><span class="nx">cgo_yield</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// trigger libc interceptors if needed</span>
+</span></span><span class="line"><span class="cl">	<span class="k">if</span> <span class="o">*</span><span class="nx">cgo_yield</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">		<span class="nf">asmcgocall</span><span class="p">(</span><span class="o">*</span><span class="nx">cgo_yield</span><span class="p">,</span> <span class="kc">nil</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">	<span class="p">}</span>
-</span></span><span class="line"><span class="cl">	<span class="c1">// poll network if not polled for more than 10ms
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">lastpoll</span> <span class="o">:=</span> <span class="nx">sched</span><span class="p">.</span><span class="nx">lastpoll</span><span class="p">.</span><span class="nf">Load</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// poll network if not polled for more than 10ms</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">lastpoll</span> <span class="o">:=</span> <span class="nx">sched</span><span class="p">.</span><span class="nx">lastpoll</span><span class="p">.</span><span class="nf">Load</span><span class="p">()</span>
 </span></span><span class="line"><span class="cl">	<span class="k">if</span> <span class="nf">netpollinited</span><span class="p">()</span> <span class="o">&amp;&amp;</span> <span class="nx">lastpoll</span> <span class="o">!=</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="nx">lastpoll</span><span class="o">+</span><span class="mi">10</span><span class="o">*</span><span class="mi">1000</span><span class="o">*</span><span class="mi">1000</span> <span class="p">&lt;</span> <span class="nx">now</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">		<span class="nx">sched</span><span class="p">.</span><span class="nx">lastpoll</span><span class="p">.</span><span class="nf">CompareAndSwap</span><span class="p">(</span><span class="nx">lastpoll</span><span class="p">,</span> <span class="nx">now</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">		<span class="nx">list</span><span class="p">,</span> <span class="nx">delta</span> <span class="o">:=</span> <span class="nf">netpoll</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="c1">// non-blocking - returns list of goroutines
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>		<span class="k">if</span> <span class="p">!</span><span class="nx">list</span><span class="p">.</span><span class="nf">empty</span><span class="p">()</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">			<span class="c1">// Need to decrement number of idle locked M&#39;s
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>			<span class="c1">// (pretending that one more is running) before injectglist.
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>			<span class="c1">// Otherwise it can lead to the following situation:
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>			<span class="c1">// injectglist grabs all P&#39;s but before it starts M&#39;s to run the P&#39;s,
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>			<span class="c1">// another M returns from syscall, finishes running its G,
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>			<span class="c1">// observes that there is no work to do and no other running M&#39;s
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>			<span class="c1">// and reports deadlock.
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>			<span class="nf">incidlelocked</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">list</span><span class="p">,</span> <span class="nx">delta</span> <span class="o">:=</span> <span class="nf">netpoll</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="c1">// non-blocking - returns list of goroutines</span>
+</span></span><span class="line"><span class="cl">		<span class="k">if</span> <span class="p">!</span><span class="nx">list</span><span class="p">.</span><span class="nf">empty</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">			<span class="c1">// Need to decrement number of idle locked M&#39;s</span>
+</span></span><span class="line"><span class="cl">			<span class="c1">// (pretending that one more is running) before injectglist.</span>
+</span></span><span class="line"><span class="cl">			<span class="c1">// Otherwise it can lead to the following situation:</span>
+</span></span><span class="line"><span class="cl">			<span class="c1">// injectglist grabs all P&#39;s but before it starts M&#39;s to run the P&#39;s,</span>
+</span></span><span class="line"><span class="cl">			<span class="c1">// another M returns from syscall, finishes running its G,</span>
+</span></span><span class="line"><span class="cl">			<span class="c1">// observes that there is no work to do and no other running M&#39;s</span>
+</span></span><span class="line"><span class="cl">			<span class="c1">// and reports deadlock.</span>
+</span></span><span class="line"><span class="cl">			<span class="nf">incidlelocked</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">			<span class="nf">injectglist</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">list</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">			<span class="nf">incidlelocked</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">			<span class="nf">netpollAdjustWaiters</span><span class="p">(</span><span class="nx">delta</span><span class="p">)</span>
@@ -1028,12 +1028,12 @@
 </span><span class="lnt">110
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-Go" data-lang="Go"><span class="line"><span class="cl"><span class="c1">// netpoll checks for ready network connections.
-</span></span></span><span class="line"><span class="cl"><span class="c1">// Returns list of goroutines that become runnable.
-</span></span></span><span class="line"><span class="cl"><span class="c1">// delay &lt; 0: blocks indefinitely
-</span></span></span><span class="line"><span class="cl"><span class="c1">// delay == 0: does not block, just polls
-</span></span></span><span class="line"><span class="cl"><span class="c1">// delay &gt; 0: block for up to that many nanoseconds
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">func</span> <span class="nf">netpoll</span><span class="p">(</span><span class="nx">delay</span> <span class="kt">int64</span><span class="p">)</span> <span class="p">(</span><span class="nx">gList</span><span class="p">,</span> <span class="kt">int32</span><span class="p">)</span> <span class="p">{</span>
+<pre tabindex="0" class="chroma"><code class="language-Go" data-lang="Go"><span class="line"><span class="cl"><span class="c1">// netpoll checks for ready network connections.</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// Returns list of goroutines that become runnable.</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// delay &lt; 0: blocks indefinitely</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// delay == 0: does not block, just polls</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// delay &gt; 0: block for up to that many nanoseconds</span>
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">netpoll</span><span class="p">(</span><span class="nx">delay</span> <span class="kt">int64</span><span class="p">)</span> <span class="p">(</span><span class="nx">gList</span><span class="p">,</span> <span class="kt">int32</span><span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">	<span class="k">if</span> <span class="nx">epfd</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">		<span class="k">return</span> <span class="nx">gList</span><span class="p">{},</span> <span class="mi">0</span>
 </span></span><span class="line"><span class="cl">	<span class="p">}</span>
@@ -1047,9 +1047,9 @@
 </span></span><span class="line"><span class="cl">	<span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="nx">delay</span> <span class="p">&lt;</span> <span class="mf">1e15</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">		<span class="nx">waitms</span> <span class="p">=</span> <span class="nb">int32</span><span class="p">(</span><span class="nx">delay</span> <span class="o">/</span> <span class="mf">1e6</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">	<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">		<span class="c1">// An arbitrary cap on how long to wait for a timer.
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>		<span class="c1">// 1e9 ms == ~11.5 days.
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>		<span class="nx">waitms</span> <span class="p">=</span> <span class="mf">1e9</span>
+</span></span><span class="line"><span class="cl">		<span class="c1">// An arbitrary cap on how long to wait for a timer.</span>
+</span></span><span class="line"><span class="cl">		<span class="c1">// 1e9 ms == ~11.5 days.</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">waitms</span> <span class="p">=</span> <span class="mf">1e9</span>
 </span></span><span class="line"><span class="cl">	<span class="p">}</span>
 </span></span><span class="line"><span class="cl">	<span class="kd">var</span> <span class="nx">events</span> <span class="p">[</span><span class="mi">128</span><span class="p">]</span><span class="nx">syscall</span><span class="p">.</span><span class="nx">EpollEvent</span>
 </span></span><span class="line"><span class="cl"><span class="nx">retry</span><span class="p">:</span>
@@ -1059,9 +1059,9 @@
 </span></span><span class="line"><span class="cl">			<span class="nb">println</span><span class="p">(</span><span class="s">&#34;runtime: epollwait on fd&#34;</span><span class="p">,</span> <span class="nx">epfd</span><span class="p">,</span> <span class="s">&#34;failed with&#34;</span><span class="p">,</span> <span class="nx">errno</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">			<span class="nf">throw</span><span class="p">(</span><span class="s">&#34;runtime: netpoll failed&#34;</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">		<span class="p">}</span>
-</span></span><span class="line"><span class="cl">		<span class="c1">// If a timed sleep was interrupted, just return to
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>		<span class="c1">// recalculate how long we should sleep now.
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>		<span class="k">if</span> <span class="nx">waitms</span> <span class="p">&gt;</span> <span class="mi">0</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="c1">// If a timed sleep was interrupted, just return to</span>
+</span></span><span class="line"><span class="cl">		<span class="c1">// recalculate how long we should sleep now.</span>
+</span></span><span class="line"><span class="cl">		<span class="k">if</span> <span class="nx">waitms</span> <span class="p">&gt;</span> <span class="mi">0</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">			<span class="k">return</span> <span class="nx">gList</span><span class="p">{},</span> <span class="mi">0</span>
 </span></span><span class="line"><span class="cl">		<span class="p">}</span>
 </span></span><span class="line"><span class="cl">		<span class="k">goto</span> <span class="nx">retry</span>
@@ -1080,10 +1080,10 @@
 </span></span><span class="line"><span class="cl">				<span class="nf">throw</span><span class="p">(</span><span class="s">&#34;runtime: netpoll: break fd ready for something unexpected&#34;</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">			<span class="p">}</span>
 </span></span><span class="line"><span class="cl">			<span class="k">if</span> <span class="nx">delay</span> <span class="o">!=</span> <span class="mi">0</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">				<span class="c1">// netpollBreak could be picked up by a
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>				<span class="c1">// nonblocking poll. Only read the byte
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>				<span class="c1">// if blocking.
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>				<span class="kd">var</span> <span class="nx">tmp</span> <span class="p">[</span><span class="mi">16</span><span class="p">]</span><span class="kt">byte</span>
+</span></span><span class="line"><span class="cl">				<span class="c1">// netpollBreak could be picked up by a</span>
+</span></span><span class="line"><span class="cl">				<span class="c1">// nonblocking poll. Only read the byte</span>
+</span></span><span class="line"><span class="cl">				<span class="c1">// if blocking.</span>
+</span></span><span class="line"><span class="cl">				<span class="kd">var</span> <span class="nx">tmp</span> <span class="p">[</span><span class="mi">16</span><span class="p">]</span><span class="kt">byte</span>
 </span></span><span class="line"><span class="cl">				<span class="nf">read</span><span class="p">(</span><span class="nb">int32</span><span class="p">(</span><span class="nx">netpollBreakRd</span><span class="p">),</span> <span class="nf">noescape</span><span class="p">(</span><span class="nx">unsafe</span><span class="p">.</span><span class="nf">Pointer</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">tmp</span><span class="p">[</span><span class="mi">0</span><span class="p">])),</span> <span class="nb">int32</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="nx">tmp</span><span class="p">)))</span>
 </span></span><span class="line"><span class="cl">				<span class="nx">netpollWakeSig</span><span class="p">.</span><span class="nf">Store</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">			<span class="p">}</span>
@@ -1110,18 +1110,18 @@
 </span></span><span class="line"><span class="cl">	<span class="k">return</span> <span class="nx">toRun</span><span class="p">,</span> <span class="nx">delta</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1">// netpollready is called by the platform-specific netpoll function.
-</span></span></span><span class="line"><span class="cl"><span class="c1">// It declares that the fd associated with pd is ready for I/O.
-</span></span></span><span class="line"><span class="cl"><span class="c1">// The toRun argument is used to build a list of goroutines to return
-</span></span></span><span class="line"><span class="cl"><span class="c1">// from netpoll. The mode argument is &#39;r&#39;, &#39;w&#39;, or &#39;r&#39;+&#39;w&#39; to indicate
-</span></span></span><span class="line"><span class="cl"><span class="c1">// whether the fd is ready for reading or writing or both.
-</span></span></span><span class="line"><span class="cl"><span class="c1">//
-</span></span></span><span class="line"><span class="cl"><span class="c1">// This returns a delta to apply to netpollWaiters.
-</span></span></span><span class="line"><span class="cl"><span class="c1">//
-</span></span></span><span class="line"><span class="cl"><span class="c1">// This may run while the world is stopped, so write barriers are not allowed.
-</span></span></span><span class="line"><span class="cl"><span class="c1">//
-</span></span></span><span class="line"><span class="cl"><span class="c1">//go:nowritebarrier
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">func</span> <span class="nf">netpollready</span><span class="p">(</span><span class="nx">toRun</span> <span class="o">*</span><span class="nx">gList</span><span class="p">,</span> <span class="nx">pd</span> <span class="o">*</span><span class="nx">pollDesc</span><span class="p">,</span> <span class="nx">mode</span> <span class="kt">int32</span><span class="p">)</span> <span class="kt">int32</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// netpollready is called by the platform-specific netpoll function.</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// It declares that the fd associated with pd is ready for I/O.</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// The toRun argument is used to build a list of goroutines to return</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// from netpoll. The mode argument is &#39;r&#39;, &#39;w&#39;, or &#39;r&#39;+&#39;w&#39; to indicate</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// whether the fd is ready for reading or writing or both.</span>
+</span></span><span class="line"><span class="cl"><span class="c1">//</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// This returns a delta to apply to netpollWaiters.</span>
+</span></span><span class="line"><span class="cl"><span class="c1">//</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// This may run while the world is stopped, so write barriers are not allowed.</span>
+</span></span><span class="line"><span class="cl"><span class="c1">//</span>
+</span></span><span class="line"><span class="cl"><span class="c1">//go:nowritebarrier</span>
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">netpollready</span><span class="p">(</span><span class="nx">toRun</span> <span class="o">*</span><span class="nx">gList</span><span class="p">,</span> <span class="nx">pd</span> <span class="o">*</span><span class="nx">pollDesc</span><span class="p">,</span> <span class="nx">mode</span> <span class="kt">int32</span><span class="p">)</span> <span class="kt">int32</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">	<span class="nx">delta</span> <span class="o">:=</span> <span class="nb">int32</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">	<span class="kd">var</span> <span class="nx">rg</span><span class="p">,</span> <span class="nx">wg</span> <span class="o">*</span><span class="nx">g</span>
 </span></span><span class="line"><span class="cl">	<span class="k">if</span> <span class="nx">mode</span> <span class="o">==</span> <span class="sc">&#39;r&#39;</span> <span class="o">||</span> <span class="nx">mode</span> <span class="o">==</span> <span class="sc">&#39;r&#39;</span><span class="o">+</span><span class="sc">&#39;w&#39;</span> <span class="p">{</span>
@@ -1214,7 +1214,7 @@
 
   <aside class="toc" id="toc-auto" aria-label="Contents"><h2 class="toc-title">Contents&nbsp;<i class="toc-icon fa-solid fa-angle-down fa-fw" aria-hidden="true"></i></h2>
       <div class="toc-content" id="toc-content-auto"></div></aside></main><footer class="footer">
-    <div class="footer-container"><div class="footer-line powered order-1">Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreferrer" title="Hugo 0.140.2"><img class="hugo-icon" src="/images/hugo.min.svg" alt="Hugo logo" /> Hugo</a> | Theme - <a href="https://github.com/hugo-fixit/FixIt" target="_blank" rel="external" title="FixIt v0.3.16"><img class="fixit-icon" src="/images/fixit.min.svg" alt="FixIt logo" /> FixIt</a>
+    <div class="footer-container"><div class="footer-line powered order-1">Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreferrer" title="Hugo 0.141.0"><img class="hugo-icon" src="/images/hugo.min.svg" alt="Hugo logo" /> Hugo</a> | Theme - <a href="https://github.com/hugo-fixit/FixIt" target="_blank" rel="external" title="FixIt v0.3.16"><img class="fixit-icon" src="/images/fixit.min.svg" alt="FixIt logo" /> FixIt</a>
         </div><div class="footer-line copyright" itemscope itemtype="http://schema.org/CreativeWork"><i class="fa-regular fa-copyright fa-fw" aria-hidden="true"></i>
             <span itemprop="copyrightYear">2024 - 2025</span><span class="author" itemprop="copyrightHolder">
               <a href="/">kyden</a></span><span class="license footer-divider"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a></span></div><div class="footer-line statistics order-2"><span class="site-time" title='Website running ...'><i class="fa-solid fa-heartbeat fa-fw animate-icon" aria-hidden="true"></i><span class="ms-1 d-none">时光荏苒，本站已陪伴您</span><span class="run-times ms-1">Website running ...</span></span></div><div class="footer-line visitor order-3">

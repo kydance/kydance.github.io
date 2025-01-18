@@ -298,102 +298,102 @@
 </span><span class="lnt">97
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-Go" data-lang="Go"><span class="line"><span class="cl"><span class="c1">// A Context carries a deadline, a cancellation signal, and other values across
-</span></span></span><span class="line"><span class="cl"><span class="c1">// API boundaries.
-</span></span></span><span class="line"><span class="cl"><span class="c1">//
-</span></span></span><span class="line"><span class="cl"><span class="c1">// Context&#39;s methods may be called by multiple goroutines simultaneously.
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">type</span> <span class="nx">Context</span> <span class="kd">interface</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">	<span class="c1">// Deadline returns the time when work done on behalf of this context
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// should be canceled. Deadline returns ok==false when no deadline is
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// set. Successive calls to Deadline return the same results.
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nf">Deadline</span><span class="p">()</span> <span class="p">(</span><span class="nx">deadline</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Time</span><span class="p">,</span> <span class="nx">ok</span> <span class="kt">bool</span><span class="p">)</span>
+<pre tabindex="0" class="chroma"><code class="language-Go" data-lang="Go"><span class="line"><span class="cl"><span class="c1">// A Context carries a deadline, a cancellation signal, and other values across</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// API boundaries.</span>
+</span></span><span class="line"><span class="cl"><span class="c1">//</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// Context&#39;s methods may be called by multiple goroutines simultaneously.</span>
+</span></span><span class="line"><span class="cl"><span class="kd">type</span> <span class="nx">Context</span> <span class="kd">interface</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// Deadline returns the time when work done on behalf of this context</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// should be canceled. Deadline returns ok==false when no deadline is</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// set. Successive calls to Deadline return the same results.</span>
+</span></span><span class="line"><span class="cl">	<span class="nf">Deadline</span><span class="p">()</span> <span class="p">(</span><span class="nx">deadline</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Time</span><span class="p">,</span> <span class="nx">ok</span> <span class="kt">bool</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">	<span class="c1">// Done returns a channel that&#39;s closed when work done on behalf of this
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// context should be canceled. Done may return nil if this context can
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// never be canceled. Successive calls to Done return the same value.
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// The close of the Done channel may happen asynchronously,
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// after the cancel function returns.
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">//
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// WithCancel arranges for Done to be closed when cancel is called;
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// WithDeadline arranges for Done to be closed when the deadline
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// expires; WithTimeout arranges for Done to be closed when the timeout
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// elapses.
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">//
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// Done is provided for use in select statements:
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">//
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">//  // Stream generates values with DoSomething and sends them to out
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">//  // until DoSomething returns an error or ctx.Done is closed.
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">//  func Stream(ctx context.Context, out chan&lt;- Value) error {
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">//  	for {
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">//  		v, err := DoSomething(ctx)
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">//  		if err != nil {
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">//  			return err
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">//  		}
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">//  		select {
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">//  		case &lt;-ctx.Done():
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">//  			return ctx.Err()
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">//  		case out &lt;- v:
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">//  		}
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">//  	}
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">//  }
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">//
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// See https://blog.golang.org/pipelines for more examples of how to use
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// a Done channel for cancellation.
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nf">Done</span><span class="p">()</span> <span class="o">&lt;-</span><span class="kd">chan</span> <span class="kd">struct</span><span class="p">{}</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// Done returns a channel that&#39;s closed when work done on behalf of this</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// context should be canceled. Done may return nil if this context can</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// never be canceled. Successive calls to Done return the same value.</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// The close of the Done channel may happen asynchronously,</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// after the cancel function returns.</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">//</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// WithCancel arranges for Done to be closed when cancel is called;</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// WithDeadline arranges for Done to be closed when the deadline</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// expires; WithTimeout arranges for Done to be closed when the timeout</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// elapses.</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">//</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// Done is provided for use in select statements:</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">//</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">//  // Stream generates values with DoSomething and sends them to out</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">//  // until DoSomething returns an error or ctx.Done is closed.</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">//  func Stream(ctx context.Context, out chan&lt;- Value) error {</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">//  	for {</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">//  		v, err := DoSomething(ctx)</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">//  		if err != nil {</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">//  			return err</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">//  		}</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">//  		select {</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">//  		case &lt;-ctx.Done():</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">//  			return ctx.Err()</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">//  		case out &lt;- v:</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">//  		}</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">//  	}</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">//  }</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">//</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// See https://blog.golang.org/pipelines for more examples of how to use</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// a Done channel for cancellation.</span>
+</span></span><span class="line"><span class="cl">	<span class="nf">Done</span><span class="p">()</span> <span class="o">&lt;-</span><span class="kd">chan</span> <span class="kd">struct</span><span class="p">{}</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">	<span class="c1">// If Done is not yet closed, Err returns nil.
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// If Done is closed, Err returns a non-nil error explaining why:
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// Canceled if the context was canceled
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// or DeadlineExceeded if the context&#39;s deadline passed.
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// After Err returns a non-nil error, successive calls to Err return the same error.
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nf">Err</span><span class="p">()</span> <span class="kt">error</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// If Done is not yet closed, Err returns nil.</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// If Done is closed, Err returns a non-nil error explaining why:</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// Canceled if the context was canceled</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// or DeadlineExceeded if the context&#39;s deadline passed.</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// After Err returns a non-nil error, successive calls to Err return the same error.</span>
+</span></span><span class="line"><span class="cl">	<span class="nf">Err</span><span class="p">()</span> <span class="kt">error</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">	<span class="c1">// Value returns the value associated with this context for key, or nil
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// if no value is associated with key. Successive calls to Value with
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// the same key returns the same result.
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">//
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// Use context values only for request-scoped data that transits
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// processes and API boundaries, not for passing optional parameters to
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// functions.
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">//
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// A key identifies a specific value in a Context. Functions that wish
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// to store values in Context typically allocate a key in a global
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// variable then use that key as the argument to context.WithValue and
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// Context.Value. A key can be any type that supports equality;
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// packages should define keys as an unexported type to avoid
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// collisions.
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">//
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// Packages that define a Context key should provide type-safe accessors
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// for the values stored using that key:
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">//
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// 	// Package user defines a User type that&#39;s stored in Contexts.
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// 	package user
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">//
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// 	import &#34;context&#34;
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">//
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// 	// User is the type of value stored in the Contexts.
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// 	type User struct {...}
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">//
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// 	// key is an unexported type for keys defined in this package.
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// 	// This prevents collisions with keys defined in other packages.
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// 	type key int
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">//
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// 	// userKey is the key for user.User values in Contexts. It is
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// 	// unexported; clients use user.NewContext and user.FromContext
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// 	// instead of using this key directly.
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// 	var userKey key
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">//
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// 	// NewContext returns a new Context that carries value u.
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// 	func NewContext(ctx context.Context, u *User) context.Context {
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// 		return context.WithValue(ctx, userKey, u)
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// 	}
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">//
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// 	// FromContext returns the User value stored in ctx, if any.
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// 	func FromContext(ctx context.Context) (*User, bool) {
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// 		u, ok := ctx.Value(userKey).(*User)
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// 		return u, ok
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// 	}
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nf">Value</span><span class="p">(</span><span class="nx">key</span> <span class="nx">any</span><span class="p">)</span> <span class="nx">any</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// Value returns the value associated with this context for key, or nil</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// if no value is associated with key. Successive calls to Value with</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// the same key returns the same result.</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">//</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// Use context values only for request-scoped data that transits</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// processes and API boundaries, not for passing optional parameters to</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// functions.</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">//</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// A key identifies a specific value in a Context. Functions that wish</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// to store values in Context typically allocate a key in a global</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// variable then use that key as the argument to context.WithValue and</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// Context.Value. A key can be any type that supports equality;</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// packages should define keys as an unexported type to avoid</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// collisions.</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">//</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// Packages that define a Context key should provide type-safe accessors</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// for the values stored using that key:</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">//</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// 	// Package user defines a User type that&#39;s stored in Contexts.</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// 	package user</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">//</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// 	import &#34;context&#34;</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">//</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// 	// User is the type of value stored in the Contexts.</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// 	type User struct {...}</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">//</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// 	// key is an unexported type for keys defined in this package.</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// 	// This prevents collisions with keys defined in other packages.</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// 	type key int</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">//</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// 	// userKey is the key for user.User values in Contexts. It is</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// 	// unexported; clients use user.NewContext and user.FromContext</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// 	// instead of using this key directly.</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// 	var userKey key</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">//</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// 	// NewContext returns a new Context that carries value u.</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// 	func NewContext(ctx context.Context, u *User) context.Context {</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// 		return context.WithValue(ctx, userKey, u)</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// 	}</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">//</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// 	// FromContext returns the User value stored in ctx, if any.</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// 	func FromContext(ctx context.Context) (*User, bool) {</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// 		u, ok := ctx.Value(userKey).(*User)</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// 		return u, ok</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// 	}</span>
+</span></span><span class="line"><span class="cl">	<span class="nf">Value</span><span class="p">(</span><span class="nx">key</span> <span class="kt">any</span><span class="p">)</span> <span class="kt">any</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></table>
 </div>
 </div><ul>
@@ -485,19 +485,19 @@
 </span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">calculate</span><span class="p">(</span><span class="nx">ctx</span> <span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">,</span> <span class="nx">cost</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Duration</span><span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">	<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;calculate value is&#34;</span><span class="p">,</span> <span class="nx">ctx</span><span class="p">.</span><span class="nf">Value</span><span class="p">(</span><span class="nx">CALCULATE_VALUE</span><span class="p">))</span>
 </span></span><span class="line"><span class="cl">	<span class="k">select</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">	<span class="k">case</span> <span class="o">&lt;-</span><span class="nx">time</span><span class="p">.</span><span class="nf">After</span><span class="p">(</span><span class="nx">cost</span><span class="p">):</span> <span class="c1">//  模拟数据计算
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>		<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;calculate finish&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="k">case</span> <span class="o">&lt;-</span><span class="nx">time</span><span class="p">.</span><span class="nf">After</span><span class="p">(</span><span class="nx">cost</span><span class="p">):</span> <span class="c1">//  模拟数据计算</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;calculate finish&#34;</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">	<span class="k">case</span> <span class="o">&lt;-</span><span class="nx">ctx</span><span class="p">.</span><span class="nf">Done</span><span class="p">():</span>
-</span></span><span class="line"><span class="cl">		<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">ctx</span><span class="p">.</span><span class="nf">Err</span><span class="p">())</span> <span class="c1">// 任务取消的原因
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>		<span class="c1">// 一些清理工作
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">ctx</span><span class="p">.</span><span class="nf">Err</span><span class="p">())</span> <span class="c1">// 任务取消的原因</span>
+</span></span><span class="line"><span class="cl">		<span class="c1">// 一些清理工作</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">	<span class="nx">ctx</span> <span class="o">:=</span> <span class="nx">context</span><span class="p">.</span><span class="nf">Background</span><span class="p">()</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">	<span class="c1">// Add Context info
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">ctx</span> <span class="p">=</span> <span class="nx">context</span><span class="p">.</span><span class="nf">WithValue</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span> <span class="nx">DB_ADDRESS</span><span class="p">,</span> <span class="s">&#34;localhost:3306&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// Add Context info</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">ctx</span> <span class="p">=</span> <span class="nx">context</span><span class="p">.</span><span class="nf">WithValue</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span> <span class="nx">DB_ADDRESS</span><span class="p">,</span> <span class="s">&#34;localhost:3306&#34;</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">	<span class="nx">ctx</span> <span class="p">=</span> <span class="nx">context</span><span class="p">.</span><span class="nf">WithValue</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span> <span class="nx">CALCULATE_VALUE</span><span class="p">,</span> <span class="s">&#34;123&#34;</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">	<span class="nx">ctx</span><span class="p">,</span> <span class="nx">cancel</span> <span class="o">:=</span> <span class="nx">context</span><span class="p">.</span><span class="nf">WithTimeout</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Second</span><span class="o">*</span><span class="mi">2</span><span class="p">)</span>
@@ -570,7 +570,7 @@
 
   <aside class="toc" id="toc-auto" aria-label="Contents"><h2 class="toc-title">Contents&nbsp;<i class="toc-icon fa-solid fa-angle-down fa-fw" aria-hidden="true"></i></h2>
       <div class="toc-content" id="toc-content-auto"></div></aside></main><footer class="footer">
-    <div class="footer-container"><div class="footer-line powered order-1">Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreferrer" title="Hugo 0.140.2"><img class="hugo-icon" src="/images/hugo.min.svg" alt="Hugo logo" /> Hugo</a> | Theme - <a href="https://github.com/hugo-fixit/FixIt" target="_blank" rel="external" title="FixIt v0.3.16"><img class="fixit-icon" src="/images/fixit.min.svg" alt="FixIt logo" /> FixIt</a>
+    <div class="footer-container"><div class="footer-line powered order-1">Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreferrer" title="Hugo 0.141.0"><img class="hugo-icon" src="/images/hugo.min.svg" alt="Hugo logo" /> Hugo</a> | Theme - <a href="https://github.com/hugo-fixit/FixIt" target="_blank" rel="external" title="FixIt v0.3.16"><img class="fixit-icon" src="/images/fixit.min.svg" alt="FixIt logo" /> FixIt</a>
         </div><div class="footer-line copyright" itemscope itemtype="http://schema.org/CreativeWork"><i class="fa-regular fa-copyright fa-fw" aria-hidden="true"></i>
             <span itemprop="copyrightYear">2024 - 2025</span><span class="author" itemprop="copyrightHolder">
               <a href="/">kyden</a></span><span class="license footer-divider"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a></span></div><div class="footer-line statistics order-2"><span class="site-time" title='Website running ...'><i class="fa-solid fa-heartbeat fa-fw animate-icon" aria-hidden="true"></i><span class="ms-1 d-none">时光荏苒，本站已陪伴您</span><span class="run-times ms-1">Website running ...</span></span></div><div class="footer-line visitor order-3">

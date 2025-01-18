@@ -595,8 +595,8 @@
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1">// rootCmd represents the base command when called without any subcommands
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">var</span> <span class="nx">rootCmd</span> <span class="p">=</span> <span class="o">&amp;</span><span class="nx">cobra</span><span class="p">.</span><span class="nx">Command</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// rootCmd represents the base command when called without any subcommands</span>
+</span></span><span class="line"><span class="cl"><span class="kd">var</span> <span class="nx">rootCmd</span> <span class="p">=</span> <span class="o">&amp;</span><span class="nx">cobra</span><span class="p">.</span><span class="nx">Command</span><span class="p">{</span>
 </span></span><span class="line"><span class="cl">	<span class="nx">Use</span><span class="p">:</span>   <span class="s">&#34;cobrademo&#34;</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">	<span class="nx">Short</span><span class="p">:</span> <span class="s">&#34;A brief description of your application&#34;</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">	<span class="nx">Long</span><span class="p">:</span> <span class="s">`A longer description that spans multiple lines and likely contains
@@ -606,13 +606,13 @@
 </span></span></span><span class="line"><span class="cl"><span class="s">This application is a tool to generate the needed files
 </span></span></span><span class="line"><span class="cl"><span class="s">to quickly create a Cobra application.`</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">    <span class="nx">Run</span><span class="p">:</span> <span class="kd">func</span><span class="p">(</span><span class="nx">cmd</span> <span class="o">*</span><span class="nx">cobra</span><span class="p">.</span><span class="nx">Command</span><span class="p">,</span> <span class="nx">args</span> <span class="p">[]</span><span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">        <span class="c1">// Do stuff here
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="p">},</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// Do stuff here</span>
+</span></span><span class="line"><span class="cl">    <span class="p">},</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1">// Execute adds all child commands to the root command and sets flags appropriately.
-</span></span></span><span class="line"><span class="cl"><span class="c1">// This is called by main.main(). It only needs to happen once to the rootCmd.
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">func</span> <span class="nf">Execute</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// Execute adds all child commands to the root command and sets flags appropriately.</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// This is called by main.main(). It only needs to happen once to the rootCmd.</span>
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">Execute</span><span class="p">()</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">	<span class="nx">err</span> <span class="o">:=</span> <span class="nx">rootCmd</span><span class="p">.</span><span class="nf">Execute</span><span class="p">()</span>
 </span></span><span class="line"><span class="cl">	<span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">		<span class="nx">os</span><span class="p">.</span><span class="nf">Exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
@@ -620,15 +620,15 @@
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">init</span><span class="p">()</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">	<span class="c1">// Here you will define your flags and configuration settings.
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// Cobra supports persistent flags, which, if defined here,
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// will be global for your application.
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
-</span></span><span class="line"><span class="cl">	<span class="c1">// rootCmd.PersistentFlags().StringVar(&amp;cfgFile, &#34;config&#34;, &#34;&#34;, &#34;config file (default is $HOME/.cobrademo.yaml)&#34;)
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
-</span></span><span class="line"><span class="cl">	<span class="c1">// Cobra also supports local flags, which will only run
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// when this action is called directly.
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">rootCmd</span><span class="p">.</span><span class="nf">Flags</span><span class="p">().</span><span class="nf">BoolP</span><span class="p">(</span><span class="s">&#34;toggle&#34;</span><span class="p">,</span> <span class="s">&#34;t&#34;</span><span class="p">,</span> <span class="kc">false</span><span class="p">,</span> <span class="s">&#34;Help message for toggle&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// Here you will define your flags and configuration settings.</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// Cobra supports persistent flags, which, if defined here,</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// will be global for your application.</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="c1">// rootCmd.PersistentFlags().StringVar(&amp;cfgFile, &#34;config&#34;, &#34;&#34;, &#34;config file (default is $HOME/.cobrademo.yaml)&#34;)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="c1">// Cobra also supports local flags, which will only run</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// when this action is called directly.</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">rootCmd</span><span class="p">.</span><span class="nf">Flags</span><span class="p">().</span><span class="nf">BoolP</span><span class="p">(</span><span class="s">&#34;toggle&#34;</span><span class="p">,</span> <span class="s">&#34;t&#34;</span><span class="p">,</span> <span class="kc">false</span><span class="p">,</span> <span class="s">&#34;Help message for toggle&#34;</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></table>
 </div>
 </div><p>还可以在 <code>init()</code> 函数中定义标志和处理配置，例如：<code>cmd/helper.go</code>:</p>
@@ -726,8 +726,8 @@
 </span></span><span class="line"><span class="cl">	<span class="s">&#34;github.com/spf13/cobra&#34;</span>
 </span></span><span class="line"><span class="cl"><span class="p">)</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1">// versionCmd represents the version command
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">var</span> <span class="nx">versionCmd</span> <span class="p">=</span> <span class="o">&amp;</span><span class="nx">cobra</span><span class="p">.</span><span class="nx">Command</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// versionCmd represents the version command</span>
+</span></span><span class="line"><span class="cl"><span class="kd">var</span> <span class="nx">versionCmd</span> <span class="p">=</span> <span class="o">&amp;</span><span class="nx">cobra</span><span class="p">.</span><span class="nx">Command</span><span class="p">{</span>
 </span></span><span class="line"><span class="cl">	<span class="nx">Use</span><span class="p">:</span>   <span class="s">&#34;version&#34;</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">	<span class="nx">Short</span><span class="p">:</span> <span class="s">&#34;A brief description of your command&#34;</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">	<span class="nx">Long</span><span class="p">:</span> <span class="s">`A longer description that spans multiple lines and likely contains examples
@@ -744,16 +744,16 @@
 </span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">init</span><span class="p">()</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">	<span class="nx">rootCmd</span><span class="p">.</span><span class="nf">AddCommand</span><span class="p">(</span><span class="nx">versionCmd</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">	<span class="c1">// Here you will define your flags and configuration settings.
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
-</span></span><span class="line"><span class="cl">	<span class="c1">// Cobra supports Persistent Flags which will work for this command
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// and all subcommands, e.g.:
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// versionCmd.PersistentFlags().String(&#34;foo&#34;, &#34;&#34;, &#34;A help for foo&#34;)
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
-</span></span><span class="line"><span class="cl">	<span class="c1">// Cobra supports local flags which will only run when this command
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// is called directly, e.g.:
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// versionCmd.Flags().BoolP(&#34;toggle&#34;, &#34;t&#34;, false, &#34;Help message for toggle&#34;)
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">}</span></span></span></code></pre></td></tr></table>
+</span></span><span class="line"><span class="cl">	<span class="c1">// Here you will define your flags and configuration settings.</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="c1">// Cobra supports Persistent Flags which will work for this command</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// and all subcommands, e.g.:</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// versionCmd.PersistentFlags().String(&#34;foo&#34;, &#34;&#34;, &#34;A help for foo&#34;)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="c1">// Cobra supports local flags which will only run when this command</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// is called directly, e.g.:</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// versionCmd.Flags().BoolP(&#34;toggle&#34;, &#34;t&#34;, false, &#34;Help message for toggle&#34;)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></table>
 </div>
 </div><ol start="4">
 <li>编译运行</li>
@@ -801,7 +801,7 @@
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="nx">Available</span> <span class="nx">Commands</span><span class="p">:</span>
 </span></span><span class="line"><span class="cl">  <span class="nx">completion</span>  <span class="nx">Generate</span> <span class="nx">the</span> <span class="nx">autocompletion</span> <span class="nx">script</span> <span class="k">for</span> <span class="nx">the</span> <span class="nx">specified</span> <span class="nx">shell</span>
-</span></span><span class="line"><span class="cl">  <span class="nx">help</span>        <span class="nx">Help</span> <span class="nx">about</span> <span class="nx">any</span> <span class="nx">command</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">help</span>        <span class="nx">Help</span> <span class="nx">about</span> <span class="kt">any</span> <span class="nx">command</span>
 </span></span><span class="line"><span class="cl">  <span class="nx">helper</span>      <span class="nx">A</span> <span class="nx">brief</span> <span class="nx">description</span> <span class="nx">of</span> <span class="nx">your</span> <span class="nx">command</span>
 </span></span><span class="line"><span class="cl">  <span class="nx">version</span>     <span class="nx">A</span> <span class="nx">brief</span> <span class="nx">description</span> <span class="nx">of</span> <span class="nx">your</span> <span class="nx">command</span>
 </span></span><span class="line"><span class="cl">
@@ -936,7 +936,7 @@
 
   <aside class="toc" id="toc-auto" aria-label="Contents"><h2 class="toc-title">Contents&nbsp;<i class="toc-icon fa-solid fa-angle-down fa-fw" aria-hidden="true"></i></h2>
       <div class="toc-content" id="toc-content-auto"></div></aside></main><footer class="footer">
-    <div class="footer-container"><div class="footer-line powered order-1">Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreferrer" title="Hugo 0.140.2"><img class="hugo-icon" src="/images/hugo.min.svg" alt="Hugo logo" /> Hugo</a> | Theme - <a href="https://github.com/hugo-fixit/FixIt" target="_blank" rel="external" title="FixIt v0.3.16"><img class="fixit-icon" src="/images/fixit.min.svg" alt="FixIt logo" /> FixIt</a>
+    <div class="footer-container"><div class="footer-line powered order-1">Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreferrer" title="Hugo 0.141.0"><img class="hugo-icon" src="/images/hugo.min.svg" alt="Hugo logo" /> Hugo</a> | Theme - <a href="https://github.com/hugo-fixit/FixIt" target="_blank" rel="external" title="FixIt v0.3.16"><img class="fixit-icon" src="/images/fixit.min.svg" alt="FixIt logo" /> FixIt</a>
         </div><div class="footer-line copyright" itemscope itemtype="http://schema.org/CreativeWork"><i class="fa-regular fa-copyright fa-fw" aria-hidden="true"></i>
             <span itemprop="copyrightYear">2024 - 2025</span><span class="author" itemprop="copyrightHolder">
               <a href="/">kyden</a></span><span class="license footer-divider"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a></span></div><div class="footer-line statistics order-2"><span class="site-time" title='Website running ...'><i class="fa-solid fa-heartbeat fa-fw animate-icon" aria-hidden="true"></i><span class="ms-1 d-none">时光荏苒，本站已陪伴您</span><span class="run-times ms-1">Website running ...</span></span></div><div class="footer-line visitor order-3">
