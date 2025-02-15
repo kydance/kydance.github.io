@@ -11,7 +11,7 @@
   <meta itemprop="description" content="深入探讨 Go 应用程序的配置管理最佳实践，从配置文件选型到 Viper 的高级特性，全方位讲解如何实现优雅的配置管理方案。包含热重载、环境变量、配置文件等多种场景的实战指南。">
   <meta itemprop="datePublished" content="2024-09-22T21:26:34+08:00">
   <meta itemprop="dateModified" content="2024-09-22T21:26:34+08:00">
-  <meta itemprop="wordCount" content="1657">
+  <meta itemprop="wordCount" content="2187">
   <meta itemprop="image" content="http://kyden.us.kg/favicon.png">
   <meta itemprop="keywords" content="Go,Golang,Viper,配置管理,配置文件,环境变量,配置解析,应用配置,配置中心,配置工具,开发工具,项目配置,配置系统,配置框架"><meta property="og:url" content="http://kyden.us.kg/posts/go-viper/">
   <meta property="og:site_name" content="Kyden&#39;s 博客">
@@ -49,7 +49,7 @@
     "mainEntityOfPage": {
       "@type": "WebPage",
       "@id": "http:\/\/kyden.us.kg\/posts\/go-viper\/"
-    },"image": ["http:\/\/kyden.us.kg\/favicon-seo.jpg"],"genre": "posts","keywords": "Go, Golang, Viper, 配置管理, 配置工具, 开发工具, 最佳实践, 项目实战, 应用开发, 工程实践","wordcount":  1657 ,
+    },"image": ["http:\/\/kyden.us.kg\/favicon-seo.jpg"],"genre": "posts","keywords": "Go, Golang, Viper, 配置管理, 配置工具, 开发工具, 最佳实践, 项目实战, 应用开发, 工程实践","wordcount":  2187 ,
     "url": "http:\/\/kyden.us.kg\/posts\/go-viper\/","datePublished": "2024-09-22T21:26:34+08:00","dateModified": "2024-09-22T21:26:34+08:00","publisher": {
       "@type": "Organization",
       "name": "kyden","logo": "https:\/\/kyden.us.kg"},"author": {
@@ -171,7 +171,7 @@
   <article class="page single">
     <div class="header"><h1 class="single-title animate__animated animate__flipInX"><span title="Repost" class="icon-repost"><i class="fa-solid fa-share fa-fw" aria-hidden="true"></i></span><span>Go 配置管理最佳实践：Viper 从入门到精通</span>
       </h1><p class="single-subtitle animate__animated animate__fadeIn">优雅高效的配置解决方案：告别配置管理烦恼</p></div><div class="post-meta">
-      <div class="post-meta-line"><span class="post-author"><a href="https:github.com/kydance" title="Author"target="_blank" rel="external nofollow noopener noreferrer author" class="author"><img loading="lazy" src="/favicon.ico" alt="kyden" data-title="kyden" width="20" height="20" class="avatar" style="background: url(/images/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}"/>&nbsp;kyden</a></span><span class="post-included-in">&nbsp;included in <a href="/categories/go%E8%AF%AD%E8%A8%80/" class="post-category" title="Category - Go语言"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> Go语言</a>&ensp;<a href="/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/" class="post-category" title="Category - 开发工具"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 开发工具</a>&ensp;<a href="/categories/%E9%85%8D%E7%BD%AE%E7%AE%A1%E7%90%86/" class="post-category" title="Category - 配置管理"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 配置管理</a>&ensp;<a href="/categories/%E5%BA%94%E7%94%A8%E6%A1%86%E6%9E%B6/" class="post-category" title="Category - 应用框架"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 应用框架</a>&ensp;<a href="/categories/%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/" class="post-category" title="Category - 最佳实践"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 最佳实践</a> and <a href="/collections/go%E5%B7%A5%E5%85%B7%E9%93%BE/" class="post-collection" title="Collection - Go工具链"><i class="fa-solid fa-layer-group fa-fw" aria-hidden="true"></i> Go工具链</a>&ensp;<a href="/collections/%E5%BC%80%E5%8F%91%E6%A1%86%E6%9E%B6/" class="post-collection" title="Collection - 开发框架"><i class="fa-solid fa-layer-group fa-fw" aria-hidden="true"></i> 开发框架</a>&ensp;<a href="/collections/%E5%B7%A5%E7%A8%8B%E5%AE%9E%E8%B7%B5/" class="post-collection" title="Collection - 工程实践"><i class="fa-solid fa-layer-group fa-fw" aria-hidden="true"></i> 工程实践</a>&ensp;<a href="/collections/%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91/" class="post-collection" title="Collection - 应用开发"><i class="fa-solid fa-layer-group fa-fw" aria-hidden="true"></i> 应用开发</a></span></div><div class="post-meta-line"><span title="published on 2024-09-22 21:26:34"><i class="fa-solid fa-calendar-days fa-fw me-1" aria-hidden="true"></i><time datetime="2024-09-22">2024-09-22</time></span>&nbsp;<span title="1657 words"><i class="fa-solid fa-pencil-alt fa-fw me-1" aria-hidden="true"></i>About 1700 words</span>&nbsp;<span><i class="fa-regular fa-clock fa-fw me-1" aria-hidden="true"></i>4 minutes</span>&nbsp;<span id="busuanzi_container_page_pv" class="busuanzi_visitors comment-visitors" data-flag-title="Go 配置管理最佳实践：Viper 从入门到精通"><i class="fa-regular fa-eye fa-fw me-1" aria-hidden="true"></i><span id="busuanzi_value_page_pv">-</span>&nbsp;views
+      <div class="post-meta-line"><span class="post-author"><a href="https://github.com/kydance" title="Author"target="_blank" rel="external nofollow noopener noreferrer author" class="author"><img loading="lazy" src="/favicon.ico" alt="kyden" data-title="kyden" width="20" height="20" class="avatar" style="background: url(/images/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}"/>&nbsp;kyden</a></span><span class="post-included-in">&nbsp;included in <a href="/categories/go%E8%AF%AD%E8%A8%80/" class="post-category" title="Category - Go语言"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> Go语言</a>&ensp;<a href="/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/" class="post-category" title="Category - 开发工具"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 开发工具</a>&ensp;<a href="/categories/%E9%85%8D%E7%BD%AE%E7%AE%A1%E7%90%86/" class="post-category" title="Category - 配置管理"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 配置管理</a>&ensp;<a href="/categories/%E5%BA%94%E7%94%A8%E6%A1%86%E6%9E%B6/" class="post-category" title="Category - 应用框架"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 应用框架</a>&ensp;<a href="/categories/%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/" class="post-category" title="Category - 最佳实践"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 最佳实践</a> and <a href="/collections/go%E5%B7%A5%E5%85%B7%E9%93%BE/" class="post-collection" title="Collection - Go工具链"><i class="fa-solid fa-layer-group fa-fw" aria-hidden="true"></i> Go工具链</a>&ensp;<a href="/collections/%E5%BC%80%E5%8F%91%E6%A1%86%E6%9E%B6/" class="post-collection" title="Collection - 开发框架"><i class="fa-solid fa-layer-group fa-fw" aria-hidden="true"></i> 开发框架</a>&ensp;<a href="/collections/%E5%B7%A5%E7%A8%8B%E5%AE%9E%E8%B7%B5/" class="post-collection" title="Collection - 工程实践"><i class="fa-solid fa-layer-group fa-fw" aria-hidden="true"></i> 工程实践</a>&ensp;<a href="/collections/%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91/" class="post-collection" title="Collection - 应用开发"><i class="fa-solid fa-layer-group fa-fw" aria-hidden="true"></i> 应用开发</a></span></div><div class="post-meta-line"><span title="published on 2024-09-22 21:26:34"><i class="fa-solid fa-calendar-days fa-fw me-1" aria-hidden="true"></i><time datetime="2024-09-22">2024-09-22</time></span>&nbsp;<span title="2187 words"><i class="fa-solid fa-pencil-alt fa-fw me-1" aria-hidden="true"></i>About 2200 words</span>&nbsp;<span><i class="fa-regular fa-clock fa-fw me-1" aria-hidden="true"></i>5 minutes</span>&nbsp;<span id="busuanzi_container_page_pv" class="busuanzi_visitors comment-visitors" data-flag-title="Go 配置管理最佳实践：Viper 从入门到精通"><i class="fa-regular fa-eye fa-fw me-1" aria-hidden="true"></i><span id="busuanzi_value_page_pv">-</span>&nbsp;views
           </span>&nbsp;</div>
     </div><div class="details toc" id="toc-static" data-kept="false">
         <div class="details-summary toc-title">
@@ -181,7 +181,18 @@
         <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
   <ol>
     <li><a href="#为何选择配置文件作为配置项的读取方式">为何选择配置文件作为配置项的读取方式？</a></li>
-    <li><a href="#为何选择-yaml-作为配置文件的格式">为何选择 YAML 作为配置文件的格式？</a></li>
+    <li><a href="#viper-的核心功能">Viper 的核心功能</a>
+      <ol>
+        <li><a href="#为何选择-yaml-作为配置文件的格式">为何选择 YAML 作为配置文件的格式？</a></li>
+      </ol>
+    </li>
+    <li><a href="#viper-示例">Viper 示例</a>
+      <ol>
+        <li><a href="#工程结构">工程结构</a></li>
+        <li><a href="#cfgyaml-配置内容"><code>cfg.yaml</code> 配置内容</a></li>
+        <li><a href="#viper-读取配置">Viper 读取配置</a></li>
+      </ol>
+    </li>
     <li><a href="#使用-viper-读取配置文件内容">使用 viper 读取配置文件内容</a></li>
     <li><a href="#reference">Reference</a></li>
   </ol>
@@ -224,11 +235,26 @@
 参数较多的时候，建议使用配置文件，配置文件更易部署、维护、热加载、层次表达更清晰。</div>
   </div>
 </div>
-<h2 id="为何选择-yaml-作为配置文件的格式" class="heading-element"><span>为何选择 YAML 作为配置文件的格式？</span>
+<h2 id="viper-的核心功能" class="heading-element"><span>Viper 的核心功能</span>
+  <a href="#viper-%e7%9a%84%e6%a0%b8%e5%bf%83%e5%8a%9f%e8%83%bd" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h2><p><strong><a href="https://github.com/spf13/viper"target="_blank" rel="external nofollow noopener noreferrer">spf13/viper<i class="fa-solid fa-external-link-alt fa-fw fa-xs ms-1 text-secondary" aria-hidden="true"></i></a></strong> 提供了多种强大的功能，使其成为了 Go 语言中配置管理的首选工具，其核心功能如下：</p>
+<ul>
+<li><strong>多种格式的配置文件</strong>: Viper 支持 JSON、TOML、YAML、HCL 以及标准的 <code>.env</code> 文件等配置格式，<strong>推荐使用 <code>YAML</code> 配置文件</strong></li>
+<li><strong>环境变量</strong>: Viper 可以读取操作系统的环境变量</li>
+<li><strong>命令行标志</strong>: Viper 本身不处理命令行标志，但它可以与 <code>cobra</code> 等裤集成，通过 Viper 自动将标志与配置绑定</li>
+<li><strong>远程配置</strong>: Viper 支持从远程配置系统（如 <code>etcd</code>, <code>Consul</code>）获取配置，对于分布式系统中的配置管理非常有用</li>
+<li><strong>热重载</strong>: Viper 支持监听配置文件的变更，自动重新加载配置文件</li>
+<li><strong>层级配置</strong>: Viper 支持配置的层级结构</li>
+<li><strong>默认值</strong>: Viper 可以为任何配置项设置默认值</li>
+</ul>
+<hr>
+<h3 id="为何选择-yaml-作为配置文件的格式" class="heading-element"><span>为何选择 YAML 作为配置文件的格式？</span>
   <a href="#%e4%b8%ba%e4%bd%95%e9%80%89%e6%8b%a9-yaml-%e4%bd%9c%e4%b8%ba%e9%85%8d%e7%bd%ae%e6%96%87%e4%bb%b6%e7%9a%84%e6%a0%bc%e5%bc%8f" class="heading-mark">
     <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
   </a>
-</h2><p>当打算采用配置文件来读取配置项时，那么就存在多种文件格式，例如：JSON、YAML、TOML、INI 等。
+</h3><p>当打算采用配置文件来读取配置项时，那么就存在多种文件格式，例如：JSON、YAML、TOML、INI 等。
 个人推荐使用 YAML，理由如下：</p>
 <ul>
 <li>YAML 语法简单、格式易读、程序易处理；</li>
@@ -236,9 +262,165 @@
 <li>YAML 格式普适性高，新人零理解成本；</li>
 </ul>
 <blockquote>
-<p>最终配置：使用 YAML 格式的配置文件，并采用 <code>viper</code> 来读取配置</p>
-</blockquote>
+<p>最终配置：使用 YAML 格式的配置文件，并采用 <code>viper</code> 来读取配置</p></blockquote>
 <hr>
+<h2 id="viper-示例" class="heading-element"><span>Viper 示例</span>
+  <a href="#viper-%e7%a4%ba%e4%be%8b" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h2><h3 id="工程结构" class="heading-element"><span>工程结构</span>
+  <a href="#%e5%b7%a5%e7%a8%8b%e7%bb%93%e6%9e%84" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h3><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">demo
+</span></span><span class="line"><span class="cl">├── config
+</span></span><span class="line"><span class="cl">│   └── cfg.yaml
+</span></span><span class="line"><span class="cl">├── go.mod
+</span></span><span class="line"><span class="cl">├── go.sum
+</span></span><span class="line"><span class="cl">└── main.go</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="cfgyaml-配置内容" class="heading-element"><span><code>cfg.yaml</code> 配置内容</span>
+  <a href="#cfgyaml-%e9%85%8d%e7%bd%ae%e5%86%85%e5%ae%b9" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h3><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">app</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;Viper Demo&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="m">9009</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">database</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">host</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;localhost&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="m">5432</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">user</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;user&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">passwd</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;passwd&#34;</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="viper-读取配置" class="heading-element"><span>Viper 读取配置</span>
+  <a href="#viper-%e8%af%bb%e5%8f%96%e9%85%8d%e7%bd%ae" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h3><p>在读取具体配置之前，可以使用 <code>viper.AddConfigPath</code> 方法来添加配置文件的路径，然后使用 <code>viper.ReadInConfig</code> 方法来读取配置文件.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="p">(</span>
+</span></span><span class="line"><span class="cl">	<span class="s">&#34;fmt&#34;</span>
+</span></span><span class="line"><span class="cl">	<span class="s">&#34;log&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="s">&#34;github.com/spf13/viper&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">type</span> <span class="nx">Config</span> <span class="kd">struct</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">App</span> <span class="kd">struct</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">Name</span> <span class="kt">string</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">Port</span> <span class="kt">int</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="nx">Database</span> <span class="kd">struct</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">Host</span>   <span class="kt">string</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">Port</span>   <span class="kt">int</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">User</span>   <span class="kt">string</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">Passwd</span> <span class="kt">string</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="kd">var</span> <span class="nx">cfg</span> <span class="nx">Config</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="c1">// Set config file</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">viper</span><span class="p">.</span><span class="nf">AddConfigPath</span><span class="p">(</span><span class="s">&#34;./config&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">viper</span><span class="p">.</span><span class="nf">SetConfigName</span><span class="p">(</span><span class="s">&#34;cfg&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">viper</span><span class="p">.</span><span class="nf">SetConfigType</span><span class="p">(</span><span class="s">&#34;yaml&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="c1">// Read</span>
+</span></span><span class="line"><span class="cl">	<span class="k">if</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">viper</span><span class="p">.</span><span class="nf">ReadInConfig</span><span class="p">();</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">log</span><span class="p">.</span><span class="nf">Fatalf</span><span class="p">(</span><span class="s">&#34;Error reading config file, %v&#34;</span><span class="p">,</span> <span class="nx">err</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="k">if</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">viper</span><span class="p">.</span><span class="nf">Unmarshal</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">cfg</span><span class="p">);</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">log</span><span class="p">.</span><span class="nf">Fatalf</span><span class="p">(</span><span class="s">&#34;Unable to decode into struct: %v&#34;</span><span class="p">,</span> <span class="nx">err</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;App Name: %s\n&#34;</span><span class="p">,</span> <span class="nx">cfg</span><span class="p">.</span><span class="nx">App</span><span class="p">.</span><span class="nx">Name</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;App Port: %d\n&#34;</span><span class="p">,</span> <span class="nx">cfg</span><span class="p">.</span><span class="nx">App</span><span class="p">.</span><span class="nx">Port</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;Database Host: %s\n&#34;</span><span class="p">,</span> <span class="nx">cfg</span><span class="p">.</span><span class="nx">Database</span><span class="p">.</span><span class="nx">Host</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;Database Port: %d\n&#34;</span><span class="p">,</span> <span class="nx">cfg</span><span class="p">.</span><span class="nx">Database</span><span class="p">.</span><span class="nx">Port</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;Database User: %s\n&#34;</span><span class="p">,</span> <span class="nx">cfg</span><span class="p">.</span><span class="nx">Database</span><span class="p">.</span><span class="nx">User</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;Database Passwd: %s\n&#34;</span><span class="p">,</span> <span class="nx">cfg</span><span class="p">.</span><span class="nx">Database</span><span class="p">.</span><span class="nx">Passwd</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></table>
+</div>
+</div><hr>
 <h2 id="使用-viper-读取配置文件内容" class="heading-element"><span>使用 viper 读取配置文件内容</span>
   <a href="#%e4%bd%bf%e7%94%a8-viper-%e8%af%bb%e5%8f%96%e9%85%8d%e7%bd%ae%e6%96%87%e4%bb%b6%e5%86%85%e5%ae%b9" class="heading-mark">
     <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
@@ -470,7 +652,7 @@
 
   <aside class="toc" id="toc-auto" aria-label="Contents"><h2 class="toc-title">Contents&nbsp;<i class="toc-icon fa-solid fa-angle-down fa-fw" aria-hidden="true"></i></h2>
       <div class="toc-content" id="toc-content-auto"></div></aside></main><footer class="footer">
-    <div class="footer-container"><div class="footer-line powered order-1">Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreferrer" title="Hugo 0.141.0"><img class="hugo-icon" src="/images/hugo.min.svg" alt="Hugo logo" /> Hugo</a> | Theme - <a href="https://github.com/hugo-fixit/FixIt" target="_blank" rel="external" title="FixIt v0.3.16"><img class="fixit-icon" src="/images/fixit.min.svg" alt="FixIt logo" /> FixIt</a>
+    <div class="footer-container"><div class="footer-line powered order-1">Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreferrer" title="Hugo 0.143.1"><img class="hugo-icon" src="/images/hugo.min.svg" alt="Hugo logo" /> Hugo</a> | Theme - <a href="https://github.com/hugo-fixit/FixIt" target="_blank" rel="external" title="FixIt v0.3.16"><img class="fixit-icon" src="/images/fixit.min.svg" alt="FixIt logo" /> FixIt</a>
         </div><div class="footer-line copyright" itemscope itemtype="http://schema.org/CreativeWork"><i class="fa-regular fa-copyright fa-fw" aria-hidden="true"></i>
             <span itemprop="copyrightYear">2024 - 2025</span><span class="author" itemprop="copyrightHolder">
               <a href="/">kyden</a></span><span class="license footer-divider"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a></span></div><div class="footer-line statistics order-2"><span class="site-time" title='Website running ...'><i class="fa-solid fa-heartbeat fa-fw animate-icon" aria-hidden="true"></i><span class="ms-1 d-none">时光荏苒，本站已陪伴您</span><span class="run-times ms-1">Website running ...</span></span></div><div class="footer-line visitor order-3">

@@ -171,7 +171,7 @@
   <article class="page single">
     <div class="header"><h1 class="single-title animate__animated animate__flipInX"><span title="Repost" class="icon-repost"><i class="fa-solid fa-share fa-fw" aria-hidden="true"></i></span><span>图解 Go 调度器：GMP 模型深度剖析</span>
       </h1><p class="single-subtitle animate__animated animate__fadeIn">从进程到协程：深入理解 Go 并发调度的核心机制</p></div><div class="post-meta">
-      <div class="post-meta-line"><span class="post-author"><a href="https:github.com/kydance" title="Author"target="_blank" rel="external nofollow noopener noreferrer author" class="author"><img loading="lazy" src="/favicon.ico" alt="kyden" data-title="kyden" width="20" height="20" class="avatar" style="background: url(/images/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}"/>&nbsp;kyden</a></span><span class="post-included-in">&nbsp;included in <a href="/categories/go%E8%AF%AD%E8%A8%80/" class="post-category" title="Category - Go语言"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> Go语言</a>&ensp;<a href="/categories/%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/" class="post-category" title="Category - 系统编程"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 系统编程</a>&ensp;<a href="/categories/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/" class="post-category" title="Category - 并发编程"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 并发编程</a>&ensp;<a href="/categories/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/" class="post-category" title="Category - 性能优化"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 性能优化</a>&ensp;<a href="/categories/%E7%BC%96%E7%A8%8B%E5%8E%9F%E7%90%86/" class="post-category" title="Category - 编程原理"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 编程原理</a> and <a href="/collections/go%E8%BF%9B%E9%98%B6/" class="post-collection" title="Collection - Go进阶"><i class="fa-solid fa-layer-group fa-fw" aria-hidden="true"></i> Go进阶</a>&ensp;<a href="/collections/%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/" class="post-collection" title="Collection - 系统编程"><i class="fa-solid fa-layer-group fa-fw" aria-hidden="true"></i> 系统编程</a>&ensp;<a href="/collections/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/" class="post-collection" title="Collection - 性能优化"><i class="fa-solid fa-layer-group fa-fw" aria-hidden="true"></i> 性能优化</a>&ensp;<a href="/collections/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/" class="post-collection" title="Collection - 并发编程"><i class="fa-solid fa-layer-group fa-fw" aria-hidden="true"></i> 并发编程</a></span></div><div class="post-meta-line"><span title="published on 2024-05-15 13:41:49"><i class="fa-solid fa-calendar-days fa-fw me-1" aria-hidden="true"></i><time datetime="2024-05-15">2024-05-15</time></span>&nbsp;<span title="8114 words"><i class="fa-solid fa-pencil-alt fa-fw me-1" aria-hidden="true"></i>About 8200 words</span>&nbsp;<span><i class="fa-regular fa-clock fa-fw me-1" aria-hidden="true"></i>17 minutes</span>&nbsp;<span id="busuanzi_container_page_pv" class="busuanzi_visitors comment-visitors" data-flag-title="图解 Go 调度器：GMP 模型深度剖析"><i class="fa-regular fa-eye fa-fw me-1" aria-hidden="true"></i><span id="busuanzi_value_page_pv">-</span>&nbsp;views
+      <div class="post-meta-line"><span class="post-author"><a href="https://github.com/kydance" title="Author"target="_blank" rel="external nofollow noopener noreferrer author" class="author"><img loading="lazy" src="/favicon.ico" alt="kyden" data-title="kyden" width="20" height="20" class="avatar" style="background: url(/images/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}"/>&nbsp;kyden</a></span><span class="post-included-in">&nbsp;included in <a href="/categories/go%E8%AF%AD%E8%A8%80/" class="post-category" title="Category - Go语言"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> Go语言</a>&ensp;<a href="/categories/%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/" class="post-category" title="Category - 系统编程"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 系统编程</a>&ensp;<a href="/categories/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/" class="post-category" title="Category - 并发编程"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 并发编程</a>&ensp;<a href="/categories/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/" class="post-category" title="Category - 性能优化"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 性能优化</a>&ensp;<a href="/categories/%E7%BC%96%E7%A8%8B%E5%8E%9F%E7%90%86/" class="post-category" title="Category - 编程原理"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 编程原理</a> and <a href="/collections/go%E8%BF%9B%E9%98%B6/" class="post-collection" title="Collection - Go进阶"><i class="fa-solid fa-layer-group fa-fw" aria-hidden="true"></i> Go进阶</a>&ensp;<a href="/collections/%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/" class="post-collection" title="Collection - 系统编程"><i class="fa-solid fa-layer-group fa-fw" aria-hidden="true"></i> 系统编程</a>&ensp;<a href="/collections/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/" class="post-collection" title="Collection - 性能优化"><i class="fa-solid fa-layer-group fa-fw" aria-hidden="true"></i> 性能优化</a>&ensp;<a href="/collections/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/" class="post-collection" title="Collection - 并发编程"><i class="fa-solid fa-layer-group fa-fw" aria-hidden="true"></i> 并发编程</a></span></div><div class="post-meta-line"><span title="published on 2024-05-15 13:41:49"><i class="fa-solid fa-calendar-days fa-fw me-1" aria-hidden="true"></i><time datetime="2024-05-15">2024-05-15</time></span>&nbsp;<span title="8114 words"><i class="fa-solid fa-pencil-alt fa-fw me-1" aria-hidden="true"></i>About 8200 words</span>&nbsp;<span><i class="fa-regular fa-clock fa-fw me-1" aria-hidden="true"></i>17 minutes</span>&nbsp;<span id="busuanzi_container_page_pv" class="busuanzi_visitors comment-visitors" data-flag-title="图解 Go 调度器：GMP 模型深度剖析"><i class="fa-regular fa-eye fa-fw me-1" aria-hidden="true"></i><span id="busuanzi_value_page_pv">-</span>&nbsp;views
           </span>&nbsp;</div>
     </div><div class="details toc" id="toc-static" data-kept="false">
         <div class="details-summary toc-title">
@@ -269,8 +269,7 @@
 <li>进程切换，消耗的资源大（主要是虚拟地址空间的切换开销），线程同样具有就绪、阻塞、执行三种基本状态，同样具有状态之间的转换关系；</li>
 <li>多进程、多线程都可以并发执行，线程能减少并发执行的时间和空间开销；</li>
 <li>每个独立的进程有一个程序入口、程序出口；线程不能独立运行，必须依存于应用程序中，有应用程序提供多个线程执行控制；</li>
-</ul>
-</blockquote>
+</ul></blockquote>
 <hr>
 <h3 id="协程-co-routine" class="heading-element"><span>协程 Co-routine</span>
   <a href="#%e5%8d%8f%e7%a8%8b-co-routine" class="heading-mark">
@@ -1108,8 +1107,7 @@ channel 作为一种引用类型，声明时需要指定传输数据类型，声
 <li><code>runnext</code>: 存放下一个将要运行的 G</li>
 </ul>
 <blockquote>
-<p>由于将 Golang 的调度流程看作<strong>生产者-消费者</strong>流程，因此接下来将分别从生产者、消费者两个方面深入了解。</p>
-</blockquote>
+<p>由于将 Golang 的调度流程看作<strong>生产者-消费者</strong>流程，因此接下来将分别从生产者、消费者两个方面深入了解。</p></blockquote>
 <h5 id="goroutine-的生产端" class="heading-element"><span><strong>Goroutine</strong> 的生产端</span>
   <a href="#goroutine-%e7%9a%84%e7%94%9f%e4%ba%a7%e7%ab%af" class="heading-mark">
     <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
@@ -1124,8 +1122,7 @@ channel 作为一种引用类型，声明时需要指定传输数据类型，声
   </a>
 </h5><blockquote>
 <p>TODO</p>
-<p>关于消费端函数调用链还需完善！！！</p>
-</blockquote>
+<p>关于消费端函数调用链还需完善！！！</p></blockquote>
 <p>Goroutine 消费流程：</p>
 <figure><img src="/posts/golang-GMP/Kyden-blog-Goroutine-Consumer.svg">
 </figure>
@@ -1973,8 +1970,7 @@ channel 作为一种引用类型，声明时需要指定传输数据类型，声
 <li>很多 <code>g</code> 可能在等待同一个同步对象，因此一个对象可能有很多 <code>sudog</code></li>
 <li>
 <blockquote>
-<p>一个 <code>g</code> 可能对应多个 <code>sudog</code>，比如一个 <code>g</code> 会同时 <code>select</code> 多个 channel</p>
-</blockquote>
+<p>一个 <code>g</code> 可能对应多个 <code>sudog</code>，比如一个 <code>g</code> 会同时 <code>select</code> 多个 channel</p></blockquote>
 </li>
 </ul>
 </li>
@@ -2050,7 +2046,7 @@ channel 作为一种引用类型，声明时需要指定传输数据类型，声
 
   <aside class="toc" id="toc-auto" aria-label="Contents"><h2 class="toc-title">Contents&nbsp;<i class="toc-icon fa-solid fa-angle-down fa-fw" aria-hidden="true"></i></h2>
       <div class="toc-content" id="toc-content-auto"></div></aside></main><footer class="footer">
-    <div class="footer-container"><div class="footer-line powered order-1">Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreferrer" title="Hugo 0.141.0"><img class="hugo-icon" src="/images/hugo.min.svg" alt="Hugo logo" /> Hugo</a> | Theme - <a href="https://github.com/hugo-fixit/FixIt" target="_blank" rel="external" title="FixIt v0.3.16"><img class="fixit-icon" src="/images/fixit.min.svg" alt="FixIt logo" /> FixIt</a>
+    <div class="footer-container"><div class="footer-line powered order-1">Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreferrer" title="Hugo 0.143.1"><img class="hugo-icon" src="/images/hugo.min.svg" alt="Hugo logo" /> Hugo</a> | Theme - <a href="https://github.com/hugo-fixit/FixIt" target="_blank" rel="external" title="FixIt v0.3.16"><img class="fixit-icon" src="/images/fixit.min.svg" alt="FixIt logo" /> FixIt</a>
         </div><div class="footer-line copyright" itemscope itemtype="http://schema.org/CreativeWork"><i class="fa-regular fa-copyright fa-fw" aria-hidden="true"></i>
             <span itemprop="copyrightYear">2024 - 2025</span><span class="author" itemprop="copyrightHolder">
               <a href="/">kyden</a></span><span class="license footer-divider"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a></span></div><div class="footer-line statistics order-2"><span class="site-time" title='Website running ...'><i class="fa-solid fa-heartbeat fa-fw animate-icon" aria-hidden="true"></i><span class="ms-1 d-none">时光荏苒，本站已陪伴您</span><span class="run-times ms-1">Website running ...</span></span></div><div class="footer-line visitor order-3">

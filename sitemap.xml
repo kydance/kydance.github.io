@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>http://kyden.us.kg/</loc>
+    <lastmod>2025-02-15T14:15:55+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://kyden.us.kg/posts/</loc>
+    <lastmod>2025-02-15T14:15:55+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>http://kyden.us.kg/categories/</loc>
     <lastmod>2024-12-20T22:37:36+08:00</lastmod>
     <changefreq>daily</changefreq>
@@ -50,18 +62,6 @@
   </url>
   <url>
     <loc>http://kyden.us.kg/collections/go%E8%BF%9B%E9%98%B6/</loc>
-    <lastmod>2024-12-20T22:37:36+08:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>http://kyden.us.kg/</loc>
-    <lastmod>2024-12-20T22:37:36+08:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>http://kyden.us.kg/posts/</loc>
     <lastmod>2024-12-20T22:37:36+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>

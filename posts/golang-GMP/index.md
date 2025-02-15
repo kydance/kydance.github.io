@@ -1018,6 +1018,6 @@ system monitor，高优先级，在专有线程中执行，不需要绑定 `p`.
 
 ---
 
-> Author: [kyden](https:github.com/kydance)  
+> Author: [kyden](https://github.com/kydance)  
 > URL: http://kyden.us.kg/posts/golang-gmp/  
 

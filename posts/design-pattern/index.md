@@ -569,6 +569,6 @@ Options 模式的优点：
 
 ---
 
-> Author: [kyden](https:github.com/kydance)  
+> Author: [kyden](https://github.com/kydance)  
 > URL: http://kyden.us.kg/posts/design-pattern/  
 

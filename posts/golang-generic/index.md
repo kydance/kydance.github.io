@@ -10,6 +10,6 @@
 
 ---
 
-> Author: [kyden](https:github.com/kydance)  
+> Author: [kyden](https://github.com/kydance)  
 > URL: http://kyden.us.kg/posts/golang-generic/  
 

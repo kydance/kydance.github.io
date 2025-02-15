@@ -33,7 +33,21 @@
 参数较多的时候，建议使用配置文件，配置文件更易部署、维护、热加载、层次表达更清晰。
 {{&lt; /admonition &gt;}}
 
-## 为何选择 YAML 作为配置文件的格式？
+## Viper 的核心功能
+
+**[spf13/viper](https://github.com/spf13/viper)** 提供了多种强大的功能，使其成为了 Go 语言中配置管理的首选工具，其核心功能如下：
+
+- **多种格式的配置文件**: Viper 支持 JSON、TOML、YAML、HCL 以及标准的 `.env` 文件等配置格式，**推荐使用 `YAML` 配置文件**
+- **环境变量**: Viper 可以读取操作系统的环境变量
+- **命令行标志**: Viper 本身不处理命令行标志，但它可以与 `cobra` 等裤集成，通过 Viper 自动将标志与配置绑定
+- **远程配置**: Viper 支持从远程配置系统（如 `etcd`, `Consul`）获取配置，对于分布式系统中的配置管理非常有用
+- **热重载**: Viper 支持监听配置文件的变更，自动重新加载配置文件
+- **层级配置**: Viper 支持配置的层级结构
+- **默认值**: Viper 可以为任何配置项设置默认值
+
+---
+
+### 为何选择 YAML 作为配置文件的格式？
 
 当打算采用配置文件来读取配置项时，那么就存在多种文件格式，例如：JSON、YAML、TOML、INI 等。
 个人推荐使用 YAML，理由如下：
@@ -43,6 +57,89 @@
 - YAML 格式普适性高，新人零理解成本；
 
 &gt; 最终配置：使用 YAML 格式的配置文件，并采用 `viper` 来读取配置
+
+---
+
+## Viper 示例
+
+### 工程结构
+
+```sh
+demo
+├── config
+│   └── cfg.yaml
+├── go.mod
+├── go.sum
+└── main.go
+```
+
+### `cfg.yaml` 配置内容
+
+```yaml
+app:
+  name: &#34;Viper Demo&#34;
+  port: 9009
+database:
+  host: &#34;localhost&#34;
+  port: 5432
+  user: &#34;user&#34;
+  passwd: &#34;passwd&#34;
+```
+
+### Viper 读取配置
+
+在读取具体配置之前，可以使用 `viper.AddConfigPath` 方法来添加配置文件的路径，然后使用 `viper.ReadInConfig` 方法来读取配置文件.
+
+```go
+package main
+
+import (
+	&#34;fmt&#34;
+	&#34;log&#34;
+
+	&#34;github.com/spf13/viper&#34;
+)
+
+type Config struct {
+	App struct {
+		Name string
+		Port int
+	}
+
+	Database struct {
+		Host   string
+		Port   int
+		User   string
+		Passwd string
+	}
+}
+
+func main() {
+	var cfg Config
+
+	// Set config file
+	viper.AddConfigPath(&#34;./config&#34;)
+	viper.SetConfigName(&#34;cfg&#34;)
+	viper.SetConfigType(&#34;yaml&#34;)
+
+	// Read
+	if err := viper.ReadInConfig(); err != nil {
+		log.Fatalf(&#34;Error reading config file, %v&#34;, err)
+	}
+
+	if err := viper.Unmarshal(&amp;cfg); err != nil {
+		log.Fatalf(&#34;Unable to decode into struct: %v&#34;, err)
+	}
+
+	fmt.Printf(&#34;App Name: %s\n&#34;, cfg.App.Name)
+	fmt.Printf(&#34;App Port: %d\n&#34;, cfg.App.Port)
+
+	fmt.Printf(&#34;Database Host: %s\n&#34;, cfg.Database.Host)
+	fmt.Printf(&#34;Database Port: %d\n&#34;, cfg.Database.Port)
+	fmt.Printf(&#34;Database User: %s\n&#34;, cfg.Database.User)
+	fmt.Printf(&#34;Database Passwd: %s\n&#34;, cfg.Database.Passwd)
+}
+```
 
 ---
 
@@ -147,6 +244,6 @@ func initConfig() {
 
 ---
 
-> Author: [kyden](https:github.com/kydance)  
+> Author: [kyden](https://github.com/kydance)  
 > URL: http://kyden.us.kg/posts/go-viper/  
 

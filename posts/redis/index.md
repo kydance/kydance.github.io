@@ -71,6 +71,6 @@ Redis 链表实现的特性：
 
 ---
 
-> Author: [kyden](https:github.com/kydance)  
+> Author: [kyden](https://github.com/kydance)  
 > URL: http://kyden.us.kg/posts/redis/  
 
