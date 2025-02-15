@@ -1,6 +1,24 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>http://kyden.us.kg/tags/bilibili/</loc>
+    <lastmod>2025-02-15T14:15:55+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://kyden.us.kg/categories/</loc>
+    <lastmod>2025-02-15T14:15:55+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://kyden.us.kg/tags/ffmpeg/</loc>
+    <lastmod>2025-02-15T14:15:55+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>http://kyden.us.kg/</loc>
     <lastmod>2025-02-15T14:15:55+08:00</lastmod>
     <changefreq>daily</changefreq>
@@ -13,8 +31,26 @@
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>http://kyden.us.kg/categories/</loc>
-    <lastmod>2024-12-20T22:37:36+08:00</lastmod>
+    <loc>http://kyden.us.kg/tags/</loc>
+    <lastmod>2025-02-15T14:15:55+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://kyden.us.kg/posts/033530b/</loc>
+    <lastmod>2025-02-15T14:15:55+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://kyden.us.kg/categories/%E6%8A%80%E6%9C%AF%E6%95%99%E7%A8%8B/</loc>
+    <lastmod>2025-02-15T14:15:55+08:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://kyden.us.kg/tags/%E8%A7%86%E9%A2%91%E5%A4%84%E7%90%86/</loc>
+    <lastmod>2025-02-15T14:15:55+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
@@ -62,12 +98,6 @@
   </url>
   <url>
     <loc>http://kyden.us.kg/collections/go%E8%BF%9B%E9%98%B6/</loc>
-    <lastmod>2024-12-20T22:37:36+08:00</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>http://kyden.us.kg/tags/</loc>
     <lastmod>2024-12-20T22:37:36+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
