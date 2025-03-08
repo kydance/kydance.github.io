@@ -649,89 +649,99 @@ DNS 泄露其实并没有一个明确的定义，也不存在一个官方解释�
 
         ```JavaScript
         function main(content) {
-            const isObject = (value) =&gt; {
-                return value !== null &amp;&amp; typeof value === &#39;object&#39;
+        const isObject = (value) =&gt; {
+            return value !== null &amp;&amp; typeof value === &#39;object&#39;
+        }
+
+        const mergeConfig = (existingConfig, newConfig) =&gt; {
+            if (!isObject(existingConfig)) {
+            existingConfig = {}
             }
-
-            const mergeConfig = (existingConfig, newConfig) =&gt; {
-                if (!isObject(existingConfig)) {
-                existingConfig = {}
-                }
-                if (!isObject(newConfig)) {
-                return existingConfig
-                }
-                return { ...existingConfig, ...newConfig }
+            if (!isObject(newConfig)) {
+            return existingConfig
             }
+            return { ...existingConfig, ...newConfig }
+        }
 
-            const cnDnsList = [
-                &#39;tls://223.5.5.5&#39;,
-                &#39;tls://1.12.12.12&#39;,
-            ]
-            const trustDnsList = [
-                &#39;https://doh.apad.pro/dns-query&#39;,
-                &#39;https://dns.cooluc.com/dns-query&#39;,
-                &#39;https://1.0.0.1/dns-query&#39;,
-            ]
-            const notionDns = &#39;tls://dns.jerryw.cn&#39;
-            const notionUrls = [
-                &#39;http-inputs-notion.splunkcloud.com&#39;,
-                &#39;&#43;.notion-static.com&#39;,
-                &#39;&#43;.notion.com&#39;,
-                &#39;&#43;.notion.new&#39;,
-                &#39;&#43;.notion.site&#39;,
-                &#39;&#43;.notion.so&#39;,
-            ]
-            const combinedUrls = notionUrls.join(&#39;,&#39;);
+        const cnDnsList = [
+            &#39;https://1.12.12.12/dns-query&#39;,
+            &#39;https://223.5.5.5/dns-query&#39;,
+        ]
+        
+        // Most network requests will go through this, currently using Tencent, Alibaba, and the DNS of 1.0.0.1 for node queries.
+        const trustDnsList = [
+            &#39;https://doh.pub/dns-query&#39;, // Tencent
+            &#39;https://dns.alidns.com/dns-query&#39;, // Alibaba (this will trigger both h3 and normal concurrent queries)
+            &#39;180.184.1.1&#39;, // ByteDance - Volcano Engine DNS
+        ]
+        const notionDns = &#39;tls://dns.jerryw.cn&#39; // Notion accelerated DNS
+        const notionUrls = [
+            &#39;http-inputs-notion.splunkcloud.com&#39;,
+            &#39;&#43;.notion-static.com&#39;,
+            &#39;&#43;.notion.com&#39;,
+            &#39;&#43;.notion.new&#39;,
+            &#39;&#43;.notion.site&#39;,
+            &#39;&#43;.notion.so&#39;,
+        ]
+        const combinedUrls = notionUrls.join(&#39;,&#39;);
+        const dnsOptions = {
+            &#39;enable&#39;: true,
+            &#39;prefer-h3&#39;: true, // If the DNS server supports DoH3, it will prioritize using h3 (only Alibaba DNS supports it in this example)
+            &#39;default-nameserver&#39;: cnDnsList, // Used to resolve other DNS servers and node domain names, must be IP, can be encrypted DNS. Note that this is only used to resolve nodes and other DNS; other network requests are not under its control.
+            &#39;nameserver&#39;: trustDnsList, // Other network requests are all under its control.
+            
+            // This is used to override the above nameserver
+            &#39;nameserver-policy&#39;: {
+            [combinedUrls]: notionDns,
+            &#39;geosite:geolocation-!cn&#39;: trustDnsList,
+            // If you have some internal DNS, it should be defined here, multiple domain names should be separated by commas.
+            // &#39;&#43;.companydomain.com, www.4399.com, &#43;.baidu.com&#39;: &#39;10.0.0.1&#39;
+            },
+        }
 
-            const dnsOptions = {
-                &#39;enable&#39;: true,
-                &#39;default-nameserver&#39;: cnDnsList, // 用于解析DNS服务器 的域名, 必须为IP, 可为加密DNS
-                &#39;nameserver-policy&#39;: {
-                [combinedUrls]: notionDns,
-                &#39;geosite:geolocation-!cn&#39;: trustDnsList,
+        // GitHub accelerated prefix
+        const githubPrefix = &#39;https://fastgh.lainbo.com/&#39;
+
+        // Original download addresses for GEO data GitHub resources
+        const rawGeoxURLs = {
+            geoip: &#39;https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/geoip-lite.dat&#39;,
+            geosite: &#39;https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/geosite.dat&#39;,
+            mmdb: &#39;https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/country-lite.mmdb&#39;,
+        }
+
+        // Generate GEO data resource objects with accelerated prefixes
+        const accelURLs = Object.fromEntries(
+            Object.entries(rawGeoxURLs).map(([key, githubUrl]) =&gt; [key, `${githubPrefix}${githubUrl}`]),
+        )
+
+        const otherOptions = {
+            &#39;unified-delay&#39;: true,
+            &#39;tcp-concurrent&#39;: true,
+            &#39;profile&#39;: {
+            &#39;store-selected&#39;: true,
+            &#39;store-fake-ip&#39;: true,
+            },
+            &#39;sniffer&#39;: {
+            enable: true,
+            sniff: {
+                TLS: {
+                ports: [443, 8443],
                 },
-                &#39;nameserver&#39;: trustDnsList, // 默认的域名解析服务器, 如不配置fallback/proxy-server-nameserver, 则所有域名都由nameserver解析
-            }
-
-            // GitHub加速前缀
-            const githubPrefix = &#39;https://ghproxy.lainbo.com/&#39;
-
-            // GEO数据GitHub资源原始下载地址
-            const rawGeoxURLs = {
-                geoip: &#39;https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/geoip-lite.dat&#39;,
-                geosite: &#39;https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/geosite.dat&#39;,
-                mmdb: &#39;https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/country-lite.mmdb&#39;,
-            }
-
-            // 生成带有加速前缀的GEO数据资源对象
-            const accelURLs = Object.fromEntries(
-                Object.entries(rawGeoxURLs).map(([key, githubUrl]) =&gt; [key, `${githubPrefix}${githubUrl}`]),
-            )
-
-            const otherOptions = {
-                &#39;unified-delay&#39;: true,
-                &#39;tcp-concurrent&#39;: true,
-                &#39;profile&#39;: {
-                &#39;store-selected&#39;: true,
-                &#39;store-fake-ip&#39;: true,
+                HTTP: {
+                &#39;ports&#39;: [80, &#39;8080-8880&#39;],
+                &#39;override-destination&#39;: true,
                 },
-                &#39;sniffer&#39;: {
-                enable: true,
-                sniff: {
-                    TLS: {
-                    ports: [443, 8443],
-                    },
-                    HTTP: {
-                    &#39;ports&#39;: [80, &#39;8080-8880&#39;],
-                    &#39;override-destination&#39;: true,
-                    },
-                },
-                },
-                &#39;geodata-mode&#39;: true,
-                &#39;geox-url&#39;: accelURLs,
-            }
-            content.dns = mergeConfig(content.dns, dnsOptions)
-            return { ...content, ...otherOptions }
+            },
+            },
+            &#39;geodata-mode&#39;: true,
+            &#39;geo-auto-update&#39;: true,
+            &#39;geo-update-interval&#39;: 24,
+            &#39;geodata-loader&#39;: &#39;standard&#39;,
+            &#39;geox-url&#39;: accelURLs,
+            &#39;find-process-mode&#39;: &#39;strict&#39;,
+        }
+        content.dns = mergeConfig(content.dns, dnsOptions)
+        return { ...content, ...otherOptions }
         }
         ```
 
