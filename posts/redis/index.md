@@ -66,7 +66,45 @@ Redis 链表实现的特性：
 
 ---
 
-### IV. Reference
+## IV. 使用场景
+
+### 缓存 Cache
+
+Redis 最常见的用途是作为缓存，用于加速应用程序的相应速度；
+
+把频繁访问的数据放在 Redis（内存）中，可以减少对后端数据库的访问压力，例如热点数据缓存、对象缓存、全页缓存等。
+
+---
+
+### 分布式锁 Distributed Lock
+
+日常开发中，使用 Redis 作为分布式锁可以协调分布式系统中的多个节点对同一个资源进行互斥访问，确保操作的原子性。
+
+---
+
+### 排行榜
+
+Redis 可以用于构建排行榜，例如游戏积分实时排名、直播送礼排名等；
+
+常使用 `Sorted Set` 实现
+
+```Shell
+ZADD GameScore 10 &#34;player_1&#34; # 插入分数
+ZINCRBY GameScore 10 &#34;player_1&#34; # 增加分数
+ZREVRANGE GameScore 0 9 # 获取 Top 10
+```
+
+---
+
+### 计数器
+
+Redis 可以用于实现计数器，例如点赞、评论、访问次数等，可以使用 `String` 实现。
+
+```Shell
+
+```
+
+## V. Reference
 
 
 ---
