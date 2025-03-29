@@ -2,24 +2,24 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>编程技巧 - Tag  Kyden&#39;s 博客</title>
-    <link>http://kyden.us.kg/tags/%E7%BC%96%E7%A8%8B%E6%8A%80%E5%B7%A7/</link>
+    <link>http://kydance.github.io/tags/%E7%BC%96%E7%A8%8B%E6%8A%80%E5%B7%A7/</link>
     <description>Kyden&#39;s Blog Site</description>
     <generator>Hugo 0.145.0 &amp; FixIt v0.3.16</generator>
     <language>en</language>
     <managingEditor>kytedance@gmail.com (kyden)</managingEditor>
     <webMaster>kytedance@gmail.com (kyden)</webMaster>
     <lastBuildDate>Thu, 15 Aug 2024 22:41:50 +0800</lastBuildDate>
-    <atom:link href="http://kyden.us.kg/tags/%E7%BC%96%E7%A8%8B%E6%8A%80%E5%B7%A7/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://kydance.github.io/tags/%E7%BC%96%E7%A8%8B%E6%8A%80%E5%B7%A7/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Go 语言编程之道：编写优雅高效的 Golang 代码</title>
-      <link>http://kyden.us.kg/posts/effective-go/</link>
+      <link>http://kydance.github.io/posts/effective-go/</link>
       <pubDate>Thu, 15 Aug 2024 22:41:50 +0800</pubDate><author>kytedance@gmail.com (kyden)</author>
-      <guid>http://kyden.us.kg/posts/effective-go/</guid>
-      <category domain="http://kyden.us.kg/categories/go%E8%AF%AD%E8%A8%80/">Go语言</category>
-      <category domain="http://kyden.us.kg/categories/%E7%BC%96%E7%A8%8B%E8%A7%84%E8%8C%83/">编程规范</category>
-      <category domain="http://kyden.us.kg/categories/%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/">最佳实践</category>
-      <category domain="http://kyden.us.kg/categories/%E4%BB%A3%E7%A0%81%E8%B4%A8%E9%87%8F/">代码质量</category>
-      <category domain="http://kyden.us.kg/categories/%E5%B7%A5%E7%A8%8B%E5%AE%9E%E8%B7%B5/">工程实践</category>
+      <guid>http://kydance.github.io/posts/effective-go/</guid>
+      <category domain="http://kydance.github.io/categories/go%E8%AF%AD%E8%A8%80/">Go语言</category>
+      <category domain="http://kydance.github.io/categories/%E7%BC%96%E7%A8%8B%E8%A7%84%E8%8C%83/">编程规范</category>
+      <category domain="http://kydance.github.io/categories/%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/">最佳实践</category>
+      <category domain="http://kydance.github.io/categories/%E4%BB%A3%E7%A0%81%E8%B4%A8%E9%87%8F/">代码质量</category>
+      <category domain="http://kydance.github.io/categories/%E5%B7%A5%E7%A8%8B%E5%AE%9E%E8%B7%B5/">工程实践</category>
       <description>&lt;div class=&#34;details admonition abstract open&#34;&gt;&#xA;  &lt;div class=&#34;details-summary admonition-title&#34;&gt;&lt;i class=&#34;icon fa-fw fa-solid fa-clipboard-list&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;导语&lt;i class=&#34;details-icon fa-solid fa-angle-right fa-fw&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;details-content&#34;&gt;&#xA;    &lt;div class=&#34;admonition-content&#34;&gt;想要写出优雅且高效的 Go 代码，仅仅了解语法是远远不够的。本文将带你深入探索 Go 语言的设计哲学和最佳实践，从代码格式化、命名规范到控制结构的巧妙运用，帮助你掌握编写地道 Go 代码的精髓。无论你是 Go 新手还是有经验的开发者，都能从中获得实用的编程技巧和深刻的设计思想。&lt;/div&gt;&#xA;  &lt;/div&gt;&#xA;&lt;/div&gt;</description>
     </item>
   </channel>

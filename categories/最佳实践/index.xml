@@ -2,179 +2,179 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>最佳实践 - Category  Kyden&#39;s 博客</title>
-    <link>http://kyden.us.kg/categories/%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/</link>
+    <link>http://kydance.github.io/categories/%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/</link>
     <description>Kyden&#39;s Blog Site</description>
     <generator>Hugo 0.145.0 &amp; FixIt v0.3.16</generator>
     <language>en</language>
     <managingEditor>kytedance@gmail.com (kyden)</managingEditor>
     <webMaster>kytedance@gmail.com (kyden)</webMaster>
     <lastBuildDate>Fri, 20 Dec 2024 22:37:36 +0800</lastBuildDate>
-    <atom:link href="http://kyden.us.kg/categories/%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://kydance.github.io/categories/%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Go 并发编程实战指南：从理论到性能优化</title>
-      <link>http://kyden.us.kg/posts/golang-concurrecy-programming/</link>
+      <link>http://kydance.github.io/posts/golang-concurrecy-programming/</link>
       <pubDate>Fri, 20 Dec 2024 22:37:36 +0800</pubDate><author>kytedance@gmail.com (kyden)</author>
-      <guid>http://kyden.us.kg/posts/golang-concurrecy-programming/</guid>
-      <category domain="http://kyden.us.kg/categories/go%E8%AF%AD%E8%A8%80/">Go语言</category>
-      <category domain="http://kyden.us.kg/categories/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/">并发编程</category>
-      <category domain="http://kyden.us.kg/categories/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/">性能优化</category>
-      <category domain="http://kyden.us.kg/categories/%E7%BC%96%E7%A8%8B%E5%8E%9F%E7%90%86/">编程原理</category>
-      <category domain="http://kyden.us.kg/categories/%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/">最佳实践</category>
+      <guid>http://kydance.github.io/posts/golang-concurrecy-programming/</guid>
+      <category domain="http://kydance.github.io/categories/go%E8%AF%AD%E8%A8%80/">Go语言</category>
+      <category domain="http://kydance.github.io/categories/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/">并发编程</category>
+      <category domain="http://kydance.github.io/categories/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/">性能优化</category>
+      <category domain="http://kydance.github.io/categories/%E7%BC%96%E7%A8%8B%E5%8E%9F%E7%90%86/">编程原理</category>
+      <category domain="http://kydance.github.io/categories/%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/">最佳实践</category>
       <description>&lt;div class=&#34;details admonition abstract open&#34;&gt;&#xA;  &lt;div class=&#34;details-summary admonition-title&#34;&gt;&lt;i class=&#34;icon fa-fw fa-solid fa-clipboard-list&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;导语&lt;i class=&#34;details-icon fa-solid fa-angle-right fa-fw&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;details-content&#34;&gt;&#xA;    &lt;div class=&#34;admonition-content&#34;&gt;并发编程是 Go 语言最引以为豪的特性之一，但如何正确、高效地使用并发特性却是每个 Go 开发者必须面对的挑战。本文将带你深入探索 Go 并发编程的核心机制，从锁的选择到协程的生命周期管理，通过实战案例和性能数据，帮你掌握并发编程的精髓。无论是构建高并发服务还是优化性能瓶颈，这篇文章都能给你带来实用的指导。&lt;/div&gt;&#xA;  &lt;/div&gt;&#xA;&lt;/div&gt;</description>
     </item>
     <item>
       <title>Go 日志最佳实践：Zap 从入门到实战</title>
-      <link>http://kyden.us.kg/posts/golang-zap/</link>
+      <link>http://kydance.github.io/posts/golang-zap/</link>
       <pubDate>Sun, 20 Oct 2024 15:40:17 +0800</pubDate><author>kytedance@gmail.com (kyden)</author>
-      <guid>http://kyden.us.kg/posts/golang-zap/</guid>
-      <category domain="http://kyden.us.kg/categories/go%E8%AF%AD%E8%A8%80/">Go语言</category>
-      <category domain="http://kyden.us.kg/categories/%E6%97%A5%E5%BF%97%E7%AE%A1%E7%90%86/">日志管理</category>
-      <category domain="http://kyden.us.kg/categories/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/">性能优化</category>
-      <category domain="http://kyden.us.kg/categories/%E5%BA%94%E7%94%A8%E7%9B%91%E6%8E%A7/">应用监控</category>
-      <category domain="http://kyden.us.kg/categories/%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/">最佳实践</category>
+      <guid>http://kydance.github.io/posts/golang-zap/</guid>
+      <category domain="http://kydance.github.io/categories/go%E8%AF%AD%E8%A8%80/">Go语言</category>
+      <category domain="http://kydance.github.io/categories/%E6%97%A5%E5%BF%97%E7%AE%A1%E7%90%86/">日志管理</category>
+      <category domain="http://kydance.github.io/categories/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/">性能优化</category>
+      <category domain="http://kydance.github.io/categories/%E5%BA%94%E7%94%A8%E7%9B%91%E6%8E%A7/">应用监控</category>
+      <category domain="http://kydance.github.io/categories/%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/">最佳实践</category>
       <description>&lt;div class=&#34;details admonition abstract open&#34;&gt;&#xA;  &lt;div class=&#34;details-summary admonition-title&#34;&gt;&lt;i class=&#34;icon fa-fw fa-solid fa-clipboard-list&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;导语&lt;i class=&#34;details-icon fa-solid fa-angle-right fa-fw&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;details-content&#34;&gt;&#xA;    &lt;div class=&#34;admonition-content&#34;&gt;在现代微服务架构中，一个优秀的日志系统是保障应用可观测性的关键。Zap 作为 Go 生态中最受欢迎的日志库之一，以其卓越的性能和灵活的配置闻名。本文将带你深入了解 Zap 的实践应用，从基础配置到容器化环境下的最佳实践，帮助你构建一个既高效又易于维护的日志系统。无论是构建新项目还是优化现有系统，这都是一份不可或缺的实战指南。&lt;/div&gt;&#xA;  &lt;/div&gt;&#xA;&lt;/div&gt;</description>
     </item>
     <item>
       <title>Go 配置管理最佳实践：Viper 从入门到精通</title>
-      <link>http://kyden.us.kg/posts/go-viper/</link>
+      <link>http://kydance.github.io/posts/go-viper/</link>
       <pubDate>Sun, 22 Sep 2024 21:26:34 +0800</pubDate><author>kytedance@gmail.com (kyden)</author>
-      <guid>http://kyden.us.kg/posts/go-viper/</guid>
-      <category domain="http://kyden.us.kg/categories/go%E8%AF%AD%E8%A8%80/">Go语言</category>
-      <category domain="http://kyden.us.kg/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/">开发工具</category>
-      <category domain="http://kyden.us.kg/categories/%E9%85%8D%E7%BD%AE%E7%AE%A1%E7%90%86/">配置管理</category>
-      <category domain="http://kyden.us.kg/categories/%E5%BA%94%E7%94%A8%E6%A1%86%E6%9E%B6/">应用框架</category>
-      <category domain="http://kyden.us.kg/categories/%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/">最佳实践</category>
+      <guid>http://kydance.github.io/posts/go-viper/</guid>
+      <category domain="http://kydance.github.io/categories/go%E8%AF%AD%E8%A8%80/">Go语言</category>
+      <category domain="http://kydance.github.io/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/">开发工具</category>
+      <category domain="http://kydance.github.io/categories/%E9%85%8D%E7%BD%AE%E7%AE%A1%E7%90%86/">配置管理</category>
+      <category domain="http://kydance.github.io/categories/%E5%BA%94%E7%94%A8%E6%A1%86%E6%9E%B6/">应用框架</category>
+      <category domain="http://kydance.github.io/categories/%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/">最佳实践</category>
       <description>&lt;div class=&#34;details admonition abstract open&#34;&gt;&#xA;  &lt;div class=&#34;details-summary admonition-title&#34;&gt;&lt;i class=&#34;icon fa-fw fa-solid fa-clipboard-list&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;导语&lt;i class=&#34;details-icon fa-solid fa-angle-right fa-fw&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;details-content&#34;&gt;&#xA;    &lt;div class=&#34;admonition-content&#34;&gt;配置管理看似简单，但要做好却不容易。如何选择合适的配置方式？如何实现配置热重载？如何优雅地处理多环境配置？本文将带你探索 Go 生态中最受欢迎的配置管理解决方案 Viper，通过实战案例和最佳实践，帮助你构建一个灵活、强大、易维护的配置管理系统。从配置文件格式的选择到 Viper 的高级特性，一文掌握配置管理的精髓。&lt;/div&gt;&#xA;  &lt;/div&gt;&#xA;&lt;/div&gt;</description>
     </item>
     <item>
       <title>Cobra 实战指南：10分钟搭建现代化命令行应用</title>
-      <link>http://kyden.us.kg/posts/go-cobra/</link>
+      <link>http://kydance.github.io/posts/go-cobra/</link>
       <pubDate>Sat, 21 Sep 2024 09:55:48 +0800</pubDate><author>kytedance@gmail.com (kyden)</author>
-      <guid>http://kyden.us.kg/posts/go-cobra/</guid>
-      <category domain="http://kyden.us.kg/categories/go%E8%AF%AD%E8%A8%80/">Go语言</category>
-      <category domain="http://kyden.us.kg/categories/%E5%B7%A5%E5%85%B7%E5%BC%80%E5%8F%91/">工具开发</category>
-      <category domain="http://kyden.us.kg/categories/cli%E5%B7%A5%E5%85%B7/">CLI工具</category>
-      <category domain="http://kyden.us.kg/categories/%E5%BA%94%E7%94%A8%E6%A1%86%E6%9E%B6/">应用框架</category>
-      <category domain="http://kyden.us.kg/categories/%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/">最佳实践</category>
+      <guid>http://kydance.github.io/posts/go-cobra/</guid>
+      <category domain="http://kydance.github.io/categories/go%E8%AF%AD%E8%A8%80/">Go语言</category>
+      <category domain="http://kydance.github.io/categories/%E5%B7%A5%E5%85%B7%E5%BC%80%E5%8F%91/">工具开发</category>
+      <category domain="http://kydance.github.io/categories/cli%E5%B7%A5%E5%85%B7/">CLI工具</category>
+      <category domain="http://kydance.github.io/categories/%E5%BA%94%E7%94%A8%E6%A1%86%E6%9E%B6/">应用框架</category>
+      <category domain="http://kydance.github.io/categories/%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/">最佳实践</category>
       <description>本文全面介绍了 Cobra 这一强大的命令行框架，涵盖了从项目搭建、命令设计到特性使用的完整开发流程。通过实际示例讲解如何利用 Cobra 快速构建出类似 Kubernetes、Docker 这样的专业级 CLI 工具，助你掌握现代化命令行应用开发的精髓。</description>
     </item>
     <item>
       <title>Make 构建系统详解：从基础到实战</title>
-      <link>http://kyden.us.kg/posts/make/</link>
+      <link>http://kydance.github.io/posts/make/</link>
       <pubDate>Wed, 11 Sep 2024 22:13:48 +0800</pubDate><author>kytedance@gmail.com (kyden)</author>
-      <guid>http://kyden.us.kg/posts/make/</guid>
-      <category domain="http://kyden.us.kg/categories/%E6%9E%84%E5%BB%BA%E5%B7%A5%E5%85%B7/">构建工具</category>
-      <category domain="http://kyden.us.kg/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/">开发工具</category>
-      <category domain="http://kyden.us.kg/categories/%E8%87%AA%E5%8A%A8%E5%8C%96%E6%9E%84%E5%BB%BA/">自动化构建</category>
-      <category domain="http://kyden.us.kg/categories/%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86/">项目管理</category>
-      <category domain="http://kyden.us.kg/categories/%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/">最佳实践</category>
+      <guid>http://kydance.github.io/posts/make/</guid>
+      <category domain="http://kydance.github.io/categories/%E6%9E%84%E5%BB%BA%E5%B7%A5%E5%85%B7/">构建工具</category>
+      <category domain="http://kydance.github.io/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/">开发工具</category>
+      <category domain="http://kydance.github.io/categories/%E8%87%AA%E5%8A%A8%E5%8C%96%E6%9E%84%E5%BB%BA/">自动化构建</category>
+      <category domain="http://kydance.github.io/categories/%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86/">项目管理</category>
+      <category domain="http://kydance.github.io/categories/%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/">最佳实践</category>
       <description>&lt;div class=&#34;details admonition abstract open&#34;&gt;&#xA;  &lt;div class=&#34;details-summary admonition-title&#34;&gt;&lt;i class=&#34;icon fa-fw fa-solid fa-clipboard-list&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;导语&lt;i class=&#34;details-icon fa-solid fa-angle-right fa-fw&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;details-content&#34;&gt;&#xA;    &lt;div class=&#34;admonition-content&#34;&gt;在现代软件开发中，高效的构建系统是项目成功的关键要素。Make 作为经典的构建工具，以其简洁的语法和强大的功能闻名；本文将带你深入了解这个强大工具的使用方法，从基础概念到高级技巧，帮助你构建更加专业和高效的开发工作流。&lt;/div&gt;&#xA;  &lt;/div&gt;&#xA;&lt;/div&gt;</description>
     </item>
     <item>
       <title>【最佳实践】VSCode &#43; Vim = 效率之神</title>
-      <link>http://kyden.us.kg/posts/vscode-vim/</link>
+      <link>http://kydance.github.io/posts/vscode-vim/</link>
       <pubDate>Sun, 25 Aug 2024 14:10:44 +0800</pubDate><author>kytedance@gmail.com (kyden)</author>
-      <guid>http://kyden.us.kg/posts/vscode-vim/</guid>
-      <category domain="http://kyden.us.kg/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/">开发工具</category>
-      <category domain="http://kyden.us.kg/categories/%E7%BC%96%E8%BE%91%E5%99%A8/">编辑器</category>
-      <category domain="http://kyden.us.kg/categories/%E6%95%88%E7%8E%87%E5%B7%A5%E5%85%B7/">效率工具</category>
-      <category domain="http://kyden.us.kg/categories/%E8%BD%AF%E4%BB%B6%E6%95%99%E7%A8%8B/">软件教程</category>
-      <category domain="http://kyden.us.kg/categories/%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/">最佳实践</category>
+      <guid>http://kydance.github.io/posts/vscode-vim/</guid>
+      <category domain="http://kydance.github.io/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/">开发工具</category>
+      <category domain="http://kydance.github.io/categories/%E7%BC%96%E8%BE%91%E5%99%A8/">编辑器</category>
+      <category domain="http://kydance.github.io/categories/%E6%95%88%E7%8E%87%E5%B7%A5%E5%85%B7/">效率工具</category>
+      <category domain="http://kydance.github.io/categories/%E8%BD%AF%E4%BB%B6%E6%95%99%E7%A8%8B/">软件教程</category>
+      <category domain="http://kydance.github.io/categories/%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/">最佳实践</category>
       <description>&lt;div class=&#34;details admonition abstract open&#34;&gt;&#xA;  &lt;div class=&#34;details-summary admonition-title&#34;&gt;&lt;i class=&#34;icon fa-fw fa-solid fa-clipboard-list&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;导语&lt;i class=&#34;details-icon fa-solid fa-angle-right fa-fw&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;details-content&#34;&gt;&#xA;    &lt;div class=&#34;admonition-content&#34;&gt;想要在现代编辑器中获得极致的编码体验？VSCode 与 Vim 的强强联合将带给你意想不到的效率提升。本文将详细介绍如何通过 VSCodeVim 插件，在 VSCode 中完美复刻 Vim 的操作方式，让你既能享受 VSCode 强大的功能生态，又能保持 Vim 快速高效的编辑体验。无论你是 Vim 老手还是新手，这份完整指南都能帮你打造一个更高效的编码环境。&lt;/div&gt;&#xA;  &lt;/div&gt;&#xA;&lt;/div&gt;</description>
     </item>
     <item>
       <title>Go 语言编程之道：编写优雅高效的 Golang 代码</title>
-      <link>http://kyden.us.kg/posts/effective-go/</link>
+      <link>http://kydance.github.io/posts/effective-go/</link>
       <pubDate>Thu, 15 Aug 2024 22:41:50 +0800</pubDate><author>kytedance@gmail.com (kyden)</author>
-      <guid>http://kyden.us.kg/posts/effective-go/</guid>
-      <category domain="http://kyden.us.kg/categories/go%E8%AF%AD%E8%A8%80/">Go语言</category>
-      <category domain="http://kyden.us.kg/categories/%E7%BC%96%E7%A8%8B%E8%A7%84%E8%8C%83/">编程规范</category>
-      <category domain="http://kyden.us.kg/categories/%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/">最佳实践</category>
-      <category domain="http://kyden.us.kg/categories/%E4%BB%A3%E7%A0%81%E8%B4%A8%E9%87%8F/">代码质量</category>
-      <category domain="http://kyden.us.kg/categories/%E5%B7%A5%E7%A8%8B%E5%AE%9E%E8%B7%B5/">工程实践</category>
+      <guid>http://kydance.github.io/posts/effective-go/</guid>
+      <category domain="http://kydance.github.io/categories/go%E8%AF%AD%E8%A8%80/">Go语言</category>
+      <category domain="http://kydance.github.io/categories/%E7%BC%96%E7%A8%8B%E8%A7%84%E8%8C%83/">编程规范</category>
+      <category domain="http://kydance.github.io/categories/%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/">最佳实践</category>
+      <category domain="http://kydance.github.io/categories/%E4%BB%A3%E7%A0%81%E8%B4%A8%E9%87%8F/">代码质量</category>
+      <category domain="http://kydance.github.io/categories/%E5%B7%A5%E7%A8%8B%E5%AE%9E%E8%B7%B5/">工程实践</category>
       <description>&lt;div class=&#34;details admonition abstract open&#34;&gt;&#xA;  &lt;div class=&#34;details-summary admonition-title&#34;&gt;&lt;i class=&#34;icon fa-fw fa-solid fa-clipboard-list&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;导语&lt;i class=&#34;details-icon fa-solid fa-angle-right fa-fw&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;details-content&#34;&gt;&#xA;    &lt;div class=&#34;admonition-content&#34;&gt;想要写出优雅且高效的 Go 代码，仅仅了解语法是远远不够的。本文将带你深入探索 Go 语言的设计哲学和最佳实践，从代码格式化、命名规范到控制结构的巧妙运用，帮助你掌握编写地道 Go 代码的精髓。无论你是 Go 新手还是有经验的开发者，都能从中获得实用的编程技巧和深刻的设计思想。&lt;/div&gt;&#xA;  &lt;/div&gt;&#xA;&lt;/div&gt;</description>
     </item>
     <item>
       <title>设计模式精讲：从理论到实战的最佳实践指南</title>
-      <link>http://kyden.us.kg/posts/design-pattern/</link>
+      <link>http://kydance.github.io/posts/design-pattern/</link>
       <pubDate>Sun, 28 Jul 2024 10:13:24 +0800</pubDate><author>kytedance@gmail.com (kyden)</author>
-      <guid>http://kyden.us.kg/posts/design-pattern/</guid>
-      <category domain="http://kyden.us.kg/categories/design-patten/">Design Patten</category>
-      <category domain="http://kyden.us.kg/categories/golang/">Golang</category>
-      <category domain="http://kyden.us.kg/categories/c&#43;&#43;/">C&#43;&#43;</category>
-      <category domain="http://kyden.us.kg/categories/%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/">最佳实践</category>
+      <guid>http://kydance.github.io/posts/design-pattern/</guid>
+      <category domain="http://kydance.github.io/categories/design-patten/">Design Patten</category>
+      <category domain="http://kydance.github.io/categories/golang/">Golang</category>
+      <category domain="http://kydance.github.io/categories/c&#43;&#43;/">C&#43;&#43;</category>
+      <category domain="http://kydance.github.io/categories/%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/">最佳实践</category>
       <description>&lt;div class=&#34;details admonition abstract open&#34;&gt;&#xA;  &lt;div class=&#34;details-summary admonition-title&#34;&gt;&lt;i class=&#34;icon fa-fw fa-solid fa-clipboard-list&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;导语&lt;i class=&#34;details-icon fa-solid fa-angle-right fa-fw&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;details-content&#34;&gt;&#xA;    &lt;div class=&#34;admonition-content&#34;&gt;设计模式是每个程序员的必修课，但如何正确理解和灵活运用却是一门艺术。本文将带你深入浅出地探索 Golang 项目中常用的 8 种经典设计模式，通过 Go 和 C++ 的实际代码示例，让你真正理解每种模式的精髓。从面向对象设计原则到具体实现，从模式分类到实战应用，助你构建更优雅、更可维护的代码架构。&lt;/div&gt;&#xA;  &lt;/div&gt;&#xA;&lt;/div&gt;</description>
     </item>
     <item>
       <title>Go 工程目录最佳实践：打造清晰、可维护的项目结构</title>
-      <link>http://kyden.us.kg/posts/golang-project-layout/</link>
+      <link>http://kydance.github.io/posts/golang-project-layout/</link>
       <pubDate>Sat, 13 Jul 2024 21:04:57 +0800</pubDate><author>kytedance@gmail.com (kyden)</author>
-      <guid>http://kyden.us.kg/posts/golang-project-layout/</guid>
-      <category domain="http://kyden.us.kg/categories/go%E8%AF%AD%E8%A8%80/">Go语言</category>
-      <category domain="http://kyden.us.kg/categories/%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86/">项目管理</category>
-      <category domain="http://kyden.us.kg/categories/%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/">架构设计</category>
-      <category domain="http://kyden.us.kg/categories/%E5%B7%A5%E7%A8%8B%E5%AE%9E%E8%B7%B5/">工程实践</category>
-      <category domain="http://kyden.us.kg/categories/%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/">最佳实践</category>
+      <guid>http://kydance.github.io/posts/golang-project-layout/</guid>
+      <category domain="http://kydance.github.io/categories/go%E8%AF%AD%E8%A8%80/">Go语言</category>
+      <category domain="http://kydance.github.io/categories/%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86/">项目管理</category>
+      <category domain="http://kydance.github.io/categories/%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/">架构设计</category>
+      <category domain="http://kydance.github.io/categories/%E5%B7%A5%E7%A8%8B%E5%AE%9E%E8%B7%B5/">工程实践</category>
+      <category domain="http://kydance.github.io/categories/%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/">最佳实践</category>
       <description>&lt;div class=&#34;details admonition abstract open&#34;&gt;&#xA;  &lt;div class=&#34;details-summary admonition-title&#34;&gt;&lt;i class=&#34;icon fa-fw fa-solid fa-clipboard-list&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;导语&lt;i class=&#34;details-icon fa-solid fa-angle-right fa-fw&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;details-content&#34;&gt;&#xA;    &lt;div class=&#34;admonition-content&#34;&gt;项目结构是代码质量的第一道防线。一个优秀的目录结构不仅能提高代码的可维护性，更能体现工程师的专业素养。本文将为你详细解读 Go 项目的标准目录结构，从微服务到单体应用，从命令行工具到共享库，帮助你掌握 Go 项目组织的最佳实践。无论是经验丰富的 Go 开发者，还是刚接触 Go 的新手，都能从这套久经考验的项目结构方案中获益。&lt;/div&gt;&#xA;  &lt;/div&gt;&#xA;&lt;/div&gt;</description>
     </item>
     <item>
       <title>深入理解 Go Context：优雅的并发控制与请求管理</title>
-      <link>http://kyden.us.kg/posts/golang-context/</link>
+      <link>http://kydance.github.io/posts/golang-context/</link>
       <pubDate>Sat, 01 Jun 2024 21:37:55 +0800</pubDate><author>kytedance@gmail.com (kyden)</author>
-      <guid>http://kyden.us.kg/posts/golang-context/</guid>
-      <category domain="http://kyden.us.kg/categories/go%E8%AF%AD%E8%A8%80/">Go语言</category>
-      <category domain="http://kyden.us.kg/categories/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/">并发编程</category>
-      <category domain="http://kyden.us.kg/categories/%E5%BE%AE%E6%9C%8D%E5%8A%A1/">微服务</category>
-      <category domain="http://kyden.us.kg/categories/%E6%9C%8D%E5%8A%A1%E7%AB%AF%E5%BC%80%E5%8F%91/">服务端开发</category>
-      <category domain="http://kyden.us.kg/categories/%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/">最佳实践</category>
+      <guid>http://kydance.github.io/posts/golang-context/</guid>
+      <category domain="http://kydance.github.io/categories/go%E8%AF%AD%E8%A8%80/">Go语言</category>
+      <category domain="http://kydance.github.io/categories/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/">并发编程</category>
+      <category domain="http://kydance.github.io/categories/%E5%BE%AE%E6%9C%8D%E5%8A%A1/">微服务</category>
+      <category domain="http://kydance.github.io/categories/%E6%9C%8D%E5%8A%A1%E7%AB%AF%E5%BC%80%E5%8F%91/">服务端开发</category>
+      <category domain="http://kydance.github.io/categories/%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/">最佳实践</category>
       <description>&lt;div class=&#34;details admonition abstract open&#34;&gt;&#xA;  &lt;div class=&#34;details-summary admonition-title&#34;&gt;&lt;i class=&#34;icon fa-fw fa-solid fa-clipboard-list&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;导语&lt;i class=&#34;details-icon fa-solid fa-angle-right fa-fw&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;details-content&#34;&gt;&#xA;    &lt;div class=&#34;admonition-content&#34;&gt;在现代 Go 应用中，Context 是实现并发控制和请求管理的核心机制。它不仅能够优雅地传递请求上下文，还能有效管理 goroutine 的生命周期，实现超时控制和优雅退出。本文将带你深入理解 Context 的设计理念和最佳实践，通过实例讲解如何在实际项目中运用 Context 来构建可靠、高效的并发应用。从链路追踪到资源管理，一文掌握 Context 的精髓。&lt;/div&gt;&#xA;  &lt;/div&gt;&#xA;&lt;/div&gt;</description>
     </item>
     <item>
       <title>Go 内存优化实战：逃逸分析完全指南</title>
-      <link>http://kyden.us.kg/posts/golang-escape-analysis/</link>
+      <link>http://kydance.github.io/posts/golang-escape-analysis/</link>
       <pubDate>Sun, 19 May 2024 22:47:26 +0800</pubDate><author>kytedance@gmail.com (kyden)</author>
-      <guid>http://kyden.us.kg/posts/golang-escape-analysis/</guid>
-      <category domain="http://kyden.us.kg/categories/go%E8%AF%AD%E8%A8%80/">Go语言</category>
-      <category domain="http://kyden.us.kg/categories/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/">性能优化</category>
-      <category domain="http://kyden.us.kg/categories/%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/">内存管理</category>
-      <category domain="http://kyden.us.kg/categories/%E7%BC%96%E7%A8%8B%E5%8E%9F%E7%90%86/">编程原理</category>
-      <category domain="http://kyden.us.kg/categories/%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/">最佳实践</category>
+      <guid>http://kydance.github.io/posts/golang-escape-analysis/</guid>
+      <category domain="http://kydance.github.io/categories/go%E8%AF%AD%E8%A8%80/">Go语言</category>
+      <category domain="http://kydance.github.io/categories/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/">性能优化</category>
+      <category domain="http://kydance.github.io/categories/%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/">内存管理</category>
+      <category domain="http://kydance.github.io/categories/%E7%BC%96%E7%A8%8B%E5%8E%9F%E7%90%86/">编程原理</category>
+      <category domain="http://kydance.github.io/categories/%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/">最佳实践</category>
       <description>&lt;div class=&#34;details admonition abstract open&#34;&gt;&#xA;  &lt;div class=&#34;details-summary admonition-title&#34;&gt;&lt;i class=&#34;icon fa-fw fa-solid fa-clipboard-list&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;导语&lt;i class=&#34;details-icon fa-solid fa-angle-right fa-fw&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;details-content&#34;&gt;&#xA;    &lt;div class=&#34;admonition-content&#34;&gt;在 Go 语言中，编译器通过逃逸分析来决定变量的内存分配位置，这直接影响着程序的性能和内存使用效率。但很多开发者对此知之甚少，导致代码中潜藏着性能隐患。本文将带你深入理解 Go 的逃逸分析机制，通过丰富的示例解析各种逃逸场景，帮助你掌握内存优化的关键技巧。从理论到实践，让你的 Go 程序更快、更高效。&lt;/div&gt;&#xA;  &lt;/div&gt;&#xA;&lt;/div&gt;</description>
     </item>
     <item>
       <title>Go 代码质量守护者：12 个必备 Linter 工具完全指南</title>
-      <link>http://kyden.us.kg/posts/golang-linter/</link>
+      <link>http://kydance.github.io/posts/golang-linter/</link>
       <pubDate>Fri, 19 Apr 2024 11:24:23 +0800</pubDate><author>kytedance@gmail.com (kyden)</author>
-      <guid>http://kyden.us.kg/posts/golang-linter/</guid>
-      <category domain="http://kyden.us.kg/categories/go%E8%AF%AD%E8%A8%80/">Go语言</category>
-      <category domain="http://kyden.us.kg/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/">开发工具</category>
-      <category domain="http://kyden.us.kg/categories/%E4%BB%A3%E7%A0%81%E8%B4%A8%E9%87%8F/">代码质量</category>
-      <category domain="http://kyden.us.kg/categories/%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90/">持续集成</category>
-      <category domain="http://kyden.us.kg/categories/%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/">最佳实践</category>
+      <guid>http://kydance.github.io/posts/golang-linter/</guid>
+      <category domain="http://kydance.github.io/categories/go%E8%AF%AD%E8%A8%80/">Go语言</category>
+      <category domain="http://kydance.github.io/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/">开发工具</category>
+      <category domain="http://kydance.github.io/categories/%E4%BB%A3%E7%A0%81%E8%B4%A8%E9%87%8F/">代码质量</category>
+      <category domain="http://kydance.github.io/categories/%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90/">持续集成</category>
+      <category domain="http://kydance.github.io/categories/%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/">最佳实践</category>
       <description>&lt;div class=&#34;details admonition abstract open&#34;&gt;&#xA;  &lt;div class=&#34;details-summary admonition-title&#34;&gt;&lt;i class=&#34;icon fa-fw fa-solid fa-clipboard-list&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;导语&lt;i class=&#34;details-icon fa-solid fa-angle-right fa-fw&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;details-content&#34;&gt;&#xA;    &lt;div class=&#34;admonition-content&#34;&gt;在追求高质量 Go 代码的道路上，Linter 工具是你最可靠的伙伴。从代码风格的统一到潜在 bug 的预防，从性能隐患的发现到最佳实践的保证，一个优秀的 Linter 配置可以帮你规避 80% 的常见问题。本文将带你全面了解 Go 生态中最实用的 12 个 Linter 工具，通过实例讲解它们的特点和使用方法，帮助你打造一个强大的代码质量保障体系。无论是个人项目还是团队协作，这些工具都能帮你写出更好的 Go 代码。&lt;/div&gt;&#xA;  &lt;/div&gt;&#xA;&lt;/div&gt;</description>
     </item>
     <item>
       <title>从零开始的 Arch Linux 完全上手指南：打造你的理想工作环境</title>
-      <link>http://kyden.us.kg/posts/arch-linux/</link>
+      <link>http://kydance.github.io/posts/arch-linux/</link>
       <pubDate>Wed, 17 Apr 2024 22:11:33 +0800</pubDate><author>kytedance@gmail.com (kyden)</author>
-      <guid>http://kyden.us.kg/posts/arch-linux/</guid>
-      <category domain="http://kyden.us.kg/categories/linux%E7%B3%BB%E7%BB%9F/">Linux系统</category>
-      <category domain="http://kyden.us.kg/categories/%E7%B3%BB%E7%BB%9F%E9%85%8D%E7%BD%AE/">系统配置</category>
-      <category domain="http://kyden.us.kg/categories/%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/">开发环境</category>
-      <category domain="http://kyden.us.kg/categories/%E7%B3%BB%E7%BB%9F%E7%AE%A1%E7%90%86/">系统管理</category>
-      <category domain="http://kyden.us.kg/categories/%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/">最佳实践</category>
+      <guid>http://kydance.github.io/posts/arch-linux/</guid>
+      <category domain="http://kydance.github.io/categories/linux%E7%B3%BB%E7%BB%9F/">Linux系统</category>
+      <category domain="http://kydance.github.io/categories/%E7%B3%BB%E7%BB%9F%E9%85%8D%E7%BD%AE/">系统配置</category>
+      <category domain="http://kydance.github.io/categories/%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/">开发环境</category>
+      <category domain="http://kydance.github.io/categories/%E7%B3%BB%E7%BB%9F%E7%AE%A1%E7%90%86/">系统管理</category>
+      <category domain="http://kydance.github.io/categories/%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/">最佳实践</category>
       <description>本文是一份全面的 Arch Linux 使用指南，涵盖了从系统安装、软件配置到性能优化的各个方面。无论你是 Linux 新手还是经验用户，都能在这里找到有价值的信息，帮助你构建一个稳定、高效的 Arch Linux 工作环境。</description>
     </item>
     <item>
       <title>30分钟搭建个人技术博客：Hugo &#43; GitHub Pages 零基础建站指南</title>
-      <link>http://kyden.us.kg/posts/build-blog/</link>
+      <link>http://kydance.github.io/posts/build-blog/</link>
       <pubDate>Wed, 17 Apr 2024 21:42:02 +0800</pubDate><author>kytedance@gmail.com (kyden)</author>
-      <guid>http://kyden.us.kg/posts/build-blog/</guid>
-      <category domain="http://kyden.us.kg/categories/%E7%BD%91%E7%AB%99%E5%BB%BA%E8%AE%BE/">网站建设</category>
-      <category domain="http://kyden.us.kg/categories/%E5%8D%9A%E5%AE%A2%E7%B3%BB%E7%BB%9F/">博客系统</category>
-      <category domain="http://kyden.us.kg/categories/%E9%9D%99%E6%80%81%E7%BD%91%E7%AB%99/">静态网站</category>
-      <category domain="http://kyden.us.kg/categories/%E7%BD%91%E7%AB%99%E9%83%A8%E7%BD%B2/">网站部署</category>
-      <category domain="http://kyden.us.kg/categories/%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/">最佳实践</category>
+      <guid>http://kydance.github.io/posts/build-blog/</guid>
+      <category domain="http://kydance.github.io/categories/%E7%BD%91%E7%AB%99%E5%BB%BA%E8%AE%BE/">网站建设</category>
+      <category domain="http://kydance.github.io/categories/%E5%8D%9A%E5%AE%A2%E7%B3%BB%E7%BB%9F/">博客系统</category>
+      <category domain="http://kydance.github.io/categories/%E9%9D%99%E6%80%81%E7%BD%91%E7%AB%99/">静态网站</category>
+      <category domain="http://kydance.github.io/categories/%E7%BD%91%E7%AB%99%E9%83%A8%E7%BD%B2/">网站部署</category>
+      <category domain="http://kydance.github.io/categories/%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/">最佳实践</category>
       <description>&lt;div class=&#34;details admonition abstract open&#34;&gt;&#xA;  &lt;div class=&#34;details-summary admonition-title&#34;&gt;&lt;i class=&#34;icon fa-fw fa-solid fa-clipboard-list&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;导语&lt;i class=&#34;details-icon fa-solid fa-angle-right fa-fw&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;details-content&#34;&gt;&#xA;    &lt;div class=&#34;admonition-content&#34;&gt;想要拥有一个专业的技术博客，但又担心过程繁琐？本文将教你如何利用 Hugo 的快速建站框架，结合 GitHub Pages 的免费托管服务，在短短 30 分钟内搭建一个美观实用的个人博客网站。无需购买服务器，零基础也能轻松驾驭！&lt;/div&gt;&#xA;  &lt;/div&gt;&#xA;&lt;/div&gt;</description>
     </item>
   </channel>

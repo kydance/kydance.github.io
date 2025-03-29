@@ -72,5 +72,5 @@ events:
 ---
 
 > Author:   
-> URL: http://kyden.us.kg/about/  
+> URL: http://kydance.github.io/about/  
 

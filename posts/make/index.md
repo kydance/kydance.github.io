@@ -44,5 +44,5 @@
 ---
 
 > Author: [kyden](https://github.com/kydance)  
-> URL: http://kyden.us.kg/posts/make/  
+> URL: http://kydance.github.io/posts/make/  
 

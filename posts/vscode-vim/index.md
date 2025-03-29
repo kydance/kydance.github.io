@@ -395,5 +395,5 @@ License
 ---
 
 > Author: [kyden](https://github.com/kydance)  
-> URL: http://kyden.us.kg/posts/vscode-vim/  
+> URL: http://kydance.github.io/posts/vscode-vim/  
 

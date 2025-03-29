@@ -104,5 +104,5 @@
 ---
 
 > Author: [kyden](https://github.com/kydance)  
-> URL: http://kyden.us.kg/posts/regex-in-one/  
+> URL: http://kydance.github.io/posts/regex-in-one/  
 

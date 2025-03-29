@@ -161,5 +161,5 @@ YAML 最重要的区别是语法扩展集，它们在 JSON 中没有类似物：
 ---
 
 > Author: [kyden](https://github.com/kydance)  
-> URL: http://kyden.us.kg/posts/json-encoder-decoder/  
+> URL: http://kydance.github.io/posts/json-encoder-decoder/  
 

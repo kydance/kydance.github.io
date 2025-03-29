@@ -463,5 +463,5 @@ Hugo 的配置文件和文章中的引用图片都是以 static 作为根目录�
 ---
 
 > Author: [kyden](https://github.com/kydance)  
-> URL: http://kyden.us.kg/posts/build-blog/  
+> URL: http://kydance.github.io/posts/build-blog/  
 

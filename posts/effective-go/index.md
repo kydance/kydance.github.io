@@ -454,5 +454,5 @@ insert 和 append 类似，即在某个位置添加一个元素后，将该位�
 ---
 
 > Author: [kyden](https://github.com/kydance)  
-> URL: http://kyden.us.kg/posts/effective-go/  
+> URL: http://kydance.github.io/posts/effective-go/  
 

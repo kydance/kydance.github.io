@@ -272,5 +272,5 @@ N 叉树搜索树索引模型
 ---
 
 > Author: [kyden](https://github.com/kydance)  
-> URL: http://kyden.us.kg/posts/mysql/  
+> URL: http://kydance.github.io/posts/mysql/  
 

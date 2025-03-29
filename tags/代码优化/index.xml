@@ -2,24 +2,24 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>代码优化 - Tag  Kyden&#39;s 博客</title>
-    <link>http://kyden.us.kg/tags/%E4%BB%A3%E7%A0%81%E4%BC%98%E5%8C%96/</link>
+    <link>http://kydance.github.io/tags/%E4%BB%A3%E7%A0%81%E4%BC%98%E5%8C%96/</link>
     <description>Kyden&#39;s Blog Site</description>
     <generator>Hugo 0.145.0 &amp; FixIt v0.3.16</generator>
     <language>en</language>
     <managingEditor>kytedance@gmail.com (kyden)</managingEditor>
     <webMaster>kytedance@gmail.com (kyden)</webMaster>
     <lastBuildDate>Wed, 06 Nov 2024 11:53:42 +0800</lastBuildDate>
-    <atom:link href="http://kyden.us.kg/tags/%E4%BB%A3%E7%A0%81%E4%BC%98%E5%8C%96/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://kydance.github.io/tags/%E4%BB%A3%E7%A0%81%E4%BC%98%E5%8C%96/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>正则表达式速成宝典：从零基础到实战高手</title>
-      <link>http://kyden.us.kg/posts/regex-in-one/</link>
+      <link>http://kydance.github.io/posts/regex-in-one/</link>
       <pubDate>Wed, 06 Nov 2024 11:53:42 +0800</pubDate><author>kytedance@gmail.com (kyden)</author>
-      <guid>http://kyden.us.kg/posts/regex-in-one/</guid>
-      <category domain="http://kyden.us.kg/categories/%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80/">编程基础</category>
-      <category domain="http://kyden.us.kg/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/">开发工具</category>
-      <category domain="http://kyden.us.kg/categories/%E7%BC%96%E7%A8%8B%E6%8A%80%E5%B7%A7/">编程技巧</category>
-      <category domain="http://kyden.us.kg/categories/%E6%96%87%E6%9C%AC%E5%A4%84%E7%90%86/">文本处理</category>
-      <category domain="http://kyden.us.kg/categories/%E5%AE%9E%E7%94%A8%E6%95%99%E7%A8%8B/">实用教程</category>
+      <guid>http://kydance.github.io/posts/regex-in-one/</guid>
+      <category domain="http://kydance.github.io/categories/%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80/">编程基础</category>
+      <category domain="http://kydance.github.io/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/">开发工具</category>
+      <category domain="http://kydance.github.io/categories/%E7%BC%96%E7%A8%8B%E6%8A%80%E5%B7%A7/">编程技巧</category>
+      <category domain="http://kydance.github.io/categories/%E6%96%87%E6%9C%AC%E5%A4%84%E7%90%86/">文本处理</category>
+      <category domain="http://kydance.github.io/categories/%E5%AE%9E%E7%94%A8%E6%95%99%E7%A8%8B/">实用教程</category>
       <description>&lt;div class=&#34;details admonition abstract open&#34;&gt;&#xA;  &lt;div class=&#34;details-summary admonition-title&#34;&gt;&lt;i class=&#34;icon fa-fw fa-solid fa-clipboard-list&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;导语&lt;i class=&#34;details-icon fa-solid fa-angle-right fa-fw&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;details-content&#34;&gt;&#xA;    &lt;div class=&#34;admonition-content&#34;&gt;正则表达式是程序员必备的技能之一，它不仅是一种强大的文本处理工具，更是提升开发效率的利器。本文将为你揭开正则表达式的神秘面纱，通过系统的讲解和丰富的实例，帮助你掌握从基础到高级的正则表达式技巧。无论是文本搜索、数据验证，还是复杂的模式匹配，正则表达式都能让你事半功倍。&lt;/div&gt;&#xA;  &lt;/div&gt;&#xA;&lt;/div&gt;</description>
     </item>
   </channel>

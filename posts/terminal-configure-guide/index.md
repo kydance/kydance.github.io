@@ -323,5 +323,5 @@ uninstall_oh_my_zsh
 ---
 
 > Author: [kyden](https://github.com/kydance)  
-> URL: http://kyden.us.kg/posts/terminal-configure-guide/  
+> URL: http://kydance.github.io/posts/terminal-configure-guide/  
 

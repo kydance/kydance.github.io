@@ -97,4 +97,4 @@ Disallow: /
 User-agent: ClaudeBot
 Disallow: /
 
-Sitemap: http://kyden.us.kg/sitemap.xml
+Sitemap: http://kydance.github.io/sitemap.xml
