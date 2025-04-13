@@ -1,21 +1,21 @@
 # Cobra 实战指南：10分钟搭建现代化命令行应用
 
 
-{{&lt; admonition type=abstract title=&#34;导语&#34; open=true &gt;}}
+{{< admonition type=abstract title="导语" open=true >}}
 想要开发一个专业的命令行工具，但又担心开发过程繁琐？Cobra 框架可以帮你轻松实现！本文将带你探索这个被 Kubernetes、Docker 等知名项目广泛采用的命令行框架，通过实例演示和最佳实践，让你快速掌握构建现代化 CLI 应用的核心技巧。从基础概念到高级特性，从项目初始化到功能实现，一文掌握 Cobra 开发精髓。
-{{&lt; /admonition &gt;}}
+{{< /admonition >}}
 
 ## I. Cobra 简介
 
 **Cobra** 是一个可以创建强大的现代化 CLI 应用程序库，它还提供了一个可以生成应用和命令文件的程序的命令行工具：`cobra-cli`。
 许多大型项目（e.g. kubernetes, Docker, Etcd, Rkt, Hugo etc.）都采用了 cobra 来构建他们的应用程序。
 
-{{&lt; figure src=&#34;/posts/go-cobra/CobraMain.png&#34; title=&#34;&#34; &gt;}}
+{{< figure src="/posts/go-cobra/CobraMain.png" title="" >}}
 
 Cobra 具有很多特性，一些核心特性如下：
 
 - 可以构建基于子命令的 CLI，并支持嵌套子命令：`app server`, `app fetch`
-- 可以通过 `cobra-cli init appname &amp; cobra-cli add cmdname` 轻松生成应用和子命令
+- 可以通过 `cobra-cli init appname & cobra-cli add cmdname` 轻松生成应用和子命令
 - 智能化命令建议：`app srver...did you mean app server`
 - 自动生成命令和标志的 helpe 文本，并能自动识别 `-h`, `--help` 等标志
 - 自动为应用程序生成 bash、zsh、fish、powershell 自动补全脚本
@@ -24,7 +24,7 @@ Cobra 具有很多特性，一些核心特性如下：
 
 Cobra 建立在 commands、arguments 和 flags 结构之上。Commands 代表命令，arguments 代表非选项参数，flags 代表选项参数（标志）。
 
-{{&lt; admonition type=Tips title=&#34;CLI 模式&#34; open=true &gt;}}
+{{< admonition type=Tips title="CLI 模式" open=true >}}
 一个好的应用程序应该是易懂的，用户可以清晰知道如何去使用这个应用程序，因此通常遵循如下模式：
 `APPNAME VERB NOUN --ADJECTIVE` 或者 `APPNAME COMMAND ARG --FLAG`，例如：
 
@@ -36,7 +36,7 @@ git clone URL --bare
 ```
 
 NOTE：`VERB` 代表动词，`NOUN` 代表名词，`ADJECTIVE` 代表形容词
-{{&lt; /admonition &gt;}}
+{{< /admonition >}}
 
 ## II. `cobra-cli` 命令安装
 
@@ -81,7 +81,7 @@ app_name
 package main
 
 import (
-  &#34;{pathtToApp}/cmd&#34;
+  "{pathtToApp}/cmd"
 )
 
 func main() {
@@ -98,7 +98,7 @@ func main() {
 使用 `cobra-cli init` 命令初始化一个应用程序，然后就可以基于这个 Demo 进行二次开发，提高开发效率：
 
 ```bash
-$ mkdir -p kyden-demo &amp;&amp; cd kydne-demo &amp;&amp; go mod init kyden-demo
+$ mkdir -p kyden-demo && cd kydne-demo && go mod init kyden-demo
 $ cobra-cli init --license=MIT --viper
 $ ls
 cmd  go.mod  go.sum  LICENSE  main.go
@@ -111,7 +111,7 @@ cmd  go.mod  go.sum  LICENSE  main.go
 ```bash
 $ cobra-cli add serve
 $ cobra-cli add config
-$ cobra-cli add create -p &#39;configCmd&#39; # 此命令的父命令的变量名（默认为 &#39;rootCmd&#39;）
+$ cobra-cli add create -p 'configCmd' # 此命令的父命令的变量名（默认为 'rootCmd'）
 
 $ tree kyden-demo 
 kyden-demo
@@ -127,7 +127,7 @@ kyden-demo
 ```
 
 执行 `cobra-cli add` 命令之后，会在 `cmd` 目录下生成命令源码文件。
-`cobra-cli` 不仅可以添加命令，也可以添加子命令，例如 `cobra-cli add create -p &#39;configCmd&#39;` 给 `config` 命令添加了 `create` 子命令，`-p` 指定子命令的父命令：`&lt;父命令&gt;Cmd`.
+`cobra-cli` 不仅可以添加命令，也可以添加子命令，例如 `cobra-cli add create -p 'configCmd'` 给 `config` 命令添加了 `create` 子命令，`-p` 指定子命令的父命令：`<父命令>Cmd`.
 
 #### 3. 编译运行
 
@@ -157,7 +157,7 @@ Flags:
   -h, --help            help for kyden-demo
   -t, --toggle          Help message for toggle
 
-Use &#34;kyden-demo [command] --help&#34; for more information about a command.
+Use "kyden-demo [command] --help" for more information about a command.
 ```
 
 #### 4. 配置 cobra
@@ -168,7 +168,7 @@ LINCENSE 和 LINCENSE Header 的内容可以通过 cobra 配置文进行配置�
 
 ```bash
 $ cat ~/.cobra.yaml
-author: Kyden &lt;kytedance@gmail.com&gt;
+author: Kyden <kytedance@gmail.com>
 year: 2024
 license:
   header: This file is part of CLI application foo.
@@ -180,7 +180,7 @@ license:
     master my life.
 
 $ cobra-cli init
-Copyright © 2024 Kyden &lt;kytedance@gmail.com&gt;
+Copyright © 2024 Kyden <kytedance@gmail.com>
 
 This is my license. There are many like it, but this one is mine.
 My license is my best friend. It is my life. I must master it as I must
@@ -199,7 +199,7 @@ master my life.
 1. 创建 rootCmd
 
 ```bash
-$ mkdir -p cobrademo &amp;&amp; cobrademo
+$ mkdir -p cobrademo && cobrademo
 $ go mod init cobrademo
 go: creating new go.mod: module cobrademo
 go: to add module requirements and sums:
@@ -214,23 +214,23 @@ Your Cobra application is ready at
 
 ```go
 /*
-Copyright © 2024 Kyden &lt;kytedance@gmail.com&gt;
+Copyright © 2024 Kyden <kytedance@gmail.com>
 This file is part of CLI application foo.
 */
 package cmd
 
 import (
-	&#34;os&#34;
+	"os"
 
-	&#34;github.com/spf13/cobra&#34;
+	"github.com/spf13/cobra"
 )
 
 
 
 // rootCmd represents the base command when called without any subcommands
-var rootCmd = &amp;cobra.Command{
-	Use:   &#34;cobrademo&#34;,
-	Short: &#34;A brief description of your application&#34;,
+var rootCmd = &cobra.Command{
+	Use:   "cobrademo",
+	Short: "A brief description of your application",
 	Long: `A longer description that spans multiple lines and likely contains
 examples and usage of using your application. For example:
 
@@ -256,11 +256,11 @@ func init() {
 	// Cobra supports persistent flags, which, if defined here,
 	// will be global for your application.
 
-	// rootCmd.PersistentFlags().StringVar(&amp;cfgFile, &#34;config&#34;, &#34;&#34;, &#34;config file (default is $HOME/.cobrademo.yaml)&#34;)
+	// rootCmd.PersistentFlags().StringVar(&cfgFile, "config", "", "config file (default is $HOME/.cobrademo.yaml)")
 
 	// Cobra also supports local flags, which will only run
 	// when this action is called directly.
-	rootCmd.Flags().BoolP(&#34;toggle&#34;, &#34;t&#34;, false, &#34;Help message for toggle&#34;)
+	rootCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
 }
 ```
 
@@ -278,7 +278,7 @@ func init() {
 package main
 
 import (
-  &#34;{pathToApp}/cmd&#34;
+  "{pathToApp}/cmd"
 )
 
 func main() {
@@ -294,21 +294,21 @@ func main() {
 
 ```go
 /*
-Copyright © 2024 Kyden &lt;kytedance@gmail.com&gt;
+Copyright © 2024 Kyden <kytedance@gmail.com>
 This file is part of CLI application foo.
 */
 package cmd
 
 import (
-	&#34;fmt&#34;
+	"fmt"
 
-	&#34;github.com/spf13/cobra&#34;
+	"github.com/spf13/cobra"
 )
 
 // versionCmd represents the version command
-var versionCmd = &amp;cobra.Command{
-	Use:   &#34;version&#34;,
-	Short: &#34;A brief description of your command&#34;,
+var versionCmd = &cobra.Command{
+	Use:   "version",
+	Short: "A brief description of your command",
 	Long: `A longer description that spans multiple lines and likely contains examples
 and usage of using your command. For example:
 
@@ -316,7 +316,7 @@ Cobra is a CLI library for Go that empowers applications.
 This application is a tool to generate the needed files
 to quickly create a Cobra application.`,
 	Run: func(cmd *cobra.Command, args []string) {
-		fmt.Println(&#34;version called&#34;)
+		fmt.Println("version called")
 	},
 }
 
@@ -327,11 +327,11 @@ func init() {
 
 	// Cobra supports Persistent Flags which will work for this command
 	// and all subcommands, e.g.:
-	// versionCmd.PersistentFlags().String(&#34;foo&#34;, &#34;&#34;, &#34;A help for foo&#34;)
+	// versionCmd.PersistentFlags().String("foo", "", "A help for foo")
 
 	// Cobra supports local flags which will only run when this command
 	// is called directly, e.g.:
-	// versionCmd.Flags().BoolP(&#34;toggle&#34;, &#34;t&#34;, false, &#34;Help message for toggle&#34;)
+	// versionCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
 }
 
 ```
@@ -362,7 +362,7 @@ Flags:
   -h, --help     help for cobrademo
   -t, --toggle   Help message for toggle
 
-Use &#34;cobrademo [command] --help&#34; for more information about a command.
+Use "cobrademo [command] --help" for more information about a command.
 ```
 
 ### 使用标志
@@ -372,11 +372,11 @@ cobra 可以跟 pflag 结合使用，实现强大的标志功能。
 
 1. 使用持久化的标志
 
-标志是可以&#34;持久化&#34;的，即该标志可用于它所分配的命令以及该命令下的每个子命令。
+标志是可以"持久化"的，即该标志可用于它所分配的命令以及该命令下的每个子命令。
 例如，在 `rootCmd` 中定义持久化标志：
 
 ```go
-rootCmd.PersistentFlags().BoolVarP(&amp;Verbose, &#34;verbose&#34;, &#34;v&#34;, false, &#34;verbose output&#34;)
+rootCmd.PersistentFlags().BoolVarP(&Verbose, "verbose", "v", false, "verbose output")
 ```
 
 2. 使用本地标志
@@ -384,7 +384,7 @@ rootCmd.PersistentFlags().BoolVarP(&amp;Verbose, &#34;verbose&#34;, &#34;v&#34;,
 本地标志，只能在其所绑定的命令上使用：
 
 ```go
-rootCmd.Flags().StringVarP(&amp;Source, &#34;source&#34;, &#34;s&#34;, &#34;&#34;, &#34;Source directory to read from&#34;)
+rootCmd.Flags().StringVarP(&Source, "source", "s", "", "Source directory to read from")
 ```
 
 上面的 `--source` 标志智能在 `rootCmd` 命令上引用，而不能在 `rootCmd` 的子命令上引用。
@@ -398,8 +398,8 @@ var auther string
 
 func init() {
 	rootCmd.PersistentFlags().StringVar(
-    &amp;auther, &#34;author&#34;, &#34;Your Name&#34;, &#34;Author name for copyright attribution&#34;)
-	viper.BindPFlag(&#34;author&#34;, rootCmd.PersistentFlags().Lookup(&#34;auther&#34;))
+    &auther, "author", "Your Name", "Author name for copyright attribution")
+	viper.BindPFlag("author", rootCmd.PersistentFlags().Lookup("auther"))
 }
 ```
 
@@ -409,8 +409,8 @@ func init() {
 当设置标志为必选时，若不提供标志时，cobra 会报错：
 
 ```go
-rootCmd.Flags().StringVarP(&amp;Region, &#34;region&#34;, &#34;r&#34;, &#34;&#34;, &#34;AWS region (required)&#34;)
-rootCmd.MarkFlagRequired(&#34;region&#34;)
+rootCmd.Flags().StringVarP(&Region, "region", "r", "", "AWS region (required)")
+rootCmd.MarkFlagRequired("region")
 ```
 
 ## IV. Reference

@@ -1,11 +1,11 @@
 # 终端神器：一篇文章玩转终端神器 Tmux，ZSH，Oh-My-Zsh
 
 
-{{&lt; admonition type=abstract title=&#34;导语&#34; open=true &gt;}}
+{{< admonition type=abstract title="导语" open=true >}}
 在现代开发环境中，高效的终端管理是提升工作效率的关键。Tmux 作为一款强大的终端复用工具，不仅能让你在一个终端窗口中同时操作多个会话，还能实现窗口分割、会话保持等高级功能。无论是本地开发还是远程服务器管理，Tmux 都能让你的终端操作更加得心应手。本文将带你全面了解 Tmux 的各项功能，从基础操作到高级配置，让你的终端使用效率得到质的飞跃。
-{{&lt; /admonition &gt;}}
+{{< /admonition >}}
 
-&lt;!--more--&gt;
+<!--more-->
 
 ## TMux
 
@@ -23,7 +23,7 @@
 
 ### Tmux 中的 server, session, window 和 Pane
 
-在 Tmux 系统中，存在以下极其重要的大小层级: `Server` -&gt; `Session` -&gt; `Window` -&gt; `Pane`.
+在 Tmux 系统中，存在以下极其重要的大小层级: `Server` -> `Session` -> `Window` -> `Pane`.
 
 - **`Server`**: 整个 tmux 的后台服务. NOTE: 当配置文件不生效时，就需要使用 `tmux kill-server` 来重启 Tmux
 - **`Session`**: 可以理解为 workplace
@@ -32,7 +32,7 @@
 
 ### Installation
 
-Require: version &gt;= 2.1
+Require: version >= 2.1
 
 #### Linux
 
@@ -50,7 +50,7 @@ brew install tmux
 
 ### 常用命令
 
-Tmux 的默认 prefix-key 是 `&lt;C-b&gt;`
+Tmux 的默认 prefix-key 是 `<C-b>`
 
 #### 启动新 session
 
@@ -87,33 +87,33 @@ tmux kill-server
 
 | prefix-key | command | description |
 | :--- | :--- | :--- |
-| `&lt;C-b&gt;` | `?` | 显示快捷键帮助文档 |
-| `&lt;C-b&gt;` | `d` | 断开当前 Session |
-| `&lt;C-b&gt;` | `r` | 强制重载当前 Session |
-| `&lt;C-b&gt;` | `:` | 进入命令模式，可直接输入命令 |
+| `<C-b>` | `?` | 显示快捷键帮助文档 |
+| `<C-b>` | `d` | 断开当前 Session |
+| `<C-b>` | `r` | 强制重载当前 Session |
+| `<C-b>` | `:` | 进入命令模式，可直接输入命令 |
 
 #### Window Command
 
 | prefix-key | command | description |
 | :--- | :--- | :--- |
-| `&lt;C-b&gt;` | `c` | 新建窗口 |
-| `&lt;C-b&gt;` | `&amp;` | 关闭当前窗口 |
-| `&lt;C-b&gt;` | `p / n / &lt;number&gt;` | 切换到上一个 / 下一个 / 指定窗口 |
-| `&lt;C-b&gt;` | `w` | 打开窗口列表，用于切换窗口 |
-| `&lt;C-b&gt;` | `,` | 重命名当前窗口 |
-| `&lt;C-b&gt;` | `.` | 修改窗口编号 |
+| `<C-b>` | `c` | 新建窗口 |
+| `<C-b>` | `&` | 关闭当前窗口 |
+| `<C-b>` | `p / n / <number>` | 切换到上一个 / 下一个 / 指定窗口 |
+| `<C-b>` | `w` | 打开窗口列表，用于切换窗口 |
+| `<C-b>` | `,` | 重命名当前窗口 |
+| `<C-b>` | `.` | 修改窗口编号 |
 
 #### Pane Command
 
 | prefix-key | command | description |
 | :--- | :--- | :--- |
-| `&lt;C-b&gt;` | `&#34;` / `%` | 新建上下 / 左右 pane |
-| `&lt;C-b&gt;` | `x` | 关闭当前 pane |
-| `&lt;C-b&gt;` | `z` | 最大化当前 pane(重复取消最大化) |
-| `&lt;C-b&gt;` | `q` | 显示面板编号，在编号消失前输入对应的数字可切换到相应的面板 |
-| `&lt;C-b&gt;` | `&lt;left&gt;` / `&lt;right&gt;` / `up` / `down` | 移动光标切换面板 |
-| `&lt;C-b&gt;` | `o` | 选择下一 pane |
-| `&lt;C-b&gt;` | `&lt;space&gt;` | 在自带的面板布局中循环切换 |
+| `<C-b>` | `"` / `%` | 新建上下 / 左右 pane |
+| `<C-b>` | `x` | 关闭当前 pane |
+| `<C-b>` | `z` | 最大化当前 pane(重复取消最大化) |
+| `<C-b>` | `q` | 显示面板编号，在编号消失前输入对应的数字可切换到相应的面板 |
+| `<C-b>` | `<left>` / `<right>` / `up` / `down` | 移动光标切换面板 |
+| `<C-b>` | `o` | 选择下一 pane |
+| `<C-b>` | `<space>` | 在自带的面板布局中循环切换 |
 
 ### 配置文件
 
@@ -121,7 +121,7 @@ tmux kill-server
 
 ```conf
 # recover colorful terminal
-set -g default-terminal &#34;xterm-256color&#34;
+set -g default-terminal "xterm-256color"
 
 # 窗口面板起始序列号
 set -g base-index 1
@@ -134,11 +134,11 @@ set -g pane-base-index 1
 set-option -g mouse on
 
 # 状态栏窗口名称格式
-set -wg window-status-format &#34; #I #W &#34;
+set -wg window-status-format " #I #W "
 # 状态栏当前窗口名称格式(#I：序号，#w：窗口名称，#F：间隔符)
-set -wg window-status-current-format &#34; #I:#W#F &#34;
+set -wg window-status-current-format " #I:#W#F "
 # 状态栏窗口名称之间的间隔
-set -wg window-status-separator &#34;&#34;
+set -wg window-status-separator ""
 
 # 开启vi风格后，支持vi的C-d、C-u、hjkl等快捷键
 setw -g mode-keys vi
@@ -177,7 +177,7 @@ pacman -S zsh
 `cURL` 下载并安装 oh-my-zsh
 
 ```zsh
-sh -c &#34;$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)&#34;
+sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 ```
 
 #### powerlevel10k theme
@@ -187,7 +187,7 @@ sh -c &#34;$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/inst
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
 
 # 设置 in .zshrc
-ZSH_THEME=&#34;powerlevel10k/powerlevel10k&#34;
+ZSH_THEME="powerlevel10k/powerlevel10k"
 ```
 
 #### zsh-autosuggestions
@@ -286,7 +286,7 @@ plugins=(... extract ...)
 
 #### web-search
 
-oh-my-zsh 内置了 web-search 插件。web-search 能让我们在命令行中使用搜索引擎进行搜索。使用搜索引擎关键字&#43;搜索内容 即可自动打开浏览器进行搜索
+oh-my-zsh 内置了 web-search 插件。web-search 能让我们在命令行中使用搜索引擎进行搜索。使用搜索引擎关键字+搜索内容 即可自动打开浏览器进行搜索
 
 使用 web-search 命令即可搜索
 

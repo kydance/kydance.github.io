@@ -1,19 +1,19 @@
 # Go 配置管理最佳实践：Viper 从入门到精通
 
 
-{{&lt; admonition type=abstract title=&#34;导语&#34; open=true &gt;}}
+{{< admonition type=abstract title="导语" open=true >}}
 配置管理看似简单，但要做好却不容易。如何选择合适的配置方式？如何实现配置热重载？如何优雅地处理多环境配置？本文将带你探索 Go 生态中最受欢迎的配置管理解决方案 Viper，通过实战案例和最佳实践，帮助你构建一个灵活、强大、易维护的配置管理系统。从配置文件格式的选择到 Viper 的高级特性，一文掌握配置管理的精髓。
-{{&lt; /admonition &gt;}}
+{{< /admonition >}}
 
-&lt;!--more--&gt;
+<!--more-->
 
-{{&lt; figure src=&#34;/posts/go-viper/logo.png&#34; title=&#34;&#34; &gt;}}
+{{< figure src="/posts/go-viper/logo.png" title="" >}}
 
 **对于一个 Go 应用程序，同城需要解析以下类别的配置：命令行选项、命令行参数、配置文件**，而对于一个非命令行工具的应用程序，不需要考虑读取命令行参数这类场景，其需要的配置内容都可以通过命令行选项或配置文件加载到程序中。
 
-{{&lt; admonition type=Tip title=&#34;Tips&#34; open=true &gt;}}
+{{< admonition type=Tip title="Tips" open=true >}}
 命令行工具可能会有子命令，例如 `kubectr create` 中的 `create` 就是一个命令行参数
-{{&lt; /admonition &gt;}}
+{{< /admonition >}}
 
 ## 为何选择配置文件作为配置项的读取方式？
 
@@ -24,14 +24,14 @@
 - **配置文件更易维护**：将所有的配置项都保存在配置文件中，加上详细的配置说明，不需要的配置项可以注释掉。
 一个具有全量配置项、详细说明的配置文件，更易于理解。并且在修改时，只需要修改配置项的值，而不需要修改配置项名称，更不易出错；
 - **配置文件可以实现热加载功能**：应用程序监听配置文件的变更，有变更时，自动重新加载配置文件，实现配置热加载功能；
-- **配置层次表达更清晰**：命令行参数无法直接表达&#34;层次&#34;，但配置文件可以。层次化的配置表达，更易于理解，也更易于维护。
+- **配置层次表达更清晰**：命令行参数无法直接表达"层次"，但配置文件可以。层次化的配置表达，更易于理解，也更易于维护。
 - **方便新增配置项**：多数情况下，配置项新增只需在配置文件中新增一行即可，不需要修改源码；
 
-{{&lt; admonition type=Tip title=&#34;总结&#34; open=true &gt;}}
+{{< admonition type=Tip title="总结" open=true >}}
 命令行工具可能会有子命令，例如 `kubectr create` 中的 `create` 就是一个命令行参数
 总结：当配置项少的时候（比如 5 个以内），可以从命令行选项中读取。
 参数较多的时候，建议使用配置文件，配置文件更易部署、维护、热加载、层次表达更清晰。
-{{&lt; /admonition &gt;}}
+{{< /admonition >}}
 
 ## Viper 的核心功能
 
@@ -56,7 +56,7 @@
 - YAML 格式可以表达非常丰富、复杂的配置结构；
 - YAML 格式普适性高，新人零理解成本；
 
-&gt; 最终配置：使用 YAML 格式的配置文件，并采用 `viper` 来读取配置
+> 最终配置：使用 YAML 格式的配置文件，并采用 `viper` 来读取配置
 
 ---
 
@@ -77,13 +77,13 @@ demo
 
 ```yaml
 app:
-  name: &#34;Viper Demo&#34;
+  name: "Viper Demo"
   port: 9009
 database:
-  host: &#34;localhost&#34;
+  host: "localhost"
   port: 5432
-  user: &#34;user&#34;
-  passwd: &#34;passwd&#34;
+  user: "user"
+  passwd: "passwd"
 ```
 
 ### Viper 读取配置
@@ -94,10 +94,10 @@ database:
 package main
 
 import (
-	&#34;fmt&#34;
-	&#34;log&#34;
+	"fmt"
+	"log"
 
-	&#34;github.com/spf13/viper&#34;
+	"github.com/spf13/viper"
 )
 
 type Config struct {
@@ -118,26 +118,26 @@ func main() {
 	var cfg Config
 
 	// Set config file
-	viper.AddConfigPath(&#34;./config&#34;)
-	viper.SetConfigName(&#34;cfg&#34;)
-	viper.SetConfigType(&#34;yaml&#34;)
+	viper.AddConfigPath("./config")
+	viper.SetConfigName("cfg")
+	viper.SetConfigType("yaml")
 
 	// Read
 	if err := viper.ReadInConfig(); err != nil {
-		log.Fatalf(&#34;Error reading config file, %v&#34;, err)
+		log.Fatalf("Error reading config file, %v", err)
 	}
 
-	if err := viper.Unmarshal(&amp;cfg); err != nil {
-		log.Fatalf(&#34;Unable to decode into struct: %v&#34;, err)
+	if err := viper.Unmarshal(&cfg); err != nil {
+		log.Fatalf("Unable to decode into struct: %v", err)
 	}
 
-	fmt.Printf(&#34;App Name: %s\n&#34;, cfg.App.Name)
-	fmt.Printf(&#34;App Port: %d\n&#34;, cfg.App.Port)
+	fmt.Printf("App Name: %s\n", cfg.App.Name)
+	fmt.Printf("App Port: %d\n", cfg.App.Port)
 
-	fmt.Printf(&#34;Database Host: %s\n&#34;, cfg.Database.Host)
-	fmt.Printf(&#34;Database Port: %d\n&#34;, cfg.Database.Port)
-	fmt.Printf(&#34;Database User: %s\n&#34;, cfg.Database.User)
-	fmt.Printf(&#34;Database Passwd: %s\n&#34;, cfg.Database.Passwd)
+	fmt.Printf("Database Host: %s\n", cfg.Database.Host)
+	fmt.Printf("Database Port: %d\n", cfg.Database.Port)
+	fmt.Printf("Database User: %s\n", cfg.Database.User)
+	fmt.Printf("Database Passwd: %s\n", cfg.Database.Passwd)
 }
 ```
 
@@ -155,19 +155,19 @@ This file is part of CLI application foo.
 package cmd
 
 import (
-	&#34;fmt&#34;
-	&#34;os&#34;
+	"fmt"
+	"os"
 
-	&#34;github.com/spf13/cobra&#34;
-	&#34;github.com/spf13/viper&#34;
+	"github.com/spf13/cobra"
+	"github.com/spf13/viper"
 )
 
 var cfgFile string
 
 // rootCmd represents the base command when called without any subcommands
-var rootCmd = &amp;cobra.Command{
-	Use:   &#34;kydendemo&#34;,
-	Short: &#34;A brief description of your application&#34;,
+var rootCmd = &cobra.Command{
+	Use:   "kydendemo",
+	Short: "A brief description of your application",
 	Long: `A longer description that spans multiple lines and likely contains
 examples and usage of using your application. For example:
 
@@ -196,16 +196,16 @@ func init() {
 	// will be global for your application.
 
 	rootCmd.PersistentFlags().StringVar(
-    &amp;cfgFile, &#34;config&#34;, &#34;&#34;, &#34;config file (default is $HOME/.kydendemo.yaml)&#34;)
+    &cfgFile, "config", "", "config file (default is $HOME/.kydendemo.yaml)")
 
 	// Cobra also supports local flags, which will only run
 	// when this action is called directly.
-	rootCmd.Flags().BoolP(&#34;toggle&#34;, &#34;t&#34;, false, &#34;Help message for toggle&#34;)
+	rootCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
 }
 
 // initConfig reads in config file and ENV variables if set.
 func initConfig() {
-	if cfgFile != &#34;&#34; {
+	if cfgFile != "" {
 		// Use config file from the flag.
 		viper.SetConfigFile(cfgFile)
 	} else {
@@ -213,29 +213,29 @@ func initConfig() {
 		home, err := os.UserHomeDir()
 		cobra.CheckErr(err)
 
-		// Search config in home directory with name &#34;.kydendemo&#34; (without extension).
+		// Search config in home directory with name ".kydendemo" (without extension).
 		viper.AddConfigPath(home)
-		viper.SetConfigType(&#34;yaml&#34;)
-		viper.SetConfigName(&#34;.kydendemo&#34;)
+		viper.SetConfigType("yaml")
+		viper.SetConfigName(".kydendemo")
 	}
 
 	viper.AutomaticEnv() // read in environment variables that match
 
 	// If a config file is found, read it in.
 	if err := viper.ReadInConfig(); err == nil {
-		fmt.Fprintln(os.Stderr, &#34;Using config file:&#34;, viper.ConfigFileUsed())
+		fmt.Fprintln(os.Stderr, "Using config file:", viper.ConfigFileUsed())
 	}
 }
 ```
 
-其中，`rootCmd` 设置了命令行选项 `--config`，用于指定配置文件路径，默认值是 `&#34;&#34;`；
+其中，`rootCmd` 设置了命令行选项 `--config`，用于指定配置文件路径，默认值是 `""`；
 
 通过 `cobra.OnInitialize(initConfig)` 设置了 `kydendemo` 在运行时的回调函数 `initConfig`，
 它的执行逻辑主要是：
 
 - 如果指定了 `cfgFile`，则直接读取该配置文件；
 - 如果没有指定，则读取 `$HOME/.kydendemo.yaml`，找到则读取；
-若 `cfgFile == &#34;&#34;`，且没有找到配置文件，则调用 `viper.ReadInConfig()` 读取配置文件时报错；
+若 `cfgFile == ""`，且没有找到配置文件，则调用 `viper.ReadInConfig()` 读取配置文件时报错；
 
 ## Reference
 

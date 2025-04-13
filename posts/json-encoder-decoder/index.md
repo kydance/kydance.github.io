@@ -1,24 +1,24 @@
 # JSON 完全指南：从基础概念到编解码实战
 
 
-{{&lt; admonition type=abstract title=&#34;导语&#34; open=true &gt;}}
+{{< admonition type=abstract title="导语" open=true >}}
 在现代 Web 开发中，JSON 已成为最受欢迎的数据交换格式。它不仅轻量级、易读易写，更因其语言无关性而被广泛应用于 API 设计和前后端通信。本文将带你全面了解 JSON，从其设计理念到实际应用，从基础语法到编码最佳实践。无论你是前端开发者还是后端工程师，掌握 JSON 都是提升开发效率的必备技能。
-{{&lt; /admonition &gt;}}
+{{< /admonition >}}
 
-&lt;!--more--&gt;
+<!--more-->
 
 ## I. 何为 JSON ?
 
-{{&lt; figure src=&#34;/posts/json-encoder-decoder/JSON_vector_logo.png&#34; title=&#34;&#34; width=100 height=10 &gt;}}
+{{< figure src="/posts/json-encoder-decoder/JSON_vector_logo.png" title="" width=100 height=10 >}}
 
-&gt; JSON 源于对实时服务器到浏览器会话通信协议的需求，无需使用 Flash 或 Java 小程序等浏览器插件，这是 2000 年代初期使用的主要方法。
+> JSON 源于对实时服务器到浏览器会话通信协议的需求，无需使用 Flash 或 Java 小程序等浏览器插件，这是 2000 年代初期使用的主要方法。
 
 JSON(JavsScript Object Notation，JavsScript 对象表示法)，由美国程序员道格拉斯·克罗克福特构想和设计的一种轻量级资料交换格式。
 其内容由属性和值所组成，具有易于阅读和处理的优势。
 
 JSON是独立于编程语言的资料格式，其不仅是JavaScript的子集，也采用了C语言家族的习惯用法，目前也有许多编程语言都能够将其解析和字符串化，其广泛使用的程度也使其成为通用的资料格式。
 
-{{&lt; admonition tip &#34;JSON&#34; ture &gt;}}
+{{< admonition tip "JSON" ture >}}
 扩展名：`.json`
 
 互联网媒体类型: `application/json`
@@ -34,7 +34,7 @@ JSON是独立于编程语言的资料格式，其不仅是JavaScript的子集，
 标准: [RFC 7159](https://tools.ietf.org/html/rfc7159), [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf)
 
 网站: [json.org](http://json.org/)
-{{&lt; /admonition &gt;}}
+{{< /admonition >}}
 
 ---
 
@@ -45,15 +45,15 @@ JSON是独立于编程语言的资料格式，其不仅是JavaScript的子集，
 十进制数值，不能有前导0，可以为负数，可以有小数部分，不区分整数与浮点数。
 也可以用 `e`/`E` 表示指数部分，不能包含非数（如 `NaN`）。
 
-{{&lt; admonition tip &#34;JSON&#34; ture &gt;}}
+{{< admonition tip "JSON" ture >}}
 JavaScript 用双精度浮点数表示所有数值（后来也支持 BigInt）
-{{&lt; /admonition &gt;}}
+{{< /admonition >}}
 
 ---
 
 ### 字符串
 
-以双引号 `&#34;&#34;` 括起来的零个或多个 [Unicode](https://zh.wikipedia.org/wiki/Unicode) [码位](https://zh.wikipedia.org/wiki/%E7%A0%81%E4%BD%8D)，支持反斜杠开始的转义字符序列。
+以双引号 `""` 括起来的零个或多个 [Unicode](https://zh.wikipedia.org/wiki/Unicode) [码位](https://zh.wikipedia.org/wiki/%E7%A0%81%E4%BD%8D)，支持反斜杠开始的转义字符序列。
 
 ---
 
@@ -73,7 +73,7 @@ JavaScript 用双精度浮点数表示所有数值（后来也支持 BigInt）
 
 ### 对象
 
-若干无序的&#34;key-value&#34;对（key-value pairs），其中 `key` 只能是字符串，并以花括号`{}`包裹，多个&#34;key-value&#34;之间使用逗号`,`分隔，`key` 与 `value` 之间使用冒号`:`分隔
+若干无序的"key-value"对（key-value pairs），其中 `key` 只能是字符串，并以花括号`{}`包裹，多个"key-value"之间使用逗号`,`分隔，`key` 与 `value` 之间使用冒号`:`分隔
 
 建议但不强制要求对象中的键是独一无二的。
 
@@ -85,36 +85,36 @@ JavaScript 用双精度浮点数表示所有数值（后来也支持 BigInt）
 
 ---
 
-{{&lt; admonition note &#34;JSON&#34; ture &gt;}}
+{{< admonition note "JSON" ture >}}
 JSON 交换时必须编码为[UTF-8](https://zh.wikipedia.org/wiki/UTF-8)。
 
-转义序列可以为: `\\`, `\&#34;`, `\/`, `\b`, `\f`, `\n`, `\r`, `\t` 或 Unicode16 进制转义字符序列（`\u`后面跟随 4 位 16 进制数字）。
-{{&lt; /admonition &gt;}}
+转义序列可以为: `\\`, `\"`, `\/`, `\b`, `\f`, `\n`, `\r`, `\t` 或 Unicode16 进制转义字符序列（`\u`后面跟随 4 位 16 进制数字）。
+{{< /admonition >}}
 
 ## III. Example
 
 ```JSON
 {
-    &#34;firstName&#34;: &#34;John&#34;,
-    &#34;lastName&#34;: &#34;Smith&#34;,
-    &#34;sex&#34;: &#34;male&#34;,
-    &#34;age&#34;: 25,
-    &#34;address&#34;: 
+    "firstName": "John",
+    "lastName": "Smith",
+    "sex": "male",
+    "age": 25,
+    "address": 
     {
-        &#34;streetAddress&#34;: &#34;21 2nd Street&#34;,
-        &#34;city&#34;: &#34;New York&#34;,
-        &#34;state&#34;: &#34;NY&#34;,
-        &#34;postalCode&#34;: &#34;10021&#34;
+        "streetAddress": "21 2nd Street",
+        "city": "New York",
+        "state": "NY",
+        "postalCode": "10021"
     },
-    &#34;phoneNumber&#34;: 
+    "phoneNumber": 
     [
         {
-        &#34;type&#34;: &#34;home&#34;,
-        &#34;number&#34;: &#34;212 555-1234&#34;
+        "type": "home",
+        "number": "212 555-1234"
         },
         {
-        &#34;type&#34;: &#34;fax&#34;,
-        &#34;number&#34;: &#34;646 555-4567&#34;
+        "type": "fax",
+        "number": "646 555-4567"
         }
     ]
  }
@@ -136,7 +136,7 @@ JSON 交换时必须编码为[UTF-8](https://zh.wikipedia.org/wiki/UTF-8)。
 
 **在功能和语法上，JSON 都是 YAML 语言的一个子集**
 
-特别是，YAML 1.2规范指定&#34;任何JSON格式的文件都是YAML格式的有效文件&#34;。最常见的 YAML 解析器也能够处理 JSON。
+特别是，YAML 1.2规范指定"任何JSON格式的文件都是YAML格式的有效文件"。最常见的 YAML 解析器也能够处理 JSON。
 
 版本 1.2 之前的 YAML 规范没有完全涵盖 JSON，主要是由于 YAML 中缺乏本机 UTF-32 支持，以及对逗号分隔空格的要求；此外，JSON 规范还包括 `/* */` 样式的注释。
 

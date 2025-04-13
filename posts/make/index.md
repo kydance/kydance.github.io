@@ -1,11 +1,11 @@
 # Make 构建系统详解：从基础到实战
 
 
-{{&lt; admonition type=abstract title=&#34;导语&#34; open=true &gt;}}
+{{< admonition type=abstract title="导语" open=true >}}
 在现代软件开发中，高效的构建系统是项目成功的关键要素。Make 作为经典的构建工具，以其简洁的语法和强大的功能闻名；本文将带你深入了解这个强大工具的使用方法，从基础概念到高级技巧，帮助你构建更加专业和高效的开发工作流。
-{{&lt; /admonition &gt;}}
+{{< /admonition >}}
 
-&lt;!--more--&gt;
+<!--more-->
 
 ## Makefile 特殊字符说明
 
@@ -15,7 +15,7 @@
 - `;`: 分隔命令，`target: dependencies; command1; command2`
 - `=`: 变量赋值(递归展开赋值)，`CC = gcc`
 - `:=`: 立即赋值，`VERSION := $(shell git describe)`
-- `&#43;=`: 追加赋值，`CFLAGS &#43;= -O3 -Wall`
+- `+=`: 追加赋值，`CFLAGS += -O3 -Wall`
 - `?=`: 条件赋值（如果变量未定义），`CC ?= gcc`
 - `\`: 行继续符
 
@@ -26,14 +26,14 @@
     ```
 
 - `%`: 通配符，用于模式规则，`%.o`, `%.c`
-- `@`: 禁止命令回显，`@echo &#34;Building...`
-- `$&lt;`: 第一个依赖项
+- `@`: 禁止命令回显，`@echo "Building...`
+- `$<`: 第一个依赖项
 - `$@`: 目标
 - `$^`: 所有依赖项
 
     ```Makefile
     target: dep1 dep2
-        command $&lt; $@ $^
+        command $< $@ $^
     ```
 
 - `-`: 忽略命令错误，`rm temp.txt`

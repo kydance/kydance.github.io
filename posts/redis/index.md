@@ -1,11 +1,11 @@
 # Redis 核心精讲：从入门到性能优化
 
 
-{{&lt; admonition type=abstract title=&#34;导语&#34; open=true &gt;}}
+{{< admonition type=abstract title="导语" open=true >}}
 在当今高并发的互联网应用中，Redis 作为内存数据库和缓存系统的标配，以其卓越的性能和灵活的数据结构赢得了开发者的青睐。本文将带你深入了解 Redis 的核心特性，从五大数据类型的实战应用到单线程架构的性能优势，全方位提升你的 Redis 开发技能。无论是构建高性能缓存系统，还是开发实时数据处理应用，这都是一份不可或缺的实战指南。
-{{&lt; /admonition &gt;}}
+{{< /admonition >}}
 
-&lt;!--more--&gt;
+<!--more-->
 
 ## I. 简介
 
@@ -39,12 +39,12 @@ List 的 Key 的底层实现就是一个链表，其中链表的每一个节点�
 
 Redis 链表实现的特性：
 
-- 双向：链表节点都有 `prev` 和 `next` 指针 -&gt; 获取某个节点的前继节点和后继节点的复杂度都是O(1)
+- 双向：链表节点都有 `prev` 和 `next` 指针 -> 获取某个节点的前继节点和后继节点的复杂度都是O(1)
 - 无环：链表头节点的 `prev` 指针和表尾节点的 `next` 指针都指向 `NULL`
 - 表头指针 / 表尾指针：List 结构中存在 `head` 和 `tail` 指针
 - 长度计数器：List 结构中存在 `len` 属性
 - 多态：List 节点使用 `void*` 指针来保存节点值，并可以通过 List 结构中的
-`dup`、`free`、`match`、`sane` 属性为节点值设置类型特定函数 -&gt; List 可以存储各种不同类型的值
+`dup`、`free`、`match`、`sane` 属性为节点值设置类型特定函数 -> List 可以存储各种不同类型的值
 
 使用场景：列表（关注列表、粉丝列表、消息列表，...）
 
@@ -56,7 +56,7 @@ Redis 链表实现的特性：
 
     官方表示：Redis 是基于内存操作的，CPU不是Redis的性能瓶颈，Redis的瓶颈是根据机器的内存和网络带宽，既然可以用单线程实现，就没必要使用多线程了。
 
-    Redis 的提供数据为 100000&#43; (10W&#43;) 的QPS，非常快
+    Redis 的提供数据为 100000+ (10W+) 的QPS，非常快
 
 2. Redis 为什么单线程还这么快？
 
@@ -89,8 +89,8 @@ Redis 可以用于构建排行榜，例如游戏积分实时排名、直播送�
 常使用 `Sorted Set` 实现
 
 ```Shell
-ZADD GameScore 10 &#34;player_1&#34; # 插入分数
-ZINCRBY GameScore 10 &#34;player_1&#34; # 增加分数
+ZADD GameScore 10 "player_1" # 插入分数
+ZINCRBY GameScore 10 "player_1" # 增加分数
 ZREVRANGE GameScore 0 9 # 获取 Top 10
 ```
 

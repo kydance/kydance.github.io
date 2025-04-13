@@ -1,11 +1,11 @@
 # 图解 Go 调度器：GMP 模型深度剖析
 
 
-{{&lt; admonition type=abstract title=&#34;导语&#34; open=true &gt;}}
+{{< admonition type=abstract title="导语" open=true >}}
 Go 语言因其强大的并发特性而备受欢迎，而这一切的基础都在于其独特的 GMP 调度模型。本文将带你揭开 Go 调度器的神秘面纱，从操作系统的进程、线程概念开始，一步步深入理解 Goroutine 的工作原理。通过图解和源码分析，让你真正理解 Go 是如何实现高效的并发调度，以及为什么 Go 的并发编程如此简单优雅。无论你是 Go 开发新手还是经验丰富的工程师，这篇文章都能帮你更深入地理解 Go 的并发机制。
-{{&lt; /admonition &gt;}}
+{{< /admonition >}}
 
-&lt;!--more--&gt;
+<!--more-->
 
 ## I. Process、Thread、Co-routine
 
@@ -16,7 +16,7 @@ Go 语言因其强大的并发特性而备受欢迎，而这一切的基础都�
 - 进程是指在系统中正在运行的一个应用程序，程序一旦运行就是进程；
 - 进程可以认为是程序执行的一个实例，进程是系统进行资源分配的最小单位，且每个进程拥有独立的地址空间；
 - 一个进程无法直接访问到另一个进程的变量和数据结构，如果希望一个进程去访问另一个进程的资源，需要使用进程间的通信，如`fifo`、`pipe`、`signal`、`socket` 等；
-- 进程调度算法：先来先服务调度算法、短作业优先调度算法、最短剩余作业优先调度算法、最高响应比优先调度算法、最高优先级优先调度算法、时间片轮转算法（公平调度，$20 - 50 ms$）、多级反馈队列调度算法($最高优先级 &#43; 时间片轮转$)；
+- 进程调度算法：先来先服务调度算法、短作业优先调度算法、最短剩余作业优先调度算法、最高响应比优先调度算法、最高优先级优先调度算法、时间片轮转算法（公平调度，$20 - 50 ms$）、多级反馈队列调度算法($最高优先级 + 时间片轮转$)；
 
 ---
 
@@ -31,24 +31,24 @@ Go 语言因其强大的并发特性而备受欢迎，而这一切的基础都�
 
 - 线程是进程的一个实体，是进程的一条执行路径；
 - 线程是比进程更小的独立运行的基本单位
-- **一个程序至少存在一个进程，一个进程可以有多个($&gt;=1$)线程**
+- **一个程序至少存在一个进程，一个进程可以有多个($>=1$)线程**
 
-&gt; **进程与线程的区别**
-&gt;
-&gt; - 进程是资源（包括内存、打开的文件等）分配的单位，线程是 CPU 调度的单位；
-&gt; - 进程拥有一个完整的资源平台，而线程只独享必不可少的资源，如寄存器和栈；
-&gt; - **同一进程的线程共享本进程的地址空间，而进程之间则是独立的地址空间**；
-&gt; - **同一进程内的线程共享本地的资源，但是进程之间的资源是独立的**；
-&gt; - **一个进程崩溃后，在保护模式下不会对其他进程产生影响，但是一个线程崩溃整个进程崩溃，即多进程比多线程健壮**；
-&gt; - 进程切换，消耗的资源大（主要是虚拟地址空间的切换开销），线程同样具有就绪、阻塞、执行三种基本状态，同样具有状态之间的转换关系；
-&gt; - 多进程、多线程都可以并发执行，线程能减少并发执行的时间和空间开销；
-&gt; - 每个独立的进程有一个程序入口、程序出口；线程不能独立运行，必须依存于应用程序中，有应用程序提供多个线程执行控制；
+> **进程与线程的区别**
+>
+> - 进程是资源（包括内存、打开的文件等）分配的单位，线程是 CPU 调度的单位；
+> - 进程拥有一个完整的资源平台，而线程只独享必不可少的资源，如寄存器和栈；
+> - **同一进程的线程共享本进程的地址空间，而进程之间则是独立的地址空间**；
+> - **同一进程内的线程共享本地的资源，但是进程之间的资源是独立的**；
+> - **一个进程崩溃后，在保护模式下不会对其他进程产生影响，但是一个线程崩溃整个进程崩溃，即多进程比多线程健壮**；
+> - 进程切换，消耗的资源大（主要是虚拟地址空间的切换开销），线程同样具有就绪、阻塞、执行三种基本状态，同样具有状态之间的转换关系；
+> - 多进程、多线程都可以并发执行，线程能减少并发执行的时间和空间开销；
+> - 每个独立的进程有一个程序入口、程序出口；线程不能独立运行，必须依存于应用程序中，有应用程序提供多个线程执行控制；
 
 ---
 
 ### 协程 Co-routine
 
-**协程**，又称 &#34;微线程&#34;，表现为一个可以 suspend 和 resume 的函数。
+**协程**，又称 "微线程"，表现为一个可以 suspend 和 resume 的函数。
 
 实现协程的关键点：**在于如何保存、恢复和切换上下文**，协程切换只涉及基本的CPU上下文切换（CPU寄存器）.
 
@@ -58,7 +58,7 @@ Go 语言因其强大的并发特性而备受欢迎，而这一切的基础都�
 
 **有栈 (stackful) 协程**：实现类似于内核态线程的实现，不同协程的切换还是要切换对应的栈上下文，只是不用陷入内核，例如 goroutine、libco
 
-**无栈 (stackless) 协程**：无栈协程的上下文都会放到公共内存中，在协程切换时使用状态机来切换，而不用切换对应的上下文（都已经在堆中），相比有栈协程更轻量，例如 C&#43;&#43;20、Rust、JavaScript；**==本质就是一个状态机（state machine），即同一协程协程的切换本质不过是指令指针寄存器的改变==**
+**无栈 (stackless) 协程**：无栈协程的上下文都会放到公共内存中，在协程切换时使用状态机来切换，而不用切换对应的上下文（都已经在堆中），相比有栈协程更轻量，例如 C++20、Rust、JavaScript；**==本质就是一个状态机（state machine），即同一协程协程的切换本质不过是指令指针寄存器的改变==**
 
 #### Co-routine 特点
 
@@ -82,18 +82,18 @@ channel 作为一种引用类型，声明时需要指定传输数据类型，声
 ```go
 // 声明 channel
 var ch chan T	// 双向 channel
-var ch chan&lt;- T	// 只能发送 msg 的 channel
-var ch &lt;-chan T 	// 只能接收 msg 的 channel
+var ch chan<- T	// 只能发送 msg 的 channel
+var ch <-chan T 	// 只能接收 msg 的 channel
 
 // 创建 channel
 ch := make(chan T, capicity)	// 双向 channel
-ch := make(chan&lt;- T, capicity)	// 只能发送 msg 的 channel
-ch := make(&lt;-chan T, capicity)	// 只能接收 msg 的 channel
+ch := make(chan<- T, capicity)	// 只能发送 msg 的 channel
+ch := make(<-chan T, capicity)	// 只能接收 msg 的 channel
 
 // 访问 channel
-ch &lt;- msg	// 发送 msg
-msg := &lt;-ch	// 接收 msg
-msg, ok := &lt;-ch // 接收 msg，同时判断 channel 是否接收成功
+ch <- msg	// 发送 msg
+msg := <-ch	// 接收 msg
+msg, ok := <-ch // 接收 msg，同时判断 channel 是否接收成功
 close(ch)	// 关闭 channel
 ```
 
@@ -116,9 +116,9 @@ type g struct {
 	// Stack parameters.
 	// stack describes the actual stack memory: [stack.lo, stack.hi).
 	// stackguard0 is the stack pointer compared in the Go stack growth prologue.
-	// It is stack.lo&#43;StackGuard normally, but can be StackPreempt to trigger a preemption.
+	// It is stack.lo+StackGuard normally, but can be StackPreempt to trigger a preemption.
 	// stackguard1 is the stack pointer compared in the //go:systemstack stack growth prologue.
-	// It is stack.lo&#43;StackGuard on g0 and gsignal stacks.
+	// It is stack.lo+StackGuard on g0 and gsignal stacks.
 	// It is ~0 on other goroutine stacks, to trigger a call to morestackc (and crash).
 	stack       stack   // offset known to runtime/cgo
 	stackguard0 uintptr // offset known to liblink
@@ -138,7 +138,7 @@ type g struct {
 	// 1. When a channel operation wakes up a blocked goroutine, it sets param to
 	//    point to the sudog of the completed blocking operation.
 	// 2. By gcAssistAlloc1 to signal back to its caller that the goroutine completed
-	//    the GC cycle. It is unsafe to do so in any other way, because the goroutine&#39;s
+	//    the GC cycle. It is unsafe to do so in any other way, because the goroutine's
 	//    stack may have moved in the meantime.
 	// 3. By debugCallWrap to pass parameters to a new goroutine because allocating a
 	//    closure in the runtime is forbidden.
@@ -165,7 +165,7 @@ type g struct {
 	gcscandone   bool // g has scanned stack; protected by _Gscan bit in status
 	throwsplit   bool // must not split stack
 	// activeStackChans indicates that there are unlocked channels
-	// pointing into this goroutine&#39;s stack. If true, stack
+	// pointing into this goroutine's stack. If true, stack
 	// copying needs to acquire channel locks to protect these
 	// areas of the stack.
 	activeStackChans bool
@@ -180,7 +180,7 @@ type g struct {
 
 	raceignore    int8  // ignore race detection events
 	nocgocallback bool  // whether disable callback from C
-	tracking      bool  // whether we&#39;re tracking this G for sched latency statistics
+	tracking      bool  // whether we're tracking this G for sched latency statistics
 	trackingSeq   uint8 // used to decide whether to track this G
 	trackingStamp int64 // timestamp of when the G last started being tracked
 	runnableTime  int64 // the amount of time spent runnable, cleared when running, only used when tracking
@@ -203,7 +203,7 @@ type g struct {
 
 	coroarg *coro // argument during coroutine transfers
 
-	// goroutineProfiled indicates the status of this goroutine&#39;s stack for the
+	// goroutineProfiled indicates the status of this goroutine's stack for the
 	// current in-progress goroutine profile
 	goroutineProfiled goroutineProfileStateHolder
 
@@ -212,7 +212,7 @@ type g struct {
 
 	// Per-G GC state
 
-	// gcAssistBytes is this G&#39;s GC assist credit in terms of
+	// gcAssistBytes is this G's GC assist credit in terms of
 	// bytes allocated. If this is positive, then the G has credit
 	// to allocate gcAssistBytes bytes without assisting. If this
 	// is negative, then the G must correct this by performing
@@ -247,7 +247,7 @@ type m struct {
 	id            int64
 	mallocing     int32
 	throwing      throwType
-	preemptoff    string // if != &#34;&#34;, keep curg running on this m
+	preemptoff    string // if != "", keep curg running on this m
 	locks         int32
 	dying         int32
 	profilehz     int32
@@ -270,7 +270,7 @@ type m struct {
 	alllink       *m // on allm
 	schedlink     muintptr
 	lockedg       guintptr
-	createstack   [32]uintptr // stack that created this thread, it&#39;s used for StackRecord.Stack0, so it must align with it.
+	createstack   [32]uintptr // stack that created this thread, it's used for StackRecord.Stack0, so it must align with it.
 	lockedExt     uint32      // tracking for external LockOSThread
 	lockedInt     uint32      // tracking for internal lockOSThread
 	nextwaitm     muintptr    // next m waiting for lock
@@ -278,7 +278,7 @@ type m struct {
 	mLockProfile mLockProfile // fields relating to runtime.lock contention
 
 	// wait* are used to carry arguments from gopark into park_m, because
-	// there&#39;s no stack to put them on. That is their sole purpose.
+	// there's no stack to put them on. That is their sole purpose.
 	waitunlockf          func(*g, unsafe.Pointer) bool
 	waitlock             unsafe.Pointer
 	waitTraceBlockReason traceBlockReason
@@ -349,21 +349,21 @@ type p struct {
 	runqhead uint32
 	runqtail uint32
 	runq     [256]guintptr
-	// runnext, if non-nil, is a runnable G that was ready&#39;d by
-	// the current G and should be run next instead of what&#39;s in
-	// runq if there&#39;s time remaining in the running G&#39;s time
+	// runnext, if non-nil, is a runnable G that was ready'd by
+	// the current G and should be run next instead of what's in
+	// runq if there's time remaining in the running G's time
 	// slice. It will inherit the time left in the current time
 	// slice. If a set of goroutines is locked in a
 	// communicate-and-wait pattern, this schedules that set as a
 	// unit and eliminates the (potentially large) scheduling
-	// latency that otherwise arises from adding the ready&#39;d
+	// latency that otherwise arises from adding the ready'd
 	// goroutines to the end of the run queue.
 	//
-	// Note that while other P&#39;s may atomically CAS this to zero,
+	// Note that while other P's may atomically CAS this to zero,
 	// only the owner P can CAS it to a valid G.
 	runnext guintptr
 
-	// Available G&#39;s (status == Gdead)
+	// Available G's (status == Gdead)
 	gFree struct {
 		gList
 		n int32
@@ -418,12 +418,12 @@ type p struct {
 	// mark worker started.
 	gcMarkWorkerStartTime int64
 
-	// gcw is this P&#39;s GC work buffer cache. The work buffer is
+	// gcw is this P's GC work buffer cache. The work buffer is
 	// filled by write barriers, drained by mutator assists, and
 	// disposed on certain GC state transitions.
 	gcw gcWork
 
-	// wbBuf is this P&#39;s GC write barrier buffer.
+	// wbBuf is this P's GC write barrier buffer.
 	//
 	// TODO: Consider caching this in the running G.
 	wbBuf wbBuf
@@ -439,14 +439,14 @@ type p struct {
 	timersLock mutex
 
 	// Actions to take at some time. This is used to implement the
-	// standard library&#39;s time package.
+	// standard library's time package.
 	// Must hold timersLock to access.
 	timers []*timer
 
-	// Number of timers in P&#39;s heap.
+	// Number of timers in P's heap.
 	numTimers atomic.Uint32
 
-	// Number of timerDeleted timers in P&#39;s heap.
+	// Number of timerDeleted timers in P's heap.
 	deletedTimers atomic.Uint32
 
 	// Race context used while executing timer functions.
@@ -489,33 +489,33 @@ type p struct {
 
 Go 的调度流程本质上是一个**生产-消费**流程：
 
-{{&lt; figure src=&#34;/posts/golang-GMP/Go-调度本质.svg&#34; title=&#34;&#34; &gt;}}
+{{< figure src="/posts/golang-GMP/Go-调度本质.svg" title="" >}}
 
 为了实现简单、高效地调度 Goroutine，Golang 采用了 GMP 模型如下图所示：
 
-{{&lt; figure src=&#34;/posts/golang-GMP/GMP.svg&#34; title=&#34;&#34; &gt;}}
+{{< figure src="/posts/golang-GMP/GMP.svg" title="" >}}
 
 - `global run queue`: 存放等待运行的 G
 - `local run queue`: 256 大小的 array，用于存放等待运行的 G
 - `runnext`: 存放下一个将要运行的 G
 
-&gt; 由于将 Golang 的调度流程看作**生产者-消费者**流程，因此接下来将分别从生产者、消费者两个方面深入了解。
+> 由于将 Golang 的调度流程看作**生产者-消费者**流程，因此接下来将分别从生产者、消费者两个方面深入了解。
 
 ##### **Goroutine** 的生产端
 
 Goroutine 生产流程：
 
-{{&lt; figure src=&#34;/posts/golang-GMP/Goroutine-Producer.svg&#34; title=&#34;&#34; &gt;}}
+{{< figure src="/posts/golang-GMP/Goroutine-Producer.svg" title="" >}}
 
 ##### **Goroutine** 的消费端
 
-&gt; TODO
-&gt;
-&gt; 关于消费端函数调用链还需完善！！！
+> TODO
+>
+> 关于消费端函数调用链还需完善！！！
 
 Goroutine 消费流程：
 
-{{&lt; figure src=&#34;/posts/golang-GMP/Kyden-blog-Goroutine-Consumer.svg&#34; title=&#34;&#34; &gt;}}
+{{< figure src="/posts/golang-GMP/Kyden-blog-Goroutine-Consumer.svg" title="" >}}
 
 ---
 
@@ -531,12 +531,12 @@ type gobuf struct {
 	//
 	// ctxt is unusual with respect to GC: it may be a
 	// heap-allocated funcval, so GC needs to track it, but it
-	// needs to be set and cleared from assembly, where it&#39;s
+	// needs to be set and cleared from assembly, where it's
 	// difficult to have write barriers. However, ctxt is really a
 	// saved, live register, and we only ever exchange it between
 	// the real register and the gobuf. Hence, we treat it as a
 	// root during stack scanning, which means assembly that saves
-	// and restores it doesn&#39;t need write barriers. It&#39;s still
+	// and restores it doesn't need write barriers. It's still
 	// typed as a pointer so that any other writes from Go get
 	// write barriers.
 	sp   uintptr
@@ -566,23 +566,23 @@ Goroutine 属于协程的一种，因此存在运行态、阻塞态等各种状�
 package main
 
 import (
-	&#34;fmt&#34;
-	&#34;time&#34;
+	"fmt"
+	"time"
 )
 
 func main() {
-	fmt.Println(&#34;Before: &#34;, time.Now())
+	fmt.Println("Before: ", time.Now())
 
 	time.Sleep(30 * time.Minute)
 
-	fmt.Println(&#34;After: &#34;, time.Now())
+	fmt.Println("After: ", time.Now())
 }
 ```
 
 函数调用链如下：
 
 ```Go
-time.Sleep -&gt;
+time.Sleep ->
   runtime.timeSleep {
     ...
     gp := getg()
@@ -590,7 +590,7 @@ time.Sleep -&gt;
     ...
     t.arg = gp
     ...
-  } -&gt;
+  } ->
     gopark(resetForSleep, unsafe.Pointer(t), waitReasonSleep, traceBlockSleep, 1)
 ```
 
@@ -604,9 +604,9 @@ time.Sleep -&gt;
 package main
 
 import (
-	&#34;fmt&#34;
-	&#34;sync&#34;
-	&#34;time&#34;
+	"fmt"
+	"sync"
+	"time"
 )
 
 func main() {
@@ -614,17 +614,17 @@ func main() {
 	var wg = sync.WaitGroup{}
 	wg.Add(2)
 
-	go func(ch chan&lt;- int) {
+	go func(ch chan<- int) {
 		defer close(ch)
 		defer wg.Done()
 
 		time.Sleep(time.Second)
-		ch &lt;- 1
+		ch <- 1
 	}(ch)
 
-	go func(ch &lt;-chan int) {
+	go func(ch <-chan int) {
 		defer wg.Done()
-		val := &lt;-ch
+		val := <-ch
 		fmt.Println(val)
 	}(ch)
 
@@ -632,11 +632,11 @@ func main() {
 }
 ```
 
-函数 `ch&lt;-` 调用链如下：
+函数 `ch<-` 调用链如下：
 
 ```Go
-ch&lt;- -&gt;
-  runtime.chansend1 -&gt;
+ch<- ->
+  runtime.chansend1 ->
   runtime.chansend {
     ...
     gp := getg()
@@ -645,22 +645,22 @@ ch&lt;- -&gt;
     gp.waiting = mysg
     gp.param = nil
     c.sendq.enqueue(mysg)
-    // Signal to anyone trying to shrink our stack that we&#39;re about
-    // to park on a channel. The window between when this G&#39;s status
+    // Signal to anyone trying to shrink our stack that we're about
+    // to park on a channel. The window between when this G's status
     // changes and when we set gp.activeStackChans is not safe for
     // stack shrinking.
     gp.parkingOnChan.Store(true)
-    gopark(chanparkcommit, unsafe.Pointer(&amp;c.lock), waitReasonChanSend, traceBlockChanSend, 2)
+    gopark(chanparkcommit, unsafe.Pointer(&c.lock), waitReasonChanSend, traceBlockChanSend, 2)
     ...
-  } -&gt;
+  } ->
   gopark
 ```
 
-函数 `ch&lt;-` 调用链如下：
+函数 `ch<-` 调用链如下：
 
 ```Go
-&lt;-ch -&gt;
-  runtime.chanrecv1(c *hchan, elem unsafe.Pointer) -&gt;
+<-ch ->
+  runtime.chanrecv1(c *hchan, elem unsafe.Pointer) ->
     runtime.chanrecv(c *hchan, ep unsafe.Pointer, block bool) (selected, received bool) {
       ...
       // no sender available: block on this channel.
@@ -671,13 +671,13 @@ ch&lt;- -&gt;
       mysg.g = gp
       ...
       c.recvq.enqueue(mysg)
-      // Signal to anyone trying to shrink our stack that we&#39;re about
-      // to park on a channel. The window between when this G&#39;s status
+      // Signal to anyone trying to shrink our stack that we're about
+      // to park on a channel. The window between when this G's status
       // changes and when we set gp.activeStackChans is not safe for
       // stack shrinking.
       gp.parkingOnChan.Store(true)
-      gopark(chanparkcommit, unsafe.Pointer(&amp;c.lock), waitReasonChanReceive, traceBlockChanRecv, 2)
-    } -&gt;
+      gopark(chanparkcommit, unsafe.Pointer(&c.lock), waitReasonChanReceive, traceBlockChanRecv, 2)
+    } ->
       runtime.gopark(unlockf func(*g, unsafe.Pointer) bool, lock unsafe.Pointer, reason waitReason, traceReason traceBlockReason, traceskip int)
 ```
 
@@ -719,7 +719,7 @@ type sudog struct {
 	ticket      uint32
 
 	// isSelect indicates g is participating in a select, so
-	// g.selectDone must be CAS&#39;d to win the wake-up race.
+	// g.selectDone must be CAS'd to win the wake-up race.
 	isSelect bool
 
 	// success indicates whether communication over channel c
@@ -760,7 +760,7 @@ type hchan struct {
 	// lock protects all fields in hchan, as well as several
 	// fields in sudogs blocked on this channel.
 	//
-	// Do not change another G&#39;s status while holding this lock
+	// Do not change another G's status while holding this lock
 	// (in particular, do not ready a G), as this can deadlock
 	// with stack shrinking.
 	lock mutex
@@ -780,11 +780,11 @@ type waitq struct {
 package main
 
 import (
-	&#34;net&#34;
+	"net"
 )
 
 func main() {
-	l, _ := net.Listen(&#34;tcp&#34;, &#34;:6633&#34;)
+	l, _ := net.Listen("tcp", ":6633")
 
 	for {
 		conn, _ := l.Accept()
@@ -803,44 +803,44 @@ func main() {
 函数 `conn.Read` 调用链如下：
 
 ```Go
-conn.Read(buf) ---&gt;
-  net.(*conn).Read(b []byte) (int, error) ---&gt;
-    net.(*netFD).Read(p []byte) (n int, err error) ---&gt;
-      poll.(*FD).Read(p []byte) (int, error) ---&gt;
-        poll.(*pollDesc).waitRead(isFile bool) error ---&gt;
-          poll.(*pollDesc).wait(mode int, isFile bool) error ---&gt;
-            runtime.poll_runtime_pollWait(pd *pollDesc, mode int) int ---&gt;
+conn.Read(buf) --->
+  net.(*conn).Read(b []byte) (int, error) --->
+    net.(*netFD).Read(p []byte) (n int, err error) --->
+      poll.(*FD).Read(p []byte) (int, error) --->
+        poll.(*pollDesc).waitRead(isFile bool) error --->
+          poll.(*pollDesc).wait(mode int, isFile bool) error --->
+            runtime.poll_runtime_pollWait(pd *pollDesc, mode int) int --->
               runtime.netpollblock(pd *pollDesc, mode int32, waitio bool) bool {
-                gpp := &amp;pd.rg
-                if mode == &#39;w&#39; {
-                  gpp = &amp;pd.wg
+                gpp := &pd.rg
+                if mode == 'w' {
+                  gpp = &pd.wg
                 }
                 ...
                 gopark(netpollblockcommit, unsafe.Pointer(gpp), waitReasonIOWait, traceBlockNet, 5)
                 ...
-              } ---&gt;
+              } --->
                 gopark(unlockf func(*g, unsafe.Pointer) bool, lock unsafe.Pointer, reason waitReason, traceReason traceBlockReason, traceskip int)
 ```
 
 函数 `conn.Write` 调用链如下：
 
 ```Go
-conn.Write(buf) ---&gt;
-  net.(*conn).Write(b []byte) (int, error) ---&gt;
-    net.(*netFD).Write(p []byte) (n int, err error) ---&gt;
-      poll.(*FD).Write(p []byte) (int, error) ---&gt;
-        poll.(*pollDesc).waitWrite(isFile bool) error ---&gt;
-          poll.(*pollDesc).wait(mode int, isFile bool) error ---&gt;
-            runtime.poll_runtime_pollWait(pd *pollDesc, mode int) int ---&gt;
+conn.Write(buf) --->
+  net.(*conn).Write(b []byte) (int, error) --->
+    net.(*netFD).Write(p []byte) (n int, err error) --->
+      poll.(*FD).Write(p []byte) (int, error) --->
+        poll.(*pollDesc).waitWrite(isFile bool) error --->
+          poll.(*pollDesc).wait(mode int, isFile bool) error --->
+            runtime.poll_runtime_pollWait(pd *pollDesc, mode int) int --->
               runtime.netpollblock(pd *pollDesc, mode int32, waitio bool) bool {
-                gpp := &amp;pd.rg
-                if mode == &#39;w&#39; {
-                  gpp = &amp;pd.wg
+                gpp := &pd.rg
+                if mode == 'w' {
+                  gpp = &pd.wg
                 }
                 ...
                 gopark(netpollblockcommit, unsafe.Pointer(gpp), waitReasonIOWait, traceBlockNet, 5)
                 ...
-              } ---&gt;
+              } --->
                 gopark(unlockf func(*g, unsafe.Pointer) bool, lock unsafe.Pointer, reason waitReason, traceReason traceBlockReason, traceskip int)
 ```
 
@@ -854,9 +854,9 @@ conn.Write(buf) ---&gt;
 package main
 
 import (
-	&#34;fmt&#34;
-	&#34;sync&#34;
-	&#34;time&#34;
+	"fmt"
+	"sync"
+	"time"
 )
 
 var mtx sync.Mutex
@@ -866,16 +866,16 @@ func main() {
 		mtx.Lock()
 		defer mtx.Unlock()
 
-		fmt.Printf(&#34;Start\n&#34;)
+		fmt.Printf("Start\n")
 		time.Sleep(time.Second * 10)
-		fmt.Printf(&#34;End\n&#34;)
+		fmt.Printf("End\n")
 	}()
 
 	time.Sleep(time.Second) // Ensure child goroutine gets the mutex before main goroutine
 
-	fmt.Printf(&#34;Try to acquire mutex\n&#34;)
+	fmt.Printf("Try to acquire mutex\n")
 	mtx.Lock()
-	fmt.Printf(&#34;Main goroutine\n&#34;)
+	fmt.Printf("Main goroutine\n")
 	mtx.Unlock()
 }
 ```
@@ -883,15 +883,15 @@ func main() {
 函数 `mtx.Lock()` 调用链如下：
 
 ```Go
-mtx.Lock() ---&gt;
-	sync.(*Mutex).Lock() ---&gt;
-		sync.(*Mutex) lockSlow() ---&gt;
-			sync.runtime_SemacquireMutex(s *uint32, lifo bool, skipframes int) ---&gt;
-				sync.sync_runtime_SemacquireMutex(addr *uint32, lifo bool, skipframes int) ---&gt;
+mtx.Lock() --->
+	sync.(*Mutex).Lock() --->
+		sync.(*Mutex) lockSlow() --->
+			sync.runtime_SemacquireMutex(s *uint32, lifo bool, skipframes int) --->
+				sync.sync_runtime_SemacquireMutex(addr *uint32, lifo bool, skipframes int) --->
 					runtime.semacquire1(addr *uint32, lifo bool, profile semaProfileFlags, skipframes int, reason waitReason) {
 						gp := getg()
 						if gp != gp.m.curg {
-							throw(&#34;semacquire not on the G stack&#34;)
+							throw("semacquire not on the G stack")
 						}
 
 						// Easy case.
@@ -908,13 +908,13 @@ mtx.Lock() ---&gt;
 						s := acquireSudog()
 						root := semtable.rootFor(addr)
 						...
-							// Any semrelease after the cansemacquire knows we&#39;re waiting
+							// Any semrelease after the cansemacquire knows we're waiting
 							// (we set nwait above), so go to sleep.
 							root.queue(addr, s, lifo)
-							goparkunlock(&amp;root.lock, reason, traceBlockSync, 4&#43;skipframes)
+							goparkunlock(&root.lock, reason, traceBlockSync, 4+skipframes)
 							...
-					} ---&gt;
-						goparkunlock(lock *mutex, reason waitReason, traceReason traceBlockReason, traceskip int) ---&gt;
+					} --->
+						goparkunlock(lock *mutex, reason waitReason, traceReason traceBlockReason, traceskip int) --->
 							gopark(unlockf func(*g, unsafe.Pointer) bool, lock unsafe.Pointer, reason waitReason, traceReason traceBlockReason, traceskip int)
 ```
 
@@ -950,7 +950,7 @@ type semTable [semTabSize]struct {
 }
 ```
 
-{{&lt; figure src=&#34;/posts/golang-GMP/Kyden-blog-semTable.svg&#34; title=&#34;&#34; &gt;}}
+{{< figure src="/posts/golang-GMP/Kyden-blog-semTable.svg" title="" >}}
 
 ### runtime 不可拦截 goroutine 阻塞场景解析
 
@@ -968,7 +968,7 @@ system monitor，高优先级，在专有线程中执行，不需要绑定 `p`.
 
 - Runtime 构成：**Scheduler**、**Netpoll**、**内存管理**、**垃圾回收**
 - GMP：M - 任务消费者；G - 计算任务；P - 可以使用 CPU 的 token
-- GMP 中的队列抽象：P 的本地 runnext 字段 --&gt;&gt; P 的 local run queue --&gt;&gt; global run queue；采用多级队列减少锁竞争
+- GMP 中的队列抽象：P 的本地 runnext 字段 -->> P 的 local run queue -->> global run queue；采用多级队列减少锁竞争
 - 调度循环：线程 M 在持有 P 的情况下不断消费运行队列中的 G 的过程
 - 处理阻塞：
   - runtime 可以接管的阻塞：
@@ -985,22 +985,22 @@ system monitor，高优先级，在专有线程中执行，不需要绑定 `p`.
 
 ---
 
-## V. Q &amp; A
+## V. Q & A
 
 1. 为什么阻塞等待的 goroutine，有时表现为 `g` 有时表现为 `sudog` ？
 
 	- `sudog` (pseudo-g) 表示等待列表中的 `g`，例如用于在 channel 上的 `send`/`recv`.
 	- `g` 与同步对象是多对多的关系: 一个 `g` 可以出现在多个等待列表中，因此一个 `g` 可能有多个 `sudog`；
 	- 很多 `g` 可能在等待同一个同步对象，因此一个对象可能有很多 `sudog`
-	- &gt; 一个 `g` 可能对应多个 `sudog`，比如一个 `g` 会同时 `select` 多个 channel
+	- > 一个 `g` 可能对应多个 `sudog`，比如一个 `g` 会同时 `select` 多个 channel
 
 ---
 
 ## VI. Reference
 
 - [Golang的协程调度器原理及GMP设计思想](https://www.yuque.com/aceld/golang/srxd6d#0810e304)
-- [Golang 生产-消费调度流程: Producer](https://www.figma.com/proto/gByIPDf4nRr6No4dNYjn3e/bootstrap?page-id=242%3A7&amp;node-id=242%3A215&amp;viewport=516%2C209%2C0.07501539587974548&amp;scaling=scale-down-width)
-- [Golang 生产-消费调度流程: Consumer](https://www.figma.com/proto/gByIPDf4nRr6No4dNYjn3e/bootstrap?page-id=143%3A212&amp;node-id=143%3A213&amp;viewport=134%2C83%2C0.06213996931910515&amp;scaling=scale-down-width)
+- [Golang 生产-消费调度流程: Producer](https://www.figma.com/proto/gByIPDf4nRr6No4dNYjn3e/bootstrap?page-id=242%3A7&node-id=242%3A215&viewport=516%2C209%2C0.07501539587974548&scaling=scale-down-width)
+- [Golang 生产-消费调度流程: Consumer](https://www.figma.com/proto/gByIPDf4nRr6No4dNYjn3e/bootstrap?page-id=143%3A212&node-id=143%3A213&viewport=134%2C83%2C0.06213996931910515&scaling=scale-down-width)
 - [极端情况下收缩 Go 的线程数](https://xargin.com/shrink-go-threads/)
 - [Go Scheduler 变更史](https://github.com/golang-design/history#scheduler)
 - [internal/poll/fd_poll_runtime.go](https://github.com/golang/go/blob/release-branch.go1.10/src/internal/poll/fd_poll_runtime.go)

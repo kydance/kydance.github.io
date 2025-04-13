@@ -1,11 +1,11 @@
 # MySQL 核心操作精讲：从基础语法到实战应用
 
 
-{{&lt; admonition type=abstract title=&#34;导语&#34; open=true &gt;}}
+{{< admonition type=abstract title="导语" open=true >}}
 数据库是现代应用程序的核心基础设施，而 MySQL 作为最流行的关系型数据库之一，其重要性不言而喻。本文将带你系统掌握 MySQL 的核心操作，从基础的增删改查到表结构管理，从数据类型选择到性能优化，为你提供一份全面且实用的 MySQL 开发指南。无论你是数据库新手，还是想要提升数据库开发技能的开发者，都能从本文中获得实用的知识和技巧。
-{{&lt; /admonition &gt;}}
+{{< /admonition >}}
 
-&lt;!--more--&gt;
+<!--more-->
 
 ## 插入数据 `INSERT`
 
@@ -13,7 +13,7 @@
 INSERT INTO TableName
     [columnName_1, columnName_2, ...]
 VALUES(
-    &lt;columnValue_1&gt;, &lt;columnValue_2, ...&gt;, ...
+    <columnValue_1>, <columnValue_2, ...>, ...
     );
 ```
 
@@ -24,9 +24,9 @@ DELETE FROM TableName
 WHERE Condition;
 ```
 
-{{&lt; admonition type=Tips title=&#34;省略 WHERE 子句&#34; open=true &gt;}}
+{{< admonition type=Tips title="省略 WHERE 子句" open=true >}}
 当使用 `DELETE` 且省略 `WHERE` 子句时，它将删除所有行
-{{&lt; /admonition &gt;}}
+{{< /admonition >}}
 
 ## 更新数据 `UPDATE`
 
@@ -37,39 +37,39 @@ SET columnName_1 = columnValue_1,
 WHERE Condition;
 ```
 
-{{&lt; admonition type=Tips title=&#34;UPDATE&#34; open=true &gt;}}
+{{< admonition type=Tips title="UPDATE" open=true >}}
 
 - 更新多个 column 时，只需要使用一个 `SET` 命令，且每一个`columnName = columnValue`之间使用 `,` 分割（最后一列不需要）
 - 可以嵌套**子查询**
-{{&lt; /admonition &gt;}}
+{{< /admonition >}}
 
 ## 检索数据 `SELECT`
 
 ```sql
 SELECT [DISTINCT]
-    &lt;column1, column2, ...&gt;
+    <column1, column2, ...>
 FROM
-    &lt;Table1 [[AS]&lt;aliasName&gt;], table2, ...&gt;
+    <Table1 [[AS]<aliasName>], table2, ...>
 WHERE
-    &lt;Condition1 [AND / OR / NOT] Condition2 ...&gt;
+    <Condition1 [AND / OR / NOT] Condition2 ...>
 GROUP BY
-    &lt;Column1, Column2, ...&gt;
+    <Column1, Column2, ...>
 HAVING
-    &lt;Column1, Column2, ...&gt;
+    <Column1, Column2, ...>
 ORDER BY
-    &lt;Column1 [ASC / DESC], Column2 [ASC / DESC], ...&gt;
+    <Column1 [ASC / DESC], Column2 [ASC / DESC], ...>
 LIMIT
-    &lt;A&gt; OFFSET &lt;B&gt;;
+    <A> OFFSET <B>;
 ```
 
-{{&lt; admonition type=Tips title=&#34;SELECT&#34; open=true &gt;}}
+{{< admonition type=Tips title="SELECT" open=true >}}
 
 - `DISTINCT` 指示数据库只返回不同的值，且**必须放在所有列名之前，作用于所有的列**
-- `LIMIT` 指定返回的行数, `OFFSET` 指定从哪里开始计算，`LIMIT 4 OFFSET 3 &lt;=&gt; LIMIT 3, 4`
+- `LIMIT` 指定返回的行数, `OFFSET` 指定从哪里开始计算，`LIMIT 4 OFFSET 3 <=> LIMIT 3, 4`
 - `ORDER BY` 根据一个或多个列的名字进行排序，默认升序 `ASC`，降序 `DESC`
 - `WHERE` 指定筛选条件：
-  - `=` / `&lt;&gt;` / `!=` / `&lt;` / `&lt;=` / `!&lt;` / `&gt;` /
-`&gt;=` / `!&gt;` / `BETWEEN ... AND ...` / `IS NULL`
+  - `=` / `<>` / `!=` / `<` / `<=` / `!<` / `>` /
+`>=` / `!>` / `BETWEEN ... AND ...` / `IS NULL`
   - `AND` / `OR` / `IN` / `NOT`
   - `LIKE`: `%` 表示匹配**任何字符出现任意次数**，`_` 表示匹配**任意单个字符**
 - `GROUP BY` 吧数据进行逻辑分组，以便能对每一个组进行聚合计算
@@ -78,7 +78,7 @@ LIMIT
   - `WHERE` 在分组前过滤，`HAVING` 在分组后过滤（`WHERE`排除掉的行不包括在分组内）
   - `HAVING` 应与 `GROUP BY` 结合使用
 
-{{&lt; /admonition &gt;}}
+{{< /admonition >}}
 
 ---
 
@@ -87,15 +87,15 @@ LIMIT
 ### 查看表结构
 
 ```sql
-DESC &lt;tbName&gt;;
+DESC <tbName>;
 
-SHOW CREATE TABLE &lt;tbName&gt;
+SHOW CREATE TABLE <tbName>
 ```
 
 ### 建表
 
 ```SQL
-CREATE TABLE &lt;tbName&gt; (
+CREATE TABLE <tbName> (
   ... [COMMENTS],
   ... [COMMENTS],
   ...
@@ -106,16 +106,16 @@ CREATE TABLE &lt;tbName&gt; (
 
 ```SQL
 -- 添加字段
-ALTER TABLE &lt;tbName&gt; ADD &lt;columnName&gt; &lt;dataType&gt;(LENGTH) [&lt;COMMENT&gt; &#39;comments&#39;] [CONSTRAINT];
+ALTER TABLE <tbName> ADD <columnName> <dataType>(LENGTH) [<COMMENT> 'comments'] [CONSTRAINT];
 
 -- 修改字段数据类型
-ALTER TABLE &lt;tbName&gt; MODIFY &lt;columnName&gt; &lt;newDataType&gt;(LENGTH);
+ALTER TABLE <tbName> MODIFY <columnName> <newDataType>(LENGTH);
 
 -- 修改字段数据类型和字段名
-ALTER TABLE &lt;tbName&gt; CHANGE &lt;oldName&gt; &lt;newName&gt; &lt;dataType&gt;(LENGTH) [COMMENT &#39;comments&#39;][CONSTRAINT];
+ALTER TABLE <tbName> CHANGE <oldName> <newName> <dataType>(LENGTH) [COMMENT 'comments'][CONSTRAINT];
 
 -- 删除字段
-ALTER TABLE &lt;tbName&gt; DROP &lt;columnName&gt;;
+ALTER TABLE <tbName> DROP <columnName>;
 ```
 
 ### 表删除
@@ -123,21 +123,21 @@ ALTER TABLE &lt;tbName&gt; DROP &lt;columnName&gt;;
 永久删除表结构
 
 ```SQL
-DROP TABLE [IF EXISTS] &lt;TableName&gt;;
+DROP TABLE [IF EXISTS] <TableName>;
 ```
 
 删除表格内容，保留表结构
 
 ```SQL
-TRUNCATE [TABLE] &lt;TableName&gt;;
+TRUNCATE [TABLE] <TableName>;
 ```
 
-{{&lt; admonition type=Tips title=&#34;&#34; open=true &gt;}}
+{{< admonition type=Tips title="" open=true >}}
 
 - `DELETE`: 逐行删除表中记录数据
 - `TRUNCATE`: 直接删除原来的表，然后重新建立一个一模一样的表，执行速度比 `DELETE` 快
 
-{{&lt; /admonition &gt;}}
+{{< /admonition >}}
 
 ### 表重命名
 
@@ -154,8 +154,8 @@ ALTER TABLE oldTable RENAME [TO | AS] newTable;
 | MEDIUMINT | 3 Byte | (-8388608, 8388607) |
 | INT / INTEGER | 4 Byte | $(−2^32, 2^32−1)$ |
 | BIGINT | 8 Byte | (−2^63 , 2^63−1) |
-| FLOAT | 4 Byte | (-3.402823466E&#43;38, 3.402823466351E&#43;38) |
-| DOUBLE | 8 Byte | (-1.7976931348623157E&#43;308, 1.7976931348623157E&#43;308) |
+| FLOAT | 4 Byte | (-3.402823466E+38, 3.402823466351E+38) |
+| DOUBLE | 8 Byte | (-1.7976931348623157E+308, 1.7976931348623157E+308) |
 | DECIMAL | | |
 
 | Type | Size(Byte) | DESC |
@@ -226,7 +226,7 @@ ALTER TABLE oldTable RENAME [TO | AS] newTable;
 
 索引实现方式
 
-- B&#43;Tree 索引
+- B+Tree 索引
 - Hash Table 索引
 - 位图索引
 

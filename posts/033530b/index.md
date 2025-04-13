@@ -1,11 +1,11 @@
 # 使用 FFmpeg 转换哔哩哔哩缓存视频为 MP4 格式
 
 
-{{&lt; admonition type=abstract title=&#34;导语&#34; open=true &gt;}}
+{{< admonition type=abstract title="导语" open=true >}}
 **本文介绍如何使用 FFmpeg 工具将哔哩哔哩缓存的 m4s 视频文件转换为标准 mp4 格式**
-{{&lt; /admonition &gt;}}
+{{< /admonition >}}
 
-&lt;!--more--&gt;
+<!--more-->
 
 ## ffmpeg 安装
 

@@ -1,11 +1,11 @@
 # 微服务架构实战：打造高可用的资格校验服务
 
 
-{{&lt; admonition type=abstract title=&#34;导语&#34; open=true &gt;}}
+{{< admonition type=abstract title="导语" open=true >}}
 如何设计一个既满足业务需求，又具备良好扩展性和可维护性的微服务？本文将以资格校验服务为例，深入探讨微服务架构设计的精髓。从三层架构的实现、依赖注入原则的应用，到服务发现、流量镜像等高级特性的落地，带你掌握企业级微服务开发的核心技巧。
-{{&lt; /admonition &gt;}}
+{{< /admonition >}}
 
-&lt;!--more--&gt;
+<!--more-->
 
 ## 资格服务的三层架构设计
 
@@ -18,7 +18,7 @@
 
 从架构上看，层与层之间的依赖关系自上而下递进，即控制层依赖业务层，业务层依赖存储层，具体代码架构如下图所示：
 
-{{&lt; figure src=&#34;/posts/check-rule/Outline.svg&#34; title=&#34;&#34; &gt;}}
+{{< figure src="/posts/check-rule/Outline.svg" title="" >}}
 
 在各层之间的代码设计上，遵循了严格的依赖倒置原则（DIP）。
 具体来说， **控制层（Controller）可以导入业务层（Service）和存储层（Store）** 的包，而非直接与存储层交互。
@@ -36,11 +36,11 @@
 在控制层中，我们通过 `services.Servicer` 接口将请求分发给业务层（Service）。
 业务逻辑处理完成后，控制层将结果整合并返回给客户端，从而实现业务路由的功能。
 
-{{&lt; admonition warning &#34;FIXME&#34; ture &gt;}}
+{{< admonition warning "FIXME" ture >}}
 框图需要修改，应该严格按照具体操作来画
-{{&lt; /admonition &gt;}}
+{{< /admonition >}}
 
-{{&lt; figure src=&#34;/posts/check-rule/Controller.svg&#34; title=&#34;控制层结构示意图&#34; &gt;}}
+{{< figure src="/posts/check-rule/Controller.svg" title="控制层结构示意图" >}}
 
 ### 业务层（Biz/Service）
 
@@ -50,7 +50,7 @@
 在此层级中，所有的业务逻辑代码应集中于此，确保业务逻辑与其他逻辑（如存储和控制）解耦。
 业务层的设计目标是让代码更具扩展性和可维护性。
 
-{{&lt; figure src=&#34;/posts/check-rule/service-store.svg&#34; title=&#34;业务层与存储层的交互&#34; &gt;}}
+{{< figure src="/posts/check-rule/service-store.svg" title="业务层与存储层的交互" >}}
 
 ### 存储层（Store）
 
@@ -82,7 +82,7 @@
 
 在 Controller 层中，我们定义了如下的代码结构：
 
-{{&lt; figure src=&#34;/posts/check-rule/class-Controllers.v2.svg&#34; title=&#34;&#34; &gt;}}
+{{< figure src="/posts/check-rule/class-Controllers.v2.svg" title="" >}}
 
 它持有 `services.Servicer` 接口，并且实现了 `POST`/`HEAD`/`GET` 等 HTTP 方法，
 用于处理 HTTP 请求的响应、请求参数的解析与合法性校验、Service 层业务逻辑的调用执行等操作。
@@ -91,7 +91,7 @@
 
 在 Service 层中，我们定义了如下的代码结构：
 
-{{&lt; figure src=&#34;/posts/check-rule/class-Services.v2.svg&#34; title=&#34;&#34; &gt;}}
+{{< figure src="/posts/check-rule/class-Services.v2.svg" title="" >}}
 
 `Server` 接口定义了该服务所支持的功能，实现了接口就是规范的功能。
 与此同时，在 `Server` 的实现类（例如，`DjcRuleService`） 中持有 `rule.Ruler` 接口的引用，用于执行资格校验规则。
@@ -103,7 +103,7 @@
 
 代码结构定义如下：
 
-{{&lt; figure src=&#34;/posts/check-rule/class-Store.v2.svg&#34; title=&#34;&#34; &gt;}}
+{{< figure src="/posts/check-rule/class-Store.v2.svg" title="" >}}
 
 ## 微服务部署
 
@@ -176,7 +176,7 @@ name=djc_check_rule_go_test
 
 - `weight.total` 描述了所有部署环境的权重总和，通常是 100
 - `weight.depcnt` 描述了该服务部署在本环境下（测试环境或生产环境）的服务数量
-- `weight.weight_&lt;number&gt;` 描述了第 `&lt;number&gt;` 服务的获取请求数据的占比（`weight_&lt;number&gt; / weight.total`）
+- `weight.weight_<number>` 描述了第 `<number>` 服务的获取请求数据的占比（`weight_<number> / weight.total`）
 - `maintenance.status` 描述了当前环境是否已发布 / 正常
 - `limit.qps` 描述了该服务所支持的最大 QPS
 - `deployment[_number].name` 描述了该服务的环境部署名称
@@ -194,8 +194,8 @@ mod=xxxx
 cmd=xxxxx
 domain=
 ip_num=1
-defaultip_0=&lt;ip&gt;
-defaultport_0=&lt;port&gt;
+defaultip_0=<ip>
+defaultport_0=<port>
 
 [polaris]
 namespace=Development
@@ -211,7 +211,7 @@ service=gdp.aaa.bbb.ccc
 
 一旦通过上面的流程确定了 `polaris.service` 就可以确定 GDP 中的具体代码，大致流程如下：
 
-{{&lt; figure src=&#34;/posts/check-rule/服务注册与发现.svg&#34; title=&#34;&#34; &gt;}}
+{{< figure src="/posts/check-rule/服务注册与发现.svg" title="" >}}
 
 ## 【接口测试】流量回放与镜像
 
@@ -237,7 +237,7 @@ service=gdp.aaa.bbb.ccc
 另外，为了充分验证代码的正确性，我们采用了两种逐层递进的验证方式，
 即首先在 CLS 日志系统中抓取线上流量，然后通过流量回放技术手段，在测试环境（或生产环境）进行模拟请求，确保代码逻辑的稳定性，如下图所示；
 
-{{&lt; figure src=&#34;/posts/check-rule/Traffic-replay.svg&#34; title=&#34;&#34; &gt;}}
+{{< figure src="/posts/check-rule/Traffic-replay.svg" title="" >}}
 
 在进行代码稳定性验证阶段，主要关注以下几个指标：
 
@@ -255,7 +255,7 @@ service=gdp.aaa.bbb.ccc
 在充分验证重构代码的**稳定性**之后，接下来就需要验证代码的**准确性**。
 这里采用了流量镜像的强大验证技术手段，也就是说，在测试环境（或生产环境）中，直接对线上流量进行镜像，并持续监控镜像流量，确保代码逻辑的准确性。
 
-{{&lt; figure src=&#34;/posts/check-rule/Traffic-Mirror.svg&#34; title=&#34;&#34; &gt;}}
+{{< figure src="/posts/check-rule/Traffic-Mirror.svg" title="" >}}
 
 在进行代码准确性性验证阶段，主要关注以下几个指标：
 

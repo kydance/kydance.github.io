@@ -1,11 +1,11 @@
 # Go 内存优化实战：逃逸分析完全指南
 
 
-{{&lt; admonition type=abstract title=&#34;导语&#34; open=true &gt;}}
+{{< admonition type=abstract title="导语" open=true >}}
 在 Go 语言中，编译器通过逃逸分析来决定变量的内存分配位置，这直接影响着程序的性能和内存使用效率。但很多开发者对此知之甚少，导致代码中潜藏着性能隐患。本文将带你深入理解 Go 的逃逸分析机制，通过丰富的示例解析各种逃逸场景，帮助你掌握内存优化的关键技巧。从理论到实践，让你的 Go 程序更快、更高效。
-{{&lt; /admonition &gt;}}
+{{< /admonition >}}
 
-&lt;!--more--&gt;
+<!--more-->
 
 ## I. Golang Escape Ananlysis
 
@@ -30,18 +30,18 @@ Golang 中的引用类型有函数类型 `func()`，接口类型 `interface`，�
 ```Go
 package main
 
-import &#34;fmt&#34;
+import "fmt"
 
 func main() {
 	data := []interface{}{1, 2}
 	val := data[0]
-	fmt.Printf(&#34;%v\n&#34;, val)
+	fmt.Printf("%v\n", val)
 	data[0] = 3
 }
 ```
 
 ```Bash
-$ go build -v -gcflags=&#39;-m&#39; ./main.go
+$ go build -v -gcflags='-m' ./main.go
 command-line-arguments
 # command-line-arguments
 ./main.go:8:12: inlining call to fmt.Printf
@@ -61,23 +61,23 @@ command-line-arguments
 ```Go
 package main
 
-import &#34;fmt&#34;
+import "fmt"
 
 func main() {
 	dat := make(map[string]interface{})
-	dat[&#34;BlogName&#34;] = &#34;Kyden&#39;s Blog&#34;
-	val := dat[&#34;BlogName&#34;]
-	fmt.Printf(&#34;%v\n&#34;, val)
+	dat["BlogName"] = "Kyden's Blog"
+	val := dat["BlogName"]
+	fmt.Printf("%v\n", val)
 }
 ```
 
 ```Bash
-$ go build -v -gcflags=&#39;-m&#39; ./main.go
+$ go build -v -gcflags='-m' ./main.go
 command-line-arguments
 # command-line-arguments
 ./main.go:9:12: inlining call to fmt.Printf
 ./main.go:6:13: make(map[string]interface {}) does not escape
-./main.go:7:20: &#34;Kyden&#39;s Blog&#34; escapes to heap
+./main.go:7:20: "Kyden's Blog" escapes to heap
 ./main.go:9:12: ... argument does not escape
 ```
 
@@ -91,26 +91,26 @@ command-line-arguments
 package main
 
 import (
-	&#34;fmt&#34;
+	"fmt"
 )
 
 func main() {
 	dat := make(map[interface{}]interface{})
-	dat[&#34;BlogName&#34;] = &#34;Kyden&#39;s Blog&#34;
-	val := dat[&#34;BlogName&#34;]
-	fmt.Printf(&#34;%v\n&#34;, val)
+	dat["BlogName"] = "Kyden's Blog"
+	val := dat["BlogName"]
+	fmt.Printf("%v\n", val)
 }
 ```
 
 ```Bash
-$ go build -v -gcflags=&#39;-m&#39; ./main.go
+$ go build -v -gcflags='-m' ./main.go
 command-line-arguments
 # command-line-arguments
 ./main.go:11:12: inlining call to fmt.Printf
 ./main.go:8:13: make(map[interface {}]interface {}) does not escape
-./main.go:9:6: &#34;BlogName&#34; escapes to heap
-./main.go:9:20: &#34;Kyden&#39;s Blog&#34; escapes to heap
-./main.go:10:13: &#34;BlogName&#34; does not escape
+./main.go:9:6: "BlogName" escapes to heap
+./main.go:9:20: "Kyden's Blog" escapes to heap
+./main.go:10:13: "BlogName" does not escape
 ./main.go:11:12: ... argument does not escape
 ```
 
@@ -124,19 +124,19 @@ command-line-arguments
 package main
 
 import (
-	&#34;fmt&#34;
+	"fmt"
 )
 
 func main() {
 	dat := make(map[string][]string)
-	dat[&#34;BlogName&#34;] = []string{&#34;Kyden&#39;s Blog&#34;}
-	val := dat[&#34;BlogName&#34;]
-	fmt.Printf(&#34;%v\n&#34;, val)
+	dat["BlogName"] = []string{"Kyden's Blog"}
+	val := dat["BlogName"]
+	fmt.Printf("%v\n", val)
 }
 ```
 
 ```Bash
-$ go build -v -gcflags=&#39;-m&#39; ./main.go
+$ go build -v -gcflags='-m' ./main.go
 command-line-arguments
 # command-line-arguments
 ./main.go:11:12: inlining call to fmt.Printf
@@ -155,19 +155,19 @@ command-line-arguments
 ```Go
 package main
 
-import &#34;fmt&#34;
+import "fmt"
 
 func main() {
 	dat := []*int{nil}
 	a := 10
-	dat[0] = &amp;a
-	fmt.Printf(&#34;%v\r\n&#34;, *dat[0])
-	fmt.Printf(&#34;%v\r\n&#34;, dat[0])
+	dat[0] = &a
+	fmt.Printf("%v\r\n", *dat[0])
+	fmt.Printf("%v\r\n", dat[0])
 }
 ```
 
 ```Bash
-$ go build -v -gcflags=&#39;-m&#39; ./main.go
+$ go build -v -gcflags='-m' ./main.go
 command-line-arguments
 # command-line-arguments
 ./main.go:9:12: inlining call to fmt.Printf
@@ -188,23 +188,23 @@ command-line-arguments
 ```Go
 package main
 
-import &#34;fmt&#34;
+import "fmt"
 
 func f(a *int) {
-	fmt.Printf(&#34;%v\n&#34;, *a)
+	fmt.Printf("%v\n", *a)
 	return
 }
 
 func main() {
 	a := 10
 	fn := f
-	fn(&amp;a)
-	fmt.Printf(&#34;a = %v\n&#34;, a)
+	fn(&a)
+	fmt.Printf("a = %v\n", a)
 }
 ```
 
 ```Bash
-$ go build -v -gcflags=&#39;-m&#39; ./main.go
+$ go build -v -gcflags='-m' ./main.go
 # command-line-arguments
 ./main.go:6:12: inlining call to fmt.Printf
 ./main.go:14:12: inlining call to fmt.Printf

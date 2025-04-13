@@ -1,7 +1,7 @@
 # 从零开始的 Arch Linux 完全上手指南：打造你的理想工作环境
 
 
-&lt;!--more--&gt;
+<!--more-->
 
 ## I. Install Arch
 
@@ -23,7 +23,7 @@ ventory 过程：略
 ip link
 
 # ...
-2: enp0s3: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 ...
+2: enp0s3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 ...
 # ...
 ```
 
@@ -81,10 +81,10 @@ $ pacman -Syyu
 $ pacstrap /mnt bash base base-devel linux linux-headers linux-firmware neovim xsel
 
 # fstab
-$ genfstab -U -p /mnt &gt;&gt; /mnt/etc/fstab
+$ genfstab -U -p /mnt >> /mnt/etc/fstab
 ```
 
-### 7. chroot -&gt; 设置系统属性
+### 7. chroot -> 设置系统属性
 
 #### 切换系统
 
@@ -141,7 +141,7 @@ $ passwd
 
 ```bash
 # ucode
-$ cat /proc/cpuinfo | grep &#34;model name&#34;
+$ cat /proc/cpuinfo | grep "model name"
 $ pacman -S intel-ucode # amd-ucode
 
 # 安装引导加载程序
@@ -227,7 +227,7 @@ $ yay -S fish
 # curl -L https://get.oh-my.fish | fish
 $ fish_config
 # 取消问候语
-$ set -U fish_greeting &#34;&#34;
+$ set -U fish_greeting ""
 
 $ sudo vim /etc/systemd/system/clash.service
 $ sudo systemctl daemon-reload
@@ -288,18 +288,18 @@ $ trans [Words]
 $ trans :zh [word]
 
 # 翻译到多种目标语言
-$ trans :zh&#43;ja word
+$ trans :zh+ja word
 
 # 翻译句子和短语
-$ trans en:zh &#34;word processor&#34;
-$ trans :zh &#34;To-morrow, and to-morrow, and to-morrow,&#34;
+$ trans en:zh "word processor"
+$ trans :zh "To-morrow, and to-morrow, and to-morrow,"
 
 # 简洁模式：默认情况下，Translate Shell 尽可能多的显示翻译信息。如果你希望只显示简要信息，只需要加上 -b选项。
-$ trans -b :zh &#34;Saluton, Mondo&#34;
-$ trans -b :@ja &#34;Saluton, Mondo&#34; #显示发音符号，如果有的话，如日语罗马音，汉语拼音
+$ trans -b :zh "Saluton, Mondo"
+$ trans -b :@ja "Saluton, Mondo" #显示发音符号，如果有的话，如日语罗马音，汉语拼音
 
 # 翻译文件或网页
-$ trans :zh file://&lt;input.txt&gt;
+$ trans :zh file://<input.txt>
 $ trans :zh https://github.com/kydance/
 
 # 进入交互模式
@@ -310,10 +310,10 @@ $ trans -shell en:fr
 Alais
 
 ```bash
-tsbz &#39;trans -b :zh&#39;
-tsz &#39;trans :zh&#39;
-tsbe &#39;trans -b :en&#39;
-tse &#39;trans :en&#39;
+tsbz 'trans -b :zh'
+tsz 'trans :zh'
+tsbe 'trans -b :en'
+tse 'trans :en'
 ```
 
 ---
@@ -344,7 +344,7 @@ $ yay -S wps-office wps-office-mui-zh-cn ttf-wps-fonts
 1. 设置`user.name`和`user.emal`
 
    ```bash
-   $ git config --global user.name &#34;kyden&#34;
+   $ git config --global user.name "kyden"
    $ git config --global user.email xxxxxx@gmail.com
 
    # Verify
@@ -355,7 +355,7 @@ $ yay -S wps-office wps-office-mui-zh-cn ttf-wps-fonts
 
    ```bash
    # 要求多次输入密码，可不要输入密码
-   $ ssh-keygen -t rsa -C &#39;xxxxxx@gmail.com&#39;
+   $ ssh-keygen -t rsa -C 'xxxxxx@gmail.com'
    ```
 
 3. GitHub 配置 SSH Keys
@@ -371,7 +371,7 @@ $ yay -S wps-office wps-office-mui-zh-cn ttf-wps-fonts
 - `git clone`
 - `git pull`
 - `git push`
-- `git commit -m &#39;commits&#39;` or `git commit -m &#39;commits&#39; kyden.go`
+- `git commit -m 'commits'` or `git commit -m 'commits' kyden.go`
 - `git add .` or `git kyden.go`
 - `git reflog`
 
@@ -381,8 +381,8 @@ $ yay -S wps-office wps-office-mui-zh-cn ttf-wps-fonts
 
 Steps:
 
-1. **GitHub** 上创建一个新的远程仓库 - `Create a new repo` -&gt; `Create repository`
-2. 本地仓库：创建并初始化 -&gt; 添加待上传到远程仓库的项目文件
+1. **GitHub** 上创建一个新的远程仓库 - `Create a new repo` -> `Create repository`
+2. 本地仓库：创建并初始化 -> 添加待上传到远程仓库的项目文件
 
     ```bash
     git init
@@ -391,7 +391,7 @@ Steps:
 3. 远程仓库和本地仓库关联
 
     ```bash
-    git remote add origin git@github.com:kydance/&lt;repository name&gt;
+    git remote add origin git@github.com:kydance/<repository name>
     ```
 
 4. 项目文件添加、提交、推送
@@ -401,7 +401,7 @@ Steps:
 
     ```bash
    git add file
-   $ git commit -m &#39;&lt;commit statements&gt;&#39; file
+   $ git commit -m '<commit statements>' file
    $ git push -u origin master
    ```
 
@@ -422,7 +422,7 @@ id_rsa_kyden.pub
 
 ##### 2. 将不同 SSH 密钥添加到相应的 GitHub 账户中
 
-复制公钥 `~/.ssh/id_rsa.pub` 的内容，将密钥粘贴在 `Settings` -&gt; `SSH and GPG keys` -&gt; `New SSH key` 的方框中即可
+复制公钥 `~/.ssh/id_rsa.pub` 的内容，将密钥粘贴在 `Settings` -> `SSH and GPG keys` -> `New SSH key` 的方框中即可
 
 ##### 3. 在 ssh-agent 上注册新的 SSH 密钥
 
@@ -440,7 +440,7 @@ Host github.com
     IdentityFile ~/.ssh/id_rsa
 ```
 
-{{&lt; admonition type=note title=&#34;注意更换 `Host`&#34; open=true &gt;}}
+{{< admonition type=note title="注意更换 `Host`" open=true >}}
 当你克隆一个仓库或为本地仓库设置 remote origin 时，确保与你使用的主机名记号一致
 (`@` 和 `:` 之间的字符串应该与我们在 SSH 配置文件中给出的内容相匹配):
 
@@ -449,7 +449,7 @@ Host github.com
 git clone git@kyden:kydance/dotfiles.git
 ```
 
-{{&lt; /admonition&gt;}}
+{{< /admonition>}}
 
 ##### 4. 为本地仓库设置 `user`
 
@@ -534,22 +534,22 @@ PATH $GOPATH/bin $GOROOT/bin $GOBIN $PATH
 $ sudo blkid
 
 # eg:
-# /dev/nvme1n1p3: LABEL=&#34;Document&#34; BLOCK_SIZE=&#34;512&#34; UUID=&#34;111915F1111915F1&#34; TYPE=&#34;ntfs&#34; PARTLABEL=&#34;Basic data partition&#34; PARTUUID=&#34;666266ba-233b-11ed-95be-00e04c3656eb&#34;
+# /dev/nvme1n1p3: LABEL="Document" BLOCK_SIZE="512" UUID="111915F1111915F1" TYPE="ntfs" PARTLABEL="Basic data partition" PARTUUID="666266ba-233b-11ed-95be-00e04c3656eb"
 
 # Write UUID TYPE ...
 $ sudo vim /etc/fstab
-# &lt;device&gt; &lt;dir&gt; &lt;type&gt; &lt;options&gt; &lt;dump&gt; &lt;fsck&gt;
+# <device> <dir> <type> <options> <dump> <fsck>
 UUID=111915F1111915F1 /home/kyden/doc ntfs3 defaults 0 0
 ```
 
-- `&lt;device&gt;` 描述要挂载的特定块设备或远程文件系统
-- `&lt;dir&gt;` 描述挂载目录
-- `&lt;type&gt;` 文件系统类型
-- `&lt;options&gt;` 相关的挂载选项
-- `&lt;dump&gt;` 会被 dump(8) 工具检查。该字段通常设置为 0, 以禁用检查
-- `&lt;fsck&gt;` 设置引导时文件系统检查的顺序; 对于 root 设备该字段应该设置为 1。对于其它分区该字段应该设置为 2,或设置为 0 以禁用检查
+- `<device>` 描述要挂载的特定块设备或远程文件系统
+- `<dir>` 描述挂载目录
+- `<type>` 文件系统类型
+- `<options>` 相关的挂载选项
+- `<dump>` 会被 dump(8) 工具检查。该字段通常设置为 0, 以禁用检查
+- `<fsck>` 设置引导时文件系统检查的顺序; 对于 root 设备该字段应该设置为 1。对于其它分区该字段应该设置为 2,或设置为 0 以禁用检查
 
-&gt; **NOTE: TYPE 为 `ntfs` 时导致启动失败，修改为 `ntfs3` 后成功挂载**
+> **NOTE: TYPE 为 `ntfs` 时导致启动失败，修改为 `ntfs3` 后成功挂载**
 
 ### Present Windows
 
@@ -574,27 +574,27 @@ UUID=111915F1111915F1 /home/kyden/doc ntfs3 defaults 0 0
    ```json
    // ~/.picgo/config.json
    {
-     &#34;picBed&#34;: {
-       &#34;current&#34;: &#34;github&#34;,
-       &#34;github&#34;: {
-         &#34;repo&#34;: &#34;&lt;userName&gt;/PicBed&#34;, // 设定仓库名：上文在 GitHub 创建的仓库 `&lt;userName&gt;/PicBed`
-         &#34;branch&#34;: &#34;master&#34;, // 设定分支名：`master`
-         &#34;token&#34;: &#34;xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx&#34;, // 设定 Token：上文生成的 toke
-         &#34;path&#34;: &#34;&#34;, // 指定存储路径：为空的话会上传到根目录，也可以指定路径
-         &#34;customUrl&#34;: &#34;&#34; // 设定自定义域名：可以为空
+     "picBed": {
+       "current": "github",
+       "github": {
+         "repo": "<userName>/PicBed", // 设定仓库名：上文在 GitHub 创建的仓库 `<userName>/PicBed`
+         "branch": "master", // 设定分支名：`master`
+         "token": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx", // 设定 Token：上文生成的 toke
+         "path": "", // 指定存储路径：为空的话会上传到根目录，也可以指定路径
+         "customUrl": "" // 设定自定义域名：可以为空
        },
-       &#34;uploader&#34;: &#34;github&#34;,
-       &#34;transformer&#34;: &#34;path&#34;
+       "uploader": "github",
+       "transformer": "path"
      },
-     &#34;picgoPlugins&#34;: {
-       &#34;picgo-plugin-github-plus&#34;: true
+     "picgoPlugins": {
+       "picgo-plugin-github-plus": true
      }
    }
    ```
 
 ---
 
-### CUDA &amp; cuDNN
+### CUDA & cuDNN
 
 ```bash
 # install
@@ -608,7 +608,7 @@ Arch Linux 会将 CUDA 相关档案安装至 `/opt/cuda`，有需要的话可以
 set PATH /opt/cuda-11.7/bin $PATH
 set LD_LIBRARY_PATH /opt/cuda-11.7/lib64/ $PATH
 
-pip install torch==1.13.1&#43;cu117 torchvision==0.14.1&#43;cu117 torchaudio==0.13.1 --extra-index-url https://download.pytorch.org/whl/cu117
+pip install torch==1.13.1+cu117 torchvision==0.14.1+cu117 torchaudio==0.13.1 --extra-index-url https://download.pytorch.org/whl/cu117
 ```
 
 ---
@@ -635,25 +635,25 @@ DNS 泄露其实并没有一个明确的定义，也不存在一个官方解释�
 
         `about://flags/#enable-quic` 设置为`Disabled` (点下方弹出的重启浏览器生效)
 
-        &lt;img src=&#34;https://raw.githubusercontent.com/lutianen/PicBed/master/image-20240309001559678.png&#34; alt=&#34;image-20240309001559678&#34; style=&#34;zoom:50%;&#34; /&gt;
+        <img src="https://raw.githubusercontent.com/lutianen/PicBed/master/image-20240309001559678.png" alt="image-20240309001559678" style="zoom:50%;" />
 
     2. 关闭浏览器中的“安全DNS”
 
         `chrome://settings/security`
 
-        &lt;img src=&#34;https://raw.githubusercontent.com/lutianen/PicBed/master/image-20240309001749185.png&#34; alt=&#34;image-20240309001749185&#34; style=&#34;zoom:50%;&#34; /&gt;
+        <img src="https://raw.githubusercontent.com/lutianen/PicBed/master/image-20240309001749185.png" alt="image-20240309001749185" style="zoom:50%;" />
 
-    3. 在Clash Verge的【Profiles】中，点右上角的&#34;NEW&#34; -&gt; Type选择&#34;Script&#34; -&gt; Name随意填写(例如，&#34;修改DNS&#34;)
+    3. 在Clash Verge的【Profiles】中，点右上角的"NEW" -> Type选择"Script" -> Name随意填写(例如，"修改DNS")
 
-    4. 右击新建的文件，然后&#34;Edit File&#34;，输入以下内容后启用：
+    4. 右击新建的文件，然后"Edit File"，输入以下内容后启用：
 
         ```JavaScript
         function main(content) {
-        const isObject = (value) =&gt; {
-            return value !== null &amp;&amp; typeof value === &#39;object&#39;
+        const isObject = (value) => {
+            return value !== null && typeof value === 'object'
         }
 
-        const mergeConfig = (existingConfig, newConfig) =&gt; {
+        const mergeConfig = (existingConfig, newConfig) => {
             if (!isObject(existingConfig)) {
             existingConfig = {}
             }
@@ -664,81 +664,81 @@ DNS 泄露其实并没有一个明确的定义，也不存在一个官方解释�
         }
 
         const cnDnsList = [
-            &#39;https://1.12.12.12/dns-query&#39;,
-            &#39;https://223.5.5.5/dns-query&#39;,
+            'https://1.12.12.12/dns-query',
+            'https://223.5.5.5/dns-query',
         ]
         
         // Most network requests will go through this, currently using Tencent, Alibaba, and the DNS of 1.0.0.1 for node queries.
         const trustDnsList = [
-            &#39;https://doh.pub/dns-query&#39;, // Tencent
-            &#39;https://dns.alidns.com/dns-query&#39;, // Alibaba (this will trigger both h3 and normal concurrent queries)
-            &#39;180.184.1.1&#39;, // ByteDance - Volcano Engine DNS
+            'https://doh.pub/dns-query', // Tencent
+            'https://dns.alidns.com/dns-query', // Alibaba (this will trigger both h3 and normal concurrent queries)
+            '180.184.1.1', // ByteDance - Volcano Engine DNS
         ]
-        const notionDns = &#39;tls://dns.jerryw.cn&#39; // Notion accelerated DNS
+        const notionDns = 'tls://dns.jerryw.cn' // Notion accelerated DNS
         const notionUrls = [
-            &#39;http-inputs-notion.splunkcloud.com&#39;,
-            &#39;&#43;.notion-static.com&#39;,
-            &#39;&#43;.notion.com&#39;,
-            &#39;&#43;.notion.new&#39;,
-            &#39;&#43;.notion.site&#39;,
-            &#39;&#43;.notion.so&#39;,
+            'http-inputs-notion.splunkcloud.com',
+            '+.notion-static.com',
+            '+.notion.com',
+            '+.notion.new',
+            '+.notion.site',
+            '+.notion.so',
         ]
-        const combinedUrls = notionUrls.join(&#39;,&#39;);
+        const combinedUrls = notionUrls.join(',');
         const dnsOptions = {
-            &#39;enable&#39;: true,
-            &#39;prefer-h3&#39;: true, // If the DNS server supports DoH3, it will prioritize using h3 (only Alibaba DNS supports it in this example)
-            &#39;default-nameserver&#39;: cnDnsList, // Used to resolve other DNS servers and node domain names, must be IP, can be encrypted DNS. Note that this is only used to resolve nodes and other DNS; other network requests are not under its control.
-            &#39;nameserver&#39;: trustDnsList, // Other network requests are all under its control.
+            'enable': true,
+            'prefer-h3': true, // If the DNS server supports DoH3, it will prioritize using h3 (only Alibaba DNS supports it in this example)
+            'default-nameserver': cnDnsList, // Used to resolve other DNS servers and node domain names, must be IP, can be encrypted DNS. Note that this is only used to resolve nodes and other DNS; other network requests are not under its control.
+            'nameserver': trustDnsList, // Other network requests are all under its control.
             
             // This is used to override the above nameserver
-            &#39;nameserver-policy&#39;: {
+            'nameserver-policy': {
             [combinedUrls]: notionDns,
-            &#39;geosite:geolocation-!cn&#39;: trustDnsList,
+            'geosite:geolocation-!cn': trustDnsList,
             // If you have some internal DNS, it should be defined here, multiple domain names should be separated by commas.
-            // &#39;&#43;.companydomain.com, www.4399.com, &#43;.baidu.com&#39;: &#39;10.0.0.1&#39;
+            // '+.companydomain.com, www.4399.com, +.baidu.com': '10.0.0.1'
             },
         }
 
         // GitHub accelerated prefix
-        const githubPrefix = &#39;https://fastgh.lainbo.com/&#39;
+        const githubPrefix = 'https://fastgh.lainbo.com/'
 
         // Original download addresses for GEO data GitHub resources
         const rawGeoxURLs = {
-            geoip: &#39;https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/geoip-lite.dat&#39;,
-            geosite: &#39;https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/geosite.dat&#39;,
-            mmdb: &#39;https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/country-lite.mmdb&#39;,
+            geoip: 'https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/geoip-lite.dat',
+            geosite: 'https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/geosite.dat',
+            mmdb: 'https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/country-lite.mmdb',
         }
 
         // Generate GEO data resource objects with accelerated prefixes
         const accelURLs = Object.fromEntries(
-            Object.entries(rawGeoxURLs).map(([key, githubUrl]) =&gt; [key, `${githubPrefix}${githubUrl}`]),
+            Object.entries(rawGeoxURLs).map(([key, githubUrl]) => [key, `${githubPrefix}${githubUrl}`]),
         )
 
         const otherOptions = {
-            &#39;unified-delay&#39;: true,
-            &#39;tcp-concurrent&#39;: true,
-            &#39;profile&#39;: {
-            &#39;store-selected&#39;: true,
-            &#39;store-fake-ip&#39;: true,
+            'unified-delay': true,
+            'tcp-concurrent': true,
+            'profile': {
+            'store-selected': true,
+            'store-fake-ip': true,
             },
-            &#39;sniffer&#39;: {
+            'sniffer': {
             enable: true,
             sniff: {
                 TLS: {
                 ports: [443, 8443],
                 },
                 HTTP: {
-                &#39;ports&#39;: [80, &#39;8080-8880&#39;],
-                &#39;override-destination&#39;: true,
+                'ports': [80, '8080-8880'],
+                'override-destination': true,
                 },
             },
             },
-            &#39;geodata-mode&#39;: true,
-            &#39;geo-auto-update&#39;: true,
-            &#39;geo-update-interval&#39;: 24,
-            &#39;geodata-loader&#39;: &#39;standard&#39;,
-            &#39;geox-url&#39;: accelURLs,
-            &#39;find-process-mode&#39;: &#39;strict&#39;,
+            'geodata-mode': true,
+            'geo-auto-update': true,
+            'geo-update-interval': 24,
+            'geodata-loader': 'standard',
+            'geox-url': accelURLs,
+            'find-process-mode': 'strict',
         }
         content.dns = mergeConfig(content.dns, dnsOptions)
         return { ...content, ...otherOptions }
@@ -816,7 +816,7 @@ $ sudo systemctl start fstrim.timer
 
 ### SWAP 设置
 
-&lt;https://wiki.archlinux.org/title/Swap#Swappiness&gt;
+<https://wiki.archlinux.org/title/Swap#Swappiness>
 
 - 查看 swap 使用率，一般是 60 ，意思是 60% 的概率将内存整理到 swap: `cat /proc/sys/vm/swappiness`
 - 修改 swap 使用策略为 10%，即 10% 的概率将内存整理到 swap: `sudo sysctl -w vm.swappiness=10`
@@ -847,7 +847,7 @@ $ echo $CONDA_PREFIX
 $sudo mv $CONDA_PREFIX/bin/clear $CONDA_PREFIX/bin/clear_old
 ```
 
-### 2. `tput: unknown terminal &#34;xterm-256color&#34;`
+### 2. `tput: unknown terminal "xterm-256color"`
 
 解决方案：
 
@@ -869,8 +869,8 @@ xrandr --output HDMI-1-0 --right-of eDP1 --auto
 ```bash
 $ xrandr --listmonitors
 Monitors: 2
-0: &#43;*eDP1 2560/360x1440/200&#43;0&#43;0  eDP1
-1: &#43;HDMI-1-0 1920/479x1080/260&#43;2560&#43;0  HDMI-1-0
+0: +*eDP1 2560/360x1440/200+0+0  eDP1
+1: +HDMI-1-0 1920/479x1080/260+2560+0  HDMI-1-0
 
 $ xrandr --output HDMI-1-0 --right-of eDP1 --auto
 ```
@@ -898,7 +898,7 @@ $ unzip -O GBK xxx.zip
 
 1. Download [freetype2.13.0](https://pan.baidu.com/s/15AIkxKqvTwy9Q-DS16QQIQ?pwd=ft13)
 2. 降级 `sudo pacman -U freetype2-2.13.0-1-x86_64.pkg.tar.zst`
-3. 修改 `/etc/pacman.conf` -&gt; `IgnorePkg = freetype2`，排除掉这个包（不让它更新） `freetype2: ignoring package upgrade (2.13.0-1 =&gt; 2.13.2-1)`
+3. 修改 `/etc/pacman.conf` -> `IgnorePkg = freetype2`，排除掉这个包（不让它更新） `freetype2: ignoring package upgrade (2.13.0-1 => 2.13.2-1)`
 
     ```bash
     # update
@@ -924,7 +924,7 @@ wpspdf 依赖于 libtiff5.so.5 以支撑其 PDF 功能。
 解决方案
 
 1. **确保PC端的同步服务已启用成功**: 若连接码、同步服务地址没有内容，则证明服务启动失败，此时看启用同步功能复选框后面的错误信息自行解决
-2. 在手机浏览器地址栏输入&lt;http://x.x.x.x:5963/hello后回车，若此地址可以打开并显示&gt; Hello~::^-^::~v4~，则证明移动端与PC端网络已互通，
+2. 在手机浏览器地址栏输入<http://x.x.x.x:5963/hello后回车，若此地址可以打开并显示> Hello~::^-^::~v4~，则证明移动端与PC端网络已互通，
 3. 若移动端无法打开第2步的地址，则在PC端的浏览器地址栏输入并打开该地址，若可以打开，则可能性如下：
    - LX Music PC端被**电脑防火墙**拦截
    - **PC端与移动端不在同一个网络下**，

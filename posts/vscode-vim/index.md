@@ -1,15 +1,15 @@
-# 【最佳实践】VSCode &#43; Vim = 效率之神
+# 【最佳实践】VSCode + Vim = 效率之神
 
 
-{{&lt; admonition type=abstract title=&#34;导语&#34; open=true &gt;}}
+{{< admonition type=abstract title="导语" open=true >}}
 想要在现代编辑器中获得极致的编码体验？VSCode 与 Vim 的强强联合将带给你意想不到的效率提升。本文将详细介绍如何通过 VSCodeVim 插件，在 VSCode 中完美复刻 Vim 的操作方式，让你既能享受 VSCode 强大的功能生态，又能保持 Vim 快速高效的编辑体验。无论你是 Vim 老手还是新手，这份完整指南都能帮你打造一个更高效的编码环境。
-{{&lt; /admonition &gt;}}
+{{< /admonition >}}
 
-&lt;!--more--&gt;
+<!--more-->
 
 ## I. VSCodeVim
 
-&lt;!-- {{&lt; figure src=&#34;/posts/vscode-vim/vim.png&#34; title=&#34;&#34; height=0.5 width=0.5 &gt;}} --&gt;
+<!-- {{< figure src="/posts/vscode-vim/vim.png" title="" height=0.5 width=0.5 >}} -->
 
 [VSCodeVim](https://github.com/VSCodeVim/Vim/#key-remapping) 是一款 vim 模拟器，它将 vim 的大部分功能都集成在了 VSCode 中，即一个嵌入在 VSCode 中的 vim。
 
@@ -45,9 +45,9 @@
 
 只需在 VSCode 的插件商店搜索 `vim` 就能找到该插件.
 
-{{&lt; figure src=&#34;/posts/vscode-vim/vscode-extension-vim.png&#34; title=&#34;&#34; height=&#34;256&#34; width=&#34;256&#34; &gt;}}
+{{< figure src="/posts/vscode-vim/vscode-extension-vim.png" title="" height="256" width="256" >}}
 
-{{&lt; admonition type=tip title=&#34;关闭 Mac 的重复键&#34; open=true &gt;}}
+{{< admonition type=tip title="关闭 Mac 的重复键" open=true >}}
 
 当使用 Mac 时，需要输入以下代码，用以关闭 Mac 的重复键
 
@@ -60,7 +60,7 @@ $ defaults write com.vscodium ApplePressAndHoldEnabled -bool false
 $ defaults delete -g ApplePressAndHoldEnabled
 ```
 
-{{&lt; /admonition &gt;}}
+{{< /admonition >}}
 
 ---
 
@@ -71,48 +71,48 @@ VSCodeVim 的相关配置文件是放在 `settings.json` 中，而不是 `vimrc`
 - 对于**非代码编辑区**的热键将其定义在 `keybindings.json` 中
 - 对于**代码编辑区**且属于 vim 的热键将其定义在 `settings.json` 文件中
 
-{{&lt; admonition type=tip title=&#34;个人配置参考&#34; open=true &gt;}}
+{{< admonition type=tip title="个人配置参考" open=true >}}
 [个人 vscode 配置文件参考：https://github.com/kydance/dotfiles](https://github.com/kydance/dotfiles)
-{{&lt; /admonition &gt;}}
+{{< /admonition >}}
 
 ### 1. 基础配置
 
 ```json
 // leader - prefix key
-&#34;vim.leader&#34;: &#34;&lt;space&gt;&#34;,
+"vim.leader": "<space>",
 // To improve performance
-&#34;extensions.experimental.affinity&#34;: { 
-    &#34;vscodevim.vim&#34;: 1 
+"extensions.experimental.affinity": { 
+    "vscodevim.vim": 1 
 },
 // Easy motion
-&#34;vim.easymotion&#34;: true,
+"vim.easymotion": true,
 // Use system clipboard
-&#34;vim.useSystemClipboard&#34;: true,
-// 由vim接管ctrl&#43;any的按键，而不是vscode
-&#34;vim.useCtrlKeys&#34;: true,
-&#34;vim.replaceWithRegister&#34;: true,
+"vim.useSystemClipboard": true,
+// 由vim接管ctrl+any的按键，而不是vscode
+"vim.useCtrlKeys": true,
+"vim.replaceWithRegister": true,
 // 忽略大小写
-&#34;vim.ignorecase&#34;: true,
-&#34;vim.smartcase&#34;: true,
+"vim.ignorecase": true,
+"vim.smartcase": true,
 // 智能行号
-&#34;vim.smartRelativeLine&#34;: true,
-&#34;vim.foldfix&#34;: true,
+"vim.smartRelativeLine": true,
+"vim.foldfix": true,
 // Highlight search
-&#34;vim.hlsearch&#34;: true,
-&#34;vim.highlightedyank.enable&#34;: true,
-&#34;vim.highlightedyank.duration&#34;: 500,
+"vim.hlsearch": true,
+"vim.highlightedyank.enable": true,
+"vim.highlightedyank.duration": 500,
 
 // 由vscode进行处理，而不是vscode-vim插件
-&#34;vim.handleKeys&#34;: {
-    &#34;&lt;C-d&gt;&#34;: true, // 向下滚动半页
-    &#34;&lt;C-f&gt;&#34;: true, // 向下滚动一页
-    &#34;&lt;C-e&gt;&#34;: true, // 向下滚动一行
-    &#34;&lt;C-s&gt;&#34;: true,
-    &#34;&lt;C-z&gt;&#34;: false,
-    &#34;&lt;C-a&gt;&#34;: true,
-    &#34;&lt;C-c&gt;&#34;: true,
-    &#34;&lt;C-v&gt;&#34;: true,
-    &#34;&lt;C-x&gt;&#34;: true,
+"vim.handleKeys": {
+    "<C-d>": true, // 向下滚动半页
+    "<C-f>": true, // 向下滚动一页
+    "<C-e>": true, // 向下滚动一行
+    "<C-s>": true,
+    "<C-z>": false,
+    "<C-a>": true,
+    "<C-c>": true,
+    "<C-v>": true,
+    "<C-x>": true,
 },
 ```
 
@@ -123,113 +123,113 @@ VSCodeVim 的相关配置文件是放在 `settings.json` 中，而不是 `vimrc`
 #### NORMAL Mode
 
 ```json
-&#34;vim.normalModeKeyBindingsNonRecursive&#34;: [
+"vim.normalModeKeyBindingsNonRecursive": [
     {   // 聚集 terminal
-        &#34;before&#34;: [&#34;&lt;C-j&gt;&#34;], 
-        &#34;commands&#34;: [&#34;workbench.action.terminal.focus&#34;]
+        "before": ["<C-j>"], 
+        "commands": ["workbench.action.terminal.focus"]
     },
     {   // 语义级 重命名
-        &#34;before&#34;: [&#34;leader&#34;, &#34;r&#34;],  
-        &#34;commands&#34;: [ &#34;editor.action.rename&#34;] 
+        "before": ["leader", "r"],  
+        "commands": [ "editor.action.rename"] 
     },
     {   // 
-        &#34;before&#34;: [&#34;g&#34;, &#34;h&#34;],  
-        &#34;commands&#34;: [ &#34;editor.action.showHover&#34;]
+        "before": ["g", "h"],  
+        "commands": [ "editor.action.showHover"]
     },
     {
-        &#34;before&#34;: [&#34;g&#34;, &#34;d&#34;],
-        &#34;commands&#34;: [&#34;editor.action.revealDefinition&#34;]
+        "before": ["g", "d"],
+        "commands": ["editor.action.revealDefinition"]
     },
     {
-        &#34;before&#34;: [&#34;g&#34;, &#34;r&#34;],
-        &#34;commands&#34;: [&#34;editor.action.goToReferences&#34;],
+        "before": ["g", "r"],
+        "commands": ["editor.action.goToReferences"],
     },
     {
-        &#34;before&#34;: [&#34;g&#34;, &#34;i&#34;],
-        &#34;commands&#34;: [&#34;editor.action.goToImplementation&#34;],
+        "before": ["g", "i"],
+        "commands": ["editor.action.goToImplementation"],
     },
     {
-        &#34;before&#34;: [&#34;g&#34;, &#34;b&#34;],
-        &#34;commands&#34;: [&#34;workbench.action.navigateBack&#34;],
-    },
-
-    {
-        &#34;before&#34;: [&#34;leader&#34;, &#34;e&#34;, &#34;f&#34;],
-        &#34;commands&#34;: [&#34;workbench.explorer.fileView.focus&#34;],
+        "before": ["g", "b"],
+        "commands": ["workbench.action.navigateBack"],
     },
 
     {
-        &#34;before&#34;: [ &#34;leader&#34;, &#34;leader&#34;, &#34;e&#34;, &#34;f&#34;],
-        &#34;commands&#34;: [&#34;workbench.action.toggleActivityBarVisibility&#34;]
+        "before": ["leader", "e", "f"],
+        "commands": ["workbench.explorer.fileView.focus"],
     },
 
     {
-        &#34;before&#34;: [&#34;leader&#34;, &#34;g&#34;, &#34;g&#34;],
-        &#34;commands&#34;: [&#34;workbench.action.quickOpen&#34;],
+        "before": [ "leader", "leader", "e", "f"],
+        "commands": ["workbench.action.toggleActivityBarVisibility"]
+    },
+
+    {
+        "before": ["leader", "g", "g"],
+        "commands": ["workbench.action.quickOpen"],
     },
     {   // Global find
-        &#34;before&#34;: [&#34;leader&#34;, &#34;g&#34;, &#34;f&#34;],
-        &#34;commands&#34;: [&#34;workbench.view.search&#34;],
+        "before": ["leader", "g", "f"],
+        "commands": ["workbench.view.search"],
     },
 
     {
-        &#34;before&#34;: [&#34;g&#34;, &#34;[&#34;,], 
-        &#34;commands&#34;: [&#34;editor.action.marker.prevInFiles&#34;],
+        "before": ["g", "[",], 
+        "commands": ["editor.action.marker.prevInFiles"],
     },
     {
-        &#34;before&#34;: [&#34;g&#34;, &#34;]&#34;,],
-        &#34;commands&#34;: [&#34;editor.action.marker.nextInFiles&#34;],
+        "before": ["g", "]",],
+        "commands": ["editor.action.marker.nextInFiles"],
     },
     {   // Source Control Git
-        &#34;before&#34;: [ &#34;leader&#34;, &#34;g&#34;, &#34;i&#34;, &#34;t&#34; ],
-        &#34;commands&#34;: [&#34;workbench.scm.focus&#34;]
+        "before": [ "leader", "g", "i", "t" ],
+        "commands": ["workbench.scm.focus"]
     },
     { // Start to debug
-        &#34;before&#34;: [ &#34;leader&#34;, &#34;d&#34; ],
-        &#34;commands&#34;: [&#34;workbench.action.debug.start&#34;]
+        "before": [ "leader", "d" ],
+        "commands": ["workbench.action.debug.start"]
     },
     {
-        &#34;before&#34;: [&#34;leader&#34;,&#34;w&#34;],
-        &#34;commands&#34;: [&#34;:w!&#34; ]
+        "before": ["leader","w"],
+        "commands": [":w!" ]
     },
     {
-        &#34;before&#34;: [&#34;leader&#34;,&#34;q&#34;],
-        &#34;commands&#34;: [&#34;:q&#34; ]
+        "before": ["leader","q"],
+        "commands": [":q" ]
     },
     {   // No highlight
-        &#34;before&#34;: [&#34;leader&#34;, &#34;n&#34;, &#34;h&#34;],
-        &#34;commands&#34;: [&#34;:nohl&#34;]
+        "before": ["leader", "n", "h"],
+        "commands": [":nohl"]
     },
     {
-        &#34;before&#34;: [&#34;H&#34;],
-        &#34;after&#34;: [&#34;^&#34;]
+        "before": ["H"],
+        "after": ["^"]
     },
     {
-        &#34;before&#34;: [&#34;L&#34;], 
-        &#34;after&#34;: [&#34;$&#34;]
+        "before": ["L"], 
+        "after": ["$"]
     },
     {   // Blockwise visual mode
-        &#34;before&#34;: [&#34;\\&#34;],
-        &#34;commands&#34;: [&#34;extension.vim_ctrl&#43;v&#34;]
+        "before": ["\\"],
+        "commands": ["extension.vim_ctrl+v"]
     },
     {
-        &#34;before&#34;: [&#34;leader&#34;, &#34;t&#34;],
-        &#34;commands&#34;: [&#34;:terminal&#34;] 
+        "before": ["leader", "t"],
+        "commands": [":terminal"] 
     }, 
 
     {
-        &#34;before&#34;: [&#34;g&#34;, &#34;t&#34;],
-        &#34;commands&#34;: [&#34;:tabnext&#34;]
+        "before": ["g", "t"],
+        "commands": [":tabnext"]
     }, 
     {
-        &#34;before&#34;: [&#34;g&#34;, &#34;T&#34;],
-        &#34;commands&#34;: [&#34;:tabprev&#34;] 
+        "before": ["g", "T"],
+        "commands": [":tabprev"] 
     },
     {   // project-manager
-        &#34;before&#34;: [&#34;leader&#34;, &#34;p&#34;, &#34;m&#34;], 
-        &#34;commands&#34;: [{
-            &#34;command&#34;:&#34;workbench.view.extension.project-manager&#34;,
-            &#34;when&#34;:&#34;viewContainer.workbench.view.extension.project-manager.enabled&#34;
+        "before": ["leader", "p", "m"], 
+        "commands": [{
+            "command":"workbench.view.extension.project-manager",
+            "when":"viewContainer.workbench.view.extension.project-manager.enabled"
         }]
     },
 ],
@@ -238,10 +238,10 @@ VSCodeVim 的相关配置文件是放在 `settings.json` 中，而不是 `vimrc`
 #### INSERT Mode
 
 ```json
-&#34;vim.insertModeKeyBindings&#34;: [
+"vim.insertModeKeyBindings": [
     {
-        &#34;before&#34;: [&#34;j&#34;, &#34;k&#34;],
-        &#34;after&#34;: [&#34;&lt;Esc&gt;&#34;]
+        "before": ["j", "k"],
+        "after": ["<Esc>"]
     }, 
 ],
 ```
@@ -249,23 +249,23 @@ VSCodeVim 的相关配置文件是放在 `settings.json` 中，而不是 `vimrc`
 #### VISUAL Mode
 
 ```json
-&#34;vim.visualModeKeyBindings&#34;: [
+"vim.visualModeKeyBindings": [
     {
-        &#34;before&#34;: [&#34;H&#34;],
-        &#34;after&#34;: [&#34;^&#34;] 
+        "before": ["H"],
+        "after": ["^"] 
     },
     {
-        &#34;before&#34;: [&#34;L&#34;],
-        &#34;after&#34;: [&#34;$&#34;]
+        "before": ["L"],
+        "after": ["$"]
     },
 
     {
-        &#34;before&#34;: [&#34;&gt;&#34;],
-        &#34;commands&#34;: [ &#34;editor.action.indentLines&#34;]
+        "before": [">"],
+        "commands": [ "editor.action.indentLines"]
     },
     {
-        &#34;before&#34;: [&#34;&lt;&#34;],
-        &#34;commands&#34;: [ &#34;editor.action.outdentLines&#34;]
+        "before": ["<"],
+        "commands": [ "editor.action.outdentLines"]
     },
 ],
 ```
@@ -273,13 +273,13 @@ VSCodeVim 的相关配置文件是放在 `settings.json` 中，而不是 `vimrc`
 #### COMMAND LINE Mode
 
 ```json
-&#34;vim.commandLineModeKeyBindingsNonRecursive&#34;: [
+"vim.commandLineModeKeyBindingsNonRecursive": [
 ],
 ```
 
-{{&lt; admonition type=note title=&#34;`leader` 键注意事项&#34; open=true &gt;}}
+{{< admonition type=note title="`leader` 键注意事项" open=true >}}
 `leader` 键只在代码编辑区域生效，它无法做到全 VSCode 生效
-{{&lt; /admonition &gt;}}
+{{< /admonition >}}
 
 ### 3. 资源管理配置
 
@@ -288,88 +288,88 @@ VSCodeVim 的相关配置文件是放在 `settings.json` 中，而不是 `vimrc`
 ```json
 [
     {
-        &#34;key&#34;: &#34;cmd&#43;h&#34;,
-        &#34;command&#34;: &#34;workbench.action.focusLeftGroup&#34;
+        "key": "cmd+h",
+        "command": "workbench.action.focusLeftGroup"
     },
     {
-        &#34;key&#34;: &#34;cmd&#43;l&#34;,
-        &#34;command&#34;: &#34;workbench.action.focusRightGroup&#34;
+        "key": "cmd+l",
+        "command": "workbench.action.focusRightGroup"
     },
 
     {   // Rename file
-        &#34;key&#34;: &#34;r&#34;,
-        &#34;command&#34;: &#34;renameFile&#34;,
-        &#34;when&#34;: &#34;explorerViewletVisible &amp;&amp; filesExplorerFocus &amp;&amp; !explorerResourceIsRoot &amp;&amp; !explorerResourceReadonly &amp;&amp; !inputFocus&#34;
+        "key": "r",
+        "command": "renameFile",
+        "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus"
     },
     {   // New file
-        &#34;key&#34;: &#34;a&#34;,
-        &#34;command&#34;: &#34;explorer.newFile&#34;,
-        &#34;when&#34;: &#34;explorerViewletVisible &amp;&amp; filesExplorerFocus &amp;&amp; !explorerResourceIsRoot &amp;&amp; !explorerResourceReadonly &amp;&amp; !inputFocus&#34;
+        "key": "a",
+        "command": "explorer.newFile",
+        "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus"
     },
     {   // New folder
-        &#34;key&#34;: &#34;shift&#43;a&#34;,
-        &#34;command&#34;: &#34;explorer.newFolder&#34;,
-        &#34;when&#34;: &#34;explorerViewletVisible &amp;&amp; filesExplorerFocus &amp;&amp; !explorerResourceIsRoot &amp;&amp; !explorerResourceReadonly &amp;&amp; !inputFocus&#34;
+        "key": "shift+a",
+        "command": "explorer.newFolder",
+        "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus"
     },
     {   // Delete file
-        &#34;key&#34;: &#34;d&#34;,
-        &#34;command&#34;: &#34;deleteFile&#34;,
-        &#34;when&#34;: &#34;explorerViewletVisible &amp;&amp; filesExplorerFocus &amp;&amp; !explorerResourceIsRoot &amp;&amp; !explorerResourceReadonly &amp;&amp; !inputFocus&#34;
+        "key": "d",
+        "command": "deleteFile",
+        "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus"
     },
     {   // Copy
-        &#34;key&#34;: &#34;y&#34;,
-        &#34;command&#34;: &#34;filesExplorer.copy&#34;,
-        &#34;when&#34;: &#34;explorerViewletVisible &amp;&amp; filesExplorerFocus &amp;&amp; !explorerResourceIsRoot &amp;&amp; !explorerResourceReadonly &amp;&amp; !inputFocus&#34;
+        "key": "y",
+        "command": "filesExplorer.copy",
+        "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus"
     },
     {   // Cut
-        &#34;key&#34;: &#34;x&#34;,
-        &#34;command&#34;: &#34;filesExplorer.cut&#34;,
-        &#34;when&#34;: &#34;explorerViewletVisible &amp;&amp; filesExplorerFocus &amp;&amp; !explorerResourceIsRoot &amp;&amp; !explorerResourceReadonly &amp;&amp; !inputFocus&#34;
+        "key": "x",
+        "command": "filesExplorer.cut",
+        "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus"
     },
     {   // Paste
-        &#34;key&#34;: &#34;p&#34;,
-        &#34;command&#34;: &#34;filesExplorer.paste&#34;,
-        &#34;when&#34;: &#34;explorerViewletVisible &amp;&amp; filesExplorerFocus &amp;&amp; !explorerResourceIsRoot &amp;&amp; !explorerResourceReadonly &amp;&amp; !inputFocus&#34;
+        "key": "p",
+        "command": "filesExplorer.paste",
+        "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus"
     },
     {   // 全局搜索后，在输入框按回车，即可聚焦到搜索结果列表
-        &#34;key&#34;: &#34;enter&#34;,
-        &#34;command&#34;: &#34;search.action.focusSearchList&#34;,
-        &#34;when&#34;: &#34;inSearchEditor &amp;&amp; inputBoxFocus &amp;&amp; hasSearchResult || inputBoxFocus &amp;&amp; searchViewletVisible &amp;&amp; hasSearchResult&#34;
+        "key": "enter",
+        "command": "search.action.focusSearchList",
+        "when": "inSearchEditor && inputBoxFocus && hasSearchResult || inputBoxFocus && searchViewletVisible && hasSearchResult"
     },
     {   // 在搜索结果列表，只需按 esc，就可回到搜索输入框
-        &#34;key&#34;: &#34;escape&#34;,
-        &#34;command&#34;: &#34;workbench.action.findInFiles&#34;,
-        &#34;when&#34;: &#34;searchViewletVisible &amp;&amp; hasSearchResult &amp;&amp; searchViewletFocus&#34;
+        "key": "escape",
+        "command": "workbench.action.findInFiles",
+        "when": "searchViewletVisible && hasSearchResult && searchViewletFocus"
     },
     {   // 在搜索输入框，只需按 esc，就可回到编辑器
-        &#34;key&#34;: &#34;escape&#34;,
-        &#34;command&#34;: &#34;workbench.action.focusFirstEditorGroup&#34;,
-        &#34;when&#34;: &#34;inSearchEditor &amp;&amp; inputBoxFocus|| inputBoxFocus &amp;&amp; searchViewletVisible&#34;
+        "key": "escape",
+        "command": "workbench.action.focusFirstEditorGroup",
+        "when": "inSearchEditor && inputBoxFocus|| inputBoxFocus && searchViewletVisible"
     },
     {   // 在文件浏览界面，只需按 esc，就可回到编辑器
-        &#34;key&#34;: &#34;escape&#34;,
-        &#34;command&#34;: &#34;workbench.action.focusFirstEditorGroup&#34;,
-        &#34;when&#34;: &#34;explorerViewletVisible &amp;&amp; filesExplorerFocus &amp;&amp; !inputFocus&#34;
+        "key": "escape",
+        "command": "workbench.action.focusFirstEditorGroup",
+        "when": "explorerViewletVisible && filesExplorerFocus && !inputFocus"
     },
     {
-        &#34;key&#34;: &#34;tab&#34;,
-        &#34;command&#34;: &#34;acceptSelectedSuggestion&#34;,
-        &#34;when&#34;: &#34;suggestWidgetVisible &amp;&amp; textInputFocus&#34;
+        "key": "tab",
+        "command": "acceptSelectedSuggestion",
+        "when": "suggestWidgetVisible && textInputFocus"
     },
     { // Next Suggestion
-        &#34;key&#34;: &#34;tab&#34;,
-        &#34;command&#34;: &#34;selectNextSuggestion&#34;,
-        &#34;when&#34;: &#34;editorTextFocus &amp;&amp; suggestWidgetMultipleSuggestions &amp;&amp; suggestWidgetVisible&#34;
+        "key": "tab",
+        "command": "selectNextSuggestion",
+        "when": "editorTextFocus && suggestWidgetMultipleSuggestions && suggestWidgetVisible"
     },
     { // Prev Suggestion
-        &#34;key&#34;: &#34;shift&#43;tab&#34;,
-        &#34;command&#34;: &#34;selectPrevSuggestion&#34;,
-        &#34;when&#34;: &#34;editorTextFocus &amp;&amp; suggestWidgetMultipleSuggestions &amp;&amp; suggestWidgetVisible&#34;
+        "key": "shift+tab",
+        "command": "selectPrevSuggestion",
+        "when": "editorTextFocus && suggestWidgetMultipleSuggestions && suggestWidgetVisible"
     },
     {
-        &#34;key&#34;: &#34;cmd&#43;k&#34;,
-        &#34;command&#34;: &#34;workbench.action.focusActiveEditorGroup&#34;,
-        &#34;when&#34;: &#34;terminalFocus&#34;
+        "key": "cmd+k",
+        "command": "workbench.action.focusActiveEditorGroup",
+        "when": "terminalFocus"
     }
 ]
 ```

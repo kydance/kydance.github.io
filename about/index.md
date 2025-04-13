@@ -1,7 +1,7 @@
 # 关于KYDEN
 
 
-&lt;!--more--&gt;
+<!--more-->
 
 ## KYDEN 起源
 
@@ -9,7 +9,7 @@
 生于华中地区的小农村，我有幸拥有一段无忧无虑的童年时光。
 在那段岁月里，纸鸢翱翔于蓝天的画面，始终是最为深刻的记忆，也因此成为了我选择昵称的灵感源泉。
 
-**Kyden**（纸鸢飞舞，鸢舞）巧妙融合了英文&#34;kite&#34;（风筝、纸鸢）与&#34;dance&#34;（舞蹈）的韵味。
+**Kyden**（纸鸢飞舞，鸢舞）巧妙融合了英文"kite"（风筝、纸鸢）与"dance"（舞蹈）的韵味。
 这个名字宛如一首清雅的田园诗，描绘着纸鸢在碧空中舞动的优美姿态。
 恰似一只古意盎然的纸鸢，乘着和煦的春风直上云霄，在湛蓝的天际间描绘出曼妙的弧线。
 时而轻盈似蝶，跃然于云端；时而从容不迫，盘旋于苍穹。
@@ -34,43 +34,43 @@ Thanks to the authors of following resources included in the theme:
 events:
   - timestamp: 2023-09-26
     content: 收到 京东 意向函
-    color: &#34;#ea3733&#34;
+    color: "#ea3733"
 
   - timestamp: 2023-11-21
     content: 收到 京东 Offer
-    color: &#34;#ea3733&#34;
+    color: "#ea3733"
 
   - timestamp: 2023-10-08
     content: 收到 Tencent 录用意向书
-    color: &#34;#0052da&#34;
+    color: "#0052da"
 
   - timestamp: 2023-12-14
     content: 收到 快手 Offer 电话沟通
-    color: &#34;#eb4f2d&#34;
+    color: "#eb4f2d"
 
   - timestamp: 2023-11-20
     content: 收到 Tencent Offer
-    color: &#34;#0052da&#34;
+    color: "#0052da"
 
   - timestamp: 2024-04-17
     content: 使用 Hugo 创建博客
-    color: &#34;#008f00&#34;
+    color: "#008f00"
 
   - timestamp: 2024-05-29
     content: 完成研究生毕业设计答辩终稿
 
   - timestamp: 2024-06-25
-    content: 入职 Tencent -&gt; 开启人生新篇章（打工人）
-    color: &#34;#0052da&#34;
+    content: 入职 Tencent -> 开启人生新篇章（打工人）
+    color: "#0052da"
 
   - timestamp: 2025-01-04
     content: 迁移博客到 FixIt 主题
-    color: &#34;#0CBD87&#34;
+    color: "#0CBD87"
 ```
 
 
 ---
 
-> Author:   
+> Author: <no value>  
 > URL: http://kydance.github.io/about/  
 

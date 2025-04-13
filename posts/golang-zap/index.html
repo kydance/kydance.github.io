@@ -11,7 +11,7 @@
   <meta itemprop="description" content="深入探讨 Go 语言高性能日志库 Zap 的实践应用，从基础配置到生产环境的最佳实践。通过实例讲解如何构建一个灵活、高效的日志系统，特别关注容器化环境下的日志处理策略，帮助你打造一个专业的日志解决方案。">
   <meta itemprop="datePublished" content="2024-10-20T15:40:17+08:00">
   <meta itemprop="dateModified" content="2024-10-20T15:40:17+08:00">
-  <meta itemprop="wordCount" content="391">
+  <meta itemprop="wordCount" content="1919">
   <meta itemprop="image" content="http://kydance.github.io/favicon.png">
   <meta itemprop="keywords" content="Go,Golang,Zap,日志框架,日志管理,性能日志,结构化日志,日志系统,高性能日志,日志收集,日志监控,错误追踪,应用监控,性能优化"><meta property="og:url" content="http://kydance.github.io/posts/golang-zap/">
   <meta property="og:site_name" content="Kyden&#39;s 博客">
@@ -49,7 +49,7 @@
     "mainEntityOfPage": {
       "@type": "WebPage",
       "@id": "http:\/\/kydance.github.io\/posts\/golang-zap\/"
-    },"image": ["http:\/\/kydance.github.io\/favicon-seo.jpg"],"genre": "posts","keywords": "Go, Golang, Zap, 日志框架, 性能优化, 日志管理, 最佳实践, 应用监控, 错误追踪, 工程实践","wordcount":  391 ,
+    },"image": ["http:\/\/kydance.github.io\/favicon-seo.jpg"],"genre": "posts","keywords": "Go, Golang, Zap, 日志框架, 性能优化, 日志管理, 最佳实践, 应用监控, 错误追踪, 工程实践","wordcount":  1919 ,
     "url": "http:\/\/kydance.github.io\/posts\/golang-zap\/","datePublished": "2024-10-20T15:40:17+08:00","dateModified": "2024-10-20T15:40:17+08:00","publisher": {
       "@type": "Organization",
       "name": "kyden","logo": "http:\/\/kydance.github.io"},"author": {
@@ -171,9 +171,27 @@
   <article class="page single">
     <div class="header"><h1 class="single-title animate__animated animate__flipInX"><span title="Repost" class="icon-repost"><i class="fa-solid fa-share fa-fw" aria-hidden="true"></i></span><span>Go 日志最佳实践：Zap 从入门到实战</span>
       </h1><p class="single-subtitle animate__animated animate__fadeIn">构建高性能、生产级的日志系统：容器化环境下的最佳实践</p></div><div class="post-meta">
-      <div class="post-meta-line"><span class="post-author"><a href="https://github.com/kydance" title="Author"target="_blank" rel="external nofollow noopener noreferrer author" class="author"><img loading="lazy" src="/favicon.ico" alt="kyden" data-title="kyden" width="20" height="20" class="avatar" style="background: url(/images/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}"/>&nbsp;kyden</a></span><span class="post-included-in">&nbsp;included in <a href="/categories/go%E8%AF%AD%E8%A8%80/" class="post-category" title="Category - Go语言"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> Go语言</a>&ensp;<a href="/categories/%E6%97%A5%E5%BF%97%E7%AE%A1%E7%90%86/" class="post-category" title="Category - 日志管理"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 日志管理</a>&ensp;<a href="/categories/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/" class="post-category" title="Category - 性能优化"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 性能优化</a>&ensp;<a href="/categories/%E5%BA%94%E7%94%A8%E7%9B%91%E6%8E%A7/" class="post-category" title="Category - 应用监控"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 应用监控</a>&ensp;<a href="/categories/%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/" class="post-category" title="Category - 最佳实践"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 最佳实践</a> and <a href="/collections/go%E5%B7%A5%E5%85%B7%E9%93%BE/" class="post-collection" title="Collection - Go工具链"><i class="fa-solid fa-layer-group fa-fw" aria-hidden="true"></i> Go工具链</a>&ensp;<a href="/collections/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/" class="post-collection" title="Collection - 性能优化"><i class="fa-solid fa-layer-group fa-fw" aria-hidden="true"></i> 性能优化</a>&ensp;<a href="/collections/%E5%BA%94%E7%94%A8%E7%9B%91%E6%8E%A7/" class="post-collection" title="Collection - 应用监控"><i class="fa-solid fa-layer-group fa-fw" aria-hidden="true"></i> 应用监控</a>&ensp;<a href="/collections/%E5%B7%A5%E7%A8%8B%E5%AE%9E%E8%B7%B5/" class="post-collection" title="Collection - 工程实践"><i class="fa-solid fa-layer-group fa-fw" aria-hidden="true"></i> 工程实践</a></span></div><div class="post-meta-line"><span title="published on 2024-10-20 15:40:17"><i class="fa-solid fa-calendar-days fa-fw me-1" aria-hidden="true"></i><time datetime="2024-10-20">2024-10-20</time></span>&nbsp;<span title="391 words"><i class="fa-solid fa-pencil-alt fa-fw me-1" aria-hidden="true"></i>About 400 words</span>&nbsp;<span><i class="fa-regular fa-clock fa-fw me-1" aria-hidden="true"></i>One minute</span>&nbsp;<span id="busuanzi_container_page_pv" class="busuanzi_visitors comment-visitors" data-flag-title="Go 日志最佳实践：Zap 从入门到实战"><i class="fa-regular fa-eye fa-fw me-1" aria-hidden="true"></i><span id="busuanzi_value_page_pv">-</span>&nbsp;views
+      <div class="post-meta-line"><span class="post-author"><a href="https://github.com/kydance" title="Author"target="_blank" rel="external nofollow noopener noreferrer author" class="author"><img loading="lazy" src="/favicon.ico" alt="kyden" data-title="kyden" width="20" height="20" class="avatar" style="background: url(/images/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}"/>&nbsp;kyden</a></span><span class="post-included-in">&nbsp;included in <a href="/categories/go%E8%AF%AD%E8%A8%80/" class="post-category" title="Category - Go语言"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> Go语言</a>&ensp;<a href="/categories/%E6%97%A5%E5%BF%97%E7%AE%A1%E7%90%86/" class="post-category" title="Category - 日志管理"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 日志管理</a>&ensp;<a href="/categories/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/" class="post-category" title="Category - 性能优化"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 性能优化</a>&ensp;<a href="/categories/%E5%BA%94%E7%94%A8%E7%9B%91%E6%8E%A7/" class="post-category" title="Category - 应用监控"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 应用监控</a>&ensp;<a href="/categories/%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/" class="post-category" title="Category - 最佳实践"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 最佳实践</a> and <a href="/collections/go%E5%B7%A5%E5%85%B7%E9%93%BE/" class="post-collection" title="Collection - Go工具链"><i class="fa-solid fa-layer-group fa-fw" aria-hidden="true"></i> Go工具链</a>&ensp;<a href="/collections/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/" class="post-collection" title="Collection - 性能优化"><i class="fa-solid fa-layer-group fa-fw" aria-hidden="true"></i> 性能优化</a>&ensp;<a href="/collections/%E5%BA%94%E7%94%A8%E7%9B%91%E6%8E%A7/" class="post-collection" title="Collection - 应用监控"><i class="fa-solid fa-layer-group fa-fw" aria-hidden="true"></i> 应用监控</a>&ensp;<a href="/collections/%E5%B7%A5%E7%A8%8B%E5%AE%9E%E8%B7%B5/" class="post-collection" title="Collection - 工程实践"><i class="fa-solid fa-layer-group fa-fw" aria-hidden="true"></i> 工程实践</a></span></div><div class="post-meta-line"><span title="published on 2024-10-20 15:40:17"><i class="fa-solid fa-calendar-days fa-fw me-1" aria-hidden="true"></i><time datetime="2024-10-20">2024-10-20</time></span>&nbsp;<span title="1919 words"><i class="fa-solid fa-pencil-alt fa-fw me-1" aria-hidden="true"></i>About 2000 words</span>&nbsp;<span><i class="fa-regular fa-clock fa-fw me-1" aria-hidden="true"></i>4 minutes</span>&nbsp;<span id="busuanzi_container_page_pv" class="busuanzi_visitors comment-visitors" data-flag-title="Go 日志最佳实践：Zap 从入门到实战"><i class="fa-regular fa-eye fa-fw me-1" aria-hidden="true"></i><span id="busuanzi_value_page_pv">-</span>&nbsp;views
           </span>&nbsp;</div>
-    </div><div class="content" id="content"><div class="details admonition abstract open">
+    </div><div class="details toc" id="toc-static" data-kept="false">
+        <div class="details-summary toc-title">
+          <span>Contents</span>
+          <span><i class="details-icon fa-solid fa-angle-right" aria-hidden="true"></i></span>
+        </div>
+        <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ol>
+    <li><a href="#zap-基本使用">zap 基本使用</a></li>
+    <li><a href="#设置日志级别">设置日志级别</a></li>
+    <li><a href="#时间格式化">时间格式化</a></li>
+    <li><a href="#标准日志和-sugar-日志">标准日志和 Sugar 日志</a></li>
+    <li><a href="#结构化日志">结构化日志</a></li>
+    <li><a href="#输出美化">输出美化</a></li>
+    <li><a href="#日志前缀">日志前缀</a></li>
+    <li><a href="#全局日志">全局日志</a></li>
+    <li><a href="#日志双写">日志双写</a></li>
+  </ol>
+</nav></div>
+      </div><div class="content" id="content"><div class="details admonition abstract open">
   <div class="details-summary admonition-title"><i class="icon fa-fw fa-solid fa-clipboard-list" aria-hidden="true"></i>导语<i class="details-icon fa-solid fa-angle-right fa-fw" aria-hidden="true"></i></div>
   <div class="details-content">
     <div class="admonition-content">在现代微服务架构中，一个优秀的日志系统是保障应用可观测性的关键。Zap 作为 Go 生态中最受欢迎的日志库之一，以其卓越的性能和灵活的配置闻名。本文将带你深入了解 Zap 的实践应用，从基础配置到容器化环境下的最佳实践，帮助你构建一个既高效又易于维护的日志系统。无论是构建新项目还是优化现有系统，这都是一份不可或缺的实战指南。</div>
@@ -187,7 +205,595 @@
 <p>创建一个封装了 zap.Logger 的自定义 Logger；</p>
 <p>编写创建函数，创建 zapLogger 对象；</p>
 <p>创建 *zap.Logger 对象；</p>
-<p>实现日志接口。</p></div><hr class="awesome-hr" />
+<p>实现日志接口。</p>
+<h2 id="zap-基本使用" class="heading-element"><span>zap 基本使用</span>
+  <a href="#zap-%e5%9f%ba%e6%9c%ac%e4%bd%bf%e7%94%a8" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h2><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">dev</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl"> <span class="nx">logger</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">zap</span><span class="p">.</span><span class="nf">NewDevelopment</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"> <span class="nx">logger</span><span class="p">.</span><span class="nf">Info</span><span class="p">(</span><span class="s">&#34;dev this is info&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"> <span class="nx">logger</span><span class="p">.</span><span class="nf">Warn</span><span class="p">(</span><span class="s">&#34;dev this is warn&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"> <span class="nx">logger</span><span class="p">.</span><span class="nf">Error</span><span class="p">(</span><span class="s">&#34;dev this error&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">test</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl"> <span class="nx">logger</span> <span class="o">:=</span> <span class="nx">zap</span><span class="p">.</span><span class="nf">NewExample</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"> <span class="nx">logger</span><span class="p">.</span><span class="nf">Info</span><span class="p">(</span><span class="s">&#34;test this is info&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"> <span class="nx">logger</span><span class="p">.</span><span class="nf">Warn</span><span class="p">(</span><span class="s">&#34;test this is warn&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"> <span class="nx">logger</span><span class="p">.</span><span class="nf">Error</span><span class="p">(</span><span class="s">&#34;test this is error&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">prod</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl"> <span class="nx">logger</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">zap</span><span class="p">.</span><span class="nf">NewProduction</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"> <span class="nx">logger</span><span class="p">.</span><span class="nf">Info</span><span class="p">(</span><span class="s">&#34;prod this is info&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"> <span class="nx">logger</span><span class="p">.</span><span class="nf">Warn</span><span class="p">(</span><span class="s">&#34;prod this is warn&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"> <span class="nx">logger</span><span class="p">.</span><span class="nf">Error</span><span class="p">(</span><span class="s">&#34;prod this error&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>Development 模式: zap 输出 text 格式的日志，warn 和 error 带有战信息</li>
+<li>Example 模式: zap 输出 JSON 格式的日志，只有 <code>level</code> 和 <code>msg</code> 字段</li>
+<li>Production 模式: zap 输出 JSON 格式的日志，具有 <code>level</code>、<code>msg</code>、<code>ts</code>、<code>caller</code>、<code>stacktrace</code> 字段</li>
+</ul>
+<h2 id="设置日志级别" class="heading-element"><span>设置日志级别</span>
+  <a href="#%e8%ae%be%e7%bd%ae%e6%97%a5%e5%bf%97%e7%ba%a7%e5%88%ab" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h2><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">devWithConfig</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl"> <span class="c1">// 使用 zap 的 NewDevelopmentConfig 快速配置</span>
+</span></span><span class="line"><span class="cl"> <span class="nx">cfg</span> <span class="o">:=</span> <span class="nx">zap</span><span class="p">.</span><span class="nf">NewDevelopmentConfig</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"> <span class="nx">cfg</span><span class="p">.</span><span class="nx">Level</span> <span class="p">=</span> <span class="nx">zap</span><span class="p">.</span><span class="nf">NewAtomicLevelAt</span><span class="p">(</span><span class="nx">zap</span><span class="p">.</span><span class="nx">WarnLevel</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"> <span class="c1">// Create logger</span>
+</span></span><span class="line"><span class="cl"> <span class="nx">logger</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">cfg</span><span class="p">.</span><span class="nf">Build</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"> <span class="nx">logger</span><span class="p">.</span><span class="nf">Info</span><span class="p">(</span><span class="s">&#34;info this is info&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"> <span class="nx">logger</span><span class="p">.</span><span class="nf">Warn</span><span class="p">(</span><span class="s">&#34;warn this is warn&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"> <span class="nx">logger</span><span class="p">.</span><span class="nf">Error</span><span class="p">(</span><span class="s">&#34;error this is error&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="时间格式化" class="heading-element"><span>时间格式化</span>
+  <a href="#%e6%97%b6%e9%97%b4%e6%a0%bc%e5%bc%8f%e5%8c%96" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h2><p>zap 日志库默认时间要么是带时区，要么就是时间戳，美观程度不足。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-Go" data-lang="Go"><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">devWithConfigTimeFormat</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl"> <span class="nx">cfg</span> <span class="o">:=</span> <span class="nx">zap</span><span class="p">.</span><span class="nf">NewDevelopmentConfig</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"> <span class="nx">cfg</span><span class="p">.</span><span class="nx">Level</span> <span class="p">=</span> <span class="nx">zap</span><span class="p">.</span><span class="nf">NewAtomicLevelAt</span><span class="p">(</span><span class="nx">zap</span><span class="p">.</span><span class="nx">WarnLevel</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"> <span class="nx">cfg</span><span class="p">.</span><span class="nx">EncoderConfig</span><span class="p">.</span><span class="nx">EncodeTime</span> <span class="p">=</span> <span class="nx">zapcore</span><span class="p">.</span><span class="nf">TimeEncoderOfLayout</span><span class="p">(</span><span class="nx">time</span><span class="p">.</span><span class="nx">DateTime</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"> <span class="nx">logger</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">cfg</span><span class="p">.</span><span class="nf">Build</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"> <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">panic</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"> <span class="nx">logger</span><span class="p">.</span><span class="nf">Info</span><span class="p">(</span><span class="s">&#34;info this is info&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"> <span class="nx">logger</span><span class="p">.</span><span class="nf">Warn</span><span class="p">(</span><span class="s">&#34;warn this is warn&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"> <span class="nx">logger</span><span class="p">.</span><span class="nf">Error</span><span class="p">(</span><span class="s">&#34;error this is error&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="标准日志和-sugar-日志" class="heading-element"><span>标准日志和 Sugar 日志</span>
+  <a href="#%e6%a0%87%e5%87%86%e6%97%a5%e5%bf%97%e5%92%8c-sugar-%e6%97%a5%e5%bf%97" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h2><p>标准的 <code>*zap.Logger</code> 具有以下方法：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-Go" data-lang="Go"><span class="line"><span class="cl"><span class="kd">type</span> <span class="nx">Logger</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">func</span> <span class="nf">L</span><span class="p">()</span> <span class="o">*</span><span class="nx">Logger</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">func</span> <span class="nf">Must</span><span class="p">(</span><span class="nx">logger</span> <span class="o">*</span><span class="nx">Logger</span><span class="p">,</span> <span class="nx">err</span> <span class="kt">error</span><span class="p">)</span> <span class="o">*</span><span class="nx">Logger</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">func</span> <span class="nf">New</span><span class="p">(</span><span class="nx">core</span> <span class="nx">zapcore</span><span class="p">.</span><span class="nx">Core</span><span class="p">,</span> <span class="nx">options</span> <span class="o">...</span><span class="nx">Option</span><span class="p">)</span> <span class="o">*</span><span class="nx">Logger</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">func</span> <span class="nf">NewDevelopment</span><span class="p">(</span><span class="nx">options</span> <span class="o">...</span><span class="nx">Option</span><span class="p">)</span> <span class="p">(</span><span class="o">*</span><span class="nx">Logger</span><span class="p">,</span> <span class="kt">error</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">func</span> <span class="nf">NewExample</span><span class="p">(</span><span class="nx">options</span> <span class="o">...</span><span class="nx">Option</span><span class="p">)</span> <span class="o">*</span><span class="nx">Logger</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">func</span> <span class="nf">NewNop</span><span class="p">()</span> <span class="o">*</span><span class="nx">Logger</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">func</span> <span class="nf">NewProduction</span><span class="p">(</span><span class="nx">options</span> <span class="o">...</span><span class="nx">Option</span><span class="p">)</span> <span class="p">(</span><span class="o">*</span><span class="nx">Logger</span><span class="p">,</span> <span class="kt">error</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">func</span> <span class="p">(</span><span class="nx">log</span> <span class="o">*</span><span class="nx">Logger</span><span class="p">)</span> <span class="nf">Check</span><span class="p">(</span><span class="nx">lvl</span> <span class="nx">zapcore</span><span class="p">.</span><span class="nx">Level</span><span class="p">,</span> <span class="nx">msg</span> <span class="kt">string</span><span class="p">)</span> <span class="o">*</span><span class="nx">zapcore</span><span class="p">.</span><span class="nx">CheckedEntry</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">func</span> <span class="p">(</span><span class="nx">log</span> <span class="o">*</span><span class="nx">Logger</span><span class="p">)</span> <span class="nf">Core</span><span class="p">()</span> <span class="nx">zapcore</span><span class="p">.</span><span class="nx">Core</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">func</span> <span class="p">(</span><span class="nx">log</span> <span class="o">*</span><span class="nx">Logger</span><span class="p">)</span> <span class="nf">DPanic</span><span class="p">(</span><span class="nx">msg</span> <span class="kt">string</span><span class="p">,</span> <span class="nx">fields</span> <span class="o">...</span><span class="nx">Field</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">func</span> <span class="p">(</span><span class="nx">log</span> <span class="o">*</span><span class="nx">Logger</span><span class="p">)</span> <span class="nf">Debug</span><span class="p">(</span><span class="nx">msg</span> <span class="kt">string</span><span class="p">,</span> <span class="nx">fields</span> <span class="o">...</span><span class="nx">Field</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">func</span> <span class="p">(</span><span class="nx">log</span> <span class="o">*</span><span class="nx">Logger</span><span class="p">)</span> <span class="nf">Error</span><span class="p">(</span><span class="nx">msg</span> <span class="kt">string</span><span class="p">,</span> <span class="nx">fields</span> <span class="o">...</span><span class="nx">Field</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">func</span> <span class="p">(</span><span class="nx">log</span> <span class="o">*</span><span class="nx">Logger</span><span class="p">)</span> <span class="nf">Fatal</span><span class="p">(</span><span class="nx">msg</span> <span class="kt">string</span><span class="p">,</span> <span class="nx">fields</span> <span class="o">...</span><span class="nx">Field</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">func</span> <span class="p">(</span><span class="nx">log</span> <span class="o">*</span><span class="nx">Logger</span><span class="p">)</span> <span class="nf">Info</span><span class="p">(</span><span class="nx">msg</span> <span class="kt">string</span><span class="p">,</span> <span class="nx">fields</span> <span class="o">...</span><span class="nx">Field</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">func</span> <span class="p">(</span><span class="nx">log</span> <span class="o">*</span><span class="nx">Logger</span><span class="p">)</span> <span class="nf">Level</span><span class="p">()</span> <span class="nx">zapcore</span><span class="p">.</span><span class="nx">Level</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">func</span> <span class="p">(</span><span class="nx">log</span> <span class="o">*</span><span class="nx">Logger</span><span class="p">)</span> <span class="nf">Log</span><span class="p">(</span><span class="nx">lvl</span> <span class="nx">zapcore</span><span class="p">.</span><span class="nx">Level</span><span class="p">,</span> <span class="nx">msg</span> <span class="kt">string</span><span class="p">,</span> <span class="nx">fields</span> <span class="o">...</span><span class="nx">Field</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">func</span> <span class="p">(</span><span class="nx">log</span> <span class="o">*</span><span class="nx">Logger</span><span class="p">)</span> <span class="nf">Name</span><span class="p">()</span> <span class="kt">string</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">func</span> <span class="p">(</span><span class="nx">log</span> <span class="o">*</span><span class="nx">Logger</span><span class="p">)</span> <span class="nf">Named</span><span class="p">(</span><span class="nx">s</span> <span class="kt">string</span><span class="p">)</span> <span class="o">*</span><span class="nx">Logger</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">func</span> <span class="p">(</span><span class="nx">log</span> <span class="o">*</span><span class="nx">Logger</span><span class="p">)</span> <span class="nf">Panic</span><span class="p">(</span><span class="nx">msg</span> <span class="kt">string</span><span class="p">,</span> <span class="nx">fields</span> <span class="o">...</span><span class="nx">Field</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">func</span> <span class="p">(</span><span class="nx">log</span> <span class="o">*</span><span class="nx">Logger</span><span class="p">)</span> <span class="nf">Sugar</span><span class="p">()</span> <span class="o">*</span><span class="nx">SugaredLogger</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">func</span> <span class="p">(</span><span class="nx">log</span> <span class="o">*</span><span class="nx">Logger</span><span class="p">)</span> <span class="nf">Sync</span><span class="p">()</span> <span class="kt">error</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">func</span> <span class="p">(</span><span class="nx">log</span> <span class="o">*</span><span class="nx">Logger</span><span class="p">)</span> <span class="nf">Warn</span><span class="p">(</span><span class="nx">msg</span> <span class="kt">string</span><span class="p">,</span> <span class="nx">fields</span> <span class="o">...</span><span class="nx">Field</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">func</span> <span class="p">(</span><span class="nx">log</span> <span class="o">*</span><span class="nx">Logger</span><span class="p">)</span> <span class="nf">With</span><span class="p">(</span><span class="nx">fields</span> <span class="o">...</span><span class="nx">Field</span><span class="p">)</span> <span class="o">*</span><span class="nx">Logger</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">func</span> <span class="p">(</span><span class="nx">log</span> <span class="o">*</span><span class="nx">Logger</span><span class="p">)</span> <span class="nf">WithLazy</span><span class="p">(</span><span class="nx">fields</span> <span class="o">...</span><span class="nx">Field</span><span class="p">)</span> <span class="o">*</span><span class="nx">Logger</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">func</span> <span class="p">(</span><span class="nx">log</span> <span class="o">*</span><span class="nx">Logger</span><span class="p">)</span> <span class="nf">WithOptions</span><span class="p">(</span><span class="nx">opts</span> <span class="o">...</span><span class="nx">Option</span><span class="p">)</span> <span class="o">*</span><span class="nx">Logger</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>因此，可以使用 Sugar 方法得到一个加强版实例，常用方法如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-Go" data-lang="Go"><span class="line"><span class="cl"><span class="kd">type</span> <span class="nx">SugaredLogger</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">func</span> <span class="nf">S</span><span class="p">()</span> <span class="o">*</span><span class="nx">SugaredLogger</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">func</span> <span class="p">(</span><span class="nx">s</span> <span class="o">*</span><span class="nx">SugaredLogger</span><span class="p">)</span> <span class="nf">DPanic</span><span class="p">(</span><span class="nx">args</span> <span class="o">...</span><span class="kd">interface</span><span class="p">{})</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">func</span> <span class="p">(</span><span class="nx">s</span> <span class="o">*</span><span class="nx">SugaredLogger</span><span class="p">)</span> <span class="nf">DPanicf</span><span class="p">(</span><span class="nx">template</span> <span class="kt">string</span><span class="p">,</span> <span class="nx">args</span> <span class="o">...</span><span class="kd">interface</span><span class="p">{})</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">func</span> <span class="p">(</span><span class="nx">s</span> <span class="o">*</span><span class="nx">SugaredLogger</span><span class="p">)</span> <span class="nf">DPanicln</span><span class="p">(</span><span class="nx">args</span> <span class="o">...</span><span class="kd">interface</span><span class="p">{})</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">func</span> <span class="p">(</span><span class="nx">s</span> <span class="o">*</span><span class="nx">SugaredLogger</span><span class="p">)</span> <span class="nf">DPanicw</span><span class="p">(</span><span class="nx">msg</span> <span class="kt">string</span><span class="p">,</span> <span class="nx">keysAndValues</span> <span class="o">...</span><span class="kd">interface</span><span class="p">{})</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">func</span> <span class="p">(</span><span class="nx">s</span> <span class="o">*</span><span class="nx">SugaredLogger</span><span class="p">)</span> <span class="nf">Debug</span><span class="p">(</span><span class="nx">args</span> <span class="o">...</span><span class="kd">interface</span><span class="p">{})</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">func</span> <span class="p">(</span><span class="nx">s</span> <span class="o">*</span><span class="nx">SugaredLogger</span><span class="p">)</span> <span class="nf">Debugf</span><span class="p">(</span><span class="nx">template</span> <span class="kt">string</span><span class="p">,</span> <span class="nx">args</span> <span class="o">...</span><span class="kd">interface</span><span class="p">{})</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">func</span> <span class="p">(</span><span class="nx">s</span> <span class="o">*</span><span class="nx">SugaredLogger</span><span class="p">)</span> <span class="nf">Debugln</span><span class="p">(</span><span class="nx">args</span> <span class="o">...</span><span class="kd">interface</span><span class="p">{})</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">func</span> <span class="p">(</span><span class="nx">s</span> <span class="o">*</span><span class="nx">SugaredLogger</span><span class="p">)</span> <span class="nf">Debugw</span><span class="p">(</span><span class="nx">msg</span> <span class="kt">string</span><span class="p">,</span> <span class="nx">keysAndValues</span> <span class="o">...</span><span class="kd">interface</span><span class="p">{})</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">func</span> <span class="p">(</span><span class="nx">s</span> <span class="o">*</span><span class="nx">SugaredLogger</span><span class="p">)</span> <span class="nf">Desugar</span><span class="p">()</span> <span class="o">*</span><span class="nx">Logger</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">func</span> <span class="p">(</span><span class="nx">s</span> <span class="o">*</span><span class="nx">SugaredLogger</span><span class="p">)</span> <span class="nf">Error</span><span class="p">(</span><span class="nx">args</span> <span class="o">...</span><span class="kd">interface</span><span class="p">{})</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">func</span> <span class="p">(</span><span class="nx">s</span> <span class="o">*</span><span class="nx">SugaredLogger</span><span class="p">)</span> <span class="nf">Errorf</span><span class="p">(</span><span class="nx">template</span> <span class="kt">string</span><span class="p">,</span> <span class="nx">args</span> <span class="o">...</span><span class="kd">interface</span><span class="p">{})</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">func</span> <span class="p">(</span><span class="nx">s</span> <span class="o">*</span><span class="nx">SugaredLogger</span><span class="p">)</span> <span class="nf">Errorln</span><span class="p">(</span><span class="nx">args</span> <span class="o">...</span><span class="kd">interface</span><span class="p">{})</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">func</span> <span class="p">(</span><span class="nx">s</span> <span class="o">*</span><span class="nx">SugaredLogger</span><span class="p">)</span> <span class="nf">Errorw</span><span class="p">(</span><span class="nx">msg</span> <span class="kt">string</span><span class="p">,</span> <span class="nx">keysAndValues</span> <span class="o">...</span><span class="kd">interface</span><span class="p">{})</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">func</span> <span class="p">(</span><span class="nx">s</span> <span class="o">*</span><span class="nx">SugaredLogger</span><span class="p">)</span> <span class="nf">Fatal</span><span class="p">(</span><span class="nx">args</span> <span class="o">...</span><span class="kd">interface</span><span class="p">{})</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">func</span> <span class="p">(</span><span class="nx">s</span> <span class="o">*</span><span class="nx">SugaredLogger</span><span class="p">)</span> <span class="nf">Fatalf</span><span class="p">(</span><span class="nx">template</span> <span class="kt">string</span><span class="p">,</span> <span class="nx">args</span> <span class="o">...</span><span class="kd">interface</span><span class="p">{})</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">func</span> <span class="p">(</span><span class="nx">s</span> <span class="o">*</span><span class="nx">SugaredLogger</span><span class="p">)</span> <span class="nf">Fatalln</span><span class="p">(</span><span class="nx">args</span> <span class="o">...</span><span class="kd">interface</span><span class="p">{})</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">func</span> <span class="p">(</span><span class="nx">s</span> <span class="o">*</span><span class="nx">SugaredLogger</span><span class="p">)</span> <span class="nf">Fatalw</span><span class="p">(</span><span class="nx">msg</span> <span class="kt">string</span><span class="p">,</span> <span class="nx">keysAndValues</span> <span class="o">...</span><span class="kd">interface</span><span class="p">{})</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">func</span> <span class="p">(</span><span class="nx">s</span> <span class="o">*</span><span class="nx">SugaredLogger</span><span class="p">)</span> <span class="nf">Info</span><span class="p">(</span><span class="nx">args</span> <span class="o">...</span><span class="kd">interface</span><span class="p">{})</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">func</span> <span class="p">(</span><span class="nx">s</span> <span class="o">*</span><span class="nx">SugaredLogger</span><span class="p">)</span> <span class="nf">Infof</span><span class="p">(</span><span class="nx">template</span> <span class="kt">string</span><span class="p">,</span> <span class="nx">args</span> <span class="o">...</span><span class="kd">interface</span><span class="p">{})</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">func</span> <span class="p">(</span><span class="nx">s</span> <span class="o">*</span><span class="nx">SugaredLogger</span><span class="p">)</span> <span class="nf">Infoln</span><span class="p">(</span><span class="nx">args</span> <span class="o">...</span><span class="kd">interface</span><span class="p">{})</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">func</span> <span class="p">(</span><span class="nx">s</span> <span class="o">*</span><span class="nx">SugaredLogger</span><span class="p">)</span> <span class="nf">Infow</span><span class="p">(</span><span class="nx">msg</span> <span class="kt">string</span><span class="p">,</span> <span class="nx">keysAndValues</span> <span class="o">...</span><span class="kd">interface</span><span class="p">{})</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">func</span> <span class="p">(</span><span class="nx">s</span> <span class="o">*</span><span class="nx">SugaredLogger</span><span class="p">)</span> <span class="nf">Level</span><span class="p">()</span> <span class="nx">zapcore</span><span class="p">.</span><span class="nx">Level</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">func</span> <span class="p">(</span><span class="nx">s</span> <span class="o">*</span><span class="nx">SugaredLogger</span><span class="p">)</span> <span class="nf">Log</span><span class="p">(</span><span class="nx">lvl</span> <span class="nx">zapcore</span><span class="p">.</span><span class="nx">Level</span><span class="p">,</span> <span class="nx">args</span> <span class="o">...</span><span class="kd">interface</span><span class="p">{})</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">func</span> <span class="p">(</span><span class="nx">s</span> <span class="o">*</span><span class="nx">SugaredLogger</span><span class="p">)</span> <span class="nf">Logf</span><span class="p">(</span><span class="nx">lvl</span> <span class="nx">zapcore</span><span class="p">.</span><span class="nx">Level</span><span class="p">,</span> <span class="nx">template</span> <span class="kt">string</span><span class="p">,</span> <span class="nx">args</span> <span class="o">...</span><span class="kd">interface</span><span class="p">{})</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">func</span> <span class="p">(</span><span class="nx">s</span> <span class="o">*</span><span class="nx">SugaredLogger</span><span class="p">)</span> <span class="nf">Logln</span><span class="p">(</span><span class="nx">lvl</span> <span class="nx">zapcore</span><span class="p">.</span><span class="nx">Level</span><span class="p">,</span> <span class="nx">args</span> <span class="o">...</span><span class="kd">interface</span><span class="p">{})</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">func</span> <span class="p">(</span><span class="nx">s</span> <span class="o">*</span><span class="nx">SugaredLogger</span><span class="p">)</span> <span class="nf">Logw</span><span class="p">(</span><span class="nx">lvl</span> <span class="nx">zapcore</span><span class="p">.</span><span class="nx">Level</span><span class="p">,</span> <span class="nx">msg</span> <span class="kt">string</span><span class="p">,</span> <span class="nx">keysAndValues</span> <span class="o">...</span><span class="kd">interface</span><span class="p">{})</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">func</span> <span class="p">(</span><span class="nx">s</span> <span class="o">*</span><span class="nx">SugaredLogger</span><span class="p">)</span> <span class="nf">Named</span><span class="p">(</span><span class="nx">name</span> <span class="kt">string</span><span class="p">)</span> <span class="o">*</span><span class="nx">SugaredLogger</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">func</span> <span class="p">(</span><span class="nx">s</span> <span class="o">*</span><span class="nx">SugaredLogger</span><span class="p">)</span> <span class="nf">Panic</span><span class="p">(</span><span class="nx">args</span> <span class="o">...</span><span class="kd">interface</span><span class="p">{})</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">func</span> <span class="p">(</span><span class="nx">s</span> <span class="o">*</span><span class="nx">SugaredLogger</span><span class="p">)</span> <span class="nf">Panicf</span><span class="p">(</span><span class="nx">template</span> <span class="kt">string</span><span class="p">,</span> <span class="nx">args</span> <span class="o">...</span><span class="kd">interface</span><span class="p">{})</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">func</span> <span class="p">(</span><span class="nx">s</span> <span class="o">*</span><span class="nx">SugaredLogger</span><span class="p">)</span> <span class="nf">Panicln</span><span class="p">(</span><span class="nx">args</span> <span class="o">...</span><span class="kd">interface</span><span class="p">{})</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">func</span> <span class="p">(</span><span class="nx">s</span> <span class="o">*</span><span class="nx">SugaredLogger</span><span class="p">)</span> <span class="nf">Panicw</span><span class="p">(</span><span class="nx">msg</span> <span class="kt">string</span><span class="p">,</span> <span class="nx">keysAndValues</span> <span class="o">...</span><span class="kd">interface</span><span class="p">{})</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">func</span> <span class="p">(</span><span class="nx">s</span> <span class="o">*</span><span class="nx">SugaredLogger</span><span class="p">)</span> <span class="nf">Sync</span><span class="p">()</span> <span class="kt">error</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">func</span> <span class="p">(</span><span class="nx">s</span> <span class="o">*</span><span class="nx">SugaredLogger</span><span class="p">)</span> <span class="nf">Warn</span><span class="p">(</span><span class="nx">args</span> <span class="o">...</span><span class="kd">interface</span><span class="p">{})</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">func</span> <span class="p">(</span><span class="nx">s</span> <span class="o">*</span><span class="nx">SugaredLogger</span><span class="p">)</span> <span class="nf">Warnf</span><span class="p">(</span><span class="nx">template</span> <span class="kt">string</span><span class="p">,</span> <span class="nx">args</span> <span class="o">...</span><span class="kd">interface</span><span class="p">{})</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">func</span> <span class="p">(</span><span class="nx">s</span> <span class="o">*</span><span class="nx">SugaredLogger</span><span class="p">)</span> <span class="nf">Warnln</span><span class="p">(</span><span class="nx">args</span> <span class="o">...</span><span class="kd">interface</span><span class="p">{})</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">func</span> <span class="p">(</span><span class="nx">s</span> <span class="o">*</span><span class="nx">SugaredLogger</span><span class="p">)</span> <span class="nf">Warnw</span><span class="p">(</span><span class="nx">msg</span> <span class="kt">string</span><span class="p">,</span> <span class="nx">keysAndValues</span> <span class="o">...</span><span class="kd">interface</span><span class="p">{})</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">func</span> <span class="p">(</span><span class="nx">s</span> <span class="o">*</span><span class="nx">SugaredLogger</span><span class="p">)</span> <span class="nf">With</span><span class="p">(</span><span class="nx">args</span> <span class="o">...</span><span class="kd">interface</span><span class="p">{})</span> <span class="o">*</span><span class="nx">SugaredLogger</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">func</span> <span class="p">(</span><span class="nx">s</span> <span class="o">*</span><span class="nx">SugaredLogger</span><span class="p">)</span> <span class="nf">WithLazy</span><span class="p">(</span><span class="nx">args</span> <span class="o">...</span><span class="kd">interface</span><span class="p">{})</span> <span class="o">*</span><span class="nx">SugaredLogger</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">func</span> <span class="p">(</span><span class="nx">s</span> <span class="o">*</span><span class="nx">SugaredLogger</span><span class="p">)</span> <span class="nf">WithOptions</span><span class="p">(</span><span class="nx">opts</span> <span class="o">...</span><span class="nx">Option</span><span class="p">)</span> <span class="o">*</span><span class="nx">SugaredLogger</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="结构化日志" class="heading-element"><span>结构化日志</span>
+  <a href="#%e7%bb%93%e6%9e%84%e5%8c%96%e6%97%a5%e5%bf%97" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h2><p>zap 支持通过 <code>Field</code> 的形式记录结构化日志，方便分析和查阅</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-Go" data-lang="Go"><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">devWithField</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl"> <span class="nx">logger</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">zap</span><span class="p">.</span><span class="nf">NewDevelopment</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"> <span class="nx">logger</span><span class="p">.</span><span class="nf">Info</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">  <span class="s">&#34;This is info&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">zap</span><span class="p">.</span><span class="nf">String</span><span class="p">(</span><span class="s">&#34;Name&#34;</span><span class="p">,</span> <span class="s">&#34;kyden&#34;</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">zap</span><span class="p">.</span><span class="nf">Int</span><span class="p">(</span><span class="s">&#34;Age&#34;</span><span class="p">,</span> <span class="mi">18</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">zap</span><span class="p">.</span><span class="nf">Bool</span><span class="p">(</span><span class="s">&#34;Cool&#34;</span><span class="p">,</span> <span class="kc">true</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl"> <span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="输出美化" class="heading-element"><span>输出美化</span>
+  <a href="#%e8%be%93%e5%87%ba%e7%be%8e%e5%8c%96" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h2><p><code>info</code>, <code>warn</code>，<code>error</code> 显示不同颜色，方便查阅</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-Go" data-lang="Go"><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">devWithColor</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl"> <span class="nx">cfg</span> <span class="o">:=</span> <span class="nx">zap</span><span class="p">.</span><span class="nf">NewDevelopmentConfig</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"> <span class="nx">cfg</span><span class="p">.</span><span class="nx">EncoderConfig</span><span class="p">.</span><span class="nx">EncodeTime</span> <span class="p">=</span> <span class="nx">zapcore</span><span class="p">.</span><span class="nf">TimeEncoderOfLayout</span><span class="p">(</span><span class="s">&#34;2006-01-02 15:04:05&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"> <span class="nx">cfg</span><span class="p">.</span><span class="nx">EncoderConfig</span><span class="p">.</span><span class="nx">EncodeLevel</span> <span class="p">=</span> <span class="kd">func</span><span class="p">(</span><span class="nx">l</span> <span class="nx">zapcore</span><span class="p">.</span><span class="nx">Level</span><span class="p">,</span> <span class="nx">enc</span> <span class="nx">zapcore</span><span class="p">.</span><span class="nx">PrimitiveArrayEncoder</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">switch</span> <span class="nx">l</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">case</span> <span class="nx">zapcore</span><span class="p">.</span><span class="nx">DebugLevel</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">   <span class="nx">enc</span><span class="p">.</span><span class="nf">AppendString</span><span class="p">(</span><span class="nx">ColorBlue</span> <span class="o">+</span> <span class="nx">level</span><span class="p">.</span><span class="nf">CapitalString</span><span class="p">()</span> <span class="o">+</span> <span class="nx">ColorReset</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="k">case</span> <span class="nx">zapcore</span><span class="p">.</span><span class="nx">InfoLevel</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">   <span class="nx">enc</span><span class="p">.</span><span class="nf">AppendString</span><span class="p">(</span><span class="nx">ColorGreen</span> <span class="o">+</span> <span class="nx">level</span><span class="p">.</span><span class="nf">CapitalString</span><span class="p">()</span> <span class="o">+</span> <span class="nx">ColorReset</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="k">case</span> <span class="nx">zapcore</span><span class="p">.</span><span class="nx">WarnLevel</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">   <span class="nx">enc</span><span class="p">.</span><span class="nf">AppendString</span><span class="p">(</span><span class="nx">ColorYellow</span> <span class="o">+</span> <span class="nx">level</span><span class="p">.</span><span class="nf">CapitalString</span><span class="p">()</span> <span class="o">+</span> <span class="nx">ColorReset</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="k">case</span> <span class="nx">zapcore</span><span class="p">.</span><span class="nx">ErrorLevel</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">   <span class="nx">enc</span><span class="p">.</span><span class="nf">AppendString</span><span class="p">(</span><span class="nx">ColorRed</span> <span class="o">+</span> <span class="nx">level</span><span class="p">.</span><span class="nf">CapitalString</span><span class="p">()</span> <span class="o">+</span> <span class="nx">ColorReset</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="k">default</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">   <span class="nx">enc</span><span class="p">.</span><span class="nf">AppendString</span><span class="p">(</span><span class="nx">level</span><span class="p">.</span><span class="nf">String</span><span class="p">())</span> <span class="c1">// default behavior</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"> <span class="p">}</span>
+</span></span><span class="line"><span class="cl"> <span class="nx">logger</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">cfg</span><span class="p">.</span><span class="nf">Build</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"> <span class="nx">logger</span><span class="p">.</span><span class="nf">Info</span><span class="p">(</span><span class="s">&#34;Dev::This is info&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"> <span class="nx">logger</span><span class="p">.</span><span class="nf">Warn</span><span class="p">(</span><span class="s">&#34;Dev::This is warn&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"> <span class="nx">logger</span><span class="p">.</span><span class="nf">Error</span><span class="p">(</span><span class="s">&#34;Dev::This is error&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="日志前缀" class="heading-element"><span>日志前缀</span>
+  <a href="#%e6%97%a5%e5%bf%97%e5%89%8d%e7%bc%80" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h2><p>如果一个项目中存在多个服务，可以使用前缀区分不同服务的日志，可以使用 <code>With</code> 方法来实现，示例如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span><span class="lnt">65
+</span><span class="lnt">66
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-Go" data-lang="Go"><span class="line"><span class="cl"><span class="c1">// Custom color</span>
+</span></span><span class="line"><span class="cl"><span class="kd">const</span> <span class="p">(</span>
+</span></span><span class="line"><span class="cl"> <span class="nx">ColorReset</span>  <span class="p">=</span> <span class="s">&#34;\033[0m&#34;</span>
+</span></span><span class="line"><span class="cl"> <span class="nx">ColorRed</span>    <span class="p">=</span> <span class="s">&#34;\033[31m&#34;</span>
+</span></span><span class="line"><span class="cl"> <span class="nx">ColorGreen</span>  <span class="p">=</span> <span class="s">&#34;\033[32m&#34;</span>
+</span></span><span class="line"><span class="cl"> <span class="nx">ColorYellow</span> <span class="p">=</span> <span class="s">&#34;\033[33m&#34;</span>
+</span></span><span class="line"><span class="cl"> <span class="nx">ColorBlue</span>   <span class="p">=</span> <span class="s">&#34;\033[34m&#34;</span>
+</span></span><span class="line"><span class="cl"> <span class="nx">ColorPurple</span> <span class="p">=</span> <span class="s">&#34;\033[35m&#34;</span>
+</span></span><span class="line"><span class="cl"> <span class="nx">ColorCyan</span>   <span class="p">=</span> <span class="s">&#34;\033[36m&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="kd">const</span> <span class="nx">LogPrefix</span> <span class="p">=</span> <span class="s">&#34;[ZIWI] &#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">type</span> <span class="nx">PrefixEncoder</span> <span class="kd">struct</span><span class="p">{</span> <span class="nx">zapcore</span><span class="p">.</span><span class="nx">Encoder</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="p">(</span><span class="nx">enc</span> <span class="o">*</span><span class="nx">PrefixEncoder</span><span class="p">)</span> <span class="nf">EncodeEntry</span><span class="p">(</span><span class="nx">entry</span> <span class="nx">zapcore</span><span class="p">.</span><span class="nx">Entry</span><span class="p">,</span> <span class="nx">fields</span> <span class="p">[]</span><span class="nx">zapcore</span><span class="p">.</span><span class="nx">Field</span><span class="p">)</span> <span class="p">(</span><span class="o">*</span><span class="nx">buffer</span><span class="p">.</span><span class="nx">Buffer</span><span class="p">,</span> <span class="kt">error</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl"> <span class="c1">// 先调用原始的 EncodeEntry 方法生成日志行</span>
+</span></span><span class="line"><span class="cl"> <span class="nx">buf</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">enc</span><span class="p">.</span><span class="nx">Encoder</span><span class="p">.</span><span class="nf">EncodeEntry</span><span class="p">(</span><span class="nx">entry</span><span class="p">,</span> <span class="nx">fields</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"> <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="kc">nil</span><span class="p">,</span> <span class="nx">err</span>
+</span></span><span class="line"><span class="cl"> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"> <span class="c1">// 将日志行前缀添加到日志行</span>
+</span></span><span class="line"><span class="cl"> <span class="nx">logLine</span> <span class="o">:=</span> <span class="nx">buf</span><span class="p">.</span><span class="nf">String</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"> <span class="nx">buf</span><span class="p">.</span><span class="nf">Reset</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"> <span class="nx">buf</span><span class="p">.</span><span class="nf">AppendString</span><span class="p">(</span><span class="nx">LogPrefix</span> <span class="o">+</span> <span class="nx">logLine</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"> <span class="k">return</span> <span class="nx">buf</span><span class="p">,</span> <span class="kc">nil</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">devWithCustomEncoder</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl"> <span class="nx">cfg</span> <span class="o">:=</span> <span class="nx">zap</span><span class="p">.</span><span class="nf">NewDevelopmentConfig</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"> <span class="nx">cfg</span><span class="p">.</span><span class="nx">EncoderConfig</span><span class="p">.</span><span class="nx">EncodeTime</span> <span class="p">=</span> <span class="nx">zapcore</span><span class="p">.</span><span class="nf">TimeEncoderOfLayout</span><span class="p">(</span><span class="s">&#34;2006-01-02 15:04:05&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"> <span class="nx">cfg</span><span class="p">.</span><span class="nx">EncoderConfig</span><span class="p">.</span><span class="nx">EncodeLevel</span> <span class="p">=</span> <span class="kd">func</span><span class="p">(</span><span class="nx">level</span> <span class="nx">zapcore</span><span class="p">.</span><span class="nx">Level</span><span class="p">,</span> <span class="nx">enc</span> <span class="nx">zapcore</span><span class="p">.</span><span class="nx">PrimitiveArrayEncoder</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">switch</span> <span class="nx">level</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">case</span> <span class="nx">zapcore</span><span class="p">.</span><span class="nx">DebugLevel</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">   <span class="nx">enc</span><span class="p">.</span><span class="nf">AppendString</span><span class="p">(</span><span class="nx">ColorBlue</span> <span class="o">+</span> <span class="nx">level</span><span class="p">.</span><span class="nf">String</span><span class="p">()</span> <span class="o">+</span> <span class="nx">ColorReset</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="k">case</span> <span class="nx">zapcore</span><span class="p">.</span><span class="nx">InfoLevel</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">   <span class="nx">enc</span><span class="p">.</span><span class="nf">AppendString</span><span class="p">(</span><span class="nx">ColorGreen</span> <span class="o">+</span> <span class="nx">level</span><span class="p">.</span><span class="nf">String</span><span class="p">()</span> <span class="o">+</span> <span class="nx">ColorReset</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="k">case</span> <span class="nx">zapcore</span><span class="p">.</span><span class="nx">WarnLevel</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">   <span class="nx">enc</span><span class="p">.</span><span class="nf">AppendString</span><span class="p">(</span><span class="nx">ColorYellow</span> <span class="o">+</span> <span class="nx">level</span><span class="p">.</span><span class="nf">String</span><span class="p">()</span> <span class="o">+</span> <span class="nx">ColorReset</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="k">case</span> <span class="nx">zapcore</span><span class="p">.</span><span class="nx">ErrorLevel</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">   <span class="nx">enc</span><span class="p">.</span><span class="nf">AppendString</span><span class="p">(</span><span class="nx">ColorRed</span> <span class="o">+</span> <span class="nx">level</span><span class="p">.</span><span class="nf">String</span><span class="p">()</span> <span class="o">+</span> <span class="nx">ColorReset</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="k">default</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">   <span class="nx">enc</span><span class="p">.</span><span class="nf">AppendString</span><span class="p">(</span><span class="nx">level</span><span class="p">.</span><span class="nf">String</span><span class="p">())</span> <span class="c1">// default behavior</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"> <span class="c1">// Create a custom encoder</span>
+</span></span><span class="line"><span class="cl"> <span class="nx">encoder</span> <span class="o">:=</span> <span class="o">&amp;</span><span class="nx">PrefixEncoder</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">Encoder</span><span class="p">:</span> <span class="nx">zapcore</span><span class="p">.</span><span class="nf">NewConsoleEncoder</span><span class="p">(</span><span class="nx">cfg</span><span class="p">.</span><span class="nx">EncoderConfig</span><span class="p">),</span> <span class="c1">// Use the default console encoder</span>
+</span></span><span class="line"><span class="cl"> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"> <span class="c1">// Create Core</span>
+</span></span><span class="line"><span class="cl"> <span class="nx">core</span> <span class="o">:=</span> <span class="nx">zapcore</span><span class="p">.</span><span class="nf">NewCore</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">encoder</span><span class="p">,</span>                    <span class="c1">// Custom encoder</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">zapcore</span><span class="p">.</span><span class="nf">AddSync</span><span class="p">(</span><span class="nx">os</span><span class="p">.</span><span class="nx">Stdout</span><span class="p">),</span> <span class="c1">// Write logs to stdout</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">zapcore</span><span class="p">.</span><span class="nx">DebugLevel</span><span class="p">,</span>         <span class="c1">// Set log level</span>
+</span></span><span class="line"><span class="cl"> <span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"> <span class="c1">// Create Logger</span>
+</span></span><span class="line"><span class="cl"> <span class="nx">logger</span> <span class="o">:=</span> <span class="nx">zap</span><span class="p">.</span><span class="nf">New</span><span class="p">(</span><span class="nx">core</span><span class="p">,</span> <span class="nx">zap</span><span class="p">.</span><span class="nf">AddCaller</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"> <span class="nx">logger</span><span class="p">.</span><span class="nf">Info</span><span class="p">(</span><span class="s">&#34;Dev::This is info&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"> <span class="nx">logger</span><span class="p">.</span><span class="nf">Warn</span><span class="p">(</span><span class="s">&#34;Dev::This is warn&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"> <span class="nx">logger</span><span class="p">.</span><span class="nf">Error</span><span class="p">(</span><span class="s">&#34;Dev::This is error&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="全局日志" class="heading-element"><span>全局日志</span>
+  <a href="#%e5%85%a8%e5%b1%80%e6%97%a5%e5%bf%97" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h2><p>如果想在项目中的任何地方使用日志，那么就可以使用<strong>全局日志</strong>：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-Go" data-lang="Go"><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">initLogger</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl"> <span class="nx">cfg</span> <span class="o">:=</span> <span class="nx">zap</span><span class="p">.</span><span class="nf">NewDevelopmentConfig</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"> <span class="nx">cfg</span><span class="p">.</span><span class="nx">EncoderConfig</span><span class="p">.</span><span class="nx">EncodeTime</span> <span class="p">=</span> <span class="nx">zapcore</span><span class="p">.</span><span class="nf">TimeEncoderOfLayout</span><span class="p">(</span><span class="s">&#34;2006-01-02 15:04:05&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"> <span class="nx">cfg</span><span class="p">.</span><span class="nx">EncoderConfig</span><span class="p">.</span><span class="nx">EncodeLevel</span> <span class="p">=</span> <span class="kd">func</span><span class="p">(</span><span class="nx">level</span> <span class="nx">zapcore</span><span class="p">.</span><span class="nx">Level</span><span class="p">,</span> <span class="nx">enc</span> <span class="nx">zapcore</span><span class="p">.</span><span class="nx">PrimitiveArrayEncoder</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">switch</span> <span class="nx">level</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">case</span> <span class="nx">zapcore</span><span class="p">.</span><span class="nx">DebugLevel</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">   <span class="nx">enc</span><span class="p">.</span><span class="nf">AppendString</span><span class="p">(</span><span class="nx">ColorBlue</span> <span class="o">+</span> <span class="nx">level</span><span class="p">.</span><span class="nf">String</span><span class="p">()</span> <span class="o">+</span> <span class="nx">ColorReset</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="k">case</span> <span class="nx">zapcore</span><span class="p">.</span><span class="nx">InfoLevel</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">   <span class="nx">enc</span><span class="p">.</span><span class="nf">AppendString</span><span class="p">(</span><span class="nx">ColorGreen</span> <span class="o">+</span> <span class="nx">level</span><span class="p">.</span><span class="nf">String</span><span class="p">()</span> <span class="o">+</span> <span class="nx">ColorReset</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="k">case</span> <span class="nx">zapcore</span><span class="p">.</span><span class="nx">WarnLevel</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">   <span class="nx">enc</span><span class="p">.</span><span class="nf">AppendString</span><span class="p">(</span><span class="nx">ColorYellow</span> <span class="o">+</span> <span class="nx">level</span><span class="p">.</span><span class="nf">String</span><span class="p">()</span> <span class="o">+</span> <span class="nx">ColorReset</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="k">case</span> <span class="nx">zapcore</span><span class="p">.</span><span class="nx">ErrorLevel</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">   <span class="nx">enc</span><span class="p">.</span><span class="nf">AppendString</span><span class="p">(</span><span class="nx">ColorRed</span> <span class="o">+</span> <span class="nx">level</span><span class="p">.</span><span class="nf">String</span><span class="p">()</span> <span class="o">+</span> <span class="nx">ColorReset</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="k">default</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">   <span class="nx">enc</span><span class="p">.</span><span class="nf">AppendString</span><span class="p">(</span><span class="nx">level</span><span class="p">.</span><span class="nf">String</span><span class="p">())</span> <span class="c1">// default behavior</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"> <span class="nx">logger</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">cfg</span><span class="p">.</span><span class="nf">Build</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"> <span class="nx">zap</span><span class="p">.</span><span class="nf">ReplaceGlobals</span><span class="p">(</span><span class="nx">logger</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">devWithGlobal</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl"> <span class="nx">zap</span><span class="p">.</span><span class="nf">L</span><span class="p">().</span><span class="nf">Info</span><span class="p">(</span><span class="s">&#34;Global::This is info&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"> <span class="nx">zap</span><span class="p">.</span><span class="nf">L</span><span class="p">().</span><span class="nf">Warn</span><span class="p">(</span><span class="s">&#34;Global::This is warn&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"> <span class="nx">zap</span><span class="p">.</span><span class="nf">L</span><span class="p">().</span><span class="nf">Error</span><span class="p">(</span><span class="s">&#34;Global::This is error&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"> <span class="nx">zap</span><span class="p">.</span><span class="nf">S</span><span class="p">().</span><span class="nf">Infof</span><span class="p">(</span><span class="s">&#34;Global::This is info %s&#34;</span><span class="p">,</span> <span class="s">&#34;kytedance&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"> <span class="nx">zap</span><span class="p">.</span><span class="nf">S</span><span class="p">().</span><span class="nf">Warnf</span><span class="p">(</span><span class="s">&#34;Global::This is warn %v&#34;</span><span class="p">,</span> <span class="s">&#34;kytedance&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"> <span class="nx">zap</span><span class="p">.</span><span class="nf">S</span><span class="p">().</span><span class="nf">Errorf</span><span class="p">(</span><span class="s">&#34;Global::This is error %+v&#34;</span><span class="p">,</span> <span class="s">&#34;kytedance&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li><code>zap.L()</code>: 获取到的是标准的 Zap 示例</li>
+<li><code>zap.S()</code>: 获取到的是 SugarZap 示例</li>
+</ul>
+<h2 id="日志双写" class="heading-element"><span>日志双写</span>
+  <a href="#%e6%97%a5%e5%bf%97%e5%8f%8c%e5%86%99" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h2><p>常见的：控制台和日志文件双写</p>
+<p>使用 <code>zapcore.NewTee</code> 可以组合多个 core 示例</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-Go" data-lang="Go"></code></pre></td></tr></table>
+</div>
+</div></div><hr class="awesome-hr" />
     <h2 id="see-also">Related Content</h2>
     <ul><li>
           <a href="/posts/effective-go/" title="Go 语言编程之道：编写优雅高效的 Golang 代码">Go 语言编程之道：编写优雅高效的 Golang 代码</a></li><li>
@@ -236,8 +842,9 @@
         Please enable JavaScript to view the comments powered by <a href="https://github.com/gitalk/gitalk" rel="external nofollow noopener noreferrer">Gitalk</a>.
       </noscript></div></article>
 
-  <aside class="toc" id="toc-auto" aria-label="Contents"></aside></main><footer class="footer">
-    <div class="footer-container"><div class="footer-line powered order-1">Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreferrer" title="Hugo 0.145.0"><img class="hugo-icon" src="/images/hugo.min.svg" alt="Hugo logo" /> Hugo</a> | Theme - <a href="https://github.com/hugo-fixit/FixIt" target="_blank" rel="external" title="FixIt v0.3.16"><img class="fixit-icon" src="/images/fixit.min.svg" alt="FixIt logo" /> FixIt</a>
+  <aside class="toc" id="toc-auto" aria-label="Contents"><h2 class="toc-title">Contents&nbsp;<i class="toc-icon fa-solid fa-angle-down fa-fw" aria-hidden="true"></i></h2>
+      <div class="toc-content" id="toc-content-auto"></div></aside></main><footer class="footer">
+    <div class="footer-container"><div class="footer-line powered order-1">Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreferrer" title="Hugo 0.146.2"><img class="hugo-icon" src="/images/hugo.min.svg" alt="Hugo logo" /> Hugo</a> | Theme - <a href="https://github.com/hugo-fixit/FixIt" target="_blank" rel="external" title="FixIt v0.3.16"><img class="fixit-icon" src="/images/fixit.min.svg" alt="FixIt logo" /> FixIt</a>
         </div><div class="footer-line copyright" itemscope itemtype="http://schema.org/CreativeWork"><i class="fa-regular fa-copyright fa-fw" aria-hidden="true"></i>
             <span itemprop="copyrightYear">2024 - 2025</span><span class="author" itemprop="copyrightHolder">
               <a href="/">kyden</a></span><span class="license footer-divider"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a></span></div><div class="footer-line statistics order-2"><span class="site-time" title='Website running ...'><i class="fa-solid fa-heartbeat fa-fw animate-icon" aria-hidden="true"></i><span class="ms-1 d-none">时光荏苒，本站已陪伴您</span><span class="run-times ms-1">Website running ...</span></span></div><div class="footer-line visitor order-3">

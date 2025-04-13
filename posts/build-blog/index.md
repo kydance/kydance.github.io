@@ -1,11 +1,11 @@
-# 30分钟搭建个人技术博客：Hugo &#43; GitHub Pages 零基础建站指南
+# 30分钟搭建个人技术博客：Hugo + GitHub Pages 零基础建站指南
 
 
-{{&lt; admonition type=abstract title=&#34;导语&#34; open=true &gt;}}
+{{< admonition type=abstract title="导语" open=true >}}
 想要拥有一个专业的技术博客，但又担心过程繁琐？本文将教你如何利用 Hugo 的快速建站框架，结合 GitHub Pages 的免费托管服务，在短短 30 分钟内搭建一个美观实用的个人博客网站。无需购买服务器，零基础也能轻松驾驭！
-{{&lt; /admonition &gt;}}
+{{< /admonition >}}
 
-&lt;!--more--&gt;
+<!--more-->
 
 ## I. 前言
 
@@ -17,7 +17,7 @@
 
 ## II. 效果
 
-{{&lt; figure src=&#34;/posts/build-blog/Kyden-blog-outline.png&#34; title=&#34;&#34; &gt;}}
+{{< figure src="/posts/build-blog/Kyden-blog-outline.png" title="" >}}
 
 ---
 
@@ -27,7 +27,7 @@
 
 GitHub Pages 是一个免费的静态网站托管服务，它允许用户通过 GitHub 存储库来托管和发布网页，可以使用它来展示项目文档、博客或个人简历。
 
-{{&lt; figure src=&#34;/posts/build-blog/github-pages-intro.png&#34; title=&#34;&#34; &gt;}}
+{{< figure src="/posts/build-blog/github-pages-intro.png" title="" >}}
 
 现阶段，Github Pages 支持公共存储库的免费的托管；对于私有仓库，需要进行缴费。
 
@@ -37,7 +37,7 @@ GitHub Pages 是一个免费的静态网站托管服务，它允许用户通过 
 
 官方号称，[Hugo](https://gohugo.io/) 是世界上最快的网站建设框架(The world’s fastest framework for building websites)。
 
-{{&lt; figure src=&#34;/posts/build-blog/hugo-intro.png&#34; title=&#34;&#34; &gt;}}
+{{< figure src="/posts/build-blog/hugo-intro.png" title="" >}}
 
 ---
 
@@ -48,7 +48,7 @@ GitHub Pages 是一个免费的静态网站托管服务，它允许用户通过 
 需要创建两个仓库，一个用于网站源码管理(`A`)，一个用于网站部署(`B`):
 
 - `A` 可以是 `public`，也可以是 `private`；
-- `B` 仓库的名称必须是 `&lt;username&gt;.github.io`（`username` 是 Github `Accout` 中`username`，不是 `profile` 中的 `Name`），同时还需要添加 `README.md`，例如：**`kydance.github.io`**.
+- `B` 仓库的名称必须是 `<username>.github.io`（`username` 是 Github `Accout` 中`username`，不是 `profile` 中的 `Name`），同时还需要添加 `README.md`，例如：**`kydance.github.io`**.
 
 ---
 
@@ -102,13 +102,13 @@ $ hugo server -D
 Watching for changes in /Users/kyden/git-space/kyden-blog/{archetypes,assets,content,i18n,layouts,static}
 Watching for config changes in /Users/kyden/git-space/kyden-blog/config.toml
 Start building sites … 
-hugo v0.139.3&#43;extended&#43;withdeploy darwin/arm64 BuildDate=2024-11-29T15:36:56Z VendorInfo=brew
+hugo v0.139.3+extended+withdeploy darwin/arm64 BuildDate=2024-11-29T15:36:56Z VendorInfo=brew
 
-WARN  Current environment is &#34;development&#34;. The &#34;comment system&#34;, &#34;CDN&#34; and &#34;fingerprint&#34; will be disabled.
-当前运行环境是 &#34;development&#34;. &#34;评论系统&#34;, &#34;CDN&#34; 和 &#34;fingerprint&#34; 不会启用.
+WARN  Current environment is "development". The "comment system", "CDN" and "fingerprint" will be disabled.
+当前运行环境是 "development". "评论系统", "CDN" 和 "fingerprint" 不会启用.
 
                    | EN   
--------------------&#43;------
+-------------------+------
   Pages            | 303  
   Paginator pages  |   2  
   Non-page files   |  62  
@@ -118,11 +118,11 @@ WARN  Current environment is &#34;development&#34;. The &#34;comment system&#34;
   Cleaned          |   0  
 
 Built in 436 ms
-Environment: &#34;development&#34;
+Environment: "development"
 Serving pages from disk
 Running in Fast Render Mode. For full rebuilds on change: hugo server --disableFastRender
 Web Server is available at http://localhost:1313/ (bind address 127.0.0.1) 
-Press Ctrl&#43;C to stop
+Press Ctrl+C to stop
 ```
 
 浏览器打开 [http://localhost:1313/](http://localhost:1313/) 进行预览；
@@ -134,7 +134,7 @@ Press Ctrl&#43;C to stop
 $ hugo new content `post/Golang/Go.md`
 ```
 
-**一键创建文章**: `./new-blog.sh &lt;name&gt;`
+**一键创建文章**: `./new-blog.sh <name>`
 
 ```bash
 #!/bin/bash
@@ -142,22 +142,22 @@ $ hugo new content `post/Golang/Go.md`
 CONTENT_PATH=posts/
 
 # Welcome to the new-blog.sh script!
-echo -e &#34;\033[0;32mCreating new blog post...\033[0m&#34;
+echo -e "\033[0;32mCreating new blog post...\033[0m"
 
 # Check if the user has provided an argument
 if [ $# -ne 1 ]
-    then echo -e &#34;\033[0;31mMissing one argument, Usage: new-blog.sh &lt;blog-name&gt;\033[0m&#34;; exit;
+    then echo -e "\033[0;31mMissing one argument, Usage: new-blog.sh <blog-name>\033[0m"; exit;
 fi
 
 # Get the blog name from the user
 CONTENT_PATH=$CONTENT_PATH$1/$1.md
-echo -e &#34;\033[0;32mBlog path: $CONTENT_PATH\033[0m&#34;
+echo -e "\033[0;32mBlog path: $CONTENT_PATH\033[0m"
 
 # Create the new blog post
 hugo new content $CONTENT_PATH
 
 # Success
-echo -e &#34;\033[0;32mCreate new blog post $CONTENT_PATH successful.\033[0m&#34;
+echo -e "\033[0;32mCreate new blog post $CONTENT_PATH successful.\033[0m"
 ```
 
 ---
@@ -181,7 +181,7 @@ $ hugo
 
 ```bash
 $ git init
-$ git commit -m &#34;first commit&#34;
+$ git commit -m "first commit"
 $ git branch -M master
 $ git remote add origin https://github.com/kydance/kydance.github.io.git
 $ git push -u origin master
@@ -193,7 +193,7 @@ $ git push -u origin master
 ```bash
 #!/bin/bash
 
-echo -e &#34;\033[0;32mDeploying updates to GitHub...\033[0m&#34;
+echo -e "\033[0;32mDeploying updates to GitHub...\033[0m"
 
 # Build the project.
 hugo # if using a theme, replace with hugo -t
@@ -204,15 +204,15 @@ cd public
 git add .
 
 # Commit changes.
-msg=&#34;rebuilding site `date` &#34;
+msg="rebuilding site `date` "
 
-echo -e &#34;\033[0;32m$msg\033[0m&#34;
+echo -e "\033[0;32m$msg\033[0m"
 
 if [ $# -eq 1 ]
-    then msg=&#34;$1&#34;
+    then msg="$1"
 fi
 
-git commit -m &#34;$msg&#34;
+git commit -m "$msg"
 # Push source and build repos.
 git push origin master
 
@@ -245,9 +245,9 @@ NOTE：`blog/public` 中相关文件可以删除，也可以不删除，推荐�
 
 可以自定义 `browserconfig.xml` 和 `site.webmanifest` 文件来设置 theme-color 和 background-color.
 
-{{&lt; admonition type=tip title=&#34;avatar头像&#34; open=true &gt;}}
+{{< admonition type=tip title="avatar头像" open=true >}}
 在 [gavatar](https://www.gravatar.com/) 网站注册并上传图片即可
-{{&lt; /admonition &gt;}}
+{{< /admonition >}}
 
 ---
 
@@ -258,34 +258,34 @@ NOTE：`blog/public` 中相关文件可以删除，也可以不删除，推荐�
 然后在 `layout/_default/baseof.html` 文件中添加以下代码即可：
 
 ```HTML
-&lt;!-- Google tag (gtag.js) --&gt;
-&lt;script async src=&#34;https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX&#34;&gt;&lt;/script&gt;
-&lt;script&gt;
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
-  gtag(&#39;js&#39;, new Date());
+  gtag('js', new Date());
 
-  gtag(&#39;config&#39;, &#39;G-XXXXXXXXXX&#39;);
-&lt;/script&gt;
+  gtag('config', 'G-XXXXXXXXXX');
+</script>
 ```
 
 该段代码获取方法如下：
 
-[Google Analytics](https://www.google.com/analytics/web) -&gt;
-**管理** -&gt;
-&#34;媒体资源设置&#34;列中的**数据流** -&gt;
-网站 -&gt;
-对应的数据流 -&gt;
-&#34;Google 代码&#34; 下的**查看代码说明** -&gt;
-&#34;安装说明&#34; 选择**手动添加**.
+[Google Analytics](https://www.google.com/analytics/web) ->
+**管理** ->
+"媒体资源设置"列中的**数据流** ->
+网站 ->
+对应的数据流 ->
+"Google 代码" 下的**查看代码说明** ->
+"安装说明" 选择**手动添加**.
 
-&gt; **建议添加完成后，在 Google Analytics 分析中进行测试，确保生效**
+> **建议添加完成后，在 Google Analytics 分析中进行测试，确保生效**
 
 ---
 
 ### 7. Gitalk 评论系统
 
-&gt; **Gitalk 的评论采用的是 PR/Issue 的方式存储评论**，因此，一般需要新建一个专门的 Repo，例如`kydance/gitalk`.
+> **Gitalk 的评论采用的是 PR/Issue 的方式存储评论**，因此，一般需要新建一个专门的 Repo，例如`kydance/gitalk`.
 
 1. GitHub 申请注册[新应用](https://github.com/settings/applications/new)，并填写以下相关内容：
 
@@ -305,10 +305,10 @@ NOTE：`blog/public` 中相关文件可以删除，也可以不删除，推荐�
 
         [params.page.comment.gitalk]
             enable = true
-            owner = &#34;lutianen&#34;
-            repo = &#34;gitalk&#34;
-            clientId = &#34;xxxxxxxxxxxxxxxxxxxx&#34;
-            clientSecret = &#34;xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx&#34;
+            owner = "lutianen"
+            repo = "gitalk"
+            clientId = "xxxxxxxxxxxxxxxxxxxx"
+            clientSecret = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
     ```
 
 ---
@@ -319,7 +319,7 @@ NOTE：`blog/public` 中相关文件可以删除，也可以不删除，推荐�
 
 ```HTML
 {{- /* runtime */ -}}
-&lt;/br&gt;&lt;script&gt;
+</br><script>
     function siteTime() {
         var seconds = 1000;
         var minutes = seconds * 60;
@@ -334,7 +334,7 @@ NOTE：`blog/public` 中相关文件可以删除，也可以不删除，推荐�
         var startMinute = 57;
         var startSecond = 2;
         var todayYear = today.getFullYear();
-        var todayMonth = today.getMonth() &#43; 1;
+        var todayMonth = today.getMonth() + 1;
         var todayDate = today.getDate();
         var todayHour = today.getHours();
         var todayMinute = today.getMinutes();
@@ -344,24 +344,24 @@ NOTE：`blog/public` 中相关文件可以删除，也可以不删除，推荐�
         var diff = t2 - t1;
         var diffYears = Math.floor(diff / years);
         var diffDays = Math.floor((diff / days) - diffYears * 365);
-        var diffHours = Math.floor((diff - (diffYears * 365 &#43; diffDays) * days) / hours);
-        var diffMinutes = Math.floor((diff - (diffYears * 365 &#43; diffDays) * days - diffHours * hours) /
+        var diffHours = Math.floor((diff - (diffYears * 365 + diffDays) * days) / hours);
+        var diffMinutes = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours) /
             minutes);
-        var diffSeconds = Math.floor((diff - (diffYears * 365 &#43; diffDays) * days - diffHours * hours -
+        var diffSeconds = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours -
             diffMinutes * minutes) / seconds);
         if (startYear == todayYear) {
 
-            document.getElementById(&#34;sitetime&#34;).innerHTML = &#34;已安全运行 &#34; &#43; diffDays &#43; &#34; 天 &#34; &#43; diffHours &#43;
-                &#34; 小时 &#34; &#43; diffMinutes &#43; &#34; 分钟 &#34; &#43; diffSeconds &#43; &#34; 秒&#34;;
+            document.getElementById("sitetime").innerHTML = "已安全运行 " + diffDays + " 天 " + diffHours +
+                " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
         } else {
 
-            document.getElementById(&#34;sitetime&#34;).innerHTML = &#34;已安全运行 &#34; &#43; diffYears &#43; &#34; 年 &#34; &#43; diffDays &#43;
-                &#34; 天 &#34; &#43; diffHours &#43; &#34; 小时 &#34; &#43; diffMinutes &#43; &#34; 分钟 &#34; &#43; diffSeconds &#43; &#34; 秒&#34;;
+            document.getElementById("sitetime").innerHTML = "已安全运行 " + diffYears + " 年 " + diffDays +
+                " 天 " + diffHours + " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
         }
     }
     setInterval(siteTime, 1000);
-&lt;/script&gt;
-&lt;span id=&#34;sitetime&#34;&gt;载入运行时间...&lt;/span&gt;
+</script>
+<span id="sitetime">载入运行时间...</span>
 ```
 
 ---
@@ -370,67 +370,67 @@ NOTE：`blog/public` 中相关文件可以删除，也可以不删除，推荐�
 
 ### Link
 
-{{&lt; link href=&#34;https://kydance.github.io&#34; content=kydance.github.io tittle=&#34;Welcome to visist 鸢舞杂货铺&#34; &gt;}}
+{{< link href="https://kydance.github.io" content=kydance.github.io tittle="Welcome to visist 鸢舞杂货铺" >}}
 
 ---
 
-{{&lt; link &#34;https://kydance.github.io&#34; &gt;}}
+{{< link "https://kydance.github.io" >}}
 
 ### Admonition
 
-{{&lt; admonition note &#34;This is a note&#34; ture &gt;}}
+{{< admonition note "This is a note" ture >}}
 NOTE
-{{&lt; /admonition &gt;}}
+{{< /admonition >}}
 
-{{&lt; admonition abstract &#34;This is a abstract&#34; ture &gt;}}
+{{< admonition abstract "This is a abstract" ture >}}
 ABSTRACT
-{{&lt; /admonition &gt;}}
+{{< /admonition >}}
 
-{{&lt; admonition info &#34;This is a info&#34; ture &gt;}}
+{{< admonition info "This is a info" ture >}}
 INFO
-{{&lt; /admonition &gt;}}
+{{< /admonition >}}
 
-{{&lt; admonition tip &#34;This is a tip&#34; ture &gt;}}
+{{< admonition tip "This is a tip" ture >}}
 TIP
-{{&lt; /admonition &gt;}}
+{{< /admonition >}}
 
-{{&lt; admonition success &#34;This is a success&#34; ture &gt;}}
+{{< admonition success "This is a success" ture >}}
 SUCCESS
-{{&lt; /admonition &gt;}}
+{{< /admonition >}}
 
-{{&lt; admonition question &#34;This is a question&#34; ture &gt;}}
+{{< admonition question "This is a question" ture >}}
 QUESTION
-{{&lt; /admonition &gt;}}
+{{< /admonition >}}
 
-{{&lt; admonition warning &#34;This is a warning&#34; ture &gt;}}
+{{< admonition warning "This is a warning" ture >}}
 WARNING
-{{&lt; /admonition &gt;}}
+{{< /admonition >}}
 
-{{&lt; admonition failure &#34;This is a failure&#34; ture &gt;}}
+{{< admonition failure "This is a failure" ture >}}
 FAILURE
-{{&lt; /admonition &gt;}}
+{{< /admonition >}}
 
-{{&lt; admonition danger &#34;This is a danger&#34; ture &gt;}}
+{{< admonition danger "This is a danger" ture >}}
 danger
-{{&lt; /admonition &gt;}}
+{{< /admonition >}}
 
-{{&lt; admonition bug &#34;This is a bug&#34; ture &gt;}}
+{{< admonition bug "This is a bug" ture >}}
 BUG
-{{&lt; /admonition &gt;}}
+{{< /admonition >}}
 
-{{&lt; admonition example &#34;This is a example&#34; ture &gt;}}
+{{< admonition example "This is a example" ture >}}
 EXAMPLE
-{{&lt; /admonition &gt;}}
+{{< /admonition >}}
 
-{{&lt; admonition quote &#34;This is a quote&#34; ture &gt;}}
+{{< admonition quote "This is a quote" ture >}}
 QUOTE
-{{&lt; /admonition &gt;}}
+{{< /admonition >}}
 
 ### Video
 
-{{&lt; bilibili BV1Vu411r7mw &gt;}}
+{{< bilibili BV1Vu411r7mw >}}
 
-{{&lt; youtube C314KAeZic4 &gt;}}
+{{< youtube C314KAeZic4 >}}
 
 ---
 
@@ -448,7 +448,7 @@ Hugo 的配置文件和文章中的引用图片都是以 static 作为根目录�
 
 ### 文章缩略
 
-如果想要文章在某个地方缩略，只需要在该位置加入  `&lt;!--more--&gt;` 即可。
+如果想要文章在某个地方缩略，只需要在该位置加入  `<!--more-->` 即可。
 
 ---
 

@@ -1,22 +1,22 @@
 # 设计模式精讲：从理论到实战的最佳实践指南
 
 
-{{&lt; admonition type=abstract title=&#34;导语&#34; open=true &gt;}}
-设计模式是每个程序员的必修课，但如何正确理解和灵活运用却是一门艺术。本文将带你深入浅出地探索 Golang 项目中常用的 8 种经典设计模式，通过 Go 和 C&#43;&#43; 的实际代码示例，让你真正理解每种模式的精髓。从面向对象设计原则到具体实现，从模式分类到实战应用，助你构建更优雅、更可维护的代码架构。
-{{&lt; /admonition &gt;}}
+{{< admonition type=abstract title="导语" open=true >}}
+设计模式是每个程序员的必修课，但如何正确理解和灵活运用却是一门艺术。本文将带你深入浅出地探索 Golang 项目中常用的 8 种经典设计模式，通过 Go 和 C++ 的实际代码示例，让你真正理解每种模式的精髓。从面向对象设计原则到具体实现，从模式分类到实战应用，助你构建更优雅、更可维护的代码架构。
+{{< /admonition >}}
 
-&lt;!--more--&gt;
+<!--more-->
 
 ## I. 前言
 
 软件设计模式（Design Pattern），是一套被反复使用、多数人知晓的、经过分类编目的、代码设计经验的总结，使用设计模式是为了可重用代码、让代码更容易被他人理解并且保证代码可靠性。
 简单来说，设计模式就是**在一定环境下，用固定套路解决问题**。
 
-&gt; 设计模式的基础：**多态**
+> 设计模式的基础：**多态**
 
 ### 面向对象设计原则
 
-    &gt; 目的：高内聚、低耦合
+    > 目的：高内聚、低耦合
 
 如何同时提⾼⼀个软件系统的**可维护性**和**可复⽤性**是⾯向对象设计需要解决的核⼼问题之⼀。
 ⾯向对象设计原则为⽀持可维护性复⽤⽽诞⽣，这些原则蕴含在很多设计模式中，它们是从许多设计⽅案中总结出的指导性原则。
@@ -35,9 +35,9 @@
 
 | 模式名称 | 用途 |
 | :--- | :--- |
-| **单例模式** &lt;br&gt; 🌟🌟🌟🌟 | 保证一个类仅有一个实例，并提供一个访问它的全局访问点 |
-| **简单工厂方法** &lt;br&gt; 🌟🌟🌟 | 通过专门定义一个类来负责创建其他类的实例，被创建的实例通常都具有共同的基类 |
-| **抽象工厂方法** &lt;br&gt; 🌟🌟🌟🌟🌟 | 提供一个创建一系列相关或相互依赖的接口，而无需指定它们具体的类 |
+| **单例模式** <br> 🌟🌟🌟🌟 | 保证一个类仅有一个实例，并提供一个访问它的全局访问点 |
+| **简单工厂方法** <br> 🌟🌟🌟 | 通过专门定义一个类来负责创建其他类的实例，被创建的实例通常都具有共同的基类 |
+| **抽象工厂方法** <br> 🌟🌟🌟🌟🌟 | 提供一个创建一系列相关或相互依赖的接口，而无需指定它们具体的类 |
 | 原型模式 | ⽤原型实例指定创建对象的种类，并且通过拷⻉这些原型创建新的对象 |
 | 建造者模式 | 将⼀个复杂的构建与其表示相分离，使得同样的构建过程可以创建不同的表示 |
 
@@ -45,11 +45,11 @@
 
 | 模式名称 | 用途 |
 | :--- | :--- |
-| **适配器模式** &lt;br&gt; 🌟🌟🌟🌟 | 将一个类的接口转换成客户希望的另外一个接口，使得原本由于接口不兼容而不能一起工作的那些类可以一起工作 |
+| **适配器模式** <br> 🌟🌟🌟🌟 | 将一个类的接口转换成客户希望的另外一个接口，使得原本由于接口不兼容而不能一起工作的那些类可以一起工作 |
 | 桥接模式 | 将抽象部分与实际部分分离，使它们可以独立的变化 |
-| **组合模式** &lt;br&gt; 🌟🌟🌟🌟 | 将对象组合成树形结构以表示 “部分 - 整体” 的层次结构，使得用户对单个对象和组合对象的使用具有一致性 |
-| **装饰模式** &lt;br&gt; 🌟🌟🌟 | 动态地给一个对象添加一些额外的职责：就增加功能来说，此模式比生成子类更加灵活 |
-| **外观模式** &lt;br&gt; 🌟🌟🌟🌟🌟 | 为子系统的一组接口提供一个一致的界面，此模式定义了一个高层次接口，使得这一子系统更容易使用 |
+| **组合模式** <br> 🌟🌟🌟🌟 | 将对象组合成树形结构以表示 “部分 - 整体” 的层次结构，使得用户对单个对象和组合对象的使用具有一致性 |
+| **装饰模式** <br> 🌟🌟🌟 | 动态地给一个对象添加一些额外的职责：就增加功能来说，此模式比生成子类更加灵活 |
+| **外观模式** <br> 🌟🌟🌟🌟🌟 | 为子系统的一组接口提供一个一致的界面，此模式定义了一个高层次接口，使得这一子系统更容易使用 |
 | 享元模式 | 以共享的方式高效的支持大量的细粒度的对象 |
 | 代理模式 | 为其他对象提供一种代理以控制这个对象的访问 |
 
@@ -61,14 +61,14 @@
 
 意图：它是一种创建型设计模式，限制了实例化类的对象个数，确保一个类只有一个实例，并且提供一个全局访问点。
 
-{{&lt; admonition type=warning title=&#34;warning&#34; open=true &gt;}}
+{{< admonition type=warning title="warning" open=true >}}
 
 Singleton Pattern 同时解决了两个问题，因此违法了**单一职责原则**:
 
 1. 保证一个类只用一个实例。
 2. 为该实例提供一个全局访问节点。
 
-{{&lt; /admonition &gt;}}
+{{< /admonition >}}
 
 #### 应用场景
 
@@ -85,7 +85,7 @@ Singleton Pattern 同时解决了两个问题，因此违法了**单一职责原
 
 #### 单例模式结构
 
-{{&lt; figure src=&#34;/posts/design-pattern/FactoryMethod-Singleton.svg&#34; title=&#34;&#34; &gt;}}
+{{< figure src="/posts/design-pattern/FactoryMethod-Singleton.svg" title="" >}}
 
 #### 与其他模式的关系
 
@@ -101,7 +101,7 @@ Singleton Pattern 同时解决了两个问题，因此违法了**单一职责原
     // Singleton.go
     package singleton
 
-    import &#34;sync&#34;
+    import "sync"
 
     var instance *Singleton
     var once sync.Once
@@ -116,7 +116,7 @@ Singleton Pattern 同时解决了两个问题，因此违法了**单一职责原
         }
 
         once.Do(func() {
-            instance = &amp;Singleton{}
+            instance = &Singleton{}
         })
         return instance
     }
@@ -158,9 +158,9 @@ Singleton Pattern 同时解决了两个问题，因此违法了**单一职责原
     }
 
     func newAk47() Gun {
-        return &amp;ak47{
+        return &ak47{
             gun: gun{
-                name: &#34;AK47&#34;,
+                name: "AK47",
                 power: 10,
             }
         }
@@ -172,8 +172,8 @@ Singleton Pattern 同时解决了两个问题，因此违法了**单一职责原
     }
 
     func m16() Gun {
-        return &amp;gun{
-            name: &#34;M16&#34;,
+        return &gun{
+            name: "M16",
             power: 17,
         }
     }
@@ -181,12 +181,12 @@ Singleton Pattern 同时解决了两个问题，因此违法了**单一职责原
     // Factory.go
     func GunFactory(gunType string) (Gun, error) {
         switch gunType {
-        case &#34;ak47&#34;:
+        case "ak47":
             return newAk47(), nil
-        case &#34;m16&#34;:
+        case "m16":
             return newM16(), nil
         default:
-            return nil, errors.New(&#34;wrong gun type&#34;)
+            return nil, errors.New("wrong gun type")
         }
     }
     ```
@@ -223,7 +223,7 @@ type Cache struct {
 }
 
 func initCache(algo RmAlgo) *Cache {
-    return &amp;Cache{
+    return &Cache{
         storage:     make(map[string]any),
         rmAlgo:      algo,
         capacity:    0,
@@ -239,11 +239,11 @@ func (c *Cache) setRmAlgo(algo RmAlgo) { c.rmAlgo = algo }
 func (c *Cache) get(key string) any { return c.storage[key] }
 
 func (c *Cache) add(key string, value any) {
-    if c.capacity &gt;= c.maxCapacity {
+    if c.capacity >= c.maxCapacity {
         c.rm()
     }
     c.storage[key] = value
-    c.capacity&#43;&#43;
+    c.capacity++
 }
 
 // iCache.go 策略接口
@@ -253,15 +253,15 @@ type RmAlgo interface {
 
 // fifo.go
 type Fifo struct{}
-func (f *Fifo) Rm(c *Cache) { fmt.Println(&#34;rm by fifo strategy&#34;) }
+func (f *Fifo) Rm(c *Cache) { fmt.Println("rm by fifo strategy") }
 
 // lru.go
 type Lru struct{}
-func (l *Lru) Rm(c *Cache) { fmt.Println(&#34;rm by lru strategy&#34;) }
+func (l *Lru) Rm(c *Cache) { fmt.Println("rm by lru strategy") }
 
 // lfu.go
 type Lfu struct{}
-func (l *Lfu) Rm(c *Cache) { fmt.Println(&#34;rm by lfu strategy&#34;) }
+func (l *Lfu) Rm(c *Cache) { fmt.Println("rm by lfu strategy") }
 ```
 
 ### 2. 模板方法模式（Template Method Pattern）
@@ -305,17 +305,17 @@ type Sms struct {
     Otp
 }
 func (s *Sms) GenerateRandomOtp(length int) string {
-    opt := &#34;&#34;
+    opt := ""
     for i := range length {
-        opt &#43;= strconv.Itoa(rand.Intn(10))
+        opt += strconv.Itoa(rand.Intn(10))
     }
-    fmt.Println(&#34;SMS: Generate otp %s&#34;, opt)
+    fmt.Println("SMS: Generate otp %s", opt)
     return opt
 }
-func (s *Sms) CacheOtp(otp string) { fmt.Println(&#34;SMS: Cache otp %s&#34;, otp) }
-func (s *Sms) PrepareContent() string { return fmt.Sprintf(&#34;Your OTP is %s&#34;, otp) }
+func (s *Sms) CacheOtp(otp string) { fmt.Println("SMS: Cache otp %s", otp) }
+func (s *Sms) PrepareContent() string { return fmt.Sprintf("Your OTP is %s", otp) }
 func (s *Sms) SendNotification(message string) error {
-    fmt.Println(&#34;SMS: Send message %s&#34;, message)
+    fmt.Println("SMS: Send message %s", message)
     return nil
 }
 
@@ -324,17 +324,17 @@ type Email struct {
     Otp
 }
 func (e *Email) GenerateRandomOtp(length int) string {
-    opt := &#34;&#34;
+    opt := ""
     for i := range length {
-        opt &#43;= strconv.Itoa(rand.Intn(10))
+        opt += strconv.Itoa(rand.Intn(10))
     }
-    fmt.Println(&#34;Email: Generate otp %s&#34;, opt)
+    fmt.Println("Email: Generate otp %s", opt)
     return opt
 }
-func (e *Email) CacheOtp(otp string) { fmt.Println(&#34;Email: Cache otp %s&#34;, otp) }
-func (e *Email) PrepareContent() string { return fmt.Sprintf(&#34;Your OTP is %s&#34;, otp) }
+func (e *Email) CacheOtp(otp string) { fmt.Println("Email: Cache otp %s", otp) }
+func (e *Email) PrepareContent() string { return fmt.Sprintf("Your OTP is %s", otp) }
 func (e *Email) SendNotification(message string) error {
-    fmt.Println(&#34;Email: Send message %s&#34;, message)
+    fmt.Println("Email: Send message %s", message)
     return nil
 }
 ```
@@ -371,8 +371,8 @@ type Nginx struct {
 }
 
 func NewNginx() *Nginx {
-    return &amp;Nginx{
-        application:       &amp;Application{},
+    return &Nginx{
+        application:       &Application{},
         maxAllowedRequest: 10,
         rateLimiter:       make(map[string]int),
     }
@@ -380,7 +380,7 @@ func NewNginx() *Nginx {
 func (n *Nginx) HandleRequest(url string, method string) (int, string) {
     allowed := n.checkRateLimit(url)
     if !allowed {
-        return 403, &#34;Forbidden&#34;
+        return 403, "Forbidden"
     }
     return n.application.HandleRequest(url, method)
 }
@@ -389,25 +389,25 @@ func (n *Nginx) checkRateLimit(url string) bool {
     if n.rateLimiter[url] == 0 {
         n.rateLimiter[url] = 1
     }
-    if n.rateLimiter[url] &gt; n.maxAllowedRequest {
+    if n.rateLimiter[url] > n.maxAllowedRequest {
         return false
     }
-    n.rateLimiter[url]&#43;&#43;
+    n.rateLimiter[url]++
     return true
 }
 
 // application.go
 type Application struct {}
 func (a *Application) HandleRequest(url string, method string) (int, string) {
-    if url == &#34;/app/status&#34; &amp;&amp; method == &#34;GET&#34; {
-        return 200, &#34;OK&#34;
+    if url == "/app/status" && method == "GET" {
+        return 200, "OK"
     }
 
-    if url == &#34;/create/user&#34; &amp;&amp; method == &#34;POST&#34; {
-        return 201, &#34;User Created&#34;
+    if url == "/create/user" && method == "POST" {
+        return 201, "User Created"
     }
 
-    return 404, &#34;Not Found&#34;
+    return 404, "Not Found"
 }
 ```
 
@@ -438,7 +438,7 @@ func (a *Application) HandleRequest(url string, method string) (int, string) {
     }
 
     func NewConnection(addr string) (*Connection, error) {
-        return &amp;Connection{
+        return &Connection{
             addr:   addr,
             cache:  defaultCaching,
             timeout: defaultTimeout,
@@ -446,7 +446,7 @@ func (a *Application) HandleRequest(url string, method string) (int, string) {
     }
 
     func NewConnectionWithOptions(addr string, cache bool, timeout time.Duration) (*Connection, error) {
-        return &amp;Connection{
+        return &Connection{
             addr:   addr,
             cache:  cache,
             timeout: timeout,
@@ -476,14 +476,14 @@ type ConnectionOption struct {
 }
 
 func NewDefaultConnectionOption() *ConnectionOption {
-    return &amp;ConnectionOption{
+    return &ConnectionOption{
         Cache:   defaultCaching,
         Timeout: defaultTimeout,
     }
 }
 
 func NewConnection(addr string, opts *ConnectionOption) (*Connection, error) {
-    return &amp;Connection{
+    return &Connection{
         addr:   addr,
         cache:  opt.Cache,
         timeout: opt.Timeout,
@@ -496,7 +496,7 @@ func NewConnection(addr string, opts *ConnectionOption) (*Connection, error) {
 ```Go
 package options
 
-import &#34;time&#34;
+import "time"
 
 type Connection struct {
     addr string
@@ -535,14 +535,14 @@ func WithCaching(c bool) Option {
 }
 
 func NewConnection(addr string, opts ...Option) (*Connection, error) {
-    o := &amp;options{
+    o := &options{
         timeout: defaultTimeout,
         cache:   defaultCaching,
     }
     for _, opt := range opts {
         opt.apply(o)
     }
-    return &amp;Connection{
+    return &Connection{
         addr:   addr,
         cache:  o.cache,
         timeout: o.timeout,
@@ -550,7 +550,7 @@ func NewConnection(addr string, opts ...Option) (*Connection, error) {
 }
 ```
 
-`Option` 类型的选项参数需要实现 `apply(*options)` 函数，结合 `WithTimeout`、`WithCache` 函数的返回值和 `optionFunc` 的 `apply` 方法实现，可以知道 `o.apply(&amp;options)` 其实就是把 `WithTimeout`、`WithCache` 的返回值赋值给 `options` 结构体变量，以此动态地设置 `options` 结构体变量的字段值。
+`Option` 类型的选项参数需要实现 `apply(*options)` 函数，结合 `WithTimeout`、`WithCache` 函数的返回值和 `optionFunc` 的 `apply` 方法实现，可以知道 `o.apply(&options)` 其实就是把 `WithTimeout`、`WithCache` 的返回值赋值给 `options` 结构体变量，以此动态地设置 `options` 结构体变量的字段值。
 
 同时，我们还可以在 `apply` 函数中自定义赋值逻辑，例如 `o.timeout = 10 * t`，使得设置结构体属性的灵活性更大。
 
@@ -562,9 +562,9 @@ Options 模式的优点：
 - 方便扩展
 - 通过 `WithXXX` 的函数命名，可以使参数意义更加明确
 
-{{&lt; admonition type=tip title=&#34;&#34; open=true &gt;}}
+{{< admonition type=tip title="" open=true >}}
 当结构体参数较少时，需要慎重考虑是否需要采用 Options 模式
-{{&lt; /admonition &gt;}}
+{{< /admonition >}}
 
 
 ---

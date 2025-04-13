@@ -1,11 +1,11 @@
 # 深入理解 Go Context：优雅的并发控制与请求管理
 
 
-{{&lt; admonition type=abstract title=&#34;导语&#34; open=true &gt;}}
+{{< admonition type=abstract title="导语" open=true >}}
 在现代 Go 应用中，Context 是实现并发控制和请求管理的核心机制。它不仅能够优雅地传递请求上下文，还能有效管理 goroutine 的生命周期，实现超时控制和优雅退出。本文将带你深入理解 Context 的设计理念和最佳实践，通过实例讲解如何在实际项目中运用 Context 来构建可靠、高效的并发应用。从链路追踪到资源管理，一文掌握 Context 的精髓。
-{{&lt; /admonition &gt;}}
+{{< /admonition >}}
 
-&lt;!--more--&gt;
+<!--more-->
 
 ## Context
 
@@ -17,14 +17,14 @@ Context 除了用来传递上下文信息，还可以用来传递终结执行子
 // A Context carries a deadline, a cancellation signal, and other values across
 // API boundaries.
 //
-// Context&#39;s methods may be called by multiple goroutines simultaneously.
+// Context's methods may be called by multiple goroutines simultaneously.
 type Context interface {
 	// Deadline returns the time when work done on behalf of this context
 	// should be canceled. Deadline returns ok==false when no deadline is
 	// set. Successive calls to Deadline return the same results.
 	Deadline() (deadline time.Time, ok bool)
 
-	// Done returns a channel that&#39;s closed when work done on behalf of this
+	// Done returns a channel that's closed when work done on behalf of this
 	// context should be canceled. Done may return nil if this context can
 	// never be canceled. Successive calls to Done return the same value.
 	// The close of the Done channel may happen asynchronously,
@@ -39,28 +39,28 @@ type Context interface {
 	//
 	//  // Stream generates values with DoSomething and sends them to out
 	//  // until DoSomething returns an error or ctx.Done is closed.
-	//  func Stream(ctx context.Context, out chan&lt;- Value) error {
+	//  func Stream(ctx context.Context, out chan<- Value) error {
 	//  	for {
 	//  		v, err := DoSomething(ctx)
 	//  		if err != nil {
 	//  			return err
 	//  		}
 	//  		select {
-	//  		case &lt;-ctx.Done():
+	//  		case <-ctx.Done():
 	//  			return ctx.Err()
-	//  		case out &lt;- v:
+	//  		case out <- v:
 	//  		}
 	//  	}
 	//  }
 	//
 	// See https://blog.golang.org/pipelines for more examples of how to use
 	// a Done channel for cancellation.
-	Done() &lt;-chan struct{}
+	Done() <-chan struct{}
 
 	// If Done is not yet closed, Err returns nil.
 	// If Done is closed, Err returns a non-nil error explaining why:
 	// Canceled if the context was canceled
-	// or DeadlineExceeded if the context&#39;s deadline passed.
+	// or DeadlineExceeded if the context's deadline passed.
 	// After Err returns a non-nil error, successive calls to Err return the same error.
 	Err() error
 
@@ -82,10 +82,10 @@ type Context interface {
 	// Packages that define a Context key should provide type-safe accessors
 	// for the values stored using that key:
 	//
-	// 	// Package user defines a User type that&#39;s stored in Contexts.
+	// 	// Package user defines a User type that's stored in Contexts.
 	// 	package user
 	//
-	// 	import &#34;context&#34;
+	// 	import "context"
 	//
 	// 	// User is the type of value stored in the Contexts.
 	// 	type User struct {...}
@@ -129,31 +129,31 @@ type Context interface {
 package main
 
 import (
-	&#34;context&#34;
-	&#34;fmt&#34;
-	&#34;time&#34;
+	"context"
+	"fmt"
+	"time"
 )
 
-const DB_ADDRESS = &#34;db_address&#34;
-const CALCULATE_VALUE = &#34;calculate_value&#34;
+const DB_ADDRESS = "db_address"
+const CALCULATE_VALUE = "calculate_value"
 
 func readDB(ctx context.Context, cost time.Duration) {
-	fmt.Println(&#34;DB address is &#34;, ctx.Value(DB_ADDRESS))
+	fmt.Println("DB address is ", ctx.Value(DB_ADDRESS))
 
 	select {
-	case &lt;-time.After(cost):
-		fmt.Println(&#34;read data from db&#34;)
-	case &lt;-ctx.Done():
+	case <-time.After(cost):
+		fmt.Println("read data from db")
+	case <-ctx.Done():
 		fmt.Println(ctx.Err())
 	}
 }
 
 func calculate(ctx context.Context, cost time.Duration) {
-	fmt.Println(&#34;calculate value is&#34;, ctx.Value(CALCULATE_VALUE))
+	fmt.Println("calculate value is", ctx.Value(CALCULATE_VALUE))
 	select {
-	case &lt;-time.After(cost): //  模拟数据计算
-		fmt.Println(&#34;calculate finish&#34;)
-	case &lt;-ctx.Done():
+	case <-time.After(cost): //  模拟数据计算
+		fmt.Println("calculate finish")
+	case <-ctx.Done():
 		fmt.Println(ctx.Err()) // 任务取消的原因
 		// 一些清理工作
 	}
@@ -163,8 +163,8 @@ func main() {
 	ctx := context.Background()
 
 	// Add Context info
-	ctx = context.WithValue(ctx, DB_ADDRESS, &#34;localhost:3306&#34;)
-	ctx = context.WithValue(ctx, CALCULATE_VALUE, &#34;123&#34;)
+	ctx = context.WithValue(ctx, DB_ADDRESS, "localhost:3306")
+	ctx = context.WithValue(ctx, CALCULATE_VALUE, "123")
 
 	ctx, cancel := context.WithTimeout(ctx, time.Second*2)
 	defer cancel()
@@ -177,7 +177,7 @@ func main() {
 
 ```
 
-&gt; 使用 Context，能够有效地在一组 goroutine 中传递共享值、取消信号、deadline 等信息，及时关闭不需要的 goroutine。
+> 使用 Context，能够有效地在一组 goroutine 中传递共享值、取消信号、deadline 等信息，及时关闭不需要的 goroutine。
 
 ---
 

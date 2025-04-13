@@ -1,66 +1,66 @@
 # Typora Theme
 
 
-{{&lt; admonition type=abstract title=&#34;导语&#34; open=true &gt;}}
+{{< admonition type=abstract title="导语" open=true >}}
 分享一个好看的 Typora 主题
-{{&lt; /admonition &gt;}}
+{{< /admonition >}}
 
-&lt;!--more--&gt;
+<!--more-->
 
 ## 效果
 
 本 Typora 软件主题是在 [`Purple`](https://theme.typora.io/theme/Purple/) 之上修改而来，具体效果如下：
 
-{{&lt; figure src=&#34;/posts/typora-theme/theme.png&#34; title=&#34;&#34; &gt;}}
+{{< figure src="/posts/typora-theme/theme.png" title="" >}}
 
 ## Source
 
 由于实现源码太长，给出下载连接：[kyden.css](https://github.com/kydance/dotfiles/blob/master/typora-theme/kyden.css)
 
 ```css
-@include-when-export url(https://fonts.loli.net/css?family=Open&#43;Sans:400italic,700italic,700,400&amp;subset=latin,latin-ext);
+@include-when-export url(https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext);
 
 /* open-sans-regular - latin-ext_latin */
 
 @font-face {
-    font-family: &#34;Open Sans&#34;;
+    font-family: "Open Sans";
     font-style: normal;
     font-weight: normal;
-    src: local(&#34;Open Sans Regular&#34;), local(&#34;OpenSans-Regular&#34;), url(&#34;./github/open-sans-v17-latin-ext_latin-regular.woff2&#34;) format(&#34;woff2&#34;);
-    unicode-range: U&#43;0000-00FF, U&#43;0131, U&#43;0152-0153, U&#43;02BB-02BC, U&#43;02C6, U&#43;02DA, U&#43;02DC, U&#43;2000-206F, U&#43;2074, U&#43;20AC, U&#43;2122, U&#43;2191, U&#43;2193, U&#43;2212, U&#43;2215, U&#43;FEFF, U&#43;FFFD, U&#43;0100-024F, U&#43;0259, U&#43;1E00-1EFF, U&#43;2020, U&#43;20A0-20AB, U&#43;20AD-20CF, U&#43;2113, U&#43;2C60-2C7F, U&#43;A720-A7FF;
+    src: local("Open Sans Regular"), local("OpenSans-Regular"), url("./github/open-sans-v17-latin-ext_latin-regular.woff2") format("woff2");
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD, U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
 }
 
 
 /* open-sans-italic - latin-ext_latin */
 
 @font-face {
-    font-family: &#34;Open Sans&#34;;
+    font-family: "Open Sans";
     font-style: italic;
     font-weight: normal;
-    src: local(&#34;Open Sans Italic&#34;), local(&#34;OpenSans-Italic&#34;), url(&#34;./github/open-sans-v17-latin-ext_latin-italic.woff2&#34;) format(&#34;woff2&#34;);
-    unicode-range: U&#43;0000-00FF, U&#43;0131, U&#43;0152-0153, U&#43;02BB-02BC, U&#43;02C6, U&#43;02DA, U&#43;02DC, U&#43;2000-206F, U&#43;2074, U&#43;20AC, U&#43;2122, U&#43;2191, U&#43;2193, U&#43;2212, U&#43;2215, U&#43;FEFF, U&#43;FFFD, U&#43;0100-024F, U&#43;0259, U&#43;1E00-1EFF, U&#43;2020, U&#43;20A0-20AB, U&#43;20AD-20CF, U&#43;2113, U&#43;2C60-2C7F, U&#43;A720-A7FF;
+    src: local("Open Sans Italic"), local("OpenSans-Italic"), url("./github/open-sans-v17-latin-ext_latin-italic.woff2") format("woff2");
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD, U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
 }
 
 
 /* open-sans-700 - latin-ext_latin */
 
 @font-face {
-    font-family: &#34;Open Sans&#34;;
+    font-family: "Open Sans";
     font-style: normal;
     font-weight: bold;
-    src: local(&#34;Open Sans Bold&#34;), local(&#34;OpenSans-Bold&#34;), url(&#34;./github/open-sans-v17-latin-ext_latin-700.woff2&#34;) format(&#34;woff2&#34;);
-    unicode-range: U&#43;0000-00FF, U&#43;0131, U&#43;0152-0153, U&#43;02BB-02BC, U&#43;02C6, U&#43;02DA, U&#43;02DC, U&#43;2000-206F, U&#43;2074, U&#43;20AC, U&#43;2122, U&#43;2191, U&#43;2193, U&#43;2212, U&#43;2215, U&#43;FEFF, U&#43;FFFD, U&#43;0100-024F, U&#43;0259, U&#43;1E00-1EFF, U&#43;2020, U&#43;20A0-20AB, U&#43;20AD-20CF, U&#43;2113, U&#43;2C60-2C7F, U&#43;A720-A7FF;
+    src: local("Open Sans Bold"), local("OpenSans-Bold"), url("./github/open-sans-v17-latin-ext_latin-700.woff2") format("woff2");
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD, U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
 }
 
 
 /* open-sans-700italic - latin-ext_latin */
 
 @font-face {
-    font-family: &#34;Open Sans&#34;;
+    font-family: "Open Sans";
     font-style: italic;
     font-weight: bold;
-    src: local(&#34;Open Sans Bold Italic&#34;), local(&#34;OpenSans-BoldItalic&#34;), url(&#34;./github/open-sans-v17-latin-ext_latin-700italic.woff2&#34;) format(&#34;woff2&#34;);
-    unicode-range: U&#43;0000-00FF, U&#43;0131, U&#43;0152-0153, U&#43;02BB-02BC, U&#43;02C6, U&#43;02DA, U&#43;02DC, U&#43;2000-206F, U&#43;2074, U&#43;20AC, U&#43;2122, U&#43;2191, U&#43;2193, U&#43;2212, U&#43;2215, U&#43;FEFF, U&#43;FFFD, U&#43;0100-024F, U&#43;0259, U&#43;1E00-1EFF, U&#43;2020, U&#43;20A0-20AB, U&#43;20AD-20CF, U&#43;2113, U&#43;2C60-2C7F, U&#43;A720-A7FF;
+    src: local("Open Sans Bold Italic"), local("OpenSans-BoldItalic"), url("./github/open-sans-v17-latin-ext_latin-700italic.woff2") format("woff2");
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD, U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
 }
 
 :root {
@@ -89,8 +89,8 @@
     --active-file-bg-color: var(--shadow-color);
     --item-hover-bg-color: var(--shadow-color);
     --active-file-border-color: var(var(--title-color));
-    --base-font: &#34;Open Sans&#34;, &#34;Clear Sans&#34;, &#34;Helvetica Neue&#34;, Helvetica, Arial, sans-serif;
-    --title-font: &#34;EB Garamond&#34;, &#34;Source Sans Pro&#34;, serif;
+    --base-font: "Open Sans", "Clear Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    --title-font: "EB Garamond", "Source Sans Pro", serif;
     --monospace: Courier, Monospace !important;
 }
 
@@ -156,11 +156,11 @@ body {
     word-spacing: 0.05rem;
 }
 
-body&gt;*:first-child {
+body>*:first-child {
     margin-top: 0 !important;
 }
 
-body&gt;*:last-child {
+body>*:last-child {
     margin-bottom: 0 !important;
 }
 
@@ -203,7 +203,7 @@ h1 {
 }
 
 h1:after {
-    content: &#34;&#34;;
+    content: "";
     display: block;
     margin: 0.2rem auto 0;
     width: 6rem;
@@ -272,8 +272,8 @@ hr {
 
 /* 列表 */
 
-li&gt;ol,
-li&gt;ul {
+li>ol,
+li>ul {
     margin: 0 0;
 }
 
@@ -376,7 +376,7 @@ tt {
     padding: 1px 2px;
 }
 
-.md-task-list-item&gt;input {
+.md-task-list-item>input {
     margin-left: -1.3em;
 }
 
@@ -391,14 +391,14 @@ tt {
     margin-top: 0 !important;
 }
 
-.mathjax-block&gt;.code-tooltip {
+.mathjax-block>.code-tooltip {
     bottom: 0.375rem;
 }
 
 
 /* 图片 */
 
-.md-image&gt;.md-meta {
+.md-image>.md-meta {
     border-radius: 3px;
     font-family: var(--monospace);
     padding: 2px 0 0 4px;
@@ -419,7 +419,7 @@ tt {
 
 /* 写![shadow-...]() 显示图片阴影 */
 
-img[alt|=&#34;shadow&#34;] {
+img[alt|="shadow"] {
     box-shadow: var(--shadow);
 }
 
@@ -542,7 +542,7 @@ footer {
 
 /* task list */
 
-#write .md-task-list-item&gt;input {
+#write .md-task-list-item>input {
     -webkit-appearance: initial;
     display: block;
     position: absolute;
@@ -554,17 +554,17 @@ footer {
     transition: background 0.3s;
 }
 
-#write .md-task-list-item&gt;input:focus {
+#write .md-task-list-item>input:focus {
     outline: none;
     box-shadow: none;
 }
 
-#write .md-task-list-item&gt;input:hover {
+#write .md-task-list-item>input:hover {
     background: #ddd;
 }
 
-#write .md-task-list-item&gt;input[checked]::before {
-    content: &#34;&#34;;
+#write .md-task-list-item>input[checked]::before {
+    content: "";
     position: absolute;
     top: 20%;
     left: 50%;
@@ -574,8 +574,8 @@ footer {
     background: #333;
 }
 
-#write .md-task-list-item&gt;input[checked]::after {
-    content: &#34;&#34;;
+#write .md-task-list-item>input[checked]::after {
+    content: "";
     position: absolute;
     top: 46%;
     left: 25%;
@@ -585,20 +585,20 @@ footer {
     background: #333;
 }
 
-#write .md-task-list-item&gt;p {
+#write .md-task-list-item>p {
     transition: color 0.3s, opacity 0.3s;
 }
 
-#write .md-task-list-item.task-list-done&gt;p {
+#write .md-task-list-item.task-list-done>p {
     color: #b4b4b4;
     text-decoration: line-through;
 }
 
-#write .md-task-list-item.task-list-done&gt;p&gt;.md-emoji {
+#write .md-task-list-item.task-list-done>p>.md-emoji {
     opacity: 0.5;
 }
 
-#write .md-task-list-item.task-list-done&gt;p&gt;.md-link&gt;a {
+#write .md-task-list-item.task-list-done>p>.md-link>a {
     opacity: 0.6;
 }
 

@@ -1,11 +1,11 @@
 # Go 代码质量守护者：12 个必备 Linter 工具完全指南
 
 
-{{&lt; admonition type=abstract title=&#34;导语&#34; open=true &gt;}}
+{{< admonition type=abstract title="导语" open=true >}}
 在追求高质量 Go 代码的道路上，Linter 工具是你最可靠的伙伴。从代码风格的统一到潜在 bug 的预防，从性能隐患的发现到最佳实践的保证，一个优秀的 Linter 配置可以帮你规避 80% 的常见问题。本文将带你全面了解 Go 生态中最实用的 12 个 Linter 工具，通过实例讲解它们的特点和使用方法，帮助你打造一个强大的代码质量保障体系。无论是个人项目还是团队协作，这些工具都能帮你写出更好的 Go 代码。
-{{&lt; /admonition &gt;}}
+{{< /admonition >}}
 
-&lt;!--more--&gt;
+<!--more-->
 
 ## 目录
 
@@ -46,10 +46,10 @@ Gocyclo 是一款用于分析 Go 代码中函数圈复杂度的 Linter 工具，
 圈复杂度，是一种衡量代码复杂性的指标，通过计算代码中的决策点（如if语句、循环等）来评估函数的复杂度，具体计算方法如下：
 
 - 一个函数的基本圈复杂度为 `1`
-- 当函数中存在的每一个 `if`, `for`, `case`, `&amp;&amp;` or `||`，都会使得该函数的圈复杂度加 `1`
+- 当函数中存在的每一个 `if`, `for`, `case`, `&&` or `||`，都会使得该函数的圈复杂度加 `1`
 
-&gt; 1. 在 Go 语言中，由于 `if err != nil` 的特殊情况存在，因此，其圈复杂度阈值默认为 15，而其他编程语言中圈复杂度阈值一般默认为 10。
-&gt; 2. 在 Go 语言中，`switch` 中的 `default` 并不会增加函数的圈复杂度；
+> 1. 在 Go 语言中，由于 `if err != nil` 的特殊情况存在，因此，其圈复杂度阈值默认为 15，而其他编程语言中圈复杂度阈值一般默认为 10。
+> 2. 在 Go 语言中，`switch` 中的 `default` 并不会增加函数的圈复杂度；
 
 Gocyclo 可以作为单独的命令行工具使用，也可以与其他 Linter 工具(如 golangci-lint)集成使用，提供更全面的代码质量检查。
 同时，它也可以集成到 CI/CD 流程中，帮助团队持续改善代码质量。
@@ -65,10 +65,10 @@ go install github.com/fzipp/gocyclo/cmd/gocyclo@latest
 ```Bash
 Calculate cyclomatic complexities of Go functions.
 Usage:
-    gocyclo [flags] &lt;Go file or directory&gt; ...
+    gocyclo [flags] <Go file or directory> ...
 
 Flags:
-    -over N               show functions with complexity &gt; N only and
+    -over N               show functions with complexity > N only and
                           return exit code 1 if the set is non-empty
     -top N                show the top N most complex functions only
     -avg, -avg-short      show the average complexity over all functions;
@@ -76,7 +76,7 @@ Flags:
     -ignore REGEX         exclude files matching the given regular expression
 
 The output fields for each line are:
-&lt;complexity&gt; &lt;package&gt; &lt;function&gt; &lt;file:line:column&gt;
+<complexity> <package> <function> <file:line:column>
 ```
 
 #### 使用示例
@@ -86,8 +86,8 @@ The output fields for each line are:
 package main
 
 import (
- &#34;fmt&#34;
- &#34;strconv&#34;
+ "fmt"
+ "strconv"
 )
 
 func main() {
@@ -95,14 +95,14 @@ func main() {
     if a == 10 {
         f()
     } else {
-        fmt.Printf(&#34;%s&#34;, strconv.Itoa(a))
+        fmt.Printf("%s", strconv.Itoa(a))
     }
 
     switch a{
     case 10:
         fmt.Println(a)
     default:
-        fmt.Println(&#34;default&#34;)
+        fmt.Println("default")
     }
 }
 
@@ -112,7 +112,7 @@ func f() {
 
     if a != b {
         // do something
-        fmt.Println(&#34;a != b&#34;)
+        fmt.Println("a != b")
     }
 }
 ```
@@ -159,17 +159,17 @@ Usage of bodyclose:
 package kyden
 
 import (
- &#34;fmt&#34;
- &#34;io&#34;
- &#34;net/http&#34;
+ "fmt"
+ "io"
+ "net/http"
 )
 
 func f() error{
-    resp, err := http.Get(&#34;http://example.com/&#34;)
+    resp, err := http.Get("http://example.com/")
     if err != nil {
         return err
     }
-    // defer resp.Body.Close() // &lt;&lt;&lt;
+    // defer resp.Body.Close() // <<<
 
     body, err := io.ReadAll(resp.Body)
     fmt.Println(body)
@@ -180,45 +180,45 @@ func f() error{
 ```Bash
 $ golangci-lint run --disable-all -E bodyclose main.go
 main.go:11:26: response body must be closed (bodyclose)
-    resp, err := http.Get(&#34;http://example.com/&#34;)
+    resp, err := http.Get("http://example.com/")
 ```
 
-&gt; 避免使用 `http` 库中 `body` 忘记 `close` 的更优方案是:
-&gt;
-&gt; **对 Go 官方提供的 `http` 进行封装，使调用方（Caller）不用显示调用 `close` 函数.**
-&gt;
-&gt; ```go
-&gt; package httpclient
-&gt; 
-&gt; import (
-&gt;     &#34;io/ioutil&#34;
-&gt;     &#34;net/http&#34;
-&gt; )
-&gt; 
-&gt; // Client 是一个自定义的 HTTP 客户端结构体
-&gt; type Client struct {
-&gt;     http.Client
-&gt; }
-&gt; 
-&gt; // Get 封装了 http.Get 方法
-&gt; func (c *Client) Get(url string) (string, error) {
-&gt;     resp, err := c.Client.Get(url)
-&gt;     if err != nil {
-&gt;         return &#34;&#34;, err
-&gt;     }
-&gt;     
-&gt;     // 确保在函数返回时关闭响应体
-&gt;     defer resp.Body.Close()
-&gt; 
-&gt;     // 读取响应内容
-&gt;     body, err := ioutil.ReadAll(resp.Body)
-&gt;     if err != nil {
-&gt;         return &#34;&#34;, err
-&gt;     }
-&gt; 
-&gt;     return string(body), nil
-&gt; }
-&gt; ```
+> 避免使用 `http` 库中 `body` 忘记 `close` 的更优方案是:
+>
+> **对 Go 官方提供的 `http` 进行封装，使调用方（Caller）不用显示调用 `close` 函数.**
+>
+> ```go
+> package httpclient
+> 
+> import (
+>     "io/ioutil"
+>     "net/http"
+> )
+> 
+> // Client 是一个自定义的 HTTP 客户端结构体
+> type Client struct {
+>     http.Client
+> }
+> 
+> // Get 封装了 http.Get 方法
+> func (c *Client) Get(url string) (string, error) {
+>     resp, err := c.Client.Get(url)
+>     if err != nil {
+>         return "", err
+>     }
+>     
+>     // 确保在函数返回时关闭响应体
+>     defer resp.Body.Close()
+> 
+>     // 读取响应内容
+>     body, err := ioutil.ReadAll(resp.Body)
+>     if err != nil {
+>         return "", err
+>     }
+> 
+>     return string(body), nil
+> }
+> ```
 
 ---
 
@@ -260,12 +260,12 @@ Go 源码【注意 Not Good(NG) 处】
 package kyden
 
 import (
- &#34;context&#34;
- &#34;database/sql&#34;
+ "context"
+ "database/sql"
 )
 
 func f(ctx context.Context, db *sql.DB) (interface{}, error) {
-    rows, err := db.QueryContext(ctx, &#34;SELECT * FROM users&#34;)
+    rows, err := db.QueryContext(ctx, "SELECT * FROM users")
     defer rows.Close() // NG: using rows before checking for errors
 
     if err != nil {
@@ -331,7 +331,7 @@ linters-settings:
 package main
 
 import (
-	&#34;fmt&#34;
+	"fmt"
 )
 
 func main() {
@@ -339,7 +339,7 @@ func main() {
 }
 
 func f () {
-    fmt.Println(&#34;Test funlen&#34;)
+    fmt.Println("Test funlen")
 
     a := 1
     fmt.Println(a)
@@ -369,7 +369,7 @@ linters-settings:
 
 ```Bash
 $ golangci-lint run
-main.go:12: Function &#39;f&#39; has too many statements (7 &gt; 4) (funlen)
+main.go:12: Function 'f' has too many statements (7 > 4) (funlen)
 ```
 
 ---
@@ -402,16 +402,16 @@ linters-settings:
 // main.go
 package main
 
-import &#34;fmt&#34;
+import "fmt"
 
 func f() {
-    a := &#34;Hello&#34;
+    a := "Hello"
     fmt.Println(a)
 
-    b := &#34;Hello&#34;
+    b := "Hello"
     fmt.Println(b)
 
-    c := &#34;Hello&#34;
+    c := "Hello"
     fmt.Println(c)
 }
 ```
@@ -434,7 +434,7 @@ linters-settings:
 ```Bash
 $ golangci-lint run
 main.go:7:10: string `Hello` has 3 occurrences, make it a constant (goconst)
-    a := &#34;Hello&#34;
+    a := "Hello"
          ^
 ```
 
@@ -462,16 +462,16 @@ linters:
 // main.go
 package main
 
-import &#34;fmt&#34;
+import "fmt"
 
 func f() {
-    a := &#34;Hello&#34;
+    a := "Hello"
 
     // ...
     // Not assign a value to `a`
     // ...
 
-    a = &#34;kyden&#34;
+    a = "kyden"
     fmt.Println(a)
 }
 ```
@@ -479,7 +479,7 @@ func f() {
 ```Bash
 $ golangci-lint run
 main.go:7:5: ineffectual assignment to a (ineffassign)
-    a := &#34;Hello&#34;
+    a := "Hello"
     ^
 ```
 
@@ -514,7 +514,7 @@ linters-settings:
 package kyden
 
 func f() int {
-    a := &#34;This is a very long line that exceeds the maximum line length set by the linter and should be broken up into smaller, more manageable lines.&#34;
+    a := "This is a very long line that exceeds the maximum line length set by the linter and should be broken up into smaller, more manageable lines."
     return len(a)
 }
 ```
@@ -522,12 +522,12 @@ func f() int {
 ```Bash
 golangci-lint run
 main.go:5: the line is 151 characters long, which exceeds the maximum of 80 characters. (lll)
-    a := &#34;This is a very long line that exceeds the maximum line length set by the linter and should be broken up into smaller, more manageable lines.&#34;
+    a := "This is a very long line that exceeds the maximum line length set by the linter and should be broken up into smaller, more manageable lines."
 ```
 
-&gt; 解决方案
-&gt;
-&gt;使用反引号（`）定义多行字符串，允许字符串跨越多行而不需要使用连接符
+> 解决方案
+>
+>使用反引号（`）定义多行字符串，允许字符串跨越多行而不需要使用连接符
 
 ---
 
@@ -560,22 +560,22 @@ linters-settings:
 package main
 
 import (
-	&#34;fmt&#34;
+	"fmt"
 )
 
 func main() {
-    hello(&#34;Kyden&#34;) // err Not Check
+    hello("Kyden") // err Not Check
 
-    _ = hello(&#34;Kyden&#34;) // err assign to _
+    _ = hello("Kyden") // err assign to _
 
-    err := hello(&#34;Go&#34;)
+    err := hello("Go")
     if err != nil {
         return
     }
 }
 
 func hello(str string) error {
-    fmt.Printf(&#34;Hello, %s&#34;, str)
+    fmt.Printf("Hello, %s", str)
 
     return nil
 }
@@ -600,10 +600,10 @@ linters-settings:
 ```Bash
 golangci-lint run
 main.go:9:10: Error return value is not checked (errcheck)
-    hello(&#34;Kyden&#34;) // err Not Check
+    hello("Kyden") // err Not Check
          ^
 main.go:11:5: Error return value is not checked (errcheck)
-    _ = hello(&#34;Kyden&#34;) // err assign to _
+    _ = hello("Kyden") // err assign to _
     ^
 ```
 
@@ -631,11 +631,11 @@ linters:
 package main
 
 import (
-	&#34;fmt&#34;
+	"fmt"
 )
 
 func main() {
-    err := hello(&#34;Kyden&#34;)
+    err := hello("Kyden")
     if err != nil {
         return
     }
@@ -643,11 +643,11 @@ func main() {
 
 func hello(str string) error {
 
-    if len(str) &lt;= 0 {
+    if len(str) <= 0 {
 
-        return fmt.Errorf(&#34;str len &lt;= 0&#34;)
+        return fmt.Errorf("str len <= 0")
     }
-    fmt.Printf(&#34;Hello, %s&#34;, str)
+    fmt.Printf("Hello, %s", str)
 
     return nil
 
@@ -671,9 +671,9 @@ main.go:17:23: unnecessary leading newline (whitespace)
 
 ## XI. GolangCI-Lint
 
-&gt; **生产级静态分析工具**
-&gt;
-&gt; [`golangci-lint` is a fast Go linters runner. It runs linters in parallel, uses caching, supports YAML configuration, integrates with all major IDEs, and includes over a hundred linters.](https://golangci-lint.run/)
+> **生产级静态分析工具**
+>
+> [`golangci-lint` is a fast Go linters runner. It runs linters in parallel, uses caching, supports YAML configuration, integrates with all major IDEs, and includes over a hundred linters.](https://golangci-lint.run/)
 
 `golangci-lint` 是一款快速的 Go 语言 linter，它并行运行多个 linter 程序，使用缓存，支持 YAML 配置，与所有主流集成开发环境集成，并包含一百多个 linter 程序。
 
@@ -697,7 +697,7 @@ golangci-lint --version
 golangci-lint run --disable-all -E errcheck
 ```
 
-{{&lt; figure src=&#34;/posts/golang-linter/golangci-lint-default.png&#34; title=&#34;&#34; &gt;}}
+{{< figure src="/posts/golang-linter/golangci-lint-default.png" title="" >}}
 
 ### Visual Studio Code 集成
 
@@ -706,9 +706,9 @@ golangci-lint run --disable-all -E errcheck
 Step 1. **`settings.json` 启用 golangci-lint**
 
 ```json
-&#34;go.lintTool&#34;: &#34;golangci-lint&#34;,
-&#34;go.lintFlags&#34;: [
-  &#34;--fast&#34; // Using it in an editor without --fast can freeze your editor.
+"go.lintTool": "golangci-lint",
+"go.lintFlags": [
+  "--fast" // Using it in an editor without --fast can freeze your editor.
 ]
 ```
 
@@ -728,7 +728,7 @@ Step 3. **Enjoy your coding time 🥂**
 
 ---
 
-&gt; [Golangci-lint 同样支持 GoLang、NeoVim 等流行 IDE 集成.](https://golangci-lint.run/welcome/integrations/)
+> [Golangci-lint 同样支持 GoLang、NeoVim 等流行 IDE 集成.](https://golangci-lint.run/welcome/integrations/)
 
 ### `.golangci.yml` 参考配置
 
@@ -832,10 +832,10 @@ reviewdog/reviewdog info installed /Users/kyden/go/bin/reviewdog
 #### 本地使用
 
 ```Bash
-golangci-lint run ./... 2&gt;&amp;1 | reviewdog -f=golangci-lint -reporter=local
+golangci-lint run ./... 2>&1 | reviewdog -f=golangci-lint -reporter=local
 ```
 
-&gt; [官方示例](https://github.com/reviewdog/reviewdog?tab=readme-ov-file#reporter-local--reporterlocal-default)
+> [官方示例](https://github.com/reviewdog/reviewdog?tab=readme-ov-file#reporter-local--reporterlocal-default)
 
 ### Github Action
 
@@ -851,7 +851,7 @@ golangci-lint run ./... 2&gt;&amp;1 | reviewdog -f=golangci-lint -reporter=local
 
 当你提交代码并创建拉取请求时，GitHub Actions 会自动运行 reviewdog，并根据 lint 工具的输出在拉取请求中添加评论，指出代码中的问题。
 
-&gt; [更多内容请参考官方示例](https://github.com/reviewdog/reviewdog?tab=readme-ov-file#github-actions)
+> [更多内容请参考官方示例](https://github.com/reviewdog/reviewdog?tab=readme-ov-file#github-actions)
 
 ## XIII. Summary
 

@@ -1,11 +1,11 @@
 # Go 语言编程之道：编写优雅高效的 Golang 代码
 
 
-{{&lt; admonition type=abstract title=&#34;导语&#34; open=true &gt;}}
+{{< admonition type=abstract title="导语" open=true >}}
 想要写出优雅且高效的 Go 代码，仅仅了解语法是远远不够的。本文将带你深入探索 Go 语言的设计哲学和最佳实践，从代码格式化、命名规范到控制结构的巧妙运用，帮助你掌握编写地道 Go 代码的精髓。无论你是 Go 新手还是有经验的开发者，都能从中获得实用的编程技巧和深刻的设计思想。
-{{&lt; /admonition &gt;}}
+{{< /admonition >}}
 
-&lt;!--more--&gt;
+<!--more-->
 
 ## Formatting 格式化
 
@@ -17,7 +17,7 @@
 
 ## Commentary 注释
 
-Go 支持 C 风格的块注释 `/* */` 和 C&#43;&#43; 风格的单行注释 `//`，其中，`//` 注释更常用，而 `/* */` 则主要用于包的注释
+Go 支持 C 风格的块注释 `/* */` 和 C++ 风格的单行注释 `//`，其中，`//` 注释更常用，而 `/* */` 则主要用于包的注释
 
 `godoc` 即使一个程序，又是一个 Web 服务器，它对 Go 的源码进行处理，并提取包中的文档内容：
 出现在顶级声明之前，且与该声明之间没有空行的注释，将与该声明一起被提出来，作为该条目的说明文档。
@@ -34,18 +34,18 @@ Package regex implements a simple library for regular expressions.
 The syntax of the regular expressions accepted is:
 
   regexp:
-    concatenation { &#39;|&#39; concatenation }
+    concatenation { '|' concatenation }
   concatenation:
     { closure }
   closure:
-    term [ &#39;*&#39; | &#39;&#43;&#39; | &#39;?&#39; ]
+    term [ '*' | '+' | '?' ]
   term:
-    &#39;^&#39;
-    &#39;$&#39;
-    &#39;.&#39;
+    '^'
+    '$'
+    '.'
     character
-    &#39;[&#39; [ &#39;^&#39; ] character-range &#39;]&#39;
-    &#39;(&#39; regexp &#39;)&#39;
+    '[' [ '^' ] character-range ']'
+    '(' regexp ')'
 */
 package regex
 ```
@@ -54,7 +54,7 @@ package regex
 
 ### Package names 包名
 
-**当一个包被导入后，包名就会成为内容的访问器 `import &#34;bytes&#34;`，按照惯例，包应当以某个小写的单个单词命名，且不应使用下划线或驼峰记法**。
+**当一个包被导入后，包名就会成为内容的访问器 `import "bytes"`，按照惯例，包应当以某个小写的单个单词命名，且不应使用下划线或驼峰记法**。
 例如，`err` 的命名就是出于简短考虑。
 
 包名是导入时所需的唯一默认名称，它并不需要在所有源码中保持唯一，即便在少数发生冲突的情况下，也可为导入的包选择一个别名来局部使用。
@@ -92,7 +92,7 @@ Go 中约定使用驼峰记法
 
 和 C 一样，Go 的正式语法使用分号 `;` 来结束语句，但 Go 的分号不一定出现在源码中，而是词法分析器会使用一条简单的规则来自动插入分号
 
-规则：**如在新行前的最后一个标记为标识符（`int`/`float64`等）、数值或字符串常量之类的基本字面或`break`、`continue`、`fallthrough`、`return`、`&#43;&#43;`、`--`、`)`、`}` 之一，则词法分析器将始终在该标记后面插入分号**，即**如果新行前的标记为语句的末尾，则插入分号`;`**。
+规则：**如在新行前的最后一个标记为标识符（`int`/`float64`等）、数值或字符串常量之类的基本字面或`break`、`continue`、`fallthrough`、`return`、`++`、`--`、`)`、`}` 之一，则词法分析器将始终在该标记后面插入分号**，即**如果新行前的标记为语句的末尾，则插入分号`;`**。
 
 通常，Go 程序只在诸如 `for` 循环子句这样的地方使用分号，来以此将初始化器、条件及增量元素分开；
 
@@ -114,10 +114,10 @@ for key := range aT/vT/mT { }
 for _, value := range aT/vT/mT { }
 ```
 
-&gt; Go 没有逗号操作符，且 `&#43;&#43;`/`--` 是语句而非表达式
+> Go 没有逗号操作符，且 `++`/`--` 是语句而非表达式
 
 ```go
-for i, j := 0, len(aT) - 1; i &lt; j; i, j = i &#43; 1, j - 1 { // Not: i&#43;&#43;, j--
+for i, j := 0, len(aT) - 1; i < j; i, j = i + 1, j - 1 { // Not: i++, j--
   a[i], a[j] = a[j], a[i]
 }
 ```
@@ -129,19 +129,19 @@ for i, j := 0, len(aT) - 1; i &lt; j; i, j = i &#43; 1, j - 1 { // Not: i&#43;&#
 ```go
 func unhex(c byte) byte {
   switch {
-  case &#39;0&#39; &lt;= c &amp;&amp; c &lt;= &#39;9&#39;:
-    return c - &#39;0&#39;
-  case &#39;a&#39; &lt;= c &amp;&amp; c &lt;= &#39;f&#39;:
-    return c - &#39;a&#39; &#43; 10
-  case &#39;A&#39; &lt;= c &amp;&amp; c &lt;= &#39;F&#39;:
-    return c - &#39;A&#39; &#43; 10
+  case '0' <= c && c <= '9':
+    return c - '0'
+  case 'a' <= c && c <= 'f':
+    return c - 'a' + 10
+  case 'A' <= c && c <= 'F':
+    return c - 'A' + 10
   }
   return 0
 }
 
 func shouldEscape(c byte) bool {
   switch c {
-    case &#39; &#39;, &#39;?&#39;, &#39;&amp;&#39;, &#39;=&#39;, &#39;#&#39;, &#39;&#43;&#39;, &#39;%&#39;:
+    case ' ', '?', '&', '=', '#', '+', '%':
       return true
   }
   return false
@@ -167,7 +167,7 @@ Go 的 `defer` 语句用于预设一个函数调用（即延迟执行函数）�
 func Contents(filename string) (string, error) {
   f, err := os.Open(filename)
   if err != nil {
-    return &#34;&#34;, err
+    return "", err
   }
   defer f.Close()
 
@@ -180,7 +180,7 @@ func Contents(filename string) (string, error) {
       if err == io.EOF {
         break
       }
-      return &#34;&#34;, err
+      return "", err
     }
   }
   return string(result), nil
@@ -214,31 +214,31 @@ v := make([]int, 100)
 ```go
 func Sum(a *[3]float64) (sum float64) {
   for _, v := range *a {
-    sum &#43;= v
+    sum += v
   }
   return
 }
 
 aV := [...]float64{1, 2, 0.7}
-fmt.Println(Sum(&amp;aV))
+fmt.Println(Sum(&aV))
 ```
 
-{{&lt; admonition type=note title=&#34;Go array&#34; open=true &gt;}}
+{{< admonition type=note title="Go array" open=true >}}
 在 C 语言中，数组变量是指向第一个元素的指针，但 Go 语言中并不是。
 
-Go 语言中，数组变量属于值类型（value type），因此当一个数组变量呗赋值或传递时，实际上会复制整个数组 -&gt;
+Go 语言中，数组变量属于值类型（value type），因此当一个数组变量呗赋值或传递时，实际上会复制整个数组 ->
 
 为了避免复制数组，一般传递指向数组的指针: `func f(pa *[3]uint8) { ... }`
 
-{{&lt; /admonition &gt;}}
+{{< /admonition >}}
 
-{{&lt; admonition type=tip title=&#34;Go array&#34; open=true &gt;}}
+{{< admonition type=tip title="Go array" open=true >}}
 Go 中的数组类型定义了长度和元素类型。
 例如，`[2]int` 类型表示由 2 个 int 整型组成的数组。
 
 数组以索引方式访问（a[i] 访问数组 a 的第 i 个元素）。
-数组的长度固定，且是数组类型的一部分 -&gt; 长度不同的 2 个数组不可以相互赋值，因为它们属于不同的类型。
-{{&lt; /admonition &gt;}}
+数组的长度固定，且是数组类型的一部分 -> 长度不同的 2 个数组不可以相互赋值，因为它们属于不同的类型。
+{{< /admonition >}}
 
 ### Slice 切片
 
@@ -263,22 +263,22 @@ slice 保存了对底层数组的引用，如将某个 slice 赋值给另一个 
 
 尽管 Append 可修改 slice 的元素，但切片自身（其运行时数据结构包含指针、长度和容量）是通过值传递的.
 
-{{&lt; admonition type=tip title=&#34;Go slice&#34; open=true &gt;}}
+{{< admonition type=tip title="Go slice" open=true >}}
 Go 中 slice 容量指的是当前切片以及预分配的内存能够容纳的元素个数.
 
 若数据超出其容量，则会重新分配该切片，返回值即为所得的切片。
 
-为了减少内存分配、拷贝的次数，在容量较小时，一般是以 2 的倍数进行扩大（2 -&gt; 4 -&gt; 8 -&gt; 16），
-当达到 2048 时，为避免申请的内存过大，从而浪费空间 =&gt; [Go 语言 1.20 实现如下](https://github.com/golang/go/blob/release-branch.go1.20/src/runtime/slice.go#L157)：
+为了减少内存分配、拷贝的次数，在容量较小时，一般是以 2 的倍数进行扩大（2 -> 4 -> 8 -> 16），
+当达到 2048 时，为避免申请的内存过大，从而浪费空间 => [Go 语言 1.20 实现如下](https://github.com/golang/go/blob/release-branch.go1.20/src/runtime/slice.go#L157)：
 
 ```Go
 // growslice allocates new backing store for a slice.
 //
 // arguments:
 //
-// oldPtr = pointer to the slice&#39;s backing array
-// newLen = new length (= oldLen &#43; num)
-// oldCap = original slice&#39;s capacity.
+// oldPtr = pointer to the slice's backing array
+// newLen = new length (= oldLen + num)
+// oldCap = original slice's capacity.
 //    num = number of elements being added
 //     et = element type
 //
@@ -288,7 +288,7 @@ Go 中 slice 容量指的是当前切片以及预分配的内存能够容纳的�
 // newLen = same value as the argument
 // newCap = capacity of the new backing store
 //
-// Requires that uint(newLen) &gt; uint(oldCap).
+// Requires that uint(newLen) > uint(oldCap).
 // Assumes the original slice length is newLen - num
 //
 // A new backing store is allocated with space for at least newLen elements.
@@ -298,7 +298,7 @@ Go 中 slice 容量指的是当前切片以及预分配的内存能够容纳的�
 // must be initialized by the caller.
 // Trailing entries [newLen, newCap) are zeroed.
 //
-// growslice&#39;s odd calling convention makes the generated code that calls
+// growslice's odd calling convention makes the generated code that calls
 // this function simpler. In particular, it accepts and returns the
 // new length so that the old length is not live (does not need to be
 // spilled/restored) and the new length is returned (also does not need
@@ -309,25 +309,25 @@ func growslice(oldPtr unsafe.Pointer, newLen, oldCap, num int, et *_type) slice 
  // ...
 
  newcap := oldCap
- doublecap := newcap &#43; newcap
- if newLen &gt; doublecap {
+ doublecap := newcap + newcap
+ if newLen > doublecap {
   newcap = newLen
  } else {
   const threshold = 256
-  if oldCap &lt; threshold {
+  if oldCap < threshold {
    newcap = doublecap
   } else {
-   // Check 0 &lt; newcap to detect overflow
+   // Check 0 < newcap to detect overflow
    // and prevent an infinite loop.
-   for 0 &lt; newcap &amp;&amp; newcap &lt; newLen {
+   for 0 < newcap && newcap < newLen {
     // Transition from growing 2x for small slices
     // to growing 1.25x for large slices. This formula
     // gives a smooth-ish transition between the two.
-    newcap &#43;= (newcap &#43; 3*threshold) / 4
+    newcap += (newcap + 3*threshold) / 4
    }
    // Set newcap to the requested cap when
    // the newcap calculation overflowed.
-   if newcap &lt;= 0 {
+   if newcap <= 0 {
     newcap = newLen
    }
   }
@@ -339,7 +339,7 @@ func growslice(oldPtr unsafe.Pointer, newLen, oldCap, num int, et *_type) slice 
 }
 ```
 
-{{&lt; /admonition &gt;}}
+{{< /admonition >}}
 
 #### 二维数组
 
@@ -370,71 +370,71 @@ wiki - [SliceTricks](https://github.com/golang/go/wiki/SliceTricks) 介绍了切
 另一个项目
 [Go Slice Tricks Cheat Sheet](https://ueokande.github.io/go-slice-tricks/) 将这些操作以图片的形式呈现了出来，非常直观。
 
-{{&lt; figure src=&#34;/posts/effective-go/copy.png&#34; title=&#34;&#34; &gt;}}
+{{< figure src="/posts/effective-go/copy.png" title="" >}}
 
 ---
 
-{{&lt; figure src=&#34;/posts/effective-go/append.png&#34; title=&#34;&#34; &gt;}}
+{{< figure src="/posts/effective-go/append.png" title="" >}}
 
 slice 有 3 个属性，指针（ptr）、长度（len）和容量（cap），因此当 append 时存在两种场景：
 
 - append 后的长度小于等于 cap，将会直接使用原底层数组剩余的空间
 - append 后的长度大于 cap，将会分配一块更大的区域来容纳新的底层数组
 
-&gt; 为了避免内存发生拷贝，若能够知道最终的切片的大小，预先设置 cap 的值能够获得最好的性能
+> 为了避免内存发生拷贝，若能够知道最终的切片的大小，预先设置 cap 的值能够获得最好的性能
 
 ---
 
-{{&lt; figure src=&#34;/posts/effective-go/delete.png&#34; title=&#34;&#34; &gt;}}
+{{< figure src="/posts/effective-go/delete.png" title="" >}}
 
 slice 的底层是数组，所以 delete 意味着后面的元素需要逐个向前移位
-=&gt; delete 的复杂度为O(N)
-=&gt; slice 不适合大量随机删除的场景（链表 list 更适合）
+=> delete 的复杂度为O(N)
+=> slice 不适合大量随机删除的场景（链表 list 更适合）
 
 ---
 
-{{&lt; figure src=&#34;/posts/effective-go/delete_gc.png&#34; title=&#34;&#34; &gt;}}
+{{< figure src="/posts/effective-go/delete_gc.png" title="" >}}
 
 删除后，将空余位置置空，有助于垃圾回收。
 
 ---
 
-{{&lt; figure src=&#34;/posts/effective-go/insert.png&#34; title=&#34;&#34; &gt;}}
+{{< figure src="/posts/effective-go/insert.png" title="" >}}
 
-insert 和 append 类似，即在某个位置添加一个元素后，将该位置后面的元素再 append 回去，复杂度为 O(N) =&gt; 不适合大量随机插入的场景。
+insert 和 append 类似，即在某个位置添加一个元素后，将该位置后面的元素再 append 回去，复杂度为 O(N) => 不适合大量随机插入的场景。
 
 ---
 
-{{&lt; figure src=&#34;/posts/effective-go/filter_in_place.png&#34; title=&#34;&#34; &gt;}}
+{{< figure src="/posts/effective-go/filter_in_place.png" title="" >}}
 
 当原切片不会再被使用时，就地 filter 方式是比较推荐的，可以节省内存空间。
 
 ---
 
-{{&lt; figure src=&#34;/posts/effective-go/push.png&#34; title=&#34;&#34; &gt;}}
+{{< figure src="/posts/effective-go/push.png" title="" >}}
 
 在末尾追加元素，不考虑内存拷贝的情况，复杂度为 O(1)。
 
 ---
 
-{{&lt; figure src=&#34;/posts/effective-go/push_front.png&#34; title=&#34;&#34; &gt;}}
+{{< figure src="/posts/effective-go/push_front.png" title="" >}}
 
 在头部追加元素，时间和空间复杂度均为 O(N)，不推荐。
 
 ---
 
-{{&lt; figure src=&#34;/posts/effective-go/pop.png&#34; title=&#34;&#34; &gt;}}
+{{< figure src="/posts/effective-go/pop.png" title="" >}}
 
 尾部删除元素，复杂度 O(1)
 
 ---
 
-{{&lt; figure src=&#34;/posts/effective-go/pop_front.png&#34; title=&#34;&#34; &gt;}}
+{{< figure src="/posts/effective-go/pop_front.png" title="" >}}
 
 头部删除元素，如果使用切片方式，复杂度为 O(1)。
 
-&gt; 需要注意的是，底层数组没有发生改变，第 0 个位置的内存仍旧没有释放。
-&gt; 如果有大量这样的操作，头部的内存会一直被占用。
+> 需要注意的是，底层数组没有发生改变，第 0 个位置的内存仍旧没有释放。
+> 如果有大量这样的操作，头部的内存会一直被占用。
 
 ### Map
 

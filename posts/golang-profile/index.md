@@ -1,22 +1,22 @@
 # Go 性能优化实战：从 Benchmark 到 Profile 的完整指南
 
 
-{{&lt; admonition type=abstract title=&#34;导语&#34; open=true &gt;}}
+{{< admonition type=abstract title="导语" open=true >}}
 在高并发的生产环境中，性能问题往往在最意想不到的时候出现：CPU 突然飙升、内存悄然泄露、Goroutine 数暴增、接口延迟陡升......如何在这些危机时刻快速定位和解决问题？本文将为你揭示 Go 语言性能优化的完整工具链和方法论，从基准测试的正确姿势，到性能分析工具的熟练应用，再到实战中的优化策略。无论你是在进行性能优化，还是在为未来的性能问题未雨绸缪，这都是一份不可或缺的实战指南。
-{{&lt; /admonition &gt;}}
+{{< /admonition >}}
 
-&lt;!--more--&gt;
+<!--more-->
 
-{{&lt; admonition type=note title=&#34;测试环境的稳定性、一致性&#34; open=true &gt;}}
+{{< admonition type=note title="测试环境的稳定性、一致性" open=true >}}
 性能测试的结果在很大程度上受到测试环境的影响，因此，在进行性能测试时应尽可能保持测试环境的稳定和一致。
 
 - 测试机器在测试时，不要执行其他任务，不要与其他人共享硬件资源，不要开启节能模式
 - 避免使用虚拟机和云主机：一般情况下，为了尽可能地提高资源利用率，虚拟机和云主机 CPU 和内存一般进行超分配，会导致超分机器的性能表现不稳定
 
-&gt; 超分配是针对硬件资源来说的，商业上对应的就是云主机的超卖。虚拟化技术带来的最大直接收益是服务器整合，通过 CPU、内存、存储、网络的超分配（Overcommitment）技术，最大化服务器的使用率。Linux 上专门有一个指标，Steal Time(st)，用来衡量被虚拟机监视器(Hypervisor)偷去给其它虚拟机使用的 CPU 时间所占的比例。
-&gt;
-&gt; 例如，虚拟化的技能之一就是随心所欲的操控 CPU，例如一台 32U(物理核心)的服务器可能会创建出 128 个 1U(虚拟核心)的虚拟机，当物理服务器资源闲置时，CPU 超分配一般不会对虚拟机上的业务产生明显影响，但如果大部分虚拟机都处于繁忙状态时，那么各个虚拟机为了获得物理服务器的资源就要相互竞争，相互等待。
-{{&lt; /admonition &gt;}}
+> 超分配是针对硬件资源来说的，商业上对应的就是云主机的超卖。虚拟化技术带来的最大直接收益是服务器整合，通过 CPU、内存、存储、网络的超分配（Overcommitment）技术，最大化服务器的使用率。Linux 上专门有一个指标，Steal Time(st)，用来衡量被虚拟机监视器(Hypervisor)偷去给其它虚拟机使用的 CPU 时间所占的比例。
+>
+> 例如，虚拟化的技能之一就是随心所欲的操控 CPU，例如一台 32U(物理核心)的服务器可能会创建出 128 个 1U(虚拟核心)的虚拟机，当物理服务器资源闲置时，CPU 超分配一般不会对虚拟机上的业务产生明显影响，但如果大部分虚拟机都处于繁忙状态时，那么各个虚拟机为了获得物理服务器的资源就要相互竞争，相互等待。
+{{< /admonition >}}
 
 ## I. Benchmark
 
@@ -27,8 +27,8 @@ Benchmark 和普通单元测试用例一样，都位于 `_test.go` 文件，并�
 `go test` 命令默认不运行 Benchmark 测试，需要在命令中加上 `-bench` 参数来进行测试：
 
 - `go test -bench .`: 运行当前 `packge` 内的用例
-- `go test -bench &#39;In$&#39; .`: `-bench` 参数支持正则表达式，只有匹配到的用例才会运行
-- `go test -bench ./&lt;package name&gt;`: 运行子 `package` 内的用例
+- `go test -bench 'In$' .`: `-bench` 参数支持正则表达式，只有匹配到的用例才会运行
+- `go test -bench ./<package name>`: 运行子 `package` 内的用例
 - `go test -bench ./...`: 运行当前目录下所有的 `package` 内的用例
 
 ### 浅析 Benchmark 工作原理
@@ -39,7 +39,7 @@ Benchmark 用例参数 `b *testing.B` 中的 `N` 属性表示该用例需要运�
 `b.N` 从 1 开始，若该用例能够在 1s 内完成，`b.N` 的值则会增加，再次执行。`b.N` 的值大概以 1, 2, 3, 5, 10, 20, 30, 50, 100 ... 这样的序列增加，越到后面，增加越快。
 
 ```bash
-➜  ziwi go test -bench=&#39;Fib$&#39; -cpu=2,4 -benchtime=50x -count=2 -benchmem .
+➜  ziwi go test -bench='Fib$' -cpu=2,4 -benchtime=50x -count=2 -benchmem .
 goos: darwin
 goarch: arm64
 pkg: go-temp/ziwi
@@ -55,10 +55,10 @@ ok      go-temp/ziwi    0.196s
 - `BenchmarkFib-10`: `-10` 即 `GOMAXPROCS`，默认等于 CPU 核数，可通过 `-cpu` 参数改变 `GOMAXPROCS`，`-cpu` 支持传入一个列表作为参数
 - `6097884` 和 `183.7 ns/op`: 表示该用例执行了 `6097884` 次，每次执行需要花费的时间为 `183.7 ns/op`
 - 为了提高性能测试的准确度，可以使用 `-benchtime` 和 `-count` 两个参数分别调整测试时长(默认 1s)和执行轮数。
-其中，`-benchtime` 的值除了是时间外，还可以是具体次数：`go test -bench=&#39;Fib$&#39; -benchtime=300x .`
+其中，`-benchtime` 的值除了是时间外，还可以是具体次数：`go test -bench='Fib$' -benchtime=300x .`
 - `-benchmem` 参数可以度量内存分配的次数
 
-### ResetTimer &amp; StopTimer &amp; StartTimer
+### ResetTimer & StopTimer & StartTimer
 
 - `b.ResetTimer()`: 用于将进行 Benchmark 开始前的准备工作所消耗的时间忽略掉
 - `b.StopTimer()`: 暂停计时
@@ -68,20 +68,20 @@ ok      go-temp/ziwi    0.196s
 
 ## II. Profile
 
-&gt; 当面对一个未知程序，如何分析这个程序的性能，并找到瓶颈点呢？
-&gt;
-&gt; **pprof 就是用来解决这个问题的**
+> 当面对一个未知程序，如何分析这个程序的性能，并找到瓶颈点呢？
+>
+> **pprof 就是用来解决这个问题的**
 
 ### CPU 性能分析
 
 CPU性能分析（CPU profiling）是最常见的性能分析类型，当启动 CPU 性能分析时，运行时（runtime）将每隔 10ms 中断一次，记录此时正在运行的协程（goroutines）的堆栈信息。
 程序结束后，可以分析记录的数据找到最热代码路径（hosttest code paths）。
 
-{{&lt; admonition note &#34;What’s the meaning of “hot codepath”&#34; true &gt;}}
+{{< admonition note "What’s the meaning of “hot codepath”" true >}}
 Compiler hot paths are code execution paths in the compiler in which most of the execution time is spent, and which are potentially executed very often.
 
 – [What’s the meaning of “hot codepath”](https://english.stackexchange.com/questions/402436/whats-the-meaning-of-hot-codepath-or-hot-code-path)
-{{&lt; /admonition &gt;}}
+{{< /admonition >}}
 
 一个函数在性能分析数据中出现的次数越多，说明执行该函数代码路径（code path）花费的时间占总运行时间的比重越大。
 
@@ -101,9 +101,9 @@ Compiler hot paths are code execution paths in the compiler in which most of the
 - 从空的信道上接收数据，或发送数据到满的信道上
 - 尝试获得一个已经被其他协程锁住的排它锁
 
-{{&lt; admonition tip &#34;When using block profilling&#34; true &gt;}}
+{{< admonition tip "When using block profilling" true >}}
 一般情况下，当所有的 CPU 和 memory 瓶颈解决后，才会考虑阻塞性能分析。
-{{&lt; /admonition &gt;}}
+{{< /admonition >}}
 
 ### 实践场景
 
@@ -117,7 +117,7 @@ Compiler hot paths are code execution paths in the compiler in which most of the
 
 在发生以上故障时，一般需要结合 **pprof** 寻找故障原因，并根据不同的情况选择不同的方案；
 
-&gt; 线上一定要具有开启 `pprof` 的能力，如果考虑安全性，也要具有通过配置开启的能力；
+> 线上一定要具有开启 `pprof` 的能力，如果考虑安全性，也要具有通过配置开启的能力；
 
 ### 压测时需要关注的服务指标
 
@@ -146,20 +146,20 @@ Compiler hot paths are code execution paths in the compiler in which most of the
 package main
 
 import (
-    &#34;net/http&#34;
-    _ &#34;net/http/pprof&#34;
+    "net/http"
+    _ "net/http/pprof"
 )
 
 var quit chan struct{} = make(chan struct{})
 
 func f() {
-    &lt;- quit
+    <- quit
 }
 
 func main() {
-    go func() { http.ListenAndServe(&#34;:8080&#34;, nil) }()
+    go func() { http.ListenAndServe(":8080", nil) }()
 
-    for i := 0; i &lt; 10000; i&#43;&#43; {
+    for i := 0; i < 10000; i++ {
         go f()
     }
 
@@ -171,11 +171,11 @@ func main() {
 go tool pprof -http=:9999 localhost:8080/debug/pprof/heap
 ```
 
-&gt; 注意事项
-&gt;
-&gt; 1. 测试代码中引入 `net/http/pprof` 包： `_ &#34;net/http/pprof&#34;`
-&gt; 2. 单独启动一个 Goroutine 开启监听(端口自定，例如这里是 8080)：`go func() { http.ListenAndServe(&#34;:8080&#34;, nil) }()`
-&gt; 3. `$ go tool pprof -http=:9999 localhost:8080/debug/pprof/heap`
+> 注意事项
+>
+> 1. 测试代码中引入 `net/http/pprof` 包： `_ "net/http/pprof"`
+> 2. 单独启动一个 Goroutine 开启监听(端口自定，例如这里是 8080)：`go func() { http.ListenAndServe(":8080", nil) }()`
+> 3. `$ go tool pprof -http=:9999 localhost:8080/debug/pprof/heap`
 
 ---
 
@@ -183,7 +183,7 @@ go tool pprof -http=:9999 localhost:8080/debug/pprof/heap
 
 ### 优化方向
 
-{{&lt; figure src=&#34;/posts/golang-profile/优化范围.svg&#34; title=&#34;&#34; &gt;}}
+{{< figure src="/posts/golang-profile/优化范围.svg" title="" >}}
 
 在分析上图的应用程序运行过程，可以发现进行程序优化时，一般从可以从以下方面入手：
 
@@ -194,8 +194,8 @@ go tool pprof -http=:9999 localhost:8080/debug/pprof/heap
 
 1. **外部依赖**：在监控系统中查看是否存在问题，例如依赖的上游服务 (DB/redis/MQ) 延迟过高；
 2. **CPU 占用**：通过查看 CPU profile 检查是否存在问题，优化占用 CPU 较多的部分逻辑；
-3. **内存占用**：看 Prometheus，内存 RSS / Goroutine 数量 / Goroutine 栈占用 --&gt;&gt; 如果 Goroutine 数量不多，则重点关注 heap profile 中的 inuse --&gt;&gt; 定时任务类需要看 alloc
-4. Goroutine 数量过多 --&gt;&gt; 从 profile 网页进去看看 Goroutine 的执行情况（在干什么？） --&gt;&gt; 检查死锁、阻塞等问题 --&gt;&gt; 个别不在意延迟的选择第三方库优化
+3. **内存占用**：看 Prometheus，内存 RSS / Goroutine 数量 / Goroutine 栈占用 -->> 如果 Goroutine 数量不多，则重点关注 heap profile 中的 inuse -->> 定时任务类需要看 alloc
+4. Goroutine 数量过多 -->> 从 profile 网页进去看看 Goroutine 的执行情况（在干什么？） -->> 检查死锁、阻塞等问题 -->> 个别不在意延迟的选择第三方库优化
 
 ### 常见优化场景
 
@@ -205,27 +205,27 @@ go tool pprof -http=:9999 localhost:8080/debug/pprof/heap
 package main
 
 import (
-	&#34;fmt&#34;
-	&#34;testing&#34;
+	"fmt"
+	"testing"
 )
 
 func BenchmarkConcat0(b *testing.B) {
 	var str string
 
-	for i := 0; i &lt; b.N; i&#43;&#43; {
-		str = &#34;&#34;
-		str &#43;= &#34;userid : &#34; &#43; &#34;1&#34;
-		str &#43;= &#34;localtion : &#34; &#43; &#34;ab&#34;
+	for i := 0; i < b.N; i++ {
+		str = ""
+		str += "userid : " + "1"
+		str += "localtion : " + "ab"
 	}
 }
 
 func BenchmarkConcat1(b *testing.B) {
 	var str string
 
-	for i := 0; i &lt; b.N; i&#43;&#43; {
-		str = &#34;&#34;
-		str &#43;= fmt.Sprintf(&#34;userid : %v&#34;, &#34;1&#34;)
-		str &#43;= fmt.Sprintf(&#34;localtion : %v&#34;, &#34;ab&#34;)
+	for i := 0; i < b.N; i++ {
+		str = ""
+		str += fmt.Sprintf("userid : %v", "1")
+		str += fmt.Sprintf("localtion : %v", "ab")
 	}
 }
 ```
@@ -245,7 +245,7 @@ ok      github.com/lutianen/go-test/bench0      2.506s
 #### 逃逸分析
 
 用户声明的对象，被放在栈上还是堆上？
-可以通过编译器的 escape analysis 来决定 `go build -gcflags=&#34;-m&#34; xxx.go`
+可以通过编译器的 escape analysis 来决定 `go build -gcflags="-m" xxx.go`
 
 ```Go
 package main
@@ -260,38 +260,38 @@ func main() {
 ```
 
 ```Bash
-$ go build -gcflags=&#34;-m&#34; main.go
+$ go build -gcflags="-m" main.go
 # command-line-arguments
 ./main.go:3:6: can inline main
 ./main.go:4:15: make([]int, 1024) does not escape
 ./main.go:7:16: make([]int, 10240) escapes to heap
 ```
 
-&gt; TODO: 各种逃逸分析的可能性有哪些？
+> TODO: 各种逃逸分析的可能性有哪些？
 
 #### Trasval 2-D Matrix
 
 ```Go
 package bench1
 
-import &#34;testing&#34;
+import "testing"
 
 func BenchmarkHorizontal(b *testing.B) {
 	arrLen := 10000
 
 	arr := make([][]int, arrLen, arrLen)
 
-	for i := 0; i &lt; arrLen; i&#43;&#43; {
+	for i := 0; i < arrLen; i++ {
 		arrInternal := make([]int, arrLen)
-		for j := 0; j &lt; arrLen; j&#43;&#43; {
+		for j := 0; j < arrLen; j++ {
 			arrInternal[j] = 0
 		}
         arr[i] = arrInternal
 	}
 
-	for i := 0; i &lt; b.N; i&#43;&#43; {
-		for x := 0; x &lt; len(arr); x&#43;&#43; {
-			for y := 0; y &lt; len(arr); y&#43;&#43; {
+	for i := 0; i < b.N; i++ {
+		for x := 0; x < len(arr); x++ {
+			for y := 0; y < len(arr); y++ {
 				arr[x][y] = 1
 			}
 		}
@@ -303,17 +303,17 @@ func BenchmarkVertical(b *testing.B) {
 
 	arr := make([][]int, arrLen, arrLen)
 
-	for i := 0; i &lt; arrLen; i&#43;&#43; {
+	for i := 0; i < arrLen; i++ {
 		arrInternal := make([]int, arrLen)
-		for j := 0; j &lt; arrLen; j&#43;&#43; {
+		for j := 0; j < arrLen; j++ {
 			arrInternal[j] = 0
 		}
         arr[i] = arrInternal
 	}
 
-	for i := 0; i &lt; b.N; i&#43;&#43; {
-		for x := 0; x &lt; len(arr); x&#43;&#43; {
-			for y := 0; y &lt; len(arr); y&#43;&#43; {
+	for i := 0; i < b.N; i++ {
+		for x := 0; x < len(arr); x++ {
+			for y := 0; y < len(arr); y++ {
 				arr[y][x] = 1
 			}
 		}
@@ -339,11 +339,11 @@ Zero Grabage 一般指的是通过利用 `sync.Pool` 将堆分配完全消灭的
 
 例如，在 http router 框架 [fasthttp](https://github.com/valyala/fasthttp) 中应用较多.
 
-{{&lt; figure src=&#34;/posts/golang-profile/Fasthttp-best-practices.png&#34; title=&#34;&#34; &gt;}}
+{{< figure src="/posts/golang-profile/Fasthttp-best-practices.png" title="" >}}
 
 #### False Sharing
 
-{{&lt; figure src=&#34;/posts/golang-profile/False-Sharing.svg&#34; title=&#34;&#34; &gt;}}
+{{< figure src="/posts/golang-profile/False-Sharing.svg" title="" >}}
 
 CPU 运行过程中修改数据是一个 **cache line**为单位，当两个变量`A`/`B`满足以下条件：
 
@@ -367,7 +367,7 @@ type WithPad struct {
 }
 ```
 
-&gt; 查看 cache line 大小：`cat /sys/devices/system/cpu/cpu&lt;core-num&gt;/cache/index0/coherency_line_size`
+> 查看 cache line 大小：`cat /sys/devices/system/cpu/cpu<core-num>/cache/index0/coherency_line_size`
 
 #### 降低外部命令调用频次
 
@@ -375,9 +375,9 @@ type WithPad struct {
 
 ```Go
 func f(wr http.ResponseWriter, r *http.Request) {
-	uuid, _ := exec.Command(&#34;uuidgen&#34;).Output() // Use exec.Command
+	uuid, _ := exec.Command("uuidgen").Output() // Use exec.Command
 
-	wr.Header()[&#34;Content-Type&#34;] = []string{&#34;application/text&#34;}
+	wr.Header()["Content-Type"] = []string{"application/text"}
 	io.WriteString(wr, string(uuid))
 }
 ```
@@ -385,20 +385,20 @@ func f(wr http.ResponseWriter, r *http.Request) {
 优化后：
 
 ```Go
-import uuid &#34;github.com/satori/go.uuid&#34;
+import uuid "github.com/satori/go.uuid"
 
 func f(wr http.ResponseWriter, r *http.Request) {
 	uuid, _ := uuid.NewV4() // Replace exec.Command with existing library
 
-	wr.Header()[&#34;Content-Type&#34;] = []string{&#34;application/text&#34;}
+	wr.Header()["Content-Type"] = []string{"application/text"}
 	io.WriteString(wr, uuid.String())
 }
 ```
 
-&gt; 总结：
-&gt;
-&gt; 1. 线上使用 `exec` 命令是非常危险的
-&gt; 2. 采用第三方库代替外部命令
+> 总结：
+>
+> 1. 线上使用 `exec` 命令是非常危险的
+> 2. 采用第三方库代替外部命令
 
 #### 阻塞导致高延迟
 
@@ -407,16 +407,16 @@ func f(wr http.ResponseWriter, r *http.Request) {
 ```Go
 var mtx sync.Mutex
 var data = map[string]string{
-	&#34;hint&#34;: &#34;hello wold&#34;,
+	"hint": "hello wold",
 }
 
 func f(wr http.ResponseWriter, r *http.Request) {
 	mtx.Lock()
 	defer mtx.Unlock()
 
-	buf := data[&#34;hint&#34;]
+	buf := data["hint"]
 	time.Sleep(time.Millisecond * 10) // 临界区内的慢操作
-	wr.Header()[&#34;Content-Type&#34;] = []string{&#34;application/json&#34;}
+	wr.Header()["Content-Type"] = []string{"application/json"}
 	io.WriteString(wr, buf)
 }
 ```
@@ -426,35 +426,35 @@ func f(wr http.ResponseWriter, r *http.Request) {
 ```Go
 var mtx sync.Mutex
 var data = map[string]string{
-	&#34;hint&#34;: &#34;hello wold&#34;,
+	"hint": "hello wold",
 }
 
 func f(wr http.ResponseWriter, r *http.Request) {
 	mtx.Lock()
-	buf := data[&#34;hint&#34;]
+	buf := data["hint"]
 	mtx.Unlock()
 
 	time.Sleep(time.Millisecond * 10) // 慢操作放置于临界区之外
-	wr.Header()[&#34;Content-Type&#34;] = []string{&#34;application/json&#34;}
+	wr.Header()["Content-Type"] = []string{"application/json"}
 	io.WriteString(wr, buf)
 }
 ```
 
 在后端系统开发中，锁瓶颈是较常见的问题，例如文件锁
-{{&lt; figure src=&#34;/posts/golang-profile/func-write-with-lock.png&#34; title=&#34;&#34; &gt;}}
+{{< figure src="/posts/golang-profile/func-write-with-lock.png" title="" >}}
 
 - **双 Buffer 完全干掉锁阻塞**
 
-	&gt; 使用双 Buffer / RCU 完全消除读阻塞：全量更新，直接替换原 config
+	> 使用双 Buffer / RCU 完全消除读阻塞：全量更新，直接替换原 config
 
 	```Go
 	func updateConfig() {
-		var newConfig = &amp;MyConfig {
+		var newConfig = &MyConfig {
 			WhiteList: make(map[int]struct{}),
 		}
 
 		// Do a lot of compulation
-		for i :=0; i &lt; 1000; i&#43;&#43; {
+		for i :=0; i < 1000; i++ {
 			newConfig.WhiteList[i] = struct{}{}
 		}
 
@@ -462,13 +462,13 @@ func f(wr http.ResponseWriter, r *http.Request) {
 	}
 	```
 
-	&gt; 使用双 Buffer / RCU 完全消除读阻塞：部分更新，先拷贝原 config，然后更新 key，最后替换
+	> 使用双 Buffer / RCU 完全消除读阻塞：部分更新，先拷贝原 config，然后更新 key，最后替换
 
 	```Go
 	// Partial update
 	func updateConfig() {
 		var oldConfig = getConfig()
-		var newConfig = &amp;MyConfig{
+		var newConfig = &MyConfig{
 			WhiteList: make(map[int]struct{})
 		}
 
@@ -487,11 +487,11 @@ func f(wr http.ResponseWriter, r *http.Request) {
 
 	**NOTE: 当更新可能并发时，则需要在更新时加锁**
 
-&gt; 优化锁阻塞瓶颈的手段总结:
-&gt;
-&gt; 1. 减小临界区：只锁必须锁的对象，临界区内尽量不放慢操作，如 `syscall`
-&gt; 2. 降低锁粒度：全局锁 -&gt; 对象锁，全局锁 -&gt; 连接锁， 连接锁 -&gt; 请求锁，文件锁 -&gt; 多个文件各种锁
-&gt; 3. 同步改异步：同步日志 -&gt; 异步日志，若队列满则丢弃，不阻塞业务逻辑
+> 优化锁阻塞瓶颈的手段总结:
+>
+> 1. 减小临界区：只锁必须锁的对象，临界区内尽量不放慢操作，如 `syscall`
+> 2. 降低锁粒度：全局锁 -> 对象锁，全局锁 -> 连接锁， 连接锁 -> 请求锁，文件锁 -> 多个文件各种锁
+> 3. 同步改异步：同步日志 -> 异步日志，若队列满则丢弃，不阻塞业务逻辑
 
 #### CPU 使用太高
 
@@ -499,7 +499,7 @@ func f(wr http.ResponseWriter, r *http.Request) {
 
 通过更换 json 库，就可以提高系统的吞吐量：本质上是请求的 CPU 使用被优化了（可使用固定 QPS 压测来验证）
 
-&gt; `encoding/json` --&gt;&gt; `json &#34;github.com/json-iterator/go&#34;`
+> `encoding/json` -->> `json "github.com/json-iterator/go"`
 
 ##### GC 使用 CPU 过高
 
@@ -510,20 +510,20 @@ func f(wr http.ResponseWriter, r *http.Request) {
 
 ```Go
 func BenchmarkMapWithoutPtrs(b *testing.B) {
-	for i := 0; i &lt; b.N; i&#43;&#43; {
+	for i := 0; i < b.N; i++ {
 		var m = make(map[int]int)
-		for i := 0; i &lt; 10; i&#43;&#43; {
+		for i := 0; i < 10; i++ {
 			m[i] = i
 		}
 	}
 }
 
 func BenchmarkMapWithPtrs(b *testing.B) {
-	for i := 0; i &lt; b.N; i&#43;&#43; {
+	for i := 0; i < b.N; i++ {
 		var m = make(map[int]*int)
-		for i := 0; i &lt; 10; i&#43;&#43; {
+		for i := 0; i < 10; i++ {
 			var v = i
-			m[i] = &amp;v
+			m[i] = &v
 		}
 	}
 }
@@ -548,18 +548,18 @@ BenchmarkMapWithPtrs-16          2580622               524.8 ns/op           371
 ##### 堆分配导致内存占用过高
 
 ```Go
-const max = 1 &lt;&lt; 14
+const max = 1 << 14
 //go:noinline
 func Steal() {
 	var buf = make([]int, max)
 
-	for j := 0; j &lt; max; j&#43;&#43; {
+	for j := 0; j < max; j++ {
 		buf = append(buf, make([]int, max)...)
 	}
 }
 
 func BenchmarkSteal(b *testing.B) {
-	for i := 0; i &lt; b.N; i&#43;&#43; {
+	for i := 0; i < b.N; i++ {
 		Steal()
 	}
 }
@@ -594,14 +594,14 @@ BenchmarkSteal-16              1        1386661490 ns/op        10764864792 B/op
 
 3. TCP Writer Buffer 占用的内存(**易优化**，因为活跃连接不多)
 
-&gt; 原因：
-&gt;
-&gt; 1. `gopark(...)` 的 Goroutine， 占用内存
-&gt; 2. 阻塞的 Read Buffer 很难找到时机释放，占用内存
+> 原因：
+>
+> 1. `gopark(...)` 的 Goroutine， 占用内存
+> 2. 阻塞的 Read Buffer 很难找到时机释放，占用内存
 
 **Solution**: 在一些不太重视延迟的场景中（例如推送系统），可以使用某些库进行优化：evio、gev、gnet、easygo、gaio、netpoll
 
-&gt; NOTE: **一定要进行在真实业务场景中做压测**，不要相信某些库的 README 中的压测数据
+> NOTE: **一定要进行在真实业务场景中做压测**，不要相信某些库的 README 中的压测数据
 
 #### 常见优化场景总结
 
@@ -611,14 +611,14 @@ BenchmarkSteal-16              1        1386661490 ns/op        10764864792 B/op
        - 使用一些优化的 JSON 库替代标准库
        - 使用二进制编码方式代替 JSON 编码
        - 同物理节点通信，使用共享内存 IPC，直接干掉序列化开销
-     - MD5 计算 HASH 值成本太高 --&gt; 使用 [cityhash](https://github.com/google/cityhash), [murmurhash](https://zh.wikipedia.org/zh-cn/Murmur%E5%93%88%E5%B8%8C)
+     - MD5 计算 HASH 值成本太高 --> 使用 [cityhash](https://github.com/google/cityhash), [murmurhash](https://zh.wikipedia.org/zh-cn/Murmur%E5%93%88%E5%B8%8C)
      - 其他应用逻辑：只能具体情况具体分析
    - GC 使用 CPU 过高
      - 减少堆上对象分配
        - `sync.Pool` 进行堆对象重用
-       - `Map` -&gt; `slice`
-       - 指针 -&gt; 非指针对象
-       - 多个小对象 -&gt; 合并为一个大对象
+       - `Map` -> `slice`
+       - 指针 -> 非指针对象
+       - 多个小对象 -> 合并为一个大对象
      - offheap
      - 降低 GC 频率
        - 修改 GOGC
@@ -633,7 +633,7 @@ BenchmarkSteal-16              1        1386661490 ns/op        10764864792 B/op
      - offheap
    - Goroutine 栈占用过多内存
      - 减少 Goroutine 数量
-       - 如每个连接一读一写 --&gt;&gt; 合并为一个连接一个 goroutine
+       - 如每个连接一读一写 -->> 合并为一个连接一个 goroutine
        - Goroutine pool 限制最大 goroutine 数量
        - 使用裸 epoll 库(evio, gev等)修改网络编程方式（只适用于对延迟不敏感的业务）
      - 通过修改代码，减少函数调用层级（难）
@@ -643,12 +643,12 @@ BenchmarkSteal-16              1        1386661490 ns/op        10764864792 B/op
    - 锁阻塞
      - 减少临界区范围
      - 降低锁粒度
-       - Global Lock --&gt;&gt; Shareded Lock
-       - Global Lock --&gt;&gt; Connection Level Lock
-       - Connection Level Lock --&gt;&gt; Request Level Lock
+       - Global Lock -->> Shareded Lock
+       - Global Lock -->> Connection Level Lock
+       - Connection Level Lock -->> Request Level Lock
      - 同步改异步
-       - 日志场景：同步日志 --&gt;&gt; 异步日志
-       - Metrics 上报场景：`select` --&gt;&gt; `select` &#43; `default`
+       - 日志场景：同步日志 -->> 异步日志
+       - Metrics 上报场景：`select` -->> `select` + `default`
      - 个别场景使用双 Buffer 完全消灭阻塞
 
 ---
@@ -664,7 +664,7 @@ BenchmarkSteal-16              1        1386661490 ns/op        10764864792 B/op
 
 此时 Coutinuout Profiling 就派上用场了.
 
-{{&lt; figure src=&#34;/posts/golang-profile/Continuous-Profiling.svg&#34; title=&#34;&#34; &gt;}}
+{{< figure src="/posts/golang-profile/Continuous-Profiling.svg" title="" >}}
 
 **自省式的 Profile Dumper**，可以根据 CPU 利用率、Memory 利用率、Goroutine 数量等多个指标检测系统，设置定时周期进行检测，当发现某个指标异常时，自动 Dump file.
 
@@ -675,13 +675,13 @@ BenchmarkSteal-16              1        1386661490 ns/op        10764864792 B/op
 1. `_pad` 优化，针对**多个线程更新同一个结构体内不同的字段**场景有效，而针对**一个线程同时更新整个结构体**的场景意义不大；
 
 2. 第三方接口出现问题，如何保护自己的服务？
-    &gt; 对外部调用必须有超时 ==&gt; 熔断
+    > 对外部调用必须有超时 ==> 熔断
 
 3. goroutine 初始化栈空间为 2KB，最大 1GB，那么 heap 为什么不爆栈？
-    &gt; 在 Go 语言中，goroutine 和 heap 使用单独的内存空间：Goroutine 有自己的堆栈空间，用于存储局部变量、函数帧和其他运行时信息；heap 则是一个共享内存空间，用于存储动态分配的对象，例如 slice、map 和 strings。
-    &gt;
-    &gt; 当 Goroutine 需要分配的内存多于起堆栈上的可用内存时，它将自动从 stack 中分配内存，采用的是 stack 分配机制完成，运行 goroutine 分配任何数量的内存，而不用担心 stack 空间耗尽；
-    &gt; 除了堆分配之外，goroutine 还可以使用一种称为堆栈复制的技术来在它们之间共享数据，堆栈复制比堆分配更有效，但它只能用于共享足够小以适合堆栈的数据。
+    > 在 Go 语言中，goroutine 和 heap 使用单独的内存空间：Goroutine 有自己的堆栈空间，用于存储局部变量、函数帧和其他运行时信息；heap 则是一个共享内存空间，用于存储动态分配的对象，例如 slice、map 和 strings。
+    >
+    > 当 Goroutine 需要分配的内存多于起堆栈上的可用内存时，它将自动从 stack 中分配内存，采用的是 stack 分配机制完成，运行 goroutine 分配任何数量的内存，而不用担心 stack 空间耗尽；
+    > 除了堆分配之外，goroutine 还可以使用一种称为堆栈复制的技术来在它们之间共享数据，堆栈复制比堆分配更有效，但它只能用于共享足够小以适合堆栈的数据。
 
 ---
 

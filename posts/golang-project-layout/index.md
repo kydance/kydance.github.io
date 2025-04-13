@@ -1,11 +1,11 @@
 # Go 工程目录最佳实践：打造清晰、可维护的项目结构
 
 
-{{&lt; admonition type=abstract title=&#34;导语&#34; open=true &gt;}}
+{{< admonition type=abstract title="导语" open=true >}}
 项目结构是代码质量的第一道防线。一个优秀的目录结构不仅能提高代码的可维护性，更能体现工程师的专业素养。本文将为你详细解读 Go 项目的标准目录结构，从微服务到单体应用，从命令行工具到共享库，帮助你掌握 Go 项目组织的最佳实践。无论是经验丰富的 Go 开发者，还是刚接触 Go 的新手，都能从这套久经考验的项目结构方案中获益。
-{{&lt; /admonition &gt;}}
+{{< /admonition >}}
 
-&lt;!--more--&gt;
+<!--more-->
 
 ## `Go Module`
 
@@ -43,8 +43,8 @@
 
 **`/cmd` 应用目录负责程序的: 启动、关闭、配置初始化等**
 
-&gt; `DTO(Data Transfer Object)`，数据传输对象，这个概念来源于 J2EE 的设计模式，
-&gt; 但这里泛指用于展示层/API层与服务层（业务逻辑层）之间的数据传输对象。
+> `DTO(Data Transfer Object)`，数据传输对象，这个概念来源于 J2EE 的设计模式，
+> 但这里泛指用于展示层/API层与服务层（业务逻辑层）之间的数据传输对象。
 
 ### `internal`
 
@@ -75,7 +75,7 @@
 
 额外的外部测试应用程序和测试数据
 
-&gt; Go 会忽略以 `.` 或 `_` 开头的目录和文件
+> Go 会忽略以 `.` 或 `_` 开头的目录和文件
 
 ### `docs`
 
@@ -97,8 +97,8 @@
 
 与存储库一起使用的其他资源（图像、徽标等）
 
-&gt; 按理来说我们不应该 `src` 目录，但有些 Go 项目拥有一个 `src` 文件夹，这通常发生在开发人员具有 Java 背景
-&gt; `$GOPATH` 环境变量指向你的(当前)工作空间(默认情况下，它指向非 windows 系统上的 `$HOME/go`)，这个工作空间包括顶层 `/pkg`, `/bin` 和 `/src` 目录，而实际项目最终是 `/src` 下的一个子目录，即 `/xxx/workspace/src/proj/src/xxx.go`（Go 1.11 之后，项目 `proj` 可以放在 `GOPATH` 之外）.
+> 按理来说我们不应该 `src` 目录，但有些 Go 项目拥有一个 `src` 文件夹，这通常发生在开发人员具有 Java 背景
+> `$GOPATH` 环境变量指向你的(当前)工作空间(默认情况下，它指向非 windows 系统上的 `$HOME/go`)，这个工作空间包括顶层 `/pkg`, `/bin` 和 `/src` 目录，而实际项目最终是 `/src` 下的一个子目录，即 `/xxx/workspace/src/proj/src/xxx.go`（Go 1.11 之后，项目 `proj` 可以放在 `GOPATH` 之外）.
 
 ## Reference
 
