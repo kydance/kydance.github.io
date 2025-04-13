@@ -37,3 +37,7 @@ func Test_devWithCustomEncoder(t *testing.T) {
 func Test_devWithGlobal(t *testing.T) {
 	devWithGlobal()
 }
+
+func Test_devWithGlobal2(t *testing.T) {
+	InitLogger()
+}

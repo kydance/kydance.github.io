@@ -210,4 +210,6 @@ func InitLogger() {
 	core := zapcore.NewTee(consoleCore, fileCore)
 	logger := zap.New(core, zap.AddCaller())
 	zap.ReplaceGlobals(logger)
+
+	zap.S().Infof("Global::This is info %s", "kytedance")
 }

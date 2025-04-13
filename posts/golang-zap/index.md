@@ -334,7 +334,30 @@ func devWithGlobal() {
 使用 `zapcore.NewTee` 可以组合多个 core 示例
 
 ```Go
+func InitLogger() {
+ cfg := zap.NewDevelopmentConfig()
+ cfg.EncoderConfig.EncodeTime = zapcore.TimeEncoderOfLayout("2006-01-02 15:04:05")
 
+ consoleCore := zapcore.NewCore(
+  zapcore.NewConsoleEncoder(cfg.EncoderConfig),
+  zapcore.AddSync(os.Stdout),
+  zapcore.DebugLevel,
+ )
+
+ file, _ := os.OpenFile("ziwi.log", os.O_CREATE|os.O_APPEND|os.O_WRONLY, 0644)
+ fileCore := zapcore.NewCore(
+  zapcore.NewConsoleEncoder(cfg.EncoderConfig),
+  zapcore.AddSync(file),
+  zapcore.DebugLevel,
+ )
+
+ core := zapcore.NewTee(consoleCore, fileCore)
+ logger := zap.New(core, zap.AddCaller())
+ zap.ReplaceGlobals(logger)
+
+ // Usage
+ zap.S().Infof("Global::This is info %s", "kytedance")
+}
 ```
 
 
