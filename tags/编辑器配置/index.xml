@@ -1,14 +1,26 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Kyden&#39;s 博客</title>
+    <title>编辑器配置 - Tag  Kyden&#39;s 博客</title>
     <link>http://kydance.github.io/tags/%E7%BC%96%E8%BE%91%E5%99%A8%E9%85%8D%E7%BD%AE/</link>
     <description>Kyden&#39;s Blog Site</description>
-    <generator>Hugo 0.146.2 &amp; FixIt </generator>
+    <generator>Hugo 0.147.0 &amp; FixIt v0.3.19</generator>
     <language>en</language>
     <managingEditor>kytedance@gmail.com (kyden)</managingEditor>
     <webMaster>kytedance@gmail.com (kyden)</webMaster>
-    <lastBuildDate>Sun, 13 Apr 2025 15:42:43 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 25 Aug 2024 14:10:44 +0800</lastBuildDate>
     <atom:link href="http://kydance.github.io/tags/%E7%BC%96%E8%BE%91%E5%99%A8%E9%85%8D%E7%BD%AE/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>【最佳实践】VSCode &#43; Vim = 效率之神</title>
+      <link>http://kydance.github.io/posts/vscode-vim/</link>
+      <pubDate>Sun, 25 Aug 2024 14:10:44 +0800</pubDate><author>kytedance@gmail.com (kyden)</author>
+      <guid>http://kydance.github.io/posts/vscode-vim/</guid>
+      <category domain="http://kydance.github.io/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/">开发工具</category>
+      <category domain="http://kydance.github.io/categories/%E7%BC%96%E8%BE%91%E5%99%A8/">编辑器</category>
+      <category domain="http://kydance.github.io/categories/%E6%95%88%E7%8E%87%E5%B7%A5%E5%85%B7/">效率工具</category>
+      <category domain="http://kydance.github.io/categories/%E8%BD%AF%E4%BB%B6%E6%95%99%E7%A8%8B/">软件教程</category>
+      <category domain="http://kydance.github.io/categories/%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/">最佳实践</category>
+      <description>&lt;div class=&#34;details admonition abstract open&#34;&gt;&#xA;  &lt;div class=&#34;details-summary admonition-title&#34;&gt;&lt;i class=&#34;icon fa-fw fa-solid fa-clipboard-list&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;导语&lt;i class=&#34;details-icon fa-solid fa-angle-right fa-fw&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;details-content&#34;&gt;&#xA;    &lt;div class=&#34;admonition-content&#34;&gt;想要在现代编辑器中获得极致的编码体验？VSCode 与 Vim 的强强联合将带给你意想不到的效率提升。本文将详细介绍如何通过 VSCodeVim 插件，在 VSCode 中完美复刻 Vim 的操作方式，让你既能享受 VSCode 强大的功能生态，又能保持 Vim 快速高效的编辑体验。无论你是 Vim 老手还是新手，这份完整指南都能帮你打造一个更高效的编码环境。&lt;/div&gt;&#xA;  &lt;/div&gt;&#xA;&lt;/div&gt;</description>
+    </item>
   </channel>
 </rss>

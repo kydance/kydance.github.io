@@ -22,6 +22,18 @@
 
 实现日志接口。
 
+## zap 核心结构
+
+- `Logger`: 主日志记录器，用于写入日志
+- `Core`: 日志的核心组件，定义日志的输出目标、格式和日志级别
+- `Encoder`: 日志格式化器，决定日志的最终表现形式（如 `json` 或 `console` 格式）
+
+  - `zapcore.NewJSONEncoder(zap.NewProductionEncoderConfig())`: JSON 编码器，结构化输出，适合生产环境
+  - `zapcore.NewConsoleEncoder(zap.NewDevelopmentEncoderConfig())`: Console 编码器，人类可读格式，适合开发调试
+
+- `Sync`: 用于确保日志缓冲区内容被写入，通过 `zapcore.AddSync` 设置日志写入目标，例如`zapcore.AddSync(os.Stdout)`、`zapcore.AddSync(file)`
+- `Field`: 结构化日志的键值对，用于附加额外的上下文信息
+
 ## zap 基本使用
 
 ```go
@@ -331,7 +343,7 @@ func devWithGlobal() {
 
 常见的：控制台和日志文件双写
 
-使用 `zapcore.NewTee` 可以组合多个 core 示例
+方式一：使用 `zapcore.NewTee` 可以组合多个 core 示例
 
 ```Go
 func InitLogger() {
@@ -357,6 +369,305 @@ func InitLogger() {
 
  // Usage
  zap.S().Infof("Global::This is info %s", "kytedance")
+}
+```
+
+方式二：使用 `zapcore.NewMultiWriteSyncer`
+
+```Go
+func ZapMultiWriteSyncer() {
+ cfg := zap.NewDevelopmentConfig()
+ cfg.EncoderConfig.EncodeTime = zapcore.TimeEncoderOfLayout("2006-01-02 15:04:05")
+ file, _ := os.OpenFile("ziwi.log", os.O_CREATE|os.O_APPEND|os.O_WRONLY, 0644)
+ writeSyncer := zapcore.NewMultiWriteSyncer(
+  zapcore.AddSync(os.Stdout),
+  zapcore.AddSync(file),
+ )
+
+ zap.ReplaceGlobals(zap.New(zapcore.NewCore(
+  zapcore.NewConsoleEncoder(cfg.EncoderConfig),
+  writeSyncer,
+  zapcore.DebugLevel,
+ ), zap.AddCaller()))
+
+ // Use
+ zap.S().Infof("Global::This is info %s", "kytedance")
+}
+```
+
+## 日志切片
+
+一般情况下，日志会根据`时间`和`日志等级`进行切片，将切好的日志放到单独的一个文件中，这样可以方便查阅
+
+### 按时间分片
+
+```Go
+type DynamicLogWriter struct {
+ mtx     sync.Mutex //
+ currDay string     // current day
+ file    *os.File
+ logDir  string
+}
+
+func (w *DynamicLogWriter) Write(b []byte) (n int, err error) {
+ w.mtx.Lock()
+ defer w.mtx.Unlock()
+
+ // Check: If the current day has changed, create a new file
+ today := time.Now().Format(time.DateOnly)
+ if today != w.currDay {
+  if w.file != nil { // Close non-nil log file
+   w.file.Close()
+  }
+
+  // Create new log file
+  if err := os.MkdirAll(w.logDir, 0755); err != nil {
+   return 0, err
+  }
+  filePath := path.Join(w.logDir, "ziwi-"+today+".log")
+  file, err := os.OpenFile(filePath, os.O_CREATE|os.O_APPEND|os.O_WRONLY, 0644)
+  if err != nil {
+   return 0, err
+  }
+
+  // Update log writer
+  w.file = file
+  w.currDay = today
+ }
+
+ // Write log into file
+ return w.file.Write(b)
+}
+
+func InitGolbalLogger() {
+ cfg := zap.NewDevelopmentConfig()
+ cfg.EncoderConfig.EncodeTime = zapcore.TimeEncoderOfLayout(time.DateTime)
+ cfg.EncoderConfig.EncodeLevel = func(level zapcore.Level, enc zapcore.PrimitiveArrayEncoder) {
+  switch level {
+  case zapcore.DebugLevel:
+   enc.AppendString(ColorBlue + level.String() + ColorReset)
+  case zapcore.InfoLevel:
+   enc.AppendString(ColorGreen + level.String() + ColorReset)
+  case zapcore.WarnLevel:
+   enc.AppendString(ColorYellow + level.String() + ColorReset)
+  case zapcore.ErrorLevel:
+   enc.AppendString(ColorRed + level.String() + ColorReset)
+  default:
+   enc.AppendString(level.String()) // default behavior
+  }
+ }
+
+ logger := zap.New(zapcore.NewCore(
+  zapcore.NewConsoleEncoder(cfg.EncoderConfig),
+  zapcore.NewMultiWriteSyncer(
+   zapcore.AddSync(&DynamicLogWriter{
+    logDir: "logs",
+   }),
+
+   os.Stdout,
+  ),
+  zapcore.DebugLevel,
+ ), zap.AddCaller())
+ zap.ReplaceGlobals(logger)
+}
+
+func SliceLog() {
+ InitGolbalLogger()
+ zap.S().Infof("Global::SliceLog::This is info %s", "kytedance")
+ zap.S().Debugf("Global::SliceLog::This is debug %s", "kytedance")
+ zap.S().Warnf("Global::SliceLog::This is warn %s", "kytedance")
+ zap.S().Errorf("Global::SliceLog::This is error %s", "kytedance")
+}
+```
+
+### 按日志等级分片
+
+当需要根据日志等级进行分片时，通常是把`Error`等级的日志单独放到单独的文件中，而`Debug`、`Info`等等级的日志可以放到一个文件中，这样可以方便查阅
+
+```Go
+// --- 日志切片：根据 level ---
+type LevelEncoder struct {
+ zapcore.Encoder
+
+ errFile *os.File // Error Log File
+}
+
+func (e *LevelEncoder) EncodeEntry(entry zapcore.Entry, fields []zapcore.Field) (*buffer.Buffer, error) {
+ //
+ buf, err := e.Encoder.EncodeEntry(entry, fields)
+ if err != nil {
+  return nil, err
+ }
+
+ switch entry.Level {
+ case zapcore.ErrorLevel:
+  if e.errFile == nil {
+   file, err := os.OpenFile(path.Join("logs", "err.log"), os.O_CREATE|os.O_APPEND|os.O_WRONLY, 0666)
+   if err != nil {
+    return nil, fmt.Errorf("open error log file: %w", err)
+   }
+
+   e.errFile = file
+  }
+
+  _, _ = e.errFile.WriteString(buf.String())
+ }
+
+ return buf, nil
+}
+
+func InitGolbalLevelLogger() {
+ cfg := zap.NewDevelopmentConfig()
+ cfg.EncoderConfig.EncodeTime = zapcore.TimeEncoderOfLayout(time.DateTime)
+
+ logger := zap.New(zapcore.NewCore(
+  &LevelEncoder{
+   Encoder: zapcore.NewConsoleEncoder(cfg.EncoderConfig),
+  },
+  zapcore.AddSync(os.Stdout),
+  zapcore.DebugLevel,
+ ), zap.AddCaller())
+
+ zap.ReplaceGlobals(logger)
+}
+
+func SliceLevelLog() {
+ InitGolbalLevelLogger()
+
+ zap.S().Infof("Global::SliceLevelLog::This is info %s", "kytedance")
+ zap.S().Debugf("Global::SliceLevelLog::This is debug %s", "kytedance")
+ zap.S().Warnf("Global::SliceLevelLog::This is warn %s", "kytedance")
+ zap.S().Errorf("Global::SliceLevelLog::This is error %s", "kytedance")
+}
+```
+
+## 总结
+
+```Go
+package main
+
+import (
+ "fmt"
+ "os"
+ "time"
+
+ "go.uber.org/zap"
+ "go.uber.org/zap/buffer"
+ "go.uber.org/zap/zapcore"
+)
+
+const (
+ BuleColor   = "\033[34m"
+ YellowColor = "\033[33m"
+ GreenColor  = "\033[32m"
+ RedColor    = "\033[31m"
+ ResetColor  = "\033[0m"
+
+ LogPrefix = "[ZIWI] "
+)
+
+type LogEncoder struct {
+ zapcore.Encoder
+
+ logDir      string
+ file        *os.File // 普通日志文件，包含 error
+ errFile     *os.File // error 日志文件
+ currentDate string
+}
+
+// CusEncodeLevel beautify the log
+func CusEncodeLevel(level zapcore.Level, enc zapcore.PrimitiveArrayEncoder) {
+ switch level {
+ case zapcore.DebugLevel:
+  enc.AppendString(BuleColor + level.String() + ResetColor)
+ case zapcore.InfoLevel:
+  enc.AppendString(GreenColor + level.String() + ResetColor)
+ case zapcore.WarnLevel:
+  enc.AppendString(YellowColor + level.String() + ResetColor)
+ case zapcore.ErrorLevel:
+  enc.AppendString(RedColor + level.String() + ResetColor)
+ default:
+  enc.AppendString(level.String()) // default behavior
+ }
+}
+
+// EncodeEntry add log prefix, split error log and split log files by date
+func (e *LogEncoder) EncodeEntry(entry zapcore.Entry, fields []zapcore.Field) (*buffer.Buffer, error) {
+ buf, err := e.Encoder.EncodeEntry(entry, fields)
+ if err != nil {
+  return nil, fmt.Errorf("EncodeEntry error: %w", err)
+ }
+
+ data := buf.String()
+ buf.Reset()
+ buf.AppendString(LogPrefix + data)
+ data = buf.String()
+
+ // split log files by date
+ now := time.Now().Format(time.DateOnly)
+ if e.currentDate != now {
+  if err := os.MkdirAll(e.logDir, 0o666); err != nil {
+   return nil, fmt.Errorf("Create log dir error: %w", err)
+  }
+
+  fileName := now + ".log"
+  file, err := os.OpenFile(fileName, os.O_CREATE|os.O_APPEND|os.O_WRONLY, 0o666)
+  if err != nil {
+   return nil, fmt.Errorf("Create log file error: %w", err)
+  }
+  e.file = file
+  e.currentDate = now
+ }
+
+ // split error log
+ switch entry.Level {
+ case zapcore.ErrorLevel:
+  if e.errFile == nil {
+   file, err := os.OpenFile(now+"_err.log", os.O_CREATE|os.O_APPEND|os.O_WRONLY, 0o666)
+   if err != nil {
+    return nil, fmt.Errorf("Create err log file error: %w", err)
+   }
+
+   e.errFile = file
+  }
+
+  _, _ = e.errFile.WriteString(buf.String())
+ }
+
+ if e.currentDate == now {
+  _, _ = e.file.WriteString(data)
+ }
+
+ return buf, nil
+}
+
+func InitGolbalLog(logdir string) *zap.Logger {
+ cfg := zap.NewDevelopmentConfig()
+ cfg.EncoderConfig.EncodeTime = zapcore.TimeEncoderOfLayout("2006-01-02 15:04:05")
+ cfg.EncoderConfig.EncodeLevel = CusEncodeLevel
+
+ logger := zap.New(
+  zapcore.NewCore(
+   &LogEncoder{
+    Encoder: zapcore.NewConsoleEncoder(cfg.EncoderConfig),
+    logDir:  logdir,
+   },
+   zapcore.AddSync(os.Stdout),
+   zapcore.DebugLevel,
+  ),
+  zap.AddCaller(),
+ )
+ zap.ReplaceGlobals(logger)
+
+ return logger
+}
+
+func main() {
+ logger := InitGolbalLog("logs")
+ logger.Sugar().Infof("Global::This is info %s", "kytedance")
+ logger.Warn("Warn log test case")
+ zap.L().Error("Error log test case")
+ zap.S().Debugln("Panic log test case")
 }
 ```
 

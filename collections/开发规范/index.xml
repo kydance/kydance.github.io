@@ -1,14 +1,25 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Kyden&#39;s 博客</title>
+    <title>开发规范 - Collection  Kyden&#39;s 博客</title>
     <link>http://kydance.github.io/collections/%E5%BC%80%E5%8F%91%E8%A7%84%E8%8C%83/</link>
     <description>Kyden&#39;s Blog Site</description>
-    <generator>Hugo 0.146.2 &amp; FixIt </generator>
+    <generator>Hugo 0.147.0 &amp; FixIt v0.3.19</generator>
     <language>en</language>
     <managingEditor>kytedance@gmail.com (kyden)</managingEditor>
     <webMaster>kytedance@gmail.com (kyden)</webMaster>
-    <lastBuildDate>Sun, 13 Apr 2025 15:42:43 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 07 Sep 2024 20:56:52 +0800</lastBuildDate>
     <atom:link href="http://kydance.github.io/collections/%E5%BC%80%E5%8F%91%E8%A7%84%E8%8C%83/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>微服务架构实战：打造高可用的资格校验服务</title>
+      <link>http://kydance.github.io/posts/check-rule/</link>
+      <pubDate>Sat, 07 Sep 2024 20:56:52 +0800</pubDate><author>kytedance@gmail.com (kyden)</author>
+      <guid>http://kydance.github.io/posts/check-rule/</guid>
+      <category domain="http://kydance.github.io/categories/check.rule/">Check.rule</category>
+      <category domain="http://kydance.github.io/categories/linux/">Linux</category>
+      <category domain="http://kydance.github.io/categories/%E5%BE%AE%E6%9C%8D%E5%8A%A1/">微服务</category>
+      <category domain="http://kydance.github.io/categories/%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0/">设计与实现</category>
+      <description>&lt;div class=&#34;details admonition abstract open&#34;&gt;&#xA;  &lt;div class=&#34;details-summary admonition-title&#34;&gt;&lt;i class=&#34;icon fa-fw fa-solid fa-clipboard-list&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;导语&lt;i class=&#34;details-icon fa-solid fa-angle-right fa-fw&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;details-content&#34;&gt;&#xA;    &lt;div class=&#34;admonition-content&#34;&gt;如何设计一个既满足业务需求，又具备良好扩展性和可维护性的微服务？本文将以资格校验服务为例，深入探讨微服务架构设计的精髓。从三层架构的实现、依赖注入原则的应用，到服务发现、流量镜像等高级特性的落地，带你掌握企业级微服务开发的核心技巧。&lt;/div&gt;&#xA;  &lt;/div&gt;&#xA;&lt;/div&gt;</description>
+    </item>
   </channel>
 </rss>

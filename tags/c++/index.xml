@@ -1,14 +1,25 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Kyden&#39;s 博客</title>
+    <title>C&#43;&#43; - Tag  Kyden&#39;s 博客</title>
     <link>http://kydance.github.io/tags/c&#43;&#43;/</link>
     <description>Kyden&#39;s Blog Site</description>
-    <generator>Hugo 0.146.2 &amp; FixIt </generator>
+    <generator>Hugo 0.147.0 &amp; FixIt v0.3.19</generator>
     <language>en</language>
     <managingEditor>kytedance@gmail.com (kyden)</managingEditor>
     <webMaster>kytedance@gmail.com (kyden)</webMaster>
-    <lastBuildDate>Sun, 13 Apr 2025 15:42:43 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 28 Jul 2024 10:13:24 +0800</lastBuildDate>
     <atom:link href="http://kydance.github.io/tags/c++/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>设计模式精讲：从理论到实战的最佳实践指南</title>
+      <link>http://kydance.github.io/posts/design-pattern/</link>
+      <pubDate>Sun, 28 Jul 2024 10:13:24 +0800</pubDate><author>kytedance@gmail.com (kyden)</author>
+      <guid>http://kydance.github.io/posts/design-pattern/</guid>
+      <category domain="http://kydance.github.io/categories/design-patten/">Design Patten</category>
+      <category domain="http://kydance.github.io/categories/golang/">Golang</category>
+      <category domain="http://kydance.github.io/categories/c&#43;&#43;/">C&#43;&#43;</category>
+      <category domain="http://kydance.github.io/categories/%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/">最佳实践</category>
+      <description>&lt;div class=&#34;details admonition abstract open&#34;&gt;&#xA;  &lt;div class=&#34;details-summary admonition-title&#34;&gt;&lt;i class=&#34;icon fa-fw fa-solid fa-clipboard-list&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;导语&lt;i class=&#34;details-icon fa-solid fa-angle-right fa-fw&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;details-content&#34;&gt;&#xA;    &lt;div class=&#34;admonition-content&#34;&gt;设计模式是每个程序员的必修课，但如何正确理解和灵活运用却是一门艺术。本文将带你深入浅出地探索 Golang 项目中常用的 8 种经典设计模式，通过 Go 和 C++ 的实际代码示例，让你真正理解每种模式的精髓。从面向对象设计原则到具体实现，从模式分类到实战应用，助你构建更优雅、更可维护的代码架构。&lt;/div&gt;&#xA;  &lt;/div&gt;&#xA;&lt;/div&gt;</description>
+    </item>
   </channel>
 </rss>

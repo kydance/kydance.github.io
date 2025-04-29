@@ -1,14 +1,25 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Kyden&#39;s 博客</title>
+    <title>Theme - Tag  Kyden&#39;s 博客</title>
     <link>http://kydance.github.io/tags/theme/</link>
     <description>Kyden&#39;s Blog Site</description>
-    <generator>Hugo 0.146.2 &amp; FixIt </generator>
+    <generator>Hugo 0.147.0 &amp; FixIt v0.3.19</generator>
     <language>en</language>
     <managingEditor>kytedance@gmail.com (kyden)</managingEditor>
     <webMaster>kytedance@gmail.com (kyden)</webMaster>
-    <lastBuildDate>Sun, 13 Apr 2025 15:42:43 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 18 Apr 2024 21:50:17 +0800</lastBuildDate>
     <atom:link href="http://kydance.github.io/tags/theme/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Typora Theme</title>
+      <link>http://kydance.github.io/posts/typora-theme/</link>
+      <pubDate>Thu, 18 Apr 2024 21:50:17 +0800</pubDate><author>kytedance@gmail.com (kyden)</author>
+      <guid>http://kydance.github.io/posts/typora-theme/</guid>
+      <category domain="http://kydance.github.io/categories/typora/">Typora</category>
+      <category domain="http://kydance.github.io/categories/theme/">Theme</category>
+      <category domain="http://kydance.github.io/categories/markdown/">Markdown</category>
+      <category domain="http://kydance.github.io/categories/software/">Software</category>
+      <description>&lt;div class=&#34;details admonition abstract open&#34;&gt;&#xA;  &lt;div class=&#34;details-summary admonition-title&#34;&gt;&lt;i class=&#34;icon fa-fw fa-solid fa-clipboard-list&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;导语&lt;i class=&#34;details-icon fa-solid fa-angle-right fa-fw&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;details-content&#34;&gt;&#xA;    &lt;div class=&#34;admonition-content&#34;&gt;分享一个好看的 Typora 主题&lt;/div&gt;&#xA;  &lt;/div&gt;&#xA;&lt;/div&gt;</description>
+    </item>
   </channel>
 </rss>

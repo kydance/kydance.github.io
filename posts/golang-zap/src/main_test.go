@@ -41,3 +41,15 @@ func Test_devWithGlobal(t *testing.T) {
 func Test_devWithGlobal2(t *testing.T) {
 	InitLogger()
 }
+
+func Test_ZapMultiWriteSyncer(t *testing.T) {
+	ZapMultiWriteSyncer()
+}
+
+func Test_SliceLog(t *testing.T) {
+	SliceLog()
+}
+
+func Test_SliceLevelLog(t *testing.T) {
+	SliceLevelLog()
+}
