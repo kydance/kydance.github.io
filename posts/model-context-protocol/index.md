@@ -73,7 +73,8 @@ MCP 选择 JSON-RPC 而非其他流行的 RPC 协议（如 gRPC）有以下几�
 | 性能 | 中等 | 高 |
 | 实现复杂度 | 低 | 中到高 |
 
-MCP 利用 JSON-RPC 的灵活性，并通过生命周期管理（lifecycle management）来动态发现服务能力，这一点是 MCP 协议的扩展，而非 JSON-RPC 本身的功能。
+MCP 利用 JSON-RPC 的灵活性，并通过生命周期管理（lifecycle management）来动态发现服务能力，
+这一点是 MCP 协议的扩展，而非 JSON-RPC 本身的功能。
 
 #### JSON-RPC 的请求与响应格式
 
@@ -155,7 +156,8 @@ JSON-RPC 2.0 支持批量请求，允许客户端在单个 HTTP 请求中发送�
 
 ### Tools 功能
 
-Tools（工具）是 MCP 协议中最强大的组件之一，它允许 AI 模型执行各种操作和交互。与只能被读取的 Resources 不同，Tools 可以修改状态或与外部系统交互，这使得 AI 模型能够执行复杂的任务。
+Tools（工具）是 MCP 协议中最强大的组件之一，它允许 AI 模型执行各种操作和交互。
+与只能被读取的 Resources 不同，Tools 可以修改状态或与外部系统交互，这使得 AI 模型能够执行复杂的任务。
 
 #### 工具的特点
 
@@ -233,7 +235,8 @@ MCP 工具可以应用于各种场景，例如：
 
 ### 资源能力 (Resource Capability)
 
-Resources 是 MCP 协议中的另一个关键组件，它为 AI 模型提供了访问各种数据和信息的能力。与 Tools 不同，Resources 仅提供只读访问，不能修改系统状态。
+Resources 是 MCP 协议中的另一个关键组件，它为 AI 模型提供了访问各种数据和信息的能力。
+与 Tools 不同，Resources 仅提供只读访问，不能修改系统状态。
 
 #### 资源的核心特点
 
@@ -352,7 +355,6 @@ Prompt 能力主要解决以下几个问题：
 与 Tools 和 Resources 类似，MCP 协议定义了以下方法来访问提示：
 
 - `prompts/list`：获取所有可用的提示及其元数据
-
 - `prompts/get`：获取指定提示的模板内容
 
 #### 提示中的角色定义
@@ -360,7 +362,6 @@ Prompt 能力主要解决以下几个问题：
 在 Prompt 模板中，可以定义两种主要角色（Role）来指导 AI 模型的行为：
 
 - **User**：代表与系统交互的用户，提供问题和上下文信息
-
 - **Assistant**：代表 AI 模型本身，负责处理用户请求并生成响应
 
 这种角色定义允许 MCP Server 创建结构化的对话流，指导 AI 模型如何处理特定类型的交互。
@@ -370,11 +371,8 @@ Prompt 能力主要解决以下几个问题：
 Prompt 能力在多种场景中非常有用，例如：
 
 - **结构化数据生成**：创建符合特定格式的 JSON、XML 或其他数据结构
-
 - **专业领域应用**：为医疗、法律、金融等领域提供特定的指导
-
 - **多语言支持**：定义不同语言的响应模板
-
 - **响应一致性**：确保在不同交互中保持一致的响应风格和语调
 
 ### MCP 传输层 (Transport)
@@ -511,7 +509,8 @@ MCP 生命周期包含以下三个清晰定义的阶段：
 
 ## Server Inspector 调试工具
 
-MCP 生态系统的一个重要组成部分是开发者工具，其中 Server Inspector 是一个专为 MCP 服务器设计的交互式调试工具。它类似于 API 开发中的 Postman 或 gRPC 开发中的 BloomRPC，但专门针对 MCP 协议进行了优化。
+MCP 生态系统的一个重要组成部分是开发者工具，其中 Server Inspector 是一个专为 MCP 服务器设计的交互式调试工具。
+它类似于 API 开发中的 Postman 或 gRPC 开发中的 BloomRPC，但专门针对 MCP 协议进行了优化。
 
 ### 为什么需要 Server Inspector
 
@@ -615,91 +614,91 @@ Server Inspector 可以与其他开发工具集成：
 package main
 
 import (
-	"context"
-	"flag"
-	"fmt"
-	"log"
-	"os"
+ "context"
+ "flag"
+ "fmt"
+ "log"
+ "os"
 
-	"github.com/mark3labs/mcp-go/mcp"
-	"github.com/mark3labs/mcp-go/server"
+ "github.com/mark3labs/mcp-go/mcp"
+ "github.com/mark3labs/mcp-go/server"
 )
 
 func main() {
-	// 定义命令行参数，支持多种传输方式
-	var transport string
-	flag.StringVar(&transport, "t", "stdio", "Transport type (stdio or sse)")
-	flag.StringVar(
-		&transport,
-		"transport",
-		"stdio",
-		"Transport type (stdio or sse)",
-	)
-	addr := flag.String("sse-address", "localhost:5568", "The host and port to start the sse server on")
-	flag.Parse()
-	fmt.Println(*addr)
+ // 定义命令行参数，支持多种传输方式
+ var transport string
+ flag.StringVar(&transport, "t", "stdio", "Transport type (stdio or sse)")
+ flag.StringVar(
+  &transport,
+  "transport",
+  "stdio",
+  "Transport type (stdio or sse)",
+ )
+ addr := flag.String("sse-address", "localhost:5568", "The host and port to start the sse server on")
+ flag.Parse()
+ fmt.Println(*addr)
 
-	// 启动服务器
-	if err := run(transport, *addr); err != nil {
-		panic(err)
-	}
+ // 启动服务器
+ if err := run(transport, *addr); err != nil {
+  panic(err)
+ }
 }
 
 func run(transport, addr string) error {
  // Create MCP server with explicit options
-	s := server.NewMCPServer(
-		"Demo 🚀",  // 服务器名称
-		"1.0.0",         // 版本号
-	)
+ s := server.NewMCPServer(
+  "Demo 🚀",  // 服务器名称
+  "1.0.0",         // 版本号
+ )
 
  // Add tool with more explicit configuration
-	tool := mcp.NewTool("hello_world",
-		mcp.WithDescription("Say hello to someone"),
-		mcp.WithString("name",  // 定义字符串参数
-			mcp.Required(),      // 设置为必需参数
-			mcp.Description("Name of the person to greet"),  // 参数描述
-		),
-	)
+ tool := mcp.NewTool("hello_world",
+  mcp.WithDescription("Say hello to someone"),
+  mcp.WithString("name",  // 定义字符串参数
+   mcp.Required(),      // 设置为必需参数
+   mcp.Description("Name of the person to greet"),  // 参数描述
+  ),
+ )
 
  // Add tool handler
-	s.AddTool(tool, helloHandler)
+ s.AddTool(tool, helloHandler)
  // s.AddTools(server.ServerTool{Tool: tool, Handler: helloHandler})
 
  // Debug information
-	log.Printf("Registered tool: hello_world")
+ log.Printf("Registered tool: hello_world")
 
-	switch transport {
-	case "stdio":
-		srv := server.NewStdioServer(s)
-		return srv.Listen(context.Background(), os.Stdin, os.Stdout)
-	case "sse":
+ switch transport {
+ case "stdio":
+  srv := server.NewStdioServer(s)
+  return srv.Listen(context.Background(), os.Stdin, os.Stdout)
+ case "sse":
   // Create the SSE server with explicit debugging
-		srv := server.NewSSEServer(s)
+  srv := server.NewSSEServer(s)
 
-		log.Printf("SSE server listening on %s", addr)
-		if err := srv.Start(addr); err != nil {
-			return fmt.Errorf("Server error: %v", err)
-		}
+  log.Printf("SSE server listening on %s", addr)
+  if err := srv.Start(addr); err != nil {
+   return fmt.Errorf("Server error: %v", err)
+  }
   // This code is unreachable as Start() blocks until error
-	default:
-		return fmt.Errorf(
-			"Invalid transport type: %s. Must be 'stdio' or 'sse'",
-			transport,
-		)
-	}
-	return nil
+ default:
+  return fmt.Errorf(
+   "Invalid transport type: %s. Must be 'stdio' or 'sse'",
+   transport,
+  )
+ }
+ return nil
 }
 
 func helloHandler(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
-	// 从请求中提取参数
-	name, ok := request.Params.Arguments["name"].(string)
-	if !ok {
-		// 参数错误时返回错误
-		return mcp.NewToolResultError("name must be a string"), nil
-	}
+ // 从请求中提取参数
+ name, ok := request.Params.Arguments["name"].(string)
+ if !ok {
+  // 参数错误时返回错误
+  return mcp.NewToolResultError("name must be a string"), nil
+ }
 
-	// 返回文本响应
-	return mcp.NewToolResultText(fmt.Sprintf("Hello, %s!", name)), nil
+ // 返回文本响应
+ return mcp.NewToolResultText(fmt.Sprintf("Hello, %s!", name)), nil
 }
 ```
 
