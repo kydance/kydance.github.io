@@ -4,7 +4,7 @@
     <title>终端复用 - Tag  Kyden&#39;s 博客</title>
     <link>http://kydance.github.io/tags/%E7%BB%88%E7%AB%AF%E5%A4%8D%E7%94%A8/</link>
     <description>Kyden&#39;s Blog Site</description>
-    <generator>Hugo 0.147.4 &amp; FixIt v0.3.19</generator>
+    <generator>Hugo 0.147.5 &amp; FixIt v0.3.19</generator>
     <language>en</language>
     <managingEditor>kytedance@gmail.com (kyden)</managingEditor>
     <webMaster>kytedance@gmail.com (kyden)</webMaster>
@@ -20,7 +20,7 @@
       <category domain="http://kydance.github.io/categories/%E6%95%88%E7%8E%87%E5%B7%A5%E5%85%B7/">效率工具</category>
       <category domain="http://kydance.github.io/categories/linux%E5%B7%A5%E5%85%B7/">Linux工具</category>
       <category domain="http://kydance.github.io/categories/%E8%BF%9C%E7%A8%8B%E5%BC%80%E5%8F%91/">远程开发</category>
-      <description>&lt;div class=&#34;details admonition abstract open&#34;&gt;&#xA;  &lt;div class=&#34;details-summary admonition-title&#34;&gt;&lt;i class=&#34;icon fa-fw fa-solid fa-clipboard-list&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;导语&lt;i class=&#34;details-icon fa-solid fa-angle-right fa-fw&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;details-content&#34;&gt;&#xA;    &lt;div class=&#34;admonition-content&#34;&gt;在现代开发环境中，高效的终端管理是提升工作效率的关键。Tmux 作为一款强大的终端复用工具，不仅能让你在一个终端窗口中同时操作多个会话，还能实现窗口分割、会话保持等高级功能。无论是本地开发还是远程服务器管理，Tmux 都能让你的终端操作更加得心应手。本文将带你全面了解 Tmux 的各项功能，从基础操作到高级配置，让你的终端使用效率得到质的飞跃。&lt;/div&gt;&#xA;  &lt;/div&gt;&#xA;&lt;/div&gt;</description>
+      <description>&lt;div class=&#34;details admonition abstract open&#34;&gt;&#xA;  &lt;div class=&#34;details-summary admonition-title&#34;&gt;&lt;i class=&#34;icon fa-fw fa-solid fa-clipboard-list&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;导语&lt;i class=&#34;details-icon fa-solid fa-angle-right fa-fw&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;details-content&#34;&gt;&#xA;    &lt;div class=&#34;admonition-content&#34;&gt;在现代开发环境中，高效的终端管理是提升工作效率的关键。&#xA;Tmux 作为一款强大的终端复用工具，不仅能让你在一个终端窗口中同时操作多个会话，还能实现窗口分割、会话保持等高级功能。&#xA;无论是本地开发还是远程服务器管理，Tmux 都能让你的终端操作更加得心应手。&#xA;本文将带你全面了解 Tmux 的各项功能，从基础操作到高级配置，让你的终端使用效率得到质的飞跃。&lt;/div&gt;&#xA;  &lt;/div&gt;&#xA;&lt;/div&gt;</description>
     </item>
   </channel>
 </rss>
