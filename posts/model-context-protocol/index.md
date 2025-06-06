@@ -2,20 +2,28 @@
 
 
 {{< admonition type=abstract title="导语" open=true >}}
-在 AI 技术日新月异的今天，Anthropic 提出的 Model Context Protocol (MCP) 正引领着 AI 能力扩展的新浪潮。MCP 就像是为 AI 模型设计的多功能扩展坞，让大语言模型能够像连接了各种外设的超级工作站一样，实时接入专业能力模块，实现能力的弹性扩展。
+在 AI 技术日新月异的今天，Anthropic 提出的 Model Context Protocol (MCP) 正引领着 AI 能力扩展的新浪潮。
+MCP 就像是为 AI 模型设计的多功能扩展坞，让大语言模型能够像连接了各种外设的超级工作站一样，实时接入专业能力模块，实现能力的弹性扩展。
 
-MCP 通过标准化的协议，将 AI 模型与各类专业工具、知识库和计算资源无缝连接，打破了传统 AI 系统的封闭性。无论是文件内容、数据库记录、API 响应，还是实时系统数据，MCP 都能将其转化为 AI 可理解的上下文，显著提升 AI 在特定领域的表现。
+MCP 通过标准化的协议，将 AI 模型与各类专业工具、知识库和计算资源无缝连接，打破了传统 AI 系统的封闭性。
+无论是文件内容、数据库记录、API 响应，还是实时系统数据，MCP 都能将其转化为 AI 可理解的上下文，显著提升 AI 在特定领域的表现。
 
-本文将带您深入探索 MCP 的核心概念、工作原理及实际应用，并通过一个完整的 "Hello World" 示例，展示如何快速搭建和调试您的第一个 MCP 服务。无论您是 AI 开发者还是技术爱好者，MCP 都为您打开了一扇通往更智能、更强大 AI 应用的大门。
+本文将带您深入探索 MCP 的核心概念、工作原理及实际应用，并通过一个完整的 "Hello World" 示例，展示如何快速搭建和调试您的第一个 MCP 服务。
+无论您是 AI 开发者还是技术爱好者，MCP 都为您打开了一扇通往更智能、更强大 AI 应用的大门。
 {{< /admonition >}}
 
 <!--more-->
 
 ## 模型上下文协议 MCP
 
-MCP（Model Context Protocol，模型上下文协议），起源于2024年11月25日 [Anthropic](https://www.anthropic.com/) 发布的文章：[Introducing the Model Context Protocol](https://www.anthropic.com/news/model-context-protocol)。这一协议的推出标志着 AI 领域迈向了更加开放、可扩展的新时代。
+MCP（Model Context Protocol，模型上下文协议），起源于2024年11月25日
+[Anthropic](https://www.anthropic.com/) 发布的文章：
+[Introducing the Model Context Protocol](https://www.anthropic.com/news/model-context-protocol)。
+这一协议的推出标志着 AI 领域迈向了更加开放、可扩展的新时代。
 
-MCP 在 AI 领域中的作用，就犹如扩展坞在笔记本电脑中的作用一样，为 AI 模型的能力扩展提供了新的可能性。例如，现代扩展坞可以连接显示器、键盘以及移动硬盘等多种硬件外设，使得笔记本电脑瞬间扩展了多种功能；而 MCP Server 将会作为一个智能中枢平台，可以动态接入各类专业能力模块（如知识库、计算工具、领域模型等）。
+MCP 在 AI 领域中的作用，就犹如扩展坞在笔记本电脑中的作用一样，为 AI 模型的能力扩展提供了新的可能性。
+例如，现代扩展坞可以连接显示器、键盘以及移动硬盘等多种硬件外设，使得笔记本电脑瞬间扩展了多种功能；
+而 MCP Server 将会作为一个智能中枢平台，可以动态接入各类专业能力模块（如知识库、计算工具、领域模型等）。
 
 当 LLM 需要完成特定任务时，它就可以调用这些 MCP Server，实时获得精准的上下文支持，从而实现能力的弹性扩展。这种架构打破了传统 AI 模型的封闭性，让大语言模型像搭载了多功能扩展坞的超级工作站，随时都能获取最合适的专业工具。
 
@@ -33,13 +41,16 @@ MCP 的出现解决了 AI 领域长期面临的几个关键挑战：
 
 MCP 协议的核心由以下几个关键组件构成，它们共同定义了 AI 模型如何与外部系统交互：
 
-- **MCP Server**：实现特定功能的服务端，负责响应 AI 模型的请求。可以理解为一个专用的“能力代理”，为 AI 提供特定领域的服务。每个 MCP Server 都可以提供一组独特的能力，如代码分析、数据库查询、图像处理等。
+- **MCP Server**：实现特定功能的服务端，负责响应 AI 模型的请求。可以理解为一个专用的“能力代理”，为 AI 提供特定领域的服务。
+每个 MCP Server 都可以提供一组独特的能力，如代码分析、数据库查询、图像处理等。
 
 - **MCP Client**：调用 MCP Server 的客户端，通常是集成了 LLM 的应用程序。Client 负责发现可用的 Server，协商能力，并在需要时调用相应的服务。
 
-- **Resources**：资源，指 MCP Server 可以提供给 Client 的各类数据和信息。这些资源可以是文件内容、数据库记录、API 响应、实时系统数据等。每个资源都由唯一的 URI 标识，并且只能被读取，不能被修改。
+- **Resources**：资源，指 MCP Server 可以提供给 Client 的各类数据和信息。
+这些资源可以是文件内容、数据库记录、API 响应、实时系统数据等。每个资源都由唯一的 URI 标识，并且只能被读取，不能被修改。
 
-- **Tools**：工具，是 MCP Server 提供的可执行操作。与 Resources 不同，Tools 可以修改状态或与外部系统交互。每个工具都有唯一的名称、描述和参数模式，使 AI 模型能够正确地调用它们。
+- **Tools**：工具，是 MCP Server 提供的可执行操作。与 Resources 不同，Tools 可以修改状态或与外部系统交互。
+每个工具都有唯一的名称、描述和参数模式，使 AI 模型能够正确地调用它们。
 
 - **Prompts**：提示模板，允许 MCP Server 定义特定的提示模式，指导 AI 模型如何处理特定类型的任务。
 
@@ -855,9 +866,13 @@ Users/kyden/Library/Application Support/Code/User/globalStorage/saoudrizwan.clau
 其中：
 
 - `helloWorld`：服务器的唯一标识符，将在 VSCode 中显示
-- `command`：服务器可执行文件的绝对路径
+- `name`: 服务器的名称[可选]
+- `command`：指定启动 MCP Server 的命令
 - `args`：传递给服务器的命令行参数
-- `env`：服务器运行时的环境变量
+- `env`：服务器运行时的环境变量（可选）
+- `disabled`: false
+- `timeout`: 60
+- `transportType`: "stdio"
 
 #### 使用方法
 

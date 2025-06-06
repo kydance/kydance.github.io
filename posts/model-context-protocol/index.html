@@ -11,7 +11,7 @@
   <meta itemprop="description" content="深入探索 Anthropic 提出的 Model Context Protocol (MCP)，了解其如何连接 AI 模型与各类专业工具、知识库和计算资源，实现 AI 能力的弹性扩展。">
   <meta itemprop="datePublished" content="2025-04-29T15:16:47+08:00">
   <meta itemprop="dateModified" content="2025-04-29T15:16:47+08:00">
-  <meta itemprop="wordCount" content="8817">
+  <meta itemprop="wordCount" content="8822">
   <meta itemprop="image" content="http://kydance.github.io/favicon.png">
   <meta itemprop="keywords" content="MCP,Model Context Protocol,Anthropic,AI 扩展,JSON-RPC,LLM"><meta property="og:url" content="http://kydance.github.io/posts/model-context-protocol/">
   <meta property="og:site_name" content="Kyden&#39;s 博客">
@@ -47,7 +47,7 @@
     "mainEntityOfPage": {
       "@type": "WebPage",
       "@id": "http:\/\/kydance.github.io\/posts\/model-context-protocol\/"
-    },"image": ["http:\/\/kydance.github.io\/favicon-seo.jpg"],"genre": "posts","keywords": "AI, MCP, 协议, 开发工具","wordcount":  8817 ,
+    },"image": ["http:\/\/kydance.github.io\/favicon-seo.jpg"],"genre": "posts","keywords": "AI, MCP, 协议, 开发工具","wordcount":  8822 ,
     "url": "http:\/\/kydance.github.io\/posts\/model-context-protocol\/","datePublished": "2025-04-29T15:16:47+08:00","dateModified": "2025-04-29T15:16:47+08:00","publisher": {
       "@type": "Organization",
       "name": "kyden","logo": "http:\/\/kydance.github.io"},"author": {
@@ -125,7 +125,7 @@
   <article class="page single">
     <div class="header"><h1 class="single-title animate__animated animate__flipInX"><span title="Repost" class="icon-repost"><i class="fa-solid fa-share fa-fw" aria-hidden="true"></i></span><span>Model Context Protocol (MCP): 扩展 AI 能力的新范式</span>
       </h1><p class="single-subtitle animate__animated animate__fadeIn">打破 AI 模型的封闭性，实现能力的弹性扩展</p></div><div class="post-meta">
-      <div class="post-meta-line"><span class="post-author"><a href="https://github.com/kydance" title="Author"target="_blank" rel="external nofollow noopener noreferrer author" class="author"><img class="avatar" src='/favicon.ico' alt="kyden" height="16" width="16">&nbsp;kyden</a></span><span class="post-included-in">&nbsp;included in <a href="/categories/%E6%8A%80%E6%9C%AF%E5%89%8D%E6%B2%BF/" class="post-category" title="Category - 技术前沿"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 技术前沿</a></span></div><div class="post-meta-line"><span title="published on 2025-04-29 15:16:47"><i class="fa-solid fa-calendar-days fa-fw me-1" aria-hidden="true"></i><time datetime="2025-04-29">2025-04-29</time></span>&nbsp;<span title="8817 words"><i class="fa-solid fa-pencil-alt fa-fw me-1" aria-hidden="true"></i>About 8900 words</span>&nbsp;<span><i class="fa-regular fa-clock fa-fw me-1" aria-hidden="true"></i>18 minutes</span>&nbsp;<span id="busuanzi_container_page_pv" class="busuanzi_visitors comment-visitors" data-flag-title="Model Context Protocol (MCP): 扩展 AI 能力的新范式"><i class="fa-regular fa-eye fa-fw me-1" aria-hidden="true"></i><span id="busuanzi_value_page_pv">-</span>&nbsp;views
+      <div class="post-meta-line"><span class="post-author"><a href="https://github.com/kydance" title="Author"target="_blank" rel="external nofollow noopener noreferrer author" class="author"><img class="avatar" src='/favicon.ico' alt="kyden" height="16" width="16">&nbsp;kyden</a></span><span class="post-included-in">&nbsp;included in <a href="/categories/%E6%8A%80%E6%9C%AF%E5%89%8D%E6%B2%BF/" class="post-category" title="Category - 技术前沿"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 技术前沿</a></span></div><div class="post-meta-line"><span title="published on 2025-04-29 15:16:47"><i class="fa-solid fa-calendar-days fa-fw me-1" aria-hidden="true"></i><time datetime="2025-04-29">2025-04-29</time></span>&nbsp;<span title="8822 words"><i class="fa-solid fa-pencil-alt fa-fw me-1" aria-hidden="true"></i>About 8900 words</span>&nbsp;<span><i class="fa-regular fa-clock fa-fw me-1" aria-hidden="true"></i>18 minutes</span>&nbsp;<span id="busuanzi_container_page_pv" class="busuanzi_visitors comment-visitors" data-flag-title="Model Context Protocol (MCP): 扩展 AI 能力的新范式"><i class="fa-regular fa-eye fa-fw me-1" aria-hidden="true"></i><span id="busuanzi_value_page_pv">-</span>&nbsp;views
           </span>&nbsp;</div>
     </div><div class="details toc" id="toc-static" data-kept="false">
         <div class="details-summary toc-title">
@@ -251,9 +251,12 @@
       </div><div class="content" id="content"><div class="details admonition abstract open">
   <div class="details-summary admonition-title"><i class="icon fa-fw fa-solid fa-clipboard-list" aria-hidden="true"></i>导语<i class="details-icon fa-solid fa-angle-right fa-fw" aria-hidden="true"></i></div>
   <div class="details-content">
-    <div class="admonition-content"><p>在 AI 技术日新月异的今天，Anthropic 提出的 Model Context Protocol (MCP) 正引领着 AI 能力扩展的新浪潮。MCP 就像是为 AI 模型设计的多功能扩展坞，让大语言模型能够像连接了各种外设的超级工作站一样，实时接入专业能力模块，实现能力的弹性扩展。</p>
-<p>MCP 通过标准化的协议，将 AI 模型与各类专业工具、知识库和计算资源无缝连接，打破了传统 AI 系统的封闭性。无论是文件内容、数据库记录、API 响应，还是实时系统数据，MCP 都能将其转化为 AI 可理解的上下文，显著提升 AI 在特定领域的表现。</p>
-<p>本文将带您深入探索 MCP 的核心概念、工作原理及实际应用，并通过一个完整的 &ldquo;Hello World&rdquo; 示例，展示如何快速搭建和调试您的第一个 MCP 服务。无论您是 AI 开发者还是技术爱好者，MCP 都为您打开了一扇通往更智能、更强大 AI 应用的大门。</p>
+    <div class="admonition-content"><p>在 AI 技术日新月异的今天，Anthropic 提出的 Model Context Protocol (MCP) 正引领着 AI 能力扩展的新浪潮。
+MCP 就像是为 AI 模型设计的多功能扩展坞，让大语言模型能够像连接了各种外设的超级工作站一样，实时接入专业能力模块，实现能力的弹性扩展。</p>
+<p>MCP 通过标准化的协议，将 AI 模型与各类专业工具、知识库和计算资源无缝连接，打破了传统 AI 系统的封闭性。
+无论是文件内容、数据库记录、API 响应，还是实时系统数据，MCP 都能将其转化为 AI 可理解的上下文，显著提升 AI 在特定领域的表现。</p>
+<p>本文将带您深入探索 MCP 的核心概念、工作原理及实际应用，并通过一个完整的 &ldquo;Hello World&rdquo; 示例，展示如何快速搭建和调试您的第一个 MCP 服务。
+无论您是 AI 开发者还是技术爱好者，MCP 都为您打开了一扇通往更智能、更强大 AI 应用的大门。</p>
 </div>
   </div>
 </div>
@@ -261,8 +264,13 @@
   <a href="#%e6%a8%a1%e5%9e%8b%e4%b8%8a%e4%b8%8b%e6%96%87%e5%8d%8f%e8%ae%ae-mcp" class="heading-mark">
     <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
   </a>
-</h2><p>MCP（Model Context Protocol，模型上下文协议），起源于2024年11月25日 <a href="https://www.anthropic.com/"target="_blank" rel="external nofollow noopener noreferrer">Anthropic<i class="fa-solid fa-external-link-alt fa-fw fa-xs ms-1 text-secondary" aria-hidden="true"></i></a> 发布的文章：<a href="https://www.anthropic.com/news/model-context-protocol"target="_blank" rel="external nofollow noopener noreferrer">Introducing the Model Context Protocol<i class="fa-solid fa-external-link-alt fa-fw fa-xs ms-1 text-secondary" aria-hidden="true"></i></a>。这一协议的推出标志着 AI 领域迈向了更加开放、可扩展的新时代。</p>
-<p>MCP 在 AI 领域中的作用，就犹如扩展坞在笔记本电脑中的作用一样，为 AI 模型的能力扩展提供了新的可能性。例如，现代扩展坞可以连接显示器、键盘以及移动硬盘等多种硬件外设，使得笔记本电脑瞬间扩展了多种功能；而 MCP Server 将会作为一个智能中枢平台，可以动态接入各类专业能力模块（如知识库、计算工具、领域模型等）。</p>
+</h2><p>MCP（Model Context Protocol，模型上下文协议），起源于2024年11月25日
+<a href="https://www.anthropic.com/"target="_blank" rel="external nofollow noopener noreferrer">Anthropic<i class="fa-solid fa-external-link-alt fa-fw fa-xs ms-1 text-secondary" aria-hidden="true"></i></a> 发布的文章：
+<a href="https://www.anthropic.com/news/model-context-protocol"target="_blank" rel="external nofollow noopener noreferrer">Introducing the Model Context Protocol<i class="fa-solid fa-external-link-alt fa-fw fa-xs ms-1 text-secondary" aria-hidden="true"></i></a>。
+这一协议的推出标志着 AI 领域迈向了更加开放、可扩展的新时代。</p>
+<p>MCP 在 AI 领域中的作用，就犹如扩展坞在笔记本电脑中的作用一样，为 AI 模型的能力扩展提供了新的可能性。
+例如，现代扩展坞可以连接显示器、键盘以及移动硬盘等多种硬件外设，使得笔记本电脑瞬间扩展了多种功能；
+而 MCP Server 将会作为一个智能中枢平台，可以动态接入各类专业能力模块（如知识库、计算工具、领域模型等）。</p>
 <p>当 LLM 需要完成特定任务时，它就可以调用这些 MCP Server，实时获得精准的上下文支持，从而实现能力的弹性扩展。这种架构打破了传统 AI 模型的封闭性，让大语言模型像搭载了多功能扩展坞的超级工作站，随时都能获取最合适的专业工具。</p>
 <h3 id="为什么-mcp-如此重要" class="heading-element"><span>为什么 MCP 如此重要？</span>
   <a href="#%e4%b8%ba%e4%bb%80%e4%b9%88-mcp-%e5%a6%82%e6%ad%a4%e9%87%8d%e8%a6%81" class="heading-mark">
@@ -283,16 +291,19 @@
 </h3><p>MCP 协议的核心由以下几个关键组件构成，它们共同定义了 AI 模型如何与外部系统交互：</p>
 <ul>
 <li>
-<p><strong>MCP Server</strong>：实现特定功能的服务端，负责响应 AI 模型的请求。可以理解为一个专用的“能力代理”，为 AI 提供特定领域的服务。每个 MCP Server 都可以提供一组独特的能力，如代码分析、数据库查询、图像处理等。</p>
+<p><strong>MCP Server</strong>：实现特定功能的服务端，负责响应 AI 模型的请求。可以理解为一个专用的“能力代理”，为 AI 提供特定领域的服务。
+每个 MCP Server 都可以提供一组独特的能力，如代码分析、数据库查询、图像处理等。</p>
 </li>
 <li>
 <p><strong>MCP Client</strong>：调用 MCP Server 的客户端，通常是集成了 LLM 的应用程序。Client 负责发现可用的 Server，协商能力，并在需要时调用相应的服务。</p>
 </li>
 <li>
-<p><strong>Resources</strong>：资源，指 MCP Server 可以提供给 Client 的各类数据和信息。这些资源可以是文件内容、数据库记录、API 响应、实时系统数据等。每个资源都由唯一的 URI 标识，并且只能被读取，不能被修改。</p>
+<p><strong>Resources</strong>：资源，指 MCP Server 可以提供给 Client 的各类数据和信息。
+这些资源可以是文件内容、数据库记录、API 响应、实时系统数据等。每个资源都由唯一的 URI 标识，并且只能被读取，不能被修改。</p>
 </li>
 <li>
-<p><strong>Tools</strong>：工具，是 MCP Server 提供的可执行操作。与 Resources 不同，Tools 可以修改状态或与外部系统交互。每个工具都有唯一的名称、描述和参数模式，使 AI 模型能够正确地调用它们。</p>
+<p><strong>Tools</strong>：工具，是 MCP Server 提供的可执行操作。与 Resources 不同，Tools 可以修改状态或与外部系统交互。
+每个工具都有唯一的名称、描述和参数模式，使 AI 模型能够正确地调用它们。</p>
 </li>
 <li>
 <p><strong>Prompts</strong>：提示模板，允许 MCP Server 定义特定的提示模式，指导 AI 模型如何处理特定类型的任务。</p>
@@ -1642,9 +1653,13 @@
 </div><p>其中：</p>
 <ul>
 <li><code>helloWorld</code>：服务器的唯一标识符，将在 VSCode 中显示</li>
-<li><code>command</code>：服务器可执行文件的绝对路径</li>
+<li><code>name</code>: 服务器的名称[可选]</li>
+<li><code>command</code>：指定启动 MCP Server 的命令</li>
 <li><code>args</code>：传递给服务器的命令行参数</li>
-<li><code>env</code>：服务器运行时的环境变量</li>
+<li><code>env</code>：服务器运行时的环境变量（可选）</li>
+<li><code>disabled</code>: false</li>
+<li><code>timeout</code>: 60</li>
+<li><code>transportType</code>: &ldquo;stdio&rdquo;</li>
 </ul>
 <h4 id="使用方法" class="heading-element"><span>使用方法</span>
   <a href="#%e4%bd%bf%e7%94%a8%e6%96%b9%e6%b3%95" class="heading-mark">
@@ -1789,7 +1804,7 @@
 
   <aside class="toc" id="toc-auto" aria-label="Contents"><h2 class="toc-title">Contents&nbsp;<i class="toc-icon fa-solid fa-angle-down fa-fw" aria-hidden="true"></i></h2>
       <div class="toc-content" id="toc-content-auto"></div></aside></main><footer class="footer">
-    <div class="footer-container"><div class="footer-line powered order-1">Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreferrer" title="Hugo 0.147.5"><img class="hugo-icon" src="/images/hugo.min.svg" alt="Hugo logo" /> Hugo</a> | Theme - <a href="https://github.com/hugo-fixit/FixIt" target="_blank" rel="external" title="FixIt v0.3.19"><img class="fixit-icon" src="/images/fixit.min.svg" alt="FixIt logo" /> FixIt</a>
+    <div class="footer-container"><div class="footer-line powered order-1">Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreferrer" title="Hugo 0.147.7"><img class="hugo-icon" src="/images/hugo.min.svg" alt="Hugo logo" /> Hugo</a> | Theme - <a href="https://github.com/hugo-fixit/FixIt" target="_blank" rel="external" title="FixIt v0.3.19"><img class="fixit-icon" src="/images/fixit.min.svg" alt="FixIt logo" /> FixIt</a>
         </div><div class="footer-line copyright" itemscope itemtype="http://schema.org/CreativeWork"><i class="fa-regular fa-copyright fa-fw" aria-hidden="true"></i>
             <span itemprop="copyrightYear">2024 - 2025</span><span class="author" itemprop="copyrightHolder">
               <a href="/">kyden</a></span><span class="license footer-divider"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a></span></div><div class="footer-line statistics order-2"><span class="site-time" title='Website running ...'><i class="fa-solid fa-heartbeat fa-fw animate-icon" aria-hidden="true"></i><span class="ms-1 d-none">时光荏苒，本站已陪伴您</span><span class="run-times ms-1">Website running ...</span></span></div><div class="footer-line visitor order-3">

@@ -4,7 +4,7 @@
     <title>协议 - Tag  Kyden&#39;s 博客</title>
     <link>http://kydance.github.io/tags/%E5%8D%8F%E8%AE%AE/</link>
     <description>Kyden&#39;s Blog Site</description>
-    <generator>Hugo 0.147.5 &amp; FixIt v0.3.19</generator>
+    <generator>Hugo 0.147.7 &amp; FixIt v0.3.19</generator>
     <language>en</language>
     <managingEditor>kytedance@gmail.com (kyden)</managingEditor>
     <webMaster>kytedance@gmail.com (kyden)</webMaster>
@@ -16,7 +16,7 @@
       <pubDate>Tue, 29 Apr 2025 15:16:47 +0800</pubDate><author>kytedance@gmail.com (kyden)</author>
       <guid>http://kydance.github.io/posts/model-context-protocol/</guid>
       <category domain="http://kydance.github.io/categories/%E6%8A%80%E6%9C%AF%E5%89%8D%E6%B2%BF/">技术前沿</category>
-      <description>&lt;div class=&#34;details admonition abstract open&#34;&gt;&#xA;  &lt;div class=&#34;details-summary admonition-title&#34;&gt;&lt;i class=&#34;icon fa-fw fa-solid fa-clipboard-list&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;导语&lt;i class=&#34;details-icon fa-solid fa-angle-right fa-fw&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;details-content&#34;&gt;&#xA;    &lt;div class=&#34;admonition-content&#34;&gt;&lt;p&gt;在 AI 技术日新月异的今天，Anthropic 提出的 Model Context Protocol (MCP) 正引领着 AI 能力扩展的新浪潮。MCP 就像是为 AI 模型设计的多功能扩展坞，让大语言模型能够像连接了各种外设的超级工作站一样，实时接入专业能力模块，实现能力的弹性扩展。&lt;/p&gt;&#xA;&lt;p&gt;MCP 通过标准化的协议，将 AI 模型与各类专业工具、知识库和计算资源无缝连接，打破了传统 AI 系统的封闭性。无论是文件内容、数据库记录、API 响应，还是实时系统数据，MCP 都能将其转化为 AI 可理解的上下文，显著提升 AI 在特定领域的表现。&lt;/p&gt;&#xA;&lt;p&gt;本文将带您深入探索 MCP 的核心概念、工作原理及实际应用，并通过一个完整的 &amp;ldquo;Hello World&amp;rdquo; 示例，展示如何快速搭建和调试您的第一个 MCP 服务。无论您是 AI 开发者还是技术爱好者，MCP 都为您打开了一扇通往更智能、更强大 AI 应用的大门。&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;  &lt;/div&gt;&#xA;&lt;/div&gt;</description>
+      <description>&lt;div class=&#34;details admonition abstract open&#34;&gt;&#xA;  &lt;div class=&#34;details-summary admonition-title&#34;&gt;&lt;i class=&#34;icon fa-fw fa-solid fa-clipboard-list&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;导语&lt;i class=&#34;details-icon fa-solid fa-angle-right fa-fw&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;details-content&#34;&gt;&#xA;    &lt;div class=&#34;admonition-content&#34;&gt;&lt;p&gt;在 AI 技术日新月异的今天，Anthropic 提出的 Model Context Protocol (MCP) 正引领着 AI 能力扩展的新浪潮。&#xA;MCP 就像是为 AI 模型设计的多功能扩展坞，让大语言模型能够像连接了各种外设的超级工作站一样，实时接入专业能力模块，实现能力的弹性扩展。&lt;/p&gt;&#xA;&lt;p&gt;MCP 通过标准化的协议，将 AI 模型与各类专业工具、知识库和计算资源无缝连接，打破了传统 AI 系统的封闭性。&#xA;无论是文件内容、数据库记录、API 响应，还是实时系统数据，MCP 都能将其转化为 AI 可理解的上下文，显著提升 AI 在特定领域的表现。&lt;/p&gt;&#xA;&lt;p&gt;本文将带您深入探索 MCP 的核心概念、工作原理及实际应用，并通过一个完整的 &amp;ldquo;Hello World&amp;rdquo; 示例，展示如何快速搭建和调试您的第一个 MCP 服务。&#xA;无论您是 AI 开发者还是技术爱好者，MCP 都为您打开了一扇通往更智能、更强大 AI 应用的大门。&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;  &lt;/div&gt;&#xA;&lt;/div&gt;</description>
     </item>
   </channel>
 </rss>

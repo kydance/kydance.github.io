@@ -2,7 +2,9 @@
 
 
 {{< admonition type=abstract title="导语" open=true >}}
-想要在现代编辑器中获得极致的编码体验？VSCode 与 Vim 的强强联合将带给你意想不到的效率提升。本文将详细介绍如何通过 VSCodeVim 插件，在 VSCode 中完美复刻 Vim 的操作方式，让你既能享受 VSCode 强大的功能生态，又能保持 Vim 快速高效的编辑体验。无论你是 Vim 老手还是新手，这份完整指南都能帮你打造一个更高效的编码环境。
+想要在现代编辑器中获得极致的编码体验？VSCode 与 Vim 的强强联合将带给你意想不到的效率提升。
+本文将详细介绍如何通过 VSCodeVim 插件，在 VSCode 中完美复刻 Vim 的操作方式，让你既能享受 VSCode 强大的功能生态，
+又能保持 Vim 快速高效的编辑体验。无论你是 Vim 老手还是新手，这份完整指南都能帮你打造一个更高效的编码环境。
 {{< /admonition >}}
 
 <!--more-->
@@ -11,7 +13,8 @@
 
 <!-- {{< figure src="/posts/vscode-vim/vim.png" title="" height=0.5 width=0.5 >}} -->
 
-[VSCodeVim](https://github.com/VSCodeVim/Vim/#key-remapping) 是一款 vim 模拟器，它将 vim 的大部分功能都集成在了 VSCode 中，即一个嵌入在 VSCode 中的 vim。
+[VSCodeVim](https://github.com/VSCodeVim/Vim/#key-remapping) 是一款 vim 模拟器，
+它将 vim 的大部分功能都集成在了 VSCode 中，即一个嵌入在 VSCode 中的 vim。
 
 正是由于 VSCodeVim 本质上只是一个 Vim 模拟器，而非真正的 Vim，导致原生 Vim 中的有些功能并不支持，具体支持情况见 [roadmap](https://github.com/VSCodeVim/Vim/blob/master/ROADMAP.md)。
 尽管它现在还无法完全模拟 Vim，但这依然不妨碍它的优秀。
@@ -384,6 +387,12 @@ License
 
 - Email: `id@chinapyg.com`
 - Password: `d055c-36b72-151ce-350f4-a8f69`
+
+## Cursor 重置机器码
+
+```bash
+curl -sL dub.sh/cursorreset | python3
+```
 
 ## Reference
 
