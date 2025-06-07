@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"log"
 
+	"github.com/gin-gonic/gin"
 	"github.com/spf13/viper"
 )
 
@@ -83,4 +84,16 @@ func main() {
 
 	fmt.Printf("Redis Host: %s\n", cfg.Redis.Host)
 	fmt.Printf("Redis Port: %d\n", cfg.Redis.Port)
+
+	gin.SetMode(gin.ReleaseMode)
+	r := gin.Default()
+	r.GET("/config", func(c *gin.Context) {
+		c.JSON(200, gin.H{
+			"app":      cfg.App,
+			"database": cfg.Database,
+			"redis":    cfg.Redis,
+		})
+	})
+
+	r.Run(":5566") // listen and serve on
 }

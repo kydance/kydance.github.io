@@ -11,7 +11,7 @@
   <meta itemprop="description" content="深入探讨 Go 应用程序的配置管理最佳实践，从配置文件选型到 Viper 的高级特性，全方位讲解如何实现优雅的配置管理方案。包含热重载、环境变量、配置文件等多种场景的实战指南。">
   <meta itemprop="datePublished" content="2024-09-22T21:26:34+08:00">
   <meta itemprop="dateModified" content="2024-09-22T21:26:34+08:00">
-  <meta itemprop="wordCount" content="2187">
+  <meta itemprop="wordCount" content="2319">
   <meta itemprop="image" content="http://kydance.github.io/favicon.png">
   <meta itemprop="keywords" content="Go,Golang,Viper,配置管理,配置文件,环境变量,配置解析,应用配置,配置中心,配置工具,开发工具,项目配置,配置系统,配置框架"><meta property="og:url" content="http://kydance.github.io/posts/go-viper/">
   <meta property="og:site_name" content="Kyden&#39;s 博客">
@@ -49,7 +49,7 @@
     "mainEntityOfPage": {
       "@type": "WebPage",
       "@id": "http:\/\/kydance.github.io\/posts\/go-viper\/"
-    },"image": ["http:\/\/kydance.github.io\/favicon-seo.jpg"],"genre": "posts","keywords": "Go, Golang, Viper, 配置管理, 配置工具, 开发工具, 最佳实践, 项目实战, 应用开发, 工程实践","wordcount":  2187 ,
+    },"image": ["http:\/\/kydance.github.io\/favicon-seo.jpg"],"genre": "posts","keywords": "Go, Golang, Viper, 配置管理, 配置工具, 开发工具, 最佳实践, 项目实战, 应用开发, 工程实践","wordcount":  2319 ,
     "url": "http:\/\/kydance.github.io\/posts\/go-viper\/","datePublished": "2024-09-22T21:26:34+08:00","dateModified": "2024-09-22T21:26:34+08:00","publisher": {
       "@type": "Organization",
       "name": "kyden","logo": "http:\/\/kydance.github.io"},"author": {
@@ -171,7 +171,7 @@
   <article class="page single">
     <div class="header"><h1 class="single-title animate__animated animate__flipInX"><span title="Repost" class="icon-repost"><i class="fa-solid fa-share fa-fw" aria-hidden="true"></i></span><span>Go 配置管理最佳实践：Viper 从入门到精通</span>
       </h1><p class="single-subtitle animate__animated animate__fadeIn">优雅高效的配置解决方案：告别配置管理烦恼</p></div><div class="post-meta">
-      <div class="post-meta-line"><span class="post-author"><a href="https://github.com/kydance" title="Author"target="_blank" rel="external nofollow noopener noreferrer author" class="author"><img class="avatar" src='/favicon.ico' alt="kyden" height="16" width="16">&nbsp;kyden</a></span><span class="post-included-in">&nbsp;included in <a href="/categories/go%E8%AF%AD%E8%A8%80/" class="post-category" title="Category - Go语言"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> Go语言</a>&ensp;<a href="/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/" class="post-category" title="Category - 开发工具"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 开发工具</a>&ensp;<a href="/categories/%E9%85%8D%E7%BD%AE%E7%AE%A1%E7%90%86/" class="post-category" title="Category - 配置管理"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 配置管理</a>&ensp;<a href="/categories/%E5%BA%94%E7%94%A8%E6%A1%86%E6%9E%B6/" class="post-category" title="Category - 应用框架"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 应用框架</a>&ensp;<a href="/categories/%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/" class="post-category" title="Category - 最佳实践"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 最佳实践</a> and <a href="/collections/go%E5%B7%A5%E5%85%B7%E9%93%BE/" class="post-collection" title="Collection - Go工具链"><i class="fa-solid fa-layer-group fa-fw" aria-hidden="true"></i> Go工具链</a>&ensp;<a href="/collections/%E5%BC%80%E5%8F%91%E6%A1%86%E6%9E%B6/" class="post-collection" title="Collection - 开发框架"><i class="fa-solid fa-layer-group fa-fw" aria-hidden="true"></i> 开发框架</a>&ensp;<a href="/collections/%E5%B7%A5%E7%A8%8B%E5%AE%9E%E8%B7%B5/" class="post-collection" title="Collection - 工程实践"><i class="fa-solid fa-layer-group fa-fw" aria-hidden="true"></i> 工程实践</a>&ensp;<a href="/collections/%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91/" class="post-collection" title="Collection - 应用开发"><i class="fa-solid fa-layer-group fa-fw" aria-hidden="true"></i> 应用开发</a></span></div><div class="post-meta-line"><span title="published on 2024-09-22 21:26:34"><i class="fa-solid fa-calendar-days fa-fw me-1" aria-hidden="true"></i><time datetime="2024-09-22">2024-09-22</time></span>&nbsp;<span title="2187 words"><i class="fa-solid fa-pencil-alt fa-fw me-1" aria-hidden="true"></i>About 2200 words</span>&nbsp;<span><i class="fa-regular fa-clock fa-fw me-1" aria-hidden="true"></i>5 minutes</span>&nbsp;<span id="busuanzi_container_page_pv" class="busuanzi_visitors comment-visitors" data-flag-title="Go 配置管理最佳实践：Viper 从入门到精通"><i class="fa-regular fa-eye fa-fw me-1" aria-hidden="true"></i><span id="busuanzi_value_page_pv">-</span>&nbsp;views
+      <div class="post-meta-line"><span class="post-author"><a href="https://github.com/kydance" title="Author"target="_blank" rel="external nofollow noopener noreferrer author" class="author"><img class="avatar" src='/favicon.ico' alt="kyden" height="16" width="16">&nbsp;kyden</a></span><span class="post-included-in">&nbsp;included in <a href="/categories/go%E8%AF%AD%E8%A8%80/" class="post-category" title="Category - Go语言"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> Go语言</a>&ensp;<a href="/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/" class="post-category" title="Category - 开发工具"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 开发工具</a>&ensp;<a href="/categories/%E9%85%8D%E7%BD%AE%E7%AE%A1%E7%90%86/" class="post-category" title="Category - 配置管理"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 配置管理</a>&ensp;<a href="/categories/%E5%BA%94%E7%94%A8%E6%A1%86%E6%9E%B6/" class="post-category" title="Category - 应用框架"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 应用框架</a>&ensp;<a href="/categories/%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/" class="post-category" title="Category - 最佳实践"><i class="fa-regular fa-folder fa-fw" aria-hidden="true"></i> 最佳实践</a> and <a href="/collections/go%E5%B7%A5%E5%85%B7%E9%93%BE/" class="post-collection" title="Collection - Go工具链"><i class="fa-solid fa-layer-group fa-fw" aria-hidden="true"></i> Go工具链</a>&ensp;<a href="/collections/%E5%BC%80%E5%8F%91%E6%A1%86%E6%9E%B6/" class="post-collection" title="Collection - 开发框架"><i class="fa-solid fa-layer-group fa-fw" aria-hidden="true"></i> 开发框架</a>&ensp;<a href="/collections/%E5%B7%A5%E7%A8%8B%E5%AE%9E%E8%B7%B5/" class="post-collection" title="Collection - 工程实践"><i class="fa-solid fa-layer-group fa-fw" aria-hidden="true"></i> 工程实践</a>&ensp;<a href="/collections/%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91/" class="post-collection" title="Collection - 应用开发"><i class="fa-solid fa-layer-group fa-fw" aria-hidden="true"></i> 应用开发</a></span></div><div class="post-meta-line"><span title="published on 2024-09-22 21:26:34"><i class="fa-solid fa-calendar-days fa-fw me-1" aria-hidden="true"></i><time datetime="2024-09-22">2024-09-22</time></span>&nbsp;<span title="2319 words"><i class="fa-solid fa-pencil-alt fa-fw me-1" aria-hidden="true"></i>About 2400 words</span>&nbsp;<span><i class="fa-regular fa-clock fa-fw me-1" aria-hidden="true"></i>5 minutes</span>&nbsp;<span id="busuanzi_container_page_pv" class="busuanzi_visitors comment-visitors" data-flag-title="Go 配置管理最佳实践：Viper 从入门到精通"><i class="fa-regular fa-eye fa-fw me-1" aria-hidden="true"></i><span id="busuanzi_value_page_pv">-</span>&nbsp;views
           </span>&nbsp;</div>
     </div><div class="details toc" id="toc-static" data-kept="false">
         <div class="details-summary toc-title">
@@ -194,6 +194,7 @@
       </ol>
     </li>
     <li><a href="#使用-viper-读取配置文件内容">使用 viper 读取配置文件内容</a></li>
+    <li><a href="#动态加载配置">动态加载配置</a></li>
     <li><a href="#reference">Reference</a></li>
   </ol>
 </nav></div>
@@ -595,7 +596,87 @@
 <li>如果没有指定，则读取 <code>$HOME/.kydendemo.yaml</code>，找到则读取；
 若 <code>cfgFile == &quot;&quot;</code>，且没有找到配置文件，则调用 <code>viper.ReadInConfig()</code> 读取配置文件时报错；</li>
 </ul>
-<h2 id="reference" class="heading-element"><span>Reference</span>
+<h2 id="动态加载配置" class="heading-element"><span>动态加载配置</span>
+  <a href="#%e5%8a%a8%e6%80%81%e5%8a%a0%e8%bd%bd%e9%85%8d%e7%bd%ae" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h2><p>Viper 支持动态加载配置文件的变更，可以通过 <code>viper.WatchConfig()</code> 方法来实现。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="p">(</span>
+</span></span><span class="line"><span class="cl">	<span class="s">&#34;github.com/fsnotify/fsnotify&#34;</span>
+</span></span><span class="line"><span class="cl">	<span class="s">&#34;github.com/spf13/viper&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">var</span> <span class="nx">DynamicConfig</span> <span class="o">*</span><span class="nx">viper</span><span class="p">.</span><span class="nx">Viper</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">init</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">DynamicConfig</span> <span class="p">=</span> <span class="nx">viper</span><span class="p">.</span><span class="nf">New</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="nx">DynamicConfig</span><span class="p">.</span><span class="nf">AddConfigPath</span><span class="p">(</span><span class="s">&#34;./config&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">DynamicConfig</span><span class="p">.</span><span class="nf">AddConfigPath</span><span class="p">(</span><span class="s">&#34;.&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">DynamicConfig</span><span class="p">.</span><span class="nf">SetConfigName</span><span class="p">(</span><span class="s">&#34;dynamic&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">DynamicConfig</span><span class="p">.</span><span class="nf">SetConfigType</span><span class="p">(</span><span class="s">&#34;yaml&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="k">if</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">DynamicConfig</span><span class="p">.</span><span class="nf">ReadInConfig</span><span class="p">();</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="nb">panic</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="k">go</span> <span class="kd">func</span><span class="p">(</span><span class="nx">dc</span> <span class="o">*</span><span class="nx">viper</span><span class="p">.</span><span class="nx">Viper</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">dc</span><span class="p">.</span><span class="nf">WatchConfig</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">dc</span><span class="p">.</span><span class="nf">OnConfigChange</span><span class="p">(</span><span class="kd">func</span><span class="p">(</span><span class="nx">e</span> <span class="nx">fsnotify</span><span class="p">.</span><span class="nx">Event</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">			<span class="nb">println</span><span class="p">(</span><span class="s">&#34;Config file changed:&#34;</span><span class="p">,</span> <span class="nx">e</span><span class="p">.</span><span class="nx">Name</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">			<span class="c1">// Reload the configuration</span>
+</span></span><span class="line"><span class="cl">			<span class="k">if</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">dc</span><span class="p">.</span><span class="nf">ReadInConfig</span><span class="p">();</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">				<span class="nb">println</span><span class="p">(</span><span class="s">&#34;Error reloading config:&#34;</span><span class="p">,</span> <span class="nx">err</span><span class="p">.</span><span class="nf">Error</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl">			<span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">			<span class="nb">println</span><span class="p">(</span><span class="s">&#34;Reload config success&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">		<span class="p">})</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}(</span><span class="nx">DynamicConfig</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="reference" class="heading-element"><span>Reference</span>
   <a href="#reference" class="heading-mark">
     <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
   </a>

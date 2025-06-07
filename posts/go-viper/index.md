@@ -237,6 +237,48 @@ func initConfig() {
 - 如果没有指定，则读取 `$HOME/.kydendemo.yaml`，找到则读取；
 若 `cfgFile == ""`，且没有找到配置文件，则调用 `viper.ReadInConfig()` 读取配置文件时报错；
 
+## 动态加载配置
+
+Viper 支持动态加载配置文件的变更，可以通过 `viper.WatchConfig()` 方法来实现。
+
+```go
+package main
+
+import (
+	"github.com/fsnotify/fsnotify"
+	"github.com/spf13/viper"
+)
+
+var DynamicConfig *viper.Viper
+
+func init() {
+	DynamicConfig = viper.New()
+
+	DynamicConfig.AddConfigPath("./config")
+	DynamicConfig.AddConfigPath(".")
+	DynamicConfig.SetConfigName("dynamic")
+	DynamicConfig.SetConfigType("yaml")
+
+	if err := DynamicConfig.ReadInConfig(); err != nil {
+		panic(err)
+	}
+
+	go func(dc *viper.Viper) {
+		dc.WatchConfig()
+		dc.OnConfigChange(func(e fsnotify.Event) {
+			println("Config file changed:", e.Name)
+
+			// Reload the configuration
+			if err := dc.ReadInConfig(); err != nil {
+				println("Error reloading config:", err.Error())
+			}
+
+			println("Reload config success")
+		})
+	}(DynamicConfig)
+}
+```
+
 ## Reference
 
 - [viper](https://github.com/spf13/viper)
