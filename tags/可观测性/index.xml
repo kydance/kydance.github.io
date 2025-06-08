@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>可观测性 - Tag  Kyden&#39;s 博客</title>
+    <link>http://kydance.github.io/tags/%E5%8F%AF%E8%A7%82%E6%B5%8B%E6%80%A7/</link>
+    <description>Kyden&#39;s Blog Site</description>
+    <generator>Hugo 0.147.7 &amp; FixIt v0.3.19</generator>
+    <language>en</language>
+    <managingEditor>kytedance@gmail.com (kyden)</managingEditor>
+    <webMaster>kytedance@gmail.com (kyden)</webMaster>
+    <lastBuildDate>Fri, 23 May 2025 19:32:01 +0800</lastBuildDate>
+    <atom:link href="http://kydance.github.io/tags/%E5%8F%AF%E8%A7%82%E6%B5%8B%E6%80%A7/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Prometheus</title>
+      <link>http://kydance.github.io/posts/92bd56a/</link>
+      <pubDate>Fri, 23 May 2025 19:32:01 +0800</pubDate><author>kytedance@gmail.com (kyden)</author>
+      <guid>http://kydance.github.io/posts/92bd56a/</guid>
+      <category domain="http://kydance.github.io/categories/%E8%BF%90%E7%BB%B4%E7%9B%91%E6%8E%A7/">运维监控</category>
+      <category domain="http://kydance.github.io/categories/%E4%BA%91%E5%8E%9F%E7%94%9F%E6%8A%80%E6%9C%AF/">云原生技术</category>
+      <description>&lt;div class=&#34;details admonition abstract open&#34;&gt;&#xA;  &lt;div class=&#34;details-summary admonition-title&#34;&gt;&lt;i class=&#34;icon fa-fw fa-solid fa-clipboard-list&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;导语&lt;i class=&#34;details-icon fa-solid fa-angle-right fa-fw&#34; aria-hidden=&#34;true&#34;&gt;&lt;/i&gt;&lt;/div&gt;&#xA;  &lt;div class=&#34;details-content&#34;&gt;&#xA;    &lt;div class=&#34;admonition-content&#34;&gt;&lt;strong&gt;Prometheus已成为云原生环境中事实上的标准监控解决方案。本文将带您全面了解Prometheus的核心概念、架构设计、数据模型及实践应用，帮助您构建高效可靠的监控系统。&lt;/strong&gt;&lt;/div&gt;&#xA;  &lt;/div&gt;&#xA;&lt;/div&gt;</description>
+    </item>
+  </channel>
+</rss>
